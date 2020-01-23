@@ -41,6 +41,9 @@ $Switch
 
 ```
 
+![json](images/variable-type.png?raw=true "Import JSON")
+
+
 Data may be set to the variables using entry or via a set command
 
 ```
