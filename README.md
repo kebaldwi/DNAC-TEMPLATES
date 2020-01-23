@@ -33,7 +33,7 @@ Examples of If/elseif/else construct with a check to see if data in variable con
  ```
 
 #### Variables
-Variables may be defined in a couple of ways
+Variables may be defined in a couple of ways but the data entered will either numerical or a string.
 
 ```
 ${Switch}
