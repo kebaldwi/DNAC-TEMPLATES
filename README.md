@@ -20,14 +20,14 @@ The PnP workflow is as follows:
 Velocity language typically allows for If/elseif/else constructs, macros and more.
 
 Examples of If/elseif/else construct with a check to see if data in variable contains a string:
-#if( $hostname.contains("C9300-48") )
- ...
-#elseif( $hostname.contains("C9300-24") )
- ...
-#else
- ...
-#end
 
+ #if( $hostname.contains("C9300-48") )
+
+ #elseif( $hostname.contains("C9300-24") )
+ 
+ #else
+
+ #end
 
 #### Variables
 Variables may be defined in a couple of ways
