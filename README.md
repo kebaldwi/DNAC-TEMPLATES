@@ -23,12 +23,13 @@ Examples of If/elseif/else construct with a check to see if data in variable con
 
  ```
  #if( $hostname.contains("C9300-48") )
-
+    !some commands
  #elseif( $hostname.contains("C9300-24") )
- 
+    !some more commands
  #else
-
+    !even more commands
  #end
+ 
  ```
 
 #### Variables
