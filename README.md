@@ -21,7 +21,7 @@ Velocity language typically allows for If/elseif/else constructs, macros and mor
 
 Examples of If/elseif/else construct with a check to see if data in variable contains a string:
 
- '
+ '''
  #if( $hostname.contains("C9300-48") )
 
  #elseif( $hostname.contains("C9300-24") )
@@ -29,7 +29,7 @@ Examples of If/elseif/else construct with a check to see if data in variable con
  #else
 
  #end
- '
+ '''
 
 #### Variables
 Variables may be defined in a couple of ways
