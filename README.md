@@ -33,7 +33,7 @@ Examples of If/elseif/else construct with a check to see if data in variable con
  ```
 
 #### Variables
-Variables may be defined in a couple of ways but the data entered will either numerical or a string.
+Variables may be defined in a couple of ways but the data entered will either numerical or string.
 
 ```
 ${Switch}
@@ -41,13 +41,15 @@ $Switch
 
 ```
 
+Data may be set to the variables via a set command
+
+```
+#set( $StringVariable = "text" )
+#set( $NumericVariable = 10 )
+
+```
+or alternatively using the UI
+
 ![json](images/variable-type.png?raw=true "Import JSON")
 
-
-Data may be set to the variables using entry or via a set command
-
-```
-#set( $Switch = 20 )
-
-```
 
