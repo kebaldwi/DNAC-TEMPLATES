@@ -1,5 +1,5 @@
 ## PnP Workflow
-With the advent of Cisco DNA Center, Cisco has taken a leap forward in how 
+With the advent of Cisco DNA Center, Cisco has taken a leap forward in how to deploy devices 
 
 
 
