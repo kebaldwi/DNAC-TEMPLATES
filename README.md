@@ -11,6 +11,7 @@ The section will include scripts and examples with the following:
 
 ## PnP Workflow
 
+[Contribution guidelines for this project](docs/CONTRIBUTING.md)
 The PnP workflow is as follows:
 
 ### Scripting
