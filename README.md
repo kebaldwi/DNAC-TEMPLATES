@@ -12,7 +12,7 @@ The section will include scripts and examples with the following:
 ## Sections
 Various sections will be covered within this github repository please use this menu for navigation. Within the various folders are examples, explanation readme files for reference.
 
-* [PnP Workflow](./PnP-Workflow.md)
+* [PnP Workflow](./PnP-Workflow.md) - This section explains the overall Plug and Play Methodology
 * [Variables](./Variables.md)
 * [Velocity Scripting](./Velocity.md)
 * [Onboarding Templates](./Onboarding.md)
