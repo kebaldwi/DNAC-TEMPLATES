@@ -9,7 +9,7 @@ The PnP workflow is as follows:
 ### Scripting
 
 
-![json](images/variable-type.png?raw=true "Import JSON")
+![json](images/pnp-workflow.png?raw=true "Import JSON")
 
 
 
