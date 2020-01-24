@@ -14,6 +14,33 @@ The section will include scripts and examples with the following:
 The PnP workflow is as follows:
 
 ### Scripting
+This section will describe the various tools and techniques used to make a powerful script out of nowmal CLI command scripts which are used by organizations on IOS devices around the world. This section is an attempt to demystify the hows and to bring clarity on what is truely possible. While it is possible to take a CLI script for one device and create a template for one device at a time, that would leave us with a lot of templates and make it harder to make changes on an ongoing basis. Using the techniques below will allow us to deploy equipment with scripts which can be reused, allowing us to keep configurations similar for conformity reasons but also to reduce the number of places where changes would have to be made. 
+
+To that end it is important to write modular scripts which make use of all the power of programming but allow us to do it within the DNAC platform as templates. 
+
+#### Variables
+Variables are used to allow scripts or code for that matter to be reused. A variable within a script allows us to replace the data on demand thereby allowing the reuse of parts of or entire templates. Variables may be defined in a couple of ways but the data entered will either numerical or string. A numerical value is just that a number where as a string is either a line of text or perhaps just a name.
+
+Below is an example of a variable:
+
+```
+${Switch} 
+$Switch
+
+```
+
+Data may be set to the variables via a set command
+
+```
+#set( $StringVariable = "text" )
+#set( $NumericVariable = 10 )
+
+```
+or alternatively using the UI
+
+![json](images/variable-type.png?raw=true "Import JSON")
+
+
 
 #### Velocity Scripting
 
@@ -83,25 +110,4 @@ When combined with the IF statements below, the above Macro allows for various I
 #end
 
 ```
-
-#### Variables
-Variables may be defined in a couple of ways but the data entered will either numerical or string.
-
-```
-${Switch}
-$Switch
-
-```
-
-Data may be set to the variables via a set command
-
-```
-#set( $StringVariable = "text" )
-#set( $NumericVariable = 10 )
-
-```
-or alternatively using the UI
-
-![json](images/variable-type.png?raw=true "Import JSON")
-
 
