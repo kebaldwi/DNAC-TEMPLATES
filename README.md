@@ -16,4 +16,4 @@ Various sections will be covered within this github repository please use this m
 * [Variables](./Variables.md)
 * [Velocity Scripting](./Velocity.md)
 * [Onboarding Templates](./Onboarding.md)
-* [DayN Templates](./Onboarding.md)
+* [DayN Templates](./DayN.md)
