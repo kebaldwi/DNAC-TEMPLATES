@@ -72,3 +72,19 @@ Additional set commands available are the following:
     Object map:            #set( $monkey.Map = {"banana" : "good", "roast beef" : "bad"})
 ```
 
+Simple arithmetic expressions can be accomplished as follows:
+
+```
+    Addition:       #set( $answer = $number + 1 )
+    Subtraction:    #set( $answer = $number - 1 )
+    Multiplication: #set( $answer = $number * $mod )
+    Division:       #set( $answer = $number / $mod )
+    Remainder:      #set( $answer = $number % $mod )
+
+where $number = 10 and $mod = 2 the answers from above would be for:
+    Addition:       $answer = 11
+    Subtraction:    $answer = 9
+    Multiplication: $answer = 20
+    Division:       $answer = 5
+    Remainder:      $answer = 0
+```
