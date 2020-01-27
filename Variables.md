@@ -17,7 +17,7 @@ Variables are used to allow scripts or code for that matter to be reused. A vari
 #### Variable Notation
 The Notation used in variables is as follows: 
 
-   ##### $[{]identifier.identifier[|alternate value][}]
+   $[{]identifier.identifier[|alternate value][}]
 
 Usage:
    identifier: variable name
