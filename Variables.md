@@ -23,16 +23,13 @@ Usage:
    * identifier: variable name
    * alternate value: alternate expression to use if the property is null, empty, false or zero
 
-Examples:
+Types of Notation:
 
-
-
-```$ [{]identifier.identifier ( [ parameter list... ] ) [ [ | alternate value ] } ]
+```$ [{]identifier.identifier([ parameter list... ])[|alternate value][}]
     
     Formal Notation.        ${Switch} 
     Regular Notation:       $Switch
     Alternate Value:        ${Switch.name|'ASW-C9300-ACCESS'}
-
 ```
 
 Data may be set to the variables via a set command
@@ -40,13 +37,39 @@ Data may be set to the variables via a set command
 ```
 #set( $StringVariable = "text" )
 #set( $NumericVariable = 10 )
+```
 
+#### Arrays: 
+It is possible to create arrays as well which can be iterated through with Foreach loop constructs. In Velocity we call an array a list. You can set a list up in two ways:
+
+* Define all the elements of the list in one line comma delimited 
+* Define each element of the list with an identifier
+
+Both examples follow:
+```
+#set( $L2Bgps = ["10" , "18"] )
+```
+
+```
+#set( $L2Bgps[0] = 10 )
+#set( $L2Bgps[1] = 18 )
 ```
 or alternatively using the UI
 
 ![json](images/variable-type.png?raw=true "Import JSON")
 
+Additional set commands available are the following:
 
+```
+    Variable reference:    #set( $monkey = $bill )
+    String literal:        #set( $monkey.Friend = 'monica' )
+    Property reference:    #set( $monkey.Blame = $whitehouse.Leak )
+    Method reference:      #set( $monkey.Plan = $spindoctor.weave($web) )
+    Number literal:        #set( $monkey.Number = 123 )
+    Range operator:        #set( $monkey.Numbers = [1..3] )
+    Object list:           #set( $monkey.Say = ["Not", $my, "fault"] )
+    Object map:            #set( $monkey.Map = {"banana" : "good", "roast beef" : "bad"})
+```
 
 #### Velocity Scripting
 
