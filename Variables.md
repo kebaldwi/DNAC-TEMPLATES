@@ -20,8 +20,8 @@ The Notation used in variables is as follows:
    $[{]identifier.identifier[|alternate value][}]
 
 Usage:
-   identifier: variable name
-   alternate value: alternate expression to use if the property is null, empty, false or zero
+   * identifier: variable name
+   * alternate value: alternate expression to use if the property is null, empty, false or zero
 
 Examples:
 
