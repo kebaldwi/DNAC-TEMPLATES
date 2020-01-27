@@ -5,30 +5,6 @@ This section will describe the various tools and techniques used to make a power
 
 To that end it is important to write modular scripts which make use of all the power of programming but allow us to do it within the DNAC platform as templates. 
 
-#### Variables
-Variables are used to allow scripts or code for that matter to be reused. A variable within a script allows us to replace the data on demand thereby allowing the reuse of parts of or entire templates. Variables may be defined in a couple of ways but the data entered will either numerical or string. A numerical value is just that a number where as a string is either a line of text or perhaps just a name.
-
-Below is an example of a variable:
-
-```
-${Switch} 
-$Switch
-
-```
-
-Data may be set to the variables via a set command
-
-```
-#set( $StringVariable = "text" )
-#set( $NumericVariable = 10 )
-
-```
-or alternatively using the UI
-
-![json](images/variable-type.png?raw=true "Import JSON")
-
-
-
 #### Velocity Scripting
 
 Velocity language typically allows for If/elseif/else constructs, macros and more.
