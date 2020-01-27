@@ -1,11 +1,37 @@
 ### Variables
 Variables are used to allow scripts or code for that matter to be reused. A variable within a script allows us to replace the data on demand thereby allowing the reuse of parts of or entire templates. Variables may be defined in a couple of ways but the data entered will either numerical or string. A numerical value is just that a number where as a string is either a line of text or perhaps just a name.
 
-Below is an example of a variable:
+``` 
+    Variable reference:     #set( $monkey = $bill )
+    String literal:         #set( $monkey.Friend = 'monica' )
+    Property reference:     #set( $monkey.Blame = $whitehouse.Leak )
+    Method reference:       #set( $monkey.Plan = $spindoctor.weave($web) )
+    Number literal:         #set( $monkey.Number = 123 )
+    Range operator:         #set( $monkey.Numbers = [1..3] )
+    Object list:            #set( $monkey.Say = ["Not", $my, "fault"] )
+    Object map:             #set( $monkey.Map = {"banana" : "good", "roast beef" : "bad"})
 
+    from: https://explore.cisco.com/dnac-use-cases/apache-velocity
 ```
-${Switch} 
-$Switch
+
+#### Variable Notation
+The Notation used in variables is as follows: 
+
+   ##### $[{]identifier.identifier[|alternate value][}]
+
+Usage:
+   identifier: variable name
+   alternate value: alternate expression to use if the property is null, empty, false or zero
+
+Examples:
+
+
+
+```$ [{]identifier.identifier ( [ parameter list... ] ) [ [ | alternate value ] } ]
+    
+    Formal Notation.        ${Switch} 
+    Regular Notation:       $Switch
+    Alternate Value:        ${Switch.name|'ASW-C9300-ACCESS'}
 
 ```
 
