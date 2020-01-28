@@ -87,9 +87,11 @@ Usage:
 ```
 Additionally you can use these methods within the loop:
 
+-
 $foreach.count : 1-based loop index
 $foreach.index : 0-based loop index
 $foreach.first : true on the first iteration
 $foreach.last : true on the last iteration
 $foreach.hasNext : false on the last iteration
 $foreach.stop() : exists the loop, synonym for #break
+-
