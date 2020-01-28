@@ -68,3 +68,28 @@ When combined with the IF statements below, the above Macro allows for various I
 #end
 ```
 
+#### Foreach Loops
+A Foreach loop allows for multiple iterations of a sequence of commands perhaps including some of the constructs mentioned above to iterate through and on each occasion use a different value.
+
+Command Construct:
+
+```
+#[{]foreach[}] ( $ref in arg ) statements [#[{]else[}] alternate statements] #[{]end[}]
+
+Usage:
+    $ref                 - The first variable reference is the item.
+    arg                  - May be one of the following: a reference to a list 
+                           (i.e. object array, collection, or map), an array list, or the range operator.
+    statements           - What is output each time Velocity finds a valid item in the list denoted above as arg. 
+                           This output is any valid VTL and is rendered each iteration of the loop.
+    alternate statements - What is to display whenever Velocity did not enter the loop (
+                           when arg is null, empty, or doesn't have any valid iterator).
+```
+Additionally you can use these methods within the loop:
+
+$foreach.count : 1-based loop index
+$foreach.index : 0-based loop index
+$foreach.first : true on the first iteration
+$foreach.last : true on the last iteration
+$foreach.hasNext : false on the last iteration
+$foreach.stop() : exists the loop, synonym for #break
