@@ -26,7 +26,9 @@ In order to land on DNA Center though the device needs help in finding it. There
 3. Cloud re-direction https://devicehelper.cisco.com/device-helper 
    Cisco hosted cloud, re-directs to on-prem DNA Center IP Address
 
-Option 3 requires the that DNA Center
+Option 3 requires the that DNA Center register a file with the PnP Connect portal which it will offer via SSL to a device which reaches out. In order to whitelist those devices, the serial number would have to be associated to the DNAC profile within software centrals pnp connect portal.
+
+![json](images/pnpconnect.png?raw=true "Import JSON")
 
 The PnP workflow is as follows:
 
