@@ -11,7 +11,7 @@ no platform punt-keepalive disable-kernel-core
 !vlan dot1q tag native 
 !
 vtp mode transparent
-vtp domain base2hq.com
+vtp domain xxxxx.com
 !
 vlan 1
 !
