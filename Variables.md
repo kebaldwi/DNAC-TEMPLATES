@@ -81,7 +81,8 @@ Simple arithmetic expressions can be accomplished as follows:
     Division:       #set( $answer = $number / $mod )
     Remainder:      #set( $answer = $number % $mod )
 
-where $number = 10 and $mod = 2 the answers from above would be for:
+    where $number = 10 and $mod = 2 the answers from above would be for:
+    
     Addition:       $answer = 11
     Subtraction:    $answer = 9
     Multiplication: $answer = 20
