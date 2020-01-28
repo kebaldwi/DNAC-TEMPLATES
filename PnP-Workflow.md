@@ -38,7 +38,7 @@ There are 3 automated methods to make that occur:
    pnpserver.localdomain resolves to DNA Center VIP Address
 ```
 3. **Cloud re-direction https://devicehelper.cisco.com/device-helper**
-   **Cisco hosted cloud, re-directs to on-prem DNA Center IP Address**
+   **which, re-directs to on-prem DNA Center IP Address**
 
 **Option 1:** requires that along with the address and gateway the DHCP server must offer a PnP string via option 43. This option is used with Cisco wireless so I typically recommend that you go with option 2.
 
