@@ -40,8 +40,27 @@ If/elseif/else construct with a check to see if data in variable contains a stri
 #### Macro's
 A Macro is a snippit of code which can be called over and over again within a template. Take the following example into consideration. Alone the Macro does not seem that powerful but when combined with the previous sections IF statement it suddenly allows for a more powerful script.
 
+Macro format is as follows:
+
 ```
-#macro (Interfaces)
+      #[{]macro[}] (vmname $arg1[= def1] ... $argn [= defn] ]) [ VTL code ] #[{]end[}]
+
+      Usage:
+
+            vmname          - Name used to call the VM (#vmname)
+            $arg1 ... $argn - Arguments to the VM. There can be any number of arguments, but the number 
+                              used at invocation must match the number specified in the definition, unless 
+                              there is a default value provided for missing parameters.
+            def1 ... defn   - Optional default values provided for macro arguments. If a default value is 
+                              provided for an argument, a default value must also be provided to all subsequent arguments.
+            VTL code        - Any valid VTL code, anything you can put into a template, can be put into a VM
+
+```
+
+An example Macro of interface configurations:
+
+```
+#macro(Interfaces)
 int lo 0
   desc mgmt address
   ip address 10.0.0.${Switch} 255.255.255.255
@@ -126,4 +145,24 @@ For Safety the maximum allowed number of loop iterations can be controlled engin
 ```
     #The maximum allowed number of loops.
     directive.foreach.max_loops = -1
+```
+
+#### Multi Line Commands
+These can be used for building entries for multiple lines which need to be used within a command like with banners.
+
+```
+!BANNER LOGIN
+<MLTCMD>banner login ^
+  Session On $hostname Is Monitored!!!
+  *****************************LEGAL WARNING************************************
+  * This device is part of a Demonstration computer network and is provided for*
+  * official use by authorized users ONLY. Any information, documents, or      *
+  * materials in the network are the property of this firm. Unauthorized use,  *
+  * duplication, or disclosure of information or systems in this network is    *
+  * strictly prohibited by Federal Law (18 USC 10130). Use of this network     *
+  * constitutes consent to monitoring which may be released to firm management *
+  * and/or law enforcement agencies and may result in disciplinary action,     *
+  * civil action, and/or criminal prosecution.                                 *
+  ****************************LEGAL WARNING*************************************
+^</MLTCMD>
 ```
