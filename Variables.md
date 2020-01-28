@@ -10,8 +10,6 @@ Variables are used to allow scripts or code for that matter to be reused. A vari
     Range operator:         #set( $monkey.Numbers = [1..3] )
     Object list:            #set( $monkey.Say = ["Not", $my, "fault"] )
     Object map:             #set( $monkey.Map = {"banana" : "good", "roast beef" : "bad"})
-
-    from: https://explore.cisco.com/dnac-use-cases/apache-velocity
 ```
 
 #### Variable Notation
@@ -89,3 +87,5 @@ Simple arithmetic expressions can be accomplished as follows:
     Division:       $answer = 5
     Remainder:      $answer = 0
 ```
+
+Special mention to: https://explore.cisco.com/dnac-use-cases/apache-velocity as examples and extrapolations were made using this documentation.
