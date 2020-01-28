@@ -98,8 +98,32 @@ Additionally you can use these methods within the loop:
 
 An example of a Foreach Loop
 
+```
+    Reference Example: 
+    
+    #foreach ( $Vlan in $Vlans ) 
+       interface vlan $Vlan 
+    #else 
+       no interface vlan $Vlan
+    #end
+    
+    Array List Example: 
+    
+    #set( $ID = 15 )
+    #foreach ( $Vlan in ["10", $ID, "20"] ) 
+       interface vlan $Vlan  
+    #end
+    
+    Range Operator Example: 
+    
+    #foreach ( $Vlan in [1..3] ) 
+       interface vlan $Vlan 
+    #end
+```
 
-    Reference: #foreach ( $item in $items ) $item #else no item #end
-    Array list: #foreach ( $item in ["Not", $my, "fault"] ) $item #end
-    Range operator: #foreach ( $item in [1..3] ) $item #end
+For Safety the maximum allowed number of loop iterations can be controlled engine-wide with velocity.properties. By default, there is no limit:
 
+```
+    #The maximum allowed number of loops.
+    directive.foreach.max_loops = -1
+```
