@@ -8,11 +8,11 @@ The first piece to the puzzle is that the device must get an IP address. It does
 So we need a DHCP scope to supply the address within the management network temporarily in order to complete the configuration and onboarding. The scope should be configured so as to offer addresses from part of the range of addresses not used. It also can be a reservation as DHCP servers can reserve addresses for specific MAC addresses. 
 
 The DHCP scope would incorporate therefore the following which would be enough to get an address:
-* network 
-* default gateway
-* domain                *required if option 2 is used below*
-* name-server ip        *required if option 2 or 3 is used below*
-* option 43             *required if option 1 is used below*
+* **network**
+* **default gateway**
+* **domain**                *required if option 2 is used below*
+* **name-server ip**        *required if option 2 or 3 is used below*
+* **option 43**             *required if option 1 is used below*
 
 Obviously a dhcp relay or helper statement would need to be added to the gateway interface pointing to the DHCP server.
 
