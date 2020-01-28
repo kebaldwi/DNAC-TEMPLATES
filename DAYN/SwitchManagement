@@ -49,10 +49,10 @@ ip dhcp snooping
 !
 location civic-location identifier 1
  country US
- postal-code 46037
+ postal-code 55555
  state Indiana
- street-group "Whitney Way"
- number 10054
+ street-group "Whitney Houston"
+ number 55555
 !
 !SUPPORTING SERVICES
 ip forward-protocol nd
@@ -70,8 +70,8 @@ ip forward-protocol nd
 !
 snmp-server engineID local 10000000$Switch
 snmp-server trap-source Lo 0
-snmp-server location BASE2HQ
-snmp-server contact kebaldwi@cisco.com
+snmp-server location XXXXX
+snmp-server contact xxxxx@cisco.com
 snmp-server enable traps
 snmp mib community-map private engineid 10000000$Switch
 snmp mib community-map public engineid 10000000$Switch
