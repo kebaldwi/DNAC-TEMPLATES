@@ -5,7 +5,7 @@
 hostname $hostname
 !
 vtp mode transparent
-vtp domain base2hq.com
+vtp domain xxxxx.com
 !
 vlan 1
 !
