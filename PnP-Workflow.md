@@ -72,36 +72,37 @@ Description - dhcpc receiving DHCP Offer with option 43 info, pass the info to P
  
 Further explanation of PnP string and how to read:
 
-5A1N;             Specifies the DHCP suboption for Plug and Play, active 
-                  operation, version 1, no debug information. It is not 
-                  necessary to change this part of the string.
+5A1N;             Specifies the DHCP suboption for Plug and Play, active operation, version 1, 
+                  no debug information. It is not necessary to change this part of the string.
+                  
 
 B2;               IP address type: in this case IPv4 format
                   Alternates would be: 
                             B1 = hostname
                             B2 = IPv4 (default)
 
-K4;               Transport protocol to be used between the device and the 
-                  controller: In this example HTTP transport
+K4;               Transport protocol to be used between the device and the controller: In 
+                  this example HTTP transport
                   K4 = HTTP (default)
                   K5 = HTTPS
 
-Ixxx.xxx.xxx.xxx; IP address or hostname of the Cisco DNA Center controller 
-                  (following a capital letter i). In this example, the IP 
-                  address is 172.19.45.222.
+Ixxx.xxx.xxx.xxx; IP address or hostname of the Cisco DNA Center controller (following a 
+                  capital letter i). In this example, the IP address is 172.19.45.222.
+                  
 
 Jxxxx             Port number to use to connect to the Cisco DNA Center controller. 
-                  In this example, the port number is 80. The default is port 80 for HTTP and port 443 for HTTPS.
+                  In this example, the port number is 80. The default is port 80 for HTTP 
+                  and port 443 for HTTPS.
 ```
 
 ##### IOS Configuration Example
 Configured on a IOS device it would look like this example:
 
 ```
-                ip dhcp pool pnp_device_pool                          <-- Name of DHCP pool
-                   network 192.168.1.0 255.255.255.0                  <-- Range of IP addresses assigned to clients
-                   default-router 192.168.1.1                         <-- Gateway address
-                   option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80"    <-- Option 43 string
+     ip dhcp pool pnp_device_pool                          <-- Name of DHCP pool
+        network 192.168.1.0 255.255.255.0                  <-- Range of IP addresses assigned to clients
+        default-router 192.168.1.1                         <-- Gateway address
+        option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80"    <-- Option 43 string
 ```
 ##### Windows Server Configuration Example
 
