@@ -25,6 +25,7 @@ In order to land on DNA Center though the device needs help in finding it.
 
 The PnP workflow is as follows:
 
+![json](images/pnp-workflow.png?raw=true "Import JSON")
 
 There are 3 automated methods to make that occur:
 
