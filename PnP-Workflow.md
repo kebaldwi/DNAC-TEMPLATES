@@ -40,9 +40,9 @@ There are 3 automated methods to make that occur:
 3. **Cloud re-direction https://devicehelper.cisco.com/device-helper**
    **which, re-directs to on-prem DNA Center IP Address**
 
-**Option 1:** requires that along with the address and gateway the DHCP server must offer a PnP string via option 43. This option is used with Cisco wireless so I typically recommend that you go with option 2.
+**Option 1:** requires that along with the IP address and gateway the DHCP server must offer a PnP string via option 43. This option is used with Cisco wireless so I typically recommend that you go with option 2. 
 
-**Option 2:** requires that along with the address and gateway the DHCP server offer the domain suffix that the **pnpserver** record will reside in and a name server to resolve the address.
+**Option 2:** requires that along with the IP address and gateway the DHCP server offer the domain suffix that the **pnpserver** record will reside in and a name server to resolve the address.
 
 **Option 3:** requires that along with the address and gateway the DHCP server offer a name server to resolve the address of **device-helper.cisco.com**. Additionally it requires the that DNA Center register a file with the PnP Connect portal which it will offer via SSL to a device which reaches out. In order to whitelist those devices, the serial number would have to be associated to the DNAC profile within software centrals pnp connect portal.
 
@@ -50,13 +50,61 @@ There are 3 automated methods to make that occur:
 
 Once one of the options has been built devices will get the address and be pointed to and land on DNA Center within the PnP Device list.
 
-Additional Commentary:
+### Setup Information:
 
-Option 43 
+#### Option 43 
+Option 43 format follows as documented on https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/1-2-8/user_guide/b_dnac_ug_1_2_8/b_dnac_ug_1_2_8_chapter_01100.html#id_90877 It may be offered by any DHCP server including but not limited to IOS, Windows, Infoblox and many more.
 
-DNS Setup
+```
+Option 43 format 
+ The option 43 string has the following components, delimited by semicolons:
+ 
+PnP string: 5A1D;B2;K4;I172.19.45.222;J80 
+ 
+Description - dhcpc receiving DHCP Offer with option 43 info, pass the info to PNPA 
+ *     5A = PnP DHCP ID
+ *     1D = PnP DHCP debug on
+ *     1o = PnP DHCP debug off
+ *     token.B = <address type> 1:Host; 2:IPv4; 3:IPv6
+ *     token.K = <protocol> 1: XMPP-starttls; 2: XMPP-socket; 3:: XMPP-tls; 4: HTTP; 5: HTTPS
+ *     token.I = <remote server ip add / hostname>
+ *     token.J = <remote server port> valid ports are 80 or 443
+ 
+Further explanation of PnP string and how to read:
 
-PnP COnnect Portal
+5A1N;             Specifies the DHCP suboption for Plug and Play, active operation, version 1, no debug information. 
+                  It is not necessary to change this part of the string.
+
+B2;               IP address type: in this case IPv4 format
+                  Alternates would be: 
+                            B1 = hostname
+                            B2 = IPv4 (default)
+
+K4;               Transport protocol to be used between the device and the controller: This case HTTP transport
+                  K4 = HTTP (default)
+                  K5 = HTTPS
+
+Ixxx.xxx.xxx.xxx; IP address or hostname of the Cisco DNA Center controller (following a capital letter i). 
+                  In this example, the IP address is 172.19.45.222.
+
+Jxxxx             Port number to use to connect to the Cisco DNA Center controller. 
+                  In this example, the port number is 80. The default is port 80 for HTTP and port 443 for HTTPS.
+```
+
+##### IOS Configuration Example
+Configured on a IOS device it would look like this example:
+
+```
+                ip dhcp pool pnp_device_pool                          <-- Name of DHCP pool
+                   network 192.168.1.0 255.255.255.0                  <-- Range of IP addresses assigned to clients
+                   default-router 192.168.1.1                         <-- Gateway address
+                   option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80"    <-- Option 43 string
+```
+##### Windows Server Configuration Example
+
+#### DNS Setup
+
+#### PnP COnnect Portal
 
 
 
