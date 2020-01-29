@@ -72,20 +72,23 @@ Description - dhcpc receiving DHCP Offer with option 43 info, pass the info to P
  
 Further explanation of PnP string and how to read:
 
-5A1N;             Specifies the DHCP suboption for Plug and Play, active operation, version 1, no debug information. 
-                  It is not necessary to change this part of the string.
+5A1N;             Specifies the DHCP suboption for Plug and Play, active 
+                  operation, version 1, no debug information. It is not 
+                  necessary to change this part of the string.
 
 B2;               IP address type: in this case IPv4 format
                   Alternates would be: 
                             B1 = hostname
                             B2 = IPv4 (default)
 
-K4;               Transport protocol to be used between the device and the controller: This case HTTP transport
+K4;               Transport protocol to be used between the device and the 
+                  controller: In this example HTTP transport
                   K4 = HTTP (default)
                   K5 = HTTPS
 
-Ixxx.xxx.xxx.xxx; IP address or hostname of the Cisco DNA Center controller (following a capital letter i). 
-                  In this example, the IP address is 172.19.45.222.
+Ixxx.xxx.xxx.xxx; IP address or hostname of the Cisco DNA Center controller 
+                  (following a capital letter i). In this example, the IP 
+                  address is 172.19.45.222.
 
 Jxxxx             Port number to use to connect to the Cisco DNA Center controller. 
                   In this example, the port number is 80. The default is port 80 for HTTP and port 443 for HTTPS.
