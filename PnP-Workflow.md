@@ -110,6 +110,58 @@ On windows you have two options to deploy DHCP scopes the UI or PowerShell. We w
 ![json](images/WindowsDHCP.png?raw=true "Import JSON")
 
 #### DNS Setup
+DNS may be set up on many types of servers, but for simplification we will speak about the records which can be created. Typically it is good to remember to add DNS entries for all interface server nodes within the cluster and a DNS entry for the **Virtual IP address(VIP)** on the Enterprise Network which may be used for Management and Enterprise Network connectivity.
+
+**Option 1:** An A record would be created pointing to the VIP address. Another A record may also be added for the pnpserver record to resolve to the same address. In this regard the two entries might look like this:
+
+```
+             A - dnac.domain.com -> 10.10.0.20
+             A - pnpserver.domain.com -> 10.10.0.20
+             
+             where 10.10.0.20 is the VIP address on the Enterprise Network
+```
+This might show the following when using **nslookup**
+```
+nslookup dnac.domain.com
+Server:		10.10.0.250
+Address:	10.10.0.250#53
+
+Name:	dnac.domain.com
+Address: 10.10.0.20
+
+nslookup pnpserver.domain.com
+Server:		10.10.0.250
+Address:	10.10.0.250#53
+
+Name:	pnpserver.domain.com
+Address: 10.10.0.20
+```
+**Option 2:** An A record would be created pointing to the VIP address. A CNAME alias record may also be added for the pnpserver record to resolve to the address via . In this regard the two entries might look like this: This allows for changes to the A record to automatically be propogated to any child records easily and at the same time.
+
+```
+             A - dnac.domain.com -> 10.10.0.20
+             CNAME - pnpserver.domain.com -> dnac.domain.com
+             
+             where 10.10.0.20 is the VIP address on the Enterprise Network
+```
+
+This might show the following when using **nslookup**
+```
+nslookup dnac.domain.com
+Server:		10.10.0.250
+Address:	10.10.0.250#53
+
+Name:	dnac.domain.com
+Address: 10.10.0.20
+
+nslookup pnpserver.base2hq.com
+Server:		10.10.0.250
+Address:	10.10.0.250#53
+
+pnpserver.base2hq.com	canonical name = dnac.base2hq.com.
+Name:	dnac.base2hq.com
+Address: 10.10.0.20
+```
 
 #### PnP Connect Portal
 
