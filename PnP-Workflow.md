@@ -99,10 +99,10 @@ Jxxxx             Port number to use to connect to the Cisco DNA Center controll
 Configured on a IOS device it would look like this example:
 
 ```
-     ip dhcp pool pnp_device_pool                          <-- Name of DHCP pool
-        network 192.168.1.0 255.255.255.0                  <-- Range of IP addresses assigned to clients
-        default-router 192.168.1.1                         <-- Gateway address
-        option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80"    <-- Option 43 string
+  ip dhcp pool pnp_device_pool                          <-- Name of DHCP pool
+     network 192.168.1.0 255.255.255.0                  <-- Range of IP addresses assigned to clients
+     default-router 192.168.1.1                         <-- Gateway address
+     option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80"    <-- Option 43 string
 ```
 ##### Windows Server Configuration Example
 
