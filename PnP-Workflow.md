@@ -55,6 +55,8 @@ Once one of the options has been built devices will get the address and be point
 #### Option 43 
 Option 43 format follows as documented on the [DNA Center User Guide](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/1-2-8/user_guide/b_dnac_ug_1_2_8/b_dnac_ug_1_2_8_chapter_01100.html#id_90877) It may be offered by any DHCP server including but not limited to IOS, Windows, Infoblox and many more.
 
+Benefits to this method are that you can contain the connectivity in a finite manner and perscriptively by only allowing equipment on specific subnets to find DNA Center.
+
 ```
 Option 43 format 
  The option 43 string has the following components, delimited by semicolons:
@@ -112,6 +114,8 @@ On windows you have two options to deploy DHCP scopes the UI or PowerShell. We w
 #### DNS Setup
 DNS may be set up on many types of servers, but for simplification we will speak about the records which can be created. Typically it is good to remember to add DNS entries for all interface server nodes within the cluster and a DNS entry for the **Virtual IP address(VIP)** on the Enterprise Network which may be used for Management and Enterprise Network connectivity.
 
+Benefits to this methodology are that you can cover a large organization rapidly avoiding the need to make changes to multiple DHCP scopes, and can accomplish a regional approach through the use of sub domains within an organization like * *pnpserver.west.us.domain.com* * or * *pnpserver.east.us.domain.com* * which allows for 2 different clusters due to RTT times perhaps.
+
 **Option 1:** An A record would be created pointing to the VIP address. Another A record may also be added for the pnpserver record to resolve to the same address. In this regard the two entries might look like this:
 
 ```
@@ -164,6 +168,9 @@ Address: 10.10.0.20
 ```
 
 #### PnP Connect Portal
+The PNP connect portal is where a device would land that had internet connectivity which had not been able to contact DNA Center through either * *option 43* * or * *dns resolution* * and for this method to work, the pnp connect portal must be set up accordingly on the customers virtual account. 
 
+Benefits to this methodology are that devices can be whitelisted on the pnp-connect portal and specifically pointed to one cluster or another with the profile file configured.
 
+TBC
 
