@@ -92,7 +92,7 @@ As with anything DNA Center the UI allows for flexibility and the ability to not
 
 Once Variables have been scripted within the Template, You can click on the **form editor button** *(middle icon)* at the top right of the template form.
 
-![json](images/InputForm.png?raw=true "Import JSON")
+![json](images/Input-Form.png?raw=true "Import JSON")
 
 Within the input form select the variables within the script and one at a time edit the form that they will take during provisioning on the right.
 
