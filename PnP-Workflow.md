@@ -179,7 +179,8 @@ The steps to complete in order to use this method are as follows:
 ![json](images/dnac-pnp-profile.png?raw=true "Import JSON")
 2. Click Add
 3. Ensure the Smart Account
-4. Enter the Virstual Account to be mapped to for the PnP Profile
+![json](images/dnac-register.png?raw=true "Import JSON")
+4. Enter the Virtual Account to be mapped to for the PnP Profile
 5. Select if this is to be the Default Profile for the Virtual Account
 6. Select whether you want the device to use IP or DNS entry to find DNAC.
    - note DNS entry will need Domain Suffix to be provided in DHCP
@@ -190,6 +191,7 @@ The steps to complete in order to use this method are as follows:
 
 ##### To Stage Devices in PnP Connect Portal on software.cisco.com
 1. Navigate to https://Software.cisco.com and log in.
+![json](images/software.png?raw=true "Import JSON")
 2. Select PnP Connect
 3. Navigate to the Virtual Account and Select the Device to be modified
 4. Click Edit Selected
