@@ -166,5 +166,6 @@ These can be used for building entries for multiple lines which need to be used 
   ****************************LEGAL WARNING*************************************
 ^</MLTCMD>
 ```
+If you found this section helpful please fill in the survey and give feedback on how it could be improved.
 
 Special mention to: https://explore.cisco.com/dnac-use-cases/apache-velocity as examples and extrapolations were made using this documentation.
