@@ -9,8 +9,9 @@ Another important consideration is that part of a typical configuration would in
 
 As a guidance try and use Design settings for as much of the configurations as you can leaving Templates light and nimble for configurations which might change ongoing.
 
-## DNA Center Design 
+## DNA Center Design Preparation
 Before DNA Center can automate the deployment we have to do a couple of tasks to prepare:
 
-1. 
+1. The Hierarchy within DNA Center. This will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. There are plenty of blogs and guides about how to do this.
+2. 
 
