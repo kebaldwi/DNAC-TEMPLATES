@@ -88,6 +88,12 @@ Simple arithmetic expressions can be accomplished as follows:
 #### DNA Center & Working with Variables
 As with anything DNA Center the UI allows for flexibility and the ability to not only further define how the Variables are populated but how they are used during the provisioning workflows. 
 
+Once Variables have been scripted within the Template, You can click on the **form editor button** *(middle icon)* at the top right of the template form.
+
+![json](images/TemplateEditor.png?raw=true "Import JSON")
+
+Within the input form 
+
 or alternatively using the UI in DNAC which allows for user interaction during the provisioning process.
 
 ![json](images/variable-type.png?raw=true "Import JSON")
