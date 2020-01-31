@@ -198,7 +198,7 @@ The steps to complete in order to use this method are as follows:
 
 ##### For Devices
 1. DHCP Setup to include:
-  - DNS Server Address for name resolution
+   - DNS Server Address for name resolution
 2. IP reachability to Internet
 
 
