@@ -13,8 +13,15 @@ As a guidance try and use Design settings for as much of the configurations as y
 Before DNA Center can automate the deployment we have to do a couple of tasks to prepare:
 
 1. The Hierarchy within DNA Center. This will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. There are plenty of blogs and guides about how to do this.
-2. The Network Settings can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings that can be pushed here:
-   1. test
-   2.
-   
+2. The Network Settings can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings and configurations that can be pushed:
+   1. **AAA Servers**                  - *both Network Administration and Client/Endpoint Authentication*
+   2. **DHCP Servers**                 - *DHCP Server Addresses for Vlan Interfaces for example*
+   3. **DNS Servers**                  - *both the Domain Suffix and the DNS servers used for lookups*
+   4. **SYSLOG Servers**               - *the servers to which logging will be sent*
+   5. **SNMP Servers**                 - *the servers to which SNMP traps will be sent and or that will poll the device*
+   6. **Netflow Collector Servers**    - *the server to which Netflow is sent*
+   7. **NTP Servers**                  - *NTP Server Addresses*
+   8. **Timezone**                     - *Timezone to be used in logging*
+   9. **Message of Day**               - *Banner displayed when you log into a device*
+ 
 
