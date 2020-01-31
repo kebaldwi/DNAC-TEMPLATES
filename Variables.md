@@ -53,9 +53,6 @@ Both examples follow:
 #set( $L2Bgps[0] = 10 )
 #set( $L2Bgps[1] = 18 )
 ```
-or alternatively using the UI in DNAC which allows for user interaction during the provisioning process.
-
-![json](images/variable-type.png?raw=true "Import JSON")
 
 Additional set commands available are the following:
 
@@ -87,5 +84,13 @@ Simple arithmetic expressions can be accomplished as follows:
     Division:       $answer = 5
     Remainder:      $answer = 0
 ```
+
+#### DNA Center & Working with Variables
+As with anything DNA Center the UI allows for flexibility and the ability to not only further define how the Variables are populated but how they are used during the provisioning workflows. 
+
+or alternatively using the UI in DNAC which allows for user interaction during the provisioning process.
+
+![json](images/variable-type.png?raw=true "Import JSON")
+
 
 Special mention to: https://explore.cisco.com/dnac-use-cases/apache-velocity as examples and extrapolations were made using this documentation.
