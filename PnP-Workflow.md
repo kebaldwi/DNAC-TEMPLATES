@@ -191,13 +191,16 @@ The steps to complete in order to use this method are as follows:
 
 ##### To Stage Devices in PnP Connect Portal on software.cisco.com
 1. Navigate to https://Software.cisco.com and log in.
-![json](images/software.png?raw=true "Import JSON")
 2. Select PnP Connect
+![json](images/software.png?raw=true "Import JSON")
 3. Navigate to the Virtual Account and Select the Device to be modified
 4. Click Edit Selected
+![json](images/pnp-connect-device.png?raw=true "Import JSON")
 5. From the drop down selections choose Controller Profile
+![json](images/pnp-controller-profile.png?raw=true "Import JSON")
 6. Select the Controller Profile from the list
-7. Save the settings
+![json](images/pnp-connect-profile.png?raw=true "Import JSON")
+7. Submit the settings
 
 ##### For Devices
 1. DHCP Setup to include:
