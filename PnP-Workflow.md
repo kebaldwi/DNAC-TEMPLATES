@@ -176,6 +176,7 @@ The steps to complete in order to use this method are as follows:
 
 ##### To Set up PnP Connect
 1. Navigate to System Settings>Settings>Cisco Credentials>PnP Connect
+![json](images/dnac-pnp-profile.png?raw=true "Import JSON")
 2. Click Add
 3. Ensure the Smart Account
 4. Enter the Virstual Account to be mapped to for the PnP Profile
