@@ -131,15 +131,27 @@ Within DNA Center it is possible to Bind Variables to devices. Within DNA Center
 
 #### Building a Bind Variable
 1. Build the variable as single select variable
-2. Select the option *Bind to Source*
-3. Choose the *Source* use the drop down and select from:
+
+![json](images/variable-binding.png?raw=true "Import JSON")
+
+2. Select the option *Bind to Source* as above
+3. Choose the *Source* use the drop down and select from as shown in image below:
    - Network Profile     *-use this option for SSID
    - Common Settings     *-use this option to poll settings like ntp, dns
    - Cloud Connect       *-use this option to poll tunnel information
    - Inventory           *-use this option for device information
-4. Choose the *Entity* to poll within the Source
-5. Choose the *Attribute*
-6. Save the Input Form
+   
+![json](images/variable-bind-inventory.png?raw=true "Import JSON")
+
+4. Choose the *Entity* to poll within the Source as shown below
+
+![json](images/variable-bind-device.png?raw=true "Import JSON")
+
+5. Choose the *Attribute* as shown below
+
+![json](images/variable-bind-platformid.png?raw=true "Import JSON")
+
+6. Save the Input Form through Actions menu on Input Form
 
 If you found this section helpful please fill in the survey and give feedback on how it could be improved.
 
