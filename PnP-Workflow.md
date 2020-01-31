@@ -172,5 +172,33 @@ The PNP connect portal is where a device would land that had internet connectivi
 
 Benefits to this methodology are that devices can be whitelisted on the pnp-connect portal and specifically pointed to one cluster or another with the profile file configured.
 
-TBC
+The steps to complete in order to use this method are as follows:
+
+##### To Set up PnP Connect
+1. Navigate to System Settings>Settings>Cisco Credentials>PnP Connect
+2. Click Add
+3. Ensure the Smart Account
+4. Enter the Virstual Account to be mapped to for the PnP Profile
+5. Select if this is to be the Default Profile for the Virtual Account
+6. Select whether you want the device to use IP or DNS entry to find DNAC.
+   - note DNS entry will need Domain Suffix to be provided in DHCP
+7. Ensure VIP is shown or alternatively enter FQDN for VIP address
+8. Enter a name for the profile or accept the default
+9. Click Register
+10. Ensure Sync Success is reported
+
+##### To Stage Devices in PnP Connect Portal on software.cisco.com
+1. Navigate to https://Software.cisco.com and log in.
+2. Select PnP Connect
+3. Navigate to the Virtual Account and Select the Device to be modified
+4. Click Edit Selected
+5. From the drop down selections choose Controller Profile
+6. Select the Controller Profile from the list
+7. Save the settings
+
+##### For Devices
+1. DHCP Setup to include:
+  - DNS Server Address for name resolution
+2. IP reachability to Internet
+
 
