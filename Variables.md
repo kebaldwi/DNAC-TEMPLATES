@@ -88,15 +88,23 @@ Simple arithmetic expressions can be accomplished as follows:
 #### DNA Center & Working with Variables
 As with anything DNA Center the UI allows for flexibility and the ability to not only further define how the Variables are populated but how they are used during the provisioning workflows. 
 
-Once Variables have been scripted within the Template, You can click on the **form editor button** *(middle icon)* at the top right of the template form.
-
 ![json](images/TemplateEditor.png?raw=true "Import JSON")
 
-Within the input form 
+Once Variables have been scripted within the Template, You can click on the **form editor button** *(middle icon)* at the top right of the template form.
 
-or alternatively using the UI in DNAC which allows for user interaction during the provisioning process.
+![json](images/InputForm.png?raw=true "Import JSON")
 
-![json](images/variable-type.png?raw=true "Import JSON")
+Within the input form select the variables within the script and one at a time edit the form that they will take during provisioning on the right.
+
+On each variable the form will appear in the with the name of the text used in the script pasted. The variable $hostname would appear as the following:
+
+![json](images/variable-basic.png?raw=true "Import JSON")
+
+At that point start by choosing a *Field Name* to be used in the form, perhaps something more descriptive of meaningful. For this variable you might capitalize it to read Hostname.
+
+The next field is *Tool Tip* which is a text box allowing for the entry of information to describe what to enter for the variable, and would appear as ALT text when moused over on the UI.
+
+![json](images/variable-instructionaltext.png?raw=true "Import JSON")
 
 If you found this section helpful please fill in the survey and give feedback on how it could be improved.
 
