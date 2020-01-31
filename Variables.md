@@ -98,5 +98,6 @@ or alternatively using the UI in DNAC which allows for user interaction during t
 
 ![json](images/variable-type.png?raw=true "Import JSON")
 
+If you found this section helpful please fill in the survey and give feedback on how it could be improved.
 
 Special mention to: https://explore.cisco.com/dnac-use-cases/apache-velocity as examples and extrapolations were made using this documentation.
