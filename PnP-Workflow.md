@@ -1,11 +1,11 @@
-### PnP Workflow
+# PnP Workflow
 With the advent of Cisco DNA Center, Cisco has taken a leap forward in how to deploy network devices. Through the use of DNA Center it is now possible use PnP to deploy switches and automate the build of branch and device deployments.
 
 For DNA Center to begin the process it must first learn of the device. The device therefore must communicate to DNA Center and this section will explain how this can be achieved.
 
 The first piece to the puzzle is that the device must get an IP address. It does not have one by default as it has not been primed nor do we want to do that in a fully automated flow.
 
-#### DHCP
+## DHCP
 So we need a DHCP scope to supply the address within the management network temporarily in order to complete the configuration and onboarding. The scope should be configured so as to offer addresses from part of the range of addresses not used. It also can be a reservation as DHCP servers can reserve addresses for specific MAC addresses. 
 
 The DHCP scope would incorporate therefore the following which would be enough to get an address:
@@ -20,7 +20,7 @@ The DHCP scope would incorporate therefore the following which would be enough t
 
 Obviously a dhcp relay or helper statement would need to be added to the gateway interface pointing to the DHCP server.
 
-#### DNA Center Discovery
+## DNA Center Discovery
 In order to land on DNA Center though the device needs help in finding it. 
 
 The PnP workflow is as follows:
@@ -50,9 +50,9 @@ There are 3 automated methods to make that occur:
 
 Once one of the options has been built devices will get the address and be pointed to and land on DNA Center within the PnP Device list.
 
-### Setup Information:
+## Setup Information:
 
-#### Option 43 
+### Option 43 
 Option 43 format follows as documented on the [DNA Center User Guide](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/1-2-8/user_guide/b_dnac_ug_1_2_8/b_dnac_ug_1_2_8_chapter_01100.html#id_90877) It may be offered by any DHCP server including but not limited to IOS, Windows, Infoblox and many more.
 
 Benefits to this method are that you can contain the connectivity in a finite manner and perscriptively by only allowing equipment on specific subnets to find DNA Center.
@@ -97,7 +97,7 @@ Jxxxx             Port number to use to connect to the Cisco DNA Center controll
                   and port 443 for HTTPS.
 ```
 
-##### IOS Configuration Example
+#### IOS Configuration Example
 Configured on a IOS device it would look like this example:
 
 ```
@@ -106,12 +106,12 @@ Configured on a IOS device it would look like this example:
      default-router 192.168.1.1                         <-- Gateway address
      option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80"    <-- Option 43 string
 ```
-##### Windows Server Configuration Example
+#### Windows Server Configuration Example
 On windows you have two options to deploy DHCP scopes the UI or PowerShell. We will show you Option 43 set up on a specific scope but it can be quickly replicated to other scopes using the binary entry gathered from a dhcp dump via netshell. That said here is what the option looks like as configured as option 43:
 
 ![json](images/WindowsDHCP.png?raw=true "Import JSON")
 
-#### DNS Setup
+### DNS Setup
 DNS may be set up on many types of servers, but for simplification we will speak about the records which can be created. Typically it is good to remember to add DNS entries for all interface server nodes within the cluster and a DNS entry for the **Virtual IP address(VIP)** on the Enterprise Network which may be used for Management and Enterprise Network connectivity.
 
 Benefits to this methodology are that you can cover a large organization rapidly avoiding the need to make changes to multiple DHCP scopes, and can accomplish a regional approach through the use of sub domains within an organization like * *pnpserver.west.us.domain.com* * or * *pnpserver.east.us.domain.com* * which allows for 2 different clusters due to RTT times perhaps.
@@ -167,14 +167,14 @@ Name:	dnac.base2hq.com
 Address: 10.10.0.20
 ```
 
-#### PnP Connect Portal
+### PnP Connect Portal
 The PNP connect portal is where a device would land that had internet connectivity which had not been able to contact DNA Center through either * *option 43* * or * *dns resolution* * and for this method to work, the pnp connect portal must be set up accordingly on the customers virtual account. 
 
 Benefits to this methodology are that devices can be whitelisted on the pnp-connect portal and specifically pointed to one cluster or another with the profile file configured.
 
 The steps to complete in order to use this method are as follows:
 
-##### To Set up PnP Connect
+#### To Set up PnP Connect
 1. Navigate to System Settings>Settings>Cisco Credentials>PnP Connect
 ![json](images/dnac-pnp-profile.png?raw=true "Import JSON")
 2. Click Add
@@ -189,7 +189,7 @@ The steps to complete in order to use this method are as follows:
 9. Click Register
 10. Ensure Sync Success is reported
 
-##### To Stage Devices in PnP Connect Portal on software.cisco.com
+#### To Stage Devices in PnP Connect Portal on software.cisco.com
 1. Navigate to https://Software.cisco.com and log in.
 2. Select PnP Connect
 ![json](images/software.png?raw=true "Import JSON")
@@ -202,7 +202,7 @@ The steps to complete in order to use this method are as follows:
 ![json](images/pnp-connect-profile.png?raw=true "Import JSON")
 7. Submit the settings
 
-##### For Devices
+#### For Devices
 1. DHCP Setup to include:
    - DNS Server Address for name resolution
 2. IP reachability to Internet
