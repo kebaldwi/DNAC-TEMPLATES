@@ -19,3 +19,5 @@ Various sections will be covered within this github repository please use this m
 * [Velocity Scripting](./Velocity.md) - This section will dive into Velocity Scripting constructs and use cases
 * [Onboarding Templates](./Onboarding.md) - This section will explain Onboarding Templates in DNAC and their use
 * [DayN Templates](./DayN.md) - This section will explain how to use templates for ongoing changes to the network
+
+If you found this repository or any section helpful please fill in the survey and give feedback on how it could be improved.
