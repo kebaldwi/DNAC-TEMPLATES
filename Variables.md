@@ -129,7 +129,17 @@ The first line is by default blank at first and as the only line is the *Default
 ### Bind Variables
 Within DNA Center it is possible to Bind Variables to devices. Within DNA Center versions 1.2 and 1.3 this can only be used and populated by the device for use in **DayN Templates**. When used in **Onboarding Templates** the variable is not populated at this time although we believe that to be a roadmap item. Once the device is in the inventory this data populated by the dvice during onbaording may be used throughout the script to make decisions. For example if it is a 48 port 9300 the product ID would be populated with C9300-48U and so you can make decision trees to program 48 ports based off that value. See DayN Templates for more information.
 
-Now we understand what a Bind Variable is lets discuss generally how to build one.
+#### Building a Bind Variable
+1. Build the variable as single select variable
+2. Select the option *Bind to Source*
+3. Choose the *Source* use the drop down and select from:
+   - Network Profile     *-use this option for SSID
+   - Common Settings     *-use this option to poll settings like ntp, dns
+   - Cloud Connect       *-use this option to poll tunnel information
+   - Inventory           *-use this option for device information
+4. Choose the *Entity* to poll within the Source
+5. Choose the *Attribute*
+6. Save the Input Form
 
 If you found this section helpful please fill in the survey and give feedback on how it could be improved.
 
