@@ -46,7 +46,7 @@ There are 3 automated methods to make that occur:
 
 **Option 3:** requires that along with the address and gateway the DHCP server offer a name server to resolve the address of **device-helper.cisco.com**. Additionally it requires the that DNA Center register a file with the PnP Connect portal which it will offer via SSL to a device which reaches out. In order to whitelist those devices, the serial number would have to be associated to the DNAC profile within software centrals pnp connect portal.
 
-![json](images/pnpconnect.png?raw=true "Import JSON")
+![json](images/pnp-connect.png?raw=true "Import JSON")
 
 Once one of the options has been built devices will get the address and be pointed to and land on DNA Center within the PnP Device list.
 
