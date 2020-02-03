@@ -28,4 +28,7 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
    2. **SNMP Credentials** - *SNMP v1, v2 for both Read and Write as well as SNMP v3*
    3. **HTTP(S) Credentials** - *HTTP(S) usernames and passwords for both Read and Write Access*
 
-To Be Continued....
+If you populate the UI with settings those parameters should not be in your templates as they will conflict and the deployment through provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what configuration is pushed.
+
+
+
