@@ -55,9 +55,9 @@ At this point you can claim the device putting it in a planned state for onboard
 
    1. Put a checkmark next to the device to be claimed
    2. Click the Claim link and walk through the workflow
-   3. Section 1 select the part of the hierarchy to which the device will be deployed
-   4. Section 2 you can click the device hyperlink and view or amend the template and image utilized
-   5. Section 3 you can manipulate any of the variables within the template if used
+   3. Section 1 select the part of the hierarchy to which the device will be deployed then click next
+   4. Section 2 you can click the device hyperlink and view or amend the template and image utilized then click next
+   5. Section 3 you can manipulate any of the variables within the template if used then click next
    6. Section 4 review the elements including configuration to be deployed 
    7. Click claim to initiate
    
