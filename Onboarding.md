@@ -13,7 +13,7 @@ As a guidance try and use Design settings for as much of the configurations as y
 Before DNA Center can automate the deployment we have to do a couple of tasks to prepare:
 
 1. The **Hierarchy** within DNA Center. This will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. There are plenty of blogs and guides about how to do this.
-2. The **Network Settings** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings and configurations that can be pushed:
+2. **Network Settings** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings and configurations that can be pushed:
    1. **AAA Servers** - *both Network Administration and Client/Endpoint Authentication*
    2. **DHCP Servers** - *DHCP Server Addresses for Vlan Interfaces for example*
    3. **DNS Servers** - *both the Domain Suffix and the DNS servers used for lookups*
@@ -23,12 +23,39 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
    7. **NTP Servers** - *NTP Server Addresses*
    8. **Timezone** - *Timezone to be used in logging*
    9. **Message of Day** - *Banner displayed when you log into a device*
-3. The **Device Credentials** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the credentials and configurations that can be pushed:
+3. **Device Credentials** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the credentials and configurations that can be pushed:
    1. **CLI Credentials** - *Usernames, Passwords and Enable Passwords*
    2. **SNMP Credentials** - *SNMP v1, v2 for both Read and Write as well as SNMP v3*
    3. **HTTP(S) Credentials** - *HTTP(S) usernames and passwords for both Read and Write Access*
+4. **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. You then indicate whether the file is Cisco or 3rd Party and click import. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. Select the image and mark it as golden for PnP to use it. 
 
-If you populate the UI with settings those parameters should not be in your templates as they will conflict and the deployment through provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what configuration is pushed.
+## Onboarding Template Preparation
+Once you have built your onboarding template you then have to let **DNA Center** know where you want to use the template. We will assume at this point you have already built out the template for use. You would then follow the following steps:
+   1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile** 
+   2. Select the type of device (ie Switching)
+   3. Profile name 
+   4. Select device type
+   5. Select the template(s) to be used
+   6. Save the network profile
+
+## Claiming and Provisioning
+At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find DNA Center and land in the plug n play set of the devices section within the provisioning page.
+
+At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
+
+   1. Put a checkmark next to the device to be claimed
+   2. Click the Claim link and walk through the workflow
+   3. Section 1 select the part of the hierarchy to which the device will be deployed
+   4. Section 2 you can click the device hyperlink and view or amend the template and image utilized
+   5. Section 3 you can manipulate any of the variables within the template if used
+   6. Section 4 review the elements including configuration to be deployed 
+   7. Click claim to initiate
+   
+At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete. After the device is completed it will appear in the device inventory after being sync'd with DNA Center.
+   
+#### Note:
+If you populate the UI with settings those parameters should **not** be in your templates as they will conflict and the deployment through provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what configuration is pushed.
+
 
 
 
