@@ -37,6 +37,7 @@ Once you have built your onboarding template you then have to let **DNA Center**
    4. Select device type
    5. Select the template(s) to be used
    6. Save the network profile
+   7. Assign the network profile to the hierarchy
 
 ## Claiming and Provisioning
 At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find DNA Center and land in the plug n play set of the devices section within the provisioning page.
@@ -56,6 +57,9 @@ At this stage the device will be placed in **Planned** state, and will cycle thr
 #### Note:
 If you populate the UI with settings those parameters should **not** be in your templates as they will conflict and the deployment through provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what configuration is pushed.
 
+## Automating Claiming and Provisioning
+While it is possible to click through the claiming and process, for bulk deployments its important to be able to address that as well. With DNAC after the templates are built and assigned to the network profile and assigned to a site they may be referenced and used by uploading a csv file to DNA Center via REST API.
 
+This methodology allows for you to specify variables within the csv, serial numbers, and put devices into a planned state waiting for them to land on the Plug and Play page on DNA Center.
 
 
