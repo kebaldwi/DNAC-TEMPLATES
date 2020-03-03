@@ -16,6 +16,7 @@ Various sections will be covered within this github repository please use this m
 * [PnP Workflow](./PnP-Workflow.md) - This section explains the overall Plug and Play Methodology
 * [Variables](./Variables.md) - This section explains Variables in depth and how and where to use them
 * [Velocity Scripting](./Velocity.md) - This section will dive into Velocity Scripting constructs and use cases
+* [Building Templates](./Templates.md) - This section will explain how to build a template on DNAC
 * [Onboarding Templates](./Onboarding.md) - This section will explain Onboarding Templates in DNAC and their use
 * [DayN Templates](./DayN.md) - This section will explain how to use templates for ongoing changes to the network
 
