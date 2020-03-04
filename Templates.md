@@ -89,13 +89,15 @@ Cisco DNA Center provides regular and composite configuration templates. CLI tem
 ![json](images/SelectDeviceTemplate.png?raw=true "Import JSON")
 9. After choosing the device types, click Back to Add New Template.
 10. From the Software Type drop-down list, choose the software type: IOS, IOS-XE, IOS-XR, NX-OS, Cisco Controller, Wide Area Application Services, Adaptive Security Appliance, NFV- OS, and Others.
-   - For more information on the Cisco Wireless Controller supported software versions and the minimum supported version, see Cisco DNA Center Supported Devices document.
-   - For example, if you select IOS as the software type, the commands apply to all software types, including IOS-XE and IOS-XR. This value is used during provisioning to check whether the selected device conforms to the selection in the template.
+    - For more information on the Cisco Wireless Controller supported software versions and the minimum supported version, see Cisco DNA Center Supported Devices document.
+    - For example, if you select IOS as the software type, the commands apply to all software types, including IOS-XE and IOS-XR. This value is used during provisioning to check whether the selected device conforms to the selection in the template.
 ![json](images/SelectOSTemplate.png?raw=true "Import JSON")
 11. In the Software Version text box, enter the software version. During provisioning, Cisco DNA Center checks to see if the selected device has the software version listed in the template. If there is a mismatch, the provision skips the template. **optional**
 12. Click Add. The template is created and shown in the tree view under the project you selected.
+![json](images/AddTemplate.png?raw=true "Import JSON")
 13. You can edit the template content by selecting the template that you created in the left menu. To edit the template content, see Edit Templates.
 14. In the Template Editor window, enter content for the template. You can use the Velocity Template Language (VTL) to write the content in the template.
+![json](images/EditTemplateWindow.png?raw=true "Import JSON")
 15. To save the template content, from the Actions drop-down list, choose Save.
 16. To commit the template, from the Actions drop-down list, choose Commit. You can see only the committed templates in the network profile section.
    - Note: You can associate only a committed template to a network profile.
