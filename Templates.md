@@ -66,40 +66,23 @@ Cisco DNA Center provides regular and composite configuration templates. CLI tem
 ### Create a Regular Template
 1. From the Cisco DNA Center home page, choose Tools > Template Editor. By default, the Onboarding Configuration project is available for creating PnP templates. You can create your own custom projects. Templates created in custom projects are categorized as day-N templates.
 2. In the tree pane, select the project under which you are creating templates, and click the gear icon > Add Templates. Alternately, click > Add Templates.
-Note  	
+   - Note: The template that you create for day 0 can also be applied for day N.
+3. In the Add New Template window, click Regular Template.
+4. In the Name text box, enter a unique name for the template.
+5. In the Project Name drop-down list, select the project. 
+   - The drop-down list is enabled if you are navigating from the > Add Templates path. 
+   - The drop-down list is disabled if you select a project and click the gear icon > Add Templates in the tree pane.
+6. In the Description text box, enter a description for the template.
+7. In the Tags text box, enter an intuitive name to tag the templates. Tagging a configuration template helps you to:
+   - Search a template using the tag name in the search field.
+   - Use the tagged template as a reference to configure more devices.
 
-The template that you create for day 0 can also be applied for day N.
-Step 3 	
-
-In the Add New Template window, click Regular Template.
-Step 4 	
-
-In the Name text box, enter a unique name for the template.
-Step 5 	
-
-In the Project Name drop-down list, select the project.
-
-The drop-down list is enabled if you are navigating from the > Add Templates path. The drop-down list is disabled if you select a project and click the gear icon > Add Templates in the tree pane.
-Step 6 	
-
-In the Description text box, enter a description for the template.
-Step 7 	
-
-In the Tags text box, enter an intuitive name to tag the templates. Tagging a configuration template helps you to:
-
-    Search a template using the tag name in the search field.
-
-    Use the tagged template as a reference to configure more devices.
-
-Note  	
+Note:  	
 If you use tags to filter the templates, you must apply the same tags to the device to which you want to apply the templates. Otherwise, you get the following error during provisioning: "Cannot select the device. Not compatible with template."
-Step 8 	
+8. Click Edit to view the selected device types and choose the device types that you want to apply to the template.
+   - To view the selected devices, choose Selected from the Show drop-down list. By default, all device types are displayed.
 
-Click Edit to view the selected device types and choose the device types that you want to apply to the template.
-
-To view the selected devices, choose Selected from the Show drop-down list. By default, all device types are displayed.
-
-There are different granularity levels for choosing the device type from the hierarchical structure. The device type is used during deployment to ensure that templates deploy devices that match the specified device type criteria. This lets you create specialized templates for specific device models.
+   - There are different granularity levels for choosing the device type from the hierarchical structure. The device type is used during deployment to ensure that templates deploy devices that match the specified device type criteria. This lets you create specialized templates for specific device models.
 
 Template Editor does not show device product IDs (PIDs); instead, it shows the device series and model description. You can use cisco.com to look up the device data sheet based on the PID, find the device series and model description, and choose the device type appropriately.
 Step 9 	
