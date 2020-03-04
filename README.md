@@ -23,7 +23,7 @@ Various sections will be covered within this github repository please use this m
 ## Examples
 Specific examples of Templates are available in the following folders:
 
-* [PnP Onboarding](./ONBOARDING) - Examples of PnP/ZTP Templates explained in ./Onboarding.md
-* [DayN](./DAYN) - Examples of DayN Templates explained in ./DayN.md
+* [PnP Onboarding](./ONBOARDING) - Examples of PnP/ZTP Templates explained in [Onboarding Templates](./Onboarding.md)
+* [DayN](./DAYN) - Examples of DayN Templates explained in [DayN Templates](./DayN.md)
 
 If you found this repository or any section helpful please fill in the survey and give feedback on how it could be improved.
