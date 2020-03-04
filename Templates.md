@@ -65,69 +65,42 @@ Cisco DNA Center provides regular and composite configuration templates. CLI tem
 
 ### Create a Regular Template
 1. From the Cisco DNA Center home page, choose Tools > Template Editor. By default, the Onboarding Configuration project is available for creating PnP templates. You can create your own custom projects. Templates created in custom projects are categorized as day-N templates.
+![json](images/GoToTemplateEditor.png?raw=true "Import JSON")
 2. In the tree pane, select the project under which you are creating templates, and click the gear icon > Add Templates. Alternately, click > Add Templates.
    - Note: The template that you create for day 0 can also be applied for day N.
+![json](images/CreateTemplate.png?raw=true "Import JSON")
 3. In the Add New Template window, click Regular Template.
+![json](images/AddNewTemplate.png?raw=true "Import JSON")
 4. In the Name text box, enter a unique name for the template.
 5. In the Project Name drop-down list, select the project. 
    - The drop-down list is enabled if you are navigating from the > Add Templates path. 
    - The drop-down list is disabled if you select a project and click the gear icon > Add Templates in the tree pane.
-6. In the Description text box, enter a description for the template.
-7. In the Tags text box, enter an intuitive name to tag the templates. Tagging a configuration template helps you to:
+![json](images/SelectTemplateProject.png?raw=true "Import JSON")
+6. In the Description text box, enter a description for the template. **optional**
+7. In the Tags text box, enter an intuitive name to tag the templates. **optional** 
+   Tagging a configuration template helps you to:
    - Search a template using the tag name in the search field.
    - Use the tagged template as a reference to configure more devices.
-
-Note:  	
-If you use tags to filter the templates, you must apply the same tags to the device to which you want to apply the templates. Otherwise, you get the following error during provisioning: "Cannot select the device. Not compatible with template."
+   - Note: If you use tags to filter the templates, you must apply the same tags to the device to which you want to apply the templates. Otherwise, you get the following error during provisioning: Cannot select the device. Not compatible with template.
 8. Click Edit to view the selected device types and choose the device types that you want to apply to the template.
    - To view the selected devices, choose Selected from the Show drop-down list. By default, all device types are displayed.
-
    - There are different granularity levels for choosing the device type from the hierarchical structure. The device type is used during deployment to ensure that templates deploy devices that match the specified device type criteria. This lets you create specialized templates for specific device models.
+   - Note: Template Editor does not show device product IDs (PIDs); instead, it shows the device series and model description. You can use cisco.com to look up the device data sheet based on the PID, find the device series and model description, and choose the device type appropriately.
+![json](images/SelectDeviceTemplate.png?raw=true "Import JSON")
+9. After choosing the device types, click Back to Add New Template.
+10. From the Software Type drop-down list, choose the software type: IOS, IOS-XE, IOS-XR, NX-OS, Cisco Controller, Wide Area Application Services, Adaptive Security Appliance, NFV- OS, and Others.
+   - For more information on the Cisco Wireless Controller supported software versions and the minimum supported version, see Cisco DNA Center Supported Devices document.
+   - For example, if you select IOS as the software type, the commands apply to all software types, including IOS-XE and IOS-XR. This value is used during provisioning to check whether the selected device conforms to the selection in the template.
+![json](images/SelectOSTemplate.png?raw=true "Import JSON")
+11. In the Software Version text box, enter the software version. During provisioning, Cisco DNA Center checks to see if the selected device has the software version listed in the template. If there is a mismatch, the provision skips the template. **optional**
+12. Click Add. The template is created and shown in the tree view under the project you selected.
+13. You can edit the template content by selecting the template that you created in the left menu. To edit the template content, see Edit Templates.
+14. In the Template Editor window, enter content for the template. You can use the Velocity Template Language (VTL) to write the content in the template.
+15. To save the template content, from the Actions drop-down list, choose Save.
+16. To commit the template, from the Actions drop-down list, choose Commit. You can see only the committed templates in the network profile section.
+   - Note: You can associate only a committed template to a network profile.
 
-Template Editor does not show device product IDs (PIDs); instead, it shows the device series and model description. You can use cisco.com to look up the device data sheet based on the PID, find the device series and model description, and choose the device type appropriately.
-Step 9 	
-
-After choosing the device types, click Back to Add New Template.
-Step 10 	
-
-From the Software Type drop-down list, choose the software type: IOS, IOS-XE, IOS-XR, NX-OS, Cisco Controller, Wide Area Application Services, Adaptive Security Appliance, NFV- OS, and Others.
-
-For more information on the Cisco Wireless Controller supported software versions and the minimum supported version, see Cisco DNA Center Supported Devices document.
-
-For example, if you select IOS as the software type, the commands apply to all software types, including IOS-XE and IOS-XR. This value is used during provisioning to check whether the selected device conforms to the selection in the template.
-Step 11 	
-
-In the Software Version text box, enter the software version. During provisioning, Cisco DNA Center checks to see if the selected device has the software version listed in the template. If there is a mismatch, the provision skips the template.
-Step 12 	
-
-Click Add. The template is created and shown in the tree view under the project you selected.
-Step 13 	
-
-You can edit the template content by selecting the template that you created in the left menu. To edit the template content, see Edit Templates.
-Step 14 	
-
-In the Template Editor window, enter content for the template. You can use the Velocity Template Language (VTL) to write the content in the template. For information about using VTL, see http://velocity.apache.org/engine/devel/vtl-reference.html.
-
-After saving the template, Cisco DNA Center checks for any errors in the template. If there are any velocity syntax errors, the template content is not saved and all input variables that are defined in the template are automatically identified during the save process. Local variables (variables that are used in for loops, assigned though a set, and so on) are ignored.
-Step 15 	
-
-To validate the template, from the Actions drop-down list, choose Check for errors.
-Cisco DNA Center checks for the following errors and reports them:
-
-    Velocity syntax errors.
-
-    Conflicts with blacklisted commands. See Blacklisted Commands.
-
-Step 16 	
-
-To save the template content, from the Actions drop-down list, choose Save.
-Step 17 	
-
-To commit the template, from the Actions drop-down list, choose Commit. You can see only the committed templates in the network profile section.
-Note  	
-
-You can associate only a committed template to a network profile.
-
+For more documentation please see: [User Guide](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/1-3-3-0/user_guide/b_cisco_dna_center_ug_1_3_3_0/b_cisco_dna_center_ug_1_3_2_0_chapter_01000.html#create_regular_templates)
 
 ## Examples
 Specific examples of Templates are available in the following folders:
