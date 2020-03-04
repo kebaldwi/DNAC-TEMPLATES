@@ -51,10 +51,10 @@ To further simplify your IOS configuration analyze your IOS template for manipul
 While it is possible to take a CLI script for one device and create a template for one device at a time, that would leave us with a lot of templates and make it harder to make changes on an ongoing basis. Using the techniques of Velocity Scripting will allow us to deploy equipment with scripts which can be reused on a broader basis, allowing us to keep configurations similar for conformity reasons but also to reduce the number of places where changes would have to be made. For additional information please see [Velocity Scripting](./Velocity.md).
 
 Within these logical constructs you have many tools, please review each section as needed:
-[If Statements](./Velocity.md#if-statements)
-[Macros](./Velocity.md#macros)
-[Loops](./Velocity.md#foreach-loops)
-[Multiline commands](./Velocity.md#multi-line-commands)
+* [If Statements](./Velocity.md#if-statements)
+* [Macros](./Velocity.md#macros)
+* [Loops](./Velocity.md#foreach-loops)
+* [Multiline commands](./Velocity.md#multi-line-commands)
 
 ## Examples
 Specific examples of Templates are available in the following folders:
