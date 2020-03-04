@@ -26,6 +26,7 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
    7. **NTP Servers** - *NTP Server Addresses*
    8. **Timezone** - *Timezone to be used in logging*
    9. **Message of Day** - *Banner displayed when you log into a device*
+   ![json](images/DesignSettings.png?raw=true "Import JSON")
 3. **Device Credentials** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the credentials and configurations that can be pushed **(required)**:
    1. **CLI Credentials** - *Usernames, Passwords and Enable Passwords*
    2. **SNMP Credentials** - *SNMP v1, v2 for both Read and Write as well as SNMP v3*
@@ -35,11 +36,16 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 ## DayN Template Preparation
 Once you have built your onboarding template you then have to let **DNA Center** know where you want to use the template. We will assume at this point you have already built out the template for use. You would then follow the following steps:
    1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile** 
+   ![json](images/NetworkProfile.png?raw=true "Import JSON")
    2. Select the type of device (ie Switching)
    3. Profile name 
+   ![json](images/NetworkProfileTabs.png?raw=true "Import JSON")
    4. On the Onboarding Template page select device type **(optional)**
+   ![json](images/OnboardingDevice.png?raw=true "Import JSON")
    5. On the Onboarding Template page select the template(s) to be used for onboarding **(optional)**
+   ![json](images/OnboardingTemplate.png?raw=true "Import JSON")
    6. On the DayN Template page select device type **(required)**
+   ![json](images/DayNtemplates.png?raw=true "Import JSON")
    7. On the DayN Template page select the template(s) to be used for Day N provisioning **(required)**
    8. Save the network profile
    9. Assign the network profile to the hierarchy
@@ -47,6 +53,7 @@ Once you have built your onboarding template you then have to let **DNA Center**
 If the Network Profile is already deployed it can be edited at a later date to add DayN templates by simply:
    1. Click edit next to the network profile Under *Design> Network Profiles*  
    2. On the DayN Template page select device type **(required)**
+   ![json](images/DayNtemplates.png?raw=true "Import JSON")
    3. On the DayN Template page select the template(s) to be used for Day N provisioning **(required)**
    4. Save the network profile
    5. Assign the network profile to the hierarchy
