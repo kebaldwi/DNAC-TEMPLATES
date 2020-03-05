@@ -1,6 +1,15 @@
 # Building Templates
 In this section we will explain how to build a template in DNA Center.
 
+## Intent Based Networking
+Either one or multiple Templates may be used to deploy Intent in combination with the Design Settings and Policies deployed within the UI. One or Multiple templates may be used in Onboarding (PnP) or Day N methods. Day N methods are designed for making ongoing changes and may require 'no' statements depending on the configuration construct being modified. 
+
+Additionally:
+1.	Intent can be defined as the set of configuration constructs deployed via a template.
+2.	Variables can be used to modify or choose between constructs deployed via decision (‘IF’) statements
+3.	Repetition of any construct may be introduced through the use of Looping structures on any device.
+4.	Variables may be used when the device is being onboarded or provisioned
+
 ## Phylosophies
 There are a number of coding paradigms which various programmers use when building, maintaining and publishing programming code which are extremely useful when trying to integrate programmability for use in modern day infrastructure use cases. Lets deal with each concept in turn:
 
@@ -34,9 +43,9 @@ Once you have grouped configuration snippets into separate logical constructs yo
 Once we have identified all the various modules we will need, we can then start to analyze which of the codes the Design App can facilitate, and ensure the design has those settings and remove them from the modules.
 
 ## Templates
-We have two templates offered in DNA Center. A standard template which is designed to stand alone for a specific function and a composite template which will group standard templates and which can only be used in Day N Projects.
+We have two templates offered in DNA Center. A regular template which is designed to stand alone for a specific function and a composite template which will group standard templates and which can only be used in Day N Projects.
 
-As we build out a Standard Template we can either as has previously been mentioned put all the IOS commands which makes the configuration within the template more complex to maintain, or we can separate out the various sections into separate templates and call them as additional templates in either the Onboarding or Day N flows.
+As we build out a Regular Template we can either as has previously been mentioned put all the IOS commands which makes the configuration within the template more complex to maintain, or we can separate out the various sections into separate templates and call them as additional templates in either the Onboarding or Day N flows.
 
 Once you have created a new template and pasted the IOS configurations into the template editor you can then look for values which can be replaced by variables. 
 
