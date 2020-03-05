@@ -10,6 +10,15 @@ The repository will include scripts and examples with the following:
 
 The goal of this repository is a practical guide to allow engineers to rapidly begin using DNAC automation and begin conversion of IOS CLI Templates. The Templates they may have been using over the years and with various use cases and so the intent is to reduce the lift to begin automating.
 
+## Intent Based Networking
+Either one or multiple Templates may be used to deploy Intent in combination with the Design Settings and Policies deployed within the UI. One or Multiple templates may be used in Onboarding (PnP) or Day N methods. Day N methods are designed for making ongoing changes and may require 'no' statements depending on the configuration construct being modified. 
+
+Additionally:
+1.	Intent can be defined as the set of configuration constructs deployed via a template.
+2.	Variables can be used to modify or choose between constructs deployed via decision (‘IF’) statements
+3.	Repetition of any construct may be introduced through the use of Looping structures on any device.
+4.	Variables may be used when the device is being onboarded or provisioned
+
 ## Sections
 Various sections will be covered within this github repository please use this menu for navigation. Within the various folders are examples, explanation readme files for reference.
 
