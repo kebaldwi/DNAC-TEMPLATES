@@ -21,9 +21,12 @@ Various sections will be covered within this github repository please use this m
 * [DayN Templates](./DayN.md) - This section will explain how to use templates for ongoing changes to the network
 
 ## Examples
-Specific examples of Templates are available in the following folders:
+These examples must be used with two conditions:
+* Deployed a PnP Discovery method and DHCP scope - see [PnP Workflow](./Pnp-Workflow.md)
+* Build the template with methods detailed - see [Creating Templates](./Templates.md#template-creation)
 
+Specific examples of Templates are available in the following folders:
 * [PnP Onboarding](./ONBOARDING) - Examples of PnP/ZTP Templates explained in [Onboarding Templates](./Onboarding.md)
 * [DayN](./DAYN) - Examples of DayN Templates explained in [DayN Templates](./DayN.md)
 
-If you found this repository or any section helpful please fill in the survey and give feedback on how it could be improved.
+If you found this repository or any section helpful please fill in comments and give feedback on how it could be improved.
