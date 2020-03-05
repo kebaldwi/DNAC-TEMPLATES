@@ -22,7 +22,7 @@ Various sections will be covered within this github repository please use this m
 
 ## Examples
 These examples must be used with two conditions:
-* Deployed a PnP Discovery method and DHCP scope - see [PnP Workflow](./Pnp-Workflow.md)
+* Deployed a PnP Discovery method and DHCP scope - see [PnP Workflow](./PnP-Workflow.md)
 * Build the template with methods detailed - see [Creating Templates](./Templates.md#template-creation)
 
 Specific examples of Templates are available in the following folders:
