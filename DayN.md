@@ -1,4 +1,4 @@
-### DAY N Templates and Flows
+## DAY N Templates and Flows
 
 In this section will go through the flow involved in creating a Template from an IOS configuration script for a Catalyst switch and various thoughts around how to link it to a Switch profile and deploy it through DNAC using Plug and Play workflows.
 
@@ -11,6 +11,8 @@ Another important consideration is that part of a typical configuration would in
 As a guidance try and use Design settings for as much of the configurations as you can leaving Templates light and nimble for configurations which might change ongoing. Day N templates allows for administrators to build either single templates and add them to workflows, or to build composite templates for use in provisioning. 
 
 The use of composite templates allows you to reuse templates and code that you have previously used on other deployments without duplicating it on DNA Center. This allows you to manage those smaller templates or modules allowing for easier management moving forward.
+
+Composite templates may be created in a similar method to regular templates but a project must be specified for the Day N flow. Once the Composite template is built saved and committed templates within the project may be dragged into the flow and moved up or down to adjust the order they are deployed.
 
 ## DNA Center Design Preparation
 Before DNA Center can automate the deployment we have to do a couple of tasks to prepare:
