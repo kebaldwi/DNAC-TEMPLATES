@@ -15,10 +15,10 @@ Various sections will be covered within this github repository please use this m
 
 * [PnP Workflow](./PnP-Workflow.md#pnp-workflow) - This section explains the overall Plug and Play Methodology
 * [Variables](./Variables.md#variables) - This section explains Variables in depth and how and where to use them
-* [Velocity Scripting](./Velocity.md#velocity) - This section will dive into Velocity Scripting constructs and use cases
-* [Building Templates](./Templates.md) - This section will explain how to build a template on DNAC
-* [Onboarding Templates](./Onboarding.md) - This section will explain Onboarding Templates in DNAC and their use
-* [DayN Templates](./DayN.md) - This section will explain how to use templates for ongoing changes to the network
+* [Velocity Scripting](./Velocity.md#velocity-scripting) - This section will dive into Velocity Scripting constructs and use cases
+* [Building Templates](./Templates.md#building-templates) - This section will explain how to build a template on DNAC
+* [Onboarding Templates](./Onboarding.md#onboarding-templates-and-flows) - This section will explain Onboarding Templates in DNAC and their use
+* [DayN Templates](./DayN.md#day-n-templates-and-flows) - This section will explain how to use templates for ongoing changes to the network
 
 ## Examples
 These examples must be used with two conditions:
@@ -26,7 +26,7 @@ These examples must be used with two conditions:
 * Build the template with methods detailed - see [Creating Templates](./Templates.md#template-creation)
 
 Specific examples of Templates are available in the following folders:
-* [PnP Onboarding](./ONBOARDING) - Examples of PnP/ZTP Templates explained in [Onboarding Templates](./Onboarding.md)
-* [DayN](./DAYN) - Examples of DayN Templates explained in [DayN Templates](./DayN.md)
+* [PnP Onboarding](./ONBOARDING) - Examples of PnP/ZTP Templates explained in [Onboarding Templates](./Onboarding.md#onboarding-templates-and-flows)
+* [DayN](./DAYN) - Examples of DayN Templates explained in [DayN Templates](./DayN.md#day-n-templates-and-flows)
 
 If you found this repository or any section helpful please fill in comments and give feedback on how it could be improved.
