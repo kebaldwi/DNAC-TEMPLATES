@@ -13,7 +13,7 @@ The goal of this repository is a practical guide to allow engineers to rapidly b
 ## Sections
 Various sections will be covered within this github repository please use this menu for navigation. Within the various folders are examples, explanation readme files for reference.
 
-* [PnP Workflow](./PnP-Workflow.md) - This section explains the overall Plug and Play Methodology
+* [PnP Workflow](./PnP-Workflow.md#pnp-workflow) - This section explains the overall Plug and Play Methodology
 * [Variables](./Variables.md) - This section explains Variables in depth and how and where to use them
 * [Velocity Scripting](./Velocity.md) - This section will dive into Velocity Scripting constructs and use cases
 * [Building Templates](./Templates.md) - This section will explain how to build a template on DNAC
@@ -22,7 +22,7 @@ Various sections will be covered within this github repository please use this m
 
 ## Examples
 These examples must be used with two conditions:
-* Deployed a PnP Discovery method and DHCP scope - see [PnP Workflow](./PnP-Workflow.md)
+* Deployed a PnP Discovery method and DHCP scope - see [PnP Workflow](./PnP-Workflow.md#pnp-workflow)
 * Build the template with methods detailed - see [Creating Templates](./Templates.md#template-creation)
 
 Specific examples of Templates are available in the following folders:
