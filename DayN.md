@@ -10,9 +10,16 @@ Another important consideration is that part of a typical configuration would in
 
 As a guidance try and use Design settings for as much of the configurations as you can leaving Templates light and nimble for configurations which might change ongoing. Day N templates allows for administrators to build either single templates and add them to workflows, or to build composite templates for use in provisioning. 
 
+### Composite Templates
 The use of composite templates allows you to reuse templates and code that you have previously used on other deployments without duplicating it on DNA Center. This allows you to manage those smaller templates or modules allowing for easier management moving forward.
 
 Composite templates may be created in a similar method to regular templates but a project must be specified for the Day N flow. Once the Composite template is built saved and committed templates within the project may be dragged into the flow and moved up or down to adjust the order they are deployed.
+
+I have given examples of composite templates within the folder [DayN](./DAYN). The order to be used for those is the following:
+
+1. GlobalSwitchServices
+2. SwitchManagement
+3. SwitchInterfaces
 
 ## DNA Center Design Preparation
 Before DNA Center can automate the deployment we have to do a couple of tasks to prepare:
