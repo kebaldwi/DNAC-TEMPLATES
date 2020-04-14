@@ -12,6 +12,36 @@ Comment statements are a useful tool for scripting and allow for descriptive tex
 ## Comments can be placed here
 ```
 
+## Variable Usage
+Variables when combined in Velocity for the most part you can use them by calling them in either Formal or Regular notation.
+
+```
+Formal Notation.        ${Switch} 
+Regular Notation:       $Switch
+```
+
+There are occassions where those viarables will need to be used in descriptions or other areas where we would typically have a string. In some occassions concatenation renders well, but in others we will need to define those by enclosing them in quotation marks. 
+
+Take this example of a macro with an interface description:
+
+```
+#macro(uplink_interface)
+ description "${site_code} - ${closet}"
+```
+
+### Combining Bind Variables
+You can also extrapolate variables from known values once the device has been onboarded into the inventory. If the device was populated with the pnp startup-vlan command value then then the native vlan would be set to follow that automatically on the target switch. You could bind a variable and then use that to determine many other values for the device automatically.
+
+```
+#set( $voice-offset = 4000 )
+#set( $data_offset = 1 )
+#set( $integer = 0 )
+#set( $native_vlan_var = $native_bind )
+#set( $native_vlan = $integer.parseInt($native_vlan_var) )
+#set( $data_vlan = ${native_vlan}-${data_offset} )
+#set( $voice_vlan = ${data_vlan}+${voice-offset} )
+```
+
 ## IF Statements
 IF statements are a useful tool for scripting and allow for a decision tree in which under certain circumstances various commands can be used alone or in combination. To create an IF statement examples have been provided below. That said it is important to understand that the IF statement may be used alone or in combination with the following;
 
@@ -28,6 +58,7 @@ IF statements are a useful tool for scripting and allow for a decision tree in w
 #else
 #end
 ```
+
 That said it is important to understand that these decisions allow for you to script for multiple circumstances or platforms allowing you to write code which can be reused and therefore modular.
 
 If/elseif/else construct with a check to see if data in variable contains a string:
@@ -171,6 +202,7 @@ These can be used for building entries for multiple lines which need to be used 
   ****************************LEGAL WARNING*************************************
 ^</MLTCMD>
 ```
+
 If you found this section helpful please fill in the survey and give feedback on how it could be improved.
 
 Special mention to: https://explore.cisco.com/dnac-use-cases/apache-velocity as examples and extrapolations were made using this documentation.
