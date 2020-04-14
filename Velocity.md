@@ -5,6 +5,13 @@ To that end it is important to write modular scripts which make use of all the p
 
 Velocity language typically allows for If/elseif/else constructs, macros and more.
 
+## Comment Statements
+Comment statements are a useful tool for scripting and allow for descriptive text to be used to explain the design or functionality of code. In simple IOS configurations anything after a '!' is not implemented but this is not true in velocity. To that end anything with a '!' is rendered as actual code so if something is desired not to be processed within this templating language please use '##' sequence.
+
+```
+## Comments can be placed here
+```
+
 ## IF Statements
 IF statements are a useful tool for scripting and allow for a decision tree in which under certain circumstances various commands can be used alone or in combination. To create an IF statement examples have been provided below. That said it is important to understand that the IF statement may be used alone or in combination with the following;
 
