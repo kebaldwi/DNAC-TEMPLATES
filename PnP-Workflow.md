@@ -71,7 +71,7 @@ PnP string: 5A1D;B2;K4;I172.19.45.222;J80
 Description - dhcpc receiving DHCP Offer with option 43 info, pass the info to PNPA 
  *     5A = PnP DHCP ID
  *     1D = PnP DHCP debug on
- *     1o = PnP DHCP debug off
+ *     1N = PnP DHCP debug off
  *     token.B = <address type> 1:Host; 2:IPv4; 3:IPv6
  *     token.K = <protocol> 1: XMPP-starttls; 2: XMPP-socket; 3:: XMPP-tls; 4: HTTP; 5: HTTPS
  *     token.I = <remote server ip add / hostname>
