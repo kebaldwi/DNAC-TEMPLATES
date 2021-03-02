@@ -18,15 +18,43 @@ In order to acomplish this we need to use this example. First we need to create 
 To create an array we have to perform the following. First we need to concatenate the values into a variable with some kind of delimiter. Then using the delimiter we can split the values into separate elements within the array and call them separately.
 
 ```
-#set( $PortArray = "" )
+#set( $Switches = 8 )
+#foreach( $Switch in [1..${Switches}] )
+    #if( $Switch == 1 )
+        #set( $PortArray = $PortsCount )
+    #else
+        #set( $PortArray = $PortArray + "," + $PortsCount )
+    #end
+#end
+!
+#set( $SwitchPorts = $PortArray.split(",") ) ## Number of ports in the switches in stack
+!
+#foreach( $Switch in [1..${Switches}] )
+    #set( $ID = $Switch - 1 )
+    interface ${Switch}/0/1 - $SwitchPorts[$ID]
+    desc test
+#end
+```
+
+Another way we may work with arrays is to use the add operator. This method would look like this.
+
+```
+#set( $PortArray = [] )
+#set( $PortsCount = 48 )
 !
 #set( $Switches = 8 )
 #foreach( $Switch in [1..${Switches}] )
-    #set( $PortsCount = 48 )
-    #set( $PortArray = $PortArray + "," + $PortsCount )
+    #set( $unused = $PortArray.add($PortsCount))
 #end
-#set( $SwitchPorts = $PortArray.split(",") ) ## Number of ports in the switches in stack
+!$PortArray
+!
+#foreach( $Switch in [1..${Switches}] )
+    #set( $ID = $Switch - 1 )
+    interface ${Switch}/0/1 - $PortArray[$ID]
+    desc test
+#end
 ```
+
 
 
 
