@@ -55,7 +55,97 @@ Another way we may work with arrays is to use the add operator. This method woul
 #end
 ```
 
+### Working with Stacks of 9300/9200 and Powerstacking
+One area we need to address is how to effectively deal with stacking 9300's and how to deal with a stack of 8 switches where a powerstack only allows 4. Although not supported by TAC this is supported from a platform point of view. Essentially you would build the data stack of 8 switches, and then build two powerstacks of four switches in each. In the following example I share the code which allows this to happen which was co-written by Josh Bronikowski. 
 
+In order to acomplish this we need to first identify how many switches are in the stack... please use this example. 
+
+```
+#set( $StackPIDs = $ProductID.split(",") )
+#set( $StackMemberCount = $StackPIDs.size() )
+```
+Then we need a logical construct which iterates through each switch setting not only the priority correctly but also setting the powerstack correctly.
+
+```
+#if( $StackMemberCount > 1 )
+   stack-power stack Powerstack1
+   mode redundant strict
+   #if( $StackMemberCount > 4 )
+      stack-power stack Powerstack2
+      mode redundant strict
+   #end
+   #foreach( $Switch in [1..$StackMemberCount] )
+      #if( $Switch < 5 )
+         stack-power switch ${Switch}
+         stack Powerstack1
+      #elseif( $Switch > 4 )
+         stack-power switch ${Switch}
+         stack Powerstack2
+      #end
+    #end
+    #MODE_ENABLE
+    #MODE_END_ENABLE
+    #MODE_ENABLE
+    #foreach( $Switch in [1..$StackMemberCount] )
+       #if($Switch == 1)
+          switch $Switch priority 10
+       #elseif($Switch == 2)
+          switch $Switch priority 9
+       #else
+          switch $Switch priority 8
+       #end 
+    #end
+    #MODE_END_ENABLE
+#end
+```
+Explained here...
+1. The code shared will run only if the number of switches in the stack is found to be greater than 1.
+
+```
+#if( $StackMemberCount > 1 )
+```
+
+2. The next step is to correctly set the number of powerstack required. If the number of switches exceeds 4 then we need two powerstacks set up.
+
+```
+   stack-power stack Powerstack1
+   mode redundant strict
+   #if( $StackMemberCount > 4 )
+      stack-power stack Powerstack2
+      mode redundant strict
+   #end
+```
+
+3. The next step is to iterate through the switches in the stack setting the stackpower appropriately for each switch and adding them to the correct powerstack 
+
+```
+   #foreach( $Switch in [1..$StackMemberCount] )
+      #if( $Switch < 5 )
+         stack-power switch ${Switch}
+         stack Powerstack1
+      #elseif( $Switch > 4 )
+         stack-power switch ${Switch}
+         stack Powerstack2
+      #end
+    #end
+```
+4. Lastly, we will set the switch priority appropriately on each switch for master and standby, and then for the remaining switches withijn the stack so that switch numbering matches the priority levels.
+
+```
+#MODE_ENABLE
+    #MODE_END_ENABLE
+    #MODE_ENABLE
+    #foreach( $Switch in [1..$StackMemberCount] )
+       #if($Switch == 1)
+          switch $Switch priority 10
+       #elseif($Switch == 2)
+          switch $Switch priority 9
+       #else
+          switch $Switch priority 8
+       #end 
+    #end
+    #MODE_END_ENABLE
+```
 
 
 
