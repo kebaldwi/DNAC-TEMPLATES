@@ -151,4 +151,4 @@ Explained here...
 
 If you found this section helpful please fill in the survey and give feedback on how it could be improved.
 
-Special mention to: https://explore.cisco.com/dnac-use-cases/apache-velocity as examples and extrapolations were made using this documentation and Adam Radford for his help with some of the concepts discussed.
+Special mention to: https://explore.cisco.com/dnac-use-cases/apache-velocity as examples and extrapolations were made using this documentation and Adam Radford and Josh Bronikowski for his help with some of the concepts discussed.
