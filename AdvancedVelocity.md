@@ -147,6 +147,64 @@ Explained here...
     #MODE_END_ENABLE
 ```
 
+### Working port counts within Catalyst 9k
+One area we need to address is how to effectively deal configuring multiple ports. For this we will make use of multiple concepts as we build out this use case.
+
+First we would need to identify how many ports we have on each switch or linecard, and how many linecards or switches within the stack or chassis there are. For this example we are using a stack of 9300's, but you can build this for 9400's.
+
+We set up variables to track in Array format the number of ports per switch.
+
+```
+#set( $StackPIDs = $ProductID.split(",") )
+#set( $StackMemberCount = $StackPIDs.size() )
+#set( $PortTotal = [] )
+#set( $offset = $StackMemberCount - 1 )
+#foreach( $Switch in [0..$offset] )
+  #set( $Model = $StackPIDs[$Switch])
+  #set( $PortCount = $Model.replaceAll("C9300L?-([2|4][4|8]).*","$1") )
+  #set( $foo = $PortTotal.add($PortCount) )
+#end
+```
+
+The next step would be to build macros and vlans to configure the various ports.
+
+```
+vlan ${data_vlan_number}
+  name ${site_code}-Employees
+vlan ${voice_vlan_number}
+  name ${site_code}-Voice
+vlan ${iot_vlan_number}
+  name ${site_code}-IOT
+vlan ${guest_vlan_number}
+  name ${site_code}-Guests
+vlan ${ap_vlan_number}
+  name ${site_code}-AP
+
+#macro( uplink_interface )
+    switchport trunk allowed vlan add ${voice_vlan_number},${iot_vlan_number},${guest_vlan_number},${ap_vlan_number}     
+#end
+
+#macro( access_interface )
+  description base port config
+  switchport mode access
+  switchport access vlan ${data_vlan_number}
+  switchport voice vlan ${voice_vlan_number}
+  spanning-tree portfast
+  spanning-tree bpduguard enable
+#end
+
+#foreach( $Switch in [0..$offset] )
+  #set( $SwiNum = $Switch + 1 )
+  interface range gi ${SwiNum}/0/1 - $PortTotal[$Switch]
+    #access_interface
+#end
+
+interface portchannel 1
+ #uplink_interface
+```
+
+While this would configure the access ports, and modify the port channel for upstream connectivity we could do more to automate we will look at that next.
+
 
 
 If you found this section helpful please fill in the survey and give feedback on how it could be improved.
