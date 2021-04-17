@@ -17,8 +17,20 @@ event manager applet CLI_COMMANDS-->
 !
 term mon
 ```
+
+An alternative solution would be to log the lines to a file on the flash drive of the device.
+
+```
+!
+event manager applet CLI_COMMANDS-->
+event cli pattern ".*" sync no skip no
+action 1.0 syslog msg "$_cli_msg"
+action 2.0 file open FH bootflash:eem_cli_commands.txt a+
+action 2.1 file puts FH "$_event_pub_time %HA_EM-6-LOG: CLI_COMMANDS-->: $_cli_msg"
+action 2.2 file close FH
+!
+```
+
 This will allow for the logs to reflect the changes in an ongoing manner as deployed line by line from DNA Center and it will be very granular and clear where the template stopped. Many thanks to Joshua Bronikowski.
 
 The next step will be to look at the last logical constructs within the template and ensure that there are no missing end statements and or other formatting errors that might be causing issues. The other thing to watch out for is integers versus strings. If we attempt to incorrectly apply arithmatical expressions to string variables that can also cause issues on deployment which might not show up in the simulations.
-
-
