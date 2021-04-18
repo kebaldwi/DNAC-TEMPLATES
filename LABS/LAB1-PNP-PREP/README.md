@@ -10,7 +10,7 @@ For PnP processes to work our intention is to have a management interface on the
 
 By default the target switch is using vlan 1 as no other vlan exists, and vlan 1 by default accepts DHCP addresses. This will be used in the pnp process. Our management vlan however, may be a different vlan, and so may the native vlan structure of our environment. To that end we must make use of the *pnp startup-vlan* command which allows the device to use this vlan in pnp and needs to be configured on the upstream switch.
 
-###Step 1
+### Step 1
 Connect to the upstream switch and configure the following:
 ```
 config t
