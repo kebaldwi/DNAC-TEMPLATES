@@ -7,15 +7,15 @@ The goal of this repository is a practical guide to allow engineers to rapidly b
 ## Sections
 Various labs will be covered within this github section of the repository please use this menu for navigation. Within the various folders are examples, explanation readme files for reference.
 
-* [PnP Preparation](./LAB1-PNP-PREP/README.md) - This section explains the overall Plug and Play set up steps
-* [Onboarding Templates](./LAB2-DayZero-Template/README.md) - This section explains in depth and how to deploy Day 0 templates
-* [Day N Templates](./LAB3-DayN-Template/README.md) - This section will dive into Day N template constructs and use cases
-* [Composite Templates](./LAB4-Composite-Template/README.md) - This section will explore how to build a composite template on DNAC
-* [Application Policys](./LAB5-Application-Policy/README.md) - This section will explain Application Policys in DNAC and their use
-* [Telemetry](./LAB6-Telemetry-Enablement/README.md) - This section will explain how to deploy Telemetry for assurance
-* [Advanced Automation](./LAB7-Advanced-Automation/README.md) - This section will explore into Advanced Automation examples
-* [Wireless Automation](./LAB8-Wireless-Templates/README.md) - This section will dive into Wireless Automation Techniques
-* [Wireless Application Policys](./LAB9-Wireless-Application-Policy/README.md) - This section will explain how to deploy Wireless Application Policys 
+* [PnP Preparation](./LAB1-PNP-PREP/README.md#PnP Preparation) - This section explains the overall Plug and Play set up steps
+* [Onboarding Templates](./LAB2-DayZero-Template/README.md#Day0 Template) - This section explains in depth and how to deploy Day 0 templates
+* [Day N Templates](./LAB3-DayN-Template/README.md#DayN Template) - This section will dive into Day N template constructs and use cases
+* [Composite Templates](./LAB4-Composite-Template/README.md#Composite Template) - This section will explore how to build a composite template on DNAC
+* [Application Policys](./LAB5-Application-Policy/README.md#Application Policy) - This section will explain Application Policys in DNAC and their use
+* [Telemetry](./LAB6-Telemetry-Enablement/README.md#Telemetry Enablement) - This section will explain how to deploy Telemetry for assurance
+* [Advanced Automation](./LAB7-Advanced-Automation/README.md#Advanced Automation) - This section will explore into Advanced Automation examples
+* [Wireless Automation](./LAB8-Wireless-Templates/README.md#Wireless Templates) - This section will dive into Wireless Automation Techniques
+* [Wireless Application Policys](./LAB9-Wireless-Application-Policy/README.md#Wireless Application Policy) - This section will explain how to deploy Wireless Application Policys 
 
 If you found this repository or any section helpful please fill in comments and give feedback on how it could be improved.
 
