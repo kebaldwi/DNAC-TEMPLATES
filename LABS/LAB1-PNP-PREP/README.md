@@ -62,7 +62,7 @@ steps to be added with documentation
 
 As you may recall in order to land on DNA Center though the device needs help in finding it. 
 
-The PnP workflow is as follows:
+The PnP components are as follows:
 
 ![json](../../images/pnp-workflows.png?raw=true "Import JSON")
 
