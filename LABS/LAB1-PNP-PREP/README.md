@@ -49,7 +49,7 @@ Configured on a IOS device it would look like this example:
      domain-name dcloud.cisco.com                       <-- Domain name suffix option
      option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80".   <-- Option 43 string option
 ```
-steps to be added with documentation
+steps to be added with documentation...
 
 For a full configuration example please see [Configuring the Cisco IOS DHCP Server](https://www.cisco.com/en/US/docs/ios/12_4t/ip_addr/configuration/guide/htdhcpsv.html#wp1046301)
 
