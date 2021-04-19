@@ -10,6 +10,9 @@ Another important consideration is that part of a typical configuration would in
 
 As a guidance try and use Design settings for as much of the configurations as you can leaving Templates light and nimble for configurations which might change ongoing. Day N templates allows for administrators to build either single templates and add them to workflows, or to build composite templates for use in provisioning. 
 
+### Regular Templates
+The use of regular templates allows you to reuse build code in the form of a set of IOS commands listed out very much like a configuration file. Those commands may be nested within logical constructs using Velocity scripting but the intent is that this regular template is a set of instructions initiated on a target device to create a configuration.
+
 ### Composite Templates
 The use of composite templates allows you to reuse templates and code that you have previously used on other deployments without duplicating it on DNA Center. This allows you to manage those smaller templates or modules allowing for easier management moving forward.
 
