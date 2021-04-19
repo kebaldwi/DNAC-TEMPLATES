@@ -20,5 +20,23 @@ pnp startup-vlan 100
 This command will program the target switches port connected with a trunk and automatically add the vlan and SVI to the target switch making that vlan ready to accept a DHCP address. This is available on switches running 16.6 code or greater as upstream neighbors. Older switches or upstream devices that are not capable of running the command should be onboarded in vlan 1 and the vlan modified as part of the onboarding process.
 
 ### Step 2 - ***DHCP Setup***
-You have a number of options for DHCP setup, and a number of places where that can be run.
+We need a DHCP scope to supply the address within the management network temporarily in order to complete the configuration and onboarding. The scope should be configured to offer addresses from part of the range of addresses leaving the other part of the scope for the static addresses. It also can be a reservation as DHCP servers can reserve addresses for specific MAC addresses, one benefit of this is DNS host entries are automatically updated sometimes depending on the DHCP Server.
+
+The DHCP scope would incorporate therefore the following which would be enough to get an address:
+
+* network
+* default gateway
+* domain - ***required if option 2 is used below***
+* name-server ip - ***required if option 2 or 3 is used below***
+
+* DHCP relay or helper statement - ***to be added to the gateway interface pointing to the DHCP server***
+
+The DHCP Scope should be added to one of the following:
+
+1. Switch or Router
+2. Windows DHCP Server
+3. InfoBlox or other 3rd party server
+
+
+
 
