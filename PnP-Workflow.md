@@ -218,4 +218,4 @@ The steps to complete in order to use this method are as follows:
    - DNS Server Address for name resolution
 2. IP reachability to Internet
 
-If you found this section helpful please fill in the survey and give feedback on how it could be improved.
+If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
