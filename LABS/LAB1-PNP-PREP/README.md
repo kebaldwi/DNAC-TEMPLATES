@@ -47,6 +47,9 @@ Configured on a IOS device it would look like this example:
      domain-name dcloud.cisco.com                       <-- Domain name suffix option
      option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80".   <-- Option 43 string option
 ```
+
+For a full configuration example please see [Configuring the Cisco IOS DHCP Server](https://www.cisco.com/en/US/docs/ios/12_4t/ip_addr/configuration/guide/htdhcpsv.html#wp1046301)
+
 #### Windows Server Configuration Example
 On windows you have two options to deploy DHCP scopes the UI or PowerShell. We will show you Option 43 set up on a specific scope but it can be quickly replicated to other scopes using the binary entry gathered from a dhcp dump via netshell. That said here is what the option looks like as configured as option 43:
 
