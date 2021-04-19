@@ -10,7 +10,7 @@ For PnP processes to work our intention is to have a management interface on the
 
 By default the target switch is using vlan 1 as no other vlan exists, and vlan 1 by default accepts DHCP addresses. This will be used in the pnp process. Our management vlan however, may be a different vlan, and so may the native vlan structure of our environment. To that end we must make use of the *pnp startup-vlan* command which allows the device to use this vlan in pnp and needs to be configured on the upstream switch.
 
-### Step 1 - ***Upstream Neighbor Setup***
+### Step 1.1 - ***Upstream Neighbor Setup***
 Connect to the upstream switch and configure the following:
 ```
 config t
@@ -19,7 +19,7 @@ pnp startup-vlan 100
 
 This command will program the target switches port connected with a trunk and automatically add the vlan and SVI to the target switch making that vlan ready to accept a DHCP address. This is available on switches running 16.6 code or greater as upstream neighbors. Older switches or upstream devices that are not capable of running the command should be onboarded in vlan 1 and the vlan modified as part of the onboarding process.
 
-### Step 2 - ***DHCP Setup***
+### Step 1.2 - ***DHCP Setup***
 We need a DHCP scope to supply the address within the management network temporarily in order to complete the configuration and onboarding. The scope should be configured to offer addresses from part of the range of addresses leaving the other part of the scope for the static addresses. It also can be a reservation as DHCP servers can reserve addresses for specific MAC addresses, one benefit of this is DNS host entries are automatically updated sometimes depending on the DHCP Server.
 
 The DHCP scope would incorporate therefore the following which would be enough to get an address:
@@ -38,7 +38,7 @@ The DHCP Scope should be added to one of the following, the first two of these w
 
 During this lab setup please choose which option you wish to use for DHCP for PnP services and follow that subsection.
 
-#### Step 2a - ***IOS DHCP Configuration Example***
+#### Step 1.2a - ***IOS DHCP Configuration***
 Configured on a IOS device it would look like this example:
 
 ```
@@ -49,12 +49,34 @@ Configured on a IOS device it would look like this example:
      domain-name dcloud.cisco.com                       <-- Domain name suffix option
      option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80".   <-- Option 43 string option
 ```
+steps to be added with documentation
 
 For a full configuration example please see [Configuring the Cisco IOS DHCP Server](https://www.cisco.com/en/US/docs/ios/12_4t/ip_addr/configuration/guide/htdhcpsv.html#wp1046301)
 
-#### Step 2b - ***Windows Server Configuration Example***
+#### Step 1.2b - ***Windows Server Configuration***
 On windows you have two options to deploy DHCP scopes the UI or PowerShell. We will show you Option 43 set up on a specific scope but it can be quickly replicated to other scopes using the binary entry gathered from a dhcp dump via netshell. 
 
+steps to be added with documentation
+
+## Lab Section 2 - DNA Center Discovery
+
+As you may recall in order to land on DNA Center though the device needs help in finding it. 
+
+The PnP workflow is as follows:
+
+![json](../../images/pnp-workflows.png?raw=true "Import JSON")
+
+There are 3 automated methods to make that occur:
+
+1. **DHCP with option 43**
+2. **DNS lookup**
+3. **Cloud re-direction via https://devicehelper.cisco.com/device-helper**
+   
+**Option 1:** would require that the DHCP server must offer a PnP string via option 43. 
+**Option 2:** would require that the DHCP server offer a domain suffix and a name server to resolve the **pnpserver** address.
+**Option 3:** would require that the DHCP server offer a name server to resolve the address of **device-helper.cisco.com**.
+
+### Step 2.1 - ***DNA Center Discovery Configuration***
 
 
 
