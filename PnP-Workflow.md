@@ -6,15 +6,17 @@ For DNA Center to begin the process it must first learn of the device. The devic
 The first piece to the puzzle is that the device must get an IP address. It does not have one by default as it has not been primed nor do we want to do that in a fully automated flow.
 
 ## Device Connectivity
-For PnP processes to work our intention is to have a management interface on the device, like a Loopback or Vlan interface. As the device is connected to the front facing ports by default there is little configuration. As a result the Vlan 1 will be used initially on the target device for the pnp workflow, but during provisioning we can manipulate addresses, and change the source of the management interface to a loopback, vlan, or routed interface. 
+For PnP processes to work our intention is to have a management interface on the device, like a Loopback or Vlan interface. As the device is connected to the front facing ports by default there is little configuration. As a result initially Vlan 1 is all that is available on the target device for the pnp workflow. We can manipulate addresses and even change the source of the management interface to a loopback, vlan, or routed interface.
 
-By default the target switch is using vlan 1 as no other vlan exists, and vlan 1 by default accepts DHCP addresses. This will be used in the pnp process. Our management vlan however, may be a different vlan, and so may the native vlan structure of our environment. To that end we must make use of the *pnp startup-vlan* command which allows the device to use this vlan in pnp and needs to be configured on the upstream switch.
+By default the target switch is using vlan 1 as no other vlan exists, and vlan 1 by default accepts DHCP addresses. We could use vlan 1 for provisioning, but more than likely we would need to use some other vlan for our management vlan. 
 
+If the management vlan is going to be different from vlan 1 we will use a command on the upstream switch to communicate that to the downstream target switch. To that end we must make use of the *pnp startup-vlan* command which allows the device to use any vlan in pnp. This command introduced on the upstream neighbor enables automatic downstream configuration on the target enabling it for DHCP and making it ready for the pnp process.
+ 
 ```
 pnp startup-vlan 100
 ```
 
-Alternatively we can tell the target switch to set up a separate vlan for management from the upstream neighbor. The way this is done is to make use of the ***pnp startup-vlan x*** command. This command will program the target switches port connected with a trunk and automatically add the vlan and SVI to the target switch making that vlan ready to accept a DHCP address. This is available on switches running 16.6 code or greater as upstream neighbors. Older switches or upstream devices that are not capable of running the command should be onboarded in vlan 1 and the vlan modified as part of the onboarding process.
+The target switch will then set up a separate vlan for management. This command will program the target switches port connected with a trunk and automatically add the vlan and SVI to the target switch making that vlan ready to accept a DHCP address. This is available on switches running 16.6 code or greater as upstream neighbors. Older switches or upstream devices that are not capable of running the command should be onboarded in vlan 1 and the vlan modified as part of the onboarding process.
 
 ## DHCP
 So we need a DHCP scope to supply the address within the management network temporarily in order to complete the configuration and onboarding. The scope should be configured so as to offer addresses from part of the range of addresses not used. It also can be a reservation as DHCP servers can reserve addresses for specific MAC addresses. 
