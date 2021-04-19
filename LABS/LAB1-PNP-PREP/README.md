@@ -36,7 +36,9 @@ The DHCP Scope should be added to one of the following, the first two of these w
 2. Windows DHCP Server
 3. InfoBlox or other 3rd party server
 
-#### IOS DHCP Configuration Example
+During this lab setup please choose which option you wish to use for DHCP for PnP services and follow that subsection.
+
+#### Step 2a - ***IOS DHCP Configuration Example***
 Configured on a IOS device it would look like this example:
 
 ```
@@ -50,7 +52,7 @@ Configured on a IOS device it would look like this example:
 
 For a full configuration example please see [Configuring the Cisco IOS DHCP Server](https://www.cisco.com/en/US/docs/ios/12_4t/ip_addr/configuration/guide/htdhcpsv.html#wp1046301)
 
-#### Windows Server Configuration Example
+#### Step 2b - ***Windows Server Configuration Example***
 On windows you have two options to deploy DHCP scopes the UI or PowerShell. We will show you Option 43 set up on a specific scope but it can be quickly replicated to other scopes using the binary entry gathered from a dhcp dump via netshell. That said here is what the option looks like as configured as option 43:
 
 ![json](../../images/WindowsDHCP.png?raw=true "Import JSON")
