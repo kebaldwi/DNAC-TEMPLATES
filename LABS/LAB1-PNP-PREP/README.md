@@ -50,7 +50,7 @@ Configured on a IOS device it would look like this example:
 #### Windows Server Configuration Example
 On windows you have two options to deploy DHCP scopes the UI or PowerShell. We will show you Option 43 set up on a specific scope but it can be quickly replicated to other scopes using the binary entry gathered from a dhcp dump via netshell. That said here is what the option looks like as configured as option 43:
 
-![json](images/WindowsDHCP.png?raw=true "Import JSON")
+![json](../images/WindowsDHCP.png?raw=true "Import JSON")
 
 
 
