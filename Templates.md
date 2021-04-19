@@ -118,3 +118,5 @@ Specific examples of Templates are available in the following folders:
 
 * [PnP Onboarding](./ONBOARDING) - Examples of PnP/ZTP Templates explained in [Onboarding Templates](./Onboarding.md)
 * [DayN](./DAYN) - Examples of DayN Templates explained in [DayN Templates](./DayN.md)
+
+If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
