@@ -17,5 +17,5 @@ Various labs will be covered within this github section of the repository please
 * [Wireless Automation](./LAB8-Wireless-Templates/README.md#Wireless) - This section will dive into Wireless Automation Techniques
 * [Wireless Application Policys](./LAB9-Wireless-Application-Policy/README.md#Wireless) - This section will explain how to deploy Wireless Application Policys 
 
-If you found this repository or any section helpful please fill in comments and give feedback on how it could be improved.
+If you found this set of Labs helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
