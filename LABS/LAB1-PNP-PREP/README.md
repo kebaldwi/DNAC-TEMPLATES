@@ -36,6 +36,21 @@ The DHCP Scope should be added to one of the following, the first two of these w
 2. Windows DHCP Server
 3. InfoBlox or other 3rd party server
 
+#### IOS DHCP Configuration Example
+Configured on a IOS device it would look like this example:
+
+```
+  ip dhcp pool pnp_device_pool                          <-- Name of DHCP pool
+     network 192.168.1.0 255.255.255.0                  <-- Range of IP addresses assigned to clients
+     default-router 192.168.1.1                         <-- Gateway address
+     dns-server 192.168.1.254                           <-- DNS server option
+     domain-name dcloud.cisco.com                       <-- Domain name suffix option
+     option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80".   <-- Option 43 string option
+```
+#### Windows Server Configuration Example
+On windows you have two options to deploy DHCP scopes the UI or PowerShell. We will show you Option 43 set up on a specific scope but it can be quickly replicated to other scopes using the binary entry gathered from a dhcp dump via netshell. That said here is what the option looks like as configured as option 43:
+
+![json](images/WindowsDHCP.png?raw=true "Import JSON")
 
 
 
