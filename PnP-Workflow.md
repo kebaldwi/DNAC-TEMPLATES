@@ -53,9 +53,9 @@ There are 3 automated methods to make that occur:
 3. **Cloud re-direction https://devicehelper.cisco.com/device-helper**
    **which, re-directs to on-prem DNA Center IP Address**
 
-**Option 1:** requires that along with the IP address and gateway the DHCP server must offer a PnP string via option 43. This option is used with Cisco wireless so I typically recommend that you go with option 2. 
+**Option 1:** requires that along with the IP address and gateway the DHCP server must offer a PnP string via option 43. This option is often used with Cisco wireless so you may want to incorporate option 60 and the use of vendor specific information to ensure the correct controller is referenced for the device in question. 
 
-**Option 2:** requires that along with the IP address and gateway the DHCP server offer the domain suffix that the **pnpserver** record will reside in and a name server to resolve the address.
+**Option 2:** requires that along with the IP address and gateway the DHCP server offer the domain suffix that the **pnpserver** record will reside in and a name server to resolve the address. Caveats here would be that if not all devices were to be landing on DNA Center then you may need sub domains.
 
 **Option 3:** requires that along with the address and gateway the DHCP server offer a name server to resolve the address of **device-helper.cisco.com**. Additionally it requires the that DNA Center register a file with the PnP Connect portal which it will offer via SSL to a device which reaches out. In order to whitelist those devices, the serial number would have to be associated to the DNAC profile within software centrals pnp connect portal.
 
