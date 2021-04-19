@@ -153,6 +153,6 @@ Within DNA Center it is possible to Bind Variables to devices. Within DNA Center
 
 6. Save the Input Form through Actions menu on Input Form
 
-If you found this section helpful please fill in the survey and give feedback on how it could be improved.
+If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
 Special mention to: https://explore.cisco.com/dnac-use-cases/apache-velocity as examples and extrapolations were made using this documentation.
