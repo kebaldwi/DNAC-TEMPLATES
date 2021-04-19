@@ -43,7 +43,7 @@ Once you have grouped configuration snippets into separate logical constructs yo
 Once we have identified all the various modules we will need, we can then start to analyze which of the codes the Design App can facilitate, and ensure the design has those settings and remove them from the modules.
 
 ## Templates
-We have two templates offered in DNA Center. A regular template which is designed to stand alone for a specific function and a composite template which will group standard templates and which can only be used in Day N Projects.
+We have two templates offered in DNA Center. A **Regular Template** which is designed to stand alone for a specific function and a **Composite template** which will group standard templates and which can only be used in Day N Projects.
 
 As we build out a Regular Template we can either as has previously been mentioned put all the IOS commands which makes the configuration within the template more complex to maintain, or we can separate out the various sections into separate templates and call them as additional templates in either the Onboarding or Day N flows.
 
