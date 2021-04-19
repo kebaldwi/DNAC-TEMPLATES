@@ -34,7 +34,7 @@ Obviously a dhcp relay or helper statement would need to be added to the gateway
 ## DNA Center Discovery
 In order to land on DNA Center though the device needs help in finding it. 
 
-The PnP workflow is as follows:
+The PnP components are as follows:
 
 ![json](images/pnp-workflows.png?raw=true "Import JSON")
 
