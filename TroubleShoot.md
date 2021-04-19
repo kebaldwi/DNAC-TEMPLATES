@@ -34,3 +34,5 @@ action 2.2 file close FH
 This will allow for the logs to reflect the changes in an ongoing manner as deployed line by line from DNA Center and it will be very granular and clear where the template stopped. Many thanks to Joshua Bronikowski.
 
 The next step will be to look at the last logical constructs within the template and ensure that there are no missing end statements and or other formatting errors that might be causing issues. The other thing to watch out for is integers versus strings. If we attempt to incorrectly apply arithmatical expressions to string variables that can also cause issues on deployment which might not show up in the simulations.
+
+If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
