@@ -123,8 +123,8 @@ When combined with the IF statements below, the above Macro allows for various I
 #end
 ```
 
-## Foreach Loops
-A Foreach loop allows for multiple iterations of a sequence of commands perhaps including some of the constructs mentioned above to iterate through and on each occasion use a different value.
+## For Loops
+A For loop allows for multiple iterations of a sequence of commands perhaps including some of the constructs mentioned above to iterate through and on each occasion use a different value.
 
 Command Construct:
 
@@ -151,7 +151,7 @@ Additionally you can use these methods within the loop:
     $foreach.stop() : exists the loop, synonym for #break
 ```
 
-An example of a Foreach Loop
+An example of a For Loop
 
 ```
     Reference Example: 
