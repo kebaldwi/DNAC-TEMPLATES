@@ -30,7 +30,7 @@ The DHCP scope would incorporate therefore the following which would be enough t
 * name-server ip - ***required if option 2 or 3 is used below***
 * DHCP relay or helper statement - ***to be added to the gateway interface pointing to the DHCP server***
 
-The DHCP Scope should be added to one of the following:
+The DHCP Scope should be added to one of the following, the first two of these will be covered in this lab.
 
 1. Switch or Router
 2. Windows DHCP Server
