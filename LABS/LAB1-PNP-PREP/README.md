@@ -46,7 +46,7 @@ Configured on a IOS device it would look like this example:
   ip dhcp pool pnp_device_pool                          <-- Name of DHCP pool
      network 192.168.5.0 255.255.255.0                  <-- Range of IP addresses assigned to clients
      default-router 192.168.5.1                         <-- Gateway address
-     dns-server 198.18.133.1                           <-- DNS server option
+     dns-server 198.18.133.1                            <-- DNS server option
      domain-name dcloud.cisco.com                       <-- Domain name suffix option
      option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80"    <-- Option 43 string option
 ```
@@ -102,14 +102,14 @@ If using the IOS DHCP Server and the Option 43 discovery method is desired then 
 
 ```
   ip dhcp pool pnp_device_pool                    
-     option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80"
+     option 43 ascii "5A1N;B2;K4;I198.18.129.1;J80"
 ```
 
 #### Step 2.1b - ***Option 43 with Windows DHCP Configuration***
 If using the Windows DHCP Server and the Option 43 discovery method is desired then paste the following configuration into PowerShell:
 
 ```
-Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -OptionId 43 -Value ([System.Text.Encoding]::ASCII.GetBytes("5A1N;B2;K4;I10.10.0.20;J80"))
+Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -OptionId 43 -Value ([System.Text.Encoding]::ASCII.GetBytes("5A1N;B2;K4;I198.18.129.1;J80"))
 ```
 
 #### Step 2.1c - ***DNS Lookup with IOS DHCP Configuration***
