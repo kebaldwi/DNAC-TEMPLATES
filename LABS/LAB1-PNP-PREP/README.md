@@ -11,7 +11,7 @@ For PnP processes to work our intention is to have a management interface on the
 By default the target switch is using vlan 1 as no other vlan exists, and vlan 1 by default accepts DHCP addresses. This will be used in the pnp process. Our management vlan however, may be a different vlan, and so may the native vlan structure of our environment. To that end we must make use of the *pnp startup-vlan* command which allows the device to use this vlan in pnp and needs to be configured on the upstream switch.
 
 ### Step 1.1 - ***Upstream Neighbor Setup***
-Connect to the upstream switch and configure the following:
+For the purposes of the lab we will utilize ***vlan 10*** as the management vlan. Connect to switch ***TBD*** and paste the following configuration:
 
 ```
 config t
@@ -19,13 +19,6 @@ pnp startup-vlan 100
 ```
 
 This command will program the target switches port connected with a trunk and automatically add the vlan and SVI to the target switch making that vlan ready to accept a DHCP address. This is available on switches running 16.6 code or greater as upstream neighbors. Older switches or upstream devices that are not capable of running the command should be onboarded in vlan 1 and the vlan modified as part of the onboarding process.
-
-For the purposes of the lab we will utilize ***vlan 10*** as the management vlan. Connect to switch ***TBD*** and paste the following configuration:
-
-```
-config t
-pnp startup-vlan 10
-```
 
 ### Step 1.2 - ***DHCP Setup***
 We need a DHCP scope to supply the address within the management network temporarily in order to complete the configuration and onboarding. The scope should be configured to offer addresses from part of the range of addresses leaving the other part of the scope for the static addresses. It also can be a reservation as DHCP servers can reserve addresses for specific MAC addresses, one benefit of this is DNS host entries are automatically updated sometimes depending on the DHCP Server.
