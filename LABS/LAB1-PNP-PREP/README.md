@@ -43,12 +43,12 @@ During this lab setup please choose which option you wish to use for DHCP for Pn
 Configured on a IOS device it would look like this example:
 
 ```
-  ip dhcp pool pnp_device_pool                          <-- Name of DHCP pool
-     network 192.168.5.0 255.255.255.0                  <-- Range of IP addresses assigned to clients
-     default-router 192.168.5.1                         <-- Gateway address
-     dns-server 198.18.133.1                            <-- DNS server option
-     domain-name dcloud.cisco.com                       <-- Domain name suffix option
-     option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80"    <-- Option 43 string option
+  ip dhcp pool pnp_device_pool                         
+     network 192.168.5.0 255.255.255.0                 
+     default-router 192.168.5.1                        
+     dns-server 198.18.133.1                           
+     domain-name dcloud.cisco.com                      
+     option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80"   
 ```
 
 If we want to use the IOS DHCP Configuration method connect to switch ***TBD*** and paste the following configuration:
