@@ -15,7 +15,7 @@ For the purposes of the lab we will utilize ***vlan 10*** as the management vlan
 
 ```
 config t
-pnp startup-vlan 10
+pnp startup-vlan 5
 ```
 
 This command will program the target switches port connected with a trunk and automatically add the vlan and SVI to the target switch making that vlan ready to accept a DHCP address. This is available on switches running 16.6 code or greater as upstream neighbors. Older switches or upstream devices that are not capable of running the command should be onboarded in vlan 1 and the vlan modified as part of the onboarding process.
