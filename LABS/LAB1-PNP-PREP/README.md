@@ -179,7 +179,7 @@ If a port channel is used initially, then you want to ensure that the port chann
 ## Lab Section 4 - Testing
 Please use the testing for the DNS Discovery method used above
 
-### Step 3.1a - DNS Resolution Tests
+### Step 4.1a - DNS Resolution Tests
 To test the environment to ensure its ready, we need to test a few things.
 
 First from a windows host use the nslookup command to resolve ***pnpserver.dcloud.cisco.com***. Connect to the windows workstation and within the search window search for CMD. Open the application and type the following command:
@@ -190,7 +190,7 @@ nslookup pnpserver.dcloud.cisco.com
 
 They should be presented with the following output or something similar which shows the resolution of the alias to the A host record entry which identifies the VIP address for the DNA Center Cluster.
 
-### Step 3.1b - DNS Resolution
+### Step 4.1b - DNS Resolution
 Second we need to ensure the DNA Center responds on the VIP, so use the ping command within the CMD application window previously opened as follows:
 
 ```
