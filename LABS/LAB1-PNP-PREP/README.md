@@ -48,7 +48,7 @@ Configured on a IOS device it would look like this example:
      default-router 192.168.5.1                        
      dns-server 198.18.133.1                           
      domain-name dcloud.cisco.com                      
-     option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80"   
+     option 43 ascii "5A1N;B2;K4;I198.18.129.1;J80"   
 ```
 
 If we want to use the IOS DHCP Configuration method connect to switch ***TBD*** and paste the following configuration:
