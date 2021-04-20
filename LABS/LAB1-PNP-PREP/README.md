@@ -76,6 +76,10 @@ Add-DhcpServerv4Scope -Name "DNAC-Templates-Lab" -StartRange 192.168.5.1 -EndRan
 Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -Router 192.168.5.1 
 ```
 
+The DHCP scope will look like this in Windows DHCP Administrative tool:
+
+![json](./images/WindowsDHCPscope.png?raw=true "Import JSON")
+
 Next we will introduce the helper address statement on the management Vlan's SVI. Connect to switch ***TBD*** and paste the following configuration:
 
 ```
@@ -112,6 +116,10 @@ If using the Windows DHCP Server and the Option 43 discovery method is desired t
 Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -OptionId 43 -Value ([System.Text.Encoding]::ASCII.GetBytes("5A1N;B2;K4;I198.18.129.1;J80"))
 ```
 
+The DHCP scope will be modified to look like this in Windows DHCP Administrative tool:
+
+![json](./images/DNACDHCPoption43.png?raw=true "Import JSON")
+
 #### Step 2.1c - ***DNS Lookup with IOS DHCP Configuration***
 If using the IOS DHCP Server and the DNS Lookup discovery method is desired then paste the following configuration:
 
@@ -128,6 +136,10 @@ Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -Allo
 Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
 ```
 
+The DNS Zone will look like this in Windows DNS Administrative tool:
+
+![json](./images/DNACenterDNSentries.png?raw=true "Import JSON")
+
 #### Step 2.1d - ***DNS Lookup with Windows DHCP Configuration***
 If using the Windows DHCP Server and the DNS Lookup discovery method is desired then paste the following configuration into PowerShell:
 
@@ -135,12 +147,21 @@ If using the Windows DHCP Server and the DNS Lookup discovery method is desired 
 Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -DnsServer 198.18.133.1 -DnsDomain "dcloud.cisco.com"
 ```
 
+The DHCP scope will be modified to look like this in Windows DHCP Administrative tool:
+
+![json](./images/WindowsDHCPscope.png?raw=true "Import JSON")
+
 Next add the DNS entries to allow for the DNA Center to be discovered. This script will add an A host entry for the VIP address, and then a CNAME as an alias for the pnpserver entry required for DNS discovery.
 
 ```
 Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.1" -TimeToLive 01:00:00
 Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
 ```
+
+The DNS Zone will look like this in Windows DNS Administrative tool:
+
+![json](./images/DNACenterDNSentries.png?raw=true "Import JSON")
+
 ## Lab Section 3 - Testing
 Please use the testing for the method used above
 ### Step 3.1a - DNS Resolution
@@ -152,9 +173,7 @@ First from a windows host use the nslookup command to resolve ***pnpserver.dclou
 nslookup pnpserver.dcloud.cisco.com
 ```
 
-They should be presented with the following output or something similar which shows the resolution of the alias to the A host record entry which identifies the VIP address for the DNA Center Cluster. The following is the output expected:
-
-``` ```
+They should be presented with the following output or something similar which shows the resolution of the alias to the A host record entry which identifies the VIP address for the DNA Center Cluster.
 
 ### Step 3.1b - DNS Resolution
 Second we need to ensure the DNA Center responds on the VIP, so use the ping command within the CMD application window previously opened as follows:
@@ -163,8 +182,12 @@ Second we need to ensure the DNA Center responds on the VIP, so use the ping com
 ping pnpserver.dcloud.cisco.com
 ```
 
-The following is the output expected:
+The following is the output expected from 3.1a and 3.1b
 
-``` ```
+![json](./images/DNACenterDNStests.png?raw=true "Import JSON")
+
+At this point the environment should be set up to onboard devices within Vlan 5 using the network address ***192.168.5.0/24*** utilizing either ***option 43*** or ***DNS Discovery***.
+
+The next step would be to build the PnP Onboarding settings and template on DNA Center which will be covered in the next lab entitled [Onboarding Templates](../LAB2-DayZero-Template/README.md#Day0) - This section explains in depth and how to deploy Day 0 templates
 
 If you found this set of Labs helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
