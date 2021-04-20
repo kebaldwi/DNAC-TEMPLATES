@@ -164,7 +164,19 @@ The DNS Zone will look like this in Windows DNS Administrative tool:
 
 ![json](./images/DNACenterDNSentries.png?raw=true "Import JSON")
 
-## Lab Section 3 - Testing
+## Lab Section 3 - Target Connectivity
+The Target switch will typically be connected to either a single port or as part of a port channel. The port where the Target switch will be connected needs for this lab to be connected as a trunk. 
+
+```
+interface gi 1/0/48
+description PnP Test Environment
+switchport mode trunk
+switchport trunk allowed vlan 5
+```
+
+If a port channel is used initially, then you want to ensure that the port channel can operate as a single link within the bundle and for that reason use passive methods for building the port channel bundles on both the Target and Upstream Neighbor for maximum flexibility.
+
+## Lab Section 4 - Testing
 Please use the testing for the DNS Discovery method used above
 
 ### Step 3.1a - DNS Resolution Tests
