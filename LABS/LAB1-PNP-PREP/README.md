@@ -124,7 +124,7 @@ If using the IOS DHCP Server and the DNS Lookup discovery method is desired then
 Next add the DNS entries to allow for the DNA Center to be discovered. This script will add an A host entry for the VIP address, and then a CNAME as an alias for the pnpserver entry required for DNS discovery.
 
 ```
-Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "172.18.99.23" -TimeToLive 01:00:00
+Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.1" -TimeToLive 01:00:00
 Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
 ```
 
@@ -138,7 +138,7 @@ Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -DnsServer 198.18.133.1 -DnsDom
 Next add the DNS entries to allow for the DNA Center to be discovered. This script will add an A host entry for the VIP address, and then a CNAME as an alias for the pnpserver entry required for DNS discovery.
 
 ```
-Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "172.18.99.23" -TimeToLive 01:00:00
+Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.1" -TimeToLive 01:00:00
 Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
 ```
 ## Lab Section 3 - Testing
