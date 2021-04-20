@@ -95,9 +95,9 @@ There are 3 automated methods to make that occur:
 2. **DNS lookup**
 3. **Cloud re-direction via https://devicehelper.cisco.com/device-helper**
    
-**Option 1:** would require that the DHCP server must offer a PnP string via option 43. 
-**Option 2:** would require that the DHCP server offer a domain suffix and a name server to resolve the **pnpserver** address.
-**Option 3:** would require that the DHCP server offer a name server to resolve the address of **device-helper.cisco.com**.
+* **Option 1:** would require that the DHCP server must offer a PnP string via option 43. 
+* **Option 2:** would require that the DHCP server offer a domain suffix and a name server to resolve the **pnpserver** address.
+* **Option 3:** would require that the DHCP server offer a name server to resolve the address of **device-helper.cisco.com**.
 
 ### Step 2.1 - ***DNA Center Discovery Configuration***
 
