@@ -101,6 +101,8 @@ There are 3 automated methods to make that occur:
 3. **Cloud re-direction via https://devicehelper.cisco.com/device-helper** - ***requires the DHCP server offer a name server to make DNS resolutions***
 
 ### Step 2.1 - ***DNA Center Discovery***
+Please choose one of the following subsections as the discovery method.
+
 #### Step 2.1a - ***Option 43 with IOS DHCP Configuration***
 If using the IOS DHCP Server and the Option 43 discovery method is desired then paste the following configuration:
 
@@ -163,8 +165,9 @@ The DNS Zone will look like this in Windows DNS Administrative tool:
 ![json](./images/DNACenterDNSentries.png?raw=true "Import JSON")
 
 ## Lab Section 3 - Testing
-Please use the testing for the method used above
-### Step 3.1a - DNS Resolution
+Please use the testing for the DNS Discovery method used above
+
+### Step 3.1a - DNS Resolution Tests
 To test the environment to ensure its ready, we need to test a few things.
 
 First from a windows host use the nslookup command to resolve ***pnpserver.dcloud.cisco.com***. Connect to the windows workstation and within the search window search for CMD. Open the application and type the following command:
@@ -188,6 +191,8 @@ The following is the output expected from 3.1a and 3.1b
 
 At this point the environment should be set up to onboard devices within Vlan 5 using the network address ***192.168.5.0/24*** utilizing either ***option 43*** or ***DNS Discovery***.
 
+## Summary
 The next step would be to build the PnP Onboarding settings and template on DNA Center which will be covered in the next lab entitled [Onboarding Templates](../LAB2-DayZero-Template/README.md#Day0) - This section explains in depth and how to deploy Day 0 templates
 
+## Feedback
 If you found this set of Labs helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
