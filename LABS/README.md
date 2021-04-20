@@ -17,5 +17,10 @@ Various labs will be covered within this github section of the repository please
 * [Wireless Automation](./LAB8-Wireless-Templates/README.md#Wireless) - This section will dive into Wireless Automation Techniques
 * [Wireless Application Policys](./LAB9-Wireless-Application-Policy/README.md#Wireless) - This section will explain how to deploy Wireless Application Policys 
 
+![json](./DCLOUDaaLAB.md#dcloud-as-a-lab?raw=true "Import JSON")
+
+https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/DCLOUDaaLAB.md#dcloud-as-a-lab-
+
+
 If you found this set of Labs helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
