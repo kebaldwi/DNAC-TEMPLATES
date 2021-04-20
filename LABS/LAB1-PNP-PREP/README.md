@@ -69,8 +69,6 @@ Add-DhcpServerv4Scope -Name "DNAC-Templates-Lab" -StartRange 192.168.5.1 -EndRan
 Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -Router 192.168.5.1 
 ```
 
-steps to be added with documentation
-
 ## Lab Section 2 - DNA Center Discovery
 As you may recall in order to land on DNA Center though the device needs help in finding it. 
 
@@ -129,6 +127,7 @@ Next add the DNS entries to allow for the DNA Center to be discovered. This scri
 Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "172.18.99.23" -TimeToLive 01:00:00
 Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
 ```
-
+## Lab Section 3 - Testing
+Testing 
 
 If you found this set of Labs helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
