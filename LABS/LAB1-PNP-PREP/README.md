@@ -59,6 +59,13 @@ If we want to use the IOS DHCP Configuration method connect to switch ***TBD*** 
      default-router 192.168.1.1                         
 ```
 
+Next we will introduce the helper address statement on the management Vlan's SVI. Connect to switch ***TBD*** and paste the following configuration:
+
+```
+  interface Vlan 10                         
+     ip helper-address 192.168.5.1                  
+```
+
 For a full configuration example please see [Configuring the Cisco IOS DHCP Server](https://www.cisco.com/en/US/docs/ios/12_4t/ip_addr/configuration/guide/htdhcpsv.html#wp1046301)
 
 #### Step 1.2b - ***Windows Server Configuration***
@@ -67,6 +74,13 @@ If we want to use the Windows DHCP method connect to the windows server. On wind
 ```
 Add-DhcpServerv4Scope -Name "DNAC-Templates-Lab" -StartRange 192.168.5.1 -EndRange 192.168.5.254 -SubnetMask 255.255.255.0 -LeaseDuration 6.00:00:00 -SuperScope "PnP Onboarding"
 Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -Router 192.168.5.1 
+```
+
+Next we will introduce the helper address statement on the management Vlan's SVI. Connect to switch ***TBD*** and paste the following configuration:
+
+```
+  interface Vlan 10                         
+     ip helper-address 192.168.5.1                  
 ```
 
 ## Lab Section 2 - DNA Center Discovery
@@ -128,6 +142,28 @@ Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -Allo
 Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
 ```
 ## Lab Section 3 - Testing
-Testing 
+Please use the testing for the method used above
+### Step 3.1a - DNS Resolution
+To test the environment to ensure its ready, we need to test a few things.
 
+First from a windows host use the nslookup command to resolve ***pnpserver.dcloud.cisco.com***. Connect to the windows workstation and within the search window search for CMD. Open the application and type the following command:
+
+```
+nslookup pnpserver.dcloud.cisco.com
+```
+
+They should be presented with the following output or something similar which shows the resolution of the alias to the A host record entry which identifies the VIP address for the DNA Center Cluster. The following is the output expected:
+
+``` ```
+
+### Step 3.1b - DNS Resolution
+Second we need to ensure the DNA Center responds on the VIP, so use the ping command within the CMD application window previously opened as follows:
+
+```
+ping pnpserver.dcloud.cisco.com
+```
+
+The following is the output expected:
+
+``` ```
 If you found this set of Labs helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
