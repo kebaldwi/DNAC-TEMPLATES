@@ -204,7 +204,7 @@ The following is the output expected from 3.1a and 3.1b
 At this point the environment should be set up to onboard devices within Vlan 5 using the network address ***192.168.5.0/24*** utilizing either ***option 43*** or ***DNS Discovery***.
 
 ## Summary
-The next step would be to build the PnP Onboarding settings and template on DNA Center which will be covered in the next lab entitled [Onboarding Templates](../LAB2-DayZero-Template/README.md#Day0) - This section explains in depth and how to deploy Day 0 templates
+The next step would be to build the PnP Onboarding settings and template on DNA Center which will be covered in the next lab entitled [Onboarding Templates](../LAB2-Onboarding-Template/README.md#Day0) - This section explains in depth and how to deploy Day 0 templates
 
 ## Feedback
 If you found this set of Labs helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
