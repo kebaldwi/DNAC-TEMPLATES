@@ -15,7 +15,7 @@ For the purposes of the lab we will utilize ***vlan 10*** as the management vlan
 
 ```
 config t
-pnp startup-vlan 100
+pnp startup-vlan 10
 ```
 
 This command will program the target switches port connected with a trunk and automatically add the vlan and SVI to the target switch making that vlan ready to accept a DHCP address. This is available on switches running 16.6 code or greater as upstream neighbors. Older switches or upstream devices that are not capable of running the command should be onboarded in vlan 1 and the vlan modified as part of the onboarding process.
@@ -48,7 +48,7 @@ Configured on a IOS device it would look like this example:
      default-router 192.168.1.1                         <-- Gateway address
      dns-server 192.168.1.254                           <-- DNS server option
      domain-name dcloud.cisco.com                       <-- Domain name suffix option
-     option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80".   <-- Option 43 string option
+     option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80"    <-- Option 43 string option
 ```
 
 If we want to use the IOS DHCP Configuration method connect to switch ***TBD*** and paste the following configuration:
@@ -67,15 +67,11 @@ If we want to use the Windows DHCP method connect to the windows server. On wind
 ```
 Add-DhcpServerv4Scope -Name "DNAC-Templates-Lab" -StartRange 192.168.5.1 -EndRange 192.168.5.254 -SubnetMask 255.255.255.0 -LeaseDuration 6.00:00:00 -SuperScope "PnP Onboarding"
 Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -Router 192.168.5.1 
-
-Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -DnsServer 10.10.0.250 -DnsDomain "dcloud.cisco.com"
-Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -OptionId 43 -Value ([System.Text.Encoding]::ASCII.GetBytes("5A1N;B2;K4;I10.10.0.20;J80"))
 ```
 
 steps to be added with documentation
 
 ## Lab Section 2 - DNA Center Discovery
-
 As you may recall in order to land on DNA Center though the device needs help in finding it. 
 
 The PnP components are as follows:
@@ -89,8 +85,17 @@ There are 3 automated methods to make that occur:
 3. **Cloud re-direction via https://devicehelper.cisco.com/device-helper** - ***requires the DHCP server offer a name server to make DNS resolutions***
 
 ### Step 2.1 - ***DNA Center Discovery Configuration***
-
-
-
+### Step 2.1a - ***DNA Center Discovery Option 43 IOS DHCP Configuration***
+```
+  ip dhcp pool pnp_device_pool                          
+     dns-server 192.168.1.254                           
+     domain-name dcloud.cisco.com                       
+     option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80"
+```
+### Step 2.1b - ***DNA Center Discovery Option 43 Windows DHCP Configuration***
+```
+Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -DnsServer 10.10.0.250 -DnsDomain "dcloud.cisco.com"
+Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -OptionId 43 -Value ([System.Text.Encoding]::ASCII.GetBytes("5A1N;B2;K4;I10.10.0.20;J80"))
+```
 
 If you found this set of Labs helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
