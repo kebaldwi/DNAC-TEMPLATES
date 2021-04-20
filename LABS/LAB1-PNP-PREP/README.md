@@ -85,14 +85,14 @@ There are 3 automated methods to make that occur:
 3. **Cloud re-direction via https://devicehelper.cisco.com/device-helper** - ***requires the DHCP server offer a name server to make DNS resolutions***
 
 ### Step 2.1 - ***DNA Center Discovery Configuration***
-### Step 2.1a - ***DNA Center Discovery Option 43 IOS DHCP Configuration***
+#### Step 2.1a - ***DNA Center Discovery Option 43 IOS DHCP Configuration***
 ```
   ip dhcp pool pnp_device_pool                          
      dns-server 192.168.1.254                           
      domain-name dcloud.cisco.com                       
      option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80"
 ```
-### Step 2.1b - ***DNA Center Discovery Option 43 Windows DHCP Configuration***
+#### Step 2.1b - ***DNA Center Discovery Option 43 Windows DHCP Configuration***
 ```
 Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -DnsServer 10.10.0.250 -DnsDomain "dcloud.cisco.com"
 Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -OptionId 43 -Value ([System.Text.Encoding]::ASCII.GetBytes("5A1N;B2;K4;I10.10.0.20;J80"))
