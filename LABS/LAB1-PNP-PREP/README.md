@@ -69,7 +69,15 @@ If we want to use the IOS DHCP Configuration method connect to switch ***TBD*** 
 For a full configuration example please see [Configuring the Cisco IOS DHCP Server](https://www.cisco.com/en/US/docs/ios/12_4t/ip_addr/configuration/guide/htdhcpsv.html#wp1046301)
 
 #### Step 1.2b - ***Windows Server Configuration***
-On windows you have two options to deploy DHCP scopes the UI or PowerShell. We will show you Option 43 set up on a specific scope but it can be quickly replicated to other scopes using the binary entry gathered from a dhcp dump via netshell. 
+If we want to use the Windows DHCP method connect to the windows server. On windows you have two options to deploy DHCP scopes the UI or PowerShell. We will deploy the scope via PowerShell. Paste the following into powershell to create the required DHCP scope:
+
+```
+Add-DhcpServerv4Scope -Name "DNAC-Templates-Lab" -StartRange 192.168.5.1 -EndRange 192.168.5.254 -SubnetMask 255.255.255.0 -LeaseDuration 6.00:00:00 -SuperScope "PnP Onboarding"
+Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -Router 192.168.5.1 
+
+Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -DnsServer 10.10.0.250 -DnsDomain "dcloud.cisco.com"
+Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -OptionId 43 -Value ([System.Text.Encoding]::ASCII.GetBytes("5A1N;B2;K4;I10.10.0.20;J80"))
+```
 
 steps to be added with documentation
 
