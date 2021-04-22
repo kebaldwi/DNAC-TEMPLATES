@@ -11,8 +11,10 @@ Another important consideration is that part of a typical configuration would in
 
 As a guidance try and use Design settings for as much of the configurations as you can leaving Templates light and nimble for configurations which might change ongoing.
 
-## DNA Center Design Preparation
-Before DNA Center can automate the deployment we have to do a couple of tasks to prepare:
+## Lab Section 1 - DNA Center Design Preparation
+While a more extensive set of settings can be built out for a deployment we will limit the configuration to the minimal necessary to perform this step. We will augment the Design Settings during the **DayN Templating Lab** to include others that may be required.
+
+Before DNA Center can automate the deployment we have to do a couple of tasks to prepare: 
 
 1. The **Hierarchy** within DNA Center. This will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. There are plenty of blogs and guides about how to do this. **(required)**
 2. **Network Settings** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings and configurations that can be pushed **(optional)**:
