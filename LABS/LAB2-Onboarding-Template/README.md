@@ -17,9 +17,10 @@ While a more extensive set of settings can be built out for a deployment we will
 Before DNA Center can automate the deployment we have to do a couple of tasks to prepare: 
 
 ### Step 1 - Hierarchy
-1. The **Hierarchy** within DNA Center. This will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. There are plenty of blogs and guides about how to do this. **(required)**
+1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step.
+2. Although you can manually set up the hierarchy we will use an automation script to implement the hierarchy.
 ### Step 2 - Network Settings
-2. **Network Settings** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings and configurations that can be pushed **(optional)**:
+1. **Network Settings** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings and configurations that can be pushed **(optional)**:
    1. **AAA Servers** - *both Network Administration and Client/Endpoint Authentication*
    2. **DHCP Servers** - *DHCP Server Addresses for Vlan Interfaces for example*
    3. **DNS Servers** - *both the Domain Suffix and the DNS servers used for lookups*
@@ -42,6 +43,60 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 Once you have built your onboarding template you then have to let **DNA Center** know where you want to use the template. We will assume at this point you have already built out the template for use. You would then follow the following steps:
 ### Step 1 - Create an Onboarding Template
 Create an Onboarding Template in the Templating tool using the [Template](./templates/Platinum-Onboarding.txt) located within this lab or if using DNAC 2.1.X and upward importing the template using this xml file.
+
+The Onboarding template has the minimal configuration to bring up device connectivity withe DNAC. 
+
+```
+##<------Onboarding-Template------->
+##To be used for onboarding when using Day N Templates
+##Define Variables provision with vlan1 and 
+!
+##MTU Adjust (if required)
+##system mtu 9100
+!
+##Set hostname
+hostname ${Hostname}
+!
+##Set VTP and VLAN for onboarding
+vtp domain ${VtpDomain}
+vtp mode transparent
+!
+vlan ${MgmtVlan}
+!
+interface Te1/1/1
+shut
+switchport trunk allowed vlan add ${MgmtVlan}
+no shut
+!
+##Set up managment vlan ${MgmtVlan}
+interface Vlan ${MgmtVlan}
+ip address ${SwitchIP} ${SubnetMask}
+no ip redirects
+no ip proxy-arp
+no shut
+!
+ip default-gateway ${Gateway}
+!
+##Set Source of Management Traffic
+ip domain lookup source-interface Vlan ${MgmtVlan}
+ip http client source-interface Vlan ${MgmtVlan}
+ip ftp source-interface Vlan ${MgmtVlan}
+ip tftp source-interface Vlan ${MgmtVlan}
+ip ssh source-interface Vlan ${MgmtVlan}
+ip radius source-interface Vlan ${MgmtVlan}
+logging source-interface Vlan ${MgmtVlan}
+snmp-server trap-source Vlan ${MgmtVlan}
+ntp source Vlan ${MgmtVlan}
+!
+##Disable Vlan 1
+interface vlan 1
+shutdown
+!
+```
+
+It will set up static addressing and hostname entries along with updating management source interfaces for management connectivity.
+
+
 ### Step 2 - Create a Network Profile
 1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile** 
    ![json](images/NetworkProfile.png?raw=true "Import JSON")
