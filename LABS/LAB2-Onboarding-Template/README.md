@@ -16,7 +16,9 @@ While a more extensive set of settings can be built out for a deployment we will
 
 Before DNA Center can automate the deployment we have to do a couple of tasks to prepare: 
 
+### Step 1 - Hierarchy
 1. The **Hierarchy** within DNA Center. This will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. There are plenty of blogs and guides about how to do this. **(required)**
+### Step 2 - Network Settings
 2. **Network Settings** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings and configurations that can be pushed **(optional)**:
    1. **AAA Servers** - *both Network Administration and Client/Endpoint Authentication*
    2. **DHCP Servers** - *DHCP Server Addresses for Vlan Interfaces for example*
@@ -28,15 +30,19 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
    8. **Timezone** - *Timezone to be used in logging*
    9. **Message of Day** - *Banner displayed when you log into a device*
    ![json](images/DesignSettings.png?raw=true "Import JSON")
+### Step 3 - Device Credentials
 3. **Device Credentials** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the credentials and configurations that can be pushed **(required)**:
    1. **CLI Credentials** - *Usernames, Passwords and Enable Passwords*
    2. **SNMP Credentials** - *SNMP v1, v2 for both Read and Write as well as SNMP v3*
    3. **HTTP(S) Credentials** - *HTTP(S) usernames and passwords for both Read and Write Access*
+### Step 4 - Image Repository
 4. **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. You then indicate whether the file is Cisco or 3rd Party and click import. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. Select the image and mark it as golden for PnP to use it. **(required)**
 
-## Onboarding Template Preparation
+## Lab Section 2 - DNA Center Onboarding Template Preparation
 Once you have built your onboarding template you then have to let **DNA Center** know where you want to use the template. We will assume at this point you have already built out the template for use. You would then follow the following steps:
-   1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile** 
+### Step 1 - Create an Onboarding Template
+### Step 2 - Create a Network Profile
+1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile** 
    ![json](images/NetworkProfile.png?raw=true "Import JSON")
    2. Select the type of device (ie Switching)
    3. Profile name
@@ -59,7 +65,7 @@ If the Network Profile is already deployed it can be edited at a later date to a
    4. Save the network profile
    5. Assign the network profile to the hierarchy
 
-## Claiming and Provisioning
+## Lab Section 3 - Claiming and Onboarding
 At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find DNA Center and land in the plug n play set of the devices section within the provisioning page.
 
 At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
@@ -79,7 +85,6 @@ If you populate the UI with settings those parameters should **not** be in your 
 
 ## Automating Claiming and Provisioning
 While it is possible to click through the claiming and process, for bulk deployments its important to be able to address that as well. With DNAC after the templates are built and assigned to the network profile and assigned to a site they may be referenced and used by uploading a csv file to DNA Center via REST API.
-
 
 ## Summary
 The next step 
