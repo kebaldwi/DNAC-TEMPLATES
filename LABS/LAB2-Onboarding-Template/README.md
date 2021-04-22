@@ -42,7 +42,7 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 ## Lab Section 2 - DNA Center Onboarding Template Preparation
 Once you have built your onboarding template you then have to let **DNA Center** know where you want to use the template. We will assume at this point you have already built out the template for use. You would then follow the following steps:
 ### Step 1 - Create an Onboarding Template
-Create an Onboarding Template in the Templating tool using the [Template](./templates/Platinum-Onboarding.txt) located within this lab or if using DNAC 2.1.X and upward importing the template using this xml file.
+Create an Onboarding Template in the Templating tool using the [Template](./templates/Platinum-Onboarding.txt) located within this lab. If using DNAC 2.1.X and upward importing the Template and settings as already built using the [JSON](./templates/Platinum_Onboarding_Template.json) file.
 
 The Onboarding template has the minimal configuration to bring up device connectivity withe DNAC. 
 
@@ -94,8 +94,7 @@ shutdown
 !
 ```
 
-It will set up static addressing and hostname entries along with updating management source interfaces for management connectivity.
-
+It will set up static addressing and hostname entries along with updating management source interfaces for management connectivity. This file is transfered to the target device in a single file as opposed to linne by line configuration which accomodates the changes in network connectivity which may be lost when iterating line by line.
 
 ### Step 2 - Create a Network Profile
 1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile** 
