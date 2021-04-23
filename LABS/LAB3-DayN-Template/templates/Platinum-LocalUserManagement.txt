@@ -1,0 +1,11 @@
+## Replace all "$" in passwords with ${d} to avoid all $ being variables
+##set ($d = "$") (remove second # if required)
+username user1 secret password1
+username user2 secret password2
+username user3 secret password3
+username user4 secret password4
+username user5 secret password5
+username user6 secret password6
+username user7 secret password7
+username user8 secret password8
+username user9 secret password9

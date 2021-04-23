@@ -1,0 +1,14 @@
+## ACL list for switch access and SNMP
+ip access-list standard 12
+ 10 permit 172.30.255.41
+ 20 permit 172.30.255.34
+ 30 permit 172.30.251.129
+ 40 permit 172.17.64.64 0.0.0.63
+ 50 permit 172.17.65.192 0.0.0.31
+ 60 permit 172.17.66.0 0.0.0.255
+ip access-list standard 13
+ 10 permit 172.17.64.64 0.0.0.63
+ 20 permit 172.17.65.192 0.0.0.31
+ 30 permit 172.17.66.0 0.0.0.255
+ 40 permit 172.17.84.0 0.0.0.255
+ 50 permit 172.17.85.0 0.0.0.255
