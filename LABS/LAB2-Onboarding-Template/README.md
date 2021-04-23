@@ -31,7 +31,7 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
    7. **NTP Servers** - *NTP Server Addresses*
    8. **Timezone** - *Timezone to be used in logging*
    9. **Message of Day** - *Banner displayed when you log into a device*
-   ![json](images/DesignSettings.png?raw=true "Import JSON")
+   ![json](../../images/DesignSettings.png?raw=true "Import JSON")
 
 ### Step 3 - Device Credentials
 3. **Device Credentials** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the credentials and configurations that can be pushed **(required)**:
