@@ -19,8 +19,9 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 ### Step 1 - Hierarchy
 1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step.
 2. Although you can manually set up the hierarchy we will use an automation script to implement the hierarchy.
+
 ### Step 2 - Network Settings
-1. **Network Settings** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings and configurations that can be pushed **(optional)**:
+1. **Network Settings** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings and configurations that we will push as part of this lab **(required)**:
    1. **AAA Servers** - *both Network Administration and Client/Endpoint Authentication*
    2. **DHCP Servers** - *DHCP Server Addresses for Vlan Interfaces for example*
    3. **DNS Servers** - *both the Domain Suffix and the DNS servers used for lookups*
@@ -31,6 +32,7 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
    8. **Timezone** - *Timezone to be used in logging*
    9. **Message of Day** - *Banner displayed when you log into a device*
    ![json](images/DesignSettings.png?raw=true "Import JSON")
+
 ### Step 3 - Device Credentials
 3. **Device Credentials** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the credentials and configurations that can be pushed **(required)**:
    1. **CLI Credentials** - *Usernames, Passwords and Enable Passwords*
@@ -41,6 +43,7 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 
 ## Lab Section 2 - DNA Center Onboarding Template Preparation
 Once you have built your onboarding template you then have to let **DNA Center** know where you want to use the template. We will assume at this point you have already built out the template for use. You would then follow the following steps:
+
 ### Step 1 - Create an Onboarding Template
 Create an Onboarding Template in the Templating tool using the [Template](./templates/Platinum-Onboarding.txt) located within this lab. If using DNAC 2.1.X and upward importing the Template and settings as already built using the [JSON](./templates/Platinum_Onboarding_Template.json) file.
 
@@ -98,31 +101,21 @@ It will set up static addressing and hostname entries along with updating manage
 
 ### Step 2 - Create a Network Profile
 1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile** 
-   ![json](images/NetworkProfile.png?raw=true "Import JSON")
+   ![json](../../images/NetworkProfile.png?raw=true "Import JSON")
    2. Select the type of device (ie Switching)
    3. Profile name
-   ![json](images/NetworkProfileTabs.png?raw=true "Import JSON")
+   ![json](../../images/NetworkProfileTabs.png?raw=true "Import JSON")
    4. On the Onboarding Template page select device type **(required)**
-   ![json](images/OnboardingDevice.png?raw=true "Import JSON")
+   ![json](../../images/OnboardingDevice.png?raw=true "Import JSON")
    5. On the Onboarding Template page select the template(s) to be used for onboarding **(required)**
-   ![json](images/OnboardingTemplate.png?raw=true "Import JSON")
-   6. On the DayN Template page select device type **(optional)** (for more info [DayN Templates](./DayN.md))
-   ![json](images/DayNtemplates.png?raw=true "Import JSON")
-   7. On the DayN Template page select the template(s) to be used for Day N provisioning **(optional)** (for more info [DayN Templates](./DayN.md))
-   8. Save the network profile
-   9. Assign the network profile to the hierarchy
-
-If the Network Profile is already deployed it can be edited at a later date to add Onboarding templates by simply:
-   1. Click edit next to the network profile Under *Design> Network Profiles*  
-   2. On the Onboarding Template page select device type **(required)**
-   ![json](images/DayNtemplates.png?raw=true "Import JSON")
-   3. On the Onboarding Template page select the template(s) to be used for onboarding **(required)**
-   4. Save the network profile
-   5. Assign the network profile to the hierarchy
+   ![json](../../images/OnboardingTemplate.png?raw=true "Import JSON")
+   6. Save the network profile
+   7. Assign the network profile to the hierarchy
 
 ## Lab Section 3 - Claiming and Onboarding
 At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find DNA Center and land in the plug n play set of the devices section within the provisioning page.
 
+### Step 1 - Claiming the device
 At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
 
    1. Put a checkmark next to the device to be claimed
@@ -142,7 +135,7 @@ If you populate the UI with settings those parameters should **not** be in your 
 While it is possible to click through the claiming and process, for bulk deployments its important to be able to address that as well. With DNAC after the templates are built and assigned to the network profile and assigned to a site they may be referenced and used by uploading a csv file to DNA Center via REST API.
 
 ## Summary
-The next step 
+The next step will be to build DayN Templates for the switches to be pushed out to the various devices in the network infrastructure. 
 
 ## Feedback
 If you found this set of Labs helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
