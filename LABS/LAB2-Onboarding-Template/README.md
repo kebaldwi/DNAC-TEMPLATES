@@ -111,6 +111,9 @@ It will set up static addressing and hostname entries along with updating manage
    ![json](../../images/OnboardingTemplate.png?raw=true "Import JSON")
    6. Save the network profile
    7. Assign the network profile to the hierarchy
+   ![json](./images/NetworkProfile-AssignSite.png?raw=true "Import JSON")
+   9. Select the sites to apply the profile within the hierarchy and click save
+   ![json](./images/NetworkProfileSelectSite.png?raw=true "Import JSON")
 
 ## Lab Section 3 - Claiming and Onboarding
 At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find DNA Center and land in the plug n play set of the devices section within the provisioning page.
