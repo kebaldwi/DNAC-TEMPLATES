@@ -18,7 +18,27 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 
 ### Step 1 - Hierarchy
 1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step.
-2. Although you can manually set up the hierarchy we will use an automation script to implement the hierarchy.
+2. Although you can manually set up the hierarchy we will use an automation script to implement the hierarchy via **dnacentercli** part of the ***DNA Center SDK**
+
+```
+export DNA_CENTER_USERNAME='devnetuser'
+export DNA_CENTER_PASSWORD='Cisco123!'
+export DNA_CENTER_BASE_URL='https://dnac.base2hq.com'
+
+# optional needs to be False if self signed certificate
+export DNA_CENTER_VERIFY="False"
+
+
+# optional.  This is the default
+export DNA_CENTER_VERSION="2.1.1"
+
+# Create Sites
+dnacentercli sites create-site --type "area" --site '{ "area" : { "name":"DNAC Template Lab","parentName":"Global"}}' --headers '{"__runsync" : true }'
+
+dnacentercli sites create-site --type "building" --site '{ "building" : { "name":"Building","parentName":"Global/DNAC Template Lab","address":"Cisco Building 24, 510 McCarthy Blvd, Milpitas, CA 95035"} }' --headers '{"__runsync" : true }'
+
+dnacentercli sites create-site --type "floor" --site '{ "floor" : { "name":"Floor1","parentName":"Global/DNAC Template Lab/Building","rfModel":"Cubes And Walled Offices","width":100,"length":100,"height":10} }' --headers '{"__runsync" : true }'
+```
 
 ### Step 2 - Network Settings
 1. **Network Settings** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings and configurations that we will push as part of this lab **(required)**:
