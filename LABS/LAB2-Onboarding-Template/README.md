@@ -21,23 +21,15 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 2. Although you can manually set up the hierarchy we will use an automation script to implement the hierarchy via **dnacentercli** part of the ***DNA Center SDK**
 
 ```
-export DNA_CENTER_USERNAME='devnetuser'
-export DNA_CENTER_PASSWORD='Cisco123!'
-export DNA_CENTER_BASE_URL='https://dnac.base2hq.com'
-
-# optional needs to be False if self signed certificate
-export DNA_CENTER_VERIFY="False"
-
-
-# optional.  This is the default
-export DNA_CENTER_VERSION="2.1.1"
-
 # Create Sites
-dnacentercli sites create-site --type "area" --site '{ "area" : { "name":"DNAC Template Lab","parentName":"Global"}}' --headers '{"__runsync" : true }'
+dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 sites create-site --type "area" --site '{ "area" : { "name":"DNAC Template Lab","parentName":"Global"}}' --headers '{"__runsync" : true }'
 
-dnacentercli sites create-site --type "building" --site '{ "building" : { "name":"Building","parentName":"Global/DNAC Template Lab","address":"Cisco Building 24, 510 McCarthy Blvd, Milpitas, CA 95035"} }' --headers '{"__runsync" : true }'
+dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 sites create-site --type "building" --site '{ "building" : { "name":"Building","parentName":"Global/DNAC Template Lab","address":"Cisco Building 24, 510 McCarthy Blvd, Milpitas, CA 95035"} }' --headers '{"__runsync" : true }'
 
-dnacentercli sites create-site --type "floor" --site '{ "floor" : { "name":"Floor1","parentName":"Global/DNAC Template Lab/Building","rfModel":"Cubes And Walled Offices","width":100,"length":100,"height":10} }' --headers '{"__runsync" : true }'
+dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 sites create-site --type "floor" --site '{ "floor" : { "name":"Floor1","parentName":"Global/DNAC Template Lab/Building","rfModel":"Cubes And Walled Offices","width":100,"length":100,"height":10} }' --headers '{"__runsync" : true }'
+
+# Create Credentials
+dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-device-credentials --settings '{"cliCredential":[{"description":"netadmin","username":"netadmin","password": "C1sco12345","enablePassword": "C1sco12345"}], "snmpV2cRead":[{"description":"RO","readCommunity":"ro"}],"snmpV2cWrite":[{"description":"RW","writeCommunity":"rw"}] }' --headers '{"__runsync" : true }'
 ```
 
 ### Step 2 - Network Settings
