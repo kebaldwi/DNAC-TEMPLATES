@@ -30,6 +30,9 @@ dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p
 
 # Create Credentials
 dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-device-credentials --settings '{"cliCredential":[{"description":"netadmin","username":"netadmin","password": "C1sco12345","enablePassword": "C1sco12345"}], "snmpV2cRead":[{"description":"RO","readCommunity":"ro"}],"snmpV2cWrite":[{"description":"RW","writeCommunity":"rw"}] }' --headers '{"__runsync" : true }'
+
+# Create Global Settings
+dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-network --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" --settings '{ "dhcpServer":["198.18.133.1"], "syslogServer":{"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "snmpServer": {"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "netflowcollector":{"ipAddress":"198.18.129.1","port":6007}, "ntpServer":["198.18.133.1"], "timezone":"EST5EDT" }'  --headers '{"__runsync" : true }'
 ```
 
 ### Step 2 - Network Settings
