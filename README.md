@@ -42,4 +42,4 @@ Specific examples of Templates are available in the following folders:
 
 If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-[![Analytics](https://ga-beacon.appspot.com/G-ERHRBEF7E0/DNAC-TEMPLATES/README.MD)](hhttps://github.com/kebaldwi/DNAC-TEMPLATES/#dnac-templates-)
+[![Analytics](https://www.googletagmanager.com/gtag/js?id=G-ERHRBEF7E0)](https://github.com/kebaldwi/DNAC-TEMPLATES/#dnac-templates-)
