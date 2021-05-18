@@ -24,6 +24,31 @@ This section will explain which lab to utilize within the **DCLOUD** environment
 ### DCLOUD Labs
 This lab environment has been tested on the following DCLOUD session: [Cisco Enterprise Networks Hardware Sandbox v1.1](https://dcloud2-rtp.cisco.com/content/demo/717575?returnPathTitleKey=content-view)
 
+The DCLOUD session includes the following equipment:
+
+Virtual Machines:
+
+    DNA Center 2.1.2.5
+    Identity Services Engine (ISE) 3.0 (Not Configured)
+    Stealthwatch 7.1
+    FlowCollector 7.1
+    Cisco Prime Infrastructure 3.9
+    Wireless LAN Controller - C9800 running IOS-XE Amsterdam 17.3.3 code.
+    Windows 10 Jump Host 
+    Windows Server 2019 - Can be configured to provide identity, DHCP, DNS, etc.
+    Windows 10 Clients 
+
+Hardware Devices:
+
+    ISR 4451 Router - 17.3.3 IOS-XE Code
+    Catalyst 9300 Switch - 17.3.3 IOS-XE Code with Embedded Wireless Controller (EWC) and ThousandEyes Enterprise Agent
+    Catalyst 3850 Switch - 16.12.5 IOS-XE Code
+    4800 Access Points
+    Silex Controller (2 NIC's)
+
+The lab envionment that is available is depicted here:
+![json](./LAB1-PNP-PREP/images/DCLOUD_Topology.png?raw=true "Import JSON")
+
 ## Disclaimer
 Various labs are designed for use in the **DCLOUD** environment but can be easily modified for use elsewhere. What is important to realize is the impact for each type of test. For instance in the ***PnP Preparation*** lab we go through discovery methods such as ***option 43*** and ***DNS Discovery***. If we were to use the DHCP option 43 and place that in the server options on the DHCP server then it would affect multiple scopes. **Care** is required therefore to ensure you do not get unexpected results. Similarly with ***DNS Discovery*** if the sub domain used was available to all devices then more than one device would be able to discover DNA Center. This may be good for production in the future but detrimental during testing.
 
