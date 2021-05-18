@@ -2,6 +2,9 @@
 ## Overview
 This Lab is designed to be a standalone lab ot be used either in the DCLOUD environment or as part of the setup for a Proof ov Concept at a customers lab. This information may also help from a deployment or implementation point of view to ensure that all the necessary steps are complete prior to onboarding any devices within DNA Center.
 
+We will be utilizing the lab in this manner:
+![json](./images/DCLOUD_Topology_PnPLab.png?raw=true "Import JSON")
+
 ## General Information
 As you may recall in the informational sections of this repository we set for the various methods of discovery for a device and the preliminary things required for true zero touch provisioning. Those concepts will be set up in this lab so as to ensure a successful connection to DNA Center.
 
