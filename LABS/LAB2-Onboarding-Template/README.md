@@ -47,6 +47,7 @@ dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p
    5. **Netflow Collector Servers** 
    6. **NTP Servers**
    7. **Timezone**
+2. Paste the lines below and refresh the Network Settings page to watch the changes.
 
 ```
 # Create Global Settings
@@ -55,6 +56,8 @@ dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p
 
 ### Step 3 - Device Credentials
 1. **Device Credentials** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the credentials and configurations that can be pushed **(required)**:
+   1. **CLI Credentials** 
+   2. **SNMP Read and Write Credentials**
 2. Paste the lines below one at a time and refresh the Credentials page to watch the changes.
 
 ```
