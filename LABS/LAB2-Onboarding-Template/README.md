@@ -18,7 +18,8 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 
 ### Step 1 - Hierarchy
 1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step.
-2. Although you can manually set up the hierarchy we will use an automation script to implement the hierarchy via **dnacentercli** part of the ***DNA Center SDK**
+2. Although you can manually set up the hierarchy we will use an automation script to implement the hierarchy via **dnacentercli** part of the ***DNA Center SDK*** To do this we will make use of the terminal application in the Windows workstation and create a python virtual environment. Once the Python virtual environment is running we will install the DNA Center SDK via pip install and then install the DNA Center CLI tool similarly.
+3. Once the tools are installed paste the lines below one at a time and refresh the hierarchy page to watch the changes.
 
 ```
 # Create Sites
@@ -39,22 +40,30 @@ dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p
 
 ### Step 2 - Network Settings
 1. **Network Settings** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings and configurations that we will push as part of this lab **(required)**:
-   1. **AAA Servers** - *both Network Administration and Client/Endpoint Authentication*
-   2. **DHCP Servers** - *DHCP Server Addresses for Vlan Interfaces for example*
-   3. **DNS Servers** - *both the Domain Suffix and the DNS servers used for lookups*
-   4. **SYSLOG Servers** - *the servers to which logging will be sent*
-   5. **SNMP Servers** - *the servers to which SNMP traps will be sent and or that will poll the device*
-   6. **Netflow Collector Servers** - *the server to which Netflow is sent*
-   7. **NTP Servers** - *NTP Server Addresses*
-   8. **Timezone** - *Timezone to be used in logging*
-   9. **Message of Day** - *Banner displayed when you log into a device*
-   ![json](../../images/DesignSettings.png?raw=true "Import JSON")
+   1. **DHCP Servers**
+   2. **DNS Servers**
+   3. **SYSLOG Servers** 
+   4. **SNMP Servers** 
+   5. **Netflow Collector Servers** 
+   6. **NTP Servers**
+   7. **Timezone**
+
+```
+# Create Global Settings
+dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-network --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" --settings '{ "dhcpServer":["198.18.133.1"], "syslogServer":{"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "snmpServer": {"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "netflowcollector":{"ipAddress":"198.18.129.1","port":6007}, "ntpServer":["198.18.133.1"], "timezone":"EST5EDT" }'  --headers '{"__runsync" : true }'
+```
 
 ### Step 3 - Device Credentials
-3. **Device Credentials** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the credentials and configurations that can be pushed **(required)**:
-   1. **CLI Credentials** - *Usernames, Passwords and Enable Passwords*
-   2. **SNMP Credentials** - *SNMP v1, v2 for both Read and Write as well as SNMP v3*
-   3. **HTTP(S) Credentials** - *HTTP(S) usernames and passwords for both Read and Write Access*
+1. **Device Credentials** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the credentials and configurations that can be pushed **(required)**:
+2. Paste the lines below one at a time and refresh the Credentials page to watch the changes.
+
+```
+# Create Credentials
+dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-device-credentials --settings '{"cliCredential":[{"description":"netadmin","username":"netadmin","password": "C1sco12345","enablePassword": "C1sco12345"}], "snmpV2cRead":[{"description":"RO","readCommunity":"ro"}],"snmpV2cWrite":[{"description":"RW","writeCommunity":"rw"}] }' --headers '{"__runsync" : true }'
+
+dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings assign-credentials-to-site --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" '{ "cliId": "netadmin", "snmpV2ReadId": "RO", "snmpV2WriteId": "RW" }' --headers '{"__runsync" : true }'
+```
+
 ### Step 4 - Image Repository
 4. **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. You then indicate whether the file is Cisco or 3rd Party and click import. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. Select the image and mark it as golden for PnP to use it. **(required)**
 
