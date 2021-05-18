@@ -1,10 +1,10 @@
 aaa new-model
 !
 aaa group server tacacs+ management
- server-private 172.17.203.13 key 7 040C5E53242455
- server-private 172.17.203.143 key 7 040C5E53242455
+ server-private 192.18.203.13 key cisco
+ server-private 192.18.203.143 key cisco
 !
-aaa authentication username-prompt "Authorized Username:"
+aaa authentication username-prompt "Username:"
 aaa authentication login default group management
 aaa authentication login admin group management local
 aaa authentication enable default group management enable
@@ -18,11 +18,11 @@ aaa accounting commands 1 default stop-only group management
 aaa accounting commands 15 default stop-only group management
 aaa accounting connection default start-stop group management
 !
-tacacs-server host 172.17.203.13
-tacacs-server host 172.17.203.143
+tacacs-server host 192.18.203.13
+tacacs-server host 192.18.203.143
 tacacs-server timeout 2
 tacacs-server directed-request
-tacacs-server key 7 01445351700E1F
+tacacs-server key cisco
 !
 mac address-table notification mac-move
 mac address-table notification threshold
