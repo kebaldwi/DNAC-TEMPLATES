@@ -212,7 +212,7 @@ ping pnpserver.dcloud.cisco.com
 The following is the output expected from 3.1a and 3.1b
 
 <p align="center">
-  <img src="./images/DNACenterDNStests.png" height="100" width="50" title="hover text">
+  <img src="./images/DNACenterDNStests.png" height="300" width="500" title="hover text">
 </p>
 
 ![json](./images/DNACenterDNStests.png?raw=true "Import JSON")
