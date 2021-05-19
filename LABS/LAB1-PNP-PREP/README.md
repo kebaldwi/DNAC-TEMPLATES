@@ -211,7 +211,7 @@ ping pnpserver.dcloud.cisco.com
 
 The following is the output expected from 3.1a and 3.1b
 
-![json](./images/DNACenterDNStests.png?raw=true "Import JSON")
+![json](./images/DNACenterDNStests.png?height=300&width=500&raw=true "Import JSON")
 
 At this point the environment should be set up to onboard devices within Vlan 5 using the network address ***192.168.5.0/24*** utilizing either ***option 43*** or ***DNS Discovery***.
 
