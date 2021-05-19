@@ -18,6 +18,24 @@ pnp startup-vlan 100
 
 The target switch will then set up a separate vlan for management. This command will program the target switches port connected with a trunk and automatically add the vlan and SVI to the target switch making that vlan ready to accept a DHCP address. This is available on switches running 16.6 code or greater as upstream neighbors. Older switches or upstream devices that are not capable of running the command should be onboarded in vlan 1 and the vlan modified as part of the onboarding process.
 
+The Target switch will typically be connected to either a single port or as part of a port channel. The port where the Target switch will be connected needs for this lab to be connected as a trunk. 
+
+```
+interface Port-channel1
+switchport trunk native vlan 5
+switchport mode dynamic desirable
+no port-channel standalone-disable
+!
+interface range gi 1/0/10-11
+description PnP Test Environment to Cataylist 9300
+switchport mode dynamic desirable
+switchport trunk allowed vlan 5
+channel-protocol lacp
+channel-group 1 mode passive
+```
+
+If a port channel is used initially, then you want to ensure that the port channel can operate as a single link within the bundle and for that reason use passive methods for building the port channel bundles on both the Target and Upstream Neighbor for maximum flexibility. Additionally add the **no port-channel standalone-disable** command to ensure the switch does not automatically disable the port channel if it does not come up properly
+
 ## DHCP
 So we need a DHCP scope to supply the address within the management network temporarily in order to complete the configuration and onboarding. The scope should be configured so as to offer addresses from part of the range of addresses not used. It also can be a reservation as DHCP servers can reserve addresses for specific MAC addresses. 
 
