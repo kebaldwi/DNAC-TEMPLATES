@@ -16,7 +16,7 @@ While a more extensive set of settings can be built out for a deployment we will
 
 Before DNA Center can automate the deployment we have to do a couple of tasks to prepare. Please log into the DNA Center using a browser within the Windows Jump host and browse to ***https://198.18.129.1***. Use the credentials of username: ***admin*** password: ***C1sco12345*** within the DCLOUD environment.
 
-### Step 1 - Hierarchy
+### Step 1 - ***Hierarchy***
 1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step.
 2. Although you can manually set up the hierarchy we will use an automation script to implement the hierarchy via **dnacentercli** part of the ***DNA Center SDK*** To do this we will make use of the terminal application in the Windows workstation and create a python virtual environment. Once the Python virtual environment is running we will install the DNA Center SDK via pip install and then install the DNA Center CLI tool similarly.
 
@@ -47,7 +47,7 @@ dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p
 dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-network --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" --settings '{ "dhcpServer":["198.18.133.1"], "syslogServer":{"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "snmpServer": {"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "netflowcollector":{"ipAddress":"198.18.129.1","port":6007}, "ntpServer":["198.18.133.1"], "timezone":"EST5EDT" }'  --headers '{"__runsync" : true }'
 ```
 
-### Step 2 - Network Settings
+### Step 2 - ***Network Settings***
 1. **Network Settings** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings and configurations that we will push as part of this lab **(required)**:
    1. ***DHCP Servers***
    2. ***DNS Servers***
@@ -63,7 +63,7 @@ dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p
 dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-network --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" --settings '{ "dhcpServer":["198.18.133.1"], "syslogServer":{"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "snmpServer": {"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "netflowcollector":{"ipAddress":"198.18.129.1","port":6007}, "ntpServer":["198.18.133.1"], "timezone":"EST5EDT" }'  --headers '{"__runsync" : true }'
 ```
 
-### Step 3 - Device Credentials
+### Step 3 - ***Device Credentials***
 1. **Device Credentials** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the credentials and configurations that can be pushed **(required)**:
    1. ***CLI Credentials*** 
    2. ***SNMP Read and Write Credentials***
@@ -76,7 +76,7 @@ dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p
 dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings assign-credentials-to-site --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" '{ "cliId": "netadmin", "snmpV2ReadId": "RO", "snmpV2WriteId": "RW" }' --headers '{"__runsync" : true }'
 ```
 
-### Step 4 - Image Repository
+### Step 4 - ***Image Repository***
 1. **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. You then indicate whether the file is Cisco or 3rd Party and click import. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. Select the image and mark it as golden for PnP to use it. **(required)**
 
 Upload image located here...
@@ -84,7 +84,7 @@ Upload image located here...
 ## Lab Section 2 - DNA Center Onboarding Template Preparation
 Once you have built your onboarding template you then have to let **DNA Center** know where you want to use the template. We will assume at this point you have already built out the template for use. You would then follow the following steps:
 
-### Step 1 - Create an Onboarding Template
+### Step 1 - ***Create an Onboarding Template***
 Create an Onboarding Template in the Templating tool using the [Template](./templates/Platinum-Onboarding.txt) located within this lab. If using DNAC 2.1.X and upward importing the Template and settings as already built using the [JSON](./templates/Platinum_Onboarding_Template.json) file.
 
 The Onboarding template has the minimal configuration to bring up device connectivity withe DNAC. 
@@ -108,16 +108,23 @@ vlan ${MgmtVlan}
 !
 ##
 interface range gi 1/0/10-11
-shut 
-switchport trunk allowed vlan add ${MgmtVlan}
-no shut
+ shut 
+ switchport trunk allowed vlan add ${MgmtVlan}
+ channel-protocol lacp
+ channel-group 1 mode passive
+ no shut
+!
+interface Port-channel1
+ switchport trunk native vlan ${MgmtVlan}
+ switchport mode trunk
+ no port-channel standalone-disable
 !
 ##Set up managment vlan ${MgmtVlan}
 interface Vlan ${MgmtVlan}
-ip address ${SwitchIP} ${SubnetMask}
-no ip redirects
-no ip proxy-arp
-no shut
+ ip address ${SwitchIP} ${SubnetMask}
+ no ip redirects
+ no ip proxy-arp
+ no shut
 !
 ip default-gateway ${Gateway}
 !
@@ -134,13 +141,13 @@ ntp source Vlan ${MgmtVlan}
 !
 ##Disable Vlan 1
 interface vlan 1
-shutdown
+ shutdown
 !
 ```
 
 It will set up static addressing and hostname entries along with updating management source interfaces for management connectivity. This file is transfered to the target device in a single file as opposed to linne by line configuration which accomodates the changes in network connectivity which may be lost when iterating line by line.
 
-### Step 2 - Create a Network Profile
+### Step 2 - ***Create a Network Profile***
    1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile** 
    
    ![json](../../images/NetworkProfile.png?raw=true "Import JSON")
@@ -170,7 +177,7 @@ It will set up static addressing and hostname entries along with updating manage
 ## Lab Section 3 - Claiming and Onboarding
 At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find DNA Center and land in the plug n play set of the devices section within the provisioning page.
 
-### Step 1 - Claiming the device
+### Step 1 - ***Claiming the device***
 At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
 
    1. Put a checkmark next to the device to be claimed
