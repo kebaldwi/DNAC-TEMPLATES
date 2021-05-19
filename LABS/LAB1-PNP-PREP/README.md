@@ -173,13 +173,20 @@ The DNS Zone will look like this in Windows DNS Administrative tool:
 The Target switch will typically be connected to either a single port or as part of a port channel. The port where the Target switch will be connected needs for this lab to be connected as a trunk. 
 
 ```
-interface gi 1/0/48
-description PnP Test Environment
-switchport mode trunk
+interface Port-channel1
+switchport trunk native vlan 5
+switchport mode dynamic desirable
+no port-channel standalone-disable
+!
+interface range gi 1/0/10-11
+description PnP Test Environment to Cataylist 9300
+switchport mode dynamic desirable
 switchport trunk allowed vlan 5
+channel-protocol lacp
+channel-group 1 mode passive
 ```
 
-If a port channel is used initially, then you want to ensure that the port channel can operate as a single link within the bundle and for that reason use passive methods for building the port channel bundles on both the Target and Upstream Neighbor for maximum flexibility.
+If a port channel is used initially, then you want to ensure that the port channel can operate as a single link within the bundle and for that reason use passive methods for building the port channel bundles on both the Target and Upstream Neighbor for maximum flexibility. Additionally add the **no port-channel standalone-disable** command to ensure the switch does not automatically disable the port channel if it does not come up properly
 
 ## Lab Section 4 - Testing
 Please use the testing for the DNS Discovery method used above
