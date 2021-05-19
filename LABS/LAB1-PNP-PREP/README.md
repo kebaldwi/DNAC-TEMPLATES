@@ -169,20 +169,31 @@ The DNS Zone will look like this in Windows DNS Administrative tool:
 ![json](./images/DNACenterDNSentries.png?raw=true "Import JSON")
 
 ## Lab Section 3 - Target Connectivity
-The Target switch will typically be connected to either a single port or as part of a port channel. The port where the Target switch will be connected needs for this lab to be connected as a trunk. 
+The Target switch will typically be connected as a trunk to either a single port or as part of a port channel. 
+
+If it is a single port connection to the target switch then use a simplified configuration; however, in this lab we will not be utilizing this method. An example provided here:
 
 ```
-interface Port-channel1
-switchport trunk native vlan 5
-switchport mode dynamic desirable
-no port-channel standalone-disable
-!
+interface range gi 1/0/10
+description PnP Test Environment to Cataylist 9300
+switchport mode trunk
+switchport trunk allowed vlan 5
+```
+
+The port where the Target switch will be connected needs for this lab to be connected as a trunk as part of a Port Channel. 
+
+```
 interface range gi 1/0/10-11
 description PnP Test Environment to Cataylist 9300
-switchport mode dynamic desirable
+switchport mode trunk
 switchport trunk allowed vlan 5
 channel-protocol lacp
 channel-group 1 mode passive
+!
+interface Port-channel1
+switchport trunk native vlan 5
+switchport mode trunk
+no port-channel standalone-disable
 ```
 
 If a port channel is used initially, then you want to ensure that the port channel can operate as a single link within the bundle and for that reason use passive methods for building the port channel bundles on both the Target and Upstream Neighbor for maximum flexibility. Additionally add the **no port-channel standalone-disable** command to ensure the switch does not automatically disable the port channel if it does not come up properly
@@ -190,7 +201,7 @@ If a port channel is used initially, then you want to ensure that the port chann
 ## Lab Section 4 - Testing
 Please use the testing for the DNS Discovery method used above
 
-### Step 4.1a - DNS Resolution Tests
+### Step 4.1a - ***DNS Resolution Tests***
 To test the environment to ensure its ready, we need to test a few things.
 
 First from a windows host use the nslookup command to resolve ***pnpserver.dcloud.cisco.com***. Connect to the windows workstation and within the search window search for CMD. Open the application and type the following command:
@@ -201,7 +212,7 @@ nslookup pnpserver.dcloud.cisco.com
 
 They should be presented with the following output or something similar which shows the resolution of the alias to the A host record entry which identifies the VIP address for the DNA Center Cluster.
 
-### Step 4.1b - DNS Resolution
+### Step 4.1b - ***DNS Resolution***
 Second we need to ensure the DNA Center responds on the VIP, so use the ping command within the CMD application window previously opened as follows:
 
 ```
