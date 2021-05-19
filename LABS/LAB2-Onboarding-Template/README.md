@@ -28,7 +28,7 @@ Open the terminal environment and past the following into the cli window.
 
 ```
 
-4. Once the tools are installed paste the lines below one at a time and refresh the hierarchy page to watch the changes.
+3. Once the tools are installed paste the lines below one at a time and refresh the hierarchy page to watch the changes.
 
 ```
 # Create Sites
@@ -77,7 +77,7 @@ dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p
 ```
 
 ### Step 4 - Image Repository
-4. **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. You then indicate whether the file is Cisco or 3rd Party and click import. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. Select the image and mark it as golden for PnP to use it. **(required)**
+1. **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. You then indicate whether the file is Cisco or 3rd Party and click import. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. Select the image and mark it as golden for PnP to use it. **(required)**
 
 Upload image located here...
 
@@ -141,19 +141,30 @@ shutdown
 It will set up static addressing and hostname entries along with updating management source interfaces for management connectivity. This file is transfered to the target device in a single file as opposed to linne by line configuration which accomodates the changes in network connectivity which may be lost when iterating line by line.
 
 ### Step 2 - Create a Network Profile
-1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile** 
+   1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile** 
+   
    ![json](../../images/NetworkProfile.png?raw=true "Import JSON")
+   
    2. Select the type of device (ie Switching)
    3. Profile name
+
    ![json](../../images/NetworkProfileTabs.png?raw=true "Import JSON")
+   
    4. On the Onboarding Template page select device type **(required)**
+   
    ![json](../../images/OnboardingDevice.png?raw=true "Import JSON")
+   
    5. On the Onboarding Template page select the template(s) to be used for onboarding **(required)**
+   
    ![json](../../images/OnboardingTemplate.png?raw=true "Import JSON")
+   
    6. Save the network profile
    7. Assign the network profile to the hierarchy
+   
    ![json](./images/NetworkProfile-AssignSite.png?raw=true "Import JSON")
+   
    9. Select the sites to apply the profile within the hierarchy and click save
+   
    ![json](./images/NetworkProfileSelectSite.png?raw=true "Import JSON")
 
 ## Lab Section 3 - Claiming and Onboarding
