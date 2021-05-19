@@ -25,9 +25,8 @@ vlan 5
 name "managment vlan"
 !
 int vlan 5 
-ip address 192.168.5.1 255.255.255.0
-!
-routing TBD
+ ip address 192.168.5.1 255.255.255.0
+ ip ospf 1 area 0
 !
 pnp startup-vlan 5
 ```
