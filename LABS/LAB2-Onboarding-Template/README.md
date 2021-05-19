@@ -1,6 +1,6 @@
 # Onboarding Templates [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 ## Overview
-This Lab is designed to be a standalone lab to address how to use Onboarding Templates within DNA Center to onboard network devices at Day Zero which is to say no configuration on the device whatsoever.
+This Lab is designed to be used after first completing lab 1 and has been created to address how to use Onboarding Templates within DNA Center to onboard network devices at Day Zero which is to say no configuration on the device whatsoever.
 
 In this section will go through the flow involved in creating a deployable Template from an IOS configuration script for a Catalyst switch linking it to a Switch profile and deploy it through DNAC using Plug and Play workflows.
 
@@ -14,12 +14,21 @@ As a guidance try and use Design settings for as much of the configurations as y
 ## Lab Section 1 - DNA Center Design Preparation
 While a more extensive set of settings can be built out for a deployment we will limit the configuration to the minimal necessary to perform this step. We will augment the Design Settings during the **DayN Templating Lab** to include others that may be required.
 
-Before DNA Center can automate the deployment we have to do a couple of tasks to prepare: 
+Before DNA Center can automate the deployment we have to do a couple of tasks to prepare. Please log into the DNA Center using a browser within the Windows Jump host and browse to ***https://198.18.129.1***. Use the credentials of username: ***admin*** password: ***C1sco12345*** within the DCLOUD environment.
 
 ### Step 1 - Hierarchy
 1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step.
 2. Although you can manually set up the hierarchy we will use an automation script to implement the hierarchy via **dnacentercli** part of the ***DNA Center SDK*** To do this we will make use of the terminal application in the Windows workstation and create a python virtual environment. Once the Python virtual environment is running we will install the DNA Center SDK via pip install and then install the DNA Center CLI tool similarly.
-3. Once the tools are installed paste the lines below one at a time and refresh the hierarchy page to watch the changes.
+
+Open the terminal environment and past the following into the cli window.
+
+```
+
+
+
+```
+
+4. Once the tools are installed paste the lines below one at a time and refresh the hierarchy page to watch the changes.
 
 ```
 # Create Sites
@@ -70,6 +79,8 @@ dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p
 ### Step 4 - Image Repository
 4. **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. You then indicate whether the file is Cisco or 3rd Party and click import. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. Select the image and mark it as golden for PnP to use it. **(required)**
 
+Upload image located here...
+
 ## Lab Section 2 - DNA Center Onboarding Template Preparation
 Once you have built your onboarding template you then have to let **DNA Center** know where you want to use the template. We will assume at this point you have already built out the template for use. You would then follow the following steps:
 
@@ -95,8 +106,9 @@ vtp mode transparent
 !
 vlan ${MgmtVlan}
 !
-interface Te1/1/1
-shut
+##
+interface range gi 1/0/10-11
+shut 
 switchport trunk allowed vlan add ${MgmtVlan}
 no shut
 !
