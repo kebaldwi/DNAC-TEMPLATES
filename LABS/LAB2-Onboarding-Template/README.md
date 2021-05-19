@@ -77,17 +77,20 @@ dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p
 ```
 
 ### Step 4 - ***Image Repository***
-1. **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. You then indicate whether the file is Cisco or 3rd Party and click import. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. Select the image and mark it as golden for PnP to use it. **(required)**
+The image used in this lab for the 9300 is downloadable from here [Amsterdam-17.03.03 MD](https://software.cisco.com/download/home/286315874/type/282046477/release/Amsterdam-17.3.3)
 
-Upload image located here...
+1. **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. 
+2. You then indicate whether the file is Cisco or 3rd Party and click import. 
+3. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. 
+4. Select the image and mark it as golden for PnP to use it. **(required)**
 
 ## Lab Section 2 - DNA Center Onboarding Template Preparation
-Once you have built your onboarding template you then have to let **DNA Center** know where you want to use the template. We will assume at this point you have already built out the template for use. You would then follow the following steps:
+You can create onboarding templates within the ***Templating Tool*** within **DNA Center**. Go to the ***Templating Tool*** to complete the next task.
 
 ### Step 1 - ***Create an Onboarding Template***
-Create an Onboarding Template in the Templating tool using the [Template](./templates/Platinum-Onboarding.txt) located within this lab. If using DNAC 2.1.X and upward importing the Template and settings as already built using the [JSON](./templates/Platinum_Onboarding_Template.json) file.
+Import an Onboarding Template in the Templating tool using the [JSON](./templates/Platinum_Onboarding_Template.json) file. If using DNAC prior release to 2.1.2.X then build the [Template](./templates/Platinum-Onboarding.txt) located within this lab. 
 
-The Onboarding template has the minimal configuration to bring up device connectivity withe DNAC. 
+The Onboarding template has the minimal configuration to bring up device connectivity with DNAC. Below is for explanation purposes only. (Please Import the Template JSON above)
 
 ```
 ##<------Onboarding-Template------->
@@ -148,6 +151,8 @@ interface vlan 1
 It will set up static addressing and hostname entries along with updating management source interfaces for management connectivity. This file is transfered to the target device in a single file as opposed to linne by line configuration which accomodates the changes in network connectivity which may be lost when iterating line by line.
 
 ### Step 2 - ***Create a Network Profile***
+Next we need to assign the Onboarding Template to a site using the Network Profile.
+
    1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile** 
    
    ![json](../../images/NetworkProfile.png?raw=true "Import JSON")
