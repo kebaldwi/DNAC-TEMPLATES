@@ -8,6 +8,22 @@ We will be utilizing the lab in this manner:
 ## General Information
 As you may recall in the informational sections of this repository we set for the various methods of discovery for a device and the preliminary things required for true zero touch provisioning. Those concepts will be set up in this lab so as to ensure a successful connection to DNA Center.
 
+### Lab Preparation
+To configure the lab in a way suitable for this lab please log into the console connection to the ***4451X*** and issue the following commands:
+
+```
+!
+conf t
+!
+!disable port 0/0/2 for the templating lab
+int gi 0/0/2
+ shutdown
+ exit
+!
+wr
+!
+```
+
 ## Lab Section 1 - Device Connectivity
 For PnP processes to work our intention is to have a management interface on the device in this lab we will set up a Loopback interface for management and a Vlan interface for connectivity. Obviously, you don't have to do it this way we are just giving a relatively complicated example and you can alter this to suite your needs. As the device is connected to the front facing ports by default there is little configuration. 
 
