@@ -1,6 +1,6 @@
 # PnP Preparation [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 ## Overview
-This Lab is designed to be a standalone lab ot be used either in the DCLOUD environment or as part of the setup for a Proof ov Concept at a customers lab. This information may also help from a deployment or implementation point of view to ensure that all the necessary steps are complete prior to onboarding any devices within DNA Center.
+This Lab is designed to be a standalone lab ot be used either in the DCLOUD environment or as part of the setup for a Proof of Concept at a customers lab. This information may also help from a deployment or implementation point of view to ensure that all the necessary steps are complete prior to onboarding any devices within DNA Center.
 
 We will be utilizing the lab in this manner:
 ![json](./images/DCLOUD_Topology_PnPLab.png?raw=true "Import JSON")
@@ -14,14 +14,25 @@ For PnP processes to work our intention is to have a management interface on the
 By default the target switch is using vlan 1 as no other vlan exists, and vlan 1 by default accepts DHCP addresses. This will be used in the pnp process. Our management vlan however, may be a different vlan, and so may the native vlan structure of our environment. To that end we must make use of the *pnp startup-vlan* command which allows the device to use this vlan in pnp and needs to be configured on the upstream switch.
 
 ### Step 1.1 - ***Upstream Neighbor Setup***
-For the purposes of the lab we will utilize ***vlan 10*** as the management vlan. Connect to switch ***TBD*** and paste the following configuration:
+From the diagram above we will utilize the 3850 as the upstream neighbor for this exercise and as the distribution switch for the environment. The Catalyst 9300 will be the target switch which we will deploy via PnP and Day 0 and N templates.
+
+For the purposes of the lab we will utilize ***vlan 5*** as the management vlan. Connect to switch ***TBD*** and paste the following configuration:
 
 ```
 config t
+!
+vlan 5
+name "managment vlan"
+!
+int vlan 5 
+ip address 192.168.5.1 255.255.255.0
+!
+routing TBD
+!
 pnp startup-vlan 5
 ```
 
-This command will program the target switches port connected with a trunk and automatically add the vlan and SVI to the target switch making that vlan ready to accept a DHCP address. This is available on switches running 16.6 code or greater as upstream neighbors. Older switches or upstream devices that are not capable of running the command should be onboarded in vlan 1 and the vlan modified as part of the onboarding process.
+The ***pnp startup-vlan 5*** command will program the target switches port connected with a trunk and automatically add the vlan and SVI to the target switch making that vlan ready to accept a DHCP address. This is available on switches running 16.6 code or greater as upstream neighbors. Older switches or upstream devices that are not capable of running the command should be onboarded in vlan 1 and the vlan modified as part of the onboarding process.
 
 ### Step 1.2 - ***DHCP Setup***
 We need a DHCP scope to supply the address within the management network temporarily in order to complete the configuration and onboarding. The scope should be configured to offer addresses from part of the range of addresses leaving the other part of the scope for the static addresses. It also can be a reservation as DHCP servers can reserve addresses for specific MAC addresses, one benefit of this is DNS host entries are automatically updated sometimes depending on the DHCP Server.
@@ -43,18 +54,9 @@ The DHCP Scope should be added to one of the following, the first two of these w
 During this lab setup please choose which option you wish to use for DHCP for PnP services and follow that subsection.
 
 #### Step 1.2a - ***IOS DHCP Configuration***
-Configured on a IOS device it would look like this example:
+Configured on a IOS device the DHCP pool elements would be configured either on a router or switch in the network. 
 
-```
-  ip dhcp pool pnp_device_pool                         
-     network 192.168.5.0 255.255.255.0                 
-     default-router 192.168.5.1                        
-     dns-server 198.18.133.1                           
-     domain-name dcloud.cisco.com                      
-     option 43 ascii "5A1N;B2;K4;I198.18.129.1;J80"   
-```
-
-If we want to use the IOS DHCP Configuration method connect to switch ***TBD*** and paste the following configuration:
+If we want to use the IOS DHCP Configuration method connect to switch ***3850*** and paste the following configuration:
 
 ```
   ip dhcp pool pnp_device_pool                         
@@ -62,7 +64,7 @@ If we want to use the IOS DHCP Configuration method connect to switch ***TBD*** 
      default-router 192.168.5.1                         
 ```
 
-Next we will introduce the helper address statement on the management Vlan's SVI. Connect to switch ***TBD*** and paste the following configuration:
+Next we will introduce the helper address statement on the management Vlan's SVI to point to the router or switch where the DHCP configuration is. Connect to switch ***3850*** and paste the following configuration:
 
 ```
   interface Vlan 5                         
@@ -83,11 +85,11 @@ The DHCP scope will look like this in Windows DHCP Administrative tool:
 
 ![json](./images/WindowsDHCPscope.png?raw=true "Import JSON")
 
-Next we will introduce the helper address statement on the management Vlan's SVI. Connect to switch ***TBD*** and paste the following configuration:
+Next we will introduce the helper address statement on the management Vlan's SVI to point to the Windows DHCP server. Connect to switch ***3850*** and paste the following configuration:
 
 ```
   interface Vlan 5                         
-     ip helper-address 192.168.5.1                  
+     ip helper-address 198.18.133.1                  
 ```
 
 ## Lab Section 2 - DNA Center Discovery
