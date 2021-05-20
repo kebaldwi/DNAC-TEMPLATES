@@ -171,7 +171,7 @@ If using the Windows DHCP Server and the Option 43 discovery method is desired t
 Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -OptionId 43 -Value ([System.Text.Encoding]::ASCII.GetBytes("5A1N;B2;K4;I198.18.129.100;J80"))
 ```
 
-The DHCP scope will be modified to look like this in Windows DHCP Administrative tool: **change image!***
+The DHCP scope will be modified to look like this in Windows DHCP Administrative tool:
 
 ![json](./images/DNACDHCPoption43.png?raw=true "Import JSON")
 
@@ -198,7 +198,7 @@ Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -Allo
 Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
 ```
 
-The DNS Zone will look like this in Windows DNS Administrative tool: **change image!***
+The DNS Zone will look like this in Windows DNS Administrative tool: 
 
 ![json](./images/DNACenterDNSentries.png?raw=true "Import JSON")
 
@@ -220,7 +220,7 @@ Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -Allo
 Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
 ```
 
-The DNS Zone will look like this in Windows DNS Administrative tool: **change image!***
+The DNS Zone will look like this in Windows DNS Administrative tool: 
 
 ![json](./images/DNACenterDNSentries.png?raw=true "Import JSON")
 
