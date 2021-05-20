@@ -79,16 +79,30 @@ Configured on a IOS device the DHCP pool elements would be configured either on 
 If we want to use the IOS DHCP Configuration method connect to switch ***3850*** and paste the following configuration:
 
 ```
+!
+conf t
+!
   ip dhcp pool pnp_device_pool                         
      network 192.168.5.0 255.255.255.0                  
-     default-router 192.168.5.1                         
+     default-router 192.168.5.1 
+     end
+!
+wr
+!
 ```
 
 Next we will introduce the helper address statement on the management Vlan's SVI to point to the router or switch where the DHCP configuration is. Connect to switch ***3850*** and paste the following configuration:
 
 ```
+!
+conf t
+!
   interface Vlan 5                         
      ip helper-address 192.168.5.1                  
+     end
+!
+wr
+!
 ```
 
 For a full configuration example please see [Configuring the Cisco IOS DHCP Server](https://www.cisco.com/en/US/docs/ios/12_4t/ip_addr/configuration/guide/htdhcpsv.html#wp1046301)
@@ -108,8 +122,15 @@ The DHCP scope will look like this in Windows DHCP Administrative tool:
 Next we will introduce the helper address statement on the management Vlan's SVI to point to the Windows DHCP server. Connect to switch ***3850*** and paste the following configuration:
 
 ```
+!
+conf t
+!
   interface Vlan 5                         
      ip helper-address 198.18.133.1                  
+     end
+!
+wr
+!
 ```
 
 ## Lab Section 2 - DNA Center Discovery
@@ -132,8 +153,15 @@ Please choose one of the following subsections as the discovery method.
 If using the IOS DHCP Server and the Option 43 discovery method is desired then paste the following configuration:
 
 ```
+!
+conf t
+!
   ip dhcp pool pnp_device_pool                    
      option 43 ascii "5A1N;B2;K4;I198.18.129.1;J80"
+     end
+!
+wr
+!
 ```
 
 #### Step 2.1b - ***Option 43 with Windows DHCP Configuration***
@@ -151,9 +179,16 @@ The DHCP scope will be modified to look like this in Windows DHCP Administrative
 If using the IOS DHCP Server and the DNS Lookup discovery method is desired then paste the following configuration:
 
 ```
+!
+conf t
+!
   ip dhcp pool pnp_device_pool                          
      dns-server 198.18.133.1                           
      domain-name dcloud.cisco.com                       
+     end
+!
+wr
+!
 ```
 
 Next add the DNS entries to allow for the DNA Center to be discovered. This script will add an A host entry for the VIP address, and then a CNAME as an alias for the pnpserver entry required for DNS discovery.
@@ -195,26 +230,40 @@ The Target switch will typically be connected as a trunk to either a single port
 If it is a single port connection to the target switch then use a simplified configuration; however, in this lab we will not be utilizing this method. An example provided here:
 
 ```
-interface range gi 1/0/10
-description PnP Test Environment to Cataylist 9300
-switchport mode trunk
-switchport trunk allowed vlan 5
+!
+conf t
+!
+  interface range gi 1/0/10
+     description PnP Test Environment to Cataylist 9300
+     switchport mode trunk
+     switchport trunk allowed vlan 5
+     end
+!
+wr
+!
 ```
 
 The port where the Target switch will be connected needs for this lab to be connected as a trunk as part of a Port Channel. 
 
 ```
-interface range gi 1/0/10-11
-description PnP Test Environment to Cataylist 9300
-switchport mode trunk
-switchport trunk allowed vlan 5
-channel-protocol lacp
-channel-group 1 mode passive
 !
-interface Port-channel1
-switchport trunk native vlan 5
-switchport mode trunk
-no port-channel standalone-disable
+conf t
+!
+  interface range gi 1/0/10-11
+     description PnP Test Environment to Cataylist 9300
+     switchport mode trunk
+     switchport trunk allowed vlan 5
+     channel-protocol lacp
+     channel-group 1 mode passive
+!
+  interface Port-channel1
+     switchport trunk native vlan 5
+     switchport mode trunk
+     no port-channel standalone-disable
+     end
+!
+wr
+!
 ```
 
 If a port channel is used initially, then you want to ensure that the port channel can operate as a single link within the bundle and for that reason use passive methods for building the port channel bundles on both the Target and Upstream Neighbor for maximum flexibility. Additionally add the **no port-channel standalone-disable** command to ensure the switch does not automatically disable the port channel if it does not come up properly
