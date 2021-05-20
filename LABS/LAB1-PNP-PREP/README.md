@@ -300,7 +300,7 @@ The following is the output expected from 3.1a and 3.1b
 At this point the environment should be set up to onboard devices within Vlan 5 using the network address ***192.168.5.0/24*** utilizing either ***option 43*** or ***DNS Discovery***.
 
 ### Step 4.2 - ***Reset EEM Script***
-When testing you will frequently need to start again on the switch to test the whole flow. To accomplish this paste this small script into the switch which will create a file on flash which you may load into the running-configuration at any time to reset the device to factory settings:
+When testing you will frequently need to start again on the switch to test the whole flow. To accomplish this paste this small script into the 9300 target switch which will create a file on flash which you may load into the running-configuration at any time to reset the device to factory settings:
 
 ```
 tclsh                            
@@ -344,6 +344,15 @@ event manager applet prep4dnac
 end
 }
 tclquit
+```
+
+### Step 4.3 - ***Reset Switch and Test Discovery***
+At this point we want to test the routing, connectivity, dhcp and dns services as well as discovery mechanism. Paste the following into the 9300 target switch and watch the switch come up but do not intercede or type anything into the console after the reboot has started.
+
+```
+copy prep4dnac running-config
+!
+prep4dnac
 ```
 
 ## Summary
