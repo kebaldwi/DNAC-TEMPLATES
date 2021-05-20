@@ -257,7 +257,9 @@ conf t
      channel-group 1 mode passive
 !
   interface Port-channel1
+     description PnP Test Environment to Cataylist 9300
      switchport trunk native vlan 5
+     switchport trunk allowed vlan 5
      switchport mode trunk
      no port-channel standalone-disable
      end
