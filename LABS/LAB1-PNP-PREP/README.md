@@ -18,7 +18,7 @@ conf t
 !disable port 0/0/2 for the templating lab
 int gi 0/0/2
  shutdown
- exit
+ end
 !
 wr
 !
@@ -45,6 +45,7 @@ int vlan 5
  ip ospf 1 area 0
 !
 pnp startup-vlan 5
+end
 !
 wr
 !
