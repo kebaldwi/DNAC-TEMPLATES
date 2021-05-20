@@ -284,6 +284,10 @@ nslookup pnpserver.dcloud.cisco.com
 
 They should be presented with the following output or something similar which shows the resolution of the alias to the A host record entry which identifies the VIP address for the DNA Center Cluster.
 
+<p align="center">
+  <img src="./images/DNACenterDNStests.png" height="400" width="600" title="hover text">
+</p>
+
 ### Step 4.1b - ***DNS Resolution***
 Second we need to ensure the DNA Center responds on the VIP, so use the ping command within the CMD application window previously opened as follows:
 
@@ -291,10 +295,8 @@ Second we need to ensure the DNA Center responds on the VIP, so use the ping com
 ping pnpserver.dcloud.cisco.com
 ```
 
-The following is the output expected from 3.1a and 3.1b
-
 <p align="center">
-  <img src="./images/DNACenterDNStests.png" height="400" width="600" title="hover text">
+  <img src="./images/DNACenterDNStestPing.png" height="400" width="600" title="hover text">
 </p>
 
 At this point the environment should be set up to onboard devices within Vlan 5 using the network address ***192.168.5.0/24*** utilizing either ***option 43*** or ***DNS Discovery***.
@@ -354,6 +356,14 @@ copy prep4dnac running-config
 !
 prep4dnac
 ```
+
+The Switch should reboot and display this eventually in the console which acknowledges that the 9300 has discovered the DNA Center.
+
+![json](./images/DNAC-IPV4-DISCOVERY.png?raw=true "Import JSON")
+
+Additionally within DNA Center on the Plug and Play window the device should show as unclaimed
+
+![json](./images/DNAC-9300-Discovery.png?raw=true "Import JSON")
 
 ## Summary
 The next step would be to build the PnP Onboarding settings and template on DNA Center which will be covered in the next lab entitled [Onboarding Templates](../LAB2-Onboarding-Template/README.md#Day0) - This section explains in depth and how to deploy Day 0 templates
