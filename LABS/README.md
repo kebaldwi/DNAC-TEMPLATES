@@ -22,7 +22,7 @@ Various labs will be covered within this github section of the repository please
 This section will explain which lab to utilize within the **DCLOUD** environment to run these LAB's. It will also discuss a customer POC environment and what can be done to successfully run these sections within a customer environment for localized testing.
 
 ### DCLOUD Labs
-This lab environment has been tested on the following DCLOUD session: [Cisco Enterprise Networks Hardware Sandbox v1.1](https://dcloud2-rtp.cisco.com/content/demo/717575?returnPathTitleKey=content-view)
+This lab environment has been tested on the following DCLOUD session: [Cisco Enterprise Networks Hardware Sandbox v2.1](https://dcloud2-rtp.cisco.com/content/demo/759521?returnPathTitleKey=favourites-view)
 
 The DCLOUD session includes the following equipment:
 
