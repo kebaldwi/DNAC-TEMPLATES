@@ -92,7 +92,7 @@ Import an Onboarding Template in the Templating tool using the [JSON](./template
 
 The Onboarding template has the minimal configuration to bring up device connectivity with DNAC. Below is for explanation purposes only. (Please Import the Template JSON above)
 
-```python
+```velocity
 ##<------Onboarding-Template------->
 ##To be used for onboarding when using Day N Templates
 ##Define Variables provision with vlan1 and 
