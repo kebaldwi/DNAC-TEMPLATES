@@ -299,6 +299,53 @@ The following is the output expected from 3.1a and 3.1b
 
 At this point the environment should be set up to onboard devices within Vlan 5 using the network address ***192.168.5.0/24*** utilizing either ***option 43*** or ***DNS Discovery***.
 
+### Step 4.2 - ***Reset EEM Script***
+When testing you will frequently need to start again on the switch to test the whole flow. To accomplish this paste this small script into the switch which will create a file on flash which you may load into the running-configuration at any time to reset the device to factory settings:
+
+```
+tclsh                            
+puts [open "flash:prep4dnac" w+] {
+!
+alias exec prep4dnac event manager run prep4dnac
+!
+! Remove any confirmation dialogs when accessing flash
+file prompt quiet
+!
+no event manager applet prep4dnac
+event manager applet prep4dnac
+ event none sync yes
+ action a1010 syslog msg "Starting: 'prep4dnac'  EEM applet."
+ action a1020 puts "Preparing device to be discovered by device automation - This script will reboot the device."
+ action b1010 cli command "enable"
+ action b1020 puts "Saving config to update BOOT param."
+ action b1030 cli command "write"
+ action c1010 puts "Erasing startup-config."
+ action c1020 cli command "wr er" pattern "confirm"
+ action c1030 cli command "y"
+ action d1010 puts "Clearing crypto keys."
+ action d1020 cli command "config t"
+ action d1030 cli command "crypto key zeroize" pattern "yes/no"
+ action d1040 cli command "y"
+ action e1010 puts "Clearing crypto PKI stuff."
+ action e1020 cli command "no crypto pki cert pool" pattern "yes/no"
+ action e1030 cli command "y"
+ action e1040 cli command "exit"
+ action f1010 puts "Deleting vlan.dat file."
+ action f1020 cli command "delete /force vlan.dat"
+ action g1010 puts "Deleting certificate files in NVRAM."
+ action g1020 cli command "delete /force nvram:*.cer"
+ action h0001 puts "Deleting PnP files"
+ action h0010 cli command "delete /force flash:pnp*"
+ action h0020 cli command "delete /force nvram:pnp*"
+ action z1010 puts "Device is prepared for being discovered by device automation.  Rebooting."
+ action z1020 syslog msg "Stopping: 'prep4dnac' EEM applet."
+ action z1030 reload
+!
+end
+}
+tclquit
+```
+
 ## Summary
 The next step would be to build the PnP Onboarding settings and template on DNA Center which will be covered in the next lab entitled [Onboarding Templates](../LAB2-Onboarding-Template/README.md#Day0) - This section explains in depth and how to deploy Day 0 templates
 
