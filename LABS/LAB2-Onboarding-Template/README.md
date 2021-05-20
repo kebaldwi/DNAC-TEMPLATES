@@ -18,13 +18,17 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 
 ### Step 1 - ***Hierarchy***
 1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step.
-2. Although you can manually set up the hierarchy we will use an automation script to implement the hierarchy via **dnacentercli** part of the ***DNA Center SDK*** To do this we will make use of the terminal application in the Windows workstation and create a python virtual environment. Once the Python virtual environment is running we will install the DNA Center SDK via pip install and then install the DNA Center CLI tool similarly.
+2. Although you can manually set up the hierarchy we will use an automation script to implement the hierarchy via **dnacentercli** part of the ***DNA Center SDK*** To do this we will make use of the terminal application `Git Bash` in the Windows workstation and create a python virtual environment. Once the Python virtual environment is running we will install the DNA Center SDK via pip install and then install the DNA Center CLI tool similarly.
 
-Open the terminal environment and past the following into the cli window.
+Open the terminal environment and paste the following into the cli window to create the virtual environment in which to work.
 
 ```
+ py -3 -m venv py3-venv
+ source py3-venv/Scripts/activate
 
+ winpty <path-to-python-installation-dir>/python.exe
 
+$ENV:PATH="$ENV:PATH;C:\Users\administrator\AppData\Local\Programs\Python\Python38-32\"
 
 ```
 
@@ -92,10 +96,10 @@ Import an Onboarding Template in the Templating tool using the [JSON](./template
 
 The Onboarding template has the minimal configuration to bring up device connectivity with DNAC. Below is for explanation purposes only. (Please Import the Template JSON above)
 
-```velocity
+```
 ##<------Onboarding-Template------->
 ##To be used for onboarding when using Day N Templates
-##Define Variables provision with vlan1 and 
+##Define Variables provision with vlan and port channel
 !
 ##MTU Adjust (if required)
 ##system mtu 9100
@@ -109,7 +113,7 @@ vtp mode transparent
 !
 vlan ${MgmtVlan}
 !
-##
+##Set Interfaces and Build Port Channel 
 interface range gi 1/0/10-11
  shut 
  switchport trunk allowed vlan add ${MgmtVlan}
@@ -122,7 +126,7 @@ interface Port-channel1
  switchport mode trunk
  no port-channel standalone-disable
 !
-##Set up managment vlan ${MgmtVlan}
+##Set Up Managment Vlan ${MgmtVlan}
 interface Vlan ${MgmtVlan}
  ip address ${SwitchIP} ${SubnetMask}
  no ip redirects
@@ -143,7 +147,7 @@ snmp-server trap-source Vlan ${MgmtVlan}
 ntp source Vlan ${MgmtVlan}
 !
 ##Disable Vlan 1
-interface vlan 1
+interface Vlan 1
  shutdown
 !
 ```
@@ -182,7 +186,7 @@ Next we need to assign the Onboarding Template to a site using the Network Profi
 ## Lab Section 3 - Claiming and Onboarding
 At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find DNA Center and land in the plug n play set of the devices section within the provisioning page.
 
-### Step 1 - ***Claiming the device***
+### Step 1 - ***Claiming the Device***
 At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
 
    1. Put a checkmark next to the device to be claimed
