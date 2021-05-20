@@ -157,7 +157,7 @@ If using the IOS DHCP Server and the Option 43 discovery method is desired then 
 conf t
 !
   ip dhcp pool pnp_device_pool                    
-     option 43 ascii "5A1N;B2;K4;I198.18.129.1;J80"
+     option 43 ascii "5A1N;B2;K4;I198.18.129.100;J80"
      end
 !
 wr
@@ -168,10 +168,10 @@ wr
 If using the Windows DHCP Server and the Option 43 discovery method is desired then paste the following configuration into PowerShell:
 
 ```
-Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -OptionId 43 -Value ([System.Text.Encoding]::ASCII.GetBytes("5A1N;B2;K4;I198.18.129.1;J80"))
+Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -OptionId 43 -Value ([System.Text.Encoding]::ASCII.GetBytes("5A1N;B2;K4;I198.18.129.100;J80"))
 ```
 
-The DHCP scope will be modified to look like this in Windows DHCP Administrative tool:
+The DHCP scope will be modified to look like this in Windows DHCP Administrative tool: **change image!***
 
 ![json](./images/DNACDHCPoption43.png?raw=true "Import JSON")
 
@@ -194,11 +194,11 @@ wr
 Next add the DNS entries to allow for the DNA Center to be discovered. This script will add an A host entry for the VIP address, and then a CNAME as an alias for the pnpserver entry required for DNS discovery.
 
 ```
-Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.1" -TimeToLive 01:00:00
+Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.100" -TimeToLive 01:00:00
 Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
 ```
 
-The DNS Zone will look like this in Windows DNS Administrative tool:
+The DNS Zone will look like this in Windows DNS Administrative tool: **change image!***
 
 ![json](./images/DNACenterDNSentries.png?raw=true "Import JSON")
 
@@ -216,11 +216,11 @@ The DHCP scope will be modified to look like this in Windows DHCP Administrative
 Next add the DNS entries to allow for the DNA Center to be discovered. This script will add an A host entry for the VIP address, and then a CNAME as an alias for the pnpserver entry required for DNS discovery.
 
 ```
-Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.1" -TimeToLive 01:00:00
+Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.100" -TimeToLive 01:00:00
 Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
 ```
 
-The DNS Zone will look like this in Windows DNS Administrative tool:
+The DNS Zone will look like this in Windows DNS Administrative tool: **change image!***
 
 ![json](./images/DNACenterDNSentries.png?raw=true "Import JSON")
 
