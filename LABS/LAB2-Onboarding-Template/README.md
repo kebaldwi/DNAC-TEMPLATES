@@ -31,7 +31,7 @@ where pip
 
 If a path like this shows `C:\Users\Administrator\AppData\Local\Programs\Python\Python38-32 (32bit)` then please remove the path from the environment variables. The only paths for python after the installation are those like these:
 
-![json](../../images/PythonTest.png?raw=true "Import JSON")
+![json](/images/PythonTest.png?raw=true "Import JSON")
 
 If for some reason pip was not installed either re run the Python installer or paste the following into a command line window:
 ```
