@@ -60,19 +60,19 @@ Scripts\activate
 
 ```
 # Create Sites
-dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 sites create-site --type "area" --site '{ "area" : { "name":"DNAC Template Lab","parentName":"Global"}}' --headers '{"__runsync" : true }'
+dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 sites create-site --type "area" --site '{ "area" : { "name":"DNAC Template Lab","parentName":"Global"}}' --headers '{"__runsync" : true }'
 
-dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 sites create-site --type "building" --site '{ "building" : { "name":"Building","parentName":"Global/DNAC Template Lab","address":"Cisco Building 24, 510 McCarthy Blvd, Milpitas, CA 95035"} }' --headers '{"__runsync" : true }'
+dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 sites create-site --type "building" --site '{ "building" : { "name":"Building","parentName":"Global/DNAC Template Lab","address":"Cisco Building 24, 510 McCarthy Blvd, Milpitas, CA 95035"} }' --headers '{"__runsync" : true }'
 
-dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 sites create-site --type "floor" --site '{ "floor" : { "name":"Floor1","parentName":"Global/DNAC Template Lab/Building","rfModel":"Cubes And Walled Offices","width":100,"length":100,"height":10} }' --headers '{"__runsync" : true }'
+dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 sites create-site --type "floor" --site '{ "floor" : { "name":"Floor1","parentName":"Global/DNAC Template Lab/Building","rfModel":"Cubes And Walled Offices","width":100,"length":100,"height":10} }' --headers '{"__runsync" : true }'
 
 # Create Credentials
-dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-device-credentials --settings '{"cliCredential":[{"description":"netadmin","username":"netadmin","password": "C1sco12345","enablePassword": "C1sco12345"}], "snmpV2cRead":[{"description":"RO","readCommunity":"ro"}],"snmpV2cWrite":[{"description":"RW","writeCommunity":"rw"}] }' --headers '{"__runsync" : true }'
+dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-device-credentials --settings '{"cliCredential":[{"description":"netadmin","username":"netadmin","password": "C1sco12345","enablePassword": "C1sco12345"}], "snmpV2cRead":[{"description":"RO","readCommunity":"ro"}],"snmpV2cWrite":[{"description":"RW","writeCommunity":"rw"}] }' --headers '{"__runsync" : true }'
 
-dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings assign-credentials-to-site --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" '{ "cliId": "netadmin", "snmpV2ReadId": "RO", "snmpV2WriteId": "RW" }' --headers '{"__runsync" : true }'
+dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings assign-credentials-to-site --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" '{ "cliId": "netadmin", "snmpV2ReadId": "RO", "snmpV2WriteId": "RW" }' --headers '{"__runsync" : true }'
 
 # Create Global Settings
-dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-network --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" --settings '{ "dhcpServer":["198.18.133.1"], "syslogServer":{"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "snmpServer": {"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "netflowcollector":{"ipAddress":"198.18.129.1","port":6007}, "ntpServer":["198.18.133.1"], "timezone":"EST5EDT" }'  --headers '{"__runsync" : true }'
+dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-network --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" --settings '{ "dhcpServer":["198.18.133.1"], "syslogServer":{"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "snmpServer": {"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "netflowcollector":{"ipAddress":"198.18.129.1","port":6007}, "ntpServer":["198.18.133.1"], "timezone":"EST5EDT" }'  --headers '{"__runsync" : true }'
 ```
 
 ### Step 2 - ***Network Settings***
@@ -88,7 +88,7 @@ dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p
 
 ```
 # Create Global Settings
-dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-network --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" --settings '{ "dhcpServer":["198.18.133.1"], "syslogServer":{"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "snmpServer": {"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "netflowcollector":{"ipAddress":"198.18.129.1","port":6007}, "ntpServer":["198.18.133.1"], "timezone":"EST5EDT" }'  --headers '{"__runsync" : true }'
+dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-network --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" --settings '{ "dhcpServer":["198.18.133.1"], "syslogServer":{"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "snmpServer": {"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "netflowcollector":{"ipAddress":"198.18.129.1","port":6007}, "ntpServer":["198.18.133.1"], "timezone":"EST5EDT" }'  --headers '{"__runsync" : true }'
 ```
 
 ### Step 3 - ***Device Credentials***
@@ -99,9 +99,9 @@ dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p
 
 ```
 # Create Credentials
-dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-device-credentials --settings '{"cliCredential":[{"description":"netadmin","username":"netadmin","password": "C1sco12345","enablePassword": "C1sco12345"}], "snmpV2cRead":[{"description":"RO","readCommunity":"ro"}],"snmpV2cWrite":[{"description":"RW","writeCommunity":"rw"}] }' --headers '{"__runsync" : true }'
+dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-device-credentials --settings '{"cliCredential":[{"description":"netadmin","username":"netadmin","password": "C1sco12345","enablePassword": "C1sco12345"}], "snmpV2cRead":[{"description":"RO","readCommunity":"ro"}],"snmpV2cWrite":[{"description":"RW","writeCommunity":"rw"}] }' --headers '{"__runsync" : true }'
 
-dnacentercli --base_url https://198.18.129.1 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings assign-credentials-to-site --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" '{ "cliId": "netadmin", "snmpV2ReadId": "RO", "snmpV2WriteId": "RW" }' --headers '{"__runsync" : true }'
+dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings assign-credentials-to-site --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" '{ "cliId": "netadmin", "snmpV2ReadId": "RO", "snmpV2WriteId": "RW" }' --headers '{"__runsync" : true }'
 ```
 
 ### Step 4 - ***Image Repository***
