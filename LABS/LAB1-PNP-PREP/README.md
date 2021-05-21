@@ -284,9 +284,7 @@ nslookup pnpserver.dcloud.cisco.com
 
 They should be presented with the following output or something similar which shows the resolution of the alias to the A host record entry which identifies the VIP address for the DNA Center Cluster.
 
-<p align="center">
-  <img src="./images/DNACenterDNStests.png" height="400" width="600" title="hover text">
-</p>
+![json](./images/DNACenterDNStests.png?raw=true "Import JSON")
 
 ### Step 4.1b - ***DNS Resolution***
 Second we need to ensure the DNA Center responds on the VIP, so use the ping command within the CMD application window previously opened as follows:
@@ -295,9 +293,7 @@ Second we need to ensure the DNA Center responds on the VIP, so use the ping com
 ping pnpserver.dcloud.cisco.com
 ```
 
-<p align="center">
-  <img src="./images/DNACenterDNStestPing.png" height="400" width="600" title="hover text">
-</p>
+![json](./images/DNACenterDNStestPing.png?raw=true "Import JSON")
 
 At this point the environment should be set up to onboard devices within Vlan 5 using the network address ***192.168.5.0/24*** utilizing either ***option 43*** or ***DNS Discovery***.
 
