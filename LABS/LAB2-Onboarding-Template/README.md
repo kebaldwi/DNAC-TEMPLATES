@@ -14,13 +14,13 @@ As a guidance try and use Design settings for as much of the configurations as y
 ## Lab Section 1 - DNA Center Design Preparation
 While a more extensive set of settings can be built out for a deployment we will limit the configuration to the minimal necessary to perform this step. We will augment the Design Settings during the **DayN Templating Lab** to include others that may be required.
 
-Before DNA Center can automate the deployment we have to do a couple of tasks to prepare. Please log into the DNA Center using a browser within the Windows Jump host and browse to ***https://198.18.129.100***. Use the credentials of username: ***admin*** password: ***C1sco12345*** within the DCLOUD environment.
+Before DNA Center can automate the deployment we have to do a couple of tasks to prepare. Please log into the DNA Center using a browser within the Windows Jump host and browse to [DNA Center](https://198.18.129.100). Use the credentials of username: ***admin*** password: ***C1sco12345*** within the DCLOUD environment.
 
 ### Step 1 - ***Hierarchy***
 1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step.
 2. Although you can manually set up the hierarchy we will use an automation script to implement the hierarchy via **dnacentercli** part of the ***DNA Center SDK*** To do this we will make use of the terminal application `Git Bash` in the Windows workstation and create a python virtual environment. Once the Python virtual environment is running we will install the DNA Center SDK via pip install and then install the DNA Center CLI tool similarly.
 
-First from the Windows workstation rdp session use this link to install ***[Python 3.8.5 Install for Windows](https://www.python.org/ftp/python/3.8.5/python-3.8.5-amd64.exe)***. When installing Python please make sure to install all subcomponents and debugging features as well as paths.
+First from the Windows workstation rdp session use this link to install [Python 3.8.5 Install for Windows](https://www.python.org/ftp/python/3.8.5/python-3.8.5-amd64.exe). When installing Python please make sure to install all subcomponents and debugging features as well as paths.
 
 Check that Python and pip are installed by using these commands and making sure one path shows for each:
 
