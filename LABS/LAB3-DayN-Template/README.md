@@ -16,8 +16,8 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 
 We will need to do a couple of tasks first. 
 
-## Lab Section 2 - DNA Center DayN Template Preparation
-You can create onboarding templates within the ***Templating Tool*** within **DNA Center**. Go to the ***Templating Tool*** to complete the next task.
+## Lab Section 2 - DNA Center Day N Template Preparation
+You can create Day N Templates within the ***Templating Tool*** within **DNA Center**. Go to the ***Templating Tool*** to complete the next task.
 
 ### Step 1 - ***Create an Day N Template***
 Import an Onboarding Template in the Templating tool using the [JSON](./templates/Platinum_Onboarding_Template.json) file. If using DNAC prior release to 2.1.2.X then build the [Template](./templates/Platinum-Onboarding.txt) located within this lab. 
