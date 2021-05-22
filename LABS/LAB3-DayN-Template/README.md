@@ -16,7 +16,60 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 
 We will need to do a couple of tasks first. 
 
+## Lab Section 2 - DNA Center DayN Template Preparation
+You can create onboarding templates within the ***Templating Tool*** within **DNA Center**. Go to the ***Templating Tool*** to complete the next task.
 
+### Step 1 - ***Create an Day N Template***
+Import an Onboarding Template in the Templating tool using the [JSON](./templates/Platinum_Onboarding_Template.json) file. If using DNAC prior release to 2.1.2.X then build the [Template](./templates/Platinum-Onboarding.txt) located within this lab. 
+
+
+
+### Step 2 - ***Edit the Network Profile***
+Next we need to assign the Onboarding Template to a site using the Network Profile.
+
+   1. Edit the network profile Under *Design> Network Profiles* you will select **+Edit** 
+   
+   ![json](../../images/NetworkProfile.png?raw=true "Import JSON")
+   
+   2. On the Onboarding Template page select device type **(required)**
+   
+   ![json](../../images/OnboardingDevice.png?raw=true "Import JSON")
+   
+   3. On the Onboarding Template page select the template(s) to be used for onboarding **(required)**
+   
+   ![json](../../images/OnboardingTemplate.png?raw=true "Import JSON")
+   
+   4. Save the network profile
+   5. Assign the network profile to the hierarchy
+   
+   ![json](./images/NetworkProfile-AssignSite.png?raw=true "Import JSON")
+   
+   9. Select the sites to apply the profile within the hierarchy and click save
+   
+   ![json](./images/NetworkProfileSelectSite.png?raw=true "Import JSON")
+
+## Lab Section 3 - Claiming and Onboarding
+At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find DNA Center and land in the plug n play set of the devices section within the provisioning page.
+
+### Step 1 - ***Claiming the Device***
+At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
+
+   1. Put a checkmark next to the device to be claimed
+   2. Click the **Actions>Claim** link and walk through the workflow
+   3. Section 1 select the part of the hierarchy to which the device will be deployed then click **next**
+   4. Section 2 you can click the hyperlinks to the right of the workflow page and view or amend the templates and images utilized then click **next**
+   5. Section 3 select the device **serial number** on the left and fill in the variables within the template click **next**. Please use the following:
+      *   Hostname type `ACCESS-9300-ASW`
+      *   Management Vlan enter `5`
+      *   IP Address `192.168.5.10`
+      *   Subnet Mask `255.255.255.0`
+      *   Gateway `192.168.5.1`
+      *   VTP Domain `Cisco`   
+   6. Section 4 review the elements including configuration to be deployed 
+   7. Click **claim** to initiate
+   
+At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete. After the device is completed it will appear in the device inventory after being sync'd with DNA Center.
+   
 
 
 
