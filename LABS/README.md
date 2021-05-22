@@ -14,8 +14,6 @@ Various labs will be covered within this github section of the repository please
 * [Application Policys](./LAB5-Application-Policy/README.md#Application) - This section will explain Application Policys in DNAC and their use
 * [Telemetry](./LAB6-Telemetry-Enablement/README.md#Telemetry) - This section will explain how to deploy Telemetry for assurance
 * [Advanced Automation](./LAB7-Advanced-Automation/README.md#Advanced) - This section will explore into Advanced Automation examples
-* [Wireless Automation](./LAB8-Wireless-Templates/README.md#Wireless) - This section will dive into Wireless Automation Techniques
-* [Wireless Application Policys](./LAB9-Wireless-Application-Policy/README.md#Wireless) - This section will explain how to deploy Wireless Application Policys 
 
 ## DCLOUD as a LAB
 ### Overview
