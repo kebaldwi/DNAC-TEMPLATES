@@ -42,10 +42,6 @@ python get-pip.py
 Open the command prompt and paste the following into the cli window to create the virtual environment. Please paste the commands one at a time.
 
 ```
-echo dnacentersdk == 2.0.2 > requirements.txt
-pip install -r requirements.txt
-
-pip install dnacentercli
 pip install virtualenv
 
 virtualenv venv
@@ -53,6 +49,11 @@ virtualenv venv
 cd venv
 
 Scripts\activate
+
+echo dnacentersdk == 2.0.2 > requirements.txt
+pip install -r requirements.txt
+
+pip install dnacentercli
 ```
 
 3. Once the tools are installed paste the lines below one at a time and refresh the hierarchy page to watch the changes.
