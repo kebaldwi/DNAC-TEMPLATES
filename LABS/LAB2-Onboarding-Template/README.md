@@ -65,14 +65,6 @@ dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin 
 dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 sites create-site --type "building" --site '{ "building" : { "name":"Building","parentName":"Global/DNAC Template Lab","address":"Cisco Building 24, 510 McCarthy Blvd, Milpitas, CA 95035"} }' --headers '{"__runsync" : true }'
 
 dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 sites create-site --type "floor" --site '{ "floor" : { "name":"Floor1","parentName":"Global/DNAC Template Lab/Building","rfModel":"Cubes And Walled Offices","width":100,"length":100,"height":10} }' --headers '{"__runsync" : true }'
-
-# Create Credentials
-dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-device-credentials --settings '{"cliCredential":[{"description":"netadmin","username":"netadmin","password": "C1sco12345","enablePassword": "C1sco12345"}], "snmpV2cRead":[{"description":"RO","readCommunity":"ro"}],"snmpV2cWrite":[{"description":"RW","writeCommunity":"rw"}] }' --headers '{"__runsync" : true }'
-
-dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings assign-credential-to-site --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" '{ "cliId": "netadmin", "snmpV2ReadId": "RO", "snmpV2WriteId": "RW" }' --headers '{"__runsync" : true }'
-
-# Create Global Settings
-dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-network --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" --settings '{ "dhcpServer":["198.18.133.1"], "syslogServer":{"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "snmpServer": {"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "netflowcollector":{"ipAddress":"198.18.129.1","port":6007}, "ntpServer":["198.18.133.1"], "timezone":"EST5EDT" }'  --headers '{"__runsync" : true }'
 ```
 
 ### Step 2 - ***Network Settings***
@@ -88,8 +80,9 @@ dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin 
 
 ```
 # Create Global Settings
-dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-network --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" --settings '{ "dhcpServer":["198.18.133.1"], "syslogServer":{"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "snmpServer": {"ipAddresses":["198.18.129.1"],"configureDnacIP": true}, "netflowcollector":{"ipAddress":"198.18.129.1","port":6007}, "ntpServer":["198.18.133.1"], "timezone":"EST5EDT" }'  --headers '{"__runsync" : true }'
+dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-network --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" --settings '{ "dhcpServer":["198.18.133.1"], "syslogServer":{"ipAddresses":["198.18.129.100"],"configureDnacIP": true}, "snmpServer": {"ipAddresses":["198.18.129.100"],"configureDnacIP": true}, "netflowcollector":{"ipAddress":"198.18.129.100","port":6007}, "ntpServer":["198.18.133.100"], "timezone":"EST5EDT" }'  --headers '{"__runsync" : true }'
 ```
+3. At the Global level enter the domain name setting of `dcloud.cisco.com` and the name server ip address of `198.18.133.1`. Ensure that all the settings are inherited all the way to Floor 1.
 
 ### Step 3 - ***Device Credentials***
 1. **Device Credentials** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the credentials and configurations that can be pushed **(required)**:
@@ -101,8 +94,9 @@ dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin 
 # Create Credentials
 dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-device-credentials --settings '{"cliCredential":[{"description":"netadmin","username":"netadmin","password": "C1sco12345","enablePassword": "C1sco12345"}], "snmpV2cRead":[{"description":"RO","readCommunity":"ro"}],"snmpV2cWrite":[{"description":"RW","writeCommunity":"rw"}] }' --headers '{"__runsync" : true }'
 
-dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings assign-credentials-to-site --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" '{ "cliId": "netadmin", "snmpV2ReadId": "RO", "snmpV2WriteId": "RW" }' --headers '{"__runsync" : true }'
+dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings assign-credential-to-site --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" '{ "cliId": "netadmin", "snmpV2ReadId": "RO", "snmpV2WriteId": "RW" }' --headers '{"__runsync" : true }'
 ```
+3. Ensure that the Credentials are set for the Global level and that the are inherited all the way to Floor 1. If not select the Credentials and save them.
 
 ### Step 4 - ***Image Repository***
 The image used in this lab for the 9300 is downloadable from here [Amsterdam-17.03.03 MD](https://software.cisco.com/download/home/286315874/type/282046477/release/Amsterdam-17.3.3)
@@ -214,12 +208,18 @@ At this point DNAC is set up and ready for Plug and Play to onboard the first de
 At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
 
    1. Put a checkmark next to the device to be claimed
-   2. Click the Claim link and walk through the workflow
-   3. Section 1 select the part of the hierarchy to which the device will be deployed then click next
-   4. Section 2 you can click the device hyperlink and view or amend the template and image utilized then click next
-   5. Section 3 you can manipulate any of the variables within the template if used then click next
+   2. Click the **Actions>Claim** link and walk through the workflow
+   3. Section 1 select the part of the hierarchy to which the device will be deployed then click **next**
+   4. Section 2 you can click the hyperlinks to the right of the workflow page and view or amend the templates and images utilized then click **next**
+   5. Section 3 select the device **serial number** on the left and fill in the variables within the template click **next**. Please use the following:
+         i.   Hostname type `ACCESS-9300-ASW`
+         ii.  Management Vlan enter `5`
+         iii. IP Address `192.168.5.10`
+         iv.  Subnet Mask `255.255.255.0`
+         v.   Gateway `192.168.5.1`
+         vi.  VTP Domain `Cisco`   
    6. Section 4 review the elements including configuration to be deployed 
-   7. Click claim to initiate
+   7. Click **claim** to initiate
    
 At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete. After the device is completed it will appear in the device inventory after being sync'd with DNA Center.
    
