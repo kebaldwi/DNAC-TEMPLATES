@@ -212,12 +212,12 @@ At this point you can claim the device putting it in a planned state for onboard
    3. Section 1 select the part of the hierarchy to which the device will be deployed then click **next**
    4. Section 2 you can click the hyperlinks to the right of the workflow page and view or amend the templates and images utilized then click **next**
    5. Section 3 select the device **serial number** on the left and fill in the variables within the template click **next**. Please use the following:
-         i.   Hostname type `ACCESS-9300-ASW`
-         ii.  Management Vlan enter `5`
-         iii. IP Address `192.168.5.10`
-         iv.  Subnet Mask `255.255.255.0`
-         v.   Gateway `192.168.5.1`
-         vi.  VTP Domain `Cisco`   
+      *   Hostname type `ACCESS-9300-ASW`
+      *   Management Vlan enter `5`
+      *   IP Address `192.168.5.10`
+      *   Subnet Mask `255.255.255.0`
+      *   Gateway `192.168.5.1`
+      *   VTP Domain `Cisco`   
    6. Section 4 review the elements including configuration to be deployed 
    7. Click **claim** to initiate
    
