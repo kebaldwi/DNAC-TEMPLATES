@@ -20,7 +20,7 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step.
 2. Although you can manually set up the hierarchy we will use an automation script to implement the hierarchy via **dnacentercli** part of the ***DNA Center SDK*** To do this we will make use of the terminal application `Git Bash` in the Windows workstation and create a python virtual environment. Once the Python virtual environment is running we will install the DNA Center SDK via pip install and then install the DNA Center CLI tool similarly.
 
-First from the Windows workstation rdp session use this link to install [Python 3.8.5 Install for Windows](https://www.python.org/ftp/python/3.8.5/python-3.8.5-amd64.exe). When installing Python please make sure to install all subcomponents and debugging features as well as paths.
+First from the Windows workstation rdp session use this link to install [Python 3.9.5 Install for Windows](https://www.python.org/ftp/python/3.9.5/python-3.9.5-amd64.exe). When installing Python please make sure to install all subcomponents and debugging features as well as paths.
 
 Check that Python and pip are installed by using these commands and making sure one path shows for each:
 
