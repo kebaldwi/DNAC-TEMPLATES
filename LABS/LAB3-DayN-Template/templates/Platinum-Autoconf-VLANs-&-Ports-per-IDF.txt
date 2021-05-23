@@ -63,7 +63,3 @@ device-tracking policy IPDT_MAX_10
 interface portchannel 1
  #uplink_interface
 !
-
-
-
-  
