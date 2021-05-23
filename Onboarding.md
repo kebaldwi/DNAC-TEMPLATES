@@ -30,7 +30,67 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
    3. **HTTP(S) Credentials** - *HTTP(S) usernames and passwords for both Read and Write Access*
 4. **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. You then indicate whether the file is Cisco or 3rd Party and click import. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. Select the image and mark it as golden for PnP to use it. **(required)**
 
-## Onboarding Template Preparation
+## Onboarding Templates
+Onboarding templates are regular templates which serve the purpose of onboarding the device as mentioned sith the minimal amount of code necessary to get connectivity up to the device in a consistent manner to allow for further configuration via Day N  templates and provisioning. Typically there are two types of configuration that are used here Layer 3 routed or Layer 2 access. Both have different use cases and while they are typical they are by no means the only types of configuration used. To that end a set of examples has been provided in the [Onboarding folder](./ONBOARDING) within this repository. One of those examples is the one I most typically see used with customers. Included there is a [JSON Import File](./ONBOARDING/Platinum_Onboarding_Template.json) for import into DNA Center 2.1.X and above.
+
+```
+##<------Onboarding-Template------->
+##To be used for onboarding when using Day N Templates
+##Define Variables provision with vlan and port channel
+!
+##MTU Adjust (if required)
+##system mtu 9100
+!
+##Set hostname
+hostname ${Hostname}
+!
+##Set VTP and VLAN for onboarding
+vtp domain ${VtpDomain}
+vtp mode transparent
+!
+vlan ${MgmtVlan}
+!
+##Set Interfaces and Build Port Channel 
+interface range gi 1/0/10-11
+ shut 
+ switchport trunk allowed vlan add ${MgmtVlan}
+ channel-protocol lacp
+ channel-group 1 mode passive
+ no shut
+!
+interface Port-channel1
+ switchport trunk native vlan ${MgmtVlan}
+ switchport mode trunk
+ no port-channel standalone-disable
+!
+##Set Up Managment Vlan ${MgmtVlan}
+interface Vlan ${MgmtVlan}
+ ip address ${SwitchIP} ${SubnetMask}
+ no ip redirects
+ no ip proxy-arp
+ no shut
+!
+ip default-gateway ${Gateway}
+!
+##Set Source of Management Traffic
+ip domain lookup source-interface Vlan ${MgmtVlan}
+ip http client source-interface Vlan ${MgmtVlan}
+ip ftp source-interface Vlan ${MgmtVlan}
+ip tftp source-interface Vlan ${MgmtVlan}
+ip ssh source-interface Vlan ${MgmtVlan}
+ip radius source-interface Vlan ${MgmtVlan}
+logging source-interface Vlan ${MgmtVlan}
+snmp-server trap-source Vlan ${MgmtVlan}
+ntp source Vlan ${MgmtVlan}
+!
+##Disable Vlan 1
+interface Vlan 1
+ shutdown
+!
+``````
+This file has the settings necessary to bring up a Layer 2 access switch with enough configration to be supported by DNA Center for the rest of the provisioning process.
+
+## Onboarding Template Deployment
 Once you have built your onboarding template you then have to let **DNA Center** know where you want to use the template. We will assume at this point you have already built out the template for use. You would then follow the following steps:
    1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile** 
    ![json](images/NetworkProfile.png?raw=true "Import JSON")
