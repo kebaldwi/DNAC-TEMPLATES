@@ -1,31 +1,13 @@
 aaa new-model
 !
-aaa group server tacacs+ management
- server-private 192.18.203.13 key cisco
- server-private 192.18.203.143 key cisco
-!
-aaa authentication username-prompt "Username:"
-aaa authentication login default group management
-aaa authentication login admin group management local
-aaa authentication enable default group management enable
-aaa authorization config-commands
-aaa authorization exec default group management if-authenticated 
-aaa authorization commands 1 default group management local 
-aaa authorization commands 15 default group management local 
-aaa accounting exec default start-stop group management
-aaa accounting commands 0 default stop-only group management
-aaa accounting commands 1 default stop-only group management
-aaa accounting commands 15 default stop-only group management
-aaa accounting connection default start-stop group management
-!
-tacacs-server host 192.18.203.13
-tacacs-server host 192.18.203.143
-tacacs-server timeout 2
-tacacs-server directed-request
-tacacs-server key cisco
+aaa authentication username-prompt "Authorized Username:"
+aaa authentication login admin local
+aaa authorization console
+aaa authorization exec admin local
+aaa authentication login admin local-case
+aaa authorization exec admin local 
 !
 mac address-table notification mac-move
 mac address-table notification threshold
 mac-address-table notification change
 !
-snmp-server host ${nacpod} public
