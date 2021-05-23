@@ -10,32 +10,23 @@
 #end
 !
 ## VLANs per IDF
-#set( $mgmt_vlan_number = 100 + ${IDF} )
-#set( $prod_vlan_number = 200 + ${IDF} )
-#set( $vendor_vlan_number = 300 + ${IDF} )
-#set( $pci_vlan_number = 400 + ${IDF} )
-#set( $security_vlan_number = 500 + ${IDF} )
-#set( $voice_vlan_number = 600 + ${IDF} )
-#set( $nacreg_vlan_number = 700 + ${IDF} )
-#set( $phi_vlan_number = 800 + ${IDF} )
+#set( $data_vlan_number = 200 + ${IDF} )
+#set( $voice_vlan_number = 300 + ${IDF} )
+#set( $ap_vlan_number = 400 + ${IDF} )
+#set( $guest_vlan_number = 500 + ${IDF} )
+#set( $iot_vlan_number = 600 + ${IDF} )
 #set( $bh_vlan_number = 999 )
 !
-vlan ${mgmt_vlan_number}
- name mgmt
-vlan ${prod_vlan_number}
- name prod
-vlan ${vendor_vlan_number}
- name vendor
-vlan ${pci_vlan_number}
- name pci
-vlan ${security_vlan_number}
- name security
+vlan ${data_vlan_number}
+ name data
 vlan ${voice_vlan_number}
  name voice
-vlan ${nacreg_vlan_number}
- name nacreg
-vlan ${phi_vlan_number}
- name phi
+vlan ${ap_vlan_number}
+ name accesspoint
+vlan ${guest_vlan_number}
+ name guest
+vlan ${iot_vlan_number}
+ name iot
 vlan ${bh_vlan_number}
  name disabled
 !
@@ -60,12 +51,12 @@ parameter-map type subscriber attribute-to-service BUILTIN_DEVICE_TO_TEMPLATE
 !
 template ACCESS_POINT
  description Access Point Interface
- switchport access vlan ${prod_vlan_number}
+ switchport access vlan ${ap_vlan_number}
  switchport mode access
  no switchport voice vlan ${voice_vlan_number}
 !
-template NAC-ENFORCED
- description NAC-Enforced
+template PRE-AUTH
+ description PRE-AUTH
  switchport access vlan ${bh_vlan_number}
  switchport mode access
  switchport voice vlan ${voice_vlan_number}
@@ -79,11 +70,11 @@ template NAC-ENFORCED
   snmp trap mac-notification change removed
   spanning-tree portfast
   spanning-tree bpduguard enable
-  source template NAC-ENFORCED
+  source template PRE-AUTH
 #end
 !
 #macro( uplink_interface )
-    switchport trunk allowed vlan add 1${IDF},2${IDF},3${IDF},4${IDF},5${IDF},6${IDF},7${IDF},8${IDF}
+    switchport trunk allowed vlan add $data_vlan_number, $voice_vlan_number, $ap_vlan_number, $guest_vlan_number, $bh_vlan_number
 #end
 !
 ##Access Port Configuration
