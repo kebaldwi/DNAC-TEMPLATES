@@ -1,25 +1,27 @@
 ## System Management for Cat9k Only
 no service pad
-service timestamps debug datetime msec localtime
-service timestamps log datetime msec localtime
+service tcp-keepalives-in
+service tcp-keepalives-out
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec show-timezone
 service password-encryption
+service sequence-numbers
 !
 ip subnet-zero
 ip dhcp snooping
 !
 lldp run
 !
-spanning-tree mode pvst
-spanning-tree uplinkfast
+port-channel load-balance src-dst-ip
+!
+spanning-tree mode rapid-pvst
+spanning-tree portfast default
+spanning-tree portfast bpduguard default
+!
+errdisable recovery cause all
+errdisable recovery interval 30
 !
 ip tftp blocksize 8184
-## Tenable mitigations
-ip ssh server algorithm mac hmac-sha2-256 hmac-sha2-512
-ip ssh server algorithm encryption aes128-ctr aes256-ctr
-no ntp allow mode control
-## end Tenable mitigations
-!
-errdisable recovery interval 30
 !
 udld enable
 !
@@ -33,8 +35,12 @@ snmp-server location ${location}
 line con 0
  exec-timeout 15 0
  login authentication admin
+ logging synchronous
+ authorization exec admin
 line vty 0 15
  access-class 12 in
  exec-timeout 15 0
  login authentication admin
+ logging synchronous
+ authorization exec admin
  transport input ssh
