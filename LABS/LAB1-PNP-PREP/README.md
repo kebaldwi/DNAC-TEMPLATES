@@ -71,12 +71,12 @@ There are many options for DHCP services. Although you have many options for DHC
 2. Windows DHCP Server
 3. InfoBlox or other 3rd party server
 
-During this lab setup please choose which option you wish to use for DHCP for PnP services and follow that subsection.
+During this lab setup, please choose which option you wish to use for DHCP for PnP services and follow those subsections.
 
 #### Step 1.2a - ***IOS DHCP Configuration***
-Configured on a IOS device the DHCP pool elements would be configured either on a router or switch in the network. 
+Configured on an IOS device, the DHCP pool elements would be configured either on a router or switch in the network. 
 
-If we want to use the IOS DHCP Configuration method connect to switch ***3850*** and paste the following configuration:
+If we want to use the IOS DHCP configuration method, connect to switch ***c3850-1*** and paste the following configuration:
 
 ```
 !
@@ -91,7 +91,7 @@ wr
 !
 ```
 
-Next we will introduce the helper address statement on the management Vlan's SVI to point to the router or switch where the DHCP configuration is. Connect to switch ***3850*** and paste the following configuration:
+Next, we will configure the helper address statement on the management VLAN's SVI to point to the router or switch to the DHCP configuration. Connect to switch ***c3850-1*** and paste the following configuration:
 
 ```
 !
@@ -105,10 +105,10 @@ wr
 !
 ```
 
-For a full configuration example please see [Configuring the Cisco IOS DHCP Server](https://www.cisco.com/en/US/docs/ios/12_4t/ip_addr/configuration/guide/htdhcpsv.html#wp1046301)
+For a complete configuration example please see [Configuring the Cisco IOS DHCP Server](https://www.cisco.com/en/US/docs/ios/12_4t/ip_addr/configuration/guide/htdhcpsv.html#wp1046301)
 
 #### Step 1.2b - ***Windows Server Configuration***
-If we want to use the Windows DHCP method connect to the windows server. On windows you have two options to deploy DHCP scopes the UI or PowerShell. We will deploy the scope via PowerShell. Paste the following into powershell to create the required DHCP scope:
+If we want to use the Windows DHCP service, connect to the windows ***AD1*** server. On the windows server, you have two options to deploy DHCP scopes the UI or PowerShell. We will deploy the scope via PowerShell. Paste the following into PowerShell to create the required DHCP scope:
 
 ```
 Add-DhcpServerv4Scope -Name "DNAC-Templates-Lab" -StartRange 192.168.5.1 -EndRange 192.168.5.254 -SubnetMask 255.255.255.0 -LeaseDuration 6.00:00:00 -SuperScope "PnP Onboarding"
@@ -119,7 +119,7 @@ The DHCP scope will look like this in Windows DHCP Administrative tool:
 
 ![json](./images/WindowsDHCPscope.png?raw=true "Import JSON")
 
-Next we will introduce the helper address statement on the management Vlan's SVI to point to the Windows DHCP server. Connect to switch ***3850*** and paste the following configuration:
+Next, we will introduce the helper address statement on the management VLAN's SVI to point to the Windows DHCP server. Connect to switch ***c3850-1*** and paste the following configuration:
 
 ```
 !
