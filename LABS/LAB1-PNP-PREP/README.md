@@ -269,26 +269,26 @@ wr
 !
 ```
 
-If a port channel is used initially, then you want to ensure that the port channel can operate as a single link within the bundle and for that reason use passive methods for building the port channel bundles on both the Target and Upstream Neighbor for maximum flexibility. Additionally add the **no port-channel standalone-disable** command to ensure the switch does not automatically disable the port channel if it does not come up properly
+If we are using a port-channel initially, you want to ensure that the port-channel can operate as a single link within the bundle and, for that reason, use passive methods for building the port-channel bundles on both the Target and Upstream Neighbor for maximum flexibility. Additionally, add the **no port-channel standalone-disable** command to ensure the switch does not automatically disable the port-channel if it does not come up properly.
 
 ## Lab Section 4 - Testing
-Please use the testing for the DNS Discovery method used above
+Please use the testing for the DNS Discovery method used above.
 
 ### Step 4.1a - ***DNS Resolution Tests***
-To test the environment to ensure its ready, we need to test a few things.
+To test the environment to ensure it's ready, we need to try a few things.
 
-First from a windows host use the nslookup command to resolve ***pnpserver.dcloud.cisco.com***. Connect to the windows workstation and within the search window search for CMD. Open the application and type the following command:
+First, from a Windows host, use the *nslookup* command to resolve ***pnpserver.dcloud.cisco.com***. Connect to the Windows workstation, and within the search window, search for CMD. Open the application and type the following command:
 
 ```
 nslookup pnpserver.dcloud.cisco.com
 ```
 
-They should be presented with the following output or something similar which shows the resolution of the alias to the A host record entry which identifies the VIP address for the DNA Center Cluster.
+The following output or something similar shows the resolution of the alias to the A host record entry which identifies the VIP address for the DNA Center Cluster will display.
 
 ![json](./images/DNACenterDNStests.png?raw=true "Import JSON")
 
 ### Step 4.1b - ***DNS Resolution***
-Second we need to ensure the DNA Center responds on the VIP, so use the ping command within the CMD application window previously opened as follows:
+Second, we need to ensure the DNA Center responds on the VIP, so use the ping command within the CMD application window previously opened as follows:
 
 ```
 ping pnpserver.dcloud.cisco.com
@@ -296,10 +296,10 @@ ping pnpserver.dcloud.cisco.com
 
 ![json](./images/DNACenterDNStestPing.png?raw=true "Import JSON")
 
-At this point the environment should be set up to onboard devices within Vlan 5 using the network address ***192.168.5.0/24*** utilizing either ***option 43*** or ***DNS Discovery***.
+At this point, the environment should be set up to onboard devices within VLAN 5 using the network address ***192.168.5.0/24*** utilizing either ***option 43*** or ***DNS discovery ***.
 
 ### Step 4.2 - ***Reset EEM Script***
-When testing you will frequently need to start again on the switch to test the whole flow. To accomplish this paste this small script into the 9300 target switch which will create a file on flash which you may load into the running-configuration at any time to reset the device to factory settings:
+When testing, you will frequently need to start again on the switch to test the whole flow. To accomplish this, paste this small script into the 9300 target switch, which will create a file on flash which you may load into the running-configuration at any time to reset the device to factory settings:
 
 ```
 tclsh                            
@@ -346,7 +346,7 @@ tclquit
 ```
 
 ### Step 4.3 - ***Reset Switch and Test Discovery***
-At this point we want to test the routing, connectivity, dhcp and dns services as well as discovery mechanism. Paste the following into the 9300 target switch and watch the switch come up but do not intercede or type anything into the console after the reboot has started.
+Finally, we want to test the routing, connectivity, DHCP, DNS services, and discovery mechanism. Reset the ***c9300-1*** Target switch by pasting the following sequence into the console. We will watch the switch come up but not intercede or type anything into the console after the reboot has started.
 
 ```
 copy prep4dnac running-config
@@ -358,12 +358,12 @@ The Switch should reboot and display this eventually in the console which acknow
 
 ![json](./images/DNAC-IPV4-DISCOVERY.png?raw=true "Import JSON")
 
-Additionally within DNA Center on the Plug and Play window the device should show as unclaimed
+Additionally, within DNA Center on the Plug and Play window, the device should show as unclaimed.
 
 ![json](./images/DNAC-9300-Discovery.png?raw=true "Import JSON")
 
 ## Summary
-The next step would be to build the PnP Onboarding settings and template on DNA Center which will be covered in the next lab entitled [Onboarding Templates](../LAB2-Onboarding-Template/README.md#Day0) - This section explains in depth and how to deploy Day 0 templates
+The next step will be to build the PnP Onboarding settings and template on DNA Center, which we will cover in the next lab entitled [Onboarding Templates](../LAB2-Onboarding-Template/README.md#Day0) - The next lab explains in-depth and how to deploy Day 0 templates.
 
 ## Feedback
-If you found this set of Labs helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how we can improve.
