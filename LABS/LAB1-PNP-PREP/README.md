@@ -134,23 +134,23 @@ wr
 ```
 
 ## Lab Section 2 - DNA Center Discovery
-As you may recall in order to land on DNA Center though the device needs help in finding it. 
+As you may recall, for a device to discover DNA Center, the device uses a discovery method to help it find DNA Center. 
 
 The PnP components are as follows:
 
 ![json](../../images/pnp-workflows.png?raw=true "Import JSON")
 
-There are 3 automated methods to make that occur:
+There are three automated methods to make that occur:
 
-1. **DHCP with option 43** - ***requires the DHCP server offer a PnP string via option 43***
-2. **DNS lookup** - ***requires the DHCP server offer a domain suffix and a name server to resolve the **pnpserver** address***
-3. **Cloud re-direction via https://devicehelper.cisco.com/device-helper** - ***requires the DHCP server offer a name server to make DNS resolutions***
+1. **DHCP with option 43** - ***requires the DHCP server to offer a PnP string via option 43***
+2. **DNS lookup** - ***requires the DHCP server to offer a domain suffix and a name server to resolve the **pnpserver** address***
+3. **Cloud re-direction via https://devicehelper.cisco.com/device-helper** - ***requires the DHCP server to offer a name server to make DNS resolutions***
 
 ### Step 2.1 - ***DNA Center Discovery***
 Please choose one of the following subsections as the discovery method.
 
 #### Step 2.1a - ***Option 43 with IOS DHCP Configuration***
-If using the IOS DHCP Server and the Option 43 discovery method is desired then paste the following configuration:
+If using the IOS DHCP Server and the Option 43 discovery method is desired, then paste the following configuration:
 
 ```
 !
@@ -165,7 +165,7 @@ wr
 ```
 
 #### Step 2.1b - ***Option 43 with Windows DHCP Configuration***
-If using the Windows DHCP Server and the Option 43 discovery method is desired then paste the following configuration into PowerShell:
+If using the Windows DHCP Server and the Option 43 discovery method is desired, then paste the following configuration into PowerShell:
 
 ```
 Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -OptionId 43 -Value ([System.Text.Encoding]::ASCII.GetBytes("5A1N;B2;K4;I198.18.129.100;J80"))
@@ -176,7 +176,7 @@ The DHCP scope will be modified to look like this in Windows DHCP Administrative
 ![json](./images/DNACDHCPoption43.png?raw=true "Import JSON")
 
 #### Step 2.1c - ***DNS Lookup with IOS DHCP Configuration***
-If using the IOS DHCP Server and the DNS Lookup discovery method is desired then paste the following configuration:
+If using the IOS DHCP Server and the DNS Lookup discovery method is desired, then paste the following configuration:
 
 ```
 !
