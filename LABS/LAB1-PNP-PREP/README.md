@@ -252,6 +252,7 @@ conf t
   interface range gi 1/0/10-11
      description PnP Test Environment to Cataylist 9300
      switchport mode trunk
+     switchport trunk native vlan 5
      switchport trunk allowed vlan 5
      channel-protocol lacp
      channel-group 1 mode passive
