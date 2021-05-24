@@ -1,15 +1,15 @@
 # PnP Preparation 
 ## Overview
-This Lab is designed to be a the first in a series of labs to be used either in the DCLOUD environment or as part of the setup for a Proof of Concept at a customers lab. This information may also help from a deployment or implementation point of view to ensure that all the necessary steps are complete prior to onboarding any devices within DNA Center.
+This lab is the first one in a series of labs. You may use the steps in the DCLOUD environment, or equally, you might utilize them as part of a Proof of Concept setup at a customer's lab. These procedures may also help form part of a deployment or implementation. Use them to ensure that all the necessary steps are complete before onboarding any devices within DNA Center.
 
 We will be utilizing the lab in this manner:
 ![json](./images/DCLOUD_Topology_PnPLab.png?raw=true "Import JSON")
 
 ## General Information
-As you may recall in the informational sections of this repository we set for the various methods of discovery for a device and the preliminary things required for true zero touch provisioning. Those concepts will be set up in this lab so as to ensure a successful connection to DNA Center.
+As you may recall, in the informational sections of this repository, we set for the various methods of discovery for a device and the preliminary things required for proper zero-touch provisioning. This lab will ensure a successful connection to DNA Center by helping to deploy the initial concepts.
 
 ### Lab Preparation
-To configure the lab in a way suitable for this lab please log into the console connection to the ***4451X*** and issue the following commands:
+To set up the lab, please log into the console connection to the ***4451X*** and issue the following commands:
 
 ```
 !
