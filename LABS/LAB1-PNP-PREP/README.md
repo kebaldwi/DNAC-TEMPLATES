@@ -150,7 +150,7 @@ There are three automated methods to make that occur:
 Please choose one of the following subsections as the discovery method.
 
 #### Step 2.1a - ***Option 43 with IOS DHCP Configuration***
-If using the IOS DHCP Server and the Option 43 discovery method is desired, then paste the following configuration:
+If using the IOS DHCP Server and the desire is to use Option 43 discovery method, then paste the following configuration:
 
 ```
 !
@@ -165,18 +165,18 @@ wr
 ```
 
 #### Step 2.1b - ***Option 43 with Windows DHCP Configuration***
-If using the Windows DHCP Server and the Option 43 discovery method is desired, then paste the following configuration into PowerShell:
+If using the Windows DHCP Server and the desire is to use Option 43 discovery method, then paste the following configuration into PowerShell:
 
 ```
 Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -OptionId 43 -Value ([System.Text.Encoding]::ASCII.GetBytes("5A1N;B2;K4;I198.18.129.100;J80"))
 ```
 
-The DHCP scope will be modified to look like this in Windows DHCP Administrative tool:
+The DHCP scope modification will resemble the following image of the Windows DHCP Administrative tool:
 
 ![json](./images/DNACDHCPoption43.png?raw=true "Import JSON")
 
 #### Step 2.1c - ***DNS Lookup with IOS DHCP Configuration***
-If using the IOS DHCP Server and the DNS Lookup discovery method is desired, then paste the following configuration:
+If using the IOS DHCP Server and the desire is to use the DNS Lookup discovery method, then paste the following configuration:
 
 ```
 !
@@ -191,7 +191,7 @@ wr
 !
 ```
 
-Next add the DNS entries to allow for the DNA Center to be discovered. This script will add an A host entry for the VIP address, and then a CNAME as an alias for the pnpserver entry required for DNS discovery.
+Next, add the DNS entries to allow for the DNA Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
 
 ```
 Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.100" -TimeToLive 01:00:00
@@ -203,17 +203,17 @@ The DNS Zone will look like this in Windows DNS Administrative tool:
 ![json](./images/DNACenterDNSentries.png?raw=true "Import JSON")
 
 #### Step 2.1d - ***DNS Lookup with Windows DHCP Configuration***
-If using the Windows DHCP Server and the DNS Lookup discovery method is desired then paste the following configuration into PowerShell:
+If using the Windows DHCP Server and the desire is to use the DNS Lookup discovery method, then paste the following configuration into PowerShell:
 
 ```
 Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -DnsServer 198.18.133.1 -DnsDomain "dcloud.cisco.com"
 ```
 
-The DHCP scope will be modified to look like this in Windows DHCP Administrative tool:
+The DHCP scope will resemble the following image of the Windows DHCP Administrative tool:
 
 ![json](./images/WindowsDHCPscope.png?raw=true "Import JSON")
 
-Next add the DNS entries to allow for the DNA Center to be discovered. This script will add an A host entry for the VIP address, and then a CNAME as an alias for the pnpserver entry required for DNS discovery.
+Next, add the DNS entries to allow for the DNA Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
 
 ```
 Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.100" -TimeToLive 01:00:00
@@ -225,9 +225,9 @@ The DNS Zone will look like this in Windows DNS Administrative tool:
 ![json](./images/DNACenterDNSentries.png?raw=true "Import JSON")
 
 ## Lab Section 3 - Target Connectivity
-The Target switch will typically be connected as a trunk to either a single port or as part of a port channel. 
+Typically, the Target switch is connected via a trunk to a single port or a bundle of ports as part of a port channel. 
 
-If it is a single port connection to the target switch then use a simplified configuration; however, in this lab we will not be utilizing this method. An example provided here:
+If it is a single port connection to the target switch, then use a simplified configuration; however, we will not be utilizing this method in this lab. An example provided here:
 
 ```
 !
@@ -243,7 +243,7 @@ wr
 !
 ```
 
-The port where the Target switch will be connected needs for this lab to be connected as a trunk as part of a Port Channel. 
+In this exercise, the port where the Target switch connects is a layer two trunk as part of a Port Channel. 
 
 ```
 !
