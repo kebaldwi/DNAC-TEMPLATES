@@ -55,9 +55,9 @@ wr
 The ***pnp startup-vlan 5*** command will program the target switches port connected with a trunk and automatically add the vlan and SVI to the target switch making that vlan ready to accept a DHCP address. The feature is available on switches running 16.6 code or greater as upstream neighbors. Older switches or upstream devices that cannot run the command should utilize VLAN 1 and then set up the correct management VLAN modified as part of the onboarding process.
 
 ### Step 1.2 - ***DHCP Setup***
-We need a DHCP scope to supply the address within the management network temporarily in order to complete the configuration and onboarding. The scope should be configured to offer addresses from part of the range of addresses leaving the other part of the scope for the static addresses. It also can be a reservation as DHCP servers can reserve addresses for specific MAC addresses, one benefit of this is DNS host entries are automatically updated sometimes depending on the DHCP Server.
+We need a DHCP scope to temporarily supply the address within the management network to complete the configuration and onboarding. Configure the scope to offer IP addresses from the part of the address's range, leaving the other part of the scope for static addresses. You could also make use of reservations as DHCP servers can reserve addresses for specific MAC addresses. One benefit of this is that DNS host entries are automatically updated depending on the DHCP Server.
 
-The DHCP scope would incorporate therefore the following which would be enough to get an address:
+The DHCP scope should therefore incorporate the following minimal configuration:
 
 * network
 * default gateway
@@ -65,7 +65,7 @@ The DHCP scope would incorporate therefore the following which would be enough t
 * name-server ip - ***required if option 2 or 3 is used below***
 * DHCP relay or helper statement - ***to be added to the gateway interface pointing to the DHCP server***
 
-The DHCP Scope should be added to one of the following, the first two of these will be covered in this lab.
+There are many options for DHCP services. Although you have many options for DHCP, we will cover Windows and IOS configurations in this lab. Configure the DHCP scope to one of the following:
 
 1. Switch or Router
 2. Windows DHCP Server
