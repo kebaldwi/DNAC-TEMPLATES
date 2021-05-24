@@ -29,7 +29,7 @@ where python
 where pip
 ````
 
-If a path like this shows `C:\Users\Administrator\AppData\Local\Programs\Python\Python38-32 (32bit)` then please remove the path from the environment variables. The only paths for python after the installation are those like these:
+If a path like this shows `C:\Users\administrator\AppData\Local\Microsoft\WindowsApps\python.exe` then please remove the path from the environment variables. The only paths for python after the installation are those like these:
 
 ![json](./images/PythonTest.png?raw=true "Import JSON")
 
