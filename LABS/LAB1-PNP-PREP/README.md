@@ -25,14 +25,14 @@ wr
 ```
 
 ## Lab Section 1 - Device Connectivity
-For PnP processes to work our intention is to have a management interface on the device in this lab we will set up a Loopback interface for management and a Vlan interface for connectivity. Obviously, you don't have to do it this way we are just giving a relatively complicated example and you can alter this to suite your needs. As the device is connected to the front facing ports by default there is little configuration. 
+For PnP processes to work, we intend to have a management interface on the device. In this lab, we will set up a VLAN interface for both management and connectivity. You don't have to do it this way; we are just giving a relatively uncomplicated example, and you can alter this to suit your needs. As the device connects to the front-facing ports, we have to rely on the default configuration. 
 
-By default the target switch is using vlan 1 as no other vlan exists, and vlan 1 by default accepts DHCP addresses. This will be used in the pnp process. Our management vlan however, may be a different vlan, and so may the native vlan structure of our environment. To that end we must make use of the *pnp startup-vlan* command which allows the device to use this vlan in pnp and needs to be configured on the upstream switch.
+As you may recall, a factory default configuration is using VLAN one as no other VLAN exists, and by default, it accepts DHCP addresses. We can use this method in the PnP process. However, the management VLAN may be different, and so may the native VLAN structure of our environment. To that end, we must use the *pnp startup-vlan* command, which allows the device to use varying VLANs in PnP and should be set up and configured on the upstream switch.
 
 ### Step 1.1 - ***Upstream Neighbor Setup***
-From the diagram above we will utilize the 3850 as the upstream neighbor for this exercise and as the distribution switch for the environment. The Catalyst 9300 will be the target switch which we will deploy via PnP and Day 0 and N templates.
+As depicted in the diagram above, the 3850 will serve as the upstream neighbor for this exercise and the environment's distribution switch. The Catalyst 9300 will act as the target switch, which we will deploy via PnP and Day 0 and N templates.
 
-For the purposes of the lab we will utilize ***vlan 5*** as the management vlan. Connect to switch ***TBD*** and paste the following configuration:
+For the lab, we will utilize ***VLAN 5*** as the management VLAN. Connect to switch ***c3850-1*** and paste the following configuration:
 
 ```
 config t
