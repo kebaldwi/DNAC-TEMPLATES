@@ -18,17 +18,9 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 
 ### Step 1 - ***Hierarchy***
 1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step.
-2. Although you can manually set up the hierarchy we will use an automation scripts built to implement the hierarchy via **postman** which will utilize the ***DNA Center API's*** To do this we will make use of the application `postman` in the Windows workstation and install json files located in the [postman](./postman) directory. Once the both the environment variables, and the collection are installed we will walk through the sections below.
-3. Once the tools are installed paste the lines below one at a time and refresh the hierarchy page to watch the changes.
-
-```
-# Create Sites
-dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 sites create-site --type "area" --site '{ "area" : { "name":"DNAC Template Lab","parentName":"Global"}}' --headers '{"__runsync" : true }'
-
-dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 sites create-site --type "building" --site '{ "building" : { "name":"Building","parentName":"Global/DNAC Template Lab","address":"Cisco Building 24, 510 McCarthy Blvd, Milpitas, CA 95035"} }' --headers '{"__runsync" : true }'
-
-dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 sites create-site --type "floor" --site '{ "floor" : { "name":"Floor1","parentName":"Global/DNAC Template Lab/Building","rfModel":"Cubes And Walled Offices","width":100,"length":100,"height":10} }' --headers '{"__runsync" : true }'
-```
+2. Although you can manually set up the hierarchy we will use an automation scripts built to implement the hierarchy via **postman** which will utilize the ***DNA Center API's*** To do this we will make use of the application `postman` in the Windows workstation and install json files located in the [postman](./postman) directory. 
+[JSON](./postman/DNAC_Templates_Lab.postman_collection.json)
+4. Once the both the environment variables, and the collection are installed we will walk through the sections below.
 
 ### Step 2 - ***Network Settings***
 1. **Network Settings** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings and configurations that we will push as part of this lab **(required)**:
