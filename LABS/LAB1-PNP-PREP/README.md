@@ -346,6 +346,18 @@ end
 }
 tclquit
 ```
+Additionally, for help with troubleshooting, install this helpful EEM script in the directory in the same manner as above. This will help to see which lines were sent to the switch and helps deduce where a template may be failing.
+```
+tclsh
+puts [open "flash:dnacts" w+] {
+!
+event manager applet CLI_COMMANDS-->
+event cli pattern ".*" sync no skip no
+action 1 syslog msg "$_cli_msg"
+!
+}
+tclquit
+```
 
 ### Step 4.3 - ***Reset Switch and Test Discovery***
 Finally, we want to test the routing, connectivity, DHCP, DNS services, and discovery mechanism. Reset the ***c9300-1*** Target switch by pasting the following sequence into the console. We will watch the switch come up but not intercede or type anything into the console after the reboot has started.
