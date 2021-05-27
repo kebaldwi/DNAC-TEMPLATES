@@ -18,44 +18,7 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 
 ### Step 1 - ***Hierarchy***
 1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step.
-2. Although you can manually set up the hierarchy we will use an automation script to implement the hierarchy via **dnacentercli** part of the ***DNA Center SDK*** To do this we will make use of the terminal application `Git Bash` in the Windows workstation and create a python virtual environment. Once the Python virtual environment is running we will install the DNA Center SDK via pip install and then install the DNA Center CLI tool similarly.
-
-First from the Windows workstation rdp session use this link to install [Python 3.9.5 Install for Windows](https://www.python.org/ftp/python/3.9.5/python-3.9.5-amd64.exe). When installing Python please make sure to install all subcomponents and debugging features as well as paths. Lastly, reboot the Windows client.
-
-Check that Python and pip are installed by using these commands and making sure one path shows for each:
-
-```
-where python
-where pip
-````
-
-If a path like this shows `C:\Users\administrator\AppData\Local\Microsoft\WindowsApps\python.exe` then you optionally can remove the path from the environment variables. The only required paths for python after the installation are those like these:
-
-![json](./images/PythonTest.png?raw=true "Import JSON")
-
-If for some reason pip was not installed either re run the Python installer or paste the following into a command line window:
-```
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python get-pip.py
-```
-
-Open the command prompt and paste the following into the cli window to create the virtual environment. Please paste the commands one at a time.
-
-```
-pip install virtualenv
-
-virtualenv venv
-
-cd venv
-
-Scripts\activate
-
-echo dnacentersdk == 2.0.2 > requirements.txt
-pip install -r requirements.txt
-
-pip install dnacentercli
-```
-
+2. Although you can manually set up the hierarchy we will use an automation scripts built to implement the hierarchy via **postman** which will utilize the ***DNA Center API's*** To do this we will make use of the application `postman` in the Windows workstation and install json files located in the [postman](./postman) directory. Once the both the environment variables, and the collection are installed we will walk through the sections below.
 3. Once the tools are installed paste the lines below one at a time and refresh the hierarchy page to watch the changes.
 
 ```
