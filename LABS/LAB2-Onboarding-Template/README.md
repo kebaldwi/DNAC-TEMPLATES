@@ -19,7 +19,8 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 ### Step 1 - ***Hierarchy***
 1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step.
 2. Although you can manually set up the hierarchy we will use an automation scripts built to implement the hierarchy via **postman** which will utilize the ***DNA Center API's*** To do this we will make use of the application `postman` in the Windows workstation and install json files located in the [postman](./postman) directory. 
-[JSON](./postman/DNAC_Templates_Lab.postman_collection.json)
+<object type="text/html" data="./postman/DNAC_Templates_Lab.postman_collection.json">
+</object>
 4. Once the both the environment variables, and the collection are installed we will walk through the sections below.
 
 ### Step 2 - ***Network Settings***
