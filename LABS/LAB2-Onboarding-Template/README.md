@@ -21,6 +21,7 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 1. Download the following two files in zip format to the desktop and expand them:
    <p><a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/DNAC_Templates_Lab.postman_collection.json" target="_blank" rel="noopener noreferrer">⬇︎COLLECTIONS⬇︎</a></p>
    <p><a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/DNAC_Template_Labs.postman_environment.json" target="_blank" rel="noopener noreferrer">⬇︎ENVIRONMENT⬇︎</a></p>
+   [go](http://stackoverflow.com){:target="_blank" rel="noopener"}
 2. Open the **postman** application from the desktop. Once the application is open select *Collections* then click the *Import* link and on the window that appears click raw text and copy and paste the 
 3. Once the both the environment variables, and the collection are installed we will walk through the sections below.
 
