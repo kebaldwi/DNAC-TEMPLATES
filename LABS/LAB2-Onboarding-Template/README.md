@@ -23,6 +23,8 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 [collection](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/exporttool/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/collection.json)
 <a href="data:application/octet-stream,DATA" download="https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/collection">TEST</a>
 [collection](https://api.github.com/repos/:kebaldwi/:DNAC-TEMPLATES/contents/:blob/master/LABS/LAB2-Onboarding-Template/postman/collection.json)
+
+[⬇︎COLLECION](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/collection.json?raw=true)
 4. Once the both the environment variables, and the collection are installed we will walk through the sections below.
 
 ### Step 2 - ***Network Settings***
