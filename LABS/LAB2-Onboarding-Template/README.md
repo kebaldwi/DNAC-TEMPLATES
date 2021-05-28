@@ -14,15 +14,15 @@ As a guidance try and use Design settings for as much of the configurations as y
 ## Lab Section 1 - DNA Center Design Preparation
 While a more extensive set of settings can be built out for a deployment we will limit the configuration to the minimal necessary to perform this step. We will augment the Design Settings during the **DayN Templating Lab** to include others that may be required.
 
-Before DNA Center can automate the deployment we have to do a couple of tasks to prepare. Please log into the DNA Center using a browser within the Windows Jump host and browse to [DNA Center](https://198.18.129.100). Use the credentials of username: ***admin*** password: ***C1sco12345*** within the DCLOUD environment.
+Before DNA Center can automate the deployment we have to do a couple of tasks to prepare. Please log into the DNA Center using a browser within the Windows **Jump host**. Use the credentials of username: ***admin*** password: ***C1sco12345***. Then browse to [DNA Center](https://198.18.129.100). Use the credentials of username: ***admin*** password: ***C1sco12345*** within the DCLOUD environment.
 
 ### Step 1 - ***Hierarchy***
 1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step.
-2. Although you can manually set up the hierarchy we will use an automation scripts built to implement the hierarchy via **postman** which will utilize the ***DNA Center API's*** To do this we will make use of the application `postman` in the Windows workstation and install json files located in the [postman](./postman) directory. 
+2. Although you can manually set up the hierarchy we will use an automation scripts built to implement the hierarchy via **postman** which will utilize the **DNA Center API's** To do this we will make use of the application `postman` in the Windows workstation and install json files located in the [postman](./postman) directory. 
 3. Connect to the workstation **Jump Host**, and then open the **postman** application from the desktop. Once the application is select *Collections* then click the *Import* link and on the window that appears click raw text and copy and paste the 
-[collection](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/collection)
+[collection](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/collection.json)
 <a href="data:application/octet-stream,DATA" download="https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/collection">TEST</a>
-[collection](https://api.github.com/repos/:kebaldwi/:DNAC-TEMPLATES/contents/:LABS/LAB2-Onboarding-Template/postman/collection.json)
+[collection](https://api.github.com/repos/:kebaldwi/:DNAC-TEMPLATES/contents/:blob/master/LABS/LAB2-Onboarding-Template/postman/collection.json)
 4. Once the both the environment variables, and the collection are installed we will walk through the sections below.
 
 ### Step 2 - ***Network Settings***
