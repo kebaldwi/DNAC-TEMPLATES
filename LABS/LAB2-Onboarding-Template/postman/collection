@@ -1,0 +1,608 @@
+{
+	"info": {
+		"_postman_id": "ee335c0e-051f-401b-8fbf-09277ee2adaf",
+		"name": "DNAC Templates Lab",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DNAC Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"TOKEN\", jsonData[\"Token\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "C1sco12345",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://198.18.129.100/dna/system/api/v1/auth/token",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"129",
+						"100"
+					],
+					"path": [
+						"dna",
+						"system",
+						"api",
+						"v1",
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Devices",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://198.18.129.100/api/v1/network-device",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"129",
+						"100"
+					],
+					"path": [
+						"api",
+						"v1",
+						"network-device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Area",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"area\",\r\n    \"site\": {\r\n        \"area\": {\r\n            \"name\": \"DNAC Template Lab\",\r\n            \"parentName\": \"Global\"\r\n        }\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://198.18.129.100/dna/intent/api/v1/site",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"129",
+						"100"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"site"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Building",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"building\",\r\n    \"site\": {\r\n        \"building\": {\r\n            \"name\": \"Building\",\r\n            \"address\": \"Cisco Building 24, 510 McCarthy Blvd, Milpitas, CA 95035\",\r\n            \"parentName\": \"Global/DNAC Template Lab\"\r\n        }\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://198.18.129.100/dna/intent/api/v1/site",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"129",
+						"100"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"site"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Floor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"floor\",\r\n    \"site\": {\r\n        \"floor\": {\r\n            \"name\": \"Floor 1\",\r\n            \"parentName\": \"Global/DNAC Template Lab/Building\",\r\n            \"rfModel\": \"Cubes And Walled Offices\",\r\n            \"width\": \"100\",\r\n            \"length\": \"100\",\r\n            \"height\": \"10\"\r\n        }\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://198.18.129.100/dna/intent/api/v1/site",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"129",
+						"100"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"site"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Global SiteID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"SITEID\", jsonData[\"response\"][0][\"id\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://198.18.129.100/dna/intent/api/v1/site",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"129",
+						"100"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"site"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{{siteId}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Settings",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"settings\": {\r\n        \"dhcpServer\": [\r\n            \"198.18.133.1\"\r\n        ],\r\n        \"dnsServer\": {\r\n            \"domainName\": \"dcloud.cisco.com\",\r\n            \"primaryIpAddress\": \"198.18.133.1\"\r\n        },\r\n           \"syslogServer\": {\r\n            \"ipAddresses\": [\r\n                \"198.18.129.100\"\r\n            ],\r\n            \"configureDnacIP\": true\r\n        },\r\n        \"snmpServer\": {\r\n            \"ipAddresses\": [\r\n                \"198.18.129.100\"\r\n            ],\r\n            \"configureDnacIP\": true\r\n        },\r\n        \"netflowcollector\": {\r\n            \"ipAddress\": \"198.18.129.100\",\r\n            \"port\": 6007\r\n        },\r\n        \"ntpServer\": [\r\n            \"198.18.133.1\"\r\n        ],\r\n        \"timezone\": \"EST5EDT\",\r\n        \"messageOfTheday\": {\r\n            \"bannerMessage\": \"DNAC TEMPLATE LAB!\\nAuthorized Access Only!\",\r\n            \"retainExistingBanner\": \"false\"\r\n        }\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://198.18.129.100/dna/intent/api/v1/network/{{SITEID}}",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"129",
+						"100"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"network",
+						"{{SITEID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Credentials",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"settings\": {\r\n        \"cliCredential\": [\r\n            {\r\n                \"description\": \"netadmin\",\r\n                \"username\": \"netadmin\",\r\n                \"password\": \"C1sco12345\",\r\n                \"enablePassword\": \"C1sco12345\"\r\n            }\r\n        ],\r\n        \"snmpV2cRead\": [\r\n            {\r\n                \"description\": \"RO\",\r\n                \"readCommunity\": \"ro\"\r\n            }\r\n        ],\r\n        \"snmpV2cWrite\": [\r\n            {\r\n                \"description\": \"RW\",\r\n                \"writeCommunity\": \"rw\"\r\n            }\r\n        ]\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://198.18.129.100/dna/intent/api/v1/device-credential",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"129",
+						"100"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"device-credential"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Credentials Copy",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"settings\": {\r\n        \"cliCredential\": [\r\n            {\r\n                \"description\": \"netadmin\",\r\n                \"username\": \"netadmin\",\r\n                \"password\": \"C1sco12345\",\r\n                \"enablePassword\": \"C1sco12345\",\r\n                \"id\": \"827f7640-5ebd-43b4-a6d7-a8626e01f1c4\"\r\n            }\r\n        ],\r\n        \"snmpV2cRead\": [\r\n            {\r\n                \"description\": \"RO\",\r\n                \"readCommunity\": \"ro\",\r\n                \"id\": \"1cd266a0-c090-4c16-9ae0-f6a7a5b0e1e7\"\r\n            }\r\n        ],\r\n        \"snmpV2cWrite\": [\r\n            {\r\n                \"description\": \"RW\",\r\n                \"writeCommunity\": \"rw\",\r\n                \"id\": \"185210f2-8011-43b9-aa92-6b9bbc06e287\"\r\n            }\r\n        ]\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://198.18.129.100/dna/intent/api/v1/device-credential",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"129",
+						"100"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"device-credential"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Credential cliId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"SITEID\", jsonData[\"response\"][\"cli\"][\"id\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://198.18.129.100/dna/intent/api/v1/device-credential?siteId={{SITEID}}",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"129",
+						"100"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"device-credential"
+					],
+					"query": [
+						{
+							"key": "siteId",
+							"value": "{{SITEID}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Credential cliId Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://198.18.129.100/dna/intent/api/v1/device-credential?siteId={{SITEID}}",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"129",
+						"100"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"device-credential"
+					],
+					"query": [
+						{
+							"key": "siteId",
+							"value": "{{SITEID}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign Credentials",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cliId\": \"827f7640-5ebd-43b4-a6d7-a8626e01f1c4\",\r\n    \"snmpV2ReadId\": \"RO\",\r\n    \"snmpV2WriteId\": \"WR\"\r\n}"
+				},
+				"url": {
+					"raw": "https://198.18.129.100/dna/intent/api/v1/credential-to-site/{{SITEID}}",
+					"protocol": "https",
+					"host": [
+						"198",
+						"18",
+						"129",
+						"100"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"credential-to-site",
+						"{{SITEID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
