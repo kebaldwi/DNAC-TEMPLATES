@@ -19,8 +19,8 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 Although you can manually set up the hierarchy we will use automation scripts built to implement the hierarchy via **postman** which will utilize the **DNA Center API's** To do this we will make use of the application `postman` in the Windows workstation and install json files.
 
 1. Download the following two files in zip format to the desktop and expand them:
-   <p><a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/DNAC_Templates_Lab.postman_collection.json" target="_blank">⬇︎COLLECTIONS⬇︎</a></p>
-   <p><a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/DNAC_Template_Labs.postman_environment.json" target="_blank">⬇︎ENVIRONMENT⬇︎</a></p>
+   <p><a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/DNAC_Templates_Lab.postman_collection.json" target="_blank" rel="noopener noreferrer">⬇︎COLLECTIONS⬇︎</a></p>
+   <p><a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/DNAC_Template_Labs.postman_environment.json" target="_blank" rel="noopener noreferrer">⬇︎ENVIRONMENT⬇︎</a></p>
 2. Open the **postman** application from the desktop. Once the application is open select *Collections* then click the *Import* link and on the window that appears click raw text and copy and paste the 
 3. Once the both the environment variables, and the collection are installed we will walk through the sections below.
 
