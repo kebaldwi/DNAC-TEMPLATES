@@ -18,17 +18,24 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 
 Although you can manually set up the hierarchy we will use automation scripts built to implement the hierarchy via **postman** which will utilize the **DNA Center API's** To do this we will make use of the application `postman` in the Windows workstation and install json files.
 
-1. Download the following two files in zip format to the desktop and expand them:
-   <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/DNAC_Templates_Lab.postman_collection.json" target="_blank" rel="noopener noreferrer">⬇︎COLLECTIONS⬇︎</a>
-   <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/DNAC_Template_Labs.postman_environment.json" target="_blank" rel="noopener noreferrer">⬇︎ENVIRONMENT⬇︎</a>
-
-
-
-2. Open the **postman** application from the desktop. Once the application is open select *Collections* then click the *Import* link and on the window that appears click raw text and copy and paste the 
-3. Once the both the environment variables, and the collection are installed we will walk through the sections below.
+1. Download the following two files by right clicking and opening each in a new tab to download them to the downloads folder on the workstation:
+   <p><a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/DNAC_Templates_Lab.postman_collection.json">⬇︎COLLECTIONS⬇︎</a></p>
+   <p><a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/DNAC_Template_Labs.postman_environment.json">⬇︎ENVIRONMENT⬇︎</a></p>
+2. Extract both files to the desktop using **Winrar** to expand them
+3. Open the **postman** application from the desktop. Once the application is open select *Collections* then click the *Import* link. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the file named `DNAC_Templates_Lab.postman_collection.json` and click open. Then click import and the collection should be loaded into the collections as shown.
+4. Next click on *Environments* and then the *Import* link. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the file named `DNAC_Templates_Lab.postman_environment.json` and click open. Then click import and the environment should be loaded into the environments as shown. 
+5. Next we will choose the environment by selecting the arro on the top right of postman and then Selecting `DNAC Templates Lab` from the drop down so that the window looks as shown here.
+6. Click the **Gear** icon to select **settings** and **deselect** `SSL certificate verification` and then close the settings window.
+7. With these steps completed we are prepared to start the walk through of the sections below.
 
 ### Step 1 - ***Hierarchy***
 1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step and the process below will explain in detail how to set up for our lab.
+2. Within **postman** click the collections and select the the first entry **DNAC Token API**. Click the **send** button and see that a token appears.
+3. Wait a few seconds between each step for best results:
+   1. Next select the Create Area API and click send. 
+   2. Next select the Create Building API and click send. 
+   3. Next select the Create Floor API and click send. 
+4. Then open a browser and log back into DNA Center and browse to the Network Hierarchy as shown. The network hierarchy will be fully built out.
 
 ### Step 2 - ***Network Settings***
 1. **Network Settings** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings and configurations that we will push as part of this lab **(required)**:
@@ -39,30 +46,27 @@ Although you can manually set up the hierarchy we will use automation scripts bu
    5. ***Netflow Collector Servers*** 
    6. ***NTP Servers***
    7. ***Timezone***
-2. Paste the lines below and refresh the Network Settings page to watch the changes.
-
-```
-# Create Global Settings
-dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-network --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" --settings '{ "dhcpServer":["198.18.133.1"], "syslogServer":{"ipAddresses":["198.18.129.100"],"configureDnacIP": true}, "snmpServer": {"ipAddresses":["198.18.129.100"],"configureDnacIP": true}, "netflowcollector":{"ipAddress":"198.18.129.100","port":6007}, "ntpServer":["198.18.133.100"], "timezone":"EST5EDT" }'  --headers '{"__runsync" : true }'
-```
-3. At the Global level enter the domain name setting of `dcloud.cisco.com` and the name server ip address of `198.18.133.1`. Ensure that all the settings are inherited all the way to Floor 1.
+2. Within **postman** click the collections and select the the entry **Get Global SiteID API**. Click the **send** button and see that a text appears.
+3. Next select the Create Settings API and click send.  
+4. Then open a browser and log back into DNA Center and browse to the Network Settings as shown. The network settings and the telemetry settings will be fully built out.
 
 ### Step 3 - ***Device Credentials***
 1. **Device Credentials** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the credentials and configurations that can be pushed **(required)**:
    1. ***CLI Credentials*** 
    2. ***SNMP Read and Write Credentials***
-2. Paste the lines below one at a time and refresh the Credentials page to watch the changes.
-
-```
-# Create Credentials
-dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings create-device-credentials --settings '{"cliCredential":[{"description":"netadmin","username":"netadmin","password": "C1sco12345","enablePassword": "C1sco12345"}], "snmpV2cRead":[{"description":"RO","readCommunity":"ro"}],"snmpV2cWrite":[{"description":"RW","writeCommunity":"rw"}] }' --headers '{"__runsync" : true }'
-
-dnacentercli --base_url https://198.18.129.100 --verify False -v 2.1.1 -u admin -p C1sco12345 network-settings assign-credential-to-site --site_id "5f012eea-c19f-4130-96e2-ee47c99e7c3b" '{ "cliId": "netadmin", "snmpV2ReadId": "RO", "snmpV2WriteId": "RW" }' --headers '{"__runsync" : true }'
-```
-3. Ensure that the Credentials are set for the Global level and that the are inherited all the way to Floor 1. If not select the Credentials and save them.
+2. Within **postman** click the collections and select the the entry **Create Credentials API**. Click the **send** button and see that a text appears.
+4. Then open a browser and log back into DNA Center and browse to the Device Credentials as shown. The Device Credentials will be deslected at this point.
+5. Perform the following:
+   1. select the Global within the hierarchy
+   2. select the dot beside the netadmin cli credential
+   3. select the dot beside the RO snmp read credential
+   4. choose the snmp rw tab
+   5. select the dot beside the RW snmp write credential
+   6. click save
+6. Ensure that the Credentials are set for the Global level and that the are inherited all the way to Floor 1. If not select the Credentials and save them as necessary.
 
 ### Step 4 - ***Image Repository***
-The image used in this lab for the 9300 is downloadable from here [Amsterdam-17.03.03 MD](https://software.cisco.com/download/home/286315874/type/282046477/release/Amsterdam-17.3.3)
+The image used in this lab for the 9300 is downloadable from here [⬇︎Amsterdam-17.03.03 MD⬇︎](https://software.cisco.com/download/home/286315874/type/282046477/release/Amsterdam-17.3.3)
 
 1. **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. 
 2. You then indicate whether the file is Cisco or 3rd Party and click import. 
@@ -73,7 +77,7 @@ The image used in this lab for the 9300 is downloadable from here [Amsterdam-17.
 You can create onboarding templates within the ***Templating Tool*** within **DNA Center**. Go to the ***Templating Tool*** to complete the next task.
 
 ### Step 1 - ***Create an Onboarding Template***
-Download and import an Onboarding Template in the Templating tool using the [JSON](./templates/Platinum_Onboarding_Template.json) file. If using DNAC prior release to 2.1.2.X then build the [Template](./templates/Platinum-Onboarding.txt) located within this lab. 
+Download and import an Onboarding Template in the Templating tool using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/templates/Platinum_Onboarding_Template.json">⬇︎Onboarding_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/templates/Platinum-Onboarding.txt">⬇︎Onboarding.txt⬇︎</a> located within this lab. 
 
 The Onboarding template has the minimal configuration to bring up device connectivity with DNAC. Below is for explanation purposes only. (Please Import the Template JSON above)
 
