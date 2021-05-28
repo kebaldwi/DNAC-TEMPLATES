@@ -21,6 +21,8 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 2. Although you can manually set up the hierarchy we will use an automation scripts built to implement the hierarchy via **postman** which will utilize the ***DNA Center API's*** To do this we will make use of the application `postman` in the Windows workstation and install json files located in the [postman](./postman) directory. 
 3. Connect to the workstation **Jump Host**, and then open the **postman** application from the desktop. Once the application is select *Collections* then click the *Import* link and on the window that appears click raw text and copy and paste the 
 [collection](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/collection)
+<a href="data:application/octet-stream,DATA" download="https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/collection">TEST</a>
+
 4. Once the both the environment variables, and the collection are installed we will walk through the sections below.
 
 ### Step 2 - ***Network Settings***
