@@ -68,16 +68,21 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 ### Step 4 - ***Image Repository***
 The image used in this lab for the 9300 is downloadable from here [⬇︎Amsterdam-17.03.03 MD⬇︎](https://software.cisco.com/download/home/286315874/type/282046477/release/Amsterdam-17.3.3)
 
-1. **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. 
-2. You then indicate whether the file is Cisco or 3rd Party and click import. 
-3. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. 
-4. Select the image and mark it as golden for PnP to use it. **(required)**
+1. Within DNA Center Navigate to *Design>Image Repository*
+2.  **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. 
+3. You then indicate whether the file is Cisco or 3rd Party and click import. 
+4. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. 
+5. Select the image and mark it as golden for PnP to use it. **(required)**
 
 ## Lab Section 2 - DNA Center Onboarding Template Preparation
 You can create onboarding templates within the ***Templating Tool*** within **DNA Center**. Go to the ***Templating Tool*** to complete the next task.
 
 ### Step 1 - ***Create an Onboarding Template***
 Download and import an Onboarding Template in the Templating tool using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/templates/Platinum_Onboarding_Template.json">⬇︎Onboarding_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/templates/Platinum-Onboarding.txt">⬇︎Onboarding.txt⬇︎</a> located within this lab. 
+
+1. Navigate to the Template Editing Tool with DNA Center through the menu *Tools>Template Editor*
+2. With the template editor right click the gear icon to the right of onboarding templates and click Import within the menu.
+3. 
 
 The Onboarding template has the minimal configuration to bring up device connectivity with DNAC. Below is for explanation purposes only. (Please Import the Template JSON above)
 
