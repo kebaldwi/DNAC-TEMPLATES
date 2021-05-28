@@ -21,9 +21,7 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 1. Download the following two files in zip format to the desktop and expand them:
    <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/DNAC_Templates_Lab.postman_collection.json" target="_blank" rel="noopener noreferrer">⬇︎COLLECTIONS⬇︎</a>
    <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/DNAC_Template_Labs.postman_environment.json" target="_blank" rel="noopener noreferrer">⬇︎ENVIRONMENT⬇︎</a>
-   [go](http://stackoverflow.com) {:target="_blank" rel="noopener"}
-   <a href="http://example.com/" target="_blank">Hello, world!</a>
-   <a href="http://www.google.com" onClick="window.location.href='http://www.yahoo.com';return false;" target="_blank">test</a>
+
 
 
 2. Open the **postman** application from the desktop. Once the application is open select *Collections* then click the *Import* link and on the window that appears click raw text and copy and paste the 
