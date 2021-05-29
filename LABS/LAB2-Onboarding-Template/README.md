@@ -78,11 +78,13 @@ The image used in this lab for the 9300 is downloadable from here [⬇︎Amsterd
 You can create onboarding templates within the ***Templating Tool*** within **DNA Center**. Go to the ***Templating Tool*** to complete the next task.
 
 ### Step 1 - ***Create an Onboarding Template***
-Download and import an Onboarding Template in the Templating tool using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/templates/Platinum_Onboarding_Template.json">⬇︎Onboarding_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/templates/Platinum-Onboarding.txt">⬇︎Onboarding.txt⬇︎</a> located within this lab. 
+Download and import an Onboarding Template in the Templating tool using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/templates/Platinum_Onboarding_Template_2125.json">⬇︎Onboarding_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/templates/Platinum-Onboarding.txt">⬇︎Onboarding.txt⬇︎</a> located within this lab. 
 
 1. Navigate to the Template Editing Tool with DNA Center through the menu *Tools>Template Editor*
-2. With the template editor right click the gear icon to the right of onboarding templates and click Import within the menu.
-3. 
+2. With the template editor right click the gear icon to the right of onboarding templates and click Import within the menu
+3. Click the link to select files from the local computer
+4. In the Windows explorer window search for the extracted json file, select it and open it into the import window
+5. Click import to install and import the template.
 
 The Onboarding template has the minimal configuration to bring up device connectivity with DNAC. Below is for explanation purposes only. (Please Import the Template JSON above)
 
