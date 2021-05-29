@@ -28,10 +28,17 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 ![json](./images/Postman-Collection-Select.png?raw=true "Import JSON")
 5. Then click import and the collection should be loaded into the collections as shown.
 ![json](./images/Postman-Post-Collection-Import.png?raw=true "Import JSON")
-6. Next click on *Environments* and then the *Import* link. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the file named `DNAC_Templates_Lab.postman_environment.json` and click open. Then click import and the environment should be loaded into the environments as shown. 
-8. Next we will choose the environment by selecting the arro on the top right of postman and then Selecting `DNAC Templates Lab` from the drop down so that the window looks as shown here.
-9. Click the **Gear** icon to select **settings** and **deselect** `SSL certificate verification` and then close the settings window.
-10. With these steps completed we are prepared to start the walk through of the sections below.
+6. Next click on *Environments* and then the *Import* link. 
+![json](./images/Postman-Pre-Environment-Import.png?raw=true "Import JSON")
+7. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the file named `DNAC_Templates_Lab.postman_environment.json` and click open. 
+![json](./images/Postman-Environment-Select.png?raw=true "Import JSON")
+8. Then click import and the environment should be loaded into the environments as shown. 
+![json](./images/Postman-Post-Environment-Import.png?raw=true "Import JSON")
+9. Next we will choose the environment by selecting the arrow on the top right of postman and then Selecting `DNAC Templates Lab` from the drop down so that the window looks as shown here. 
+![json](./images/Postman-Environment-Selection.png?raw=true "Import JSON")
+10. Click the **Gear** icon to select **settings** and **deselect** `SSL certificate verification` and then close the settings window. 
+![json](./images/Postman-SSL-Deselect.png?raw=true "Import JSON")
+11. With these steps completed we are prepared to start the walk through of the sections below.
 
 ### Step 1 - ***Hierarchy***
 1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step and the process below will explain in detail how to set up for our lab.
