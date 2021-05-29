@@ -22,11 +22,16 @@ Although you can manually set up the hierarchy we will use automation scripts bu
    <p><a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/DNAC_Templates_Lab.postman_collection.json">⬇︎COLLECTIONS⬇︎</a></p>
    <p><a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/postman/DNAC_Template_Labs.postman_environment.json">⬇︎ENVIRONMENT⬇︎</a></p>
 2. Extract both files to the desktop using **Winrar** to expand them
-3. Open the **postman** application from the desktop. Once the application is open select *Collections* then click the *Import* link. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the file named `DNAC_Templates_Lab.postman_collection.json` and click open. Then click import and the collection should be loaded into the collections as shown.
-4. Next click on *Environments* and then the *Import* link. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the file named `DNAC_Templates_Lab.postman_environment.json` and click open. Then click import and the environment should be loaded into the environments as shown. 
-5. Next we will choose the environment by selecting the arro on the top right of postman and then Selecting `DNAC Templates Lab` from the drop down so that the window looks as shown here.
-6. Click the **Gear** icon to select **settings** and **deselect** `SSL certificate verification` and then close the settings window.
-7. With these steps completed we are prepared to start the walk through of the sections below.
+3. Open the **postman** application from the desktop. Once the application is open select *Collections* then click the *Import* link. 
+![json](./images/Postman-Pre-Collection-Import.png?raw=true "Import JSON")
+4. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the file named `DNAC_Templates_Lab.postman_collection.json` and click open. 
+![json](./images/Postman-Collection-Select.png?raw=true "Import JSON")
+5. Then click import and the collection should be loaded into the collections as shown.
+![json](./images/Postman-Post-Collection-Import.png?raw=true "Import JSON")
+6. Next click on *Environments* and then the *Import* link. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the file named `DNAC_Templates_Lab.postman_environment.json` and click open. Then click import and the environment should be loaded into the environments as shown. 
+8. Next we will choose the environment by selecting the arro on the top right of postman and then Selecting `DNAC Templates Lab` from the drop down so that the window looks as shown here.
+9. Click the **Gear** icon to select **settings** and **deselect** `SSL certificate verification` and then close the settings window.
+10. With these steps completed we are prepared to start the walk through of the sections below.
 
 ### Step 1 - ***Hierarchy***
 1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step and the process below will explain in detail how to set up for our lab.
