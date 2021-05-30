@@ -42,11 +42,13 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 
 ### Step 1 - ***Hierarchy***
 1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step and the process below will explain in detail how to set up for our lab.
-2. Within **postman** click the collections and select the the first entry **DNAC Token API**. Click the **send** button and see that a token appears.
+2. Within **postman** click the collections and select the the first entry **DNAC Token API**. Click the **send** button and see that a token appears. 
+![json](./images/Postman-Token-API.png?raw=true "Import JSON")
 3. Wait a few seconds between each step for best results:
-   1. Next select the Create Area API and click send. 
-   2. Next select the Create Building API and click send. 
-   3. Next select the Create Floor API and click send. 
+   1. Next select the Create Area API and click send.
+   ![json](./images/Postman-Site-Area-API.png?raw=true "Import JSON")
+   2. Next select the Create Building API and click send.
+   3. Next select the Create Floor API and click send.
 4. Then open a browser and log back into DNA Center and browse to the Network Hierarchy as shown. The network hierarchy will be fully built out.
 
 ### Step 2 - ***Network Settings***
@@ -60,13 +62,16 @@ Although you can manually set up the hierarchy we will use automation scripts bu
    7. ***Timezone***
 2. Within **postman** click the collections and select the the entry **Get Global SiteID API**. Click the **send** button and see that a text appears.
 3. Next select the Create Settings API and click send.  
+![json](./images/Postman-Settings-API.png?raw=true "Import JSON")
 4. Then open a browser and log back into DNA Center and browse to the Network Settings as shown. The network settings and the telemetry settings will be fully built out.
 
 ### Step 3 - ***Device Credentials***
 1. **Device Credentials** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the credentials and configurations that can be pushed **(required)**:
    1. ***CLI Credentials*** 
    2. ***SNMP Read and Write Credentials***
-2. Within **postman** click the collections and select the the entry **Create Credentials API**. Click the **send** button and see that a text appears.
+2. Within **postman** click the collections and select the the entry **Create Credentials API**. Click the **send** button and see that a text appears. 
+![json](./images/Postman-Settings-Creds-API.png?raw=true "Import JSON")
+
 4. Then open a browser and log back into DNA Center and browse to the Device Credentials as shown. The Device Credentials will be deslected at this point.
 5. Perform the following:
    1. select the Global within the hierarchy
