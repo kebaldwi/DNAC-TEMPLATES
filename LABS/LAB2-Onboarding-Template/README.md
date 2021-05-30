@@ -47,8 +47,10 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 3. Wait a few seconds between each step for best results:
    1. Next select the Create Area API and click send.
    ![json](./images/Postman-Site-Area-API.png?raw=true "Import JSON")
-   2. Next select the Create Building API and click send.
-   3. Next select the Create Floor API and click send.
+   2. Next select the Create Building API and click send.    
+   ![json](./images/Postman-Site-Bldg-API.png?raw=true "Import JSON")
+   3. Next select the Create Floor API and click send.    
+   ![json](./images/Postman-Site-Floor-API.png?raw=true "Import JSON")
 4. Then open a browser and log back into DNA Center and browse to the Network Hierarchy as shown. The network hierarchy will be fully built out.
 
 ### Step 2 - ***Network Settings***
