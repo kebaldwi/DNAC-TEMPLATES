@@ -85,13 +85,27 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 6. Ensure that the Credentials are set for the Global level and that the are inherited all the way to Floor 1. If not select the Credentials and save them as necessary.
 
 ### Step 4 - ***Image Repository***
-The image used in this lab for the 9300 is downloadable from here [⬇︎Amsterdam-17.03.03 MD⬇︎](https://software.cisco.com/download/home/286315874/type/282046477/release/Amsterdam-17.3.3)
+The image used in this lab for the 9300 is downloadable from here [⬇︎Amsterdam-17.03.03 MD⬇︎](https://software.cisco.com/download/home/286315874/type/282046477/release/Amsterdam-17.3.3) **(required)** 
 
-1. Within DNA Center Navigate to *Design>Image Repository*
-2.  **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. 
-3. You then indicate whether the file is Cisco or 3rd Party and click import. 
-4. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. 
-5. Select the image and mark it as golden for PnP to use it. **(required)**
+1. Within DNA Center Navigate to *Design>Image Repository*  
+   ![json](./images/DNAC-NavigateImageRepo.png?raw=true "Import JSON")
+3.  **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer.    
+   ![json](./images/DNAC-ImportImageRepo.png?raw=true "Import JSON")
+4. You then indicate whether the file is Cisco or 3rd Party and click import. 
+5. The file will then import into DNA Center.    
+   ![json](./images/DNAC-ImportedImageRepo.png?raw=true "Import JSON")
+6. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. First click the **Assign** link as shown
+   ![json](./images/DNAC-AssignImageRepo.png?raw=true "Import JSON")
+   1. Then on the windo that appears select the **All Device Series** dropdown, and then select *switches and hubs* and filter for the **9300** and click assign.   
+   ![json](./images/DNAC-AssignSiteImageRepo.png?raw=true "Import JSON")
+   2. Next expand the hierarchy on the window that appears and select **Floor1** then **Assign**.    
+   ![json](./images/DNAC-SiteImageRepo.png?raw=true "Import JSON")
+   3. You will then have a save button to save the assignment. Click Save.    
+   ![json](./images/DNAC-SaveImageRepo.png?raw=true "Import JSON")
+   4. Your screen should look as shown.    
+   ![json](./images/DNAC-DeviceAssigned-ImageRepo.png?raw=true "Import JSON")
+7. Select the image and mark it as golden for PnP to use it.   
+   ![json](./images/DNAC-GoldenImageRepo.png?raw=true "Import JSON")
 
 ## Lab Section 2 - DNA Center Onboarding Template Preparation
 You can create onboarding templates within the ***Templating Tool*** within **DNA Center**. Go to the ***Templating Tool*** to complete the next task.
@@ -194,7 +208,7 @@ At this point DNAC is set up and ready for Plug and Play to onboard the first de
 ### Step 1 - ***Claiming the Device***
 At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
 
-   1. Within DNA Center Navigate to *Provision>Plug and Play*
+   1. Within DNA Center Navigate to *Provision>Plug and Play*   
    2. Put a checkmark next to the device *Switch* to be claimed
    3. Click the **Actions>Claim** link and walk through the workflow
    4. Section 1 select the part of the hierarchy *floor1* to which the device will be deployed then click **next**
