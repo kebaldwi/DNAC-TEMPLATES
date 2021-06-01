@@ -227,13 +227,11 @@ At this point you can claim the device putting it in a planned state for onboard
       ![json](./images/DNAC-TemplateClaim.png?raw=true "Import JSON")
    7. Section 4 review the elements including configuration to be deployed 
    8. Click **claim** to initiate
-   9. The Switch will then be claimed and the image and config applied from the template.       
+   9. At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete.       
    ![json](./images/DNAC-Claimed.png?raw=true "Import JSON")
-   11. The Switch will then appear in the inventory as shown.       
+   11. After the device is completed it will appear in the device inventory after being sync'd with DNA Center.      
    ![json](./images/DNAC-Inventory.png?raw=true "Import JSON")
 
-At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete. After the device is completed it will appear in the device inventory after being sync'd with DNA Center.
-   
 #### Note:
 If you populate the UI with settings those parameters should **not** be in your templates as they will conflict and the deployment through provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what configuration is pushed.
 
