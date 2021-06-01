@@ -1,4 +1,4 @@
-# Application Policy
+# Application Policys
 ## Overview
 This Lab is designed to be used after first completing labs 1 through 4 and has been created to address how to use Application Policies and apply Quality of Service (QoS) within DNA Center. This allows Network Administrators the ability to configure network devices in an ongoing and pragmantic manner from within DNA Center to make sure application policies are consistent throughout networks whether using SD-Access or Legacy Network Concepts.
 
