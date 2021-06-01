@@ -208,11 +208,15 @@ At this point DNAC is set up and ready for Plug and Play to onboard the first de
 ### Step 1 - ***Claiming the Device***
 At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
 
-   1. Within DNA Center Navigate to *Provision>Plug and Play*   
+   1. Within DNA Center Navigate to *Provision>Plug and Play*      
+   ![json](./images/DNAC-NavigatePnP.png?raw=true "Import JSON")
    2. Put a checkmark next to the device *Switch* to be claimed
-   3. Click the **Actions>Claim** link and walk through the workflow
-   4. Section 1 select the part of the hierarchy *floor1* to which the device will be deployed then click **next**
-   5. Section 2 you can click the hyperlinks to the right of the workflow page and view or amend the templates and images utilized then click **next**
+   3. Click the **Actions>Claim** link and walk through the workflow    
+   ![json](./images/DNAC-BeginClaim.png?raw=true "Import JSON")
+   4. Section 1 select the part of the hierarchy *floor1* to which the device will be deployed then click **next**    
+   ![json](./images/DNAC-SiteClaim.png?raw=true "Import JSON")
+   5. Section 2 you can click the hyperlinks to the right of the workflow page and view or amend the templates and images utilized then click **next**   
+   ![json](./images/DNAC-AssignConfig-Claim.png?raw=true "Import JSON")
    6. Section 3 select the device **serial number** on the left and fill in the variables within the template click **next**. Please use the following:
       *   Hostname type `ACCESS-9300-ASW`
       *   Management Vlan enter `5`
@@ -220,9 +224,14 @@ At this point you can claim the device putting it in a planned state for onboard
       *   Subnet Mask `255.255.255.0`
       *   Gateway `192.168.5.1`
       *   VTP Domain `Cisco`   
+      ![json](./images/DNAC-TemplateClaim.png?raw=true "Import JSON")
    7. Section 4 review the elements including configuration to be deployed 
    8. Click **claim** to initiate
-   
+   9. The Switch will then be claimed and the image and config applied from the template.       
+   ![json](./images/DNAC-Claimed.png?raw=true "Import JSON")
+   11. The Switch will then appear in the inventory as shown.       
+   ![json](./images/DNAC-Inventory.png?raw=true "Import JSON")
+
 At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete. After the device is completed it will appear in the device inventory after being sync'd with DNA Center.
    
 #### Note:
