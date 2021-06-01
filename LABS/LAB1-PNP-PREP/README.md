@@ -320,7 +320,7 @@ event manager applet prep4dnac
  action b1030 cli command "write"
  action c1010 puts "Erasing startup-config."
  action c1020 cli command "wr er" pattern "confirm"
- action c1030 cli command "confirm"
+ action c1030 cli command "y"
  action d1010 puts "Clearing crypto keys."
  action d1020 cli command "config t"
  action d1030 cli command "crypto key zeroize" pattern "yes/no"
