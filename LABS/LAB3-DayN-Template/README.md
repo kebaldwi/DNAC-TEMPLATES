@@ -13,11 +13,11 @@ As a guidance try and use **Design Settings** for as much of the configurations 
 While a more extensive set of settings can be built out for a deployment we will limit the configuration to the minimal necessary to perform this step building off the completed tasks in lab 2.
 
 ## Lab Section 2 - DNA Center Day N Template Preparation
-You can create Day N Templates within the ***Templating Tool*** within **DNA Center**. Go to the ***Templating Tool*** to complete the next task. This can be found by navigating to the Template Editing Tool with DNA Center through the menu *Tools>Template Editor* 
+You can create Day N Templates within the ***Templating Tool*** within **DNA Center**. Go to the ***Templating Tool*** to complete the next task. Initially, we will keep things pretty simple and deploy one Day N regular template. Once the process has been discussed in detail we will build on this within the next labs. The template tool for this lab can be found by navigating to the Template Editing Tool with DNA Center through the menu *Tools>Template Editor* 
 ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
 
-### Step 1 - ***Create an Onboarding Template***
-Download and import a simple Day N Template in the Templating tool using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/templates/Platinum_Onboarding_Template_2125.json">⬇︎Onboarding_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/templates/Platinum-Onboarding.txt">⬇︎Onboarding.txt⬇︎</a> located within this lab. 
+### Step 1 - ***Create a Day N Template***
+Download and import a simple Day N Template in the Templating tool using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/templates/Platinum_AAA_Template.json">⬇︎Platinum_AAA_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/templates/Platinum_AAA_Template.txt">⬇︎Platinum_AAA_Template.txt⬇︎</a> located within this lab. 
 
 1. Navigate to the Template Editing Tool with DNA Center through the menu *Tools>Template Editor* 
    ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
@@ -29,7 +29,7 @@ Download and import a simple Day N Template in the Templating tool using the <a 
    ![json](./images/DNAC-TemplatedSelected.png?raw=true "Import JSON")
 5. Click import to install and import the template.
 
-The Onboarding template has the minimal configuration to bring up device connectivity with DNAC. Below is for explanation purposes only. (Please Import the Template JSON above)
+The DayN regular template has the minimal AAA configuration to configure the device for AAA connectivity with DNAC. Below is for explanation purposes only. (Please Import the Template JSON above)
 
 
 
