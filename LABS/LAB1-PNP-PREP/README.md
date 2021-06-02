@@ -82,7 +82,7 @@ If we want to use the IOS DHCP configuration method, connect to switch ***c3850-
 !
 conf t
 !
-  ip dhcp exclude address 192.168.5.1 192.168.5.1
+  ip dhcp excluded-address 192.168.5.1 192.168.5.1
   ip dhcp pool pnp_device_pool                         
      network 192.168.5.0 255.255.255.0                  
      default-router 192.168.5.1 
