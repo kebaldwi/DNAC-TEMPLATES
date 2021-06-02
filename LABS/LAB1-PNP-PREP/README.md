@@ -82,6 +82,7 @@ If we want to use the IOS DHCP configuration method, connect to switch ***c3850-
 !
 conf t
 !
+  ip dhcp exclude address 192.168.5.1 192.168.5.1
   ip dhcp pool pnp_device_pool                         
      network 192.168.5.0 255.255.255.0                  
      default-router 192.168.5.1 
@@ -113,6 +114,7 @@ If we want to use the Windows DHCP service, connect to the windows ***AD1*** ser
 ```
 Add-DhcpServerv4Scope -Name "DNAC-Templates-Lab" -StartRange 192.168.5.1 -EndRange 192.168.5.254 -SubnetMask 255.255.255.0 -LeaseDuration 6.00:00:00 -SuperScope "PnP Onboarding"
 Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -Router 192.168.5.1 
+Add-Dhcpserverv4ExclusionRange -ScopeId 192.168.5.0 -StartRange 192.168.5.1 -EndRange 192.168.5.1
 ```
 
 The DHCP scope will look like this in Windows DHCP Administrative tool:
