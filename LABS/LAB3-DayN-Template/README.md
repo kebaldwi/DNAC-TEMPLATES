@@ -13,8 +13,7 @@ As a guidance try and use **Design Settings** for as much of the configurations 
 While a more extensive set of settings can be built out for a deployment we will limit the configuration to the minimal necessary to perform this step building off the completed tasks in lab 2.
 
 ## Lab Section 2 - DNA Center Day N Template Preparation
-You can create Day N Templates within the ***Templating Tool*** within **DNA Center**. Go to the ***Templating Tool*** to complete the next task. Initially, we will keep things pretty simple and deploy one Day N regular template. Once the process has been discussed in detail we will build on this within the next labs. The template tool for this lab can be found by navigating to the Template Editing Tool with DNA Center through the menu *Tools>Template Editor* 
-![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
+You can create Day N Templates within the ***Templating Tool*** within **DNA Center**. Go to the ***Templating Tool*** to complete the next task. Initially, we will keep things pretty simple and deploy one Day N regular template. Once the process has been discussed in detail we will build on this within the next labs. 
 
 ### Step 1 - ***Create a Day N Template***
 Download and import a simple Day N Template in the Templating tool using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/templates/Platinum_AAA_Template.json">⬇︎Platinum_AAA_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/templates/Platinum_AAA_Template.txt">⬇︎Platinum_AAA_Template.txt⬇︎</a> located within this lab. 
