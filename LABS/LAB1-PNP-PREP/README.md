@@ -117,7 +117,7 @@ Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -Router 192.168.5.1
 
 The DHCP scope will look like this in Windows DHCP Administrative tool:
 
-![json](./images/WindowsDHCPscope.png?raw=true "Import JSON")
+![json](./images/WindowsDHCPscoperouteronly.png?raw=true "Import JSON")
 
 Next, we will introduce the helper address statement on the management VLAN's SVI to point to the Windows DHCP server. Connect to switch ***c3850-1*** and paste the following configuration:
 
