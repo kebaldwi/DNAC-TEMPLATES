@@ -21,19 +21,18 @@ Download and import a simple Day N Template in the Templating tool using the <a 
 1. Navigate to the Template Editing Tool with DNA Center through the menu *Tools>Template Editor*.
    ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
 2. With the template editor left click the ⨁ icon to the right of onboarding templates and click **Create Project** within the menu.  
-   ![json](./images/DNAC-TemplateImport.png?raw=true "Import JSON")
+   ![json](./images/DNAC-ProjectCreate.png?raw=true "Import JSON")
 3. Name the new project `DNAC Template Lab DayN`. This will be the project we will use to keep all our templates in.   
-   ![json](./images/DNAC-TemplateSelection.png?raw=true "Import JSON")
+   ![json](./images/DNAC-ProjectAdd.png?raw=true "Import JSON")
 4. Download the file above *Platinum_AAA_Template.json* to be imported into the DNA Center. Once downloaded Extract the file.
-   ![json](./images/DNAC-TemplatedSelected.png?raw=true "Import JSON")
 5. Hover over the right side of the new project and a small ⚙ gear icon will appear. Select **Import Template(s)** from the menu.   
-   ![json](./images/DNAC-TemplatedSelected.png?raw=true "Import JSON")
+   ![json](./images/DNAC-TemplateImportBegin.png?raw=true "Import JSON")
 6. From the **Import Templates** window click **Select a file from your computer** from the explorer window select the extracted JSON file and click open.   
-   ![json](./images/DNAC-TemplatedSelected.png?raw=true "Import JSON")
+   ![json](./images/DNAC-TemplateSelect.png?raw=true "Import JSON")
 7. Click **Import** and the template will be placed in the project.   
-   ![json](./images/DNAC-TemplatedSelected.png?raw=true "Import JSON")
+   ![json](./images/DNAC-TemplateImport.png?raw=true "Import JSON")
 8. Once the template is in the project select it to view the configuration.
-   ![json](./images/DNAC-TemplatedSelected.png?raw=true "Import JSON")
+   ![json](./images/DNAC-TemplateAAA.png?raw=true "Import JSON")
 
 The DayN regular template has the minimal AAA configuration to configure the device for local AAA connectivity independant of ISE for the purposes of working with DNAC. Below is for explanation purposes only. (Please Import the Template JSON above)
 
