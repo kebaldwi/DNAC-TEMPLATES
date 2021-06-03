@@ -28,10 +28,31 @@ Download and import a simple Day N Template in the Templating tool using the <a 
    ![json](./images/DNAC-TemplatedSelected.png?raw=true "Import JSON")
 5. Hover over the right side of the new project and a small ⚙ gear icon will appear. Select **Import Template(s)** from the menu.   
    ![json](./images/DNAC-TemplatedSelected.png?raw=true "Import JSON")
-6. 
+6. From the **Import Templates** window click **Select a file from your computer** from the explorer window select the extracted JSON file and click open.   
+   ![json](./images/DNAC-TemplatedSelected.png?raw=true "Import JSON")
+7. Click **Import** and the template will be placed in the project.   
+   ![json](./images/DNAC-TemplatedSelected.png?raw=true "Import JSON")
+8. Once the template is in the project select it to view the configuration.
+   ![json](./images/DNAC-TemplatedSelected.png?raw=true "Import JSON")
 
-The DayN regular template has the minimal AAA configuration to configure the device for AAA connectivity with DNAC. Below is for explanation purposes only. (Please Import the Template JSON above)
+The DayN regular template has the minimal AAA configuration to configure the device for local AAA connectivity independant of ISE for the purposes of working with DNAC. Below is for explanation purposes only. (Please Import the Template JSON above)
 
+```
+aaa new-model
+!
+aaa authentication username-prompt "Authorized Username:"
+aaa authentication login admin local
+aaa authorization console
+aaa authorization exec admin local
+aaa authentication login admin local-case
+aaa authorization exec admin local 
+!
+mac address-table notification mac-move
+mac address-table notification threshold
+mac-address-table notification change
+!
+```
+### Step 2 - ***Modify Network Profile***
 
 
 
