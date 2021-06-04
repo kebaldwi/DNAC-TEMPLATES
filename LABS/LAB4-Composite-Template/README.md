@@ -5,5 +5,22 @@ This Lab is designed to be used after first completing labs 1 through 3 and has 
 In this section will go through the flow involved in creating a deployable Composite Template from an IOS configuration script for a Catalyst switch linking it to a Switch profile and deploy it through DNAC using provisioning workflows.
 
 ## General Information
+As DNA Center can be used for not only Plug and Play but also Day N or Ongoing Templates customers will start by building out an Onboarding Template which typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates and for more flexibility Composite Templates. as they can be used to apply ongoing changes and to allow device modifications after initial deployment. This lab section will focus on Day N templates to be built as regular templates within DNA Center.
+
+Another important consideration is that part of a typical configuration would include some lines of code which will be built out with the *Design >Network Settings >* application within DNA Center. If the Design component is used you should **not** deploy the same feature from cli code in a template to configure the device. Its a decision you have to make upfront and avoids a lot of lines in the templates and allows for a more UI centric configuration which is easier to maintain. 
+
+As a guidance try and use **Design Settings** for as much of the configurations as you can leaving Templates light and nimble for configurations which might change ongoing.
+
+## Lab Section 1 - DNA Center Design Preparation
+While a more extensive set of settings can be built out for a deployment at this time we will limit the configuration to the minimal necessary to perform this step building off the completed tasks in lab 2.
+
+## Lab Section 2 - DNA Center Day N Template Preparation
+You can create Day N Templates within the ***Templating Tool*** within **DNA Center**. Go to the ***Templating Tool*** to complete the next task. Initially, we will keep things pretty simple and deploy one Day N regular template. Once the process has been discussed in detail we will build on this within the next labs. 
+
+### Step 1 - ***Create a Day N Template***
+Download and import a simple Day N Template in the Templating tool using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/templates/2125templates/Platinum_AAA_Template.json">⬇︎Platinum_AAA_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/templates/Platinum_AAA_Template.txt">⬇︎Platinum_AAA_Template.txt⬇︎</a> located within this lab. 
+
+
+## General Information
 This lab is under development please come back soon. ETA for delivery June 2021.
 
