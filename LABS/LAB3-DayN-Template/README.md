@@ -68,35 +68,35 @@ Next we need to assign the DayN Template to a site using the Network Profile. As
          ![json](./images/DNAC-ProfileSuccess.png?raw=true "Import JSON")   
 
 ## Lab Section 3 - Provisioning
-At this point DNAC is set up and ready for Provisioning to the device. This next set of sequences will go through pushing the various Network Settings, Services along with DayN Templates to the device.
+At this point DNAC is set up and ready for Provisioning the new regular template AAA to the device. This next set of sequences will go through pushing the various Network Settings, Services along with DayN Templates to the device.
 
 ### Step 1 - ***Provisioning the Device***
-At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
+We will now provision the switch using DayN Templates. To do this do the following:
 
-   1. Within DNA Center Navigate to *Provision>Plug and Play*      
-   ![json](./images/DNAC-NavigatePnP.png?raw=true "Import JSON")
-   2. Put a checkmark next to the device *Switch* to be claimed
-   3. Click the **Actions>Claim** link and walk through the workflow    
-   ![json](./images/DNAC-BeginClaim.png?raw=true "Import JSON")
-   4. Section 1 select the part of the hierarchy *floor1* to which the device will be deployed then click **next**    
-   ![json](./images/DNAC-SiteClaim.png?raw=true "Import JSON")
-   5. Section 2 you can click the hyperlinks to the right of the workflow page and view or amend the templates and images utilized then click **next**   
-   ![json](./images/DNAC-AssignConfig-Claim.png?raw=true "Import JSON")
-   6. Section 3 select the device **serial number** on the left and fill in the variables within the template click **next**. Please use the following:
-      *   Hostname type `ACCESS-9300-ASW`
-      *   Management Vlan enter `5`
-      *   IP Address `192.168.5.10`
-      *   Subnet Mask `255.255.255.0`
-      *   Gateway `192.168.5.1`
-      *   VTP Domain `Cisco`   
-      ![json](./images/DNAC-TemplateClaim.png?raw=true "Import JSON")
-   7. Section 4 review the elements including configuration to be deployed 
-   8. Click **claim** to initiate
-   9. At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete.       
-   ![json](./images/DNAC-Claimed.png?raw=true "Import JSON")
-   11. After the device is completed it will appear in the device inventory after being sync'd with DNA Center.      
-   ![json](./images/DNAC-Inventory.png?raw=true "Import JSON")
+   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   ![json](./images/DNAC-NavigateInventory.png?raw=true "Import JSON")
+   2. Put a checkmark next to the device *ACCESS-c9300-1-ASW* to be provisioned.
+   3. Click the **Actions>Provision>Provision Device** link and walk through the workflow    
+   ![json](./images/DNAC-ProvisionBegin.png?raw=true "Import JSON")
+      1. the floor was already selected as part of the claim so click **next**    
+      ![json](./images/DNAC-ProvisionSite.png?raw=true "Import JSON")
+      2. select *ACCESS-c9300-1-ASW* on the left and the two tick boxes at the top of the page then click **next**. If the template had inputs they would be entered.  
+      ![json](./images/DNAC-ProvisionAdvConfig.png?raw=true "Import JSON")
+      3. Review the information to be deployed and click **Deploy**.
+      ![json](./images/DNAC-ProvisionDeploy.png?raw=true "Import JSON")
+      4. Click **Apply** on the Provision Device pop up screen. You can schedule deployments though.
+      ![json](./images/DNAC-ProvisionApply.png?raw=true "Import JSON")
+   4. The task will be submitted and the deployment will run.
+   ![json](./images/DNAC-ProvisionTasking.png?raw=true "Import JSON")
+   5. After a small amount of time you will see a success notification. What is important to understand is that the configuration while pushed to the device will resync in DNA Center after the resync timer has elapsed.       
+   6. To resync the configuration so that it may be viewed before the normal 25 mins, then perform the following task:
+      1. Change the focus to **Inventory**
+      2. Select the *ACCESS-c9300-1-ASW* switch and select **Actions>Inventory>Resync Device**
+      ![json](./images/DNAC-InventoryResync.png?raw=true "Import JSON")
+      3. After the resync has occured, you may click the device name and then view the configuration by selecting that from the left pane to view the configuration pushed.
+      ![json](./images/DNAC-DeviceConfig.png?raw=true "Import JSON")
 
+At this point we have onboarded a device and successfully pushed configuration via Onboarding and DayN Templates. 
 
 #### Note:
 If you populate the UI with settings those parameters should **not** be in your templates as they will conflict and the deployment through provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what configuration is pushed.
