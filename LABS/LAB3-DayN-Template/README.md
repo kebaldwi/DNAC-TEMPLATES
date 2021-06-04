@@ -57,15 +57,15 @@ Next we need to assign the DayN Template to a site using the Network Profile. As
    1. Navigate to Network Profiles by selecting *Design> Network Profiles*.
       ![json](./images/DNAC-NavigateProfile.png?raw=true "Import JSON")
    2. Click the **Edit** link next to the **DNAC Template Lab** switching profile created earlier.  
-   ![json](./images/DNAC-SelectProfile.png?raw=true "Import JSON")
+   ![json](./images/DNAC-ProfileEdit.png?raw=true "Import JSON")
    3. Within the Profile Editor select the **Day-N Template(s)** tab: 
       1. Click **⨁Add** 
       2. Select the device type by typing *9300* in the search window and select it.    
-         ![json](./images/DNAC-ProfileSet9300.png?raw=true "Import JSON")   
+         ![json](./images/DNAC-ProfileDayN9300.png?raw=true "Import JSON")   
       3. Select the Template by either searching or choosing *AAA* from the dropdown as shown.
-         ![json](./images/DNAC-ProfileSet9300.png?raw=true "Import JSON")   
+         ![json](./images/DNAC-ProfileDayNAAA.png?raw=true "Import JSON")   
       4. Click **Save** to save the modifications to the Network Profile.
-         ![json](./images/DNAC-ProfileSet9300.png?raw=true "Import JSON")   
+         ![json](./images/DNAC-ProfileSuccess.png?raw=true "Import JSON")   
 
 ## Lab Section 3 - Provisioning
 At this point DNAC is set up and ready for Provisioning to the device. This next set of sequences will go through pushing the various Network Settings, Services along with DayN Templates to the device.
