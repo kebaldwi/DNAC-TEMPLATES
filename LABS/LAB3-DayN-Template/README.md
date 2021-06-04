@@ -52,7 +52,50 @@ mac-address-table notification change
 !
 ```
 ### Step 2 - ***Modify Network Profile***
+Next we need to assign the DayN Template to a site using the Network Profile. As there is an existing network profile for the site, we must reuse that one for the same device family.**(required)** 
 
+   1. Navigate to Network Profiles by selecting *Design> Network Profiles*.
+      ![json](./images/DNAC-NavigateProfile.png?raw=true "Import JSON")
+   2. Click the **Edit** link next to the **DNAC Template Lab** switching profile created earlier.  
+   ![json](./images/DNAC-SelectProfile.png?raw=true "Import JSON")
+   3. Within the Profile Editor select the **Day-N Template(s)** tab: 
+      1. Click **⨁Add** 
+      2. Select the device type by typing *9300* in the search window and select it.    
+         ![json](./images/DNAC-ProfileSet9300.png?raw=true "Import JSON")   
+      3. Select the Template by either searching or choosing *AAA* from the dropdown as shown.
+         ![json](./images/DNAC-ProfileSet9300.png?raw=true "Import JSON")   
+      4. Click **Save** to save the modifications to the Network Profile.
+         ![json](./images/DNAC-ProfileSet9300.png?raw=true "Import JSON")   
+
+## Lab Section 3 - Provisioning
+At this point DNAC is set up and ready for Provisioning to the device. This next set of sequences will go through pushing the various Network Settings, Services along with DayN Templates to the device.
+
+### Step 1 - ***Provisioning the Device***
+At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
+
+   1. Within DNA Center Navigate to *Provision>Plug and Play*      
+   ![json](./images/DNAC-NavigatePnP.png?raw=true "Import JSON")
+   2. Put a checkmark next to the device *Switch* to be claimed
+   3. Click the **Actions>Claim** link and walk through the workflow    
+   ![json](./images/DNAC-BeginClaim.png?raw=true "Import JSON")
+   4. Section 1 select the part of the hierarchy *floor1* to which the device will be deployed then click **next**    
+   ![json](./images/DNAC-SiteClaim.png?raw=true "Import JSON")
+   5. Section 2 you can click the hyperlinks to the right of the workflow page and view or amend the templates and images utilized then click **next**   
+   ![json](./images/DNAC-AssignConfig-Claim.png?raw=true "Import JSON")
+   6. Section 3 select the device **serial number** on the left and fill in the variables within the template click **next**. Please use the following:
+      *   Hostname type `ACCESS-9300-ASW`
+      *   Management Vlan enter `5`
+      *   IP Address `192.168.5.10`
+      *   Subnet Mask `255.255.255.0`
+      *   Gateway `192.168.5.1`
+      *   VTP Domain `Cisco`   
+      ![json](./images/DNAC-TemplateClaim.png?raw=true "Import JSON")
+   7. Section 4 review the elements including configuration to be deployed 
+   8. Click **claim** to initiate
+   9. At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete.       
+   ![json](./images/DNAC-Claimed.png?raw=true "Import JSON")
+   11. After the device is completed it will appear in the device inventory after being sync'd with DNA Center.      
+   ![json](./images/DNAC-Inventory.png?raw=true "Import JSON")
 
 
 #### Note:
