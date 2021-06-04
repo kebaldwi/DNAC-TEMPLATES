@@ -1,4 +1,4 @@
-# DayN Templates - In Development -
+# DayN Templates
 ## Overview
 This Lab is designed to be a part of a series of labs built to address how to use Day N Templates within DNA Center to configure network devices at Day 1 to N. The idea being to allow for ongoing configuration of feaures on devices beyond those deployed buy the normal provisioning process. Witn DNA Center if devices are not within a fabric the hos onboarding part of the UI will not be applicable. To that end templates are an easy way of deploying those types of configuraion and much more. Before starting this lab please make sure you have finished all the steps in labs 1 and 2.
 
