@@ -108,12 +108,12 @@ The image used in this lab for the 9300 is downloadable from here [⬇︎Amsterd
    ![json](./images/DNAC-GoldenImageRepo.png?raw=true "Import JSON")
 
 ## Lab Section 2 - DNA Center Onboarding Template Preparation
-You can create onboarding templates within the ***Templating Tool*** within **DNA Center**. Go to the ***Templating Tool*** to complete the next task.
+You can create onboarding templates within the ***Template Editor*** within **DNA Center**. Go to the ***Template Editor*** to complete the next task.
 
 ### Step 1 - ***Create an Onboarding Template***
-Download and import an Onboarding Template in the Templating tool using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/templates/Platinum_Onboarding_Template_2125.json">⬇︎Onboarding_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/templates/Platinum-Onboarding.txt">⬇︎Onboarding.txt⬇︎</a> located within this lab. 
+Download and import an Onboarding Template in the **Template Editor** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/templates/Platinum_Onboarding_Template_2125.json">⬇︎Onboarding_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/templates/Platinum-Onboarding.txt">⬇︎Onboarding.txt⬇︎</a> located within this lab. 
 
-1. Navigate to the Template Editing Tool with DNA Center through the menu *Tools>Template Editor* 
+1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor* 
    ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
 2. With the template editor right click the gear icon to the right of onboarding templates and click Import within the menu    
    ![json](./images/DNAC-TemplateImport.png?raw=true "Import JSON")
