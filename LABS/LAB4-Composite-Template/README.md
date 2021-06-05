@@ -25,13 +25,34 @@ Previously in Lab 3, we created a project where we assigned a template to the si
 1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor*.
    ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
 2. Within the **template editor**, left-click the ⨁ icon to the right of find template and click **Import Project(s)** within the menu.  
-   ![json](./images/DNAC-ProjectCreate.png?raw=true "Import JSON")
+   ![json](./images/DNAC-ProjectImportBegin.png?raw=true "Import JSON")
 3. Download the file above *DNAC_Template_Lab_DayN_project.json* to be imported into the DNA Center. Once downloaded, extract the file.
-4. From the **Import Project(s)** window, click **Select a file from your computer** from the explorer window, select the extracted JSON file and click open.   
+4. From the **Import Project(s)** window, click **Select a file from your computer** from the explorer window, select the extracted JSON file and click open. 
+   ![json](./images/DNAC-ProjectSelect.png?raw=true "Import JSON")
 5. Click **Import**, and the project and all the templates within it will be imported.   
+   ![json](./images/DNAC-ProjectImport.png?raw=true "Import JSON")
 6. Once the project is imported, select it to view each of the template files within it.
+   ![json](./images/DNAC-ProjectFiles.png?raw=true "Import JSON")
  
-The DayN regular template has the minimal AAA configuration to configure the device for local AAA connectivity independent of ISE to work with DNAC. Below is for explanation purposes only. (Please Import the Template JSON above)
+The project we imported contains the following templates:
+1. **AAA** for local AAA services
+   ![json](./images/DNAC-Project-AAA-Template.png?raw=true "Import JSON")
+2. **System Management** for global system settings
+   ![json](./images/DNAC-Project-SysMgmt-Template.png?raw=true "Import JSON")
+3. **VLANs Ports per DF** to add VLAN and port configuration
+   ![json](./images/DNAC-Project-PortAssign-Template.png?raw=true "Import JSON")
+4. **Local User Management** for additional user accounts
+   ![json](./images/DNAC-Project-USR-Template.png?raw=true "Import JSON")
+5. **Stacking** to set up powerstack and stack priority
+   ![json](./images/DNAC-Project-Stacking-Template.png?raw=true "Import JSON")
+6. **Access Lists** to restrict management access
+   ![json](./images/DNAC-Project-ACL-Template.png?raw=true "Import JSON")
+7. **Automatic Uplink Naming** to automatically name uplinks 
+   ![json](./images/DNAC-Project-AUN-Template.png?raw=true "Import JSON")
+
+
+Additionally it contains a Composite Template. The composite template will allow us to reuse multiple Regular templates thereby allowing modularity. Thus we can keep our configuration scripts in smaller files allowing reuse across multiple platforms. This additonally helps in troubleshooting as the configurations become smaller and less comlex as a result.
+
 
 ## General Information
 This lab is under development please come back soon. ETA for delivery June 2021.
