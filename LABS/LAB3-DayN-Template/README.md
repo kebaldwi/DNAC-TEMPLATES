@@ -16,9 +16,9 @@ While a more extensive set of settings can be built out for deployment, we will 
 You can create Day N Templates within the ***Templating Tool*** within **DNA Center**. Go to the ***Templating Tool*** to complete the next task. Initially, we will keep things pretty simple and deploy one Day N regular template. Once the process has been discussed in detail, we will build on this within the following labs. 
 
 ### Step 1 - ***Create a Day N Template***
-Download and import a simple Day N Template in the Templating tool using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/templates/2125templates/Platinum_AAA_Template.json">⬇︎Platinum_AAA_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/templates/Platinum_AAA_Template.txt">⬇︎Platinum_AAA_Template.txt⬇︎</a> located within this lab. 
+Download and import a simple Day N Template in the **Template Editor** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/templates/2125templates/Platinum_AAA_Template.json">⬇︎Platinum_AAA_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/templates/Platinum_AAA_Template.txt">⬇︎Platinum_AAA_Template.txt⬇︎</a> located within this lab. 
 
-1. Navigate to the Template Editing Tool with DNA Center through the menu *Tools>Template Editor*.
+1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor*.
    ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
 2. With the template editor, left-click the ⨁ icon to the right of onboarding templates and click **Create Project** within the menu.  
    ![json](./images/DNAC-ProjectCreate.png?raw=true "Import JSON")
