@@ -115,7 +115,7 @@ Download and import an Onboarding Template in the **Template Editor** using the 
 
 1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor* 
    ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
-2. With the template editor right click the gear icon to the right of onboarding templates and click Import within the menu    
+2. Within the **template editor** right click the gear icon to the right of onboarding templates and click Import within the menu    
    ![json](./images/DNAC-TemplateImport.png?raw=true "Import JSON")
 3. Click the link to select files from the local computer    
    ![json](./images/DNAC-TemplateSelection.png?raw=true "Import JSON")
