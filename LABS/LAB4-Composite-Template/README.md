@@ -17,7 +17,7 @@ While we could deploy more extensive settings for deployment, we will limit the 
 ## Lab Section 2 - DNA Center Day N Composite Template Preparation
 You can create Day N Composite Templates within the ***Template Editor*** within **DNA Center**. Go to the ***Template Editor*** to complete the next task. In this lab, we will deploy a Composite Template and additional Regular Templates within a project.  The import and export function within **DNA Center** allows both the import and export of templates and projects, along with the ability to clone them.
 
-### Step 1 - ***Create a Day N Template***
+### Step 1 - ***Import Project with Templates***
 Download and import the project within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/templates/2125templates/DNAC_Template_Lab_DayN_project.json">⬇︎DNAC_Template_Lab_DayN_project.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then use the previously built project within Lab 3 and build the templates located within the following <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/templates/Platinum_Templates.zip">⬇︎Platinum_Templates.zip⬇︎</a> file located within this lab. 
 
 Previously in Lab 3, we created a project where we assigned a template to the site and provisioned it. We will now expand on that by importing a project with the same name overtop the current project, thereby importing additional regular templates. Take a few moments and examine the construction of these templates, as each has a specific form and function. Their design is modular to allow reuse of them within other composite templates for other switches or routers.
@@ -50,8 +50,14 @@ The project we imported contains the following templates:
 7. **Automatic Uplink Naming** to automatically name uplinks 
    ![json](./images/DNAC-Project-AUN-Template.png?raw=true "Import JSON")
 
+Additionally, it contains a Composite Template. The composite template will allow us to reuse multiple Regular templates, thereby allowing modularity. Thus we can keep our configuration scripts in smaller files allowing reuse across various platforms. Subsequently helps in troubleshooting as the configurations become smaller and less complex as a result.
 
-Additionally it contains a Composite Template. The composite template will allow us to reuse multiple Regular templates thereby allowing modularity. Thus we can keep our configuration scripts in smaller files allowing reuse across multiple platforms. This additonally helps in troubleshooting as the configurations become smaller and less comlex as a result.
+### Step 2 - ***Create Composite Template***
+Within the project is a Composite Template, but the steps involved to create one are simple. **The next steps are optional**.
+
+1. Within the **template editor**, Hover over the right side of the project, and a small ⚙ gear icon will appear. Select **Create Template(s)** from the menu.     
+   ![json](./images/DNAC-ProjectImportBegin.png?raw=true "Import JSON")
+
 
 
 ## General Information
