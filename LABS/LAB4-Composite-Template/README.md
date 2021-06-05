@@ -12,14 +12,13 @@ Another important consideration is that part of a typical configuration would in
 As a guidance try and use **Design Settings** for as much of the configurations as you can leaving Templates light and nimble for configurations which might change ongoing.
 
 ## Lab Section 1 - DNA Center Design Preparation
-While a more extensive set of settings can be built out for a deployment at this time we will limit the configuration to the minimal necessary to perform this step building off the completed tasks in lab 2.
+While we could deploy more extensive settings for deployment, we will limit the configuration to the minimum necessary to perform this step, building off the completed tasks in lab 2.
 
-## Lab Section 2 - DNA Center Day N Template Preparation
-You can create Day N Templates within the ***Template Editor*** within **DNA Center**. Go to the ***Template Editor*** to complete the next task. Initially, we will keep things pretty simple and deploy one Day N regular template. Once the process has been discussed in detail we will build on this within the next labs. 
+## Lab Section 2 - DNA Center Day N Composite Template Preparation
+You can create Day N Composite Templates within the ***Template Editor*** within **DNA Center**. Go to the ***Template Editor*** to complete the next task. In this lab, we will deploy a Composite Template and additional Regular Templates within a project.  The import and export function within **DNA Center** allows both the import and export of templates and projects, along with the ability to clone them.
 
 ### Step 1 - ***Create a Day N Template***
-Download and import a simple Day N Template in the Templating tool using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/templates/2125templates/Platinum_AAA_Template.json">⬇︎Platinum_AAA_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/templates/Platinum_AAA_Template.txt">⬇︎Platinum_AAA_Template.txt⬇︎</a> located within this lab. 
-
+Download and import the project within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/templates/2125templates/DNAC_Template_Lab_DayN_project.json">⬇︎DNAC_Template_Lab_DayN_project.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then use the previously built project within Lab 3 and build the templates located within the following <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/templates/Platinum_Templates.zip">⬇︎Platinum_Templates.zip⬇︎</a> file located within this lab. 
 
 ## General Information
 This lab is under development please come back soon. ETA for delivery June 2021.
