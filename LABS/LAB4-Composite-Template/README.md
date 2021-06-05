@@ -55,8 +55,13 @@ Additionally, it contains a Composite Template. The composite template will allo
 ### Step 2 - ***Create Composite Template***
 Within the project is a Composite Template, but the steps involved to create one are simple. **The next steps are optional**.
 
-1. Within the **template editor**, Hover over the right side of the project, and a small ⚙ gear icon will appear. Select **Create Template(s)** from the menu.     
-   ![json](./images/DNAC-ProjectImportBegin.png?raw=true "Import JSON")
+1. Within the **template editor**, Hover over the right side of the project, and a small ⚙ gear icon will appear. Select **Add Template(s)** from the menu.     
+   ![json](./images/DNAC-CompositeCreate.png?raw=true "Import JSON")
+2. On the *Add New Template* sidebar:
+   1. Select **Composite Sequence**
+   2. Enter a **Name** for the Composite Template
+   3. Click **Edit** beside *Device Types* to select the device families to be used.
+3. On the *Select Device Types* sidebar type in `9300`to filter for the switch family and select the entire series
 
 
 
