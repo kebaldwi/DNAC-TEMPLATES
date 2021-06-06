@@ -107,26 +107,26 @@ Please note the sequence that we want our templates in will be the following:
    ![json](./images/DNAC-Composite-Apply.png?raw=true "Import JSON")
 
 ### Step 3 - ***Modify Network Profile***
-Next, we need to assign the DayN Template to a site using the Network Profile. As there is an existing network profile for the site, we must reuse that one for the same device family.**(required)** 
+Next, we need to assign the DayN Composite Template to a site using the Network Profile. As there is an existing network profile for the site, we must reuse that one for the same device family. **(required)** 
 
    1. Navigate to Network Profiles by selecting *Design> Network Profiles*.
       ![json](./images/DNAC-NavigateProfile.png?raw=true "Import JSON")
    2. Click the **Edit** link next to the **DNAC Template Lab** switching profile created earlier.  
-   ![json](./images/DNAC-ProfileEdit.png?raw=true "Import JSON")
-   3. Within the Profile Editor, select the **Day-N Template(s)** tab: 
-      1. Click **⨁Add** 
-      2. Select the device type by typing *9300* in the search window and select it.    
-         ![json](./images/DNAC-ProfileDayN9300.png?raw=true "Import JSON")   
-      3. Select the Template by either searching or choosing *AAA* from the dropdown as shown.
-         ![json](./images/DNAC-ProfileDayNAAA.png?raw=true "Import JSON")   
+      ![json](./images/DNAC-ProfileEdit.png?raw=true "Import JSON")
+   3. Within the Profile Editor, select the **Day-N Template(s)** tab:
+      ![json](./images/DNAC-ProfileDayN.png?raw=true "Import JSON")
+      1. Select the Composite Template by either searching or choosing *DNAC Template Lab DayN Composite* from the dropdown as shown.
+         ![json](./images/DNAC-ProfileSelectComposite.png?raw=true "Import JSON")   
       4. Click **Save** to save the modifications to the Network Profile.
-         ![json](./images/DNAC-ProfileSuccess.png?raw=true "Import JSON")   
+         ![json](./images/DNAC-ProfileSave.png?raw=true "Import JSON")   
+
+Now the Composite Template has been applied to the Network Profile, any changes made to the template would immediately be ready for provisioning to the sites aligned to the profile where the template is deployed. This allows for ongoing changes and modifications to the network infrastructure.
 
 ## Lab Section 3 - Provisioning
-At this point, DNAC is set up and ready to provision the new regular template AAA to the device. This next set of sequences will push the various Network Settings, Services, and DayN Templates to the device.
+At this point, DNAC is set up and ready to provision the new composite template to the device. This next set of sequences will push the various Network Settings, Services, and DayN Templates as part of the composite sequence to the device.
 
 ### Step 1 - ***Provisioning the Device***
-We will now provision the switch using DayN Templates. To do this, do the following:
+We will now provision the switch using DayN Composite Templates. To do this, do the following:
 
    1. Within DNA Center Navigate to *Provision>Inventory*.      
    ![json](./images/DNAC-NavigateInventory.png?raw=true "Import JSON")
