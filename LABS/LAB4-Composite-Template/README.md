@@ -52,7 +52,7 @@ The project we imported contains the following templates:
 
 Additionally, it contains a Composite Template. The composite template will allow us to reuse multiple Regular templates, thereby allowing modularity. Thus we can keep our configuration scripts in smaller files allowing reuse across various platforms. Subsequently helps in troubleshooting as the configurations become smaller and less complex as a result.
 
-## Lab Section 2 - Creating Composite Templates
+## Lab Section 2 - DNA Center Composite Template Preparation
 
 ### Step 1 - ***Create Composite Template***
 Within the project is a Composite Template, but the steps involved to create one are simple. **The next steps are optional**.
@@ -106,9 +106,52 @@ Please note the sequence that we want our templates in will be the following:
    ![json](./images/DNAC-Composite-Commit.png?raw=true "Import JSON")   
    ![json](./images/DNAC-Composite-Apply.png?raw=true "Import JSON")
 
+### Step 3 - ***Modify Network Profile***
+Next, we need to assign the DayN Template to a site using the Network Profile. As there is an existing network profile for the site, we must reuse that one for the same device family.**(required)** 
 
+   1. Navigate to Network Profiles by selecting *Design> Network Profiles*.
+      ![json](./images/DNAC-NavigateProfile.png?raw=true "Import JSON")
+   2. Click the **Edit** link next to the **DNAC Template Lab** switching profile created earlier.  
+   ![json](./images/DNAC-ProfileEdit.png?raw=true "Import JSON")
+   3. Within the Profile Editor, select the **Day-N Template(s)** tab: 
+      1. Click **⨁Add** 
+      2. Select the device type by typing *9300* in the search window and select it.    
+         ![json](./images/DNAC-ProfileDayN9300.png?raw=true "Import JSON")   
+      3. Select the Template by either searching or choosing *AAA* from the dropdown as shown.
+         ![json](./images/DNAC-ProfileDayNAAA.png?raw=true "Import JSON")   
+      4. Click **Save** to save the modifications to the Network Profile.
+         ![json](./images/DNAC-ProfileSuccess.png?raw=true "Import JSON")   
 
+## Lab Section 3 - Provisioning
+At this point, DNAC is set up and ready to provision the new regular template AAA to the device. This next set of sequences will push the various Network Settings, Services, and DayN Templates to the device.
 
+### Step 1 - ***Provisioning the Device***
+We will now provision the switch using DayN Templates. To do this, do the following:
+
+   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   ![json](./images/DNAC-NavigateInventory.png?raw=true "Import JSON")
+   2. Put a checkmark next to the device *ACCESS-c9300-1-ASW* to be provisioned.
+   3. Click the **Actions>Provision>Provision Device** link and walk through the workflow    
+   ![json](./images/DNAC-ProvisionBegin.png?raw=true "Import JSON")
+      1. The floor was already selected as part of the claim so click **next**    
+      ![json](./images/DNAC-ProvisionSite.png?raw=true "Import JSON")
+      2. Select *ACCESS-c9300-1-ASW* on the left and the two tick boxes at the top of the page, then click **next**. If the template had inputs, they would be entered.  
+      ![json](./images/DNAC-ProvisionAdvConfig.png?raw=true "Import JSON")
+      3. Review the information to be deployed and click **Deploy**.
+      ![json](./images/DNAC-ProvisionDeploy.png?raw=true "Import JSON")
+      4. Click **Apply** on the Provision Device pop-up screen. You can schedule deployments though.
+      ![json](./images/DNAC-ProvisionApply.png?raw=true "Import JSON")
+   4. The task will be submitted, and the deployment will run.
+   ![json](./images/DNAC-ProvisionTasking.png?raw=true "Import JSON")
+   5. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
+   6. To resync the configuration so that it may be viewed before the normal 25 mins, then perform the following task:
+      1. Change the focus to **Inventory**
+      2. Select the *ACCESS-c9300-1-ASW* switch and select **Actions>Inventory>Resync Device**
+      ![json](./images/DNAC-InventoryResync.png?raw=true "Import JSON")
+      3. After the resync has occurred, you may click the device name and then view the configuration by selecting that from the left pane to view the configuration pushed.
+      ![json](./images/DNAC-DeviceConfig.png?raw=true "Import JSON")
+
+At this point, we have onboarded a device and successfully pushed configuration via Onboarding and DayN Templates as well as Composite Templates. 
 
 ## General Information
 This lab is under development please come back soon. ETA for delivery June 2021.
