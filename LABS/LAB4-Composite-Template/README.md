@@ -60,8 +60,17 @@ Within the project is a Composite Template, but the steps involved to create one
 2. On the *Add New Template* sidebar:
    1. Select **Composite Sequence**
    2. Enter a **Name** for the Composite Template
-   3. Click **Edit** beside *Device Types* to select the device families to be used.
-3. On the *Select Device Types* sidebar type in `9300`to filter for the switch family and select the entire series
+   3. Click **Edit** beside *Device Types* to select the device families to be used.   
+      ![json](./images/DNAC-CompositeDefine.png?raw=true "Import JSON")
+3. On the *Select Device Types* sidebar type in `9300`to filter for the switch family and select the entire series then click **Back to Add New Template**.         
+   ![json](./images/DNAC-CompositeDevices.png?raw=true "Import JSON")
+4. Next Select the **Software Type** *IOS-XE* from the dropdown.    
+   ![json](./images/DNAC-CompositeOS.png?raw=true "Import JSON")
+5. Lastly complete the Add New Template sequence by clicking **Add**    
+   ![json](./images/DNAC-CompositeAdd.png?raw=true "Import JSON")
+
+As these steps have been completed already and a blank Composite Template exists we will now create the composite sequencing of the regular templates.
+
 
 
 
