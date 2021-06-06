@@ -52,7 +52,9 @@ The project we imported contains the following templates:
 
 Additionally, it contains a Composite Template. The composite template will allow us to reuse multiple Regular templates, thereby allowing modularity. Thus we can keep our configuration scripts in smaller files allowing reuse across various platforms. Subsequently helps in troubleshooting as the configurations become smaller and less complex as a result.
 
-### Step 2 - ***Create Composite Template***
+## Lab Section 2 - Creating Composite Templates
+
+### Step 1 - ***Create Composite Template***
 Within the project is a Composite Template, but the steps involved to create one are simple. **The next steps are optional**.
 
 1. Within the **template editor**, Hover over the right side of the project, and a small ⚙ gear icon will appear. Select **Add Template(s)** from the menu.     
@@ -69,8 +71,30 @@ Within the project is a Composite Template, but the steps involved to create one
 5. Lastly complete the Add New Template sequence by clicking **Add**    
    ![json](./images/DNAC-CompositeAdd.png?raw=true "Import JSON")
 
-As these steps have been completed already and a blank Composite Template exists we will now create the composite sequencing of the regular templates.
+As these steps have been completed already and a blank Composite Template exists we will now create the composite sequencing of the regular templates within the existing Composite Template.
 
+### Step 2 - ***Sequencing the Composite Template***
+Within the project is a Composite Template **DNAC Template Lab DayN Composite**. This is the template in which we will create a composite sequence or workflow to call modularized regular templates in order to configure the 9300 switch.
+
+Please note the sequence that we want our templates in will be the following:    
+![json](./images/DNAC-CompositeSequence.png?raw=true "Import JSON")
+
+
+1. Within the **template editor**, select the template **DNAC Template Lab DayN Composite** from the right pane and it will open. 
+2. You will notice that beside all the templates which are able to be used within the composite template a small arrow icon is showing. This denotes that those templates are of the same device type and OS and are available to be dragged into the template.
+3. First Drag the **Access Lists** template from the left into the right pane and release it. It should appear in position 1.
+4. Next Drag the following into the right pane in this order:
+   1. **AAA**
+   2. **System Management**
+   3. **Local User Management**
+   4. **Stacking**
+   5. **VLANs Ports per DF**
+   6. **Automatic Uplink Naming**
+5. Finally we will reorder the sequence by moving the **AAA** template to position one in the sequence. To do this: 
+   1. Hover over the left side of the **AAA** template and you will see a green bar. By clicking and grasping this tool you can drag the template to the appropriate spot in the sequence.
+   2. With this method please move the **AAA** template to position one as shown. 
+6. Once the Template is properly sequenced save the template.
+7. Then commit the template for use.
 
 
 
