@@ -49,7 +49,7 @@ device-tracking policy IPDT_MAX_10
 #end
 !
 #macro( uplink_interface )
-    switchport trunk allowed vlan add $data_vlan_number, $voice_vlan_number, $ap_vlan_number, $guest_vlan_number, $bh_vlan_number
+    switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
 #end
 !
 ##Access Port Configuration
