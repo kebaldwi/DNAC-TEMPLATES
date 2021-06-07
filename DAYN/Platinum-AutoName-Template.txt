@@ -2,7 +2,7 @@
 ##This will always ensure the uplink descriptions are correct to upstream
 ##Switches within the infrastructure
 event manager applet update-port
- event neighbor-discovery interface regexp TenGigabitEthernet.* cdp add
+ event neighbor-discovery interface regexp GigabitEthernet.* cdp add
  action 101 regexp "(Switch|Router)" "$_nd_cdp_capabilities_string"
  action 102 if $_regexp_result eq "1"
  action 103  cli command "enable"
