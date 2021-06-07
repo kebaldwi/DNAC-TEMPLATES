@@ -24,6 +24,7 @@ interface range gi 1/0/10-11
 !
 interface Port-channel1
  switchport trunk native vlan ${MgmtVlan}
+ switchport trunk allowed vlan add ${MgmtVlan}
  switchport mode trunk
  no port-channel standalone-disable
 !
