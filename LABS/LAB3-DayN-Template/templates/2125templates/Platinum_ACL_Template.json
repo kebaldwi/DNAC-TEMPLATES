@@ -11,7 +11,7 @@
     ],
     "softwareType": "IOS",
     "softwareVariant": "XE",
-    "templateContent": "## ACL list for switch access and SNMP\nip access-list standard 12\n 10 permit 198.18.129,0 0.0.0.255\n 20 permit 198.18.133,0 0.0.0.255\n 30 permit 198.18.134,0 0.0.0.255\n 40 permit 198.18.135,0 0.0.0.255\n 50 permit 198.18.136,0 0.0.0.255\n 60 permit 198.18.137,0 0.0.0.255\nip access-list standard 13\n 10 permit 198.18.129,0 0.0.0.255\n 20 permit 198.18.133,0 0.0.0.255\n 30 permit 198.18.134,0 0.0.0.255\n 40 permit 198.18.135,0 0.0.0.255\n 50 permit 198.18.136,0 0.0.0.255\n 60 permit 198.18.137,0 0.0.0.255\n",
+    "templateContent": "## ACL list for switch access and SNMP\nip access-list standard 12\n 10 permit 198.18.129.0 0.0.0.255\n 20 permit 198.18.133.0 0.0.0.255\n 30 permit 198.18.134.0 0.0.0.255\n 40 permit 198.18.135.0 0.0.0.255\n 50 permit 198.18.136.0 0.0.0.255\n 60 permit 198.18.137.0 0.0.0.255\nip access-list standard 13\n 10 permit 198.18.129.0 0.0.0.255\n 20 permit 198.18.133.0 0.0.0.255\n 30 permit 198.18.134.0 0.0.0.255\n 40 permit 198.18.135.0 0.0.0.255\n 50 permit 198.18.136.0 0.0.0.255\n 60 permit 198.18.137.0 0.0.0.255\n",
     "rollbackTemplateContent": "",
     "templateParams": [],
     "rollbackTemplateParams": [],
