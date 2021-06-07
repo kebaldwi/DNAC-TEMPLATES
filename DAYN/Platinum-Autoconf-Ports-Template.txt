@@ -74,13 +74,13 @@ template PRE-AUTH
 #end
 !
 #macro( uplink_interface )
-    switchport trunk allowed vlan add $data_vlan_number, $voice_vlan_number, $ap_vlan_number, $guest_vlan_number, $bh_vlan_number
+    switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
 #end
 !
 ##Access Port Configuration
 #foreach( $Switch in [0..$offset] )
   #set( $SwiNum = $Switch + 1 )
-  interface range gi ${SwiNum}/0/1 - $PortTotal[$Switch]
+  interface range gi ${SwiNum}/0/1 - 9, gi ${SwiNum}/0/12 - $PortTotal[$Switch]
     #access_interface
 #end
 !
