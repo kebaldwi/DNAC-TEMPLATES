@@ -17,14 +17,14 @@ vlan ${MgmtVlan}
 ##Set Interfaces and Build Port Channel 
 interface range gi 1/0/10-11
  shut 
- switchport trunk allowed vlan add ${MgmtVlan}
+ switchport trunk allowed vlan ${MgmtVlan}
  channel-protocol lacp
  channel-group 1 mode passive
  no shut
 !
 interface Port-channel1
  switchport trunk native vlan ${MgmtVlan}
- switchport trunk allowed vlan add ${MgmtVlan}
+ switchport trunk allowed vlan ${MgmtVlan}
  switchport mode trunk
  no port-channel standalone-disable
 !
