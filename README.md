@@ -40,13 +40,13 @@ As a result, customers will gain experience setting up Plug and Play onboarding 
 
 Please use this menu to navigate the various sections of this Github repository. Within the multiple folders are examples, explanation readme files for reference.
 
-* [PnP Preparation](blob/master/LABS/LAB1-PNP-PREP/README.md#PnP) - This section explains the overall Plug and Play set up steps
-* [Onboarding Templates](blob/masterLABS/LAB2-Onboarding-Template/README.md#Day0) - This section explains in depth and how to deploy Day 0 templates
-* [Day N Templates](blob/masterLABS/LAB3-DayN-Template/README.md#DayN) - This section will dive into Day N template constructs and use cases
-* [Composite Templates](blob/masterLABS/LAB4-Composite-Template/README.md#Composite) - This section will explore how to build a composite template on DNAC
-* [Application Policys](blob/masterLABS/LAB5-Application-Policy/README.md#Application) - This section will explain Application Policys in DNAC and their use
-* [Telemetry](blob/masterLABS/LAB6-Telemetry-Enablement/README.md#Telemetry) - This section will explain how to deploy Telemetry for assurance
-* [Advanced Automation](.LABS/LAB7-Advanced-Automation/README.md#Advanced) - This section will explore into Advanced Automation examples
+* [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB1-PNP-PREP/README.md#PnP) - This section explains the overall Plug and Play set up steps
+* [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/README.md#Day0) - This section explains in depth and how to deploy Day 0 templates
+* [Day N Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/README.md#DayN) - This section will dive into Day N template constructs and use cases
+* [Composite Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/README.md#Composite) - This section will explore how to build a composite template on DNAC
+* [Application Policys](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB5-Application-Policy/README.md#Application) - This section will explain Application Policys in DNAC and their use
+* [Telemetry](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB6-Telemetry-Enablement/README.md#Telemetry) - This section will explain how to deploy Telemetry for assurance
+* [Advanced Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LABS/LAB7-Advanced-Automation/README.md#Advanced) - This section will explore into Advanced Automation examples
 
 ## DCLOUD as a LAB
 ### Overview
