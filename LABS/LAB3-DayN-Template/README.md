@@ -1,4 +1,4 @@
-# DayN Templates
+# DayN Templates [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 ## Overview
 This Lab is designed to be a part of a series of labs built to address how to use Day N Templates within DNA Center to configure network devices at Day 1 to N. The idea being to allow for ongoing configuration of features on devices beyond those deployed by the normal provisioning process. With DNA Center, if devices are not within a fabric, the host onboarding part of the UI will not be available. To that end, templates are an easy way of deploying those types of configuration and much more. Before starting this Lab, please make sure you have finished all the steps in labs 1 and 2.
 
