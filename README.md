@@ -40,7 +40,7 @@ As a result, customers will gain experience setting up Plug and Play onboarding 
 
 Please use this menu to navigate the various sections of this Github repository. Within the multiple folders are examples, explanation readme files for reference.
 
-* [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB1-PNP-PREP/README.md#PnP) - This section explains the overall Plug and Play set up steps
+* [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB1-PNP-PREP/README.md) - This section explains the overall Plug and Play set up steps
 * [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/README.md#Day0) - This section explains in depth and how to deploy Day 0 templates
 * [Day N Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/README.md#DayN) - This section will dive into Day N template constructs and use cases
 * [Composite Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/README.md#Composite) - This section will explore how to build a composite template on DNAC
