@@ -1,4 +1,4 @@
-# Onboarding Templates 
+# Onboarding Templates [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 ## Overview
 This Lab is designed to be used after first completing lab 1 and has been created to address how to use Onboarding Templates within DNA Center to onboard network devices at Day Zero which is to say no configuration on the device whatsoever.
 
