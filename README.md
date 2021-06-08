@@ -40,10 +40,10 @@ As a result, customers will gain experience setting up Plug and Play onboarding 
 
 Please use this menu to navigate the various sections of this Github repository. Within the multiple folders are examples, explanation readme files for reference.
 
-* [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB1-PNP-PREP/) - This section explains the overall Plug and Play set up steps
-* [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/) - This section explains in depth and how to deploy Day 0 templates
-* [Day N Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/) - This section will dive into Day N template constructs and use cases
-* [Composite Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/) - This section will explore how to build a composite template on DNA Center.
+* [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB1-PNP-PREP/) - This lab explains the overall Plug and Play set up steps
+* [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/) - This lab explains in depth and how to deploy Day 0 templates
+* [Day N Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/) - This lab will dive into Day N template constructs and use cases
+* [Composite Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/) - This lab will explore how to build a composite template on DNA Center.
 
 ## DCLOUD as a LAB
 ### Overview
