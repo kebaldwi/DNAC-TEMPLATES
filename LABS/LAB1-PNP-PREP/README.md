@@ -1,4 +1,4 @@
-# PnP Preparation 
+# PnP Preparation [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 ## Overview
 This lab is the first one in a series of labs. You may use the steps in the DCLOUD environment, or equally, you might utilize them as part of a Proof of Concept setup at a customer's lab. These procedures may also help form part of a deployment or implementation. Use them to ensure that all the necessary steps are complete before onboarding any devices within DNA Center.
 
