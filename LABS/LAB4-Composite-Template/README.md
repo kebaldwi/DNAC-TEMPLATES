@@ -137,12 +137,17 @@ We will now provision the switch using DayN Composite Templates. To do this, do 
       ![json](./images/DNAC-ProvisionSite.png?raw=true "Import JSON")
       2. Select *ACCESS-c9300-1-ASW* on the left and the two tick boxes at the top of the page, then click **next**. If the template had inputs, they would be entered.  
       ![json](./images/DNAC-ProvisionAdvConfig.png?raw=true "Import JSON")
-      3. Review the information to be deployed and click **Deploy**.
+      3. Select the auto populated Serial Number using the dropdown under *Stacking*..
+      ![json](./images/DNAC-ProvisionConfigSerial.png?raw=true "Import JSON")
+      4. Select the auto populated Product ID from the dropdown under *VLANs Ports Per DF*.
+      ![json](./images/DNAC-ProvisionConfigPID.png?raw=true "Import JSON")
+      5. Ensure the MDF number *01* is entered under *VLANs Ports Per DF*.
+      ![json](./images/DNAC-ProvisionConfigMDF.png?raw=true "Import JSON")
+      6. Click anywhere in the white space of the page to accept these settings so a green tick appears and then click **Next**.
+      ![json](./images/DNAC-ProvisionConfigReady.png?raw=true "Import JSON")
+      7. Check the settings and if you agree accept these settings by clicking  **Deploy**.
       ![json](./images/DNAC-ProvisionDeploy.png?raw=true "Import JSON")
-      4. Click **Apply** on the Provision Device pop-up screen. You can schedule deployments though.
-      ![json](./images/DNAC-ProvisionApply.png?raw=true "Import JSON")
    4. The task will be submitted, and the deployment will run.
-   ![json](./images/DNAC-ProvisionTasking.png?raw=true "Import JSON")
    5. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
    6. To resync the configuration so that it may be viewed before the normal 25 mins, then perform the following task:
       1. Change the focus to **Inventory**
