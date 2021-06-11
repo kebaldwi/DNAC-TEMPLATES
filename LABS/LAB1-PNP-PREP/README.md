@@ -38,7 +38,7 @@ For the lab, we will utilize ***VLAN 5*** as the management VLAN. Connect to swi
 config t
 !
 vlan 5
-name "managment vlan"
+name "mgntvlan"
 !
 int vlan 5 
  ip address 192.168.5.1 255.255.255.0
