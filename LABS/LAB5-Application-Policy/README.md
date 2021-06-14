@@ -40,35 +40,43 @@ The first step will be to enable the CBAR service. During the course of this ope
 2. In the Application Visibility page, click Next. A pop-up window for enabling the Application Visibility service appears. Click Yes in the pop-up window to enable CBAR on Cisco DNA Center.
    ![json](./images/DNAC-CBAR-Enable.png?raw=true "Import JSON")
 3. Check the Enable CBAR on all Ready Devices check box or choose the switch within CBAR Readiness Status in Ready state. Click Next to enable CBAR on the devices.
-  ![json](./images/DNAC-CBAR-EnableDevice.png?raw=true "Import JSON")
+   ![json](./images/DNAC-CBAR-EnableDevice.png?raw=true "Import JSON")
 4. We will now configure the external authoritative sources:
    #### NBAR Cloud
    1. First we will connect to Cisco's NBAR Cloud. First select **Configure** under *NBAR Cloud*. Then click the **Cisco API Console** to configure the connection on the Cisco side.
-   ![json](./images/DNAC-CBAR-NBARCLOUD.png?raw=true "Import JSON")
+      ![json](./images/DNAC-CBAR-NBARCLOUD.png?raw=true "Import JSON")
    2. A new browser tab should open after authenticaiton to the **Cisco API COnsole**. This allows you to configure multiple connections to various API services within Cisco. Click **Register a New App**
-   ![json](./images/DNAC-NBARCLOUDAPI.png?raw=true "Import JSON")
+      ![json](./images/DNAC-NBARCLOUDAPI.png?raw=true "Import JSON")
    3. On the next page name your **Application** which in our case will be `DCLOUD DNAC`
-   ![json](./images/DNAC-NBARCLOUD-1.png?raw=true "Import JSON")
+      ![json](./images/DNAC-NBARCLOUD-1.png?raw=true "Import JSON")
    4. Scroll down and **select all the checkboxes** including the **acceptance of terms** and click the **Register** button
-   ![json](./images/DNAC-NBARCLOUD-2.png?raw=true "Import JSON")
+      ![json](./images/DNAC-NBARCLOUD-2.png?raw=true "Import JSON")
    5. A success page should appear. Click the **My Keys & Apps** link within it.
-   ![json](./images/DNAC-NBARCLOUD-SUCCESS.png?raw=true "Import JSON")
+      ![json](./images/DNAC-NBARCLOUD-SUCCESS.png?raw=true "Import JSON")
    6. You will then select the *Application* tab and from it the **Application Name**, as well as the **Key** and the **Client Secret** and one by one copy them into the previous window
-   ![json](./images/DNAC-NBARCLOUD-SVC.png?raw=true "Import JSON")
+      ![json](./images/DNAC-NBARCLOUD-SVC.png?raw=true "Import JSON")
    7. Ensure that the Service is **Enabled** that the **Client ID** AKA **Key** is entered along with the **Client Secret**. Additionally enter the **Organization Name** aka the **Application** and click **Save**.
-   ![json](./images/DNAC-CBAR-NBARCLOUD_SETTINGS.png?raw=true "Import JSON")
+      ![json](./images/DNAC-CBAR-NBARCLOUD_SETTINGS.png?raw=true "Import JSON")
    #### MS Office O365 Cloud
    1. To Enable the MS Office 365 Cloud connector enable the selector switch
-   ![json](./images/DNAC-CBAR-0365.png?raw=true "Import JSON")
+      ![json](./images/DNAC-CBAR-0365.png?raw=true "Import JSON")
    2. Click Yes on the popup to enable the connection and click **Finish** to finish enabing the service
-   ![json](./images/DNAC-CBAR-0365-YES.png?raw=true "Import JSON")
+      ![json](./images/DNAC-CBAR-0365-YES.png?raw=true "Import JSON")
 5. At this point CBAR application will display.
    ![json](./images/DNAC-CBAR.png?raw=true "Import JSON")
 
-### Step 2 - ***Enabling Controller Based Application Recognition***
-The first step will be to enable the CBAR service. During the course of this operation we will enable CBAR on the switch, as well as instantiate feeds and connect with external authoritative sources at Cisco and Microsofts 0365.
+### Step 2 - ***Updating Protocol Packs***
+Within the CBAR Application, we will now update the protocol pack for the **ACCESS-C9300-1-ASW** switch. 
 
- 
+1. To initiate the *Protocol Pack Update* select the device to be updated, and then click the *Update Protocol Pack* and then submenu *Selected Devices*
+   ![json](./images/DNAC-Device-Update.png?raw=true "Import JSON")
+2. In the Pop-up that appears select the **update** link beside the version that you wish to update to, and then click **Yes** to initiate it.
+   ![json](./images/DNAC-Device-Select-Pack.png?raw=true "Import JSON")
+3. On the CBAR Application Portal the protocol pack will show as *updating*.
+   ![json](./images/DNAC-Protocol-Updating.png?raw=true "Import JSON")
+3. Eventually the protocol pack will show as *updated*.
+   ![json](./images/DNAC-Protocol-Updating.png?raw=true "Import JSON")
+
    
    
 
