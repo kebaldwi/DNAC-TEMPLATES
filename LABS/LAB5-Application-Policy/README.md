@@ -77,16 +77,6 @@ Within the CBAR Application, we will now update the protocol pack for the **ACCE
 3. Eventually the protocol pack will show as *updated*.
    ![json](./images/DNAC-Protocol-Updating.png?raw=true "Import JSON")
 
-   
-   
-
-
-
-
-
-
-The Overview page provides a quick view of the application registry, device recognition method, device CBAR readiness, application observed in the network for the past 2, 24, or 48 hours (valid only if CBAR is enabled on at least one device), service health, and CBAR health score.
-
 
 
 
