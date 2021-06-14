@@ -1,6 +1,6 @@
 # Telemetry
 ## Overview
-This Lab is designed to be used after first completing labs 1 through 5 and has been created to address how to push Telemetry settings from DNA Center. This allows Network Administrators the ability to configure network devices in an ongoing and pragmantic manner from within DNA Center to make sure assurance and secondary logging and management systems are consistent throughout networks whether using SD-Access or Legacy Network Concepts.
+This Lab is designed to be used after first completing labs 1 through 4 and has been created to address how to push Telemetry settings from DNA Center. This allows Network Administrators the ability to configure network devices in an ongoing and pragmantic manner from within DNA Center to make sure assurance and secondary logging and management systems are consistent throughout networks whether using SD-Access or Legacy Network Concepts.
 
 In this section will go through the flow involved deploying Telemetry Settings and linking it to the infrastructure to be deployed from DNAC.
 
