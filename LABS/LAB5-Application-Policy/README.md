@@ -1,4 +1,4 @@
-# Application Policys - under development - ETA - 06 / 18 / 2021
+# Application Policys - under development - ETA - 06/15/2021
 
 ## Overview
 This Lab is designed to be used after first completing labs 1 through 4 and has been created to address how to properly deal with Quality of Service with regard to DNA Center. During the lab we will use Application Policies and apply Quality of Service (QoS) within DNA Center. We will also discuss, set up and use Controller Based Application Recognition. This allows Network Administrators the ability to configure network devices in an ongoing and programmatic manner from within DNA Center to make sure application policies are consistent throughout networks whether using SD-Access or Legacy Network Concepts.
