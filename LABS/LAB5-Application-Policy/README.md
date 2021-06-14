@@ -19,18 +19,16 @@ Application Policy: Lets you automate QOS policies across LAN, WAN, and wireless
 Application Registry: Lets you view, manage, and create applications and application sets.
 Application Visibility Service: Provides application classification using Network-Based Application Recognition (NBAR) and CBAR techniques.
 
+The Day-N Application Visibility page provides a quick view of application registry, device recognition method, device CBAR readiness, application observed in the network for the past 2, 24, or 48 hours, and CBAR health.
+
+The Application Visibility service lets Cisco DNA Center connect with external authoritative sources like Cisco, Infoblox or the Microsoft Office 365 Cloud Connector to help classify the unclassified traffic or help generate improved signatures. Through CBAR we can discover applications from sources such as Cisco, Infoblox, or Microsofts 0365 and catagorize them for use on our network. Additionally, unclassified traffic can come from any flow that the CBAR-enabled device identifies but that is not recognized by the NBAR engine. In such cases, the applications that have a meaningful bit rate are reported as unclassified and can be imported and used as applications in Cisco DNA Center.
+
+This allows us to deal with applications beyond the capabilities of NBAR 2 which is some 1400 applications currently. As the number of applications is always changing and protocol packs are always being updated we can keep those current on the network through CBAR as well.
 
 
-You can create Day N Composite Templates within the ***Template Editor*** within **DNA Center**. Go to the ***Template Editor*** to complete the next task. In this lab, we will deploy a Composite Template and additional Regular Templates within a project.  The import and export function within **DNA Center** allows both the import and export of templates and projects, along with the ability to clone them.
-NBAR2 – Network Based Application Recognition that is supported on
-Routers/Switches/WLC which uses various techniques including DPI to
-identify applications
-Protocol Packs – The signatures supported by NBAR2 on devices are
-delivered via Protocol packs
-CBAR – Controller based Application Recognition a.k.a Application Visibility
-Service on Cisco DNA Center
 
-### Step 1 - ***Import Project with Templates***
+
+### Step 1 - ***TBD***
 
 
 
