@@ -22,7 +22,7 @@ The following packages must be installed and are in the dCLOUD environment:
 
 The Day-N Application Visibility page provides a quick view of application registry, device recognition method, device CBAR readiness, application observed in the network for the past 2, 24, or 48 hours, and CBAR health.
 
-The Application Visibility service lets Cisco DNA Center connect with external authoritative sources like Cisco, Infoblox or the Microsoft Office 365 Cloud Connector to help classify the unclassified traffic or help generate improved signatures. Through CBAR we can discover applications from sources such as Cisco, Infoblox, or Microsofts 0365 and catagorize them for use on our network. Additionally, unclassified traffic can come from any flow that the CBAR-enabled device identifies but that is not recognized by the NBAR engine. In such cases, the applications that have a meaningful bit rate are reported as unclassified and can be imported and used as applications within application sets within Cisco DNA Center.
+The Application Visibility service lets Cisco DNA Center connect with external authoritative sources like Cisco's NBAR Cloud, Infoblox or the Microsoft Office 365 Cloud Connector to help classify the unclassified traffic or help generate improved signatures. Through CBAR we can discover applications from sources such as Cisco's NBAR Cloud, Infoblox, or Microsofts 0365 and catagorize them for use on our network. Additionally, unclassified traffic can come from any flow that the CBAR-enabled device identifies but that is not recognized by the NBAR engine. In such cases, the applications that have a meaningful bit rate are reported as unclassified and can be imported and used as applications within application sets within Cisco DNA Center.
 
 ![json](./images/CBAR-Sources.png?raw=true "Import JSON")
 
@@ -42,7 +42,27 @@ The first step will be to enable the CBAR service. During the course of this ope
 3. Check the Enable CBAR on all Ready Devices check box or choose the switch within CBAR Readiness Status in Ready state. Click Next to enable CBAR on the devices.
   ![json](./images/DNAC-CBAR-EnableDevice.png?raw=true "Import JSON")
 4. We will now configure the external authoritative sources:
-   1. 
+   #### NBAR Cloud
+   1. First we will connect to Cisco's NBAR Cloud. First select **Configure** under *NBAR Cloud*. Then click the **Cisco API Console** to configure the connection on the Cisco side.
+   ![json](./images/DNAC-CBAR-NBARCLOUD.png?raw=true "Import JSON")
+   2. A new browser tab should open after authenticaiton to the **Cisco API COnsole**. This allows you to configure multiple connections to various API services within Cisco. Click **Register a New App**
+   ![json](./images/DNAC-NBARCLOUDAPI.png?raw=true "Import JSON")
+   3. On the next page name your **Application** which in our case will be `DCLOUD DNAC`
+   ![json](./images/DNAC-NBARCLOUD-1.png?raw=true "Import JSON")
+   4. Scroll down and **select all the checkboxes** including the **acceptance of terms** and click the **Register** button
+   ![json](./images/DNAC-NBARCLOUD-2.png?raw=true "Import JSON")
+   5. A success page should appear. Click the **My Keys & Apps** link within it.
+   ![json](./images/DNAC-NBARCLOUD-SUCCESS.png?raw=true "Import JSON")
+   6. You will then select the *Application* tab and from it the **Application Name**, as well as the **Key** and the **Client Secret** and one by one copy them into the previous window
+   ![json](./images/DNAC-NBARCLOUD-SVC.png?raw=true "Import JSON")
+   7. Ensure that the Service is **Enabled** that the **Client ID** AKA **Key** is entered along with the **Client Secret**. Additionally enter the **Organization Name** aka the **Application** and click **Save**.
+   ![json](./images/DNAC-CBAR-NBARCLOUD_SETTINGS.png?raw=true "Import JSON")
+   #### MS Office O365 Cloud
+   1. First we will connect to Cisco's NBAR Cloud. First select **Configure** under *NBAR Cloud*. Then click the **Cisco API Console** to configure the connection on the Cisco side.
+   ![json](./images/DNAC-CBAR-NBARCLOUD.png?raw=true "Import JSON")
+  
+   
+   
 
 
 
