@@ -33,6 +33,36 @@ As the number of applications is always changing and protocol packs are always b
 Lets get started.
 
 ### Step 1 - ***TBD***
+Day 0 Setup Wizard to Enable Application Visibility Service
+Follow the Day 0 Setup wizard to enable the Application Visibility service in Cisco DNA Center.
+
+Procedure
+Step 1	
+In the Cisco DNA Center GUI, click the Menu icon () and choose Provision > Services > Application Visibility.
+
+You can view a brief introduction about the Application Visibility feature.
+
+Step 2	
+In the Application Visibility page, click Next.
+
+A pop-up window for enabling the Application Visibility service appears. Click Yes in the pop-up window to enable CBAR on Cisco DNA Center.
+
+Step 3	
+(Optional) Check the Enable CBAR on all Ready Devices check box or choose devices with CBAR Readiness Status in Ready state.
+
+If you want to choose a device that is not ready for enabling CBAR, follow the info message to move it to Ready state before proceeding in the Setup wizard.
+
+Step 4	
+Click Next to enable CBAR on the devices.
+
+Step 5	
+(Optional) Choose an external authoritative source, such as Microsoft Office 365 Cloud Connector, to either help classify the unclassified traffic or help generate improved signatures.
+
+Step 6	
+Click Finish.
+
+The Overview page provides a quick view of the application registry, device recognition method, device CBAR readiness, application observed in the network for the past 2, 24, or 48 hours (valid only if CBAR is enabled on at least one device), service health, and CBAR health score.
+
 
 
 
