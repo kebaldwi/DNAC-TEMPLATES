@@ -11,22 +11,26 @@ There are a number of hurdles to applying Quality of Service. If we were to read
 In order to accomplish this we will discuss all the relevant aspects of these goals along with how we accomplish them in this lab.
 
 ## Lab Section 1 - Controller Based Application Recognition
-The Application Visibility service lets you manage your built-in and custom applications and application sets. The Application Visibility service, hosted as an application stack within Cisco DNA Center, lets you enable the Controller-Based Application Recognition (CBAR) function on a specific device to classify thousands of network and home-grown applications and network traffic.
+The Application Visibility service lets you manage your built-in and custom applications and application sets. The Application Visibility service, hosted as an application stack within Cisco DNA Center, lets you enable the **C**ontroller-**B**ased **A**pplication **R**ecognition (CBAR) function on a specific device to classify thousands of network and home-grown applications and network traffic. This allows us to deal with applications beyond the capabilities of NBAR 2 which is some 1400 applications currently. 
+
+![json](./images/CBAR.png?raw=true "Import JSON")
 
 The following packages must be installed and are in the dCLOUD environment:
-
-Application Policy: Lets you automate QOS policies across LAN, WAN, and wireless within your campus and branch.
-Application Registry: Lets you view, manage, and create applications and application sets.
-Application Visibility Service: Provides application classification using Network-Based Application Recognition (NBAR) and CBAR techniques.
+1. *Application Policy*: Lets you automate QOS policies across LAN, WAN, and wireless within your campus and branch.
+2. *Application Registry*: Lets you view, manage, and create applications and application sets.
+3. *Application Visibility Service*: Provides application classification using Network-Based Application Recognition (NBAR) and CBAR techniques.
 
 The Day-N Application Visibility page provides a quick view of application registry, device recognition method, device CBAR readiness, application observed in the network for the past 2, 24, or 48 hours, and CBAR health.
 
-The Application Visibility service lets Cisco DNA Center connect with external authoritative sources like Cisco, Infoblox or the Microsoft Office 365 Cloud Connector to help classify the unclassified traffic or help generate improved signatures. Through CBAR we can discover applications from sources such as Cisco, Infoblox, or Microsofts 0365 and catagorize them for use on our network. Additionally, unclassified traffic can come from any flow that the CBAR-enabled device identifies but that is not recognized by the NBAR engine. In such cases, the applications that have a meaningful bit rate are reported as unclassified and can be imported and used as applications in Cisco DNA Center.
+The Application Visibility service lets Cisco DNA Center connect with external authoritative sources like Cisco, Infoblox or the Microsoft Office 365 Cloud Connector to help classify the unclassified traffic or help generate improved signatures. Through CBAR we can discover applications from sources such as Cisco, Infoblox, or Microsofts 0365 and catagorize them for use on our network. Additionally, unclassified traffic can come from any flow that the CBAR-enabled device identifies but that is not recognized by the NBAR engine. In such cases, the applications that have a meaningful bit rate are reported as unclassified and can be imported and used as applications within application sets within Cisco DNA Center.
 
-This allows us to deal with applications beyond the capabilities of NBAR 2 which is some 1400 applications currently. As the number of applications is always changing and protocol packs are always being updated we can keep those current on the network through CBAR as well.
+![json](./images/CBAR-Sources.png?raw=true "Import JSON")
 
+As the number of applications is always changing and protocol packs are always being updated we can keep those current on the network through CBAR as well. Visibility somteimes can be lost from end-to-end with outdated protocol packs whcih do not allow some application to be correctly recognized which can cause not only visibility holes within the network but also incorrect queuing or forwarding issues. CBAR solves that issue by allowing the push of updated protocl packs across the network.
 
+![json](./images/CBAR-ProtocolPacks.png?raw=true "Import JSON")
 
+Lets get started.
 
 ### Step 1 - ***TBD***
 
