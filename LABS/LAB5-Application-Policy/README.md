@@ -58,9 +58,17 @@ The first step will be to enable the CBAR service. During the course of this ope
    7. Ensure that the Service is **Enabled** that the **Client ID** AKA **Key** is entered along with the **Client Secret**. Additionally enter the **Organization Name** aka the **Application** and click **Save**.
    ![json](./images/DNAC-CBAR-NBARCLOUD_SETTINGS.png?raw=true "Import JSON")
    #### MS Office O365 Cloud
-   1. First we will connect to Cisco's NBAR Cloud. First select **Configure** under *NBAR Cloud*. Then click the **Cisco API Console** to configure the connection on the Cisco side.
-   ![json](./images/DNAC-CBAR-NBARCLOUD.png?raw=true "Import JSON")
-  
+   1. To Enable the MS Office 365 Cloud connector enable the selector switch
+   ![json](./images/DNAC-CBAR-0365.png?raw=true "Import JSON")
+   2. Click Yes on the popup to enable the connection and click **Finish** to finish enabing the service
+   ![json](./images/DNAC-CBAR-0365-YES.png?raw=true "Import JSON")
+5. At this point CBAR application will display.
+   ![json](./images/DNAC-CBAR.png?raw=true "Import JSON")
+
+### Step 2 - ***Enabling Controller Based Application Recognition***
+The first step will be to enable the CBAR service. During the course of this operation we will enable CBAR on the switch, as well as instantiate feeds and connect with external authoritative sources at Cisco and Microsofts 0365.
+
+ 
    
    
 
