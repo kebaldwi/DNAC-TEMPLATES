@@ -103,13 +103,37 @@ The Application Policy methodology within DNA Center allows for two types of pol
    #### Host Tracking
 10. Click the **Host Tracking Slider** to allow for QoS policy to work with endpoint mobility. When host tracking is turned on, Cisco DNA Center tracks the connectivity of the collaboration endpoints within the site scope and automatically reconfigures the ACL entries when the collaboration endpoints connect to the network or move from one interface to another. 
    ![json](./images/DNAC-AppPolicy-8-Tracking.png?raw=true "Import JSON")
-11. At this point we could modify the *Application Sets*
+   #### Saving Draft Policy
+11. At this point we could save a copy of the Application Policy by selecting the three dots beside Deploy a pop up menu will appear.
    ![json](./images/DNAC-AppPolicy-8.5-Menu.png?raw=true "Import JSON")
-4. Click the **Site** and then on the popup on the right click **Edit Scope**
-   ![json](./images/DNAC-AppPolicy-2-Site.png?raw=true "Import JSON")
-4. Click the **Site** and then on the popup on the right click **Edit Scope**
-   ![json](./images/DNAC-AppPolicy-2-Site.png?raw=true "Import JSON")
+12. Click **Save Draft** from the pop up menu 
+   ![json](./images/DNAC-AppPolicy-9-SaveDraft.png?raw=true "Import JSON")
+   #### Preview Policy
+13. Click the three dots beside Deploy a pop up menu will appear.
+   ![json](./images/DNAC-AppPolicy-8.5-Menu.png?raw=true "Import JSON")
+14. Click **Preview** on the popup menu to preview the policy.
+   ![json](./images/DNAC-AppPolicy-10-PreviewStart.png?raw=true "Import JSON")
+15. Click **Generate** on the popup on the right to generate the policy.
+   ![json](./images/DNAC-AppPolicy-11-PreviewGenerate.png?raw=true "Import JSON")
+16. Click **View** on the popup on the right to view the policy.
+   ![json](./images/DNAC-AppPolicy-12-PreviewView.png?raw=true "Import JSON")
+17. Take a look at the policy in the popup on the right.
+   ![json](./images/DNAC-AppPolicy-13-Preview.png?raw=true "Import JSON")
+   #### Deploy Policy
+18. Click the **Deploy** and click **Yes** on the pop up that will appear.
+   ![json](./images/DNAC-AppPolicy-14-Deploy.png?raw=true "Import JSON")
+19. Click the **Apply** on the pop up on the right that will appear. You could alternatively schedule this task.
+   ![json](./images/DNAC-AppPolicy-15-Apply.png?raw=true "Import JSON")
+20. Another pop up will appear with the word *configuring* to symbolize the policy push.
+   ![json](./images/DNAC-AppPolicy-16-Configuring.png?raw=true "Import JSON")
+21. The word *Success* should be displayed shortly after to symbolize the policy has been pushed. Click the Success link to view the deployed policy.
+   ![json](./images/DNAC-AppPolicy-17-Success.png?raw=true "Import JSON")
+22. Another pop up will appear with the deployed policy which has been pushed.
+   ![json](./images/DNAC-AppPolicy-18-DeployedPolicy.png?raw=true "Import JSON")
+23. After closing the popups you will notice two elements in the Application Policy page. The Draft Policy which can be reused and the Policy as pushed to the site..
+   ![json](./images/DNAC-AppPolicy-19-DraftAndPolicy.png?raw=true "Import JSON")
 
+At this point you have successfully pushed a CVD QoS Policy to the network.
 
 
 
