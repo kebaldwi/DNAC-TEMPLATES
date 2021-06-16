@@ -80,5 +80,14 @@ Within the CBAR Application, we will now update the protocol pack for the **ACCE
 ## Lab Section 2 - Building and Deploying an Application Policy
 The Application Policy methodology within DNA Center allows for two types of policies to be constructed, wired and wireless. During this section we will build and deploy an Application Policy for a wired environment.
 
+1. Navigate to the **Application Policy** within DNA Center through the menu *Policy>Application Policy*.
+   ![json](./images/DNAC-AppPolicyNavigate.png?raw=true "Import JSON")
+2. In the Application Visibility page, click Next. A pop-up window for enabling the Application Visibility service appears. Click Yes in the pop-up window to enable CBAR on Cisco DNA Center.
+   ![json](./images/DNAC-CBAR-Enable.png?raw=true "Import JSON")
+3. Check the Enable CBAR on all Ready Devices check box or choose the switch within CBAR Readiness Status in Ready state. Click Next to enable CBAR on the devices.
+   ![json](./images/DNAC-CBAR-EnableDevice.png?raw=true "Import JSON")
+4. We will now configure the external authoritative sources:
+
+
 
 
