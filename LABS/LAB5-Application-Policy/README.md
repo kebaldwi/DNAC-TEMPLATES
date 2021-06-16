@@ -80,13 +80,35 @@ Within the CBAR Application, we will now update the protocol pack for the **ACCE
 ## Lab Section 2 - Building and Deploying an Application Policy
 The Application Policy methodology within DNA Center allows for two types of policies to be constructed, wired and wireless. During this section we will build and deploy an Application Policy for a wired environment.
 
-1. Navigate to the **Application Policy** within DNA Center through the menu *Policy>Application Policy*.
+1. Navigate to **Application Policy** within DNA Center through the menu *Policy>Application*.
    ![json](./images/DNAC-AppPolicyNavigate.png?raw=true "Import JSON")
-2. In the Application Visibility page, click Next. A pop-up window for enabling the Application Visibility service appears. Click Yes in the pop-up window to enable CBAR on Cisco DNA Center.
-   ![json](./images/DNAC-CBAR-Enable.png?raw=true "Import JSON")
-3. Check the Enable CBAR on all Ready Devices check box or choose the switch within CBAR Readiness Status in Ready state. Click Next to enable CBAR on the devices.
-   ![json](./images/DNAC-CBAR-EnableDevice.png?raw=true "Import JSON")
-4. We will now configure the external authoritative sources:
+2. In the Application Policy page, click **Add Policy**. 
+   ![json](./images/DNAC-AppPolicy-0-Start.png?raw=true "Import JSON")
+3. Enter `DNAC-Template-Lab` as the name for the Application Policy Name.
+   ![json](./images/DNAC-AppPolicy-1-Name.png?raw=true "Import JSON")
+   #### Site to Apply Policy
+4. Click the **Site** and then on the popup on the right click **Edit Scope**
+   ![json](./images/DNAC-AppPolicy-2-Site.png?raw=true "Import JSON")
+5. Put a tick next to *Floor 1*. Click **Save**  
+   ![json](./images/DNAC-AppPolicy-3-SiteEdit.png?raw=true "Import JSON")
+6. Please note that the gear icon you may have noticed on the right of the floor allows access to either exclude devices or interfaces from the QoS Policy should it be required. 
+   ![json](./images/DNAC-AppPolicy-4-SiteExclude.png?raw=true "Import JSON")
+   #### Queuing Policy to Apply
+7. Click the **CVD_QUEUING_PROFILE** link to open the Queuing Profile Editor.
+   ![json](./images/DNAC-AppPolicy-5-Queue.png?raw=true "Import JSON")
+8. If you wished to deviate from the CVD Queuing Profile you could click **Add Profile**
+   ![json](./images/DNAC-AppPolicy-6-QueueCVD.png?raw=true "Import JSON")
+9. Within the Queuing Profile Editor you would name the new profile and then adjust the sliders to set your queuing policy. Once complete you would click **Select** to use that policy. We will not deviate from the CVD standard at this time so click **Cancel**.
+   ![json](./images/DNAC-AppPolicy-7-QueueCustom.png?raw=true "Import JSON")
+   #### Host Tracking
+10. Click the **Host Tracking Slider** to allow for QoS policy to work with endpoint mobility. When host tracking is turned on, Cisco DNA Center tracks the connectivity of the collaboration endpoints within the site scope and automatically reconfigures the ACL entries when the collaboration endpoints connect to the network or move from one interface to another. 
+   ![json](./images/DNAC-AppPolicy-8-Tracking.png?raw=true "Import JSON")
+11. At this point we could modify the *Application Sets*
+   ![json](./images/DNAC-AppPolicy-8.5-Menu.png?raw=true "Import JSON")
+4. Click the **Site** and then on the popup on the right click **Edit Scope**
+   ![json](./images/DNAC-AppPolicy-2-Site.png?raw=true "Import JSON")
+4. Click the **Site** and then on the popup on the right click **Edit Scope**
+   ![json](./images/DNAC-AppPolicy-2-Site.png?raw=true "Import JSON")
 
 
 
