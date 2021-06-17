@@ -158,6 +158,4 @@ We will now provision the switch using DayN Composite Templates. To do this, do 
 
 At this point, we have onboarded a device and successfully pushed configuration via Onboarding and DayN Templates as well as Composite Templates. 
 
-## General Information
-This lab is under development please come back soon. ETA for delivery June 2021.
 
