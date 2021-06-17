@@ -8,9 +8,42 @@ Within this lab we will direct Netflow to DNA Center. It is important to underst
 ## Lab Section 1 - Enabling Telemetry
 In this lab we will enable the Telemetry Settings and Provision the new settings to a device on DNA Center.
 
+1. Navigate to the **Network Settings** within DNA Center through the menu *Design>Network Settings>*.
+   ![json](./images/DNAC-Navigate-Settings.png?raw=true "Import JSON")
+2. Navigate to the **Telemetry** tab within the **Network Settings** page within DNA Center through the submenu.
+   ![json](./images/DNAC-Telemetry-Navigation-2.png?raw=true "Import JSON")
+3. View the **Telemetry** settings within DNA Center. Until this point we have not provisioned Netflow onto the switch.
+   ![json](./images/DNAC-Telemetry-Settings.png?raw=true "Import JSON")
+4. Select the checkbox next to **Use DNA Center as a Netflow Collector Server**. Then click **Save**.
+   ![json](./images/DNAC-Telemetry-Settings-NetFlow.png?raw=true "Import JSON")
+5. Click **Okay** in the popup which appears.
+   ![json](./images/DNAC-Telemetry-Settings-Save.png?raw=true "Import JSON")
+6. Navigate to the **Inventory** within DNA Center through the menu *Provision>Network Devices>Inventory>*.
+   ![json](./images/DNAC-NavigateInventory.png?raw=true "Import JSON")
+7. From the inventory we will provison the **Telemetry** to the network device.
+   ![json](./images/DNAC-Provision-Telemetry-1.png?raw=true "Import JSON")
+8. Select the switch checkbox, then click **Actions > Telemetry > Enable Application Telemetry** from the submenu.
+   ![json](./images/DNAC-Provision-Telemetry-2.png?raw=true "Import JSON")
+9. Navigate to the **Provision** focus on the Inventory Page and notice the configuring message.
+   ![json](./images/DNAC-Provision-Telemetry-3.png?raw=true "Import JSON")
+10. Eventually **Success** will be displayed.
+   ![json](./images/DNAC-Provision-Telemetry-4.png?raw=true "Import JSON")
+11. Click the **Success** message for more information.
+   ![json](./images/DNAC-Provision-Telemetry-5.png?raw=true "Import JSON")
 
+## Lab Section 2 - Reviewing Telemetry Configuration
+In this section we will review the configuration that has been pushed to the device.
 
+1. Select the **Inventory** focus.
+   ![json](./images/DNAC-Provision-Telemetry-1.png?raw=true "Import JSON")
+2. Select the switch checkbox, then click **Actions > Inventory > Resync Device** from the submenu.
+   ![json](./images/DNAC-Provision-Resync.png?raw=true "Import JSON")
+3. After a few moments of **syncing** the device will show in a managed state.
+   ![json](./images/DNAC-Provision-Telemetry-1.png?raw=true "Import JSON")
+4. Click the actual name **ACCESS-c9300-1-ASW.dcloud.cisco.com** and from the page that appears select **configuration** from the sidebar menu.
+   ![json](./images/DNAC-Provision-Config.png?raw=true "Import JSON")
 
+Notice the Netflow configuation that has been pushed and additinally scroll through the fully configured switch to see all the various telemetry settings whcih have been deployed from Syslog to SNMP.
 
 At this point you have successfully built and deployed Telemety to a switch from DNA Center.
 
