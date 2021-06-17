@@ -307,8 +307,6 @@ When testing, you will frequently need to start again on the switch to test the 
 tclsh                            
 puts [open "flash:prep4dnac" w+] {
 !
-alias exec prep4dnac event manager run prep4dnac
-!
 ! Remove any confirmation dialogs when accessing flash
 file prompt quiet
 !
@@ -343,6 +341,9 @@ event manager applet prep4dnac
  action z1010 puts "Device is prepared for being discovered by device automation.  Rebooting."
  action z1020 syslog msg "Stopping: 'prep4dnac' EEM applet."
  action z1030 reload
+exit
+!
+alias exec prep4dnac event manager run prep4dnac
 !
 end
 }
