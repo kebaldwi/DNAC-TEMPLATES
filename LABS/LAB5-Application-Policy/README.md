@@ -80,6 +80,7 @@ Within the CBAR Application, we will now update the protocol pack for the **ACCE
 ## Lab Section 2 - Building and Deploying an Application Policy
 The Application Policy methodology within DNA Center allows for two types of policies to be constructed, wired and wireless. During this section we will build and deploy an Application Policy for a wired environment.
 
+### Step 1 - ***Build Application Policy Draft***
 1. Navigate to **Application Policy** within DNA Center through the menu *Policy>Application*.
    ![json](./images/DNAC-AppPolicyNavigate.png?raw=true "Import JSON")
 2. In the Application Policy page, click **Add Policy**. 
@@ -108,32 +109,80 @@ The Application Policy methodology within DNA Center allows for two types of pol
    ![json](./images/DNAC-AppPolicy-8.5-Menu.png?raw=true "Import JSON")
 12. Click **Save Draft** from the pop up menu 
    ![json](./images/DNAC-AppPolicy-9-SaveDraft.png?raw=true "Import JSON")
+### Step 2 - ***Deploying Application Policy***
    #### Preview Policy
-13. Click the three dots beside Deploy a pop up menu will appear.
+1. Click the three dots beside Deploy a pop up menu will appear.
    ![json](./images/DNAC-AppPolicy-8.5-Menu.png?raw=true "Import JSON")
-14. Click **Preview** on the popup menu to preview the policy.
+2. Click **Preview** on the popup menu to preview the policy.
    ![json](./images/DNAC-AppPolicy-10-PreviewStart.png?raw=true "Import JSON")
-15. Click **Generate** on the popup on the right to generate the policy.
+3. Click **Generate** on the popup on the right to generate the policy.
    ![json](./images/DNAC-AppPolicy-11-PreviewGenerate.png?raw=true "Import JSON")
-16. Click **View** on the popup on the right to view the policy.
+4. Click **View** on the popup on the right to view the policy.
    ![json](./images/DNAC-AppPolicy-12-PreviewView.png?raw=true "Import JSON")
-17. Take a look at the policy in the popup on the right.
+5. Take a look at the policy in the popup on the right.
    ![json](./images/DNAC-AppPolicy-13-Preview.png?raw=true "Import JSON")
    #### Deploy Policy
-18. Click the **Deploy** and click **Yes** on the pop up that will appear.
+6. Click the **Deploy** and click **Yes** on the pop up that will appear.
    ![json](./images/DNAC-AppPolicy-14-Deploy.png?raw=true "Import JSON")
-19. Click the **Apply** on the pop up on the right that will appear. You could alternatively schedule this task.
+7. Click the **Apply** on the pop up on the right that will appear. You could alternatively schedule this task.
    ![json](./images/DNAC-AppPolicy-15-Apply.png?raw=true "Import JSON")
-20. Another pop up will appear with the word *configuring* to symbolize the policy push.
+8. Another pop up will appear with the word *configuring* to symbolize the policy push.
    ![json](./images/DNAC-AppPolicy-16-Configuring.png?raw=true "Import JSON")
-21. The word *Success* should be displayed shortly after to symbolize the policy has been pushed. Click the Success link to view the deployed policy.
+9. The word *Success* should be displayed shortly after to symbolize the policy has been pushed. Click the Success link to view the deployed policy.
    ![json](./images/DNAC-AppPolicy-17-Success.png?raw=true "Import JSON")
-22. Another pop up will appear with the deployed policy which has been pushed.
+10. Another pop up will appear with the deployed policy which has been pushed.
    ![json](./images/DNAC-AppPolicy-18-DeployedPolicy.png?raw=true "Import JSON")
-23. After closing the popups you will notice two elements in the Application Policy page. The Draft Policy which can be reused and the Policy as pushed to the site..
+11. After closing the popups you will notice two elements in the Application Policy page. The Draft Policy which can be reused and the Policy as pushed to the site..
    ![json](./images/DNAC-AppPolicy-19-DraftAndPolicy.png?raw=true "Import JSON")
 
 At this point you have successfully pushed a CVD QoS Policy to the network.
 
+## Lab Section 3 - Building and Deploying a Custom Application
+The Application Policy methodology within DNA Center allows for two types of policies to be constructed, wired and wireless. During this section we will build and deploy an Application Policy for a wired environment.
+
+### Step 1 - ***Building a Custom Application***
+1. Navigate to **Application Sets** within DNA Center from the Application Policies tab select **Application Sets** and then the redirect.
+   ![json](./images/DNAC-AppPolicy-1-Start.png?raw=true "Import JSON")
+2. In the Application Set page, click **Add Application Set**. 
+   ![json](./images/DNAC-AppPolicy-2-AppSet-Add.png?raw=true "Import JSON")
+3. In the Add Application Set pop up, enter `DNAC-Template-Lab` as the **Application Set Name** then click **Save**. 
+   ![json](./images/DNAC-AppPolicy-3-AppSet-Save.png?raw=true "Import JSON")
+4. Click the **Application** tab then click **Add Application**. 
+   ![json](./images/DNAC-AppPolicy-4-App.png?raw=true "Import JSON")
+5. In the Add Application Pop Up:
+   1. Enter `DNAC-Template-Lab-VUDU` as the Application Name.
+   2. Select **URL** then enter `www.vudu.com`.
+   3. Click the dropdown for Application Set.
+   ![json](./images/DNAC-AppPolicy-5-App-Add.png?raw=true "Import JSON")
+6. Enter **DNA** in the search bar and click the Application Set **DNAC-Template-Lab**. 
+   ![json](./images/DNAC-AppPolicy-6-App-AppSet.png?raw=true "Import JSON")
+7. Click the dropdown for *Traffic Class* then choose **Multimedia Streaming**. 
+   ![json](./images/DNAC-AppPolicy-7-App-Class.png?raw=true "Import JSON")
+8. Click **Save** on the Add Application Pop Up. 
+   ![json](./images/DNAC-AppPolicy-8-App-Save.png?raw=true "Import JSON")
+9. Click **Application Set** then expand the **DNAC-Template-Lab** Application Set to see how it looks. 
+   ![json](./images/DNAC-AppPolicy-9-AppSet-Final.png?raw=true "Import JSON")
+
+### Step 2 - ***Deploying a Custom Application***
+1. Navigate to **Application Policy** within DNA Center through the menu *Policy>Application*.
+   ![json](./images/DNAC-AppPolicyNavigate.png?raw=true "Import JSON")
+2. Click on the Application Policy then **Actions** and **Edit** from the submenu. 
+   ![json](./images/DNAC-AppPolicy-10-Edit.png?raw=true "Import JSON")
+3. Click **Unassigned Applications** to expand it. 
+   ![json](./images/DNAC-AppPolicy-11-UnAssign.png?raw=true "Import JSON")
+4. Click and hold the application set **DNAC-Template-Lab** and drag it to the Default section. 
+   ![json](./images/DNAC-AppPolicy-12-Drag.png?raw=true "Import JSON")
+5. Drop the application set **DNAC-Template-Lab** in the Default Section then click **Deploy** 
+   ![json](./images/DNAC-AppPolicy-13-Drop.png?raw=true "Import JSON")
+6. Click **Apply** to deploy the policy. 
+   ![json](./images/DNAC-AppPolicy-14-Apply.png?raw=true "Import JSON")
+7. Another pop up will appear with the word *configuring* to symbolize the policy push.
+   ![json](./images/DNAC-AppPolicy-15-Configure.png?raw=true "Import JSON")
+9. The word *Success* should be displayed shortly after to symbolize the policy has been pushed. Click the Success link to view the deployed policy.
+   ![json](./images/DNAC-AppPolicy-16-Success.png?raw=true "Import JSON")
+10. Another pop up will appear with the deployed policy which has been pushed.
+   ![json](./images/DNAC-AppPolicy-17-Final.png?raw=true "Import JSON")
+
+At this point you have successfully built and deployed a custom Application within a QoS Policy.
 
 
