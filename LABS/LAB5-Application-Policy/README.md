@@ -185,4 +185,12 @@ The Application Policy methodology within DNA Center allows for two types of pol
 
 At this point you have successfully built and deployed a custom Application within a QoS Policy.
 
+## Automating Application Policies
+While it is possible to click through these processes manually, which can be time-consuming, we can handle this differently. We may automate them further via REST API.
+
+## Summary
+The next step will be to build Enable Telemetry in the network infrastructure. 
+
+## Feedback
+If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
