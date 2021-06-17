@@ -158,4 +158,12 @@ We will now provision the switch using DayN Composite Templates. To do this, do 
 
 At this point, we have onboarded a device and successfully pushed configuration via Onboarding and DayN Templates as well as Composite Templates. 
 
+## Automating Application Policies
+While it is possible to click through these processes manually, which can be time-consuming, we can handle this differently. We may automate them further via REST API.
+
+## Summary
+The next step will be to build and deploy an Application (QoS) Policy in the network infrastructure. 
+
+## Feedback
+If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
