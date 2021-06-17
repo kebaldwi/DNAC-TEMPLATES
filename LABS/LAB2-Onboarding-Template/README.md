@@ -232,6 +232,28 @@ At this point you can claim the device putting it in a planned state for onboard
    11. After the device is completed it will appear in the device inventory after being sync'd with DNA Center.      
    ![json](./images/DNAC-Inventory.png?raw=true "Import JSON")
 
+### Step 2 - ***Post PnP Onboarding***
+To complete this exercise, the port where the Target switch connects is a layer two trunk as part of a Port Channel needs to have a final tweak. To ensure ongoing connectivity we need to modify the upstream connection to put it in bundled mode. 
+
+```
+!
+conf t
+!
+  interface range gi 1/0/10-11
+     channel-group 1 mode active
+!
+  interface Port-channel1
+     port-channel standalone-disable
+     shut
+     no shut
+     end
+!
+wr
+!
+```
+
+This accomplishes two things, it places the upstream switch negotiating LACP in Active mode against a Passive downstream peer allowing for a correct LACP bonded Port-Channel, and removes the standalone command. Both the standalone command and the Pssive mode were required during PnP to make sure both ports were configured correctly on the downstream switch. Any other combination results in one port being in the port-channel and that happens unpredicatbly.
+
 #### Note:
 If you populate the UI with settings those parameters should **not** be in your templates as they will conflict and the deployment through provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what configuration is pushed.
 
