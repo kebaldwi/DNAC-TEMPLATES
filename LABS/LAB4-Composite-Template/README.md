@@ -158,7 +158,7 @@ We will now provision the switch using DayN Composite Templates. To do this, do 
 
 At this point, we have onboarded a device and successfully pushed configuration via Onboarding and DayN Templates as well as Composite Templates. 
 
-## Automating Application Policies
+## Automating Composite Templates
 While it is possible to click through these processes manually, which can be time-consuming, we can handle this differently. We may automate them further via REST API.
 
 ## Summary
