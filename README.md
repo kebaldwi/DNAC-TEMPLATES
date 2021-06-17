@@ -44,8 +44,8 @@ Please use this menu to navigate the various sections of this Github repository.
 * [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/) - This lab explains in depth and how to deploy Day 0 templates
 * [Day N Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/) - This lab will dive into Day N template constructs and use cases
 * [Composite Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/) - This lab will explore how to build a composite template on DNA Center.
-* [Application Policys](./LAB5-Application-Policy/README.md#Application) - This lab will explain Application Policys in DNAC and their use
-* [Telemetry](./LAB6-Telemetry-Enablement/README.md#Telemetry) - This lab will explain how to deploy Telemetry for assurance
+* [Application Policys](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB5-Application-Policy/) - This lab will explain Application Policys in DNAC and their use
+* [Telemetry](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB6-Telemetry-Enablement/) - This lab will explain how to deploy Telemetry for assurance
 
 ## DCLOUD as a LAB
 ### Overview
