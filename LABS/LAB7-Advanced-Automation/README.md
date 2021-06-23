@@ -93,6 +93,12 @@ So lets modify the EEM script to first solve the naming aspect with regard to co
     action 250  end
     action 260 end
 ```
+You will see that lines *240 to 250* were appended to the EEM script. Within that construct we look for the keyword `Phone` within the built in variable to determine if the port is connected to a Phone. If it is then it results in a True or binary 1 state and the included code from lines *243 to 250* run line by line. The configuration adds a description to the interface for the phone of `description Phone - SEPB07D47D34910 - Port 1` for example.
+
+The second part of the problem within this use case is solving for the issue presented by a lack of functionality when the code is configured on the switch. While we can get the configuration in place it will only run when the port is cycled or when the CDP information for the port is cleared. To solve the problem we therefore employ a *Self-Destructing EEM script*
+
+*Self-Destructing EEM scripts* are those that delete themselves on termination. Within the code below you will notice that the line 2.1 removes the EEM applet from the configuration and then line 2.3 ensures the configuration is written to NVRAM prior to terminating.
+
 ```
    event manager applet POST_PNP
     event timer countdown time 30
@@ -101,7 +107,8 @@ So lets modify the EEM script to first solve the naming aspect with regard to co
     action 2.0 cli command "config t"
     action 2.1 cli command "no event manager applet POST_PNP"
     action 2.2 cli command "end"
-    action 2.3 cli command "exit
+    action 2.3 cli command "wr
+    action 2.4 cli command "exit
 ```
 
 ## Availability Information
