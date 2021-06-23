@@ -12,9 +12,9 @@ event manager applet update-port
  action 107  regexp "^([^\.]+)" "$_nd_port_id" match connectedport
  action 108  cli command "no description"
  action 109  cli command "description Uplink to $host - $connectedport"
- action 110  cli command "interface portchannel 1"
+ action 110  cli command "interface port-channel 1"
  action 111  cli command "no description"
- action 112  cli command "description Uplink to $host - $connectedport"
+ action 112  cli command "description Uplink to $host"
  action 113  cli command "end"
  action 114  cli command "write"
  action 115 end
