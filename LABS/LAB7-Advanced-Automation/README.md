@@ -90,7 +90,8 @@ So lets modify the EEM script to first solve the naming aspect with regard to co
     action 247   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
     action 248   cli command "no description"
     action 249   cli command "description Phone - $host - $connectedport"
-    action 250 end
+    action 250  end
+    action 260 end
 ```
 ```
    event manager applet POST_PNP
