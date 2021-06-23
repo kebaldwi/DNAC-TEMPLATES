@@ -46,6 +46,7 @@ Please use this menu to navigate the various sections of this Github repository.
 * [Composite Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/) - This lab will explore how to build a composite template on DNA Center.
 * [Application Policys](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB5-Application-Policy/) - This lab will explain Application Policys in DNAC and their use
 * [Telemetry](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB6-Telemetry-Enablement/) - This lab will explain how to deploy Telemetry for assurance
+* [Advanced Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB7-Advanced-Automation/) - This lab will explain how to deploy Telemetry for assurance
 
 ## DCLOUD as a LAB
 ### Overview
