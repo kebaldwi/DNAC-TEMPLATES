@@ -9,50 +9,50 @@ In the following example a variable is bind to DNA Centers database and a value 
 In order to acomplish this we need to use this example. First we need to create an integer variable to be used to parse the bind variable too. Then set the result of that equation into a variable called native_vlan. We can then perform mathematical equations to extrapolate other values.
 
 ```
-#set( $integer = 0 )
-#set( $native_vlan = $integer.parseInt($native_vlan_bind) )
-#set( $data_vlan = $native_vlan + 10 )
+   #set( $integer = 0 )
+   #set( $native_vlan = $integer.parseInt($native_vlan_bind) )
+   #set( $data_vlan = $native_vlan + 10 )
 ```
 
 ### Working with Arrays or Lists
 To create an array we have to perform the following. First we need to concatenate the values into a variable with some kind of delimiter. Then using the delimiter we can split the values into separate elements within the array and call them separately.
 
 ```
-#set( $Switches = 8 )
-#foreach( $Switch in [1..${Switches}] )
-    #if( $Switch == 1 )
-        #set( $PortArray = $PortsCount )
-    #else
-        #set( $PortArray = $PortArray + "," + $PortsCount )
-    #end
-#end
-!
-#set( $SwitchPorts = $PortArray.split(",") ) ## Number of ports in the switches in stack
-!
-#foreach( $Switch in [1..${Switches}] )
-    #set( $ID = $Switch - 1 )
-    interface ${Switch}/0/1 - $SwitchPorts[$ID]
-    desc test
-#end
+   #set( $Switches = 8 )
+   #foreach( $Switch in [1..${Switches}] )
+       #if( $Switch == 1 )
+           #set( $PortArray = $PortsCount )
+       #else
+           #set( $PortArray = $PortArray + "," + $PortsCount )
+       #end
+   #end
+   !
+   #set( $SwitchPorts = $PortArray.split(",") ) ## Number of ports in the switches in stack
+   !
+   #foreach( $Switch in [1..${Switches}] )
+       #set( $ID = $Switch - 1 )
+       interface ${Switch}/0/1 - $SwitchPorts[$ID]
+       desc test
+   #end
 ```
 
 Another way we may work with arrays is to use the add operator. This method would look like this.
 
 ```
-#set( $PortArray = [] )
-#set( $PortsCount = 48 )
-!
-#set( $Switches = 8 )
-#foreach( $Switch in [1..${Switches}] )
-    #set( $unused = $PortArray.add($PortsCount))
-#end
-!$PortArray
-!
-#foreach( $Switch in [1..${Switches}] )
-    #set( $ID = $Switch - 1 )
-    interface ${Switch}/0/1 - $PortArray[$ID]
-    desc test
-#end
+   #set( $PortArray = [] )
+   #set( $PortsCount = 48 )
+   !
+   #set( $Switches = 8 )
+   #foreach( $Switch in [1..${Switches}] )
+       #set( $unused = $PortArray.add($PortsCount))
+   #end
+   !$PortArray
+   !
+   #foreach( $Switch in [1..${Switches}] )
+       #set( $ID = $Switch - 1 )
+       interface ${Switch}/0/1 - $PortArray[$ID]
+       desc test
+   #end
 ```
 
 ### Working with Stacks of 9300/9200 and Powerstacking
@@ -61,48 +61,48 @@ One area we need to address is how to effectively deal with stacking 9300's and 
 In order to acomplish this we need to first identify how many switches are in the stack... please use this example. 
 
 ```
-#set( $StackPIDs = $ProductID.split(",") )
-#set( $StackMemberCount = $StackPIDs.size() )
+   #set( $StackPIDs = $ProductID.split(",") )
+   #set( $StackMemberCount = $StackPIDs.size() )
 ```
 Then we need a logical construct which iterates through each switch setting not only the priority correctly but also setting the powerstack correctly.
 
 ```
-#if( $StackMemberCount > 1 )
-   stack-power stack Powerstack1
-   mode redundant strict
-   #if( $StackMemberCount > 4 )
-      stack-power stack Powerstack2
+   #if( $StackMemberCount > 1 )
+      stack-power stack Powerstack1
       mode redundant strict
-   #end
-   #foreach( $Switch in [1..$StackMemberCount] )
-      #if( $Switch < 5 )
-         stack-power switch ${Switch}
-         stack Powerstack1
-      #elseif( $Switch > 4 )
-         stack-power switch ${Switch}
-         stack Powerstack2
+      #if( $StackMemberCount > 4 )
+         stack-power stack Powerstack2
+         mode redundant strict
       #end
-    #end
-    #MODE_ENABLE
-    #MODE_END_ENABLE
-    #MODE_ENABLE
-    #foreach( $Switch in [1..$StackMemberCount] )
-       #if($Switch == 1)
-          switch $Switch priority 10
-       #elseif($Switch == 2)
-          switch $Switch priority 9
-       #else
-          switch $Switch priority 8
-       #end 
-    #end
-    #MODE_END_ENABLE
-#end
+      #foreach( $Switch in [1..$StackMemberCount] )
+         #if( $Switch < 5 )
+            stack-power switch ${Switch}
+            stack Powerstack1
+         #elseif( $Switch > 4 )
+            stack-power switch ${Switch}
+            stack Powerstack2
+         #end
+       #end
+       #MODE_ENABLE
+       #MODE_END_ENABLE
+       #MODE_ENABLE
+       #foreach( $Switch in [1..$StackMemberCount] )
+          #if($Switch == 1)
+             switch $Switch priority 10
+          #elseif($Switch == 2)
+             switch $Switch priority 9
+          #else
+             switch $Switch priority 8
+          #end 
+       #end
+       #MODE_END_ENABLE
+   #end
 ```
 Explained here...
 1. The code shared will run only if the number of switches in the stack is found to be greater than 1.
 
 ```
-#if( $StackMemberCount > 1 )
+   #if( $StackMemberCount > 1 )
 ```
 
 2. The next step is to correctly set the number of powerstack required. If the number of switches exceeds 4 then we need two powerstacks set up.
@@ -132,19 +132,19 @@ Explained here...
 4. Lastly, we will set the switch priority appropriately on each switch for master and standby, and then for the remaining switches withijn the stack so that switch numbering matches the priority levels.
 
 ```
-#MODE_ENABLE
-    #MODE_END_ENABLE
-    #MODE_ENABLE
-    #foreach( $Switch in [1..$StackMemberCount] )
-       #if($Switch == 1)
-          switch $Switch priority 10
-       #elseif($Switch == 2)
-          switch $Switch priority 9
-       #else
-          switch $Switch priority 8
-       #end 
-    #end
-    #MODE_END_ENABLE
+   #MODE_ENABLE
+   #MODE_END_ENABLE
+   #MODE_ENABLE
+   #foreach( $Switch in [1..$StackMemberCount] )
+      #if($Switch == 1)
+         switch $Switch priority 10
+      #elseif($Switch == 2)
+         switch $Switch priority 9
+      #else
+         switch $Switch priority 8
+      #end 
+   #end
+   #MODE_END_ENABLE
 ```
 
 ### Working port counts within Catalyst 9k
@@ -155,52 +155,52 @@ First we would need to identify how many ports we have on each switch or linecar
 We set up variables to track in Array format the number of ports per switch.
 
 ```
-#set( $StackPIDs = $ProductID.split(",") )
-#set( $StackMemberCount = $StackPIDs.size() )
-#set( $PortTotal = [] )
-#set( $offset = $StackMemberCount - 1 )
-#foreach( $Switch in [0..$offset] )
-  #set( $Model = $StackPIDs[$Switch])
-  #set( $PortCount = $Model.replaceAll("C9300L?-([2|4][4|8]).*","$1") )
-  #set( $foo = $PortTotal.add($PortCount) )
-#end
+   #set( $StackPIDs = $ProductID.split(",") )
+   #set( $StackMemberCount = $StackPIDs.size() )
+   #set( $PortTotal = [] )
+   #set( $offset = $StackMemberCount - 1 )
+   #foreach( $Switch in [0..$offset] )
+     #set( $Model = $StackPIDs[$Switch])
+     #set( $PortCount = $Model.replaceAll("C9300L?-([2|4][4|8]).*","$1") )
+     #set( $foo = $PortTotal.add($PortCount) )
+   #end
 ```
 
 The next step would be to build macros and vlans to configure the various ports.
 
 ```
-vlan ${data_vlan_number}
-  name ${site_code}-Employees
-vlan ${voice_vlan_number}
-  name ${site_code}-Voice
-vlan ${iot_vlan_number}
-  name ${site_code}-IOT
-vlan ${guest_vlan_number}
-  name ${site_code}-Guests
-vlan ${ap_vlan_number}
-  name ${site_code}-AP
-
-#macro( uplink_interface )
-    switchport trunk allowed vlan add ${voice_vlan_number},${iot_vlan_number},${guest_vlan_number},${ap_vlan_number}     
-#end
-
-#macro( access_interface )
-  description base port config
-  switchport mode access
-  switchport access vlan ${data_vlan_number}
-  switchport voice vlan ${voice_vlan_number}
-  spanning-tree portfast
-  spanning-tree bpduguard enable
-#end
-
-#foreach( $Switch in [0..$offset] )
-  #set( $SwiNum = $Switch + 1 )
-  interface range gi ${SwiNum}/0/1 - $PortTotal[$Switch]
-    #access_interface
-#end
-
-interface portchannel 1
- #uplink_interface
+   vlan ${data_vlan_number}
+     name ${site_code}-Employees
+   vlan ${voice_vlan_number}
+     name ${site_code}-Voice
+   vlan ${iot_vlan_number}
+     name ${site_code}-IOT
+   vlan ${guest_vlan_number}
+     name ${site_code}-Guests
+   vlan ${ap_vlan_number}
+     name ${site_code}-AP
+   
+   #macro( uplink_interface )
+       switchport trunk allowed vlan add ${voice_vlan_number},${iot_vlan_number},${guest_vlan_number},${ap_vlan_number}     
+   #end
+   
+   #macro( access_interface )
+     description base port config
+     switchport mode access
+     switchport access vlan ${data_vlan_number}
+     switchport voice vlan ${voice_vlan_number}
+     spanning-tree portfast
+     spanning-tree bpduguard enable
+   #end
+   
+   #foreach( $Switch in [0..$offset] )
+     #set( $SwiNum = $Switch + 1 )
+     interface range gi ${SwiNum}/0/1 - $PortTotal[$Switch]
+       #access_interface
+   #end
+   
+   interface portchannel 1
+    #uplink_interface
 ```
 
 While this would configure the access ports, and modify the port channel for upstream connectivity we could do more to automate we will look at that next.
