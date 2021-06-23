@@ -80,8 +80,17 @@ So lets modify the EEM script to first solve the naming aspect with regard to co
     action 226   cli command "no description"
     action 227   cli command "description Link - $host - $connectedport"
     action 230  end
-    action 240 end
-
+    action 240 else
+    action 241  regexp "(Phone)" "$_nd_cdp_capabilities_string"
+    action 242  if $_regexp_result eq "1"
+    action 243   cli command "enable"
+    action 244   cli command "config t"
+    action 245   cli command "interface $_nd_local_intf_name"
+    action 246   regexp "^([^\.]+)" "$_nd_cdp_entry_name" match host
+    action 247   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
+    action 248   cli command "no description"
+    action 249   cli command "description Phone - $host - $connectedport"
+    action 250 end
 ```
 ```
    event manager applet POST_PNP
