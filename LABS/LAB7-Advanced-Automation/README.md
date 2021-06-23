@@ -51,6 +51,38 @@ The script which we used on the Composite Templates uses an EEM Script which run
     action 115 end
 ```
 
+While this script will rename the uplinks connected to a Router or Switch it is limited in terms of the following:
+1. Timing, as its not scheduled, and you cannot clear the CDP table from the template
+2. Naming Access Points or other devices is also not taken into consideration
+
+So lets modify the EEM script to first solve the naming aspect with regard to connected devices
+
+```
+event manager applet update-port
+ event neighbor-discovery interface regexp GigabitEthernet.* cdp add
+ action 101 regexp "(Switch|Router)" "$_nd_cdp_capabilities_string"
+ action 200 if $_regexp_result eq "1"
+ action 201  regexp "(Trans-Bridge)" "$_nd_cdp_capabilities_string"
+ action 210  if $_regexp_result eq "1"
+ action 211   cli command "enable"
+ action 212   cli command "config t"
+ action 213   cli command "interface $_nd_local_intf_name"
+ action 214   regexp "^([^\.]+)" "$_nd_cdp_entry_name" match host
+ action 215   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
+ action 216   cli command "no description"
+ action 217   cli command "description AP - $host - $connectedport"
+ action 220  else
+ action 221   cli command "enable"
+ action 222   cli command "config t"
+ action 223   cli command "interface $_nd_local_intf_name"
+ action 224   regexp "^([^\.]+)\." "$_nd_cdp_entry_name" match host
+ action 225   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
+ action 226   cli command "no description"
+ action 227   cli command "description Link - $host - $connectedport"
+ action 230  end
+ action 240 end
+
+```
 
 
 ## Availability Information
