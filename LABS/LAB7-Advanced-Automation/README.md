@@ -58,32 +58,41 @@ While this script will rename the uplinks connected to a Router or Switch it is 
 So lets modify the EEM script to first solve the naming aspect with regard to connected devices
 
 ```
-event manager applet update-port
- event neighbor-discovery interface regexp GigabitEthernet.* cdp add
- action 101 regexp "(Switch|Router)" "$_nd_cdp_capabilities_string"
- action 200 if $_regexp_result eq "1"
- action 201  regexp "(Trans-Bridge)" "$_nd_cdp_capabilities_string"
- action 210  if $_regexp_result eq "1"
- action 211   cli command "enable"
- action 212   cli command "config t"
- action 213   cli command "interface $_nd_local_intf_name"
- action 214   regexp "^([^\.]+)" "$_nd_cdp_entry_name" match host
- action 215   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
- action 216   cli command "no description"
- action 217   cli command "description AP - $host - $connectedport"
- action 220  else
- action 221   cli command "enable"
- action 222   cli command "config t"
- action 223   cli command "interface $_nd_local_intf_name"
- action 224   regexp "^([^\.]+)\." "$_nd_cdp_entry_name" match host
- action 225   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
- action 226   cli command "no description"
- action 227   cli command "description Link - $host - $connectedport"
- action 230  end
- action 240 end
+   event manager applet update-port
+    event neighbor-discovery interface regexp GigabitEthernet.* cdp add
+    action 101 regexp "(Switch|Router)" "$_nd_cdp_capabilities_string"
+    action 200 if $_regexp_result eq "1"
+    action 201  regexp "(Trans-Bridge)" "$_nd_cdp_capabilities_string"
+    action 210  if $_regexp_result eq "1"
+    action 211   cli command "enable"
+    action 212   cli command "config t"
+    action 213   cli command "interface $_nd_local_intf_name"
+    action 214   regexp "^([^\.]+)" "$_nd_cdp_entry_name" match host
+    action 215   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
+    action 216   cli command "no description"
+    action 217   cli command "description AP - $host - $connectedport"
+    action 220  else
+    action 221   cli command "enable"
+    action 222   cli command "config t"
+    action 223   cli command "interface $_nd_local_intf_name"
+    action 224   regexp "^([^\.]+)\." "$_nd_cdp_entry_name" match host
+    action 225   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
+    action 226   cli command "no description"
+    action 227   cli command "description Link - $host - $connectedport"
+    action 230  end
+    action 240 end
 
 ```
-
+```
+   event manager applet POST_PNP
+    event timer countdown time 30
+    action 1.0 cli command "enable"
+    action 1.1 cli command "clear cdp table"
+    action 2.0 cli command "config t"
+    action 2.1 cli command "no event manager applet POST_PNP"
+    action 2.2 cli command "end"
+    action 2.3 cli command "exit
+```
 
 ## Availability Information
 This lab is under development please come back soon. ETA for delivery June 30 2021.
