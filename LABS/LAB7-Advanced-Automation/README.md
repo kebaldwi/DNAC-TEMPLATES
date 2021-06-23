@@ -43,7 +43,7 @@ The script which we used on the Composite Templates uses an EEM Script which run
     action 107  regexp "^([^\.]+)" "$_nd_port_id" match connectedport
     action 108  cli command "no description"
     action 109  cli command "description Uplink to $host - $connectedport"
-    action 110  cli command "interface portchannel 1"
+    action 110  cli command "interface port-channel 1"
     action 111  cli command "no description"
     action 112  cli command "description Uplink to $host - $connectedport"
     action 113  cli command "end"
