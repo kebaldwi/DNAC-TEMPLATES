@@ -45,7 +45,7 @@ The script which we used on the Composite Templates uses an EEM Script which run
     action 109  cli command "description Uplink to $host - $connectedport"
     action 110  cli command "interface port-channel 1"
     action 111  cli command "no description"
-    action 112  cli command "description Uplink to $host - $connectedport"
+    action 112  cli command "description Uplink to $host"
     action 113  cli command "end"
     action 114  cli command "write"
     action 115 end
@@ -79,19 +79,23 @@ So lets modify the EEM script to first solve the naming aspect with regard to co
     action 225   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
     action 226   cli command "no description"
     action 227   cli command "description Link - $host - $connectedport"
-    action 230  end
-    action 240 else
-    action 241  regexp "(Phone)" "$_nd_cdp_capabilities_string"
-    action 242  if $_regexp_result eq "1"
-    action 243   cli command "enable"
-    action 244   cli command "config t"
-    action 245   cli command "interface $_nd_local_intf_name"
-    action 246   regexp "^([^\.]+)" "$_nd_cdp_entry_name" match host
-    action 247   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
-    action 248   cli command "no description"
-    action 249   cli command "description Phone - $host - $connectedport"
-    action 250  end
-    action 260 end
+    action 228   cli command "interface port-channel 1"
+    action 229   cli command "no description"
+    action 230   cli command "description Link - $host"
+    action 240  end
+    action 250 else
+    action 251  regexp "(Phone)" "$_nd_cdp_capabilities_string"
+    action 252  if $_regexp_result eq "1"
+    action 253   cli command "enable"
+    action 254   cli command "config t"
+    action 255   cli command "interface $_nd_local_intf_name"
+    action 256   regexp "^([^\.]+)" "$_nd_cdp_entry_name" match host
+    action 257   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
+    action 258   cli command "no description"
+    action 259   cli command "description Phone - $host - $connectedport"
+    action 260  end
+    action 270 end
+    action 280 cli command "write"
 ```
 You will see that lines *240 to 250* were appended to the EEM script. Within that construct we look for the keyword `Phone` within the built in variable to determine if the port is connected to a Phone. If it is then it results in a True or binary 1 state and the included code from lines *243 to 250* run line by line. The configuration adds a description to the interface for the phone of `description Phone - SEPB07D47D34910 - Port 1` for example.
 
