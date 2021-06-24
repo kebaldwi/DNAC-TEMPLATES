@@ -27,8 +27,8 @@ The various topics covered in the lab will be the following:
 ## Use Cases
 The Topics listed above will be covered in a number of use cases to show the capability and flexibility of the templating engine within DNA Center. While we will utilize Velocity language the same can be accomplished in the Jinja2 language.
 
-1. [Renaming interfaces]()
-2. [Building Stacks]()
+1. [Renaming interfaces](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB7-Advanced-Automation/README.md#renaming-interfaces---use-case)
+2. [Building Stacks](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB7-Advanced-Automation/README.md#renaming-interfaces---use-case-1)
 3. [Assigning port configuration]()
 4. [Autoconf port configuration]()
 5. [Non SDA IBNS 2.0 configuration]()
@@ -130,8 +130,48 @@ The second part of the problem within this use case is solving for the issue pre
 So previously within the Composite Templating Lab we introduced a methodology of automatically build a data stack and power stack configuration within the switch. When a new device or switch is built we may want to control which switch is Active and which switch is standby within the stack. To that end the following configuration has been built previously:
 
 ```
-
+   ## 9300 Stack Power and Priority
+   ##Variables
+   #set( $StackCount = $Serial.split(",") )
+   #set( $StackMemberCount = $StackCount.size() )
+   !
+   ##Stacking Commands
+   #if( $StackMemberCount > 1 )
+      stack-power stack Powerstack1
+      mode redundant strict
+      #if( $StackMemberCount > 4 )
+         stack-power stack Powerstack2
+         mode redundant strict
+      #end
+      #foreach( $Switch in [1..$StackMemberCount] )
+         #if( $Switch < 5 )
+            stack-power switch ${Switch}
+            stack Powerstack1
+         #elseif( $Switch > 4 )
+            stack-power switch ${Switch}
+            stack Powerstack2
+         #end
+       #end
+       #MODE_ENABLE
+       #MODE_END_ENABLE
+       #MODE_ENABLE
+       #foreach( $Switch in [1..$StackMemberCount] )
+          #if($Switch == 1)
+             switch $Switch priority 10
+          #elseif($Switch == 2)
+             switch $Switch priority 9
+          #else
+             switch $Switch priority 8
+          #end 
+       #end
+       #MODE_END_ENABLE
+   #end
 ```
+Within this script you can see the use of the Arrays `$Stackcount` which is formed through the use of the `.split(",")` method which takes the string returned from the database and splits the list into two elements within the Array `$Stackcount`. You could address each element in the Array remembering that Arrays always start the numbering of elements at position zero (0). In a two element Array you could call the data with these two options; for the first element in the Array `$Stackcount[0]` or for the second element in the Array `$Stackcount[1]`.
+
+Within this script you can see the use of the Conditional Statements `#if #elseif #else #end` these are used to dynamically build configuration for switch stacks no matter how many switches are within the stack. For example if the number of switches in the stack is above 4 then it creates automatically 2 powerstack environments for power redundancy. The script also sets the priority of the Active and Standby switch above those of the rest of the switches in the stack.
+
+Within this script you can see the use of the Enable Statements `#MODE_ENABLE #MODE_END_ENABLE` these commands allow for privileged level non configuration commands to be entered. In this script we need to configure the privileged level command to set switch priority for individual switches `switch $Switch priority #`. Bracketing this configuration command with the velocity statements `#MODE_ENABLE #MODE_END_ENABLE` allows for us to change from configuration mode to enable mode and back again.
 
 
 
