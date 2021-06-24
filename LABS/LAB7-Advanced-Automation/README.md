@@ -27,11 +27,11 @@ The various topics covered in the lab will be the following:
 ## Use Cases
 The Topics listed above will be covered in a number of use cases to show the capability and flexibility of the templating engine within DNA Center. While we will utilize Velocity language the same can be accomplished in the Jinja2 language.
 
-1. [Renaming interfaces](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB7-Advanced-Automation/README.md#renaming-interfaces---use-case)
-2. [Building Stacks](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB7-Advanced-Automation/README.md#building-stacks---use-case)
-3. [Assigning port configuration]()
-4. [Autoconf port configuration]()
-5. [Non SDA IBNS 2.0 configuration]()
+1. [Renaming interfaces](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB7-Advanced-Automation/README.md#step-1---renaming-interfaces---use-case)
+2. [Building Stacks](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB7-Advanced-Automation/README.md#step-2---building-stacks---use-case)
+3. [Assigning port configuration](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB7-Advanced-Automation/README.md#step-3---assigning-port-configuration---use-case)
+4. [Autoconf port configuration](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB7-Advanced-Automation/README.md#step-4---autoconf-port-configuration---use-case)
+5. [Non SDA IBNS 2.0 port configuration](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB7-Advanced-Automation/README.md#step-5---non-sda-ibns2.0-port-configuration---use-case)
 
 ## Step 1 - ***Renaming Interfaces - Use Case***
 So previously within the Composite Templating Lab we introduced a methodology of automatically naming the interfaces within the switch. When a new device or switch/router/access point connects to a switch we want to name those interfaces. Naming the uplinks specifically, but also the various wireless access points and IP Phones would be a nice addition. 
