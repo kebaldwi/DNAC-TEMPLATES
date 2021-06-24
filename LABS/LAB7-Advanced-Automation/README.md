@@ -27,7 +27,13 @@ The various topics covered in the lab will be the following:
 ## Use Cases
 The Topics listed above will be covered in a number of use cases to show the capability and flexibility of the templating engine within DNA Center. While we will utilize Velocity language the same can be accomplished in the Jinja2 language.
 
-## Renaming Interfaces Use Case
+1. [Renaming interfaces]()
+2. [Building Stacks]()
+3. [Assigning port configuration]()
+4. [Autoconf port configuration]()
+5. [Non SDA IBNS 2.0 configuration]()
+
+## Renaming Interfaces - Use Case
 So previously within the Composite Templating Lab we introduced a methodology of automatically naming the interfaces within the switch. When a new device or switch/router/access point connects to a switch we want to name those interfaces. Naming the uplinks specifically, but also the various wireless access points and IP Phones would be a nice addition. 
 
 The script which we used on the Composite Templates uses an EEM Script which runs whenever a CDP event occurs.
@@ -98,7 +104,11 @@ So lets modify the EEM script to first solve the naming aspect with regard to co
     action 270 end
     action 280 cli command "write"
 ```
-You will see that lines *250 to 260* were appended to the EEM script. Within that construct we look for the keyword `Phone` within the built in variable to determine if the port is connected to a Phone. If it is then it results in a True or binary 1 state and the included code from lines *253 to 260* run line by line. The configuration adds a description to the interface for the phone of `description Phone - SEPB07D47D34910 - Port 1` for example.
+First lets address the primary problem, the naming of interfaces with descriptions.
+
+You will see that lines *201 to 220* were added to the EEM script. Within that construct we look for the keyword `Trans-Bridge` within the built in variable to determine if the port is connected to an Access Point. If it is then it results in a True or binary 1 state and the included code from lines *211 to 220* run line by line. The configuration adds a description to the interface for the phone of `description AP - KO-AP0C75 - GigabitEthernet0` for example.
+
+You will see that lines *250 to 260* were added to the EEM script. Within that construct we look for the keyword `Phone` within the built in variable to determine if the port is connected to a Phone. If it is then it results in a True or binary 1 state and the included code from lines *253 to 260* run line by line. The configuration adds a description to the interface for the phone of `description Phone - SEPB07D47D34910 - Port 1` for example.
 
 The second part of the problem within this use case is solving for the issue presented by a lack of functionality when the code is configured on the switch. While we can get the configuration in place it will only run when the port is cycled or when the CDP information for the port is cleared. To solve the problem we therefore employ a *Self-Destructing EEM script*
 
@@ -115,6 +125,15 @@ The second part of the problem within this use case is solving for the issue pre
     action 2.3 cli command "wr
     action 2.4 cli command "exit
 ```
+
+## Renaming Interfaces - Use Case
+So previously within the Composite Templating Lab we introduced a methodology of automatically build a data stack and power stack configuration within the switch. When a new device or switch is built we may want to control which switch is Active and which switch is standby within the stack. To that end the following configuration has been built previously:
+
+```
+
+```
+
+
 
 ## Availability Information
 This lab is under development please come back soon. ETA for delivery June 30 2021.
