@@ -28,12 +28,12 @@ The various topics covered in the lab will be the following:
 The Topics listed above will be covered in a number of use cases to show the capability and flexibility of the templating engine within DNA Center. While we will utilize Velocity language the same can be accomplished in the Jinja2 language.
 
 1. [Renaming interfaces](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB7-Advanced-Automation/README.md#renaming-interfaces---use-case)
-2. [Building Stacks](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB7-Advanced-Automation/README.md#renaming-interfaces---use-case-1)
+2. [Building Stacks](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB7-Advanced-Automation/README.md#building-stacks---use-case)
 3. [Assigning port configuration]()
 4. [Autoconf port configuration]()
 5. [Non SDA IBNS 2.0 configuration]()
 
-## Renaming Interfaces - Use Case
+## Step 1 - ***Renaming Interfaces - Use Case***
 So previously within the Composite Templating Lab we introduced a methodology of automatically naming the interfaces within the switch. When a new device or switch/router/access point connects to a switch we want to name those interfaces. Naming the uplinks specifically, but also the various wireless access points and IP Phones would be a nice addition. 
 
 The script which we used on the Composite Templates uses an EEM Script which runs whenever a CDP event occurs.
@@ -126,7 +126,7 @@ The second part of the problem within this use case is solving for the issue pre
     action 2.4 cli command "exit
 ```
 
-## Renaming Interfaces - Use Case
+## Step 2 - ***Building Stacks - Use Case***
 So previously within the Composite Templating Lab we introduced a methodology of automatically build a data stack and power stack configuration within the switch. When a new device or switch is built we may want to control which switch is Active and which switch is standby within the stack. To that end the following configuration has been built previously:
 
 ```
@@ -173,7 +173,10 @@ Within this script you can see the use of the Conditional Statements `#if #elsei
 
 Within this script you can see the use of the Enable Statements `#MODE_ENABLE #MODE_END_ENABLE` these commands allow for privileged level non configuration commands to be entered. In this script we need to configure the privileged level command to set switch priority for individual switches `switch $Switch priority #`. Bracketing this configuration command with the velocity statements `#MODE_ENABLE #MODE_END_ENABLE` allows for us to change from configuration mode to enable mode and back again.
 
+## Step 3 - ***Assigning Port Configuration - Use Case***
 
+## Step 4 - ***Autoconf Port Configuration - Use Case***
+## Step 5 - ***Non SDA IBNS2.0 Port Configuration - Use Case***
 
 ## Availability Information
 This lab is under development please come back soon. ETA for delivery June 30 2021.
