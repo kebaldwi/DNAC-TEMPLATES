@@ -34,7 +34,7 @@ The Topics listed above will be covered in a number of use cases to show the cap
 5. [Non SDA IBNS 2.0 port configuration](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB7-Advanced-Automation/README.md#step-5---non-sda-ibns2.0-port-configuration---use-case)
 
 ## Step 1 - ***Renaming Interfaces - Use Case***
-So previously within the Composite Templating Lab we introduced a methodology of automatically naming the interfaces within the switch. When a new device or switch/router/access point connects to a switch we want to name those interfaces. Naming the uplinks specifically, but also the various wireless access points and IP Phones would be a nice addition. 
+Previously within the Composite Templating Lab we introduced a methodology of automatically naming the interfaces within the switch. When a new device or switch/router/access point connects to a switch we want to name those interfaces. Naming the uplinks specifically, but also the various wireless access points and IP Phones would be a nice addition. 
 
 The script which we used on the Composite Templates uses an EEM Script which runs whenever a CDP event occurs.
 
@@ -127,7 +127,7 @@ The second part of the problem within this use case is solving for the issue pre
 ```
 
 ## Step 2 - ***Building Stacks - Use Case***
-So previously within the Composite Templating Lab we introduced a methodology of automatically build a data stack and power stack configuration within the switch. When a new device or switch is built we may want to control which switch is Active and which switch is standby within the stack. To that end the following configuration has been built previously:
+Previously within the Composite Templating Lab we introduced a methodology of automatically build a data stack and power stack configuration within the switch. When a new device or switch is built we may want to control which switch is Active and which switch is standby within the stack. To that end the following configuration has been built previously:
 
 ```
    ## 9300 Stack Power and Priority
@@ -174,8 +174,95 @@ Within this script you can see the use of the Conditional Statements `#if #elsei
 Within this script you can see the use of the Enable Statements `#MODE_ENABLE #MODE_END_ENABLE` these commands allow for privileged level non configuration commands to be entered. In this script we need to configure the privileged level command to set switch priority for individual switches `switch $Switch priority #`. Bracketing this configuration command with the velocity statements `#MODE_ENABLE #MODE_END_ENABLE` allows for us to change from configuration mode to enable mode and back again.
 
 ## Step 3 - ***Assigning Port Configuration - Use Case***
+Previously within the Composite Templating Lab we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relied on a few variables which were use to extrapolate the settings which were then configured via the template. This allowed for a set of macros to be utilized to build out the various settings for VLANs, Ports and Uplinks. We will analyze the configuration in more detail below and modify it for greater capabilities toward the end of this section.
+
+```
+   ##Stack information variables
+   #set( $StackPIDs = $ProductID.split(",") )
+   #set( $StackMemberCount = $StackPIDs.size() )
+   #set( $PortTotal = [] )
+   #set( $offset = $StackMemberCount - 1 )
+   #foreach( $Switch in [0..$offset] )
+     #set( $Model = $StackPIDs[$Switch])
+     #set( $PortCount = $Model.replaceAll("C9300L?-([2|4][4|8]).*","$1") )
+     #set( $foo = $PortTotal.add($PortCount) )
+   #end
+```
+Within the first block of code some interesting concepts are dealt with. First we create an *Array* with the various Product ID's for each switch within the stack using the `.split(",")` *method* as we previously discussed in step 2. The `.size()` *method* is then used to determine how many switches are in the stack. A blank *array* is defined for later use. We then create an offset variable to account for the fact that *arrays* start at zero (0) to be used throughout the template.
+
+Within the loop structure, we iterate through using the variable PortCount to load the regex value grep'd from the Product ID accomplished via the `.replaceAll(""C9300L?-([2|4][4|8]).*","$1"")` *method* which in each case is either 24 or 48 to denote a 24 or 48 port switch. The PortCount variable is then appended to the *array* PortTotal using the add *method*.
+
+We now have the data we need to configure the ports of the switch, being the number of switches, and the number of ports in each switch.
+```
+   !
+   ## VLANs per MDF
+   #set( $data_vlan_number = 200 + ${MDF} )
+   #set( $voice_vlan_number = 300 + ${MDF} )
+   #set( $ap_vlan_number = 400 + ${MDF} )
+   #set( $guest_vlan_number = 500 + ${MDF} )
+   #set( $bh_vlan_number = 999 )
+   !
+```
+In the configuration above we use simple addition to determine the VLAN ID for each vlan built from a set of constants and a numeric variable to denote the MDF.
+```
+   !
+   vlan ${data_vlan_number}
+    name data
+   vlan ${voice_vlan_number}
+    name voice
+   vlan ${ap_vlan_number}
+    name accesspoint
+   vlan ${guest_vlan_number}
+    name guest
+   vlan ${bh_vlan_number}
+    name disabled
+   !
+   device-tracking upgrade-cli force
+   !
+   device-tracking policy IPDT_MAX_10
+    limit address-count 10
+    no protocol udp
+    tracking enable
+   !
+   ##Macros
+   ## Use Bind to Source variable to select access interfaces 
+   #macro( access_interface )
+     description Workstation
+     switchport access vlan ${data_vlan_number}
+     switchport mode access
+     switchport voice vlan ${voice_vlan_number}
+     switchport port-security maximum 3
+     switchport port-security
+     spanning-tree portfast
+     spanning-tree bpduguard enable
+   #end
+```
+Here we define a Macro to configure the various ports of the switch with a standard voice and data VLAN.
+```
+   !
+   #macro( uplink_interface )
+       switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
+   #end
+```
+Within the above code we define a Macro to add the various VLANs to the trunk interface via the Port-Channel.
+```
+   !
+   ##Access Port Configuration
+   #foreach( $Switch in [0..$offset] )
+     #set( $SwiNum = $Switch + 1 )
+     interface range gi ${SwiNum}/0/1 - 9, gi ${SwiNum}/0/12 $PortTotal[$Switch]
+       #access_interface
+   #end
+   !
+   ##Uplink Port Configuration
+   interface portchannel 1
+    #uplink_interface
+   !
+```
+In the above code we apply the various previously defined Macros to configure the various access ports via a loop structure. We then apply the VLANs to the port-channel.
 
 ## Step 4 - ***Autoconf Port Configuration - Use Case***
+
 ## Step 5 - ***Non SDA IBNS2.0 Port Configuration - Use Case***
 
 ## Availability Information
