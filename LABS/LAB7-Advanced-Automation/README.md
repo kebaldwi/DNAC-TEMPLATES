@@ -18,10 +18,11 @@ The various topics covered in the lab will be the following:
 
 1. *Self-deleting EEM scripts*
 2. Working with *Arrays and Methods* in *Velocity*
-3. Velocity and *Enable* versus *Interactive* mode
-4. Assigning port configuration in a stack
-5. Autoconf vs Smartports
-6. IBNS 2.0 configuration
+3. Using *Conditional Statements* for Configuration
+4. Velocity and *Enable* versus *Interactive* mode
+5. Assigning port configuration in a stack
+6. Autoconf vs Smartports
+7. IBNS 2.0 configuration
 
 ## Use Cases
 The Topics listed above will be covered in a number of use cases to show the capability and flexibility of the templating engine within DNA Center. While we will utilize Velocity language the same can be accomplished in the Jinja2 language.
