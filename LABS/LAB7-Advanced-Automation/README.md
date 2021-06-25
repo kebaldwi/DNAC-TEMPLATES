@@ -261,6 +261,13 @@ Within the above code we define a Macro to add the various VLANs to the trunk in
 ```
 In the above code we apply the various previously defined Macros to configure the various access ports via a loop structure. We then apply the VLANs to the port-channel.
 
+Now while this is an eligant script it could be more automated and include ways to deal with both Access Points, and IOT devices in the same script. Lets look at how we might make these kind of changes in an automated programatic way.
+
+First lets deal with the macros we might need for the various device types of Access Point and IOT device each requiring differing VLANs and port settings:
+
+```
+```
+
 ## Step 4 - ***Autoconf Port Configuration - Use Case***
 
 ## Step 5 - ***Non SDA IBNS2.0 Port Configuration - Use Case***
