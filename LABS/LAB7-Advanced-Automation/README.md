@@ -263,7 +263,64 @@ In the above code we apply the various previously defined Macros to configure th
 
 Now while this is an eligant script it could be more automated and include ways to deal with both Access Points, and IOT devices in the same script. Lets look at how we might make these kind of changes in an automated programatic way.
 
-First lets deal with the macros we might need for the various device types of Access Point and IOT device each requiring differing VLANs and port settings:
+First lests deal with vlans on the Target switch. In the example above we use one variable to extrapolate the various device VLANs. Alternatively, that could be accomplished using a built in variable like the native VLAN and a similar approach.
+
+```
+   #set(${Integer} = 0) ##defines Integer as numeric variable
+   #set(${mgmt_vlan} = $Integer.parseInt(${native_bind})) ##bind variable to native vlan
+   #set(${data_offset} = 100) ##to set the voice vlan
+   #set(${voice_offset} = 200) ##to set the voice vlan
+   #set(${ap_offset} = 300) ##to set the ap vlan
+   #set(${guest_offset} = 400) ##to set the voice vlan
+   #set( $data_vlan_number = $data_offset + $mgmt_vlan )
+   #set( $voice_vlan_number = $voice_offset + $mgmt_vlan )
+   #set( $ap_vlan_number = $ap_offset + $mgmt_vlan )
+   #set( $guest_vlan_number = $guest_offset + $mgmt_vlan )
+   #set( $bh_vlan_number = 999 )
+```
+In this example we now no longer need to input any information and as the offsets are used if needs be we can use excel instead of set values for defining those in bulk. In the example shown we are defining them explicitly, but those lines could be replaced by entry values in a form or excel.
+
+Secondly we could allow for various device types of Access Point and IOT device with the introduction of more Macros. As each device type may each require differing VLANs and port settings: *(note: in the guest example below the assumption is a layer 2 to a firewall providing local gateway for guest access DIA to the internet)*
+
+```
+   ##Macros
+   ## Use Bind to Source variable to select access interfaces 
+   #macro( access_interface )
+     description Workstation
+     switchport access vlan ${data_vlan_number}
+     switchport mode access
+     switchport voice vlan ${voice_vlan_number}
+     switchport port-security maximum 3
+     switchport port-security
+     spanning-tree portfast
+     spanning-tree bpduguard enable
+   #end
+   !
+   #macro( access_point )
+     description Access Point 
+     switchport access vlan ${ap_vlan_number}
+     switchport mode access
+     switchport port-security maximum 3
+     switchport port-security
+     spanning-tree portfast
+     spanning-tree bpduguard enable
+   #end
+   !
+   #macro( guest_interface )
+     description Guest Interface
+     switchport access vlan ${guest_vlan_number}
+     switchport mode access
+     switchport port-security maximum 3
+     switchport port-security
+     spanning-tree portfast
+     spanning-tree bpduguard enable
+   #end
+   !
+```
+The last piece of the puzzle would be to programatically determine where the ports were configured for the various tasks and devices. To accomplish this we can again resort to logic. One example might look like the following;
+
+
+
 
 ```
 ```
