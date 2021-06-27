@@ -319,12 +319,83 @@ Secondly we could allow for various device types of Access Point and IOT device 
    #end
    !
 ```
-The last piece of the puzzle would be to programatically determine where the ports were configured for the various tasks and devices. To accomplish this we can again resort to logic. One example might look like the following;
-
-
-
+The last piece of the puzzle would be to programatically determine where the ports were configured for the various tasks and devices. To accomplish this we can again resort to logic. Now to start with we need to account for whether a switch is PoE capable or not so lets add some magic.
 
 ```
+   ##Stack information variables
+   #set( $StackPIDs = $ProductID.split(",") )
+   #set( $StackMemberCount = $StackPIDs.size() )
+   #set( $PortTotal = [] )
+   #set( $PoECapable = [] )
+   #set( $offset = $StackMemberCount - 1 )
+   #foreach( $Switch in [0..$offset] )
+     #set( $Model = $StackPIDs[$Switch])
+     #set( $PortCount = $Model.replaceAll("C9300L?-([2|4][4|8]).*","$1") )
+     #set( $foo = $PortTotal.add($PortCount) )
+   #end
+```
+
+
+One example might look like the following;
+
+```
+   ##Iterate PIDs to determine port count per stack member and available ports and set port counter
+   #foreach(${Switch} in [1..${StackMemberCount}])
+       #set(${Model} = $StackPIDs[$Switch])
+       #set(${PoE} = $StackPIDs[$Switch])
+       #set($PortsCount[${Switch}] = $Model.replaceAll("C9300L?-([2|4][4|8]).*","$1"))
+       #if([$PoE.matches(".*([U|P|H]).*")])
+           #set($PoeCapability[${Switch}] = 1)
+       #else
+           #set($PoeCapability[${Switch}] = 0)
+   	#end             	
+       #set($PortsAvailable[${Switch}] = $PortsCount[${Switch}])
+       #set($Port[${Switch}] = 1)
+       #set(${PortTotal} = $PortsAvailable[${Switch}] + ${PortTotal})    	
+   #end
+   !
+   ##Distribute required devices evenly over stack for power where posible
+   ##Start with AP distribution evenly across stack
+   #foreach( ${AccessPoint} in ${NoAccessPoints} )
+       #foreach(${Switch} in [1..${StackMemberCount}])
+           #if($PortsAvailable[${Switch}] != 0 && $PoeCapability[${Switch}] == 1)
+   		    interface GigabitEthernet${Switch}/0/$Port[${Switch}]
+                #AccessPoint
+               #set(${NoAccessPoints} = ${NoAccessPoints} - 1)
+               #set($PortsAvailable[${Switch}] = $PortsAvailable[${Switch}] - 1)
+               #set($Port[${Switch}] = $Port[${Switch}] + 1)
+   		#end
+   		#if(${NoAccessPoints} == 0)
+   		    #break
+   	    #end
+       #end
+   #end
+   !
+   ##Next with VG distribution evenly across stack
+   #foreach(${VoiceGateways} in ${NoVoiceGateways})
+       #foreach(${Switch} in [1..${StackMemberCount}])
+           #if($PortsAvailable[${Switch}] != 0)
+   		    interface GigabitEthernet${Switch}/0/$Port[${Switch}]
+                #VoiceGateway
+               #set(${NoVoiceGateways} = ${NoVoiceGateways} - 1)
+               #set($PortsAvailable[${Switch}] = $PortsAvailable[${Switch}] - 1)
+               #set($Port[${Switch}] = $Port[${Switch}] + 1)
+   		#end
+   		#if(${NoVoiceGateways} == 0)
+   		    #break
+   	    #end
+       #end
+   #end
+   !
+   ##Add Workstation ports to stack
+   #foreach(${Switch} in [1..${StackMemberCount}])
+       #if($PortsAvailable[${Switch}] != 0)
+   	    interface range GigabitEthernet${Switch}/0/$Port[${Switch}]-$PortsCount[${Switch}]
+            #Workstation
+           #set($PortsAvailable[${Switch}] = 0)
+   	#end
+   #end
+   !
 ```
 
 ## Step 4 - ***Autoconf Port Configuration - Use Case***
