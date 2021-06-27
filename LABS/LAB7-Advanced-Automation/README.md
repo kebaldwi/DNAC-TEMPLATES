@@ -4,6 +4,8 @@ This Lab is designed to be used after first completing labs 1 through 4 and has 
 
 During this lab we will cover various topics with regard to template logic to solve various use cases. Some of these concepts have been previously covered but perhaps not with as indepth a focus.
 
+The examples of shown below can be used in building your own versions of the templates. The concept of this lab is for you to build regilar templates that you can substitute into the composite to test with. Various methods for the varing use cases will be given explaining pros and cons along the way. Expand your capabilities with this lab and take your abilities toward the next level. Your only inhibited by your own imagination. 
+
 ## General Information
 As previously discussed, DNA Center can be used for not only Plug and Play but also Day N or Ongoing Templates customers will start by building out an Onboarding Template which typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates and for more flexibility Composite Templates. as they can be used to apply ongoing changes and to allow device modifications after initial deployment. 
 
