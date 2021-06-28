@@ -460,45 +460,102 @@ The next block of code sets up the VLANs and should the dynamic creation as ment
     tracking enable
    !
 ```
-Next we need to set up the macros, but in this case we will make use of **Autoconf** and **Templates**. **Autoconf** is a solution that can be used to manage port configurations for data or voice VLAN, quality of service (QoS) parameters, storm control, and MAC-based port security on end devices that are deployed in the access layer of a network. Device classification is enabled when you enable the Autoconf feature using the autoconf enable command in global configuration mode. The device detection acts as an event trigger, which in turn applies the appropriate automatic template to the interface. When the Autoconf feature is enabled using the autoconf enable command, the default Autoconfservice policy is applied to all the interfaces. No other service policy can be applied globally using the
-service-policy command. To apply a differentservice policy, you must disable Autoconf on that interface. When a service policy is applied globally, you must disable it before enabling the Autoconf feature.
+Next we need to set up the macros, but in this case we will make use of **Autoconf** and **Templates**. **Autoconf** is a solution that can be used to manage port configurations for data or voice VLAN, quality of service (QoS) parameters, storm control, and MAC-based port security on end devices that are deployed in the access layer of a network. Device classification is enabled when you enable the Autoconf feature using the autoconf enable command in global configuration mode. The device detection acts as an event trigger, which in turn applies the appropriate automatic template to the interface. When the Autoconf feature is enabled using the autoconf enable command, the default Autoconf service policy is applied to all the interfaces. For more information about **[Autoconf](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9400/software/release/16-12/configuration_guide/nmgmt/b_1612_nmgmt_9400_cg/configuring_autoconf.pdf)**.
 
 ```
-   autoconf 
+   #INTERACTIVE
+   autoconf enable<IQ>yes<R>y
+   #END_INTERACTIVE
    !
    parameter-map type subscriber attribute-to-service BUILTIN_DEVICE_TO_TEMPLATE
+    10 map device-type regex "Cisco-IP-Phone"
+     20 interface-template WORKSTATION
+    20 map device-type regex "Cisco-IP-Camera"
+     20 interface-template WORKSTATION
+    30 map device-type regex "Cisco-DMP"
+     20 interface-template WORKSTATION
+    40 map oui eq "00.0f.44"
+     20 interface-template WORKSTATION
+    50 map oui eq "00.23.ac"
+     20 interface-template WORKSTATION
     60 map device-type regex "Cisco-AIR-AP"
-    20 interface-template ACCESS_POINT
+     20 interface-template ACCESS_POINT
     70 map device-type regex "Cisco-AIR-LAP"
-    20 interface-template ACCESS_POINT
+     20 interface-template ACCESS_POINT
+    80 map device-type regex "Cisco-TelePresence"
+     20 interface-template WORKSTATION
+    90 map device-type regex "Surveillance-Camera"
+     10 interface-template WORKSTATION
+    100 map device-type regex "Video-Conference"
+     10 interface-template WORKSTATION
     110 map device-type regex "Cisco-CAT-LAP"
-    10 interface-template ACCESS_POINT
-    no 20 map device-type regex "Cisco-IP-Camera"
-    no 30 map device-type regex "Cisco-DMP"
-    no 40 map oui eq "00.0f.44"
-    no 50 map oui eq "00.23.ac"
-    no 80 map device-type regex "Cisco-TelePresence"
-    no 90 map device-type regex "Surveillance-Camera"
-    no 100 map device-type regex "Video-Conference"
+     10 interface-template ACCESS_POINT
    !
    template ACCESS_POINT
     description Access Point Interface
-    switchport access vlan ${mgmt_vlan_number}
+    switchport access vlan ${ap_vlan_number}
+    switchport mode access
+   !
+   template WORKSTATION
+    description Workstation
+    switchport access vlan ${data_vlan_number}
+    switchport mode access
+    switchport voice vlan ${voice_vlan_number}
+   !
+   template GUEST
+     description Guest Interface
+     switchport access vlan ${guest_vlan_number}
+     switchport mode access
    !
    ##Macros
    #macro( access_interface )
      description BASE CONFIG
      switchport access vlan ${bh_vlan_number}
      switchport mode access
-     switchport voice vlan ${voice_vlan_number}
      switchport port-security maximum 3
      switchport port-security
      snmp trap mac-notification change added
      snmp trap mac-notification change removed
      spanning-tree portfast
      spanning-tree bpduguard enable
+     source template WORKSTATION
    #end
 ```
+
+So the command `autoconf` enables the device classifier which can then be manipulated to stray from the builtin templates through a *parameter-map*. The parameter map command allows for mapping of defined interface templates. This is what we need to create our template for the Access Point. The rest of the builtin devices will point to the Workstation template. We define a Guest template as well as the macro for the interfaces. The macro will be used to configure the interfaces delivering with it the source template of WORKSTATION.
+
+What this will do is configure the interface with the normal VLAN and commands listed, and then when a device is plugged in the device classifier will run. The interface will by default use the derived configuration of the WORKSTATION interface template, but should an Access Point be plugged in then the interface would defer to the ACCESS_POINT template. 
+
+Delivering the code to the interfaces becomes simpler now because we are utilizing a more dynamic approach to device classification. 
+
+We can continue to configure the uplink via the following Macro.
+```
+   !
+   #macro( uplink_interface )
+       switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
+   #end
+```
+Within the above code we define a Macro to add the various VLANs to the trunk interface via the Port-Channel.
+
+As we configure the interfaces we can continue to use the previously defined method as the templates will be called and assigned more dynaically.
+
+```
+   !
+   ##Access Port Configuration
+   #foreach( $Switch in [0..$offset] )
+     #set( $SwiNum = $Switch + 1 )
+     interface range gi ${SwiNum}/0/1 - 9, gi ${SwiNum}/0/12 $PortTotal[$Switch]
+       #access_interface
+   #end
+   !
+   ##Uplink Port Configuration
+   interface portchannel 1
+    #uplink_interface
+   !
+```
+In the above code we apply the various previously defined Macros to configure the various access ports via a loop structure. We then apply the VLANs to the port-channel.
+
+While we have configured all the various interfaces this does not take into account Authentication and Authorization scenarios. What it does though is sets us up nicely to reuse
 
 ## Step 5 - ***Non SDA IBNS2.0 Port Configuration - Use Case***
 
