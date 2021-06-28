@@ -377,7 +377,7 @@ Next, we need to iterate through the switches in a logical predetermined way to 
    #foreach( $GuestInterfaces in $NoGuestInterfaces )
       #foreach( $Switch in [1..${StackMemberCount}])
          #if( [$PortsAvailable[$Switch] != 0] && [$NoGuestInterfaces != 0] )
-   		   interface GigabitEthernet${Switch}/0/$Port[${Switch}]
+   		   interface GigabitEthernet${Switch}/0/$Port[$Switch]
               #guest_interface
               #set( $NoGuestInterfaces = $NoGuestInterfaces - 1 )
               #set( $PortsAvailable[$Switch] = $PortsAvailable[$Switch] - 1)
@@ -390,10 +390,10 @@ Next, we need to iterate through the switches in a logical predetermined way to 
    !
    ##Add Workstation ports to stack
    #foreach( $Switch in [1..${StackMemberCount}])
-      #if($PortsAvailable[${Switch}] != 0)
-   	   interface range GigabitEthernet${Switch}/0/$Port[${Switch}]-$PortsCount[${Switch}]
+      #if( $PortsAvailable[${Switch}] != 0 )
+   	   interface range GigabitEthernet${Switch}/0/$Port[$Switch]-$PortTotal[$Switch]
            #Workstation
-           #set($PortsAvailable[${Switch}] = 0)
+         #set( $PortsAvailable[$Switch] = 0 )
    	#end
    #end
    !
