@@ -398,8 +398,20 @@ Next, we need to iterate through the switches in a logical predetermined way to 
    #end
    !
 ```
+In the first section we iterate through the stack and for switches with PoE Capability we add an Access Point to each switch until they are evenly distributed. Next we iterate through each switch evenly distributing guest interfaces. Lastly we iterate through filling the rest of the ports with workstation interfaces.
+
+While this is a methodology which deals programatically with port configuration and while you may adapt it for an environment, it is again lacking in the fact that its still not dynamic enough. First, its impossible to determine without looking at the configuration where something is to be plugged in and secondly if equipment or users are plugged into the wrong interface they may get the wrong level of access. 
+
+To deal with all these outstanding issues we will look at the next lab section to provide the final solution to the problem.
 
 ## Step 4 - ***Autoconf Port Configuration - Use Case***
+Previously within the Composite Templating Lab and in the previous section we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relies on a few variables which were use to extrapolate the settings which were then configured via the template. This allowed for a set of macros to be utilized to build out the various settings for VLANs, Ports and Uplinks. 
+
+While these were methodologies which dealt programatically with port configuration and while you may adapt them for an environment, they are both lacking in the fact that they are not dynamic enough. Again, its impossible to determine without looking at the configuration where something is to be plugged in and secondly if equipment or users are plugged into the wrong interface they may get the wrong level of access. 
+
+In previous revisions of code we could deal with some of the problems with Auto Smart Port technology, but that has been depricated and its replacement is a lot more dynamic. In this section we will deal with the first part of the problem with regard to assigning ports for hardware like Access Points.
+
+
 
 ## Step 5 - ***Non SDA IBNS2.0 Port Configuration - Use Case***
 
