@@ -888,14 +888,15 @@ Then we need to configure the various interfaces with the new interface template
     #uplink_cts
    !
 ```
-
 Now that we have defined all the various IBNS2.0 configuration on the switch as a device comes up on an interface the device classifier will automatically run logically attaching the interface template configuration of WORKSTATION onto an access port. If an Access Point is classified as being attached to the interface it will instead logically attach the interface template configuration of ACCESS_POINT. Within both those interface templates the DOT1X service policy will run and the device will be authenticated, and Identity Services Engine may at that point send a Change of Authorization and put the device in a differing VLAN or more.
 
-We hope that the various commands and use cases were helpful.
+At this point you have successfully reviewed and may have adopted the various use cases or parts of them.
 
+## Summary
+The next set of labs will be to build out ISE to work with this configuration in the network infrastructure. 
 
-## Availability Information
-This lab is under development please come back soon. ETA for delivery June 30 2021.
+## Feedback
+If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
 
 
