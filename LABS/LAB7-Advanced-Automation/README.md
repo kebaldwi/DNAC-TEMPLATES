@@ -38,6 +38,7 @@ The Topics listed above will be covered in a number of use cases to show the cap
 ## Step 1 - ***Renaming Interfaces - Use Case***
 Previously within the Composite Templating Lab we introduced a methodology of automatically naming the interfaces within the switch. When a new device or switch/router/access point connects to a switch we want to name those interfaces. Naming the uplinks specifically, but also the various wireless access points and IP Phones would be a nice addition. 
 
+### ***Examine Code***
 The script which we used on the Composite Templates uses an EEM Script which runs whenever a CDP event occurs.
 
 ```
@@ -64,6 +65,7 @@ While this script will rename the uplinks connected to a Router or Switch it is 
 1. Timing, as its not scheduled, and you cannot clear the CDP table from the template
 2. Naming Access Points or other devices is also not taken into consideration
 
+### ***Modify Code***
 So lets modify the EEM script to first solve the naming aspect with regard to connected devices
 
 ```
@@ -129,7 +131,10 @@ The second part of the problem within this use case is solving for the issue pre
 ```
 
 ## Step 2 - ***Building Stacks - Use Case***
-Previously within the Composite Templating Lab we introduced a methodology of automatically build a data stack and power stack configuration within the switch. When a new device or switch is built we may want to control which switch is Active and which switch is standby within the stack. To that end the following configuration has been built previously:
+Previously within the Composite Templating Lab we introduced a methodology of automatically build a data stack and power stack configuration within the switch. When a new device or switch is built we may want to control which switch is Active and which switch is standby within the stack. 
+
+### ***Examine Code***
+To that end the following configuration has been built previously:
 
 ```
    ## 9300 Stack Power and Priority
@@ -176,7 +181,10 @@ Within this script you can see the use of the Conditional Statements `#if #elsei
 Within this script you can see the use of the Enable Statements `#MODE_ENABLE #MODE_END_ENABLE` these commands allow for privileged level non configuration commands to be entered. In this script we need to configure the privileged level command to set switch priority for individual switches `switch $Switch priority #`. Bracketing this configuration command with the velocity statements `#MODE_ENABLE #MODE_END_ENABLE` allows for us to change from configuration mode to enable mode and back again.
 
 ## Step 3 - ***Assigning Port Configuration - Use Case***
-Previously within the Composite Templating Lab we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relied on a few variables which were use to extrapolate the settings which were then configured via the template. This allowed for a set of macros to be utilized to build out the various settings for VLANs, Ports and Uplinks. We will analyze the configuration in more detail below and modify it for greater capabilities toward the end of this section.
+Previously within the Composite Templating Lab we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relied on a few variables which were use to extrapolate the settings which were then configured via the template. This allowed for a set of macros to be utilized to build out the various settings for VLANs, Ports and Uplinks. 
+
+### ***Examine Code***
+We will analyze the configuration in more detail below and modify it for greater capabilities toward the end of this section.
 
 ```
    ##Stack information variables
@@ -263,6 +271,7 @@ Within the above code we define a Macro to add the various VLANs to the trunk in
 ```
 In the above code we apply the various previously defined Macros to configure the various access ports via a loop structure. We then apply the VLANs to the port-channel.
 
+### ***Modify Code***
 Now while this is an eligant script it could be more automated and include ways to deal with both Access Points, and IOT devices in the same script. Lets look at how we might make these kind of changes in an automated programatic way.
 
 First lests deal with vlans on the Target switch. In the example above we use one variable to extrapolate the various device VLANs. Alternatively, that could be accomplished using a built in variable like the native VLAN and a similar approach.
@@ -411,7 +420,85 @@ While these were methodologies which dealt programatically with port configurati
 
 In previous revisions of code we could deal with some of the problems with Auto Smart Port technology, but that has been depricated and its replacement is a lot more dynamic. In this section we will deal with the first part of the problem with regard to assigning ports for hardware like Access Points.
 
+### ***Modify Code***
+First lests deal with vlans on the Target switch. In the example above we modifyied the existing code to extrapolate the various device VLANs using a built in variable like the native VLAN. This is not a totally bad idea. Then you could define different native VLANs for downstream switches on a distribution thereby building out the VLANs dynamically. If you prefere and excel list of numbers that could be an alternative. In that case you would not need this section and would just rely on the variables being used after this block of code.
 
+```
+   #set(${Integer} = 0) ##defines Integer as numeric variable
+   #set(${mgmt_vlan} = $Integer.parseInt(${native_bind})) ##bind variable to native vlan
+   #set(${data_offset} = 100) ##to set the voice vlan
+   #set(${voice_offset} = 200) ##to set the voice vlan
+   #set(${ap_offset} = 300) ##to set the ap vlan
+   #set(${guest_offset} = 400) ##to set the voice vlan
+   #set( $data_vlan_number = $data_offset + $mgmt_vlan )
+   #set( $voice_vlan_number = $voice_offset + $mgmt_vlan )
+   #set( $ap_vlan_number = $ap_offset + $mgmt_vlan )
+   #set( $guest_vlan_number = $guest_offset + $mgmt_vlan )
+   #set( $bh_vlan_number = 999 )
+```
+
+The next block of code sets up the VLANs and should the dynamic creation as mentioned not be desired a excel list could be used to assign them as the template is run through the UI through importing the variable settings.
+
+```
+   !
+   vlan ${data_vlan_number}
+    name data
+   vlan ${voice_vlan_number}
+    name voice
+   vlan ${ap_vlan_number}
+    name accesspoint
+   vlan ${guest_vlan_number}
+    name guest
+   vlan ${bh_vlan_number}
+    name disabled
+   !
+   device-tracking upgrade-cli force
+   !
+   device-tracking policy IPDT_MAX_10
+    limit address-count 10
+    no protocol udp
+    tracking enable
+   !
+```
+Next we need to set up the macros, but in this case we will make use of **Autoconf** and **Templates**. **Autoconf** is a solution that can be used to manage port configurations for data or voice VLAN, quality of service (QoS) parameters, storm control, and MAC-based port security on end devices that are deployed in the access layer of a network. Device classification is enabled when you enable the Autoconf feature using the autoconf enable command in global configuration mode. The device detection acts as an event trigger, which in turn applies the appropriate automatic template to the interface. When the Autoconf feature is enabled using the autoconf enable command, the default Autoconfservice policy is applied to all the interfaces. No other service policy can be applied globally using the
+service-policy command. To apply a differentservice policy, you must disable Autoconf on that interface. When a service policy is applied globally, you must disable it before enabling the Autoconf feature.
+
+```
+   autoconf 
+   !
+   parameter-map type subscriber attribute-to-service BUILTIN_DEVICE_TO_TEMPLATE
+    60 map device-type regex "Cisco-AIR-AP"
+    20 interface-template ACCESS_POINT
+    70 map device-type regex "Cisco-AIR-LAP"
+    20 interface-template ACCESS_POINT
+    110 map device-type regex "Cisco-CAT-LAP"
+    10 interface-template ACCESS_POINT
+    no 20 map device-type regex "Cisco-IP-Camera"
+    no 30 map device-type regex "Cisco-DMP"
+    no 40 map oui eq "00.0f.44"
+    no 50 map oui eq "00.23.ac"
+    no 80 map device-type regex "Cisco-TelePresence"
+    no 90 map device-type regex "Surveillance-Camera"
+    no 100 map device-type regex "Video-Conference"
+   !
+   template ACCESS_POINT
+    description Access Point Interface
+    switchport access vlan ${mgmt_vlan_number}
+   !
+   ##Macros
+   #macro( access_interface )
+     description BASE CONFIG
+     switchport access vlan ${bh_vlan_number}
+     switchport mode access
+     switchport voice vlan ${voice_vlan_number}
+     switchport port-security maximum 3
+     switchport port-security
+     snmp trap mac-notification change added
+     snmp trap mac-notification change removed
+     spanning-tree portfast
+     spanning-tree bpduguard enable
+   #end
+```
 
 ## Step 5 - ***Non SDA IBNS2.0 Port Configuration - Use Case***
 
