@@ -562,6 +562,9 @@ The last section of this lab will walk through the various considerations for **
 
 Considering DNA Center will push at that point all the relevant IBNS2.0 settings to the device, this leaves us with the mere setting up of **Host Onboarding** which we will detail below.
 
+#### **Important Note:** 
+*We need to remember that for use of this section ISE needs to first have been integrated with DNA Center. Additionally the Design Settings will need to be modified for the sites to include at the very least **Client AAA***.
+
 ### ***Examine Code***
 We will take the script as amended from above which should look like this now;
 
