@@ -330,68 +330,69 @@ The last piece of the puzzle would be to programatically determine where the por
    #set( $offset = $StackMemberCount - 1 )
    #foreach( $Switch in [0..$offset] )
      #set( $Model = $StackPIDs[$Switch])
+     #if( $Model.matches(".*([U|P]).*") )
+        #set( $foo = $PoECapable.add(1) )
+     #else
+        #set( $foo = $PoECapable.add(0) )
+     #end             	
      #set( $PortCount = $Model.replaceAll("C9300L?-([2|4][4|8]).*","$1") )
      #set( $foo = $PortTotal.add($PortCount) )
+     #set( $foo = $Port.add(1) )
+     #set( $foo = $PortsAvailable.add($PortsCount) )
    #end
 ```
 
-
-One example might look like the following;
+So six lines of logic added, an *array* is created PoECapable to track switches capable of delivering PoE. Next a loop with conditional logic to set a true of false flag depending if the switch is PoE Capable again using the `.add` *method*. Lastly a Port pointer is created and set to the first port in each switch. Lastly an availability counter for the number of ports still available is set up.
 
 ```
-   ##Iterate PIDs to determine port count per stack member and available ports and set port counter
-   #foreach(${Switch} in [1..${StackMemberCount}])
-       #set(${Model} = $StackPIDs[$Switch])
-       #set(${PoE} = $StackPIDs[$Switch])
-       #set($PortsCount[${Switch}] = $Model.replaceAll("C9300L?-([2|4][4|8]).*","$1"))
-       #if([$PoE.matches(".*([U|P|H]).*")])
-           #set($PoeCapability[${Switch}] = 1)
-       #else
-           #set($PoeCapability[${Switch}] = 0)
-   	#end             	
-       #set($PortsAvailable[${Switch}] = $PortsCount[${Switch}])
-       #set($Port[${Switch}] = 1)
-       #set(${PortTotal} = $PortsAvailable[${Switch}] + ${PortTotal})    	
+   #if( [$NoAccessPoints % 2] != 0 )
+      #set( $NoAccessPoints = $NoAccessPoints + 1 )
    #end
+   #if( [$NoGuestInterfaces % 2] != 0 )
+      #set( $NoGuestInterfaces = $NoGuestInterfaces + 1 )
+   #end
+```
+
+Next, we need to iterate through the switches in a logical predetermined way to set the correct macro to the port. The example might look like the following;
+
+```
    !
    ##Distribute required devices evenly over stack for power where posible
    ##Start with AP distribution evenly across stack
-   #foreach( ${AccessPoint} in ${NoAccessPoints} )
-       #foreach(${Switch} in [1..${StackMemberCount}])
-           #if($PortsAvailable[${Switch}] != 0 && $PoeCapability[${Switch}] == 1)
-   		    interface GigabitEthernet${Switch}/0/$Port[${Switch}]
-                #AccessPoint
-               #set(${NoAccessPoints} = ${NoAccessPoints} - 1)
-               #set($PortsAvailable[${Switch}] = $PortsAvailable[${Switch}] - 1)
-               #set($Port[${Switch}] = $Port[${Switch}] + 1)
-   		#end
-   		#if(${NoAccessPoints} == 0)
-   		    #break
-   	    #end
-       #end
+   #foreach( $AccessPoint in $NoAccessPoints )
+      #foreach( $Switch in [1..$StackMemberCount] )
+         #if( [$PortsAvailable[$Switch] != 0] && [$PoECapable[$Switch] == 1] && [$NoAccessPoints != 0] )
+   		   interface GigabitEthernet${Switch}/0/$Port[$Switch]
+              #access_point
+              #set( $NoAccessPoints = $NoAccessPoints - 1)
+              #set( $PortsAvailable[$Switch] = $PortsAvailable[$Switch] - 1)
+              #set( $Port[$Switch] = $Port[$Switch] + 1)
+   		#else
+   		   #break
+   	   #end
+      #end
    #end
    !
-   ##Next with VG distribution evenly across stack
-   #foreach(${VoiceGateways} in ${NoVoiceGateways})
-       #foreach(${Switch} in [1..${StackMemberCount}])
-           #if($PortsAvailable[${Switch}] != 0)
-   		    interface GigabitEthernet${Switch}/0/$Port[${Switch}]
-                #VoiceGateway
-               #set(${NoVoiceGateways} = ${NoVoiceGateways} - 1)
-               #set($PortsAvailable[${Switch}] = $PortsAvailable[${Switch}] - 1)
-               #set($Port[${Switch}] = $Port[${Switch}] + 1)
-   		#end
-   		#if(${NoVoiceGateways} == 0)
-   		    #break
-   	    #end
-       #end
+   ##Next with Guest Interface distribution evenly across stack
+   #foreach( $GuestInterfaces in $NoGuestInterfaces )
+      #foreach( $Switch in [1..${StackMemberCount}])
+         #if( [$PortsAvailable[$Switch] != 0] && [$NoGuestInterfaces != 0] )
+   		   interface GigabitEthernet${Switch}/0/$Port[${Switch}]
+              #guest_interface
+              #set( $NoGuestInterfaces = $NoGuestInterfaces - 1 )
+              #set( $PortsAvailable[$Switch] = $PortsAvailable[$Switch] - 1)
+              #set( $Port[$Switch] = $Port[$Switch] + 1)
+   		#else
+   		   #break
+   	   #end
+      #end
    #end
    !
    ##Add Workstation ports to stack
-   #foreach(${Switch} in [1..${StackMemberCount}])
-       #if($PortsAvailable[${Switch}] != 0)
-   	    interface range GigabitEthernet${Switch}/0/$Port[${Switch}]-$PortsCount[${Switch}]
-            #Workstation
+   #foreach( $Switch in [1..${StackMemberCount}])
+      #if($PortsAvailable[${Switch}] != 0)
+   	   interface range GigabitEthernet${Switch}/0/$Port[${Switch}]-$PortsCount[${Switch}]
+           #Workstation
            #set($PortsAvailable[${Switch}] = 0)
    	#end
    #end
