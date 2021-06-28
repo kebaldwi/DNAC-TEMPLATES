@@ -251,7 +251,7 @@ Here we define a Macro to configure the various ports of the switch with a stand
 ```
    !
    #macro( uplink_interface )
-       switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
+     switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
    #end
 ```
 Within the above code we define a Macro to add the various VLANs to the trunk interface via the Port-Channel.
@@ -277,12 +277,12 @@ Now while this is an eligant script it could be more automated and include ways 
 First lests deal with vlans on the Target switch. In the example above we use one variable to extrapolate the various device VLANs. Alternatively, that could be accomplished using a built in variable like the native VLAN and a similar approach.
 
 ```
-   #set(${Integer} = 0) ##defines Integer as numeric variable
-   #set(${mgmt_vlan} = $Integer.parseInt(${native_bind})) ##bind variable to native vlan
-   #set(${data_offset} = 100) ##to set the voice vlan
-   #set(${voice_offset} = 200) ##to set the voice vlan
-   #set(${ap_offset} = 300) ##to set the ap vlan
-   #set(${guest_offset} = 400) ##to set the voice vlan
+   #set( ${Integer} = 0 ) ##defines Integer as numeric variable
+   #set( ${mgmt_vlan} = $Integer.parseInt($native_bind) ) ##bind variable to native vlan
+   #set( ${data_offset} = 100 ) ##to set the voice vlan
+   #set( ${voice_offset} = 200 ) ##to set the voice vlan
+   #set( ${ap_offset} = 300 ) ##to set the ap vlan
+   #set( ${guest_offset} = 400 ) ##to set the voice vlan
    #set( $data_vlan_number = $data_offset + $mgmt_vlan )
    #set( $voice_vlan_number = $voice_offset + $mgmt_vlan )
    #set( $ap_vlan_number = $ap_offset + $mgmt_vlan )
@@ -424,12 +424,12 @@ In previous revisions of code we could deal with some of the problems with Auto 
 First lests deal with vlans on the Target switch. In the example above we modifyied the existing code to extrapolate the various device VLANs using a built in variable like the native VLAN. This is not a totally bad idea. Then you could define different native VLANs for downstream switches on a distribution thereby building out the VLANs dynamically. If you prefere and excel list of numbers that could be an alternative. In that case you would not need this section and would just rely on the variables being used after this block of code.
 
 ```
-   #set(${Integer} = 0) ##defines Integer as numeric variable
-   #set(${mgmt_vlan} = $Integer.parseInt(${native_bind})) ##bind variable to native vlan
-   #set(${data_offset} = 100) ##to set the voice vlan
-   #set(${voice_offset} = 200) ##to set the voice vlan
-   #set(${ap_offset} = 300) ##to set the ap vlan
-   #set(${guest_offset} = 400) ##to set the voice vlan
+   #set( ${Integer} = 0 ) ##defines Integer as numeric variable
+   #set( ${mgmt_vlan} = $Integer.parseInt($native_bind) ) ##bind variable to native vlan
+   #set( ${data_offset} = 100 ) ##to set the voice vlan
+   #set( ${voice_offset} = 200 ) ##to set the voice vlan
+   #set( ${ap_offset} = 300 ) ##to set the ap vlan
+   #set( ${guest_offset} = 400 ) ##to set the voice vlan
    #set( $data_vlan_number = $data_offset + $mgmt_vlan )
    #set( $voice_vlan_number = $voice_offset + $mgmt_vlan )
    #set( $ap_vlan_number = $ap_offset + $mgmt_vlan )
@@ -532,7 +532,7 @@ We can continue to configure the uplink via the following Macro.
 ```
    !
    #macro( uplink_interface )
-       switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
+     switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
    #end
 ```
 Within the above code we define a Macro to add the various VLANs to the trunk interface via the Port-Channel.
@@ -558,11 +558,340 @@ In the above code we apply the various previously defined Macros to configure th
 While we have configured all the various interfaces this does not take into account Authentication and Authorization scenarios. What it does though is sets us up nicely to reuse the templates calling them directly from Identity Services Engine in Authorization Policies.
 
 ## Step 5 - ***Non SDA IBNS2.0 Port Configuration - Use Case***
-The last section of this lab will walk through the various considerations for **IBNS2.0** and how to deal with host onboarding in an Non **SD-Access** Fabric environment.
+The last section of this lab will walk through the various considerations for **IBNS2.0** and how to deal with host onboarding in an Non **SD-Access** Fabric environment. Once the Identity Services Engine is integrated with DNA Center, then not only do you get the benefit of pxgrid integration allowing for the building of policy, but the AAA Server section within Design will build out the various settings which inturn program the network access devices for AAA Network and Client Dot1x settings.
 
+Considering DNA Center will push at that point all the relevant IBNS2.0 settings to the device, this leaves us with the mere setting up of **Host Onboarding** which we will detail below.
 
+### ***Examine Code***
+We will take the script as amended from above which should look like this now;
+
+```
+   #set( ${Integer} = 0 ) 
+   #set( ${mgmt_vlan} = $Integer.parseInt($native_bind) ) 
+   #set( ${data_offset} = 100 ) 
+   #set( ${voice_offset} = 200 ) 
+   #set( ${ap_offset} = 300 ) 
+   #set( ${guest_offset} = 400 ) 
+   #set( $data_vlan_number = $data_offset + $mgmt_vlan )
+   #set( $voice_vlan_number = $voice_offset + $mgmt_vlan )
+   #set( $ap_vlan_number = $ap_offset + $mgmt_vlan )
+   #set( $guest_vlan_number = $guest_offset + $mgmt_vlan )
+   #set( $bh_vlan_number = 999 )
+   !
+   vlan ${data_vlan_number}
+    name data
+   vlan ${voice_vlan_number}
+    name voice
+   vlan ${ap_vlan_number}
+    name accesspoint
+   vlan ${guest_vlan_number}
+    name guest
+   vlan ${bh_vlan_number}
+    name disabled
+   !
+   device-tracking upgrade-cli force
+   !
+   device-tracking policy IPDT_MAX_10
+    limit address-count 10
+    no protocol udp
+    tracking enable
+   !
+   #INTERACTIVE
+   autoconf enable<IQ>yes<R>y
+   #END_INTERACTIVE
+   !
+   parameter-map type subscriber attribute-to-service BUILTIN_DEVICE_TO_TEMPLATE
+    10 map device-type regex "Cisco-IP-Phone"
+     20 interface-template WORKSTATION
+    20 map device-type regex "Cisco-IP-Camera"
+     20 interface-template WORKSTATION
+    30 map device-type regex "Cisco-DMP"
+     20 interface-template WORKSTATION
+    40 map oui eq "00.0f.44"
+     20 interface-template WORKSTATION
+    50 map oui eq "00.23.ac"
+     20 interface-template WORKSTATION
+    60 map device-type regex "Cisco-AIR-AP"
+     20 interface-template ACCESS_POINT
+    70 map device-type regex "Cisco-AIR-LAP"
+     20 interface-template ACCESS_POINT
+    80 map device-type regex "Cisco-TelePresence"
+     20 interface-template WORKSTATION
+    90 map device-type regex "Surveillance-Camera"
+     10 interface-template WORKSTATION
+    100 map device-type regex "Video-Conference"
+     10 interface-template WORKSTATION
+    110 map device-type regex "Cisco-CAT-LAP"
+     10 interface-template ACCESS_POINT
+   !
+   template ACCESS_POINT
+    description Access Point Interface
+    switchport access vlan ${ap_vlan_number}
+    switchport mode access
+   !
+   template WORKSTATION
+    description Workstation
+    switchport access vlan ${data_vlan_number}
+    switchport mode access
+    switchport voice vlan ${voice_vlan_number}
+   !
+   template GUEST
+     description Guest Interface
+     switchport access vlan ${guest_vlan_number}
+     switchport mode access
+   !
+   ##Macros
+   #macro( access_interface )
+     description BASE CONFIG
+     switchport access vlan ${bh_vlan_number}
+     switchport mode access
+     switchport port-security maximum 3
+     switchport port-security
+     snmp trap mac-notification change added
+     snmp trap mac-notification change removed
+     spanning-tree portfast
+     spanning-tree bpduguard enable
+     source template WORKSTATION
+   #end
+   !
+   #macro( uplink_interface )
+     switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
+   #end
+   !
+   ##Access Port Configuration
+   #foreach( $Switch in [0..$offset] )
+     #set( $SwiNum = $Switch + 1 )
+     interface range gi ${SwiNum}/0/1 - 9, gi ${SwiNum}/0/12 $PortTotal[$Switch]
+       #access_interface
+   #end
+   !
+   ##Uplink Port Configuration
+   interface portchannel 1
+    #uplink_interface
+   !
+```
+As it stands this is not a bad place to start, and only a few additions and modifications are required to allow for IBNS2.0.
 
 ### ***Modify Code***
+First we will ensure that the following lines are included to change device tracking to the modern standard
+
+```
+   device-tracking upgrade-cli force
+   !
+   device-tracking policy IPDT_MAX_10
+    limit address-count 10
+    no protocol udp
+    tracking enable
+```
+Then we need to define the class maps which will be utilized in the Dot1x policy. The policy and class maps follow the MQC methods previously used for QoS. These have now been exploited for other service policies and now we build IBNS2.0 using the same schema.
+
+```
+   !
+   class-map type control subscriber match-all DOT1X_FAILED
+    match method dot1x
+    match result-type method dot1x authoritative
+   !
+   class-map type control subscriber match-all AAA_SVR_DOWN_UNAUTHD_HOST
+    match authorization-status unauthorized
+    match result-type aaa-timeout
+   !
+   class-map type control subscriber match-all AAA_SVR_DOWN_AUTHD_HOST
+    match authorization-status authorized
+    match result-type aaa-timeout
+   !
+   class-map type control subscriber match-all DOT1X_NO_RESP
+    match method dot1x
+    match result-type method dot1x agent-not-found
+   !
+   class-map type control subscriber match-all MAB_FAILED
+    match method mab
+    match result-type method mab authoritative
+   !
+   class-map type control subscriber match-any IN_CRITICAL_AUTH_CLOSED_MODE
+    match activated-service-template DefaultCriticalAuthVlan_SRV_TEMPLATE
+    match activated-service-template DefaultCriticalVoice_SRV_TEMPLATE
+   !
+   class-map type control subscriber match-none NOT_IN_CRITICAL_AUTH_CLOSED_MODE
+    match activated-service-template DefaultCriticalAuthVlan_SRV_TEMPLATE
+    match activated-service-template DefaultCriticalVoice_SRV_TEMPLATE
+   !
+   class-map type control subscriber match-all AUTHC_SUCCESS-AUTHZ_FAIL
+    match authorization-status unauthorized
+    match result-type success
+   !
+```
+As we would with MQC once we have defined the various class maps, we can then call upon them in a policy map as follows;
+
+```
+   policy-map type control subscriber PMAP_WiredDot1xClosed_Template
+    event session-started match-all
+     10 class always do-until-failure
+      10 authenticate using dot1x retries 2 retry-time 0 priority 10
+    event authentication-failure match-first
+     5 class DOT1X_FAILED do-until-failure
+      10 terminate dot1x
+      20 authenticate using mab priority 20
+     10 class AAA_SVR_DOWN_UNAUTHD_HOST do-until-failure
+      30 authorize
+      40 pause reauthentication
+     20 class AAA_SVR_DOWN_AUTHD_HOST do-until-failure
+      10 pause reauthentication
+      20 authorize
+     30 class DOT1X_NO_RESP do-until-failure
+      10 terminate dot1x
+      20 authenticate using mab priority 20
+     40 class MAB_FAILED do-until-failure
+      10 terminate mab
+      20 authentication-restart 60
+     50 class always do-until-failure
+      10 terminate dot1x
+      20 authenticate using mab priority 20
+     60 class always do-until-failure
+      10 terminate dot1x
+      20 terminate mab
+      30 authentication-restart 60
+    event aaa-available match-all
+     10 class IN_CRITICAL_AUTH_CLOSED_MODE do-until-failure
+      10 clear-session
+     20 class NOT_IN_CRITICAL_AUTH_CLOSED_MODE do-until-failure
+      10 resume reauthentication
+    event agent-found match-all
+     10 class always do-until-failure
+      10 terminate mab
+      20 authenticate using dot1x retries 2 retry-time 0 priority 10
+    event inactivity-timeout match-all
+     10 class always do-until-failure
+      10 clear-session
+    event authentication-success match-all
+    event violation match-all
+     10 class always do-until-failure
+      10 restrict
+    event authorization-failure match-all
+     10 class AUTHC_SUCCESS-AUTHZ_FAIL do-until-failure
+      10 authentication-restart 60
+   !
+```
+This policy map allows for all eventualities and gracefully flows top down in a very simple flow. It deals with all exceptions gracefully and is not as rigid as the interface configuration methodology.
+
+Once the class maps and polcies have been defined we need to utilize them.
+
+```
+   template ACCESS_POINT
+    description Access Point Interface
+    switchport access vlan ${ap_vlan_number}
+    switchport mode access
+    dot1x pae authenticator
+    dot1x timeout supp-timeout 7
+    dot1x max-req 3
+    mab
+    access-session closed
+    access-session port-control auto
+    authentication periodic
+    authentication timer reauthenticate server
+    service-policy type control subscriber PMAP_WiredDot1xClosed_Template
+   !
+   template WORKSTATION
+    description Workstation
+    switchport access vlan ${data_vlan_number}
+    switchport mode access
+    switchport voice vlan ${voice_vlan_number}
+    dot1x pae authenticator
+    dot1x timeout supp-timeout 7
+    dot1x max-req 3
+    mab
+    access-session closed
+    access-session port-control auto
+    authentication periodic
+    authentication timer reauthenticate server
+    service-policy type control subscriber PMAP_WiredDot1xClosed_Template
+   !
+```
+Now that we have defined the various interface templates for use with the MQC DOT1X service policy. You have two options some prefer to call out a separate Guest interface template; however, because Dot1x technology actually automatically deals with that we will remove that template.
+
+Next we can then modify the parameter map to suit the policy.
+
+```
+   #INTERACTIVE
+   autoconf enable<IQ>yes<R>y
+   #END_INTERACTIVE
+   !
+   parameter-map type subscriber attribute-to-service BUILTIN_DEVICE_TO_TEMPLATE
+    10 map device-type regex "Cisco-IP-Phone"
+     20 interface-template WORKSTATION
+    20 map device-type regex "Cisco-IP-Camera"
+     20 interface-template WORKSTATION
+    30 map device-type regex "Cisco-DMP"
+     20 interface-template WORKSTATION
+    40 map oui eq "00.0f.44"
+     20 interface-template WORKSTATION
+    50 map oui eq "00.23.ac"
+     20 interface-template WORKSTATION
+    60 map device-type regex "Cisco-AIR-AP"
+     20 interface-template ACCESS_POINT
+    70 map device-type regex "Cisco-AIR-LAP"
+     20 interface-template ACCESS_POINT
+    80 map device-type regex "Cisco-TelePresence"
+     20 interface-template WORKSTATION
+    90 map device-type regex "Surveillance-Camera"
+     10 interface-template WORKSTATION
+    100 map device-type regex "Video-Conference"
+     10 interface-template WORKSTATION
+    110 map device-type regex "Cisco-CAT-LAP"
+     10 interface-template ACCESS_POINT
+   !
+```
+Lastly, we need to build the macro's for interface configuration, 
+```
+   ##Macros
+   #macro( access_interface )
+     description BASE CONFIG
+     switchport access vlan ${bh_vlan_number}
+     switchport mode access
+     spanning-tree portfast
+     spanning-tree bpduguard enable
+     device-tracking attach-policy IPDT_MAX_10
+     dot1x timeout tx-period 7
+     dot1x max-reauth-req 3
+     source template WORKSTATION
+   #end
+   !
+   #macro( uplink_interface )
+     switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
+   #end
+   !
+   #macro( uplink_cts )
+     cts manual
+      policy static sgt 2 trusted     
+   #end
+   !
+```
+Then we need to configure the various interfaces with the new interface templates via macro along with modify the uplink port-channel. Additionally we need to add two CTS commands to the physical interfaces within the port-channel bundle that are not available at the logical level and only available at the physical layer.
+
+```
+   !Add SGACL enforcement
+   cts role-based enforcement
+   cts role-based enforcement vlan-list $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
+   !
+   ##Access Port Configuration
+   #foreach( $Switch in [0..$offset] )
+     #set( $SwiNum = $Switch + 1 )
+     interface range gi ${SwiNum}/0/1 - 9, gi ${SwiNum}/0/12 $PortTotal[$Switch]
+       #access_interface
+   #end
+   !
+   ##Uplink Port Configuration
+   interface portchannel 1
+    #uplink_interface
+   !
+   ##Uplink Physical Port Configuration
+   interface range gi 1/0/10-11
+    #uplink_cts
+   !
+```
+
+Now that we have defined all the various IBNS2.0 configuration on the switch as a device comes up on an interface the device classifier will automatically run logically attaching the interface template configuration of WORKSTATION onto an access port. If an Access Point is classified as being attached to the interface it will instead logically attach the interface template configuration of ACCESS_POINT. Within both those interface templates the DOT1X service policy will run and the device will be authenticated, and Identity Services Engine may at that point send a Change of Authorization and put the device in a differing VLAN or more.
+
+We hope that the various commands and use cases were helpful.
 
 
 ## Availability Information
