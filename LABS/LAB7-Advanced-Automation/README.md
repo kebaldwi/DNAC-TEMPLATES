@@ -555,9 +555,15 @@ As we configure the interfaces we can continue to use the previously defined met
 ```
 In the above code we apply the various previously defined Macros to configure the various access ports via a loop structure. We then apply the VLANs to the port-channel.
 
-While we have configured all the various interfaces this does not take into account Authentication and Authorization scenarios. What it does though is sets us up nicely to reuse
+While we have configured all the various interfaces this does not take into account Authentication and Authorization scenarios. What it does though is sets us up nicely to reuse the templates calling them directly from Identity Services Engine in Authorization Policies.
 
 ## Step 5 - ***Non SDA IBNS2.0 Port Configuration - Use Case***
+The last section of this lab will walk through the various considerations for **IBNS2.0** and how to deal with host onboarding in an Non **SD-Access** Fabric environment.
+
+
+
+### ***Modify Code***
+
 
 ## Availability Information
 This lab is under development please come back soon. ETA for delivery June 30 2021.
