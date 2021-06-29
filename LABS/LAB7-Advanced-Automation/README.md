@@ -260,7 +260,7 @@ Within the above code we define a Macro to add the various VLANs to the trunk in
    ##Access Port Configuration
    #foreach( $Switch in [0..$offset] )
      #set( $SwiNum = $Switch + 1 )
-     interface range gi ${SwiNum}/0/1 - 9, gi ${SwiNum}/0/12 $PortTotal[$Switch]
+     interface range gi ${SwiNum}/0/1 - 9, gi ${SwiNum}/0/12 - $PortTotal[$Switch]
        #access_interface
    #end
    !
@@ -400,7 +400,7 @@ Next, we need to iterate through the switches in a logical predetermined way to 
    ##Add Workstation ports to stack
    #foreach( $Switch in [1..${StackMemberCount}])
       #if( $PortsAvailable[${Switch}] != 0 )
-   	   interface range GigabitEthernet${Switch}/0/$Port[$Switch]-$PortTotal[$Switch]
+   	   interface range GigabitEthernet${Switch}/0/$Port[$Switch] - $PortTotal[$Switch]
            #Workstation
          #set( $PortsAvailable[$Switch] = 0 )
    	#end
@@ -544,7 +544,7 @@ As we configure the interfaces we can continue to use the previously defined met
    ##Access Port Configuration
    #foreach( $Switch in [0..$offset] )
      #set( $SwiNum = $Switch + 1 )
-     interface range gi ${SwiNum}/0/1 - 9, gi ${SwiNum}/0/12 $PortTotal[$Switch]
+     interface range gi ${SwiNum}/0/1 - 9, gi ${SwiNum}/0/12 - $PortTotal[$Switch]
        #access_interface
    #end
    !
@@ -664,7 +664,7 @@ We will take the script as amended from above which should look like this now;
    ##Access Port Configuration
    #foreach( $Switch in [0..$offset] )
      #set( $SwiNum = $Switch + 1 )
-     interface range gi ${SwiNum}/0/1 - 9, gi ${SwiNum}/0/12 $PortTotal[$Switch]
+     interface range gi ${SwiNum}/0/1 - 9, gi ${SwiNum}/0/12 - $PortTotal[$Switch]
        #access_interface
    #end
    !
@@ -878,7 +878,7 @@ Then we need to configure the various interfaces with the new interface template
    ##Access Port Configuration
    #foreach( $Switch in [0..$offset] )
      #set( $SwiNum = $Switch + 1 )
-     interface range gi ${SwiNum}/0/1 - 9, gi ${SwiNum}/0/12 $PortTotal[$Switch]
+     interface range gi ${SwiNum}/0/1 - 9, gi ${SwiNum}/0/12 - $PortTotal[$Switch]
        #access_interface
    #end
    !
@@ -887,7 +887,7 @@ Then we need to configure the various interfaces with the new interface template
     #uplink_interface
    !
    ##Uplink Physical Port Configuration
-   interface range gi 1/0/10-11
+   interface range gi 1/0/10 - 11
     #uplink_cts
    !
 ```
