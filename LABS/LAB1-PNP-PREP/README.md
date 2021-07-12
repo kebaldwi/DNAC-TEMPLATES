@@ -300,8 +300,12 @@ ping pnpserver.dcloud.cisco.com
 
 At this point, the environment should be set up to onboard devices within VLAN 5 using the network address ***192.168.5.0/24*** utilizing either ***option 43*** or ***DNS discovery ***.
 
-### Step 4.2 - ***Reset EEM Script***
+### Step 4.2 - ***Reset EEM Script or PnP Service Reset***
 When testing, you will frequently need to start again on the switch to test the whole flow. To accomplish this, paste this small script into the 9300 target switch, which will create a file on flash which you may load into the running-configuration at any time to reset the device to factory settings:
+
+There are now two methods for this The first and simplest method is to make use of the `pnp service reset` command as advised by Matthew Bishop. This command was introduced in a recent Train of XE code.
+
+Failing that we have an EEM script which you may use iterated below.
 
 ```
 tclsh                            
