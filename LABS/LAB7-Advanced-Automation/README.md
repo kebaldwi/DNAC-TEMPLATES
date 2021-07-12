@@ -375,14 +375,13 @@ Next, we need to iterate through the switches in a logical predetermined way to 
    ##Start with AP distribution evenly across stack
    #foreach( $AccessPoint in $NoAccessPoints )
       #foreach( $Switch in [1..$StackMemberCount] )
-         #if( [$PortsAvailable[$Switch] != 0] && [$PoECapable[$Switch] == 1] && [$NoAccessPoints != 0] )
+         #if( [$PortsAvailable[$Switch] != 0] && [$PoECapable[$Switch] == 1] )
    		   interface GigabitEthernet${Switch}/0/$Port[$Switch]
               #access_point
-              #set( $NoAccessPoints = $NoAccessPoints - 1)
-              #set( $PortsAvailable[$Switch] = $PortsAvailable[$Switch] - 1)
-              #set( $Port[$Switch] = $Port[$Switch] + 1)
-   		#elseif
-   		   #break
+            #set( $NoAccessPoints = $NoAccessPoints - 1)
+            #set( $PortsAvailable[$Switch] = $PortsAvailable[$Switch] - 1)
+            #set( $Port[$Switch] = $Port[$Switch] + 1)
+            #break
    	   #end
       #end
    #end
@@ -393,10 +392,9 @@ Next, we need to iterate through the switches in a logical predetermined way to 
          #if( [$PortsAvailable[$Switch] != 0] && [$NoGuestInterfaces != 0] )
    		   interface GigabitEthernet${Switch}/0/$Port[$Switch]
               #guest_interface
-              #set( $NoGuestInterfaces = $NoGuestInterfaces - 1 )
-              #set( $PortsAvailable[$Switch] = $PortsAvailable[$Switch] - 1)
-              #set( $Port[$Switch] = $Port[$Switch] + 1)
-   		#else
+            #set( $NoGuestInterfaces = $NoGuestInterfaces - 1 )
+            #set( $PortsAvailable[$Switch] = $PortsAvailable[$Switch] - 1)
+            #set( $Port[$Switch] = $Port[$Switch] + 1)
    		   #break
    	   #end
       #end
