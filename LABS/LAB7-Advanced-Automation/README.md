@@ -277,13 +277,13 @@ Now while this is an eligant script it could be more automated and include ways 
 First lests deal with vlans on the Target switch. In the example above we use one variable to extrapolate the various device VLANs. Alternatively, that could be accomplished using a built in variable like the native VLAN and a similar approach.
 
 ```
-   #set( ${Integer} = 0 ) ##defines Integer as numeric variable
-   #set( ${native_bind} = $native_vlan) ) ##bind variable to native vlan
-   #set( ${mgmt_vlan} = $Integer.parseInt($native_bind) ) 
-   #set( ${data_offset} = 100 ) ##to set the voice vlan
-   #set( ${voice_offset} = 200 ) ##to set the voice vlan
-   #set( ${ap_offset} = 300 ) ##to set the ap vlan
-   #set( ${guest_offset} = 400 ) ##to set the voice vlan
+   #set( $Integer = 0 ) ##defines Integer as numeric variable
+   #set( $native_bind = $native_vlan) ) ##bind variable to native vlan
+   #set( $mgmt_vlan = $Integer.parseInt($native_bind) ) 
+   #set( $data_offset = 100 ) ##to set the voice vlan
+   #set( $voice_offset = 200 ) ##to set the voice vlan
+   #set( $ap_offset = 300 ) ##to set the ap vlan
+   #set( $guest_offset = 400 ) ##to set the voice vlan
    #set( $data_vlan_number = $data_offset + $mgmt_vlan )
    #set( $voice_vlan_number = $voice_offset + $mgmt_vlan )
    #set( $ap_vlan_number = $ap_offset + $mgmt_vlan )
@@ -337,6 +337,8 @@ The last piece of the puzzle would be to programatically determine where the por
    #set( $StackMemberCount = $StackPIDs.size() )
    #set( $PortTotal = [] )
    #set( $PoECapable = [] )
+   #set( $Port = [] )
+   #set( $PortsAvailable = [] )
    #set( $offset = $StackMemberCount - 1 )
    #foreach( $Switch in [0..$offset] )
      #set( $Model = $StackPIDs[$Switch])
@@ -353,6 +355,8 @@ The last piece of the puzzle would be to programatically determine where the por
 ```
 
 So six lines of logic added, an *array* is created PoECapable to track switches capable of delivering PoE. Next a loop with conditional logic to set a true of false flag depending if the switch is PoE Capable again using the `.add` *method*. Lastly a Port pointer is created and set to the first port in each switch. Lastly an availability counter for the number of ports still available is set up.
+
+The next chunk of code first resolves any accidental division by zero annomolly we might encounter by iterating through the two asked for variables for the number of Access Points and the number of Guest interfaces and determining if they are even or odd and making them even in the later case.
 
 ```
    #if( [$NoAccessPoints % 2] != 0 )
@@ -377,7 +381,7 @@ Next, we need to iterate through the switches in a logical predetermined way to 
               #set( $NoAccessPoints = $NoAccessPoints - 1)
               #set( $PortsAvailable[$Switch] = $PortsAvailable[$Switch] - 1)
               #set( $Port[$Switch] = $Port[$Switch] + 1)
-   		#else
+   		#elseif
    		   #break
    	   #end
       #end
@@ -425,12 +429,13 @@ In previous revisions of code we could deal with some of the problems with Auto 
 First lests deal with vlans on the Target switch. In the example above we modifyied the existing code to extrapolate the various device VLANs using a built in variable like the native VLAN. This is not a totally bad idea. Then you could define different native VLANs for downstream switches on a distribution thereby building out the VLANs dynamically. If you prefere and excel list of numbers that could be an alternative. In that case you would not need this section and would just rely on the variables being used after this block of code.
 
 ```
-   #set( ${Integer} = 0 ) ##defines Integer as numeric variable
-   #set( ${mgmt_vlan} = $Integer.parseInt($native_bind) ) ##bind variable to native vlan
-   #set( ${data_offset} = 100 ) ##to set the voice vlan
-   #set( ${voice_offset} = 200 ) ##to set the voice vlan
-   #set( ${ap_offset} = 300 ) ##to set the ap vlan
-   #set( ${guest_offset} = 400 ) ##to set the voice vlan
+   #set( $Integer = 0 ) ##defines Integer as numeric variable
+   #set( $native_bind = $native_vlan) ) ##bind variable to native vlan
+   #set( $mgmt_vlan = $Integer.parseInt($native_bind) ) 
+   #set( $data_offset = 100 ) ##to set the voice vlan
+   #set( $voice_offset = 200 ) ##to set the voice vlan
+   #set( $ap_offset = 300 ) ##to set the ap vlan
+   #set( $guest_offset = 400 ) ##to set the voice vlan
    #set( $data_vlan_number = $data_offset + $mgmt_vlan )
    #set( $voice_vlan_number = $voice_offset + $mgmt_vlan )
    #set( $ap_vlan_number = $ap_offset + $mgmt_vlan )
