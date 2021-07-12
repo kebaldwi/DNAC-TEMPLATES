@@ -278,7 +278,8 @@ First lests deal with vlans on the Target switch. In the example above we use on
 
 ```
    #set( ${Integer} = 0 ) ##defines Integer as numeric variable
-   #set( ${mgmt_vlan} = $Integer.parseInt($native_bind) ) ##bind variable to native vlan
+   #set( ${native_bind} = $native_vlan) ) ##bind variable to native vlan
+   #set( ${mgmt_vlan} = $Integer.parseInt($native_bind) ) 
    #set( ${data_offset} = 100 ) ##to set the voice vlan
    #set( ${voice_offset} = 200 ) ##to set the voice vlan
    #set( ${ap_offset} = 300 ) ##to set the ap vlan
