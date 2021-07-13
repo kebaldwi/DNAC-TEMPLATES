@@ -661,6 +661,10 @@ We will take the script as amended from above which should look like this now;
      source template WORKSTATION
    #end
    !
+   #macro( uplink_physical )
+     access-session inherit disable autoconf
+   #end
+   !
    #macro( uplink_interface )
      switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
    #end
@@ -676,6 +680,9 @@ We will take the script as amended from above which should look like this now;
    interface portchannel 1
     #uplink_interface
    !
+   ##Uplink Physical Port Configuration
+   interface range gi 1/0/10 - 11
+    #uplink_physical
 ```
 As it stands this is not a bad place to start, and only a few additions and modifications are required to allow for IBNS2.0.
 
@@ -866,7 +873,8 @@ Lastly, we need to build the macro's for interface configuration,
      switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
    #end
    !
-   #macro( uplink_cts )
+   #macro( #uplink_physical )
+     access-session inherit disable autoconf
      cts manual
       policy static sgt 2 trusted     
    #end
@@ -892,7 +900,7 @@ Then we need to configure the various interfaces with the new interface template
    !
    ##Uplink Physical Port Configuration
    interface range gi 1/0/10 - 11
-    #uplink_cts
+    #uplink_physical
    !
 ```
 Now that we have defined all the various IBNS2.0 configuration on the switch as a device comes up on an interface the device classifier will automatically run logically attaching the interface template configuration of WORKSTATION onto an access port. If an Access Point is classified as being attached to the interface it will instead logically attach the interface template configuration of ACCESS_POINT. Within both those interface templates the DOT1X service policy will run and the device will be authenticated, and Identity Services Engine may at that point send a Change of Authorization and put the device in a differing VLAN or more.
