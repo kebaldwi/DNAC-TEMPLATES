@@ -356,7 +356,7 @@ The last piece of the puzzle would be to programatically determine where the por
 
 So six lines of logic added, an *array* is created PoECapable to track switches capable of delivering PoE. Next a loop with conditional logic to set a true of false flag depending if the switch is PoE Capable again using the `.add` *method*. Lastly a Port pointer is created and set to the first port in each switch. Lastly an availability counter for the number of ports still available is set up.
 
-The next chunk of code first resolves any accidental division by zero annomolly we might encounter by iterating through the two asked for variables for the number of Access Points and the number of Guest interfaces and determining if they are even or odd and making them even in the later case. Additionally we need to determine how to distribute the Access Points and Guest Interfaces.
+The next chunk of code first resolves any accidental division by zero annomolly we might encounter by iterating through the two asked for variables for the number of Access Points and determining if they are even or odd and making them even in the later case. Additionally we need to determine how to distribute the Access Points.
 
 ```
    ##Determine how many switches we can support Access Points on
@@ -372,9 +372,6 @@ The next chunk of code first resolves any accidental division by zero annomolly 
    !
    #set( $NoAccessPointPerSwitch = $NoAccessPoints / $NoAccessPointCapableSwitch )
    !
-   #if( [$NoGuestInterfaces % 2] != 0 )
-      #set( $NoGuestInterfaces = $NoGuestInterfaces + 1 )
-   #end
 ```
 
 Next, we need to iterate through the switches in a logical predetermined way to set the correct macro to the port. The example might look like the following;
@@ -399,10 +396,9 @@ Next, we need to iterate through the switches in a logical predetermined way to 
    ##Next with Guest Interface distribution evenly across stack
    #foreach( $GuestInterfaces in $NoGuestInterfaces )
       #foreach( $Switch in [1..${StackMemberCount}])
-         #if( [$PortsAvailable[$Switch] != 0] && [$NoGuestInterfaces != 0] )
-   		   interface GigabitEthernet${Switch}/0/$Port[$Switch]
+         #if( [$PortsAvailable[$Switch] != 0] )
+   		 interface GigabitEthernet${Switch}/0/$Port[$Switch]
               #guest_interface
-            #set( $NoGuestInterfaces = $NoGuestInterfaces - 1 )
             #set( $PortsAvailable[$Switch] = $PortsAvailable[$Switch] - 1)
             #set( $Port[$Switch] = $Port[$Switch] + 1)
    		   #break
