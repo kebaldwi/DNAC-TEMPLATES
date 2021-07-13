@@ -365,8 +365,9 @@ The next chunk of code first resolves any accidental division by zero annomolly 
          #set( $NoAccessPointCapableSwitch = $NoAccessPointCapableSwitch + 1 )
       #end
    #end
+   !
    #if( [ $NoAccessPoints % $NoAccessPointCapableSwitch ] != 0 )
-     #set( $NoAccessPoints = $NoAccessPoints + [ $NoAccessPoints % $NoAccessPointCapableSwitch ] )
+      #set( $NoAccessPoints = $NoAccessPoints + [ $NoAccessPoints % $NoAccessPointCapableSwitch ] )
    #end
    !
    #set( $NoAccessPointPerSwitch = $NoAccessPoints / $NoAccessPointCapableSwitch )
@@ -386,10 +387,10 @@ Next, we need to iterate through the switches in a logical predetermined way to 
       #if( [$PoECapable[$Switch] == 1] )
          #foreach( $AccessPoint in $NoAccessPointPerSwitch )
             #if( [$PortsAvailable[$Switch] != 0] )
-            	  interface GigabitEthernet${Switch}/0/$Port[$Switch]
+            	interface GigabitEthernet${Switch}/0/$Port[$Switch]
                  #access_point
-               #set( $PortsAvailable[$Switch] = $PortsAvailable[$Switch] - 1)
-               #set( $Port[$Switch] = $Port[$Switch] + 1)
+               #set( $PortsAvailable[$Switch] = $PortsAvailable[$Switch] - 1 )
+               #set( $Port[$Switch] = $Port[$Switch] + 1 )
             #end
          #end
       #end
