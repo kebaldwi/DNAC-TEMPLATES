@@ -356,12 +356,21 @@ The last piece of the puzzle would be to programatically determine where the por
 
 So six lines of logic added, an *array* is created PoECapable to track switches capable of delivering PoE. Next a loop with conditional logic to set a true of false flag depending if the switch is PoE Capable again using the `.add` *method*. Lastly a Port pointer is created and set to the first port in each switch. Lastly an availability counter for the number of ports still available is set up.
 
-The next chunk of code first resolves any accidental division by zero annomolly we might encounter by iterating through the two asked for variables for the number of Access Points and the number of Guest interfaces and determining if they are even or odd and making them even in the later case.
+The next chunk of code first resolves any accidental division by zero annomolly we might encounter by iterating through the two asked for variables for the number of Access Points and the number of Guest interfaces and determining if they are even or odd and making them even in the later case. Additionally we need to determine how to distribute the Access Points and Guest Interfaces.
 
 ```
-   #if( [$NoAccessPoints % 2] != 0 )
-      #set( $NoAccessPoints = $NoAccessPoints + 1 )
+   ##Determine how many switches we can support Access Points on
+   #foreach( $PoE in $PoECapable)
+      #if( [$PoECapable[$Switch] == 1] )
+         #set( $NoAccessPointCapableSwitch = $NoAccessPointCapableSwitch + 1 )
+      #end
    #end
+   #if( [ $NoAccessPoints % $NoAccessPointCapableSwitch ] != 0 )
+     #set( $NoAccessPoints = $NoAccessPoints + [ $NoAccessPoints % $NoAccessPointCapableSwitch ] )
+   #end
+   !
+   #set( $NoAccessPointPerSwitch = $NoAccessPoints / $NoAccessPointCapableSwitch )
+   !
    #if( [$NoGuestInterfaces % 2] != 0 )
       #set( $NoGuestInterfaces = $NoGuestInterfaces + 1 )
    #end
@@ -371,18 +380,18 @@ Next, we need to iterate through the switches in a logical predetermined way to 
 
 ```
    !
-   ##Distribute required devices evenly over stack for power where posible
    ##Start with AP distribution evenly across stack
-   #foreach( $AccessPoint in $NoAccessPoints )
-      #foreach( $Switch in [1..$StackMemberCount] )
-         #if( [$PortsAvailable[$Switch] != 0] && [$PoECapable[$Switch] == 1] )
-   		   interface GigabitEthernet${Switch}/0/$Port[$Switch]
-              #access_point
-            #set( $NoAccessPoints = $NoAccessPoints - 1)
-            #set( $PortsAvailable[$Switch] = $PortsAvailable[$Switch] - 1)
-            #set( $Port[$Switch] = $Port[$Switch] + 1)
-            #break
-   	   #end
+   !
+   #foreach( $Switch in [1..$StackMemberCount] )
+      #if( [$PoECapable[$Switch] == 1] )
+         #foreach( $AccessPoint in $NoAccessPointPerSwitch )
+            #if( [$PortsAvailable[$Switch] != 0] )
+            	  interface GigabitEthernet${Switch}/0/$Port[$Switch]
+                 #access_point
+               #set( $PortsAvailable[$Switch] = $PortsAvailable[$Switch] - 1)
+               #set( $Port[$Switch] = $Port[$Switch] + 1)
+            #end
+         #end
       #end
    #end
    !
