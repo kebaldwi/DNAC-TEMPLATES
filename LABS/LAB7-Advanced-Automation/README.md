@@ -114,7 +114,7 @@ You will see that lines *201 to 220* were added to the EEM script. Within that c
 
 You will see that lines *250 to 260* were added to the EEM script. Within that construct we look for the keyword `Phone` within the built in variable to determine if the port is connected to a Phone. If it is then it results in a True or binary 1 state and the included code from lines *253 to 260* run line by line. The configuration adds a description to the interface for the phone of `description Phone - SEPB07D47D34910 - Port 1` for example.
 
-The second part of the problem within this use case is solving for the issue presented by a lack of functionality when the code is configured on the switch. While we can get the configuration in place it will only run when the port is cycled or when the CDP information for the port is cleared. To solve the problem we therefore employ a *Self-Destructing EEM script*
+The second part of the problem within this use case is solving for the issue presented by a lack of functionality when the code is configured on the switch. While we can get the configuration in place it will only run when the port is cycled or when the CDP information for the port is cleared. To solve the problem we therefore employ a *Self-Destructing EEM script*.
 
 *Self-Destructing EEM scripts* are those that delete themselves on termination. Within the code below you will notice that the line 2.1 removes the EEM applet from the configuration and then line 2.3 ensures the configuration is written to NVRAM prior to terminating.
 
@@ -129,6 +129,8 @@ The second part of the problem within this use case is solving for the issue pre
     action 2.3 cli command "wr
     action 2.4 cli command "exit
 ```
+
+This code allows us to *clear the cdp table* and delete itself but leave the other EEM script on the switch for any moves adds and changes to the devices connected to the switch.
 
 ## Step 2 - ***Building Stacks - Use Case***
 Previously within the Composite Templating Lab we introduced a methodology of automatically build a data stack and power stack configuration within the switch. When a new device or switch is built we may want to control which switch is Active and which switch is standby within the stack. 
