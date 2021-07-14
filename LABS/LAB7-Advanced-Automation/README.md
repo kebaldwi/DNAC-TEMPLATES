@@ -361,7 +361,7 @@ The next chunk of code first resolves any accidental division by zero annomolly 
 ```
    ##Determine how many switches we can support Access Points on
    #foreach( $PoE in $PoECapable)
-      #if( [$PoECapable[$Switch] == 1] )
+      #if( $PoECapable[$Switch] == 1 )
          #set( $NoAccessPointCapableSwitch = $NoAccessPointCapableSwitch + 1 )
       #end
    #end
@@ -381,9 +381,9 @@ Next, we need to iterate through the switches in a logical predetermined way to 
    ##Start with AP distribution evenly across stack
    !
    #foreach( $Switch in [1..$StackMemberCount] )
-      #if( [$PoECapable[$Switch] == 1] )
+      #if( $PoECapable[$Switch] == 1 )
          #foreach( $AccessPoint in $NoAccessPointPerSwitch )
-            #if( [$PortsAvailable[$Switch] != 0] )
+            #if( $PortsAvailable[$Switch] != 0 )
             	interface GigabitEthernet${Switch}/0/$Port[$Switch]
                  #access_point
                #set( $PortsAvailable[$Switch] = $PortsAvailable[$Switch] - 1 )
@@ -396,8 +396,8 @@ Next, we need to iterate through the switches in a logical predetermined way to 
    ##Next with Guest Interface distribution evenly across stack
    #foreach( $GuestInterfaces in $NoGuestInterfaces )
       #foreach( $Switch in [1..${StackMemberCount}])
-         #if( [$PortsAvailable[$Switch] != 0] )
-   		 interface GigabitEthernet${Switch}/0/$Port[$Switch]
+         #if( $PortsAvailable[$Switch] != 0 )
+   		   interface GigabitEthernet${Switch}/0/$Port[$Switch]
               #guest_interface
             #set( $PortsAvailable[$Switch] = $PortsAvailable[$Switch] - 1)
             #set( $Port[$Switch] = $Port[$Switch] + 1)
