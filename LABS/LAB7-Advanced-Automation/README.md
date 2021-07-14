@@ -395,7 +395,7 @@ Next, we need to iterate through the switches in a logical predetermined way to 
    !
    ##Next with Guest Interface distribution evenly across stack
    #foreach( $GuestInterfaces in $NoGuestInterfaces )
-      #foreach( $Switch in [1..${StackMemberCount}])
+      #foreach( $Switch in [1..${StackMemberCount}] )
          #if( $PortsAvailable[$Switch] != 0 )
    		   interface GigabitEthernet${Switch}/0/$Port[$Switch]
               #guest_interface
@@ -407,7 +407,7 @@ Next, we need to iterate through the switches in a logical predetermined way to 
    #end
    !
    ##Add Workstation ports to stack
-   #foreach( $Switch in [1..${StackMemberCount}])
+   #foreach( $Switch in [1..${StackMemberCount}] )
       #if( $PortsAvailable[${Switch}] != 0 )
    	   interface range GigabitEthernet${Switch}/0/$Port[$Switch] - $PortTotal[$Switch]
            #Workstation
