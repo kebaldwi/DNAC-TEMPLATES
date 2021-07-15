@@ -26,7 +26,7 @@ The Application Visibility service lets Cisco DNA Center connect with external a
 
 ![json](./images/CBAR-Sources.png?raw=true "Import JSON")
 
-As the number of applications is always changing and protocol packs are always being updated we can keep those current on the network through CBAR as well. Visibility somteimes can be lost from end-to-end with outdated protocol packs whcih do not allow some application to be correctly recognized which can cause not only visibility holes within the network but also incorrect queuing or forwarding issues. CBAR solves that issue by allowing the push of updated protocl packs across the network.
+As the number of applications is always changing and protocol packs are always being updated we can keep those current on the network through CBAR as well. Visibility sometimes can be lost from end-to-end with outdated protocol packs whcih do not allow some application to be correctly recognized which can cause not only visibility holes within the network but also incorrect queuing or forwarding issues. CBAR solves that issue by allowing the push of updated protocl packs across the network.
 
 ![json](./images/CBAR-ProtocolPacks.png?raw=true "Import JSON")
 
