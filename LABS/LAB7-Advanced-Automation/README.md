@@ -352,7 +352,7 @@ The last piece of the puzzle would be to programatically determine where the por
      #set( $PortCount = $Model.replaceAll("C9300L?-([2|4][4|8]).*","$1") )
      #set( $foo = $PortTotal.add($PortCount) )
      #set( $foo = $Port.add(1) )
-     #set( $foo = $PortsAvailable.add($PortsCount) )
+     #set( $foo = $PortsAvailable.add($PortCount) )
    #end
 ```
 
