@@ -370,7 +370,7 @@ The next chunk of code first resolves any accidental division by zero annomolly 
    !
    #set( $ModulusAccessPoints = $NoAccessPoints % $NoAccessPointCapableSwitch )
    #if( $ModulusAccessPoints != 0 )
-      #set( $NoAccessPoints = $NoAccessPoints + 1 )
+      #set( $NoAccessPoints = $NoAccessPoints + [$NoAccessPoints % $NoAccessPointCapableSwitch] )
    #end
    !
    #set( $NoAccessPointPerSwitch = $NoAccessPoints / $NoAccessPointCapableSwitch )
