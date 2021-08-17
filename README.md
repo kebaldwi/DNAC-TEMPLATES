@@ -65,4 +65,3 @@ Specific examples of Templates are available in the following folders:
 
 If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-[![Analytics](https://ga-beacon.appspot.com/G-9N2KP80W06/DNAC-TEMPLATES/README.MD)](https://github.com/igrigorik/ga-beacon)
