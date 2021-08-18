@@ -48,6 +48,9 @@ Please use this menu to navigate the various sections of this Github repository.
 * [Telemetry](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB6-Telemetry-Enablement/) - This lab will explain how to deploy Telemetry for assurance
 * [Advanced Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB7-Advanced-Automation/) - This lab will explore Advanced Automation examples 
 
+## [DNAC Templates Store](https://github.com/kebaldwi/DNAC-Templates-Store)
+This repository is built out to share DNA Center Templates and allow for ongoing submissions from those inclined to share their work with the community. Initially the repository includes all the examples that we have used in this repository in RAW TEXT and JSON format. After your first submission you will be able to continually add your templates as you develop new and interesting approaches to device management.
+
 ## DCLOUD as a LAB
 ### Overview
 To help aid customers toward success with DNA Center Automation, You may utilize the above labs as they have been designed to work within DCLOUD's  [Cisco Enterprise Networks Hardware Sandbox v2.1](https://dcloud2-rtp.cisco.com/content/demo/759521?returnPathTitleKey=favourites-view) Lab. This allows you to run these labs and gives not only an environment to try the various code, but to develop and export your own code for use in production. This give the customer an environment where they can safely POC/POV methods and steps without harming their own production environments. This also negaes the need for shipping equipment, lead times, and licensing issues needed to get moving rapidly. Please do adhere to the best practices for the DCLOUD environment when using it.
