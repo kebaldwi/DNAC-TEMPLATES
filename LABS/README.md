@@ -6,7 +6,7 @@ The goal of this lab is for it to be a practical guide to aid engineers to rapid
 
 As a result, customers will gain experience setting up Plug and Play onboarding and templates. Additionally, they will use advanced velocity templating and troubleshooting tools, which may help during faultfinding to determine what is failing in a deployment.
 
-## Sections
+## Labs
 Please use this menu to navigate the various sections of this Github repository. Within the multiple folders are examples, explanation readme files for reference.
 
 * [PnP Preparation](./LAB1-PNP-PREP/README.md#PnP) - This lab explains the overall Plug and Play set up steps
