@@ -252,7 +252,7 @@ In this exercise, the port where the Target switch connects is a layer two trunk
 conf t
 !
   interface range gi 1/0/10-11
-     description PnP Test Environment to Cataylist 9300
+     description PnP Test Environment to Catalyst 9300
      switchport mode trunk
      switchport trunk native vlan 5
      switchport trunk allowed vlan 5
@@ -260,7 +260,7 @@ conf t
      channel-group 1 mode passive
 !
   interface Port-channel1
-     description PnP Test Environment to Cataylist 9300
+     description PnP Test Environment to Catalyst 9300
      switchport trunk native vlan 5
      switchport trunk allowed vlan 5
      switchport mode trunk
