@@ -22,23 +22,33 @@ Please use this menu to navigate the various sections of this Github repository.
 This section will explain which lab to utilize within the **DCLOUD** environment to run these labs. It will also discuss a customer POC environment and the steps necessary to successfully run these sections within a customer environment for localized testing.
 
 ### DCLOUD Labs
-This lab environment has been tested on the following DCLOUD session: [Cisco Enterprise Networks Hardware Sandbox v2.1](https://dcloud2-rtp.cisco.com/content/demo/759521?returnPathTitleKey=favourites-view)
+This lab environment has been tested on the following DCLOUD session
 
+#### RTP
+[Cisco Enterprise Networks Hardware Sandbox v3](https://dcloud2-rtp.cisco.com/content/demo/798846?returnPathTitleKey=content-view)
+
+#### SJC
+[Cisco Enterprise Networks Hardware Sandbox v3](https://dcloud2-sjc.cisco.com/content/demo/267385?returnPathTitleKey=favourites-view)
+
+#### Components
 The DCLOUD session includes the following equipment:
 
 Virtual Machines:
 
-    DNA Center 2.1.2.5
-    Identity Services Engine (ISE) 3.0 (Not Configured)
+    DNA Center 2.2.2.3
+    Identity Services Engine (ISE) 3.0 (deployed)
+    Identity Services Engine (ISE) 3.0 (Not deployed)
     Stealthwatch 7.1
     FlowCollector 7.1
     Cisco Prime Infrastructure 3.9
-    Wireless LAN Controller - C9800 running IOS-XE Amsterdam 17.3.3 code.
+    Wireless LAN Controller - C9800 running IOS-XE Bengaluru 17.5.1 code.
     Windows 10 Jump Host 
     Windows Server 2019 - Can be configured to provide identity, DHCP, DNS, etc.
     Windows 10 Clients 
 
 Hardware Devices:
+
+RTP
 
     ISR 4451 Router - 17.3.3 IOS-XE Code
     Catalyst 9300 Switch - 17.3.3 IOS-XE Code with Embedded Wireless Controller (EWC) and ThousandEyes Enterprise Agent
@@ -46,8 +56,20 @@ Hardware Devices:
     4800 Access Points
     Silex Controller (2 NIC's)
 
+SJC
+
+    ISR 4451 Router - 17.5.1a IOS-XE Code
+    Catalyst 9300 Switch - 17.5.1 IOS-XE Code with Embedded Wireless Controller (EWC) and ThousandEyes Enterprise Agent
+    9130AX Access Points
+    Silex Controllers (3 Wired NIC's and 1 Wireless NIC)
+
 The lab envionment that is available is depicted here:
+
+RTP
 ![json](./LAB1-PNP-PREP/images/DCLOUD_Topology.png?raw=true "Import JSON")
+
+SJC
+![json](./LAB1-PNP-PREP/images/DCLOUD_Topology2.png?raw=true "Import JSON")
 
 ## Disclaimer
 Various labs are designed for use in the **DCLOUD** environment but can but are for use elsewhere. What is important to realize is the impact of each type of test. For instance, in the ***PnP Preparation*** lab, we go through discovery methods such as ***option 43*** and ***DNS Discovery***. If we were to use the DHCP option 43 and place that in the server options on the DHCP server, it would affect multiple scopes. **Care** is required, therefore, to ensure you do not get unexpected results. Similarly with ***DNS Discovery***, if the sub domain used was available to all devices, more than one device would discover DNA Center. Changes like this may be suitable for production in the future but detrimental during testing.
