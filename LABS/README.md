@@ -9,13 +9,13 @@ As a result, customers will gain experience setting up Plug and Play onboarding 
 ## Labs
 Please use this menu to navigate the various sections of this Github repository. Within the multiple folders are examples, explanation readme files for reference.
 
-* [PnP Preparation](./LAB1-PNP-PREP/README.md#PnP) - This lab explains the overall Plug and Play set up steps
-* [Onboarding Templates](./LAB2-Onboarding-Template/README.md#Day0) - This lab explains in depth and how to deploy Day 0 templates
-* [Day N Templates](./LAB3-DayN-Template/README.md#DayN) - This lab will dive into Day N template constructs and use cases
-* [Composite Templates](./LAB4-Composite-Template/README.md#Composite) - This lab will explore how to build a composite template on DNAC
-* [Application Policys](./LAB5-Application-Policy/README.md#Application) - This lab will explain Application Policys in DNAC and their use
-* [Telemetry](./LAB6-Telemetry-Enablement/README.md#Telemetry) - This lab will explain how to deploy Telemetry for assurance
-* [Advanced Automation](./LAB7-Advanced-Automation/README.md#Advanced) - This lab will explore Advanced Automation examples
+* [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB1-PNP-PREP/) - The lab covers setup for Plug and Play **(allow 1.5 hrs)**
+* [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/) - The lab covers in depth how to deploy Day 0 templates **(allow 1.5 hrs)**
+* [Day N Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/) - The lab covers Day N template constructs and use cases **(allow 0.5 hrs)**
+* [Composite Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/) - This lab covers building a composite template on DNA Center **(allow 0.5 hrs)**
+* [Application Policys](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB5-Application-Policy/) - This lab covers Application Policys & SDAVC in DNAC **(allow 1.0 hrs)**
+* [Telemetry](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB6-Telemetry-Enablement/) - This lab explains how to deploy Telemetry for assurance **(allow 0.5 hrs)**
+* [Advanced Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB7-Advanced-Automation/) - This lab will explore Advanced Automation examples 
 
 ## DCLOUD as a LAB
 ### Overview
