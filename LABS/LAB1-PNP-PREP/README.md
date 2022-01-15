@@ -3,7 +3,11 @@
 This lab is the first one in a series of labs. You may use the steps in the DCLOUD environment, or equally, you might utilize them as part of a Proof of Concept setup at a customer's lab. These procedures may also help form part of a deployment or implementation. Use them to ensure that all the necessary steps are complete before onboarding any devices within DNA Center.
 
 We will be utilizing the lab in this manner:
+RTP Topology
 ![json](./images/DCLOUD_Topology_PnPLab.png?raw=true "Import JSON")
+
+SJC Topology
+![json](./images/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON")
 
 ## General Information
 As you may recall, in the informational sections of this repository, we set for the various methods of discovery for a device and the preliminary things required for proper zero-touch provisioning. This lab will ensure a successful connection to DNA Center by helping to deploy the initial concepts.
@@ -11,6 +15,9 @@ As you may recall, in the informational sections of this repository, we set for 
 ### Lab Preparation
 To set up the lab, please log into the console connection to the ***4451X*** and issue the following commands:
 
+***Warning** use the correct commands for the correct DC... East and West have Different Architectures.
+
+RTP
 ```
 !
 conf t
@@ -23,6 +30,21 @@ int gi 0/0/2
 wr
 !
 ```
+
+SJC
+```
+!
+conf t
+!
+!disable port 0/0/1 for the templating lab
+int gi 0/0/1
+ shutdown
+ end
+!
+wr
+!
+```
+
 
 ## Lab Section 1 - Device Connectivity
 For PnP processes to work, we intend to have a management interface on the device. In this lab, we will set up a VLAN interface for both management and connectivity. You don't have to do it this way; we are just giving a relatively uncomplicated example, and you can alter this to suit your needs. As the device connects to the front-facing ports, we have to rely on the default configuration. 
@@ -252,7 +274,7 @@ In this exercise, the port where the Target switch connects is a layer two trunk
 conf t
 !
   interface range gi 1/0/10-11
-     description PnP Test Environment to Cataylist 9300
+     description PnP Test Environment to Catalyst 9300
      switchport mode trunk
      switchport trunk native vlan 5
      switchport trunk allowed vlan 5
@@ -260,7 +282,7 @@ conf t
      channel-group 1 mode passive
 !
   interface Port-channel1
-     description PnP Test Environment to Cataylist 9300
+     description PnP Test Environment to Catalyst 9300
      switchport trunk native vlan 5
      switchport trunk allowed vlan 5
      switchport mode trunk
