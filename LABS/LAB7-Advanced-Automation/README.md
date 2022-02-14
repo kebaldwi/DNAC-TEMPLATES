@@ -1,19 +1,19 @@
 # Advanced Automation
 ## Overview
-This Lab is designed to be used after first completing labs 1 through 4 and has been created to address how to use some advanced automation concepts not previously touched on in the previous labs. This is an enablement type lab and is designed to help customers to reach beyond what they currently understand and try new concepts and really push the boundaries of automation.
+This Lab is designed to be used after first completing labs 1 through 4 and has been created to address how to use some advanced automation concepts not previously touched on in the previous labs. This enablement type lab is designed to help customers reach beyond what they currently understand, try new concepts, and push the boundaries of automation.
 
-During this lab we will cover various topics with regard to template logic to solve various use cases. Some of these concepts have been previously covered but perhaps not with as indepth a focus.
+We will cover various topics about template logic to solve multiple use cases during this lab. Some of these concepts have been previously covered but perhaps not in-depth.
 
-The examples shown below can be used in building your own versions of the templates. The concept of this lab is for you to build regular templates that you can substitute into the composite to test with. Various methods for the varying use cases will be given explaining pros and cons along the way. Expand your capabilities with this lab and take your abilities to the next level. You're only inhibited by your own imagination. 
+The examples shown below can be used in building your versions of the templates. The concept of this lab is for you to create regular templates that you can substitute into the composite to test with. Various methods for the varying use cases will explain the pros and cons along the way. Expand your capabilities with this lab and take your abilities to the next level. You're only inhibited by your imagination. 
 
 ## General Information
-As previously discussed, DNA Center can be used for not only Plug and Play but also Day N or Ongoing Templates. Customers will start by building out an Onboarding Template which typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates and for more flexibility Composite Templates. as they can be used to apply ongoing changes and to allow device modifications after initial deployment. 
+As previously discussed, DNA Center can be used for Plug-and-Play and Day N or Ongoing Templates. Customers will start by building out an Onboarding Template which typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates and, for more flexibility Composite Templates. They can apply ongoing changes and allow device modifications after initial deployment. 
 
-Another important consideration is that part of a typical configuration would include some lines of code which will be built out with the *Design >Network Settings >* application within DNA Center. If the Design component is used you should **not** deploy the same feature from cli code in a template to configure the device. Its a decision you have to make upfront and avoids a lot of lines in the templates and allows for a more UI centric configuration which is easier to maintain. 
+Another important consideration is that part of a typical configuration would include some lines of code, which will be automatically built out using the information within the *Design >Network Settings >* application within DNA Center. If the Design component is used, you should **not** deploy the same feature from cli code in a template to configure the device. It's a decision you have to make upfront, avoids a lot of lines in the templates, and allows for a more UI-centric configuration that is easier to maintain. 
 
-As a guidance try and use **Design Settings** for as much of the configurations as you can leaving Templates light and nimble for configurations which might change ongoing.
+As guidance, try and use **Design Settings** for as many of the configurations as you can, leaving Templates light and nimble for configurations that might change ongoing.
 
-With these things in mind we will cover various aspects and use cases which perhaps allow for a more programamtic approach.
+We will cover various aspects and use cases that perhaps allow for a more programmatic approach with these things in mind.
 
 ## Topics
 The various topics covered in the lab will be the following:
@@ -27,7 +27,7 @@ The various topics covered in the lab will be the following:
 7. IBNS 2.0 configuration
 
 ## Use Cases
-The Topics listed above will be covered in a number of use cases to show the capability and flexibility of the templating engine within DNA Center. While we will utilize Velocity language the same can be accomplished in the Jinja2 language.
+The Topics listed above will be covered in several use cases to show the capability and flexibility of the templating engine within DNA Center. While we will utilize Velocity language, the same can be accomplished in the Jinja2 language.
 
 1. [Renaming interfaces](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB7-Advanced-Automation/README.md#step-1---renaming-interfaces---use-case)
 2. [Building Stacks](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB7-Advanced-Automation/README.md#step-2---building-stacks---use-case)
@@ -36,10 +36,10 @@ The Topics listed above will be covered in a number of use cases to show the cap
 5. [Non SDA IBNS 2.0 port configuration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB7-Advanced-Automation#step-5---non-sda-ibns20-port-configuration---use-case)
 
 ## Step 1 - ***Renaming Interfaces - Use Case***
-Previously within the Composite Templating Lab we introduced a methodology of automatically naming the interfaces within the switch. When a new device or switch/router/access point connects to a switch we want to name those interfaces. Naming the uplinks specifically, but also the various wireless access points and IP Phones would be a nice addition. 
+Previously within the Composite Templating Lab, we introduced a methodology of automatically naming the interfaces within the switch. When a new device or switch/router/access point connects to a switch, we want to describe those interfaces. Naming the uplinks specifically and the various wireless access points and IP Phones would be an excellent addition. 
 
 ### ***Examine Code***
-The script which we used on the Composite Templates uses an EEM Script which runs whenever a CDP event occurs.
+The script we used on the Composite Templates uses an EEM script that runs whenever a CDP event occurs.
 
 ```
    event manager applet update-port
@@ -61,12 +61,12 @@ The script which we used on the Composite Templates uses an EEM Script which run
     action 115 end
 ```
 
-While this script will rename the uplinks connected to a Router or Switch it is limited in terms of the following:
-1. Timing, as its not scheduled, and you cannot clear the CDP table from the template
+While this script will rename the uplinks connected to a Router or Switch, it is limited in terms of the following:
+1. Timing, as it's not scheduled, and you cannot clear the CDP table from the template
 2. Naming Access Points or other devices is also not taken into consideration
 
 ### ***Modify Code***
-So lets modify the EEM script to first solve the naming aspect with regard to connected devices
+So let's modify the EEM script first to solve the naming aspect concerning connected devices.
 
 ```
    event manager applet update-port
@@ -108,15 +108,15 @@ So lets modify the EEM script to first solve the naming aspect with regard to co
     action 270 end
     action 280 cli command "write"
 ```
-First lets address the primary problem, the naming of interfaces with descriptions.
+First, let's address the primary problem, the naming of interfaces with descriptions.
 
-You will see that lines *201 to 220* were added to the EEM script. Within that construct we look for the keyword `Trans-Bridge` within the built in variable to determine if the port is connected to an Access Point. If it is then it results in a True or binary 1 state and the included code from lines *211 to 220* run line by line. The configuration adds a description to the interface for the phone of `description AP - KO-AP0C75 - GigabitEthernet0` for example.
+You will see that lines *201 to 220* were added to the EEM script. We look for the keyword `Trans-Bridge` within the built-in variable to determine if the port is connected to an Access Point within that section. It results in a True or binary 1 state, and the included code from lines *211 to 220* runs line by line. The configuration adds a description to the interface for the phone of `description AP - KO-AP0C75 - GigabitEthernet0`, for example.
 
-You will see that lines *250 to 260* were added to the EEM script. Within that construct we look for the keyword `Phone` within the built in variable to determine if the port is connected to a Phone. If it is then it results in a True or binary 1 state and the included code from lines *253 to 260* run line by line. The configuration adds a description to the interface for the phone of `description Phone - SEPB07D47D34910 - Port 1` for example.
+You will see that lines *250 to 260* were added to the EEM script. We look for the keyword `Phone` within the built-in variable to determine if the port is connected to a Phone within that section. It results in a True or binary 1 state, and the included code from lines *253 to 260* runs line by line. For example, the configuration adds a description to the interface for the phone of `description Phone - SEPB07D47D34910 - Port 1`.
 
-The second part of the problem within this use case is solving for the issue presented by a lack of functionality when the code is configured on the switch. While we can get the configuration in place it will only run when the port is cycled or when the CDP information for the port is cleared. To solve the problem we therefore employ a *Self-Destructing EEM script*.
+The second part of the problem within this use case is solving the issue presented by a lack of functionality when the code is configured on the switch. While we can get the configuration in place, it will only run when the port is cycled or when the CDP information for the port is cleared. Therefore, to solve the problem, we employ a *Self-Destructing EEM script*.
 
-*Self-Destructing EEM scripts* are those that delete themselves on termination. Within the code below you will notice that the line 2.1 removes the EEM applet from the configuration and then line 2.3 ensures the configuration is written to NVRAM prior to terminating.
+*Self-Destructing EEM scripts* are those that delete themselves on termination. Within the code below, you will notice that line 2.1 removes the EEM applet from the configuration, and then line 2.3 ensures the configuration is written to NVRAM before terminating.
 
 ```
    event manager applet POST_PNP
@@ -130,13 +130,13 @@ The second part of the problem within this use case is solving for the issue pre
     action 2.4 cli command "exit
 ```
 
-This code allows us to *clear the cdp table* and delete itself but leave the other EEM script on the switch for any moves adds and changes to the devices connected to the switch.
+This code allows us to *clear the CDP table* and delete itself but leave the other EEM script on the switch for any moves, adds, and changes to the devices connected to the switch.
 
 ## Step 2 - ***Building Stacks - Use Case***
-Previously within the Composite Templating Lab we introduced a methodology of automatically build a data stack and power stack configuration within the switch. When a new device or switch is built we may want to control which switch is Active and which switch is standby within the stack. 
+Previously within the Composite Templating Lab, we introduced a methodology of automatically building a data stack and power stack configuration within the switch. When a new device or switch is built, we may want to control which switch is Active and standby within the stack. 
 
 ### ***Examine Code***
-To that end the following configuration has been built previously:
+To that end, the following configuration has been built previously:
 
 ```
    ## 9300 Stack Power and Priority
@@ -176,14 +176,14 @@ To that end the following configuration has been built previously:
        #MODE_END_ENABLE
    #end
 ```
-Within this script you can see the use of the Arrays `$Stackcount` which is formed through the use of the `.split(",")` method which takes the string returned from the database and splits the list into two elements within the Array `$Stackcount`. You could address each element in the Array remembering that Arrays always start the numbering of elements at position zero (0). In a two element Array you could call the data with these two options; for the first element in the Array `$Stackcount[0]` or for the second element in the Array `$Stackcount[1]`.
+Within this script, you can see the Arrays `$Stackcount` formed using the `.split(",")` method, which takes the string returned from the database and splits the list into two elements within the Array `$Stackcount`. You could address each element in the Array, remembering that Arrays always start the numbering of elements at position zero (0). You could call the data with these two options; for the first element in the Array `$Stackcount[0]` or the second element in the Array `$Stackcount[1]`.
 
-Within this script you can see the use of the Conditional Statements `#if #elseif #else #end` these are used to dynamically build configuration for switch stacks no matter how many switches are within the stack. For example if the number of switches in the stack is above 4 then it creates automatically 2 powerstack environments for power redundancy. The script also sets the priority of the Active and Standby switch above those of the rest of the switches in the stack.
+Within this script, you can see the Conditional Statements `#if #elseif #else #end`. These are used to dynamically build configuration for switch stacks no matter how many switches are within the stack. For example, if the number of switches in the stack exceeds 4, it automatically creates 2 powerstack environments for power redundancy. The script also prioritizes the Active and Standby switch above those of the rest of the switches in the stack.
 
-Within this script you can see the use of the Enable Statements `#MODE_ENABLE #MODE_END_ENABLE` these commands allow for privileged level non configuration commands to be entered. In this script we need to configure the privileged level command to set switch priority for individual switches `switch $Switch priority #`. Bracketing this configuration command with the velocity statements `#MODE_ENABLE #MODE_END_ENABLE` allows for us to change from configuration mode to enable mode and back again.
+Within this script, you can see the use of the Enable Statements `#MODE_ENABLE #MODE_END_ENABLE`. These commands allow for enable level configuration commands to be entered. This script needs to configure the enable level command to set switch priority for individual switches `switch $Switch priority #`. Bracketing this configuration command with the velocity statements `#MODE_ENABLE #MODE_END_ENABLE` allows us to change from configuration mode to enable mode and back again.
 
 ## Step 3 - ***Assigning Port Configuration - Use Case***
-Previously within the Composite Templating Lab we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relied on a few variables which were use to extrapolate the settings which were then configured via the template. This allowed for a set of macros to be utilized to build out the various settings for VLANs, Ports and Uplinks. 
+Previously within the Composite Templating Lab, we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relied on a few variables used to extrapolate the settings that were then configured via the template. This allowed a set of macros to be utilized to build out the various settings for VLANs, Ports, and Uplinks. 
 
 ### ***Examine Code***
 We will analyze the configuration in more detail below and modify it for greater capabilities toward the end of this section.
@@ -200,11 +200,11 @@ We will analyze the configuration in more detail below and modify it for greater
      #set( $foo = $PortTotal.add($PortCount) )
    #end
 ```
-Within the first block of code some interesting concepts are dealt with. First we create an *Array* with the various Product ID's for each switch within the stack using the `.split(",")` *method* as we previously discussed in step 2. The `.size()` *method* is then used to determine how many switches are in the stack. A blank *array* is defined for later use. We then create an offset variable to account for the fact that *arrays* start at zero (0) to be used throughout the template.
+Within the first block of code, some interesting concepts are dealt with. First, we create an *Array* with the various Product IDs for each switch within the stack using the `.split(",")` *method* as we previously discussed in step 2. The `.size()` *method* is then used to determine how many switches are in the stack. A blank *array* is defined for later use. We then create an offset variable to account that *arrays* start at zero (0) to be used throughout the template.
 
 Within the loop structure, we iterate through using the variable PortCount to load the regex value grep'd from the Product ID accomplished via the `.replaceAll(""C9300L?-([2|4][4|8]).*","$1"")` *method* which in each case is either 24 or 48 to denote a 24 or 48 port switch. The PortCount variable is then appended to the *array* PortTotal using the add *method*.
 
-We now have the data we need to configure the ports of the switch, being the number of switches, and the number of ports in each switch.
+We now have the data we need to configure the switch's ports, being the number of switches and the number of ports in each switch.
 ```
    !
    ## VLANs per MDF
@@ -215,7 +215,7 @@ We now have the data we need to configure the ports of the switch, being the num
    #set( $bh_vlan_number = 999 )
    !
 ```
-In the configuration above we use simple addition to determine the VLAN ID for each vlan built from a set of constants and a numeric variable to denote the MDF.
+In the configuration above, we use simple addition to determine the VLAN ID for each VLAN built from a set of constants and a numeric variable to denote the MDF.
 ```
    !
    vlan ${data_vlan_number}
@@ -256,7 +256,7 @@ Here we define a Macro to configure the various ports of the switch with a stand
      switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
    #end
 ```
-Within the above code we define a Macro to add the various VLANs to the trunk interface via the Port-Channel.
+Within the above code, we define a Macro to add the various VLANs to the trunk interface via the Port-Channel.
 ```
    !
    ##Access Port Configuration
@@ -271,12 +271,12 @@ Within the above code we define a Macro to add the various VLANs to the trunk in
     #uplink_interface
    !
 ```
-In the above code we apply the various previously defined Macros to configure the various access ports via a loop structure. We then apply the VLANs to the port-channel.
+We apply the various previously defined Macros in the above code to configure the various access ports via a loop structure. We then apply the VLANs to the port-channel.
 
 ### ***Modify Code***
-Now while this is an eligant script it could be more automated and include ways to deal with both Access Points, and IOT devices in the same script. Lets look at how we might make these kind of changes in an automated programatic way.
+While this is an elegant script, it could be more automated and include ways to deal with Access Points and IoT devices in the same script. Let's look at how we might make these changes in an automated programmatic way.
 
-First lests deal with vlans on the Target switch. In the example above we use one variable to extrapolate the various device VLANs. Alternatively, that could be accomplished using a built in variable like the native VLAN and a similar approach.
+First, let's deal with VLANs on the Target switch. We use one variable to extrapolate the various VLANs in the example above. Alternatively, that could be accomplished using a built-in variable like the native VLAN and a similar approach.
 
 ```
    #set( $Integer = 0 ) ##defines Integer as numeric variable
@@ -292,9 +292,9 @@ First lests deal with vlans on the Target switch. In the example above we use on
    #set( $guest_vlan_number = $guest_offset + $mgmt_vlan )
    #set( $bh_vlan_number = 999 )
 ```
-In this example we now no longer need to input any information and as the offsets are used if needs be we can use excel instead of set values for defining those in bulk. In the example shown we are defining them explicitly, but those lines could be replaced by entry values in a form or excel.
+In this example, we no longer need to input any information, and as the offsets are used if required, we can use excel instead of setting values for defining those in bulk. The example shown illustrates them explicitly, but entry values could replace those lines in a form or excel.
 
-Secondly we could allow for various device types of Access Point and IOT device with the introduction of more Macros. As each device type may each require differing VLANs and port settings: *(note: in the guest example below the assumption is a layer 2 to a firewall providing local gateway for guest access DIA to the internet)*
+Secondly, we could allow for various device types of Access Point and IoT devices with the introduction of more Macros. As each device type may each require differing VLANs and port settings: *(note: in the guest example below, the assumption is a layer 2 to a firewall providing a local gateway for guest access DIA to the internet)*
 
 ```
    ##Macros
@@ -331,7 +331,7 @@ Secondly we could allow for various device types of Access Point and IOT device 
    #end
    !
 ```
-The last piece of the puzzle would be to programatically determine where the ports were configured for the various tasks and devices. To accomplish this we can again resort to logic. Now to start with we need to account for whether a switch is PoE capable or not so lets add some magic.
+The last puzzle piece would be to programmatically determine where the ports were configured for the various tasks and devices. To accomplish this, we can again resort to logic. First, we need to account for whether a switch is PoE capable or not, so let's add some magic.
 
 ```
    ##Stack information variables
@@ -356,9 +356,9 @@ The last piece of the puzzle would be to programatically determine where the por
    #end
 ```
 
-So six lines of logic added, an *array* is created PoECapable to track switches capable of delivering PoE. Next a loop with conditional logic to set a true of false flag depending if the switch is PoE Capable again using the `.add` *method*. Lastly a Port pointer is created and set to the first port in each switch. Lastly an availability counter for the number of ports still available is set up.
+So six lines of logic added, an *array* is created PoECapable to track switches capable of delivering PoE. Next, a loop with conditional logic sets a true or false flag depending if the switch is PoE Capable again using the `.add` *method*. Lastly, a Port pointer is created and set to the first port in each switch. Lastly, an availability counter for the number of available ports is set up.
 
-The next chunk of code first resolves any accidental division by zero annomolly we might encounter by iterating through the two asked for variables for the number of Access Points and determining if they are even or odd and making them even in the later case. Additionally we need to determine how to distribute the Access Points.
+The next chunk of code first resolves any accidental division by zero anomalies we might encounter by iterating through the two asked for variables for the number of Access Points, determining if they are even or odd, and making them even in the latter case. Additionally, we need to determine how to distribute the Access Points.
 
 ```
    ##Determine how many switches we can support Access Points on
@@ -377,11 +377,11 @@ The next chunk of code first resolves any accidental division by zero annomolly 
    !
 ```
 
-Next, we need to iterate through the switches in a logical predetermined way to set the correct macro to the port. The example might look like the following;
+Next, we need to iterate through the switches logically to set the correct macro to the port. The example might look like the following;
 
 ```
    !
-   ##Start with AP distribution evenly across stack
+   ##Start with AP distribution evenly across the stack
    !
    #foreach( $Switch in [1..$StackMemberCount] )
       #if( $PoECapable[$Switch] == 1 )
@@ -419,21 +419,21 @@ Next, we need to iterate through the switches in a logical predetermined way to 
    #end
    !
 ```
-In the first section we iterate through the stack and for switches with PoE Capability we add an Access Point to each switch until they are evenly distributed. Next we iterate through each switch evenly distributing guest interfaces. Lastly we iterate through filling the rest of the ports with workstation interfaces.
+In the first section, we iterate through the stack, and for switches with PoE Capability, we add an Access Point to each switch until they are evenly distributed. Next, we iterate through each switch evenly distributing guest interfaces. Lastly, we iterate through the ports filling the rest with workstation configured interfaces.
 
-While this is a methodology which deals programatically with port configuration and while you may adapt it for an environment, it is again lacking in the fact that its still not dynamic enough. First, its impossible to determine without looking at the configuration where something is to be plugged in and secondly if equipment or users are plugged into the wrong interface they may get the wrong level of access. 
+While this methodology deals programmatically with port configuration, and while you may adapt it for an environment, it is again lacking because it's still not dynamic enough. First, it's impossible to determine without looking at the configuration where something is plugged in. Secondly, if equipment or users are plugged into the wrong interface, they may get the wrong level of access. 
 
-To deal with all these outstanding issues we will look at the next lab section to provide the final solution to the problem.
+To deal with all these outstanding issues, we will look at the next lab section to provide the final solution to the problem.
 
 ## Step 4 - ***Autoconf Port Configuration - Use Case***
-Previously within the Composite Templating Lab and in the previous section we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relies on a few variables which were use to extrapolate the settings which were then configured via the template. This allowed for a set of macros to be utilized to build out the various settings for VLANs, Ports and Uplinks. 
+Previously within the Composite Templating Lab and in the previous section, we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relies on a few variables used to extrapolate the settings that were then configured via the template. This allowed a set of macros to be utilized to build out the various settings for VLANs, Ports, and Uplinks. 
 
-While these were methodologies which dealt programatically with port configuration and while you may adapt them for an environment, they are both lacking in the fact that they are not dynamic enough. Again, its impossible to determine without looking at the configuration where something is to be plugged in and secondly if equipment or users are plugged into the wrong interface they may get the wrong level of access. 
+While these were methodologies that dealt programmatically with port configuration, and while you may adapt them for an environment, they are both lacking in the fact that they are not dynamic enough. Again, it's impossible to determine without looking at the configuration where something is plugged in. Secondly, if equipment or users are plugged into the wrong interface, they may get the wrong level of access. 
 
-In previous revisions of code we could deal with some of the problems with Auto Smart Port technology, but that has been depricated and its replacement is a lot more dynamic. In this section we will deal with the first part of the problem with regard to assigning ports for hardware like Access Points.
+In previous code revisions, we could deal with some of the problems with Auto Smart Port technology, but that has been deprecated, and its replacement is a lot more dynamic. This section will deal with the first part of the problem concerning assigning ports for hardware like Access Points.
 
 ### ***Modify Code***
-First lests deal with vlans on the Target switch. In the example above we modifyied the existing code to extrapolate the various device VLANs using a built in variable like the native VLAN. This is not a totally bad idea. Then you could define different native VLANs for downstream switches on a distribution thereby building out the VLANs dynamically. If you prefere and excel list of numbers that could be an alternative. In that case you would not need this section and would just rely on the variables being used after this block of code.
+First, let's deal with VLANs on the Target switch. In the example above, we modified the existing code to extrapolate the various device VLANs using a built-in variable like the native VLAN. This is not a bad idea. Then you could define different native VLANs for downstream switches on a distribution, thereby building out the VLANs dynamically. If you prefer, an excel list of numbers could be an alternative. In that case, you would not need this section and rely on the variables being used after this code block.
 
 ```
    #set( $Integer = 0 ) ##defines Integer as numeric variable
@@ -450,7 +450,7 @@ First lests deal with vlans on the Target switch. In the example above we modify
    #set( $bh_vlan_number = 999 )
 ```
 
-The next block of code sets up the VLANs and should the dynamic creation as mentioned not be desired a excel list could be used to assign them as the template is run through the UI through importing the variable settings.
+The next block of code sets up the VLANs, and should the dynamic creation as mentioned not be desired; an excel list could be used to assign them as the template is run through the UI through importing the variable settings.
 
 ```
    !
@@ -473,7 +473,7 @@ The next block of code sets up the VLANs and should the dynamic creation as ment
     tracking enable
    !
 ```
-Next we need to set up the macros, but in this case we will make use of **Autoconf** and **Templates**. **Autoconf** is a solution that can be used to manage port configurations for data or voice VLAN, quality of service (QoS) parameters, storm control, and MAC-based port security on end devices that are deployed in the access layer of a network. Device classification is enabled when you enable the Autoconf feature using the autoconf enable command in global configuration mode. The device detection acts as an event trigger, which in turn applies the appropriate automatic template to the interface. When the Autoconf feature is enabled using the autoconf enable command, the default Autoconf service policy is applied to all the interfaces. For more information about **[Autoconf](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9400/software/release/16-12/configuration_guide/nmgmt/b_1612_nmgmt_9400_cg/configuring_autoconf.pdf)** or alternatively [Autoconf](./configuring_autoconf.pdf)
+Next, we need to set up the macros, but we will make use of **Autoconf** and **Templates**. **Autoconf** is a solution that can be used to manage port configurations for data or voice VLAN, quality of service (QoS) parameters, storm control, and MAC-based port security on end devices that are deployed in the access layer of a network. Device classification is enabled when you enable the Autoconf feature using the `autoconf enable` command in global configuration mode. The device detection acts as an event trigger, which applies the appropriate automatic template to the interface. When the Autoconf feature is enabled using the autoconf enable command, the default Autoconf service policy is applied to all the interfaces. For more information about **[Autoconf](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9400/software/release/16-12/configuration_guide/nmgmt/b_1612_nmgmt_9400_cg/configuring_autoconf.pdf)** or alternatively [Autoconf](./configuring_autoconf.pdf)
 
 ```
    #INTERACTIVE
@@ -535,11 +535,11 @@ Next we need to set up the macros, but in this case we will make use of **Autoco
    #end
 ```
 
-So the command `autoconf` enables the device classifier which can then be manipulated to stray from the builtin templates through a *parameter-map*. The parameter map command allows for mapping of defined interface templates. This is what we need to create our template for the Access Point. The rest of the builtin devices will point to the Workstation template. We define a Guest template as well as the macro for the interfaces. The macro will be used to configure the interfaces delivering with it the source template of WORKSTATION.
+So the command `autoconf` enables the device classifier, which can then be manipulated to stray from the built-in templates through a *parameter-map*. The parameter map command allows for the mapping of defined interface templates. This is what we need to create our template for the Access Point. The rest of the built-in devices will point to the Workstation template. We define a Guest template as well as the macro for the interfaces. The macro will be used to configure the interfaces delivering the source template of WORKSTATION.
 
-What this will do is configure the interface with the normal VLAN and commands listed, and then when a device is plugged in the device classifier will run. The interface will by default use the derived configuration of the WORKSTATION interface template, but should an Access Point be plugged in then the interface would defer to the ACCESS_POINT template. 
+This will configure the interface with the normal VLAN and commands listed, and then when a device is plugged in, the device classifier will run. The interface will by default use the derived configuration of the WORKSTATION interface template, but should an Access Point be plugged in; then the interface would defer to the ACCESS_POINT template. 
 
-Delivering the code to the interfaces becomes simpler now because we are utilizing a more dynamic approach to device classification. 
+Delivering the code to the interfaces becomes simpler now because we utilize a more dynamic device classification approach. 
 
 We can continue to configure the uplink via the following Macro.
 ```
@@ -548,9 +548,9 @@ We can continue to configure the uplink via the following Macro.
      switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
    #end
 ```
-Within the above code we define a Macro to add the various VLANs to the trunk interface via the Port-Channel.
+Within the above code, we define a Macro to add the various VLANs to the trunk interface via the Port-Channel.
 
-As we configure the interfaces we can continue to use the previously defined method as the templates will be called and assigned more dynaically.
+As we configure the interfaces, we can continue to use the previously defined method as the templates will be called and assigned more dynamically.
 
 ```
    !
@@ -566,22 +566,22 @@ As we configure the interfaces we can continue to use the previously defined met
     #uplink_interface
    !
 ```
-In the above code we apply the various previously defined Macros to configure the various access ports via a loop structure. We then apply the VLANs to the port-channel.
+We apply the various previously defined Macros in the above code to configure the various access ports via a loop structure. We then apply the VLANs to the port-channel.
 
-While we have configured all the various interfaces this does not take into account Authentication and Authorization scenarios. What it does though is sets us up nicely to reuse the templates calling them directly from Identity Services Engine in Authorization Policies.
+While we have configured all the various interfaces, this does not consider Authentication and Authorization scenarios. It sets us up nicely to reuse the templates calling them directly from Identity Services Engine in Authorization Policies.
 
 ## Step 5 - ***Non SDA IBNS2.0 Port Configuration - Use Case***
-The last sections of this lab will walk through the various considerations for **IBNS2.0** and how to deal with host onboarding in an Non **SD-Access** Fabric environment. Once the Identity Services Engine is integrated with DNA Center, then not only do you get the benefit of pxgrid integration allowing for the building of policy, but the AAA Server section within Design will build out the various settings which inturn program the network access devices for AAA Network and Client Dot1x settings.
+The last sections of this lab will walk through the various considerations for **IBNS2.0** and how to deal with host onboarding in a Non **SD-Access** Fabric environment. Once the Identity Services Engine is integrated with DNA Center, then not only do you get the benefit of pxgrid integration allowing for the building of policy, but the AAA Server section within Design will build out the various settings which inturn program the network access devices for AAA Network and Client Dot1x settings.
 
-It is also important to understand that with **IBNS2.0** and templates or interfaces that are running in ***closed mode*** the dynamic capability of **Autoconf** is not going to operate because only EAP packets are being used off the interface initially until authentication occurs. If the interface is in ***low impact mode*** then and only then will **Autoconf** operate properly.
+It is also essential to understand that with **IBNS2.0** and templates or interfaces running in ***closed mode***, the dynamic capability of **Autoconf** is not going to operate because only EAP packets are being used off the interface initially until authentication occurs. If the interface is in ***low impact mode***, then and only then will **Autoconf** operate properly.
 
-Considering DNA Center will push at that point all the relevant IBNS2.0 settings to the device, this leaves us with the mere setting up of **Host Onboarding** which we will detail below.
+Considering DNA Center will push at that point all the relevant IBNS2.0 settings to the device, this leaves us with the mere setting up of **Host Onboarding**, which we will detail below.
 
 #### **Important Note:** 
-*We need to remember that for use of this section ISE needs to first have been integrated with DNA Center. Additionally the Design Settings will need to be modified for the sites to include at the very least* **Client AAA**.
+*We need to remember that for the use of this section, ISE needs first to have been integrated with DNA Center. Additionally, the Design Settings will need to be modified for the sites to include at the very least* **Client AAA**.
 
 ### ***Examine Code***
-We will take the script as amended from above which should look like this now;
+We will take the script as amended from above, which should look like this now;
 
 ```
    #set( ${Integer} = 0 ) 
@@ -695,10 +695,10 @@ We will take the script as amended from above which should look like this now;
    interface range gi 1/0/10 - 11
     #uplink_physical
 ```
-As it stands this is not a bad place to start, and only a few additions and modifications are required to allow for IBNS2.0.
+As it stands, this is not a bad place to start, and only a few additions and modifications are required to allow for IBNS2.0.
 
 ### ***Modify Code***
-First we will ensure that the following lines are included to change device tracking to the modern standard
+First, we will ensure that the following lines change device tracking to the modern standard.
 
 ```
    device-tracking upgrade-cli force
@@ -708,7 +708,7 @@ First we will ensure that the following lines are included to change device trac
     no protocol udp
     tracking enable
 ```
-Then we need to define the class maps which will be utilized in the Dot1x policy. The policy and class maps follow the MQC methods previously used for QoS. These have now been exploited for other service policies and now we build IBNS2.0 using the same schema.
+Then we need to define the class maps utilized in the Dot1x policy. The policy and class maps follow the MQC methods previously used for QoS. These have been exploited for other service policies, and now we build IBNS2.0 using the same schema.
 
 ```
    !
@@ -745,60 +745,106 @@ Then we need to define the class maps which will be utilized in the Dot1x policy
     match result-type success
    !
 ```
-As we would with MQC once we have defined the various class maps, we can then call upon them in a policy map as follows;
+As we would with MQC, once we have defined the various class maps, we can then call upon them in a policy-map as follows;
 
 ```
-   policy-map type control subscriber PMAP_WiredDot1xClosed_Template
-    event session-started match-all
-     10 class always do-until-failure
-      10 authenticate using dot1x retries 2 retry-time 0 priority 10
-    event authentication-failure match-first
-     5 class DOT1X_FAILED do-until-failure
-      10 terminate dot1x
-      20 authenticate using mab priority 20
-     10 class AAA_SVR_DOWN_UNAUTHD_HOST do-until-failure
-      30 authorize
-      40 pause reauthentication
-     20 class AAA_SVR_DOWN_AUTHD_HOST do-until-failure
-      10 pause reauthentication
-      20 authorize
-     30 class DOT1X_NO_RESP do-until-failure
-      10 terminate dot1x
-      20 authenticate using mab priority 20
-     40 class MAB_FAILED do-until-failure
-      10 terminate mab
-      20 authentication-restart 60
-     50 class always do-until-failure
-      10 terminate dot1x
-      20 authenticate using mab priority 20
-     60 class always do-until-failure
-      10 terminate dot1x
-      20 terminate mab
-      30 authentication-restart 60
-    event aaa-available match-all
-     10 class IN_CRITICAL_AUTH_CLOSED_MODE do-until-failure
-      10 clear-session
-     20 class NOT_IN_CRITICAL_AUTH_CLOSED_MODE do-until-failure
-      10 resume reauthentication
-    event agent-found match-all
-     10 class always do-until-failure
-      10 terminate mab
-      20 authenticate using dot1x retries 2 retry-time 0 priority 10
-    event inactivity-timeout match-all
-     10 class always do-until-failure
-      10 clear-session
-    event authentication-success match-all
-    event violation match-all
-     10 class always do-until-failure
-      10 restrict
-    event authorization-failure match-all
-     10 class AUTHC_SUCCESS-AUTHZ_FAIL do-until-failure
-      10 authentication-restart 60
-   !
+	policy-map type control subscriber PMAP_DefaultWiredDot1xClosedAuth_1X_MAB
+	 event session-started match-all
+	  10 class always do-until-failure
+	   10 authenticate using dot1x retries 2 retry-time 0 priority 10
+	 event authentication-failure match-first
+	  5 class DOT1X_FAILED do-until-failure
+	   10 terminate dot1x
+	   20 authenticate using mab priority 20
+	  10 class AAA_SVR_DOWN_UNAUTHD_HOST do-until-failure
+	   30 authorize
+	   40 pause reauthentication
+	  20 class AAA_SVR_DOWN_AUTHD_HOST do-until-failure
+	   10 pause reauthentication
+	   20 authorize
+	  30 class DOT1X_NO_RESP do-until-failure
+	   10 terminate dot1x
+	   20 authenticate using mab priority 20
+	  40 class MAB_FAILED do-until-failure
+	   10 terminate mab
+	   20 authentication-restart 60
+	  50 class DOT1X_TIMEOUT do-until-failure
+	   10 terminate dot1x
+	   20 authenticate using mab priority 20
+	  60 class always do-until-failure
+	   10 terminate dot1x
+	   20 terminate mab
+	   30 authentication-restart 60
+	 event aaa-available match-all
+	  10 class IN_CRITICAL_AUTH_CLOSED_MODE do-until-failure
+	   10 clear-session
+	  20 class NOT_IN_CRITICAL_AUTH_CLOSED_MODE do-until-failure
+	   10 resume reauthentication
+	 event agent-found match-all
+	  10 class always do-until-failure
+	   10 terminate mab
+	   20 authenticate using dot1x retries 2 retry-time 0 priority 10
+	 event inactivity-timeout match-all
+	  10 class always do-until-failure
+	   10 clear-session
+	 event authentication-success match-all
+	 event violation match-all
+	  10 class always do-until-failure
+	   10 restrict
+	 event authorization-failure match-all
+	  10 class AUTHC_SUCCESS-AUTHZ_FAIL do-until-failure
+	   10 authentication-restart 60
+	policy-map type control subscriber PMAP_DefaultWiredDot1xClosedAuth_MAB_1X
+	 event session-started match-all
+	  10 class always do-until-failure
+	   10 authenticate using mab priority 20
+	 event authentication-failure match-first
+	  5 class DOT1X_FAILED do-until-failure
+	   10 terminate dot1x
+	   20 authentication-restart 60
+	  10 class AAA_SVR_DOWN_UNAUTHD_HOST do-until-failure
+	   30 authorize
+	   40 pause reauthentication
+	  20 class AAA_SVR_DOWN_AUTHD_HOST do-until-failure
+	   10 pause reauthentication
+	   20 authorize
+	  30 class MAB_FAILED do-until-failure
+	   10 terminate mab
+	   20 authenticate using dot1x retries 2 retry-time 0 priority 10
+	  40 class DOT1X_NO_RESP do-until-failure
+	   10 terminate dot1x
+	   20 authentication-restart 60
+	  50 class DOT1X_TIMEOUT do-until-failure
+	   10 terminate dot1x
+	   20 authenticate using mab priority 20
+	  60 class always do-until-failure
+	   10 terminate mab
+	   20 terminate dot1x
+	   30 authentication-restart 60
+	 event aaa-available match-all
+	  10 class IN_CRITICAL_AUTH_CLOSED_MODE do-until-failure
+	   10 clear-session
+	  20 class NOT_IN_CRITICAL_AUTH_CLOSED_MODE do-until-failure
+	   10 resume reauthentication
+	 event agent-found match-all
+	  10 class always do-until-failure
+	   10 terminate mab
+	   20 authenticate using dot1x retries 2 retry-time 0 priority 10
+	 event inactivity-timeout match-all
+	  10 class always do-until-failure
+	   10 clear-session
+	 event authentication-success match-all
+	 event violation match-all
+	  10 class always do-until-failure
+	   10 restrict
+	 event authorization-failure match-all
+	  10 class AUTHC_SUCCESS-AUTHZ_FAIL do-until-failure
+	   10 authentication-restart 60
+	   !
 ```
-This policy map allows for all eventualities and gracefully flows top down in a very simple flow. It deals with all exceptions gracefully and is not as rigid as the interface configuration methodology.
+This policy-map allows for all eventualities and gracefully flows top down in a very simple flow. It deals with all exceptions gracefully and is not as rigid as the interface configuration methodology.
 
-Once the class maps and polcies have been defined we need to utilize them.
+Once the class maps and policies have been defined, we need to utilize them.
 
 ```
    template ACCESS_POINT
@@ -813,7 +859,7 @@ Once the class maps and polcies have been defined we need to utilize them.
     access-session port-control auto
     authentication periodic
     authentication timer reauthenticate server
-    service-policy type control subscriber PMAP_WiredDot1xClosed_Template
+    service-policy type control subscriber PMAP_DefaultWiredDot1xClosedAuth_MAB_1X
    !
    template WORKSTATION
     description Workstation
@@ -828,12 +874,12 @@ Once the class maps and polcies have been defined we need to utilize them.
     access-session port-control auto
     authentication periodic
     authentication timer reauthenticate server
-    service-policy type control subscriber PMAP_WiredDot1xClosed_Template
+    service-policy type control subscriber PMAP_DefaultWiredDot1xClosedAuth_1X_MAB
    !
 ```
-Now that we have defined the various interface templates for use with the MQC DOT1X service policy. You have two options some prefer to call out a separate Guest interface template; however, because Dot1x technology actually automatically deals with that we will remove that template.
+We have defined the various interface templates for use with the MQC DOT1X service policy. You have two options. Some prefer to call out a separate Guest interface template; however, because Dot1x technology automatically deals with that, we will remove that template.
 
-Next we can then modify the parameter map to suit the policy. Remembering that with **IBNS2.0** and templates or interfaces that are running in ***closed mode*** the dynamic capability of **Autoconf** is not going to operate because only EAP packets are allowed by **Secure Access** on the interface initially until authentication occurs. Alternatively, if the interface is in ***low impact mode*** then and only then will **Autoconf** operate properly. I always leave the config on the switch in case of that eventuality.
+Next, we can then modify the parameter map to suit the policy. Remember that with **IBNS2.0** and templates or interfaces running in ***closed mode***, the dynamic capability of **Autoconf** is not going to operate because only EAP packets are allowed by **Secure Access** on the interface initially until authentication occurs. Alternatively, if the interface is in ***low impact mode***, then and only then will **Autoconf** operate properly. I always leave the config on the switch in case of that eventuality.
 
 
 ```
@@ -866,7 +912,7 @@ Next we can then modify the parameter map to suit the policy. Remembering that w
      10 interface-template ACCESS_POINT
    !
 ```
-Lastly, we need to build the macro's for interface configuration, 
+Lastly, we need to build the macros for interface configuration, 
 ```
    ##Macros
    #macro( access_interface )
@@ -892,7 +938,7 @@ Lastly, we need to build the macro's for interface configuration,
    #end
    !
 ```
-Then we need to configure the various interfaces with the new interface templates via macro along with modify the uplink port-channel. Additionally we need to add two CTS commands to the physical interfaces within the port-channel bundle that are not available at the logical level and only available at the physical layer.
+Then we need to configure the various interfaces with the new interface templates via macro and modify the uplink port-channel. Additionally, we need to add two CTS commands to the physical interfaces within the port-channel bundle that are not available at the logical level and only available at the physical layer.
 
 ```
    !Add SGACL enforcement
@@ -915,16 +961,16 @@ Then we need to configure the various interfaces with the new interface template
     #uplink_physical
    !
 ```
-Now that we have defined all the various IBNS2.0 configuration on the switch as a device comes up on an interface the device classifier will automatically run logically attaching the interface template configuration of WORKSTATION onto an access port. If an Access Point is classified as being attached to the interface it will instead logically attach the interface template configuration of ACCESS_POINT. Within both those interface templates the DOT1X service policy will run and the device will be authenticated, and Identity Services Engine may at that point send a Change of Authorization and put the device in a differing VLAN or more.
+Now that we have defined all the various IBNS2.0 configurations on the switch, as a device comes up on an interface, the device classifier will automatically run logically, attaching the interface template configuration of WORKSTATION onto an access port. If an Access Point is classified as being attached to the interface, it will instead logically attach the interface template configuration of ACCESS_POINT. The DOT1X service policy will run within both those interface templates, and the device will be authenticated. Identity Services Engine may, at that point, send a Change of Authorization and put the device in a differing VLAN or more.
 
-Lastly, to create a fully dynamic environment you might build out the following EEM scripts to fully give that Dynamic look and feel. Because of the **Autoconf** vs **Closed Mode** limitation we do not have a **Fully Dynamic environment**. Luckily, we have a way to resolve that issue. 
+Lastly, to create a fully dynamic environment, you might build out the following EEM scripts to entirely give that Dynamic look and feel. Because of the **Autoconf** vs **Closed Mode** limitation, we do not have a **Fully Dynamic environment**. Luckily, we have a way to resolve that issue. 
 
 ## Step 6 - ***Non SDA IBNS2.0 Fully Dynamic Port Configuration - Use Case***
-So as explained we have a chicken and the egg scenario, whereby we can't use **Autoconf** with **Closed Mode** as no packets can pass which can be used with the parameter map to automatically configure the interface. Additionally we want to have a **Secure Access** environment with **Zero Trust** using a policy on the interface that initially blocks traffic until authentication occurs. 
+So as explained, we have a chicken and the egg scenario, whereby we can't use **Autoconf** with **Closed Mode** as no packets can pass, which can be used with the parameter map to configure the interface automatically. Additionally, we want to have a **Secure Access** environment with **Zero Trust** using a policy on the interface that initially blocks traffic until authentication occurs. 
 
 So how do we have our cake and eat it too...
 
-Luckily we can create a fully dynamic environment with a gated procedure as follows. You might build out the following EEM scripts to fully give that Dynamic look and feel. Typically, the types of devices where we might have issues like this where *MAB* or *EAP* are not going to work may be those which identify themselves in another way. In the following instance, we can use **PoE** power events to trigger an EEM. See the following code:
+Luckily we can create a fully dynamic environment with a gated procedure. You might build out the following EEM scripts to give that Dynamic look and feel entirely. Typically, the types of devices where we might have issues like this where *MAB* or *EAP* are not going to work maybe those which identify themselves in another way. In the following instance, we can use **PoE** power events to trigger an EEM. See the following code:
 
 ```
 event manager applet DETECT_SW_IEEE_POE_UP
@@ -955,9 +1001,9 @@ event manager applet DETECT_SW_IEEE_POE_UP
  action 99    cli command "exit"
 ``` 
 
-In this section we bind a new interface template for **ACCESS-POINTS** in the event a device powers up. This is an example only, and IP Phones would also be caught by this so be aware you might deal with that as I will outline later but from a knowledge point of view lets deal with this use-case.
+In this section, we bind a new interface template for **ACCESS-POINTS** if a device powers up. This is an example only, and this would also catch IP Phones, so be aware you might deal with that as I will outline later, but let's deal with this use-case from a knowledge point of view.
 
-The template then could be designed for either **low-impact mode** or a differing **service policy** allowing *MAB* before *DOT1x*.
+The template could be designed for either **low-impact mode** or a differing **service policy** allowing *MAB* before *DOT1x*.
 
 Two examples you might use for a differing **ACCESS-POINT** template. The first with *MAB* before *DOT1x*:
 
@@ -994,7 +1040,7 @@ template ACCESS_POINT
  description Access Point Interface
 ```
 
-If you need a trunk interface for this scenario you might add a **FLEXCONNECT** specific configuration like so:
+If you need a trunk interface for this scenario, you might add a **FLEXCONNECT** specific configuration like so:
 
 ```
 template FLEX_ACCESS_POINT
@@ -1013,7 +1059,7 @@ template FLEX_ACCESS_POINT
  ip access-group ACL-DEFAULT in
  description Flex Access Point Interface
 ```
-Alternatively, you might send this as a **AV-PAIR** withinn the **AUTHZ Profile** as part of the results of a **Authorization Policy**. You will notice the `access-session interface-template sticky timer 30` command which is required for this type of modification where **AV-PAIR** are sent from **ISE** or other **AAA**. ***Please Note:*** *do not forget the timer option as its required for dynamic modifications.*
+Alternatively, you might send this as an **AV-PAIR** within the **AUTHZ Profile** as part of the results of an **Authorization Policy**. The `access-session interface-template sticky timer 30` command is required for this type of modification where **AV-PAIR** are sent from **ISE** or other **AAA**. ***Please Note:*** *do not forget the timer option as it's required for dynamic modifications.* If the device was discovered to be an IP Phone, you could also choose to send the workstation template as part of the **AUTHZ Profile**.
 
 But you may say, we have modified the physical interface configuration, well we can reset that too to the **BASE CONFIG** through another EEM script as follows:
 
@@ -1050,14 +1096,14 @@ event manager applet DETECT_SW_INT_DOWN
  action 99    cli command "exit"
 ```
 
-This EEM script looks to make sure the interface is not a portchannel member and then reverts the interface to the **BASE CONFIG** automatically.
+This EEM script makes sure the interface is not a portchannel member and then reverts the interface to the **BASE CONFIG** automatically.
 
 ## Summary
-Congratulations, at this point you have successfully reviewed and may have adopted the various use cases or parts of them.
+Congratulations, at this point, you have successfully reviewed and may have adopted the various use cases or parts of them.
 
 The next set of labs will be to build on these concepts utilizing REST-API to push changes to DNA Center Templates and further automate the configuration in the network infrastructure. 
 
-The next **LAB** will tie all this together.
+The following **LAB** will tie all this together.
 
 ## Feedback
 If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
