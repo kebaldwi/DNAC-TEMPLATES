@@ -473,7 +473,7 @@ The next block of code sets up the VLANs and should the dynamic creation as ment
     tracking enable
    !
 ```
-Next we need to set up the macros, but in this case we will make use of **Autoconf** and **Templates**. **Autoconf** is a solution that can be used to manage port configurations for data or voice VLAN, quality of service (QoS) parameters, storm control, and MAC-based port security on end devices that are deployed in the access layer of a network. Device classification is enabled when you enable the Autoconf feature using the autoconf enable command in global configuration mode. The device detection acts as an event trigger, which in turn applies the appropriate automatic template to the interface. When the Autoconf feature is enabled using the autoconf enable command, the default Autoconf service policy is applied to all the interfaces. For more information about **[Autoconf](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9400/software/release/16-12/configuration_guide/nmgmt/b_1612_nmgmt_9400_cg/configuring_autoconf.pdf)**.
+Next we need to set up the macros, but in this case we will make use of **Autoconf** and **Templates**. **Autoconf** is a solution that can be used to manage port configurations for data or voice VLAN, quality of service (QoS) parameters, storm control, and MAC-based port security on end devices that are deployed in the access layer of a network. Device classification is enabled when you enable the Autoconf feature using the autoconf enable command in global configuration mode. The device detection acts as an event trigger, which in turn applies the appropriate automatic template to the interface. When the Autoconf feature is enabled using the autoconf enable command, the default Autoconf service policy is applied to all the interfaces. For more information about **[Autoconf](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9400/software/release/16-12/configuration_guide/nmgmt/b_1612_nmgmt_9400_cg/configuring_autoconf.pdf)** or alternatively [Autoconf](./configuring_autoconf.pdf)
 
 ```
    #INTERACTIVE
@@ -571,12 +571,14 @@ In the above code we apply the various previously defined Macros to configure th
 While we have configured all the various interfaces this does not take into account Authentication and Authorization scenarios. What it does though is sets us up nicely to reuse the templates calling them directly from Identity Services Engine in Authorization Policies.
 
 ## Step 5 - ***Non SDA IBNS2.0 Port Configuration - Use Case***
-The last section of this lab will walk through the various considerations for **IBNS2.0** and how to deal with host onboarding in an Non **SD-Access** Fabric environment. Once the Identity Services Engine is integrated with DNA Center, then not only do you get the benefit of pxgrid integration allowing for the building of policy, but the AAA Server section within Design will build out the various settings which inturn program the network access devices for AAA Network and Client Dot1x settings.
+The last sections of this lab will walk through the various considerations for **IBNS2.0** and how to deal with host onboarding in an Non **SD-Access** Fabric environment. Once the Identity Services Engine is integrated with DNA Center, then not only do you get the benefit of pxgrid integration allowing for the building of policy, but the AAA Server section within Design will build out the various settings which inturn program the network access devices for AAA Network and Client Dot1x settings.
+
+It is also important to understand that with **IBNS2.0** and templates or interfaces that are running in ***closed mode*** the dynamic capability of **Autoconf** is not going to operate because only EAP packets are being used off the interface initially until authentication occurs. If the interface is in ***low impact mode*** then and only then will **Autoconf** operate properly.
 
 Considering DNA Center will push at that point all the relevant IBNS2.0 settings to the device, this leaves us with the mere setting up of **Host Onboarding** which we will detail below.
 
 #### **Important Note:** 
-*We need to remember that for use of this section ISE needs to first have been integrated with DNA Center. Additionally the Design Settings will need to be modified for the sites to include at the very least **Client AAA***.
+*We need to remember that for use of this section ISE needs to first have been integrated with DNA Center. Additionally the Design Settings will need to be modified for the sites to include at the very least* **Client AAA**.
 
 ### ***Examine Code***
 We will take the script as amended from above which should look like this now;
@@ -831,7 +833,8 @@ Once the class maps and polcies have been defined we need to utilize them.
 ```
 Now that we have defined the various interface templates for use with the MQC DOT1X service policy. You have two options some prefer to call out a separate Guest interface template; however, because Dot1x technology actually automatically deals with that we will remove that template.
 
-Next we can then modify the parameter map to suit the policy.
+Next we can then modify the parameter map to suit the policy. Remembering that with **IBNS2.0** and templates or interfaces that are running in ***closed mode*** the dynamic capability of **Autoconf** is not going to operate because only EAP packets are allowed by **Secure Access** on the interface initially until authentication occurs. Alternatively, if the interface is in ***low impact mode*** then and only then will **Autoconf** operate properly. I always leave the config on the switch in case of that eventuality.
+
 
 ```
    #INTERACTIVE
@@ -914,10 +917,147 @@ Then we need to configure the various interfaces with the new interface template
 ```
 Now that we have defined all the various IBNS2.0 configuration on the switch as a device comes up on an interface the device classifier will automatically run logically attaching the interface template configuration of WORKSTATION onto an access port. If an Access Point is classified as being attached to the interface it will instead logically attach the interface template configuration of ACCESS_POINT. Within both those interface templates the DOT1X service policy will run and the device will be authenticated, and Identity Services Engine may at that point send a Change of Authorization and put the device in a differing VLAN or more.
 
+Lastly, to create a fully dynamic environment you might build out the following EEM scripts to fully give that Dynamic look and feel. Because of the **Autoconf** vs **Closed Mode** limitation we do not have a **Fully Dynamic environment**. Luckily, we have a way to resolve that issue. 
+
+## Step 6 - ***Non SDA IBNS2.0 Fully Dynamic Port Configuration - Use Case***
+So as explained we have a chicken and the egg scenario, whereby we can't use **Autoconf** with **Closed Mode** as no packets can pass which can be used with the parameter map to automatically configure the interface. Additionally we want to have a **Secure Access** environment with **Zero Trust** using a policy on the interface that initially blocks traffic until authentication occurs. 
+
+So how do we have our cake and eat it too...
+
+Luckily we can create a fully dynamic environment with a gated procedure as follows. You might build out the following EEM scripts to fully give that Dynamic look and feel. Typically, the types of devices where we might have issues like this where *MAB* or *EAP* are not going to work may be those which identify themselves in another way. In the following instance, we can use **PoE** power events to trigger an EEM. See the following code:
+
+```
+event manager applet DETECT_SW_IEEE_POE_UP
+ event syslog pattern "%.*POWER.*GRANTED.* Interface.*"
+ action 10    regexp "Interface ([^ ]+):" "$_syslog_msg" match intf
+ action 20    cli command "enable"
+ action 30    cli command "show run interface $intf | inc channel-group mode"
+ action 40    regexp "(^channel-group)" "$_cli_result"
+ action 50    if $_regexp_result ne "1"
+ action 50.10  puts "POE Device Detected. INSTALL LOWIMPACT on Interface $intf"
+ action 50.11  cli command "enable"
+ action 50.12  cli command "conf t"
+ action 50.13  cli command "default interface $intf"
+ action 50.14  cli command "interface $intf"
+ action 50.15  cli command " description AP CONFIG"
+ action 50.16  cli command " switchport access vlan 10"
+ action 50.17  cli command " switchport mode access"
+ action 50.18  cli command " switchport port-security maximum 3"
+ action 50.19  cli command " switchport port-security"
+ action 50.20  cli command " device-tracking attach-policy IPDT_POLICY"
+ action 50.21  cli command " snmp trap mac-notification change added"
+ action 50.22  cli command " snmp trap mac-notification change removed"
+ action 50.23  cli command " source template ACCESS_POINT"
+ action 50.24  cli command " spanning-tree portfast"
+ action 50.25  cli command " spanning-tree bpduguard enable"
+ action 80    end
+ action 90    cli command "write"
+ action 99    cli command "exit"
+``` 
+
+In this section we bind a new interface template for **ACCESS-POINTS** in the event a device powers up. This is an example only, and IP Phones would also be caught by this so be aware you might deal with that as I will outline later but from a knowledge point of view lets deal with this use-case.
+
+The template then could be designed for either **low-impact mode** or a differing **service policy** allowing *MAB* before *DOT1x*.
+
+Two examples you might use for a differing **ACCESS-POINT** template. The first with *MAB* before *DOT1x*:
+
+```
+template ACCESS_POINT
+ dot1x pae authenticator
+ dot1x timeout supp-timeout 7
+ dot1x max-req 3
+ switchport access vlan 10
+ mab
+ access-session closed
+ access-session port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ service-policy type control subscriber PMAP_DefaultWiredDot1xClosedAuth_MAB_1X
+ ip access-group ACL-DEFAULT in
+ description Access Point Interface
+```
+
+The second example is low impact mode, and session-access closed is removed:
+
+```
+template ACCESS_POINT
+ dot1x pae authenticator
+ dot1x timeout supp-timeout 7
+ dot1x max-req 3
+ switchport access vlan 10
+ mab
+ access-session port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ service-policy type control subscriber PMAP_DefaultWiredDot1xClosedAuth_MAB_1X
+ ip access-group ACL-DEFAULT in
+ description Access Point Interface
+```
+
+If you need a trunk interface for this scenario you might add a **FLEXCONNECT** specific configuration like so:
+
+```
+template FLEX_ACCESS_POINT
+ dot1x pae authenticator
+ dot1x timeout supp-timeout 7
+ dot1x max-req 3
+ switchport trunk native vlan 10
+ switchport trunk allowed vlan 10,20,30,40,999
+ switchport mode trunk
+ mab
+ access-session port-control auto
+ access-session interface-template sticky timer 30
+ authentication periodic
+ authentication timer reauthenticate server
+ service-policy type control subscriber PMAP_DefaultWiredDot1xClosedAuth_MAB_1X
+ ip access-group ACL-DEFAULT in
+ description Flex Access Point Interface
+```
+Alternatively, you might send this as a **AV-PAIR** withinn the **AUTHZ Profile** as part of the results of a **Authorization Policy**. You will notice the `access-session interface-template sticky timer 30` command which is required for this type of modification where **AV-PAIR** are sent from **ISE** or other **AAA**. ***Please Note:*** *do not forget the timer option as its required for dynamic modifications.*
+
+But you may say, we have modified the physical interface configuration, well we can reset that too to the **BASE CONFIG** through another EEM script as follows:
+
+```
+event manager applet DETECT_SW_INT_DOWN
+ event syslog pattern "%LINK.* Interface.* changed state to .* down"
+ action 10    regexp "Interface ([^ ]+)," "$_syslog_msg" match intf
+ action 20    cli command "enable"
+ action 30    cli command "show run interface $intf | inc channel-group mode"
+ action 40    regexp "(^channel-group)" "$_cli_result"
+ action 50    if $_regexp_result ne "1"
+ action 50.10  puts "AP Trunk Interface DOWN. INSTALL BASECONFIG on Interface $intf"
+ action 50.11  cli command "enable"
+ action 50.12  cli command "conf t"
+ action 50.13  cli command "default interface $intf"
+ action 50.14  cli command "interface $intf"
+ action 50.15  cli command "access-session inherit disable interface-template-sticky"
+ action 50.16  cli command "default interface $intf"
+ action 50.17  cli command "interface $intf"
+ action 50.18  cli command " description BASE CONFIG"
+ action 50.20  cli command " switchport mode access"
+ action 50.21  cli command " switchport port-security maximum 3"
+ action 50.22  cli command " switchport port-security"
+ action 50.23  cli command " device-tracking attach-policy IPDT_POLICY"
+ action 50.24  cli command " snmp trap mac-notification change added"
+ action 50.25  cli command " snmp trap mac-notification change removed"
+ action 50.26  cli command " source template WORKSTATION"
+ action 50.27  cli command " spanning-tree portfast"
+ action 50.28  cli command " spanning-tree bpduguard enable"
+ action 60    else
+ action 70     puts "Non-EMM port Interface $intf went down."
+ action 80    end
+ action 90    cli command "write"
+ action 99    cli command "exit"
+```
+
+This EEM script looks to make sure the interface is not a portchannel member and then reverts the interface to the **BASE CONFIG** automatically.
+
 ## Summary
 Congratulations, at this point you have successfully reviewed and may have adopted the various use cases or parts of them.
 
 The next set of labs will be to build on these concepts utilizing REST-API to push changes to DNA Center Templates and further automate the configuration in the network infrastructure. 
+
+The next **LAB** will tie all this together.
 
 ## Feedback
 If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
