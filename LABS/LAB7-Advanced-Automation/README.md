@@ -794,7 +794,6 @@ As we would with MQC, once we have defined the various class maps, we can then c
 	 event authorization-failure match-all
 	  10 class AUTHC_SUCCESS-AUTHZ_FAIL do-until-failure
 	   10 authentication-restart 60
-
    policy-map type control subscriber PMAP_DefaultWiredDot1xClosedAuth_MAB_1X
 	 event session-started match-all
 	  10 class always do-until-failure
