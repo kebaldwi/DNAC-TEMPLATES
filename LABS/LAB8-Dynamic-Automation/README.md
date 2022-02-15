@@ -31,9 +31,9 @@ While we could deploy more extensive settings for deployment, we will limit the 
 We will load a specific project now which encompasses the elements discussed in lab seven. The project will include many regular templates which are deployed as part of a Day N Composite Template. Go to the ***Template Editor*** to complete the next set of tasks. As we discussed in lab four the ***Template Editor*** allows for the import and export of templates and projects within **DNA Center** along with the ability to clone them.
 
 ### Step 1 - ***Import Project with Templates***
-Download and import the project within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/templates/2125templates/DNAC_Template_Lab_DayN_project.json">⬇︎DNAC_Template_Lab_DayN_project.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then use the previously built project within Lab 3 and build the templates located within the following <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/templates/Platinum_Templates.zip">⬇︎Platinum_Templates.zip⬇︎</a> file located within this lab. 
+Download and import the project within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-DNACTemplates-Dynamic-IBN-Autoconf-Project.json">⬇︎DNAC_Template_Lab_DayN_project.json⬇︎</a> file.
 
-Previously in Lab 3, we created a project where we assigned a template to the site and provisioned it. We will now expand on that by importing a project with the same name overtop the current project, thereby importing additional regular templates. Take a few moments and examine the construction of these templates, as each has a specific form and function. Their design is modular to allow reuse of them within other composite templates for other switches or routers.
+Please un-zip the file and import the *json* file which will automatically create a project and included templates within. Use the following steps to import the project.
 
 1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor*.
    ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
@@ -46,7 +46,9 @@ Previously in Lab 3, we created a project where we assigned a template to the si
    ![json](./images/DNAC-ProjectImport.png?raw=true "Import JSON")
 6. Once the project is imported, select it to view each of the template files within it.
    ![json](./images/DNAC-ProjectFiles.png?raw=true "Import JSON")
- 
+
+Take a few moments and examine the construction of these templates, as each has a specific form and function. Their design is modular to allow reuse of them within other composite templates for other switches or routers. 
+
 The project we imported contains the following templates:
 1. **AAA** for local AAA services
    ![json](./images/DNAC-Project-AAA-Template.png?raw=true "Import JSON")
