@@ -31,7 +31,7 @@ While we could deploy more extensive settings for deployment, we will limit the 
 We will load a specific project now which encompasses the elements discussed in lab seven. The project will include many regular templates which are deployed as part of a Day N Composite Template. Go to the ***Template Editor*** to complete the next set of tasks. As we discussed in lab four the ***Template Editor*** allows for the import and export of templates and projects within **DNA Center** along with the ability to clone them.
 
 ### Step 1 - ***Import Project with Templates***
-Download and import the project within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-DNACTemplates-Dynamic-IBN-Autoconf-Project.json">⬇︎DNAC_Template_Lab_DayN_project.json⬇︎</a> file.
+Download and import the project within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-DNACTemplates-Dynamic-IBN-Autoconf-Project.json">⬇︎DCLOUD_DNACTemplate_Dynamic_project.json⬇︎</a> file.
 
 Please un-zip the file and import the *json* file which will automatically create a project and included templates within. Use the following steps to import the project.
 
