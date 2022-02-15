@@ -52,7 +52,7 @@ The project we imported contains the following templates:
 
 Additionally, it contains a Composite Template. The composite template will allow us to reuse multiple Regular templates, thereby allowing modularity. Thus we can keep our configuration scripts in smaller files allowing reuse across various platforms. Subsequently helps in troubleshooting as the configurations become smaller and less complex as a result.
 
-## Lab Section 2 - DNA Center Composite Template Preparation
+## Lab Section 3 - DNA Center Composite Template Preparation
 
 ### Step 1 - ***Create Composite Template***
 Within the project is a Composite Template, but the steps involved to create one are simple. **The next steps are optional**.
@@ -122,7 +122,7 @@ Next, we need to assign the DayN Composite Template to a site using the Network 
 
 Now the Composite Template has been applied to the Network Profile, any changes made to the template would immediately be ready for provisioning to the sites aligned to the profile where the template is deployed. This allows for ongoing changes and modifications to the network infrastructure.
 
-## Lab Section 3 - Provisioning
+## Lab Section 4 - Provisioning
 At this point, DNAC is set up and ready to provision the new composite template to the device. This next set of sequences will push the various Network Settings, Services, and DayN Templates as part of the composite sequence to the device.
 
 ### Step 1 - ***Provisioning the Device***

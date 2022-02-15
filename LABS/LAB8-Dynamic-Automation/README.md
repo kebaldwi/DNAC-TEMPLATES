@@ -24,3 +24,43 @@ While **Autoconf** is a tremendous step forward for **non closed mode** ports, i
 
 Luckily we can create a fully dynamic environment with a gated procedure. We include EEM scripts to give that Dynamic look and feel in this Lab entirely. Typically, the types of devices where we might have issues like this where *MAB* or *EAP* are not going to work fast enough, maybe those which identify themselves in another way. In those instances, we can use **PoE** power events to trigger an EEM. Likewise, on a port down event, we can revert the configuration. Those aspects are built into this Lab.
 
+## Lab Section 1 - DNA Center Design Preparation
+While we could deploy more extensive settings for deployment, we will limit the configuration to the minimum necessary to perform this step, building off the completed tasks in labs one, [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB1-PNP-PREP/) and two, [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/).
+
+## Lab Section 2 - DNA Center Dynamic Composite Template Preparation
+We will load a specific project now which encompasses the elements discussed in lab seven. The project will include many regular templates which are deployed as part of a Day N Composite Template. Go to the ***Template Editor*** to complete the next set of tasks. As we discussed in lab four the ***Template Editor*** allows for the import and export of templates and projects within **DNA Center** along with the ability to clone them.
+
+### Step 1 - ***Import Project with Templates***
+Download and import the project within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/templates/2125templates/DNAC_Template_Lab_DayN_project.json">⬇︎DNAC_Template_Lab_DayN_project.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then use the previously built project within Lab 3 and build the templates located within the following <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/templates/Platinum_Templates.zip">⬇︎Platinum_Templates.zip⬇︎</a> file located within this lab. 
+
+Previously in Lab 3, we created a project where we assigned a template to the site and provisioned it. We will now expand on that by importing a project with the same name overtop the current project, thereby importing additional regular templates. Take a few moments and examine the construction of these templates, as each has a specific form and function. Their design is modular to allow reuse of them within other composite templates for other switches or routers.
+
+1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor*.
+   ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
+2. Within the **template editor**, left-click the ⨁ icon to the right of find template and click **Import Project(s)** within the menu.  
+   ![json](./images/DNAC-ProjectImportBegin.png?raw=true "Import JSON")
+3. Download the file above *DNAC_Template_Lab_DayN_project.json* to be imported into the DNA Center. Once downloaded, extract the file.
+4. From the **Import Project(s)** window, click **Select a file from your computer** from the explorer window, select the extracted JSON file and click open. 
+   ![json](./images/DNAC-ProjectSelect.png?raw=true "Import JSON")
+5. Click **Import**, and the project and all the templates within it will be imported.   
+   ![json](./images/DNAC-ProjectImport.png?raw=true "Import JSON")
+6. Once the project is imported, select it to view each of the template files within it.
+   ![json](./images/DNAC-ProjectFiles.png?raw=true "Import JSON")
+ 
+The project we imported contains the following templates:
+1. **AAA** for local AAA services
+   ![json](./images/DNAC-Project-AAA-Template.png?raw=true "Import JSON")
+2. **System Management** for global system settings
+   ![json](./images/DNAC-Project-SysMgmt-Template.png?raw=true "Import JSON")
+3. **VLANs Ports per DF** to add VLAN and port configuration
+   ![json](./images/DNAC-Project-PortAssign-Template.png?raw=true "Import JSON")
+4. **Local User Management** for additional user accounts
+   ![json](./images/DNAC-Project-USR-Template.png?raw=true "Import JSON")
+5. **Stacking** to set up powerstack and stack priority
+   ![json](./images/DNAC-Project-Stacking-Template.png?raw=true "Import JSON")
+6. **Access Lists** to restrict management access
+   ![json](./images/DNAC-Project-ACL-Template.png?raw=true "Import JSON")
+7. **Automatic Uplink Naming** to automatically name uplinks 
+   ![json](./images/DNAC-Project-AUN-Template.png?raw=true "Import JSON")
+
+Additionally, it contains a Composite Template. The composite template will allow us to reuse multiple Regular templates, thereby allowing modularity. Thus we can keep our configuration scripts in smaller files allowing reuse across various platforms. Subsequently helps in troubleshooting as the configurations become smaller and less complex as a result.
