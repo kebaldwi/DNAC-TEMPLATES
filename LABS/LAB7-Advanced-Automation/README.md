@@ -695,6 +695,19 @@ We will take the script as amended from above, which should look like this now;
    interface range gi 1/0/10 - 11
     #uplink_physical
 ```
+
+Lastly, you could modify how you address ports using the built-in variable as it removes tthe need for indexing and additionally can be used with logic to address port types.
+
+```
+   ##Access Port Configuration
+   #foreach( $interface in $__interface )
+     #if( $interface.portMode == "access" && $interface.interfaceType == "Physical")
+       interface $interface.portName
+        #access_interface
+     #end
+   #end
+```
+
 As it stands, this is not a bad place to start, and only a few additions and modifications are required to allow for IBNS2.0.
 
 ### ***Modify Code***
