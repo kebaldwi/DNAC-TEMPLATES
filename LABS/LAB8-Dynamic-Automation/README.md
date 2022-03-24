@@ -38,12 +38,15 @@ Import the collection into postman.
 Download and import the environment within the ***Postman*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/postman/DCLOUD_DNACTemplateLabs.postman_environment.json">⬇︎DCLOUD_DNACTemplateLabs.postman_environment.json⬇︎</a> file.
 
 Import the environment into postman
+
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 
 Turn off SSL in the settings of Postman
+
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 
 This collection is built with a flow and delay timers wait for the collection to finish entirely.
+
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 
 ### Step 2 - ***Import Project with Templates***
