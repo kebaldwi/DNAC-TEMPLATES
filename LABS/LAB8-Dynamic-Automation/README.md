@@ -143,4 +143,9 @@ In this section we will prepare Domain Name System (DNS) and Dynamic Host Config
 The reasons for the configurations made here are detailed heavily in Lab 2 titled [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/)
 
 1. Download the powershell script to the ***windows server*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/scripts/powershell.ps1">⬇︎powershell.ps1⬇︎</a> file.
-2.
+2. Once downloaded, extract the file.
+3. Right click on the file and run with powershell.
+
+At this point all the DNS and DHCP configuration on the ***windows server*** will be generated.
+
+
