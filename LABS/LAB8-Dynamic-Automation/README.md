@@ -60,7 +60,9 @@ Should you desire to deploy rapidly and build the lab faster then use the follow
 
 ### Step 4 - ***Run the Collection within Postman***
 This collection is built with a flow and delay timers wait for the collection to finish entirely.
-
+1. If not open, open the **postman** application from the desktop. Once the application is open select *Collections* and then the '...' link and select **run collection**
+![json](./images/underconstruction.png?raw=true "Import JSON")
+2. On the right ensure all API are selected and click run collection. 
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 
 ## Lab Section 2 - DNA Center Template Preparation
@@ -71,7 +73,7 @@ We will now import the various templates for use in this lab. Three will be util
 3. Dynamic DayN Composite Project & Templates
 
 ### Step 1 - ***Import Onboarding Template***
-The Onboarding Template previously discussed in Lab 2 will be used to Plug and Play a switch within the environment. for more information on this please see 
+The Onboarding Template previously discussed in Lab 2 will be used to Plug and Play a switch within the environment. for more information on this please see [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/)
 
 Download and import the Onboarding Template within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-DNACTemplates-OnboardingTemplate.json">⬇︎DCLOUD-DNACTemplates-OnboardingTemplate.json⬇︎</a> file.
 
@@ -90,30 +92,9 @@ Use the following steps to import the project.
 5. Click import to install and import the template.
 
 ### Step 2 - ***Import Lab Preparation Project***
+The Lab Preparation Project and Templates will be used to prepare the environment.
+
 Download and import the Onboarding Template within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-DNACTemplates-OnboardingTemplate.json">⬇︎DCLOUD-DNACTemplates-OnboardingTemplate.json⬇︎</a> file.
-
-1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor*.
-   ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
-2. Within the **template editor**, left-click the ⨁ icon to the right of find template and click **Import Project(s)** within the menu.  
-   ![json](./images/DNAC-ProjectImportBegin.png?raw=true "Import JSON")
-3. Download the file above *DNAC_Template_Lab_DayN_project.json* to be imported into the DNA Center. Once downloaded, extract the file.
-4. From the **Import Project(s)** window, click **Select a file from your computer** from the explorer window, select the extracted JSON file and click open. 
-   ![json](./images/DNAC-ProjectSelect.png?raw=true "Import JSON")
-5. Click **Import**, and the project and all the templates within it will be imported.   
-   ![json](./images/DNAC-ProjectImport.png?raw=true "Import JSON")
-6. Once the project is imported, select it to view each of the template files within it.
-   ![json](./images/DNAC-ProjectFiles.png?raw=true "Import JSON")
- 
-Import the environment into DNA Centers ***Template Editor***
-
-![json](./images/underconstruction.png?raw=true "Import JSON")
-
-### Step 3 - ***Import Dynamic DayN Project with Templates***
-Download and import the Dynamic DayN Project within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-DNACTemplates-Dynamic-IBN-Autoconf-Project.json">⬇︎DCLOUD-DNACTemplates-Dynamic-IBN-Autoconf-Project.json⬇︎</a> file.
-
-Import the environment into DNA Centers ***Template Editor***
-
-![json](./images/underconstruction.png?raw=true "Import JSON")
 
 Please un-zip the file and import the *json* file which will automatically create a project and included templates within. Use the following steps to import the project.
 
@@ -129,26 +110,25 @@ Please un-zip the file and import the *json* file which will automatically creat
 6. Once the project is imported, select it to view each of the template files within it.
    ![json](./images/DNAC-ProjectFiles.png?raw=true "Import JSON")
 
+### Step 3 - ***Import Dynamic DayN Project with Templates***
+The Dynamic DayN Project contains a composite template and various regular templates used in a workflow to build out the use cases studied in Lab 7. For more information on Lab 7 please see [Advanced Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB7-Advanced-Automation/)
+
+Download and import the Dynamic DayN Project within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-DNACTemplates-Dynamic-IBN-Autoconf-Project.json">⬇︎DCLOUD-DNACTemplates-Dynamic-IBN-Autoconf-Project.json⬇︎</a> file.
+
+Please un-zip the file and import the *json* file which will automatically create a project and included templates within. Use the following steps to import the project.
+
+1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor*.
+   ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
+2. Within the **template editor**, left-click the ⨁ icon to the right of find template and click **Import Project(s)** within the menu.  
+   ![json](./images/DNAC-ProjectImportBegin.png?raw=true "Import JSON")
+3. Download the file above *DNAC_Template_Lab_DayN_project.json* to be imported into the DNA Center. Once downloaded, extract the file.
+4. From the **Import Project(s)** window, click **Select a file from your computer** from the explorer window, select the extracted JSON file and click open. 
+   ![json](./images/DNAC-ProjectSelect.png?raw=true "Import JSON")
+5. Click **Import**, and the project and all the templates within it will be imported.   
+   ![json](./images/DNAC-ProjectImport.png?raw=true "Import JSON")
+6. Once the project is imported, select it to view each of the template files within it.
+   ![json](./images/DNAC-ProjectFiles.png?raw=true "Import JSON")
+
+Take a few moments and examine the construction of these projects and templates, as each has a specific function. Their design is modular to allow reuse of them within other composite templates for other switches or routers. 
 
 
-
-
-Take a few moments and examine the construction of these templates, as each has a specific form and function. Their design is modular to allow reuse of them within other composite templates for other switches or routers. 
-
-The project we imported contains the following templates:
-1. **AAA** for local AAA services
-   ![json](./images/DNAC-Project-AAA-Template.png?raw=true "Import JSON")
-2. **System Management** for global system settings
-   ![json](./images/DNAC-Project-SysMgmt-Template.png?raw=true "Import JSON")
-3. **VLANs Ports per DF** to add VLAN and port configuration
-   ![json](./images/DNAC-Project-PortAssign-Template.png?raw=true "Import JSON")
-4. **Local User Management** for additional user accounts
-   ![json](./images/DNAC-Project-USR-Template.png?raw=true "Import JSON")
-5. **Stacking** to set up powerstack and stack priority
-   ![json](./images/DNAC-Project-Stacking-Template.png?raw=true "Import JSON")
-6. **Access Lists** to restrict management access
-   ![json](./images/DNAC-Project-ACL-Template.png?raw=true "Import JSON")
-7. **Automatic Uplink Naming** to automatically name uplinks 
-   ![json](./images/DNAC-Project-AUN-Template.png?raw=true "Import JSON")
-
-Additionally, it contains a Composite Template. The composite template will allow us to reuse multiple Regular templates, thereby allowing modularity. Thus we can keep our configuration scripts in smaller files allowing reuse across various platforms. Subsequently helps in troubleshooting as the configurations become smaller and less complex as a result.
