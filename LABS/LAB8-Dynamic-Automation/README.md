@@ -133,19 +133,18 @@ Please un-zip the file and import the *json* file which will automatically creat
 Take a few moments and examine the construction of these projects and templates, as each has a specific function. Their design is modular to allow reuse of them within other composite templates for other switches or routers. 
 
 ## Lab Section 3 - DHCP & DNS Service Preparation
-In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server for the lab environment.
-
-1. Onboarding Template
-2. Lab Preparation Project & Templates
-3. Dynamic DayN Composite Project & Templates
-
-### Step 1 - ***DHCP & DNS Setup***
-The reasons for the configurations made here are detailed heavily in Lab 2 titled [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/)
+In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server for the lab environment. The reasons for the configurations made here are detailed heavily in Lab 2 titled [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/)
 
 1. Download the powershell script to the ***windows server*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/scripts/powershell.ps1">⬇︎powershell.ps1⬇︎</a> file.
 2. Once downloaded, extract the file.
 3. Right click on the file and run with powershell.
 
 At this point all the DNS and DHCP configuration on the ***windows server*** will be generated.
+
+## Lab Section 4 - Discovery of Existing Infrastructure
+In this section we will discover the various devices within DCLOUD to allow for us to prepare them for use in our Lab.
+1. Navigate to the **Discovery** within DNA Center through the menu *Tools>Template Editor*.
+   ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
+
 
 
