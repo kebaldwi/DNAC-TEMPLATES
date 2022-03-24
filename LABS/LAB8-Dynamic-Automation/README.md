@@ -139,5 +139,8 @@ In this section we will prepare Domain Name System (DNS) and Dynamic Host Config
 2. Lab Preparation Project & Templates
 3. Dynamic DayN Composite Project & Templates
 
-### Step 1.2 - ***DHCP Setup***
-We need a DHCP scope to temporarily supply the address within the management network to complete the configuration 
+### Step 1 - ***DHCP & DNS Setup***
+The reasons for the configurations made here are detailed heavily in Lab 2 titled [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/)
+
+1. Download the powershell script to the ***windows server*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/scripts/powershell.ps1">⬇︎powershell.ps1⬇︎</a> file.
+2.
