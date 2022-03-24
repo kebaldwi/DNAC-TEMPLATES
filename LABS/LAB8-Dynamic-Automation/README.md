@@ -67,17 +67,16 @@ Import the environment into DNA Centers ***Template Editor*** by un-zip the file
 
 Use the following steps to import the project.
 
-1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor*.
+1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor* 
    ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
-2. Within the **template editor**, left-click the ⨁ icon to the right of find template and click **Import Template(s)** within the menu.  
-   ![json](./images/underconstruction.png?raw=true "Import JSON")
-3. Download the file above *DNAC_Template_Lab_DayN_project.json* to be imported into the DNA Center. Once downloaded, extract the file.
-4. From the **Import Template(s)** window, click **Select a file from your computer** from the explorer window, select the extracted JSON file and click open. 
-   ![json](./images/underconstruction.png?raw=true "Import JSON")
-5. Click **Import**, and the project and all the templates within it will be imported.   
-   ![json](./images/underconstruction.png?raw=true "Import JSON")
-6. Once the project is imported, select it to view each of the template files within it.
-   ![json](./images/underconstruction.png?raw=true "Import JSON")
+2. Hover over the right side of the **onboarding templates**, and a small ⚙ gear icon will appear. Select **Import Template(s)** from the menu.    
+   ![json](./images/DNAC-TemplateImport.png?raw=true "Import JSON")
+3. Click the link to select files from the local computer    
+   ![json](./images/DNAC-TemplateSelection.png?raw=true "Import JSON")
+4. In the Windows explorer window search for the extracted json file, select it and open it into the import window 
+   ![json](./images/DNAC-TemplatedSelected.png?raw=true "Import JSON")
+5. Click import to install and import the template.
+
 
 
 
