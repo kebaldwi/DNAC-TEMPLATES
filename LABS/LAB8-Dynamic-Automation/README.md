@@ -133,9 +133,11 @@ Please un-zip the file and import the *json* file which will automatically creat
 Take a few moments and examine the construction of these projects and templates, as each has a specific function. Their design is modular to allow reuse of them within other composite templates for other switches or routers. 
 
 ## Lab Section 3 - DHCP & DNS Service Preparation
-We will now import the various templates for use in this lab. Three will be utilized:
+In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server for the lab environment.
 
 1. Onboarding Template
 2. Lab Preparation Project & Templates
 3. Dynamic DayN Composite Project & Templates
 
+### Step 1.2 - ***DHCP Setup***
+We need a DHCP scope to temporarily supply the address within the management network to complete the configuration 
