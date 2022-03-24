@@ -63,9 +63,25 @@ We will now import the various templates for use in this lab. Three will be util
 ### Step 1 - ***Import Onboarding Template***
 Download and import the Onboarding Template within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-DNACTemplates-OnboardingTemplate.json">⬇︎DCLOUD-DNACTemplates-OnboardingTemplate.json⬇︎</a> file.
 
-Import the environment into DNA Centers ***Template Editor***
+Import the environment into DNA Centers ***Template Editor*** by un-zip the file and import the *json* file which will automatically create a template within the onboarding template project. 
 
-![json](./images/underconstruction.png?raw=true "Import JSON")
+Use the following steps to import the project.
+
+1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor*.
+   ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
+2. Within the **template editor**, left-click the ⨁ icon to the right of find template and click **Import Template(s)** within the menu.  
+   ![json](./images/underconstruction.png?raw=true "Import JSON")
+3. Download the file above *DNAC_Template_Lab_DayN_project.json* to be imported into the DNA Center. Once downloaded, extract the file.
+4. From the **Import Template(s)** window, click **Select a file from your computer** from the explorer window, select the extracted JSON file and click open. 
+   ![json](./images/underconstruction.png?raw=true "Import JSON")
+5. Click **Import**, and the project and all the templates within it will be imported.   
+   ![json](./images/underconstruction.png?raw=true "Import JSON")
+6. Once the project is imported, select it to view each of the template files within it.
+   ![json](./images/underconstruction.png?raw=true "Import JSON")
+
+
+
+
 
 ### Step 2 - ***Import Lab Preparation Project***
 Download and import the Onboarding Template within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-DNACTemplates-OnboardingTemplate.json">⬇︎DCLOUD-DNACTemplates-OnboardingTemplate.json⬇︎</a> file.
@@ -74,12 +90,12 @@ Import the environment into DNA Centers ***Template Editor***
 
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 
+### Step 3 - ***Import Dynamic DayN Project with Templates***
+Download and import the Dynamic DayN Project within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-DNACTemplates-Dynamic-IBN-Autoconf-Project.json">⬇︎DCLOUD-DNACTemplates-Dynamic-IBN-Autoconf-Project.json⬇︎</a> file.
 
+Import the environment into DNA Centers ***Template Editor***
 
-We will load a specific project now which encompasses the elements discussed in lab seven. The project will include many regular templates which are deployed as part of a Day N Composite Template. Go to the ***Template Editor*** to complete the next set of tasks. As we discussed in lab four the ***Template Editor*** allows for the import and export of templates and projects within **DNA Center** along with the ability to clone them.
-
-### Step 1 - ***Import Project with Templates***
-Download and import the project within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-DNACTemplates-Dynamic-IBN-Autoconf-Project.json">⬇︎DCLOUD_DNACTemplate_Dynamic_project.json⬇︎</a> file.
+![json](./images/underconstruction.png?raw=true "Import JSON")
 
 Please un-zip the file and import the *json* file which will automatically create a project and included templates within. Use the following steps to import the project.
 
@@ -94,6 +110,10 @@ Please un-zip the file and import the *json* file which will automatically creat
    ![json](./images/DNAC-ProjectImport.png?raw=true "Import JSON")
 6. Once the project is imported, select it to view each of the template files within it.
    ![json](./images/DNAC-ProjectFiles.png?raw=true "Import JSON")
+
+
+
+
 
 Take a few moments and examine the construction of these templates, as each has a specific form and function. Their design is modular to allow reuse of them within other composite templates for other switches or routers. 
 
