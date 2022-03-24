@@ -60,7 +60,7 @@ Should you desire to deploy rapidly and build the lab faster then use the follow
 
 ### Step 4 - ***Run the Collection within Postman***
 This collection is built with a flow and delay timers wait for the collection to finish entirely.
-1. If not open, open the **postman** application from the desktop. Once the application is open select *Collections* and then the '...' link and select **run collection**.
+1. If not open, open the **postman** application from the desktop. Once the application is open select *Collections* and then the '...' link and select **run collection**. 
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 2. On the right ensure all API are selected and click run collection. 
 ![json](./images/underconstruction.png?raw=true "Import JSON")
