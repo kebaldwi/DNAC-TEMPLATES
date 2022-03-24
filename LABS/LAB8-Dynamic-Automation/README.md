@@ -26,6 +26,7 @@ While **Autoconf** is a tremendous step forward for **non closed mode** ports, i
 
 Luckily we can create a fully dynamic environment with a gated procedure. We include EEM scripts to give that Dynamic look and feel in this Lab entirely. Typically, the types of devices where we might have issues like this where *MAB* or *EAP* are not going to work fast enough, maybe those which identify themselves in another way. In those instances, we can use **PoE** power events to trigger an EEM. Likewise, on a port down event, we can revert the configuration. Those aspects are built into this Lab.
 
+# Lab Preparation
 ## Lab Section 1 - DNA Center Design Preparation
 While we could deploy more extensive settings for deployment, we will limit the configuration to the minimum necessary to perform this step, building off the completed tasks in labs one, [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB1-PNP-PREP/) and two, [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/).
 
@@ -131,4 +132,10 @@ Please un-zip the file and import the *json* file which will automatically creat
 
 Take a few moments and examine the construction of these projects and templates, as each has a specific function. Their design is modular to allow reuse of them within other composite templates for other switches or routers. 
 
+## Lab Section 3 - DHCP & DNS Service Preparation
+We will now import the various templates for use in this lab. Three will be utilized:
+
+1. Onboarding Template
+2. Lab Preparation Project & Templates
+3. Dynamic DayN Composite Project & Templates
 
