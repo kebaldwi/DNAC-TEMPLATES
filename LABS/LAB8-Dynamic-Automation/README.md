@@ -41,7 +41,6 @@ Should you desire to deploy rapidly and build the lab faster then use the follow
 5. Then click import and the collection should be loaded into the collections as shown.
 ![json](./images/Postman-Post-Collection-Import.png?raw=true "Import JSON")
 
-
 ### Step 2 - ***Import Postman Environment***
 1. Download and import the environment within the ***Postman*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/postman/DCLOUD_DNACTemplateLabs.postman_environment.json">⬇︎DCLOUD_DNACTemplateLabs.postman_environment.json⬇︎</a> file.
 2. Extract the file to the desktop using **Winrar** to expand them
@@ -53,7 +52,6 @@ Should you desire to deploy rapidly and build the lab faster then use the follow
 ![json](./images/Postman-Post-Environment-Import.png?raw=true "Import JSON")
 6. Next we will choose the environment by selecting the arrow on the top right of postman and then Selecting `DNAC Templates Lab` from the drop down so that the window looks as shown here. 
 ![json](./images/Postman-Environment-Selection.png?raw=true "Import JSON")
-
 
 ### Step 3 - ***Turn off SSL validation for LAB purposes within Postman***
 1. Turn off SSL verification for lab purposes in the settings of Postman by click the **Gear** icon to select **settings** and **deselect** `SSL certificate verification` and then close the settings window. 
@@ -73,6 +71,8 @@ We will now import the various templates for use in this lab. Three will be util
 3. Dynamic DayN Composite Project & Templates
 
 ### Step 1 - ***Import Onboarding Template***
+The Onboarding Template previously discussed in Lab 2 will be used to Plug and Play a switch within the environment. for more information on this please see 
+
 Download and import the Onboarding Template within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-DNACTemplates-OnboardingTemplate.json">⬇︎DCLOUD-DNACTemplates-OnboardingTemplate.json⬇︎</a> file.
 
 Import the environment into DNA Centers ***Template Editor*** by un-zip the file and import the *json* file which will automatically create a template within the onboarding template project. 
@@ -89,14 +89,21 @@ Use the following steps to import the project.
    ![json](./images/DNAC-TemplatedSelected.png?raw=true "Import JSON")
 5. Click import to install and import the template.
 
-
-
-
-
-
 ### Step 2 - ***Import Lab Preparation Project***
 Download and import the Onboarding Template within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-DNACTemplates-OnboardingTemplate.json">⬇︎DCLOUD-DNACTemplates-OnboardingTemplate.json⬇︎</a> file.
 
+1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor*.
+   ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
+2. Within the **template editor**, left-click the ⨁ icon to the right of find template and click **Import Project(s)** within the menu.  
+   ![json](./images/DNAC-ProjectImportBegin.png?raw=true "Import JSON")
+3. Download the file above *DNAC_Template_Lab_DayN_project.json* to be imported into the DNA Center. Once downloaded, extract the file.
+4. From the **Import Project(s)** window, click **Select a file from your computer** from the explorer window, select the extracted JSON file and click open. 
+   ![json](./images/DNAC-ProjectSelect.png?raw=true "Import JSON")
+5. Click **Import**, and the project and all the templates within it will be imported.   
+   ![json](./images/DNAC-ProjectImport.png?raw=true "Import JSON")
+6. Once the project is imported, select it to view each of the template files within it.
+   ![json](./images/DNAC-ProjectFiles.png?raw=true "Import JSON")
+ 
 Import the environment into DNA Centers ***Template Editor***
 
 ![json](./images/underconstruction.png?raw=true "Import JSON")
