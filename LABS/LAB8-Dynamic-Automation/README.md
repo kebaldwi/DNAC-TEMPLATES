@@ -29,30 +29,29 @@ While we could deploy more extensive settings for deployment, we will limit the 
 
 Should you desire to deploy rapidly and build the lab faster then use the following approach:
 
-### Step 1 - ***Import Postman Collection with Environment***
+### Step 1 - ***Import Postman Collection***
 Download and import the collection within the ***Postman*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/postman/DCLOUD_DNACTemplatesLab_Workflow.postman_collection.json">⬇︎DCLOUD_DNACTemplateLab_Workflow.postman_collection.json⬇︎</a> file.
 
 Import the collection into postman.
 
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 
+### Step 2 - ***Import Postman Environment***
 Download and import the environment within the ***Postman*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/postman/DCLOUD_DNACTemplateLabs.postman_environment.json">⬇︎DCLOUD_DNACTemplateLabs.postman_environment.json⬇︎</a> file.
 
 Import the environment into postman
 
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 
+### Step 3 - ***Turn off SSL validation for LAB purposes within Postman***
 Turn off SSL in the settings of Postman
 
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 
+### Step 4 - ***Run the Collection within Postman***
 This collection is built with a flow and delay timers wait for the collection to finish entirely.
 
 ![json](./images/underconstruction.png?raw=true "Import JSON")
-
-### Step 2 - ***Import Project with Templates***
-Download and import the project within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-DNACTemplates-Dynamic-IBN-Autoconf-Project.json">⬇︎DCLOUD_DNACTemplate_Dynamic_project.json⬇︎</a> file.
-
 
 ## Lab Section 2 - DNA Center Dynamic Composite Template Preparation
 We will load a specific project now which encompasses the elements discussed in lab seven. The project will include many regular templates which are deployed as part of a Day N Composite Template. Go to the ***Template Editor*** to complete the next set of tasks. As we discussed in lab four the ***Template Editor*** allows for the import and export of templates and projects within **DNA Center** along with the ability to clone them.
