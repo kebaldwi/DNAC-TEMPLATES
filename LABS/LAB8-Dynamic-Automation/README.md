@@ -53,7 +53,29 @@ This collection is built with a flow and delay timers wait for the collection to
 
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 
-## Lab Section 2 - DNA Center Dynamic Composite Template Preparation
+## Lab Section 2 - DNA Center Template Preparation
+We will now import the various templates for use in this lab. Three will be utilized:
+
+1. Onboarding Template
+2. Lab Preparation Project & Templates
+3. Dynamic DayN Composite Project & Templates
+
+### Step 1 - ***Import Onboarding Template***
+Download and import the Onboarding Template within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-DNACTemplates-OnboardingTemplate.json">⬇︎DCLOUD-DNACTemplates-OnboardingTemplate.json⬇︎</a> file.
+
+Import the environment into DNA Centers ***Template Editor***
+
+![json](./images/underconstruction.png?raw=true "Import JSON")
+
+### Step 2 - ***Import Lab Preparation Project***
+Download and import the Onboarding Template within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-DNACTemplates-OnboardingTemplate.json">⬇︎DCLOUD-DNACTemplates-OnboardingTemplate.json⬇︎</a> file.
+
+Import the environment into DNA Centers ***Template Editor***
+
+![json](./images/underconstruction.png?raw=true "Import JSON")
+
+
+
 We will load a specific project now which encompasses the elements discussed in lab seven. The project will include many regular templates which are deployed as part of a Day N Composite Template. Go to the ***Template Editor*** to complete the next set of tasks. As we discussed in lab four the ***Template Editor*** allows for the import and export of templates and projects within **DNA Center** along with the ability to clone them.
 
 ### Step 1 - ***Import Project with Templates***
