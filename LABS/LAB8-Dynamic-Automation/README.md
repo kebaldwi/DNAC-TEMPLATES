@@ -27,7 +27,28 @@ While **Autoconf** is a tremendous step forward for **non closed mode** ports, i
 Luckily we can create a fully dynamic environment with a gated procedure. We include EEM scripts to give that Dynamic look and feel in this Lab entirely. Typically, the types of devices where we might have issues like this where *MAB* or *EAP* are not going to work fast enough, maybe those which identify themselves in another way. In those instances, we can use **PoE** power events to trigger an EEM. Likewise, on a port down event, we can revert the configuration. Those aspects are built into this Lab.
 
 # Lab Preparation
-## Lab Section 1 - DNA Center Design Preparation
+## Lab Section 1 - DNA Center and ISE Integration
+In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate DNA Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
+
+### Step 1 - ***Prepare ISE for DNA Center Integration***
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to Identity Services Engine (ISE) and select the hamburger menu icon to open the system menu.
+
+![json](./images/ise-dashboard.png?raw=true "Import JSON")
+![json](./images/ise-menu.png?raw=true "Import JSON")
+
+2. From the system menu under Administration select PxGrid Settings
+
+![json](./images/ise-pxgrid-settings.png?raw=true "Import JSON")
+
+3. On the PxGrid Settings page select both of the available options and click Save to allow DNA Center to integrate.
+
+![json](./images/ise-pxgrid-setup.png?raw=true "Import JSON")
+
+### Step 2 - ***DNA Center and ISE Integration***
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to Dna Center and select the hamburger menu icon and navigate to the System > Settings menu item.
+
+
+## Lab Section 2 - DNA Center Design Preparation
 While we could deploy more extensive settings for deployment, we will limit the configuration to the minimum necessary to perform this step, building off the completed tasks in labs one, [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB1-PNP-PREP/) and two, [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/).
 
 Should you desire to deploy rapidly and build the lab faster then use the following approach:
@@ -66,7 +87,7 @@ This collection is built with a flow and delay timers wait for the collection to
 2. On the right ensure all API are selected and click run collection. 
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 
-## Lab Section 2 - DNA Center Template Preparation
+## Lab Section 3 - DNA Center Template Preparation
 We will now import the various templates for use in this lab. Three will be utilized:
 
 1. Onboarding Template
@@ -132,7 +153,7 @@ Please un-zip the file and import the *json* file which will automatically creat
 
 Take a few moments and examine the construction of these projects and templates, as each has a specific function. Their design is modular to allow reuse of them within other composite templates for other switches or routers. 
 
-## Lab Section 3 - DHCP & DNS Service Preparation
+## Lab Section 4 - DHCP & DNS Service Preparation
 In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server for the lab environment. The reasons for the configurations made here are detailed heavily in Lab 2 titled [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/)
 
 1. Download the powershell script to the ***windows server*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/scripts/powershell.ps1">⬇︎powershell.ps1⬇︎</a> file.
