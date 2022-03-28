@@ -45,3 +45,4 @@ Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -Allo
 Add-DnsServerResourceRecordCName -Name "dnac" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
 #Additional line for DNS Discovery - to use remove leading HASH from next line
 #Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
+Add-DnsServerResourceRecordA -Name "ise" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.133.27" -TimeToLive 01:00:00
