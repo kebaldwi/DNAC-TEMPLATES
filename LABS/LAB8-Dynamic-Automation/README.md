@@ -47,6 +47,28 @@ In this lab our focus changes slightly as we start to automate for host onboardi
 ### Step 2 - ***DNA Center and ISE Integration***
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to Dna Center and select the hamburger menu icon and navigate to the System > Settings menu item.
 
+![json](./images/dnac-system-settings.png?raw=true "Import JSON")
+
+2. Within the System Settings page navigate down the list on the left and select the Authentication and Policy Server section.
+
+![json](./images/dnac-system-settings-aaa.png?raw=true "Import JSON")
+
+3. On the page select from the dropdown ISE to configure ISE integration.
+
+![json](./images/dnac-system-settings-aaa-ise.png?raw=true "Import JSON")
+
+4. Enter the information as seen on the page and click save.
+
+![json](./images/dnac-system-settings-aaa-ise-config.png?raw=true "Import JSON")
+
+5. A popup will appear as the ISE node is using an untrusted SelfSigned Certificate. For lab purposes Accept the certificate, this may appear a couple of times as shown.
+
+![json](./images/dnac-system-settings-aaa-ise-trust.png?raw=true "Import JSON")
+
+6. You will see the the various stages of integration proceed and finally a success message as shown below.
+
+![json](./images/dnac-system-settings-aaa-ise-done.png?raw=true "Import JSON")
+![json](./images/dnac-system-settings-aaa-ise-complete.png?raw=true "Import JSON")
 
 ## Lab Section 2 - DNA Center Design Preparation
 While we could deploy more extensive settings for deployment, we will limit the configuration to the minimum necessary to perform this step, building off the completed tasks in labs one, [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB1-PNP-PREP/) and two, [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/).
