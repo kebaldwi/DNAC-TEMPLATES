@@ -94,7 +94,7 @@ Should you desire to deploy rapidly and build the lab faster then use the follow
 ![json](./images/Postman-Environment-Select.png?raw=true "Import JSON")
 5. Then click import and the environment should be loaded into the environments as shown. 
 ![json](./images/Postman-Post-Environment-Import.png?raw=true "Import JSON")
-6. Next we will choose the environment by selecting the arrow on the top right of postman and then Selecting `DNAC Templates Lab` from the drop down so that the window looks as shown here. 
+6. Next we will choose the environment by clicking the checkmark on the right of Environment in postman as shown here. 
 ![json](./images/Postman-Environment-Selection.png?raw=true "Import JSON")
 
 ### Step 3 - ***Turn off SSL validation for LAB purposes within Postman***
