@@ -143,7 +143,7 @@ Use the following steps to import the project.
 ### Step 2 - ***Import Lab Preparation Project***
 The Lab Preparation Project and Templates will be used to prepare the environment.
 
-Download and import the Onboarding Template within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-DNACTemplates-OnboardingTemplate.json">⬇︎DCLOUD-DNACTemplates-OnboardingTemplate.json⬇︎</a> file.
+Download and import the Onboarding Template within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/templates/DCLOUD-PrepEnvironment-Project.json">⬇︎DCLOUD-PrepEnvironment-Project.json⬇︎</a> file.
 
 Please un-zip the file and import the *json* file which will automatically create a project and included templates within. Use the following steps to import the project.
 
