@@ -105,9 +105,14 @@ Should you desire to deploy rapidly and build the lab faster then use the follow
 ### Step 4 - ***Run the Collection within Postman***
 This collection is built with a flow and delay timers wait for the collection to finish entirely.
 1. If not open, open the **postman** application from the desktop. Once the application is open select *Collections* and then the '...' link and select **run collection**. </br>
-![json](./images/underconstruction.png?raw=true "Import JSON")
+![json](./images/Postman-CollectionRunner.png?raw=true "Import JSON")
 2. On the right ensure all API are selected and click run collection. 
-![json](./images/underconstruction.png?raw=true "Import JSON")
+![json](./images/Postman-CollectionRunner-Run.png?raw=true "Import JSON")
+3. After the entire collection has run you will see all of them listed on the left as shown, and two buttons on the top right, one for results and the other to run again.
+![json](./images/Postman-CollectionRunner-Results.png?raw=true "Import JSON")
+4. Within DNA Center you should see 3 devices within the inventory and additionally you should observe a complete hierarchy as well as settings and telemtry configured.
+![json](./images/Postman-Discovery.png?raw=true "Import JSON")
+![json](./images/Postman-Settings.png?raw=true "Import JSON")
 
 ## Lab Section 3 - DNA Center Template Preparation
 We will now import the various templates for use in this lab. Three will be utilized:
