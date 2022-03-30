@@ -195,9 +195,12 @@ At this point all the DNS and DHCP configuration on the ***windows server*** wil
 ## Lab Section 5 - Setup of Discovered Devices
 At this point in the lab the setup steps for the lab environment are done, DNS and DHCP are set up, ISE is integrated and DNA Center is ready for deploying configurations. In this section we will deploy the templates to configure the discovered devices. Note we could have automated this process too but wanted to separate this out so you can make modifications as you might need to for testing purposes.
 
-### Step 1 - ***Building Network Profiles***
+### Lab SubSection 5.1 - ISR Preparation
+In this subsection we will apply a small template to the ISR 4331. This is to prove out that we can deploy templates to modify discovered devices within the infrastructure no matter what variant they are. You could use this method to apply configuration to a router to mitigate vulnerabilities discovered as part of a tennable security scan. 
+
+#### Step 1 - ***Building Network Profiles***
 1. Navigate to the **Design** within DNA Center through the menu *Design>Network Profile*.
-   ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
+   ![json](./images/DNAC-NetworkProfile-menu.png?raw=true "Import JSON")
 
 
 
