@@ -192,7 +192,7 @@ In this section we will prepare Domain Name System (DNS) and Dynamic Host Config
 At this point all the DNS and DHCP configuration on the ***windows server*** will be generated.
    ![json](./images/DNS-DHCP.png?raw=true "Import JSON")
 
-## Lab Section 5 - Image Repository - Holder
+## Lab Section 5 - Image Repository
 As we have discovered the devices, from the network, DNA Center has the capability to pull those images deployed from the network devices in bundle mode. If the device is in install mode then you would manually have to add the images. We can then mark them as **Golden** for *Plug and Play* and *image upgrade* purposes. 
 
 For our purposes as we will be focusing on only the **9300-2** switch we will complete the following steps.
