@@ -200,25 +200,15 @@ For our purposes as we will be focusing on only the **9300-2** switch we will co
 The image used in this lab for the 9300-2 is downloadable from here [⬇︎Bengaluru-17.06.01 MD⬇︎](https://software.cisco.com/download/home/286315874/type/282046477/release/Bengaluru-17.6.1) **(required)** 
 
 1. Within DNA Center Navigate to *Design>Image Repository*  
-   ![json](./images/DNAC-NavigateImageRepo.png?raw=true "Import JSON")
-3.  **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer.    
-   ![json](./images/DNAC-ImportImageRepo.png?raw=true "Import JSON")
-4. You then indicate whether the file is Cisco or 3rd Party and click import. 
-5. The file will then import into DNA Center.    
-   ![json](./images/DNAC-ImportedImageRepo.png?raw=true "Import JSON")
-6. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. First click the **Assign** link as shown
-   ![json](./images/DNAC-AssignImageRepo.png?raw=true "Import JSON")
-   1. Then on the windo that appears select the **All Device Series** dropdown, and then select *switches and hubs* and filter for the **9300** and click assign.   
-   ![json](./images/DNAC-AssignSiteImageRepo.png?raw=true "Import JSON")
-   2. Next expand the hierarchy on the window that appears and select **Floor 1** then **Assign**.    
-   ![json](./images/DNAC-SiteImageRepo.png?raw=true "Import JSON")
-   3. You will then have a save button to save the assignment. Click Save.    
-   ![json](./images/DNAC-SaveImageRepo.png?raw=true "Import JSON")
-   4. Your screen should look as shown.    
-   ![json](./images/DNAC-DeviceAssigned-ImageRepo.png?raw=true "Import JSON")
-7. Select the image and mark it as golden for PnP to use it.   
-   ![json](./images/DNAC-GoldenImageRepo.png?raw=true "Import JSON")
-
+   ![json](./images/DNAC-Design-ImageRepo-menu.png?raw=true "Import JSON")
+2.  **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+ Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. 
+   ![json](./images/DNAC-Design-ImageRepo-import.png?raw=true "Import JSON")
+3. We will select the file from our local system.
+   ![json](./images/DNAC-Design-ImageRepo-select.png?raw=true "Import JSON")
+3. The file will then import into DNA Center.    
+   ![json](./images/DNAC-Design-ImageRepo-imageimport.png?raw=true "Import JSON")
+4. Once the file is imported and as the devices were previously discovered and assigned to the infrastructure we will navigate to the *Floor 1* in the hierarchy and mark the *17.06.01* as **Golden** as shown for PnP to use it.  
+   ![json](./images/DNAC-Design-ImageRepo-golden.png?raw=true "Import JSON")
 
 ## Lab Section 6 - Setup of Discovered Devices
 At this point in the lab the setup steps for the lab environment are done, DNS and DHCP are set up, ISE is integrated and DNA Center is ready for deploying configurations. In this section we will deploy the templates to configure the discovered devices. Note we could have automated this process too but wanted to separate this out so you can make modifications as you might need to for testing purposes.

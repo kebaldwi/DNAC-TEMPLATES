@@ -89,12 +89,12 @@ The image used in this lab for the 9300 is downloadable from here [⬇︎Amsterd
 
 1. Within DNA Center Navigate to *Design>Image Repository*  
    ![json](./images/DNAC-NavigateImageRepo.png?raw=true "Import JSON")
-3.  **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer.    
+2.  **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer.    
    ![json](./images/DNAC-ImportImageRepo.png?raw=true "Import JSON")
-4. You then indicate whether the file is Cisco or 3rd Party and click import. 
-5. The file will then import into DNA Center.    
+3. You then indicate whether the file is Cisco or 3rd Party and click import. 
+4. The file will then import into DNA Center.    
    ![json](./images/DNAC-ImportedImageRepo.png?raw=true "Import JSON")
-6. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. First click the **Assign** link as shown
+5. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. First click the **Assign** link as shown
    ![json](./images/DNAC-AssignImageRepo.png?raw=true "Import JSON")
    1. Then on the windo that appears select the **All Device Series** dropdown, and then select *switches and hubs* and filter for the **9300** and click assign.   
    ![json](./images/DNAC-AssignSiteImageRepo.png?raw=true "Import JSON")
@@ -104,7 +104,7 @@ The image used in this lab for the 9300 is downloadable from here [⬇︎Amsterd
    ![json](./images/DNAC-SaveImageRepo.png?raw=true "Import JSON")
    4. Your screen should look as shown.    
    ![json](./images/DNAC-DeviceAssigned-ImageRepo.png?raw=true "Import JSON")
-7. Select the image and mark it as golden for PnP to use it.   
+6. Select the image and mark it as golden for PnP to use it.   
    ![json](./images/DNAC-GoldenImageRepo.png?raw=true "Import JSON")
 
 ## Lab Section 2 - DNA Center Onboarding Template Preparation
