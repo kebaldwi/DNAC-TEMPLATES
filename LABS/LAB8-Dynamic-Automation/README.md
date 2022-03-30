@@ -136,7 +136,7 @@ Use the following steps to import the project.
    ![json](./images/DNAC-Template-Onboard-menu.png?raw=true "Import JSON")
 3. From the **Import Templates(s)** window, click **Select a file from your computer** from the explorer window, select the extracted JSON file and click open.    
    ![json](./images/DNAC-Template-Onboard-select.png?raw=true "Import JSON")
-4. IClick **Import**, and the template will be imported.
+4. Click **Import**, and the template will be imported.
    ![json](./images/DNAC-Template-import.png?raw=true "Import JSON")
 
 ### Step 2 - ***Import Lab Preparation Project***
