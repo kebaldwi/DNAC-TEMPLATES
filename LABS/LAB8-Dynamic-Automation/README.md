@@ -239,12 +239,19 @@ In this subsection we will apply a small template to the ISR 4331. This is to pr
 7. To complete the Network Profile in **Step 5** click *Save*.
    ![json](./images/DNAC-NetworkProfile-Routing-5.png?raw=true "Import JSON")
 
-
-#### Step 1 - ***Assigning Routing Network Profile to a Site***
+#### Step 2 - ***Assigning Routing Network Profile to a Site***
    1. **Assign** the network profile to the hierarchy 
    ![json](./images/DNAC-NetworkProfile-Routing-Assign.png?raw=true "Import JSON")
    2. Select the **sites** to apply the profile within the hierarchy and click *Save*
    ![json](./images/DNAC-NetworkProfile-Routing-Assign-Site.png?raw=true "Import JSON")
 
+#### Step 3 - ***Provisioning Router***
 
+### Lab SubSection 6.2 - Distribution 9300 Preparation
+
+#### Step 1 - ***Building Switching Network Profiles***
+
+#### Step 2 - ***Assigning Switching Network Profile to a Site***
+
+#### Step 3 - ***Provisioning Distribution 9300 Switch***
 
