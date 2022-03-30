@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e69646f1-6d5d-4245-badc-135ffa530b5e",
+		"_postman_id": "0c91d4d9-d0fd-4e90-9683-ea18714a9462",
 		"name": "DNAC Templates Lab Workflow",
 		"description": "This workflow is designed to run as a collection.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -279,7 +279,8 @@
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);\r",
 							"postman.setEnvironmentVariable(\"GlobalSiteId\", jsonData[\"response\"][0][\"id\"]);\r",
-							"postman.setEnvironmentVariable(\"BuildingSiteId\", jsonData[\"response\"][2][\"id\"]);\r",
+							"postman.setEnvironmentVariable(\"BuildingSiteId\", jsonData[\"response\"][1][\"parentId\"]);\r",
+							"postman.setEnvironmentVariable(\"FloorSiteId\", jsonData[\"response\"][1][\"id\"]);\r",
 							"setTimeout(function(){}, [25000]);\r",
 							"postman.setNextRequest(\"Create Settings\")"
 						],
@@ -339,7 +340,7 @@
 					"script": {
 						"exec": [
 							"setTimeout(function(){}, [15000]);\r",
-							"postman.setNextRequest(\"Create Credentials\")"
+							"postman.setNextRequest(\"Create Settings Floor\")"
 						],
 						"type": "text/javascript"
 					}
@@ -393,7 +394,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"settings\": {\r\n        \"dhcpServer\": [\r\n            \"{{dhcpServer}}\"\r\n        ],\r\n        \"dnsServer\": {\r\n            \"domainName\": \"{{domainName}}\",\r\n            \"primaryIpAddress\": \"{{dnsServer1}}\"\r\n        },\r\n           \"syslogServer\": {\r\n            \"ipAddresses\": [\r\n                \"{{syslogServer}}\"\r\n            ],\r\n            \"configureDnacIP\": {{syslogBoolean}}\r\n        },\r\n        \"snmpServer\": {\r\n            \"ipAddresses\": [\r\n                \"{{snmpServer}}\"\r\n            ],\r\n            \"configureDnacIP\": {{snmpBoolean}}\r\n        },\r\n        \"netflowcollector\": {\r\n            \"ipAddress\": \"{{netflowServer}}\",\r\n            \"port\": {{netflowPort}},\r\n            \"configureDnacIP\": {{netflowBoolean}}\r\n        },\r\n        \"ntpServer\": [\r\n            \"{{ntpServer}}\"\r\n        ],\r\n        \"timezone\": \"{{timeZone}}\",\r\n        \"messageOfTheday\": {\r\n            \"bannerMessage\": \"{{bannerMessage}}\",\r\n            \"retainExistingBanner\": \"{{bannerBoolean}}\"\r\n\t\t},\r\n\t\t\"clientAndEndpoint_aaa\": {\r\n\t\t    \"servers\": \"{{aaaEndpointServer}}\",\r\n\t\t    \"ipAddress\": \"{{aaaEndpointIpAddress}}\",\r\n\t\t    \"network\": \"{{aaaEndpointIpAddress}}\",\r\n\t\t    \"protocol\": \"{{aaaEndpointProtocol}}\",\r\n            \"sharedSecret\": \"{{aaaEndpointSharedSecret}}\"\r\n\t\t}    \r\n    }\r\n}"
+					"raw": "{\r\n    \"settings\": {\r\n        \"dhcpServer\": [\r\n            \"{{dhcpServer}}\"\r\n        ],\r\n        \"dnsServer\": {\r\n            \"domainName\": \"{{domainName}}\",\r\n            \"primaryIpAddress\": \"{{dnsServer1}}\"\r\n        },\r\n           \"syslogServer\": {\r\n            \"ipAddresses\": [\r\n                \"{{syslogServer}}\"\r\n            ],\r\n            \"configureDnacIP\": {{syslogBoolean}}\r\n        },\r\n        \"snmpServer\": {\r\n            \"ipAddresses\": [\r\n                \"{{snmpServer}}\"\r\n            ],\r\n            \"configureDnacIP\": {{snmpBoolean}}\r\n        },\r\n        \"netflowcollector\": {\r\n            \"ipAddress\": \"{{netflowServer}}\",\r\n            \"port\": {{netflowPort}},\r\n            \"configureDnacIP\": {{netflowBoolean}}\r\n        },\r\n        \"ntpServer\": [\r\n            \"{{ntpServer}}\"\r\n        ],\r\n        \"timezone\": \"{{timeZone}}\",\r\n        \"messageOfTheday\": {\r\n            \"bannerMessage\": \"{{bannerMessage}}\",\r\n            \"retainExistingBanner\": \"{{bannerBoolean}}\"\r\n\t\t}    \r\n    }\r\n}"
 				},
 				"url": {
 					"raw": "https://{{DNACip}}/dna/intent/api/v1/network/{{GlobalSiteId}}",
@@ -408,6 +409,88 @@
 						"v1",
 						"network",
 						"{{GlobalSiteId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Settings Floor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"setTimeout(function(){}, [15000]);\r",
+							"postman.setNextRequest(\"Create Credentials\")"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"domainName\");\r",
+							"pm.environment.get(\"dnsServer1\");\r",
+							"pm.environment.get(\"dnsServer2\");\r",
+							"pm.environment.get(\"dhcpServer\");\r",
+							"pm.environment.get(\"syslogServer\");\r",
+							"pm.environment.get(\"syslogBoolean\");\r",
+							"pm.environment.get(\"netflowServer\");\r",
+							"pm.environment.get(\"netflowPort\");\r",
+							"pm.environment.get(\"netflowBoolean\");\r",
+							"pm.environment.get(\"ntpServer\");\r",
+							"pm.environment.get(\"timeZone\");\r",
+							"pm.environment.get(\"aaaEndpointServer\");\r",
+							"pm.environment.get(\"aaaEndpointIpAddress\");\r",
+							"pm.environment.get(\"aaaEndpointProtocol\");\r",
+							"pm.environment.get(\"aaaEndpointSharedSecret\");\r",
+							"pm.environment.get(\"bannerMessage\");\r",
+							"pm.environment.get(\"bannerBoolean\");\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"settings\": {\r\n        \"dhcpServer\": [\r\n            \"{{dhcpServer}}\"\r\n        ],\r\n        \"dnsServer\": {\r\n            \"domainName\": \"{{domainName}}\",\r\n            \"primaryIpAddress\": \"{{dnsServer1}}\"\r\n        },\r\n           \"syslogServer\": {\r\n            \"ipAddresses\": [\r\n                \"{{syslogServer}}\"\r\n            ],\r\n            \"configureDnacIP\": {{syslogBoolean}}\r\n        },\r\n        \"snmpServer\": {\r\n            \"ipAddresses\": [\r\n                \"{{snmpServer}}\"\r\n            ],\r\n            \"configureDnacIP\": {{snmpBoolean}}\r\n        },\r\n        \"netflowcollector\": {\r\n            \"ipAddress\": \"{{netflowServer}}\",\r\n            \"port\": {{netflowPort}},\r\n            \"configureDnacIP\": {{netflowBoolean}}\r\n        },\r\n        \"ntpServer\": [\r\n            \"{{ntpServer}}\"\r\n        ],\r\n        \"timezone\": \"{{timeZone}}\",\r\n        \"messageOfTheday\": {\r\n            \"bannerMessage\": \"{{bannerMessage}}\",\r\n            \"retainExistingBanner\": \"{{bannerBoolean}}\"\r\n\t\t},\r\n\t\t\"clientAndEndpoint_aaa\": {\r\n\t\t    \"servers\": \"{{aaaEndpointServer}}\",\r\n\t\t    \"ipAddress\": \"{{aaaEndpointIpAddress}}\",\r\n\t\t    \"network\": \"{{aaaEndpointIpAddress}}\",\r\n\t\t    \"protocol\": \"{{aaaEndpointProtocol}}\",\r\n            \"sharedSecret\": \"{{aaaEndpointSharedSecret}}\"\r\n\t\t}    \r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/intent/api/v1/network/{{FloorSiteId}}",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"network",
+						"{{FloorSiteId}}"
 					]
 				}
 			},
