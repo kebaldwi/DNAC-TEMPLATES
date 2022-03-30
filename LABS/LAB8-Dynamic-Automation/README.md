@@ -192,10 +192,13 @@ In this section we will prepare Domain Name System (DNS) and Dynamic Host Config
 At this point all the DNS and DHCP configuration on the ***windows server*** will be generated.
    ![json](./images/DNS-DHCP.png?raw=true "Import JSON")
 
-## Lab Section 5 - Setup of Discovered Devices
+## Lab Section 5 - Image Repository - Holder
+At this point in the lab the setup steps for the lab environment are done, DNS and DHCP are set up, ISE is 
+
+## Lab Section 6 - Setup of Discovered Devices
 At this point in the lab the setup steps for the lab environment are done, DNS and DHCP are set up, ISE is integrated and DNA Center is ready for deploying configurations. In this section we will deploy the templates to configure the discovered devices. Note we could have automated this process too but wanted to separate this out so you can make modifications as you might need to for testing purposes.
 
-### Lab SubSection 5.1 - ISR Preparation
+### Lab SubSection 6.1 - ISR Preparation
 In this subsection we will apply a small template to the ISR 4331. This is to prove out that we can deploy templates to modify discovered devices within the infrastructure no matter what variant they are. You could use this method to apply configuration to a router to mitigate vulnerabilities discovered as part of a tennable security scan. 
 
 #### Step 1 - ***Building Routing Network Profiles***
