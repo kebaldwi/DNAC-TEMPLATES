@@ -2,7 +2,7 @@
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 
 ## Overview
-This Lab is designed to be used after first completing labs 1 and 2 and has been created to address how to combine and use **IBNS 2.0** using **closed mode** and multiple Regular Templates within DNA Center to onboard network devices at Day 1 through N. This allows Network Administrators the ability to configure network devices in an ongoing and programmatic manner from within DNA Center without using the SD-Access Fabric methodology. It also enables an administrator to drag Regular Templates into and out of the flow as needed for ongoing maintenance.
+This Lab is designed to be used as a stand alone lab due. It has been created to address how to combine and use **IBNS 2.0** using **closed mode** and multiple Regular Templates within DNA Center to onboard network devices at Day 1 through N. This allows Network Administrators the ability to configure network devices in an ongoing and programmatic manner from within DNA Center without using the SD-Access Fabric methodology. It also enables an administrator to drag Regular Templates into and out of the flow as needed for ongoing maintenance.
 
 This section will go through the flow involved in creating a deployable Composite Template from an IOS configuration script for a Catalyst switch linking it to a Switch profile, and deploying it through DNAC using provisioning workflows.
 
@@ -185,9 +185,13 @@ In this section we will prepare Domain Name System (DNS) and Dynamic Host Config
 ### Step 1 - ***Configuring DHCP and DNS via Powershell***
 1. Download the powershell script to the ***windows server*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/scripts/powershell.ps1">⬇︎powershell.ps1⬇︎</a> file.
 2. Once downloaded, extract the file.
+   ![json](./images/Powershell-Extract.png?raw=true "Import JSON")
+   ![json](./images/Powershell-Extract-Location.png?raw=true "Import JSON")
 3. Right click on the file and run with powershell.
+   ![json](./images/Powershell-Run.png?raw=true "Import JSON")
 
 At this point all the DNS and DHCP configuration on the ***windows server*** will be generated.
+   ![json](./images/DNS-DHCP.png?raw=true "Import JSON")
 
 ## Lab Section 5 - Setup of Discovered Devices
 At this point in the lab the setup steps for the lab environment are done, DNS and DHCP are set up, ISE is integrated and DNA Center is ready for deploying configurations. In this section we will deploy the templates to configure the discovered devices. Note we could have automated this process too but wanted to separate this out so you can make modifications as you might need to for testing purposes.
