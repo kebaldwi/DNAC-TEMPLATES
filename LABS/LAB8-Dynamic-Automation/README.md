@@ -198,9 +198,35 @@ At this point in the lab the setup steps for the lab environment are done, DNS a
 ### Lab SubSection 5.1 - ISR Preparation
 In this subsection we will apply a small template to the ISR 4331. This is to prove out that we can deploy templates to modify discovered devices within the infrastructure no matter what variant they are. You could use this method to apply configuration to a router to mitigate vulnerabilities discovered as part of a tennable security scan. 
 
-#### Step 1 - ***Building Network Profiles***
+#### Step 1 - ***Building Routing Network Profiles***
 1. Navigate to the **Design** within DNA Center through the menu *Design>Network Profile*.
    ![json](./images/DNAC-NetworkProfile-menu.png?raw=true "Import JSON")
+2. Select *Routing* under **Add Profile** .
+   ![json](./images/DNAC-NetworkProfile-Routing-Add.png?raw=true "Import JSON")
+3. Enter the following: 
+      1. Enter the *Profile name* 
+      2. Select *Zero* for **Service Providers**
+      3. Click the **Device Type** dropdown and select *Cisco 4331 Integrated Services Router* 
+      4. Click *Next* to proceed to the next step. 
+      ![json](./images/DNAC-NetworkProfile-Routing-1.png?raw=true "Import JSON")
+4. We are not utilizing **Step 2** so click *Next* to proceed to the next step.
+   ![json](./images/DNAC-NetworkProfile-Routing-2.png?raw=true "Import JSON")
+5. We are not utilizing **Step 3** so click *Next* to proceed to the next step.
+   ![json](./images/DNAC-NetworkProfile-Routing-3.png?raw=true "Import JSON")
+6. On **Step 4** complete the following: 
+      1. Select the *Day-N Template(s)* tab 
+      2. Click the **Template** dropdown and select *ISR-Prep* 
+      3. Click *Next* to proceed to the next step. 
+      ![json](./images/DNAC-NetworkProfile-Routing-4.png?raw=true "Import JSON")
+7. To complete the Network Profile in **Step 5** click *Save*.
+   ![json](./images/DNAC-NetworkProfile-Routing-5.png?raw=true "Import JSON")
+
+
+#### Step 1 - ***Assigning Routing Network Profile to a Site***
+   1. **Assign** the network profile to the hierarchy 
+   ![json](./images/DNAC-NetworkProfile-Assign.png?raw=true "Import JSON")
+   2. Select the **sites** to apply the profile within the hierarchy and click *Save*
+   ![json](./images/DNAC-NetworkProfile-Assign-Site.png?raw=true "Import JSON")
 
 
 
