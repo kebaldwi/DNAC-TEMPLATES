@@ -110,7 +110,7 @@ This collection is built with a flow and delay timers wait for the collection to
 ![json](./images/Postman-CollectionRunner-Run.png?raw=true "Import JSON")
 3. After the entire collection has run you will see all of them listed on the left as shown, and two buttons on the top right, one for results and the other to run again.
 ![json](./images/Postman-CollectionRunner-Results.png?raw=true "Import JSON")
-4. Within DNA Center you should see 3 devices within the inventory and additionally you should observe a complete hierarchy as well as settings and telemtry configured.
+4. Within DNA Center you should see 3 devices within the inventory and additionally you should observe a complete hierarchy as well as settings and telemetry configured. The Devices will be discovered in the Building level at this stage.
 ![json](./images/Postman-Discovery.png?raw=true "Import JSON")
 ![json](./images/Postman-Settings.png?raw=true "Import JSON")
 
