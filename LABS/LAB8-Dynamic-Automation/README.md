@@ -188,7 +188,8 @@ In this section we will prepare Domain Name System (DNS) and Dynamic Host Config
    ![json](./images/Powershell-Extract-Location.png?raw=true "Import JSON")
 3. Right click on the file and run with powershell.
    ![json](./images/Powershell-Run.png?raw=true "Import JSON")
-
+4. You may see a security warning. If you do accept it by entering **Y**.
+   ![json](./images/Powershell-Security.png?raw=true "Import JSON")
 At this point all the DNS and DHCP configuration on the ***windows server*** will be generated.
    ![json](./images/DNS-DHCP.png?raw=true "Import JSON")
 

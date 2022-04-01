@@ -15,7 +15,7 @@ As you may recall, in the informational sections of this repository, we set for 
 ### Lab Preparation
 To set up the lab, please log into the console connection to the ***4451X*** and issue the following commands:
 
-***Warning** use the correct commands for the correct DC... East and West have Different Architectures.
+***Warning** use the correct commands for the correct DC... East and West have Different Architectures.*
 
 RTP
 ```
