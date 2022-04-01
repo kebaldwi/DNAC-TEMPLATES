@@ -241,10 +241,10 @@ In this subsection we will apply a small template to the ISR 4331. This is to pr
    ![json](./images/DNAC-NetworkProfile-Routing-5.png?raw=true "Import JSON")
 
 #### Step 2 - ***Assigning Routing Network Profile to a Site***
-   1. **Assign** the network profile to the hierarchy 
-   ![json](./images/DNAC-NetworkProfile-Routing-Assign.png?raw=true "Import JSON")
-   2. Select the **sites** to apply the profile within the hierarchy and click *Save*
-   ![json](./images/DNAC-NetworkProfile-Routing-Assign-Site.png?raw=true "Import JSON")
+1. **Assign** the network profile to the hierarchy 
+![json](./images/DNAC-NetworkProfile-Routing-Assign.png?raw=true "Import JSON")
+2. Select the **sites** to apply the profile within the hierarchy and click *Save*
+![json](./images/DNAC-NetworkProfile-Routing-Assign-Site.png?raw=true "Import JSON")
 
 #### Step 3 - ***Provisioning Router***
 
