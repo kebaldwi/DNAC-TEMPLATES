@@ -215,7 +215,7 @@ The image used in this lab for the 9300-2 is downloadable from here [⬇︎Benga
 At this point in the lab the setup steps for the lab environment are done, DNS and DHCP are set up, ISE is integrated and DNA Center is ready for deploying configurations. In this section we will deploy the templates to configure the discovered devices. Note we could have automated this process too but wanted to separate this out so you can make modifications as you might need to for testing purposes.
 
 ### Lab SubSection 6.1 - ISR Preparation
-In this subsection we will apply a small template to the ISR 4331. This is to prove out that we can deploy templates to modify discovered devices within the infrastructure no matter what variant they are. You could use this method to apply configuration to a router to mitigate vulnerabilities discovered as part of a tennable security scan. 
+In this subsection we will apply a small template to the ISR 4331. This is to prove out that we can deploy templates to modify discovered devices within the infrastructure no matter what variant they are. You could also use this method to apply configuration to a router to mitigate vulnerabilities discovered as part of a tennable security scan. 
 
 #### Step 1 - ***Building Routing Network Profiles***
 1. Navigate to the **Design** within DNA Center through the menu *Design>Network Profile*.
@@ -249,8 +249,35 @@ In this subsection we will apply a small template to the ISR 4331. This is to pr
 #### Step 3 - ***Provisioning Router***
 
 ### Lab SubSection 6.2 - Distribution 9300 Preparation
+In this subsection we will apply a small templates to the Cat 9300-2 which is used as a distribution switch. This is to prove out that we can deploy templates to modify discovered devices within the infrastructure no matter what variant they are. You could also use this method to apply configuration to a switch to mitigate vulnerabilities discovered as part of a tennable security scan. 
 
 #### Step 1 - ***Building Switching Network Profiles***
+1. Navigate to the **Design** within DNA Center through the menu *Design>Network Profile*.
+   ![json](./images/DNAC-NetworkProfile-menu.png?raw=true "Import JSON")
+2. Select *Switching* under **Add Profile** .
+   ![json](./images/DNAC-NetworkProfile-Switching-Add.png?raw=true "Import JSON")
+3. Enter the following: 
+      1. Enter the *Profile name* 
+      2. Select **DayN Template** tab to add the template for this workflow.
+      3. Click the **Table View** 
+      4. Click *Add Template* to proceed to the next step. 
+      ![json](./images/DNAC-NetworkProfile-Switching-DayN.png?raw=true "Import JSON")
+4. Enter the following: 
+      1. Leave the **Device Type** as *Switches and Hubs*
+      2. Select the dropdown **Template** tand search for *DISTRO-C9300-2*.
+      3. Click the **Tags** 
+      4. Enter *INFRA* as a tag.
+      5. Click **Save** 
+      ![json](./images/DNAC-NetworkProfile-Switching-DayN-Template.png?raw=true "Import JSON")
+5. We are not utilizing **Step 3** so click *Next* to proceed to the next step.
+   ![json](./images/DNAC-NetworkProfile-Routing-3.png?raw=true "Import JSON")
+6. On **Step 4** complete the following: 
+      1. Select the *Day-N Template(s)* tab 
+      2. Click the **Template** dropdown and select *ISR-Prep* 
+      3. Click *Next* to proceed to the next step. 
+      ![json](./images/DNAC-NetworkProfile-Routing-4.png?raw=true "Import JSON")
+7. To complete the Network Profile in **Step 5** click *Save*.
+   ![json](./images/DNAC-NetworkProfile-Routing-5.png?raw=true "Import JSON")
 
 #### Step 2 - ***Assigning Switching Network Profile to a Site***
 
