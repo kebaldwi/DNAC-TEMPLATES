@@ -267,7 +267,7 @@ In this subsection we will apply a small templates to the Cat 9300-2 which is us
       2. Select the dropdown **Template** tand search for *DISTRO-C9300-2*.
       3. Click the **Tags** 
       4. Enter *INFRA* as a tag.
-      5. Click **Save** 
+      5. Click **Add** 
       ![json](./images/DNAC-NetworkProfile-Switching-DayN-Template.png?raw=true "Import JSON")
 5. We are not utilizing **Step 3** so click *Next* to proceed to the next step.
    ![json](./images/DNAC-NetworkProfile-Routing-3.png?raw=true "Import JSON")
