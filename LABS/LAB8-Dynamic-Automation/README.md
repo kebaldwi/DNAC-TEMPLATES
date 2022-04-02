@@ -243,7 +243,7 @@ In this subsection we will apply a small template to the ISR 4331. This is to pr
 #### Step 2 - ***Assigning Routing Network Profile to a Site***
 1. **Assign** the network profile to the hierarchy 
 ![json](./images/DNAC-NetworkProfile-Routing-Assign.png?raw=true "Import JSON")
-2. Select the **sites** to apply the profile within the hierarchy and click *Save*
+2. Select the **sites** to apply the profile within the hierarchy and click **Save**
 ![json](./images/DNAC-NetworkProfile-Routing-Assign-Site.png?raw=true "Import JSON")
 
 #### Step 3 - ***Provisioning Router***
@@ -269,17 +269,14 @@ In this subsection we will apply a small templates to the Cat 9300-2 which is us
       4. Enter *INFRA* as a tag.
       5. Click **Add** 
       ![json](./images/DNAC-NetworkProfile-Switching-DayN-Template.png?raw=true "Import JSON")
-5. We are not utilizing **Step 3** so click *Next* to proceed to the next step.
-   ![json](./images/DNAC-NetworkProfile-Routing-3.png?raw=true "Import JSON")
-6. On **Step 4** complete the following: 
-      1. Select the *Day-N Template(s)* tab 
-      2. Click the **Template** dropdown and select *ISR-Prep* 
-      3. Click *Next* to proceed to the next step. 
-      ![json](./images/DNAC-NetworkProfile-Routing-4.png?raw=true "Import JSON")
-7. To complete the Network Profile in **Step 5** click *Save*.
-   ![json](./images/DNAC-NetworkProfile-Routing-5.png?raw=true "Import JSON")
+5. Click **View** to ensure the INFRA tag is the only tag applied and click **Save**.
+   ![json](./images/DNAC-NetworkProfile-Switching-DayN-Template-Save.png?raw=true "Import JSON")
 
 #### Step 2 - ***Assigning Switching Network Profile to a Site***
+1. **Assign** the network profile to the hierarchy 
+![json](./images/DNAC-NetworkProfile-Switching-Assign.png?raw=true "Import JSON")
+2. Select the **sites** to apply the profile within the hierarchy and click **Save**
+![json](./images/DNAC-NetworkProfile-Switching-Assign-Site.png?raw=true "Import JSON")
 
 #### Step 3 - ***Provisioning Distribution 9300 Switch***
 
