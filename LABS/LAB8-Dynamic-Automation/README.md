@@ -274,9 +274,9 @@ In this subsection we will apply a small templates to the Cat 9300-2 which is us
 
 #### Step 2 - ***Assigning Switching Network Profile to a Site***
 1. **Assign** the network profile to the hierarchy 
-![json](./images/DNAC-NetworkProfile-Switching-Assign.png?raw=true "Import JSON")
+![json](./images/DNAC-NetworkProfile-Switching-DayN-Assign.png?raw=true "Import JSON")
 2. Select the **sites** to apply the profile within the hierarchy and click **Save**
-![json](./images/DNAC-NetworkProfile-Switching-Assign-Site.png?raw=true "Import JSON")
+![json](./images/DNAC-NetworkProfile-Switching-DayN-Assign-Site.png?raw=true "Import JSON")
 
 #### Step 3 - ***Provisioning Distribution 9300 Switch***
 
