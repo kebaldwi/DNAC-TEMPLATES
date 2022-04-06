@@ -302,6 +302,8 @@ We will now provision the distribution switch using the *DISTRO-C9300-2* DayN Co
    ![json](./images/DNAC-Provision-Distro-flow-2.png?raw=true "Import JSON")
    6. Check the settings and if you agree accept these settings by clicking  **Deploy**.
       ![json](./images/DNAC-Provision-Distro-flow-3.png?raw=true "Import JSON")
+   7. Three options are displayed. Choose to **Deploy Now**.
+      ![json](./images/DNAC-Provision-Distro-flow-4.png?raw=true "Import JSON")
    4. The task will be submitted, and the deployment will run.
    5. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
 
