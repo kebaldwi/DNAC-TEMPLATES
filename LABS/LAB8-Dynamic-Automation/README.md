@@ -247,6 +247,24 @@ In this subsection we will apply a small template to the ISR 4331. This is to pr
 ![json](./images/DNAC-NetworkProfile-Routing-Assign-Site.png?raw=true "Import JSON")
 
 #### Step 3 - ***Provisioning Router***
+   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
+   2. Put a checkmark next to the device *c9300-2.dcloud.cisco.com* to be provisioned.
+   3. Click the **Actions>Provision>Provision Device** link and walk through the workflow    
+   ![json](./images/DNAC-Provision-ISR-flow.png?raw=true "Import JSON")
+   4. The floor was already selected during the **API Discovery** so click **next**    
+   ![json](./images/DNAC-Provision-ISR-flow-1.png?raw=true "Import JSON")
+   5. Select *c9300-2.dcloud.cisco.com* on the left and the two tick boxes at the top of the page, then click **next**. If the template had inputs, they would be entered. Click **next**
+   ![json](./images/DNAC-Provision-ISR-flow-2.png?raw=true "Import JSON")
+   6. Check the settings and if you agree accept these settings by clicking  **Deploy**.
+      ![json](./images/DNAC-Provision-ISR-flow-3.png?raw=true "Import JSON")
+   7. Three options are displayed. Choose to deploy **Now**.
+      ![json](./images/DNAC-Provision-ISR-flow-4.png?raw=true "Import JSON")
+   7. Three options are displayed. Choose to deploy **Now**.
+      ![json](./images/DNAC-Provision-ISR-flow-5.png?raw=true "Import JSON")
+   8. The task will be submitted, and the deployment will run.
+   9. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
+      ![json](./images/DNAC-Provision-ISR-success.png?raw=true "Import JSON")
 
 ### Lab SubSection 6.2 - Distribution 9300 Preparation
 In this subsection we will apply a small templates to the Cat 9300-2 which is used as a distribution switch. This is to prove out that we can deploy templates to modify discovered devices within the infrastructure no matter what variant they are. You could also use this method to apply configuration to a switch to mitigate vulnerabilities discovered as part of a tennable security scan. 
