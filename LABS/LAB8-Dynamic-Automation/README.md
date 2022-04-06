@@ -264,7 +264,7 @@ In this subsection we will apply a small template to the ISR 4331. This is to pr
       ![json](./images/DNAC-Provision-ISR-flow-3.png?raw=true "Import JSON")
    7. A summary is displayed. Click **Deploy**.
       ![json](./images/DNAC-Provision-ISR-flow-4.png?raw=true "Import JSON")
-   8. Three options are displayed. Choose to deploy **Now**.
+   8. Three options are displayed. Choose to deploy **Now** and **Apply**
       ![json](./images/DNAC-Provision-ISR-flow-5.png?raw=true "Import JSON")
    9. The task will be submitted, and the deployment will run.
    10. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
@@ -324,7 +324,7 @@ We will now provision the distribution switch using the *DISTRO-C9300-2* DayN Co
    ![json](./images/DNAC-Provision-Distro-flow-2.png?raw=true "Import JSON")
    6. Check the settings and if you agree accept these settings by clicking  **Deploy**.
       ![json](./images/DNAC-Provision-Distro-flow-3.png?raw=true "Import JSON")
-   7. Three options are displayed. Choose to deploy **Now**.
+   7. Three options are displayed. Choose to deploy **Now** and **Apply**
       ![json](./images/DNAC-Provision-Distro-flow-4.png?raw=true "Import JSON")
    8. The task will be submitted, and the deployment will run.
    9. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
