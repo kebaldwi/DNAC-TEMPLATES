@@ -283,7 +283,7 @@ We will now provision the distribution switch using the *DISTRO-C9300-2* DayN Co
 
    1. Within DNA Center Navigate to *Provision>Inventory*.      
    ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
-##### Tag Switch
+#####     Tag Switch
    2. Put a checkmark next to the device *c9300-2.dcloud.cisco.com*.
    3. Click the **Actions>Provision>Provision Device** link and walk through the workflow    
    ![json](./images/DNAC-ProvisionBegin.png?raw=true "Import JSON")
