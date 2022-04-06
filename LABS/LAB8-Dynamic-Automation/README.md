@@ -279,4 +279,37 @@ In this subsection we will apply a small templates to the Cat 9300-2 which is us
 ![json](./images/DNAC-NetworkProfile-Switching-DayN-Assign-Site.png?raw=true "Import JSON")
 
 #### Step 3 - ***Provisioning Distribution 9300 Switch***
+We will now provision the distribution switch using the *DISTRO-C9300-2* DayN Composite Template. The template uses a *Tag* of **INFRA** so we need to first set that and then provision the switch. To do this, do the following:
+
+   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
+##### Tag Switch
+   2. Put a checkmark next to the device *c9300-2.dcloud.cisco.com*.
+   3. Click the **Actions>Provision>Provision Device** link and walk through the workflow    
+   ![json](./images/DNAC-ProvisionBegin.png?raw=true "Import JSON")
+      1. The floor was already selected as part of the claim so click **next**    
+      ![json](./images/DNAC-ProvisionSite.png?raw=true "Import JSON")
+      2. Select *ACCESS-c9300-1-ASW* on the left and the two tick boxes at the top of the page, then click **next**. If the template had inputs, they would be entered.  
+      ![json](./images/DNAC-ProvisionAdvConfig.png?raw=true "Import JSON")
+      3. Select the auto populated Serial Number using the dropdown under *Stacking*..
+      ![json](./images/DNAC-ProvisionConfigSerial.png?raw=true "Import JSON")
+      4. Select the auto populated Product ID from the dropdown under *VLANs Ports Per DF*.
+      ![json](./images/DNAC-ProvisionConfigPID.png?raw=true "Import JSON")
+      5. Ensure the MDF number *01* is entered under *VLANs Ports Per DF*.
+      ![json](./images/DNAC-ProvisionConfigMDF.png?raw=true "Import JSON")
+      6. Click anywhere in the white space of the page to accept these settings so a green tick appears and then click **Next**.
+      ![json](./images/DNAC-ProvisionConfigReady.png?raw=true "Import JSON")
+      7. Check the settings and if you agree accept these settings by clicking  **Deploy**.
+      ![json](./images/DNAC-ProvisionDeploy.png?raw=true "Import JSON")
+   4. The task will be submitted, and the deployment will run.
+   5. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
+   6. To resync the configuration so that it may be viewed before the normal 25 mins, then perform the following task:
+      1. Change the focus to **Inventory**
+      2. Select the *ACCESS-c9300-1-ASW* switch and select **Actions>Inventory>Resync Device**
+      ![json](./images/DNAC-InventoryResync.png?raw=true "Import JSON")
+      3. After the resync has occurred, you may click the device name and then view the configuration by selecting that from the left pane to view the configuration pushed.
+      ![json](./images/DNAC-DeviceConfig.png?raw=true "Import JSON")
+
+At this point, we have onboarded a device and successfully pushed configuration via Onboarding and DayN Templates as well as Composite Templates. 
+
 
