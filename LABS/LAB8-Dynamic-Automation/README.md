@@ -254,16 +254,20 @@ In this subsection we will apply a small template to the ISR 4331. This is to pr
    ![json](./images/DNAC-Provision-ISR-flow.png?raw=true "Import JSON")
    4. The floor was already selected during the **API Discovery** so click **next**    
    ![json](./images/DNAC-Provision-ISR-flow-1.png?raw=true "Import JSON")
-   5. Select *c9300-2.dcloud.cisco.com* on the left and the two tick boxes at the top of the page, then click **next**. If the template had inputs, they would be entered. Click **next**
+   5. The ISR 4331 was pre selected in the profile so click **next**
    ![json](./images/DNAC-Provision-ISR-flow-2.png?raw=true "Import JSON")
-   6. Check the settings and if you agree accept these settings by clicking  **Deploy**.
+   6. Do the following:
+      1. Select the Day-N Templates Tab
+      2. Select the IP of the ISR
+      3. Select both **checkmark**
+      4. Click **next**
       ![json](./images/DNAC-Provision-ISR-flow-3.png?raw=true "Import JSON")
-   7. Three options are displayed. Choose to deploy **Now**.
+   7. A summary is displayed. Click **Deploy**.
       ![json](./images/DNAC-Provision-ISR-flow-4.png?raw=true "Import JSON")
-   7. Three options are displayed. Choose to deploy **Now**.
+   8. Three options are displayed. Choose to deploy **Now**.
       ![json](./images/DNAC-Provision-ISR-flow-5.png?raw=true "Import JSON")
-   8. The task will be submitted, and the deployment will run.
-   9. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
+   9. The task will be submitted, and the deployment will run.
+   10. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
       ![json](./images/DNAC-Provision-ISR-success.png?raw=true "Import JSON")
 
 ### Lab SubSection 6.2 - Distribution 9300 Preparation
