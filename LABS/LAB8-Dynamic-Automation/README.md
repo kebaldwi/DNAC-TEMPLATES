@@ -348,8 +348,8 @@ In this subsection we will apply a small templates to the Cat 9300-2 which is us
 #### Step 1 - ***Building Switching Network Profiles***
 1. Navigate to the **Design** within DNA Center through the menu *Design>Network Profile*.
    ![json](./images/DNAC-NetworkProfile-menu.png?raw=true "Import JSON")
-2. Select *Switching* under **Add Profile** .
-   ![json](./images/DNAC-NetworkProfile-Switching-Add.png?raw=true "Import JSON")
+2. Click the **Edit** beside the *DNAC-Templates-C9300* Profile Name.
+   ![json](./images/DNAC-NetworkProfile-Switching-edit.png?raw=true "Import JSON")
 3. Enter the following: 
       1. Enter the *Profile name* 
       2. Select **DayN Template** tab to add the template for this workflow.
