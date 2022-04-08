@@ -367,6 +367,8 @@ In this subsection we will apply a small templates to the Cat 9300-2 which is us
    ![json](./images/DNAC-NetworkProfile-Switching-DayN-Template-Save.png?raw=true "Import JSON")
 
 #### Step 2 - ***Assigning Switching Network Profile to a Site***
+The network profile is already assigned to the site, so this step is not required but for review purposes only these were the steps we used to accomplish that originally. As this is already completed you can skip to **Step 3**
+
 1. **Assign** the network profile to the hierarchy 
 ![json](./images/DNAC-NetworkProfile-Switching-DayN-Assign.png?raw=true "Import JSON")
 2. Select the **sites** to apply the profile within the hierarchy and click **Save**
@@ -411,5 +413,4 @@ Once all the steps have been completed, the *c9300-1.dcloud.cisco.com* **Target*
    ![json](./images/DNAC-Provision-Target-delete-4.png?raw=true "Import JSON")
 
 At this point we are ready to set up our **Target** switch.
-
 
