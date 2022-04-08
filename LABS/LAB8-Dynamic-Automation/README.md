@@ -214,7 +214,7 @@ The image used in this lab for the 9300-2 is downloadable from here [⬇︎Benga
 ## Lab Section 6 - Setup of Discovered Devices
 At this point in the lab the setup steps for the lab environment are done, DNS and DHCP are set up, ISE is integrated and DNA Center is ready for deploying configurations. In this section we will deploy the templates to configure the discovered devices. Note we could have automated this process too but wanted to separate this out so you can make modifications as you might need to for testing purposes.
 
-### Lab SubSection 6.1 - ISR Preparation
+### Lab SubSection 6.2 - ISR Preparation
 In this subsection we will apply a small template to the ISR 4331. This is to prove out that we can deploy templates to modify discovered devices within the infrastructure no matter what variant they are. You could also use this method to apply configuration to a router to mitigate vulnerabilities discovered as part of a tennable security scan. 
 
 #### Step 1 - ***Building Routing Network Profiles***
@@ -270,7 +270,7 @@ In this subsection we will apply a small template to the ISR 4331. This is to pr
    10. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
       ![json](./images/DNAC-Provision-ISR-success.png?raw=true "Import JSON")
 
-### Lab SubSection 6.2 - Distribution 9300 Preparation
+### Lab SubSection 6.3 - Distribution 9300 Preparation
 In this subsection we will apply a small templates to the Cat 9300-2 which is used as a distribution switch. This is to prove out that we can deploy templates to modify discovered devices within the infrastructure no matter what variant they are. You could also use this method to apply configuration to a switch to mitigate vulnerabilities discovered as part of a tennable security scan. 
 
 #### Step 1 - ***Building Switching Network Profiles***
