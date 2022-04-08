@@ -214,6 +214,78 @@ The image used in this lab for the 9300-2 is downloadable from here [⬇︎Benga
 ## Lab Section 6 - Setup of Discovered Devices
 At this point in the lab the setup steps for the lab environment are done, DNS and DHCP are set up, ISE is integrated and DNA Center is ready for deploying configurations. In this section we will deploy the templates to configure the discovered devices. Note we could have automated this process too but wanted to separate this out so you can make modifications as you might need to for testing purposes.
 
+### Lab SubSection 6.1 - 9300 Target Preparation
+In this subsection we will prepare the **Target** using the *c9300-2.dcloud.cisco.com*. To begin preparation of this **Target** device we can deploy a template to modify discovered device within the infrastructure to reset it automatically. In order to accomplish this we will need to complete the following stages.
+
+#### Step 1 - ***Building Switching Network Profiles***
+1. Navigate to the **Design** within DNA Center through the menu *Design>Network Profile*.
+   ![json](./images/DNAC-NetworkProfile-menu.png?raw=true "Import JSON")
+2. Select *Switching* under **Add Profile** .
+   ![json](./images/DNAC-NetworkProfile-Switching-Add.png?raw=true "Import JSON")
+3. Enter the following: 
+      1. Enter the *Profile name* 
+      2. Select **DayN Template** tab to add the template for this workflow.
+      3. Click the **Table View** 
+      4. Click *Add Template* to proceed to the next step. 
+      ![json](./images/DNAC-NetworkProfile-Switching-DayN.png?raw=true "Import JSON")
+4. Enter the following: 
+      1. Leave the **Device Type** as *Switches and Hubs*
+      2. Select the dropdown **Template** tand search for *C9300-TARGET-Prep*.
+      3. Click the **Tags** 
+      4. Enter *RELOAD* as a tag.
+      5. Click **Add** 
+      ![json](./images/DNAC-Profile-Target-add.png?raw=true "Import JSON")
+5. Click **View** to ensure the RELOAD tag is the only tag applied and click **Save**.
+   ![json](./images/DNAC-Profile-Target-save.png?raw=true "Import JSON")
+
+#### Step 2 - ***Assigning Switching Network Profile to a Site***
+1. **Assign** the network profile to the hierarchy 
+![json](./images/DNAC-NetworkProfile-Switching-DayN-Assign.png?raw=true "Import JSON")
+2. Select the **sites** to apply the profile within the hierarchy and click **Save**
+![json](./images/DNAC-NetworkProfile-Switching-DayN-Assign-Site.png?raw=true "Import JSON")
+
+#### Step 3 - ***Provisioning Target 9300 Switch***
+We will now provision the **Target** switch using the *C9300-TARGET-Prep* DayN Template. The template uses a *Tag* of **RELOAD** so we need to first set that and then provision the switch. To do this, do the following:
+
+##### Tag Switch
+   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
+   2. Put a **checkmark** next to the device *c9300-1.dcloud.cisco.com*.
+   3. Click the **Tag Device** link 
+   4. Search for and place a **checkmark** beside *RELOAD*
+   5. Click **Apply**    
+   ![json](./images/DNAC-Provision-Target-tag.png?raw=true "Import JSON")
+
+##### Provision Switch
+   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
+   2. Put a checkmark next to the device *c9300-1.dcloud.cisco.com* to be provisioned.
+   3. Click **Actions>Provision>Provision Device** link and walk through the workflow    
+   ![json](./images/DNAC-Provision-Target-flow.png?raw=true "Import JSON")
+   4. The floor was already selected during the **API Discovery** so click **next**    
+   ![json](./images/DNAC-Provision-Target-flow-1.png?raw=true "Import JSON")
+   5. Select *c9300-2.dcloud.cisco.com* on the left and the two tick boxes at the top of the page, then click **next**. If the template had inputs, they would be entered. Click **next**
+   ![json](./images/DNAC-Provision-Target-flow-2.png?raw=true "Import JSON")
+   6. Check the settings and if you agree accept these settings by clicking  **Deploy**.
+   ![json](./images/DNAC-Provision-Target-flow-3.png?raw=true "Import JSON")
+   7. Three options are displayed. Choose to deploy **Now** and **Apply**
+   ![json](./images/DNAC-Provision-Target-flow-4.png?raw=true "Import JSON")
+   8. The task will be submitted, and the deployment will run.
+   9. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
+   ![json](./images/DNAC-Provision-Target-success.png?raw=true "Import JSON")
+
+#### Step 4 - ***Deleting the Target 9300 Switch***
+We will now delete the **Target** switch to allow for the switch to be discovered automatically during the **Plug and Play (PnP)** process. In order to accomplish this complete the following tasks:
+   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
+   2. Put a **checkmark** next to the device *c9300-1.dcloud.cisco.com*.
+   3. Click **Actions>Inventory>Delete Device** link 
+   ![json](./images/DNAC-Provision-Target-delete-1.png?raw=true "Import JSON")
+   4. On the *Popup* that appears click **Ok**
+   ![json](./images/DNAC-Provision-Target-delete-2.png?raw=true "Import JSON")
+   5. DNA Center will then delete the switch from the Database.  
+   ![json](./images/DNAC-Provision-Target-delete-3.png?raw=true "Import JSON")
+
 ### Lab SubSection 6.2 - ISR Preparation
 In this subsection we will apply a small template to the ISR 4331. This is to prove out that we can deploy templates to modify discovered devices within the infrastructure no matter what variant they are. You could also use this method to apply configuration to a router to mitigate vulnerabilities discovered as part of a tennable security scan. 
 
@@ -329,5 +401,15 @@ We will now provision the distribution switch using the *DISTRO-C9300-2* DayN Co
    8. The task will be submitted, and the deployment will run.
    9. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
       ![json](./images/DNAC-Provision-Distro-flow-success.png?raw=true "Import JSON")
+
+### Lab SubSection 6.4 - Preparation Confirmation
+Once all the steps have been completed, the *c9300-1.dcloud.cisco.com* **Target** will have rebooted in a default state, acquired an IP address, discovered DNA Center and will appear in the **Plug and Play** tab in the **Provisioning** application. Confirm this by 
+
+   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
+   2. Select the *Plug and Play* tab and notice the switch under the *unclaimed* section.
+   ![json](./images/DNAC-Provision-Target-delete-4.png?raw=true "Import JSON")
+
+At this point we are ready to set up our **Target** switch.
 
 
