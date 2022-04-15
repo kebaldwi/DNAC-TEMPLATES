@@ -419,8 +419,91 @@ At this point in the lab the setup steps for the lab environment are done,the sw
 
 ![json](./images/DNAC-Provision-Target-delete-4.png?raw=true "Import JSON")
 
-### Lab SubSection 7.1 - 9300 Templates
+### Lab SubSection 7.1 - 9300 Templates - Roughed Out
 In this subsection we will begin preparation of this **Target** device by adding the templates previously uploaded to the network profile associated with the hierarchy. Please note that in DNA Center a single network profile of a given type may be used on a site within the hierarchy. In order to accomplish multiple use cases we use **Tags** and associate them to both the device and the template in question. In order to accomplish this we will need to complete the following stages.
 
-#### Step 1 - ***Modifying the Building Switching Network Profiles***
+#### Step 1 - ***Modifying the Building Switching Network Profiles*** - Roughed Out
+1. Navigate to the **Design** within DNA Center through the menu *Design>Network Profile*.
+   ![json](./images/DNAC-NetworkProfile-menu.png?raw=true "Import JSON")
+2. Click the **Edit** beside the *DNAC-Templates-C9300* Profile Name.
+   ![json](./images/DNAC-NetworkProfile-Switching-edit.png?raw=true "Import JSON")
+3. Enter the following: 
+      1. Enter the *Profile name* 
+      2. Select **DayN Template** tab to add the template for this workflow.
+      3. Click the **Table View** 
+      4. Click *Add Template* to proceed to the next step. 
+         ![json](./images/DNAC-NetworkProfile-Switching-DayN.png?raw=true "Import JSON")
+4. Enter the following: 
+      1. Leave the **Device Type** as *Switches and Hubs*
+      2. Select the dropdown **Template** tand search for *DISTRO-C9300-2*.
+      3. Click the **Tags** 
+      4. Enter *INFRA* as a tag.
+      5. Click **Add** 
+         ![json](./images/DNAC-NetworkProfile-Switching-DayN-Template.png?raw=true "Import JSON")
+5. Click **View** to ensure the INFRA tag is **the only tag** applied and click **Save**. (If necessary click the small **x** by *Distribution*.)
+   ![json](./images/DNAC-NetworkProfile-Switching-DayN-Template-Save.png?raw=true "Import JSON")
 
+#### Step 2 - ***Assigning Switching Network Profile to a Site*** - Roughed Out
+The network profile is already assigned to the site, so this step is not required but for review purposes only these were the steps we used to accomplish that originally. As this is already completed you can skip to **Step 3**
+
+1. **Assign** the network profile to the hierarchy 
+   ![json](./images/DNAC-NetworkProfile-Switching-DayN-Assign.png?raw=true "Import JSON")
+2. Select the **sites** to apply the profile within the hierarchy and click **Save**
+   ![json](./images/DNAC-NetworkProfile-Switching-DayN-Assign-Site.png?raw=true "Import JSON")
+
+#### Step 3 - ***Claiming and Onboarding*** - Roughed Out
+At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find DNA Center and land in the plug n play set of the devices section within the provisioning page. Now you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
+
+   1. Within DNA Center Navigate to *Provision>Plug and Play*      
+      ![json](./images/DNAC-NavigatePnP.png?raw=true "Import JSON")
+   2. Put a checkmark next to the device *Switch* to be claimed
+   3. Click the **Actions>Claim** link and walk through the workflow    
+      ![json](./images/DNAC-BeginClaim.png?raw=true "Import JSON")
+   4. Section 1 select the part of the hierarchy *floor1* to which the device will be deployed then click **next**    
+      ![json](./images/DNAC-SiteClaim.png?raw=true "Import JSON")
+   5. Section 2 you can click the hyperlinks to the right of the workflow page and view or amend the templates and images utilized then click **next** 
+      ![json](./images/DNAC-AssignConfig-Claim.png?raw=true "Import JSON")
+   6. Section 3 select the device **serial number** on the left and fill in the variables within the template click **next**. Please use the following:
+      *   Hostname type `ACCESS-9300-ASW`
+      *   Management Vlan enter `5`
+      *   IP Address `192.168.5.10`
+      *   Subnet Mask `255.255.255.0`
+      *   Gateway `192.168.5.1`
+      *   VTP Domain `Cisco`   
+      ![json](./images/DNAC-TemplateClaim.png?raw=true "Import JSON")
+   7. Section 4 review the elements including configuration to be deployed 
+   8. Click **claim** to initiate
+   9. At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete.       
+      ![json](./images/DNAC-Claimed.png?raw=true "Import JSON")
+   11. After the device is completed it will appear in the device inventory after being sync'd with DNA Center.      
+      ![json](./images/DNAC-Inventory.png?raw=true "Import JSON")
+
+#### Step 4 - ***Provisioning Target 9300 Switch*** - Roughed Out
+We will now provision the distribution switch using the *DISTRO-C9300-2* DayN Composite Template. The template uses a *Tag* of **INFRA** so we need to first set that and then provision the switch. To do this, do the following:
+
+##### Tag Switch - Roughed Out
+   1. Within DNA Center Navigate to *Provision>Inventory*.      
+      ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
+   2. Put a **checkmark** next to the device *c9300-2.dcloud.cisco.com*.
+   3. Click the **Tag Device** link 
+   4. Search for and place a **checkmark** beside *INFRA*
+   5. Click **Apply**    
+      ![json](./images/DNAC-Provision-Distro-tag.png?raw=true "Import JSON")
+
+##### Provision Switch
+   1. Within DNA Center Navigate to *Provision>Inventory*.      
+      ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
+   2. Put a checkmark next to the device *c9300-2.dcloud.cisco.com* to be provisioned.
+   3. Click the **Actions>Provision>Provision Device** link and walk through the workflow    
+      ![json](./images/DNAC-Provision-Distro-flow.png?raw=true "Import JSON")
+   4. The floor was already selected during the **API Discovery** so click **next**    
+      ![json](./images/DNAC-Provision-Distro-flow-1.png?raw=true "Import JSON")
+   5. Select *c9300-1.dcloud.cisco.com* on the left and the two tick boxes at the top of the page, then click **next**. If the template had inputs, they would be entered.
+      ![json](./images/DNAC-Provision-Distro-flow-2.png?raw=true "Import JSON")
+   6. Check the settings and if you agree accept these settings by clicking  **Deploy**.
+      ![json](./images/DNAC-Provision-Distro-flow-3.png?raw=true "Import JSON")
+   7. Three options are displayed. Choose to deploy **Now** and **Apply**
+      ![json](./images/DNAC-Provision-Distro-flow-4.png?raw=true "Import JSON")
+   8. The task will be submitted, and the deployment will run.
+   9. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
+      ![json](./images/DNAC-Provision-Distro-flow-success.png?raw=true "Import JSON")
