@@ -264,7 +264,7 @@ We will now provision the **Target** switch using the *C9300-TARGET-Prep* DayN T
    ![json](./images/DNAC-Provision-Target-flow.png?raw=true "Import JSON")
    4. The floor was already selected during the **API Discovery** so click **next**    
    ![json](./images/DNAC-Provision-Target-flow-1.png?raw=true "Import JSON")
-   5. Select *c9300-2.dcloud.cisco.com* on the left and the two tick boxes at the top of the page, then click **next**. If the template had inputs, they would be entered. Click **next**
+   5. Select *c9300-1.dcloud.cisco.com* on the left and the two tick boxes at the top of the page, then click **next**. If the template had inputs, they would be entered.
    ![json](./images/DNAC-Provision-Target-flow-2.png?raw=true "Import JSON")
    6. Check the settings and if you agree accept these settings by clicking  **Deploy**.
    ![json](./images/DNAC-Provision-Target-flow-3.png?raw=true "Import JSON")
