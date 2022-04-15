@@ -321,7 +321,7 @@ In this subsection we will apply a small template to the ISR 4331. This is to pr
 #### Step 3 - ***Provisioning Router***
    1. Within DNA Center Navigate to *Provision>Inventory*.      
    ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
-   2. Put a checkmark next to the device *c9300-2.dcloud.cisco.com* to be provisioned.
+   2. Put a checkmark next to the device *isr-4331.dcloud.cisco.com* to be provisioned.
    3. Click the **Actions>Provision>Provision Device** link and walk through the workflow    
    ![json](./images/DNAC-Provision-ISR-flow.png?raw=true "Import JSON")
    4. The floor was already selected during the **API Discovery** so click **next**    
@@ -363,7 +363,7 @@ In this subsection we will apply a small templates to the Cat 9300-2 which is us
       4. Enter *INFRA* as a tag.
       5. Click **Add** 
       ![json](./images/DNAC-NetworkProfile-Switching-DayN-Template.png?raw=true "Import JSON")
-5. Click **View** to ensure the INFRA tag is the only tag applied and click **Save**.
+5. Click **View** to ensure the INFRA tag is **the only tag** applied and click **Save**. (If necessary click the small **x** by *Distribution*.)
    ![json](./images/DNAC-NetworkProfile-Switching-DayN-Template-Save.png?raw=true "Import JSON")
 
 #### Step 2 - ***Assigning Switching Network Profile to a Site***
@@ -394,7 +394,7 @@ We will now provision the distribution switch using the *DISTRO-C9300-2* DayN Co
    ![json](./images/DNAC-Provision-Distro-flow.png?raw=true "Import JSON")
    4. The floor was already selected during the **API Discovery** so click **next**    
    ![json](./images/DNAC-Provision-Distro-flow-1.png?raw=true "Import JSON")
-   5. Select *c9300-2.dcloud.cisco.com* on the left and the two tick boxes at the top of the page, then click **next**. If the template had inputs, they would be entered. Click **next**
+   5. Select *c9300-1.dcloud.cisco.com* on the left and the two tick boxes at the top of the page, then click **next**. If the template had inputs, they would be entered.
    ![json](./images/DNAC-Provision-Distro-flow-2.png?raw=true "Import JSON")
    6. Check the settings and if you agree accept these settings by clicking  **Deploy**.
       ![json](./images/DNAC-Provision-Distro-flow-3.png?raw=true "Import JSON")
