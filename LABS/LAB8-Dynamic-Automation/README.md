@@ -232,7 +232,7 @@ In this subsection we will prepare the **Target** using the *c9300-2.dcloud.cisc
       1. Leave the **Device Type** as *Switches and Hubs*
       2. Select the dropdown **Template** tand search for *C9300-TARGET-Prep*.
       3. Click the **Tags** 
-      4. Enter *RELOAD* as a tag.
+      4. Enter *RELOAD* as a tag. *(If necessary click the small* ***x** by any other tag visible)*
       5. Click **Add** 
          ![json](./images/DNAC-Profile-Target-add.png?raw=true "Import JSON")
 5. Click **View** to ensure the RELOAD tag is the only tag applied and click **Save**.
@@ -360,10 +360,10 @@ In this subsection we will apply a small templates to the Cat 9300-2 which is us
       1. Leave the **Device Type** as *Switches and Hubs*
       2. Select the dropdown **Template** tand search for *DISTRO-C9300-2*.
       3. Click the **Tags** 
-      4. Enter *INFRA* as a tag.
+      4. Enter *INFRA* as a tag. *(If necessary click the small* ***x** by any other tag visible)*
       5. Click **Add** 
          ![json](./images/DNAC-NetworkProfile-Switching-DayN-Template.png?raw=true "Import JSON")
-5. Click **View** to ensure the INFRA tag is **the only tag** applied and click **Save**. (If necessary click the small **x** by *Distribution*.)
+5. Click **View** to ensure the INFRA tag is **the only tag** applied and click **Save**.
    ![json](./images/DNAC-NetworkProfile-Switching-DayN-Template-Save.png?raw=true "Import JSON")
 
 #### Step 2 - ***Assigning Switching Network Profile to a Site***
@@ -422,25 +422,50 @@ At this point in the lab the setup steps for the lab environment are done,the sw
 ### Lab SubSection 7.1 - 9300 Templates - Roughed Out
 In this subsection we will begin preparation of this **Target** device by adding the templates previously uploaded to the network profile associated with the hierarchy. Please note that in DNA Center a single network profile of a given type may be used on a site within the hierarchy. In order to accomplish multiple use cases we use **Tags** and associate them to both the device and the template in question. In order to accomplish this we will need to complete the following stages.
 
+#### Step 1 - ***Check for Access Tag on Templates*** - Roughed Out
+1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor*.
+   ![json](./images/DNAC-Template-menu.png?raw=true "Import JSON")
+2. Within the **template editor**, select the drop down for the *DCLOUD DNAC Template Lab DayN w Autoconf and IBNS 2.0* Project.  
+   ![json](./images/DNAC-Template-menu-import.png?raw=true "Import JSON")
+3. Select the Cog ⚙️ and then Properties from the submenu
+   ![json](./images/DNAC-Template-Dynamic-select.png?raw=true "Import JSON")
+4. Within the properties under the **Tag** section make sure *Access* appears
+   ![json](./images/DNAC-Template-Dynamic-select.png?raw=true "Import JSON")
+
 #### Step 1 - ***Modifying the Building Switching Network Profiles*** - Roughed Out
 1. Navigate to the **Design** within DNA Center through the menu *Design>Network Profile*.
    ![json](./images/DNAC-NetworkProfile-menu.png?raw=true "Import JSON")
 2. Click the **Edit** beside the *DNAC-Templates-C9300* Profile Name.
    ![json](./images/DNAC-NetworkProfile-Switching-edit.png?raw=true "Import JSON")
-3. Enter the following: 
-      1. Enter the *Profile name* 
-      2. Select **DayN Template** tab to add the template for this workflow.
+##### Onboarding Template - Roughed Out
+1. Enter the following: 
+      1. Select **Onboarding Template** tab to add the template for this workflow.
       3. Click the **Table View** 
-      4. Click *Add Template* to proceed to the next step. 
+      4. Click **Add Template** to proceed to the next step. 
          ![json](./images/DNAC-NetworkProfile-Switching-DayN.png?raw=true "Import JSON")
-4. Enter the following: 
-      1. Leave the **Device Type** as *Switches and Hubs*
-      2. Select the dropdown **Template** tand search for *DISTRO-C9300-2*.
+2. Enter the following: 
+      1. Change the **Device Type** to *9300 Switches* as shown
+      2. Select the dropdown **Template** and search for *Platinum Onboarding Template using 2.1.2.5 gen template*.
       3. Click the **Tags** 
-      4. Enter *INFRA* as a tag.
+      4. Enter *Access* as a tag. *(If necessary click the small* ***x** by any other tag visible)*
       5. Click **Add** 
          ![json](./images/DNAC-NetworkProfile-Switching-DayN-Template.png?raw=true "Import JSON")
-5. Click **View** to ensure the INFRA tag is **the only tag** applied and click **Save**. (If necessary click the small **x** by *Distribution*.)
+3. Click **View** to ensure the *Access* tag is **the only tag** then proceed to the **DayN Template Tab** for the next section. 
+   ![json](./images/DNAC-NetworkProfile-Switching-DayN-Template-Save.png?raw=true "Import JSON")
+##### DayN Template - Roughed Out
+1. Enter the following: 
+      1. Select **DayN Template** tab to add the template for this workflow.
+      3. Click the **Table View** 
+      4. Click **Add Template** to proceed to the next step. 
+         ![json](./images/DNAC-NetworkProfile-Switching-DayN.png?raw=true "Import JSON")
+2. Enter the following: 
+      1. Change the **Device Type** to *9300 Switches* as shown
+      2. Select the dropdown **Template** and search for *DNAC Template Lab DayN Composite Autoconf IBNS*.
+      3. Click the **Tags** 
+      4. Enter *Access* as a tag. *(If necessary click the small* ***x** by any other tag visible)*
+      5. Click **Add** 
+         ![json](./images/DNAC-NetworkProfile-Switching-DayN-Template.png?raw=true "Import JSON")
+3. Click **View** to ensure the *Access* tag is **the only tag** then proceed to **Save**. 
    ![json](./images/DNAC-NetworkProfile-Switching-DayN-Template-Save.png?raw=true "Import JSON")
 
 #### Step 2 - ***Assigning Switching Network Profile to a Site*** - Roughed Out
