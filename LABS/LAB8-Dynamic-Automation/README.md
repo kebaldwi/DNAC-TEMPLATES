@@ -451,9 +451,9 @@ In this subsection we will begin preparation of this **Target** device by adding
       3. Click the **Tags** 
       4. Enter *Access* as a tag. *(If necessary click the small* ***x** by any other tag visible)*
       5. Click **Add** 
-         ![json](./images/DNAC-NetworkProfile-Switching-DayN-Template.png?raw=true "Import JSON")
+         ![json](./images/DNAC-NetworkProfile-Switching-Onboarding-Template.png?raw=true "Import JSON")
 3. Click **View** to ensure the *Access* tag is **the only tag** then proceed to the **DayN Template Tab** for the next section. 
-   ![json](./images/DNAC-NetworkProfile-Switching-DayN-Template-Save.png?raw=true "Import JSON")
+   ![json](./images/DNAC-NetworkProfile-Switching-Onboarding-Template-Save.png?raw=true "Import JSON")
 ##### DayN Template - Roughed Out
 1. Enter the following: 
       1. Select **DayN Template** tab to add the template for this workflow.
