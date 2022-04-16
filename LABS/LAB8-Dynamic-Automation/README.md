@@ -1,5 +1,4 @@
 # Dynamic Automation - Under Development
-![json](./images/underconstruction.png?raw=true "Import JSON")
 
 ## Overview
 This Lab is designed to be used as a stand alone lab due. It has been created to address how to combine and use **IBNS 2.0** using **closed mode** and multiple Regular Templates within DNA Center to onboard network devices at Day 1 through N. This allows Network Administrators the ability to configure network devices in an ongoing and programmatic manner from within DNA Center without using the SD-Access Fabric methodology. It also enables an administrator to drag Regular Templates into and out of the flow as needed for ongoing maintenance.
@@ -414,7 +413,11 @@ Once all the steps have been completed, the *c9300-1.dcloud.cisco.com* **Target*
 
 At this point we are ready to set up our **Target** switch.
 
-## Lab Section 7 - Target Switch Deployment
+This point on 
+![json](./images/underconstruction.png?raw=true "Import JSON")
+
+
+## Lab Section 7 - Target Switch Deployment - In Development
 At this point in the lab the setup steps for the lab environment are done,the switch is in the unclaimed section of the Plug and Play section. In this section we will deploy the templates to configure the Target 9300 device with the dynamic templates discussed in detail in Lab 7. Note we could have automated this process too but wanted to separate this out so you can make modifications as you might need to for testing purposes.
 
 ![json](./images/DNAC-Provision-Target-delete-4.png?raw=true "Import JSON")
