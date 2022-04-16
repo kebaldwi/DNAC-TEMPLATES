@@ -442,7 +442,8 @@ In this subsection we will begin preparation of this **Target** device by adding
 ##### Onboarding Template - Roughed Out
 1. Enter the following: 
       1. Select **Onboarding Template** tab to add the template for this workflow.
-      2. Click **Add Template** to proceed to the next step. 
+      2. Click the **Table View** 
+      3. Click **Add Template** to proceed to the next step. 
          ![json](./images/DNAC-Profile-Switching-Onboarding-Add.png?raw=true "Import JSON")
 2. Enter the following: 
       1. Change the **Device Type** to *9300 Switches* as shown
@@ -456,8 +457,8 @@ In this subsection we will begin preparation of this **Target** device by adding
 ##### DayN Template - Roughed Out
 1. Enter the following: 
       1. Select **DayN Template** tab to add the template for this workflow.
-      3. Click the **Table View** 
-      4. Click **Add Template** to proceed to the next step. 
+      2. Click the **Table View** 
+      3. Click **Add Template** to proceed to the next step. 
          ![json](./images/DNAC-NetworkProfile-Switching-DayN.png?raw=true "Import JSON")
 2. Enter the following: 
       1. Change the **Device Type** to *9300 Switches* as shown
