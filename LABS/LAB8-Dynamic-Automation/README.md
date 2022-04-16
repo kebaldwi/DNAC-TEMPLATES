@@ -444,7 +444,7 @@ In this subsection we will begin preparation of this **Target** device by adding
       1. Select **Onboarding Template** tab to add the template for this workflow.
       3. Click the **Table View** 
       4. Click **Add Template** to proceed to the next step. 
-         ![json](./images/DNAC-NetworkProfile-Switching-DayN.png?raw=true "Import JSON")
+         ![json](./images/DNAC-Profile-Switching-Onboarding-Add.png?raw=true "Import JSON")
 2. Enter the following: 
       1. Change the **Device Type** to *9300 Switches* as shown
       2. Select the dropdown **Template** and search for *Platinum Onboarding Template using 2.1.2.5 gen template*.
