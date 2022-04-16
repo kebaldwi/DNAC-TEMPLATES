@@ -429,11 +429,10 @@ In this subsection we will begin preparation of this **Target** device by adding
 1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor*.
    ![json](./images/DNAC-Template-menu.png?raw=true "Import JSON")
 2. Within the **template editor**, select the drop down for the *DCLOUD DNAC Template Lab DayN w Autoconf and IBNS 2.0* Project.  
-   ![json](./images/DNAC-Template-menu-import.png?raw=true "Import JSON")
 3. Select the Cog ⚙️ and then Properties from the submenu
-   ![json](./images/DNAC-Template-Dynamic-select.png?raw=true "Import JSON")
+   ![json](./images/DNAC-Template-Composite-Menu.png?raw=true "Import JSON")
 4. Within the properties under the **Tag** section make sure *Access* appears
-   ![json](./images/DNAC-Template-Dynamic-select.png?raw=true "Import JSON")
+   ![json](./images/DNAC-Template-Properties.png?raw=true "Import JSON")
 
 #### Step 1 - ***Modifying the Building Switching Network Profiles*** - Roughed Out
 1. Navigate to the **Design** within DNA Center through the menu *Design>Network Profile*.
