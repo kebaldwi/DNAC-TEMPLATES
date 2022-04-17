@@ -506,7 +506,11 @@ We will manually do these steps to allow for modifications but again all of thes
       *   Gateway `192.168.5.1`
       *   VTP Domain `Cisco`   
       ![json](./images/DNAC-TemplateClaim.png?raw=true "Import JSON")
-   7. Section 4 review the elements including configuration to be deployed 
+   7. Section 4 review the elements including configuration to be deployed, then click **claim** to begin the process.
+      ![json](./images/DNAC-DeviceClaim-1.png?raw=true "Import JSON")
+      ![json](./images/DNAC-DeviceClaim-2.png?raw=true "Import JSON")
+      ![json](./images/DNAC-DeviceClaim-3.png?raw=true "Import JSON")
+      ![json](./images/DNAC-DeviceClaim-4.png?raw=true "Import JSON")
    8. Click **claim** to initiate
    9. At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete.       
       ![json](./images/DNAC-Claimed.png?raw=true "Import JSON")
