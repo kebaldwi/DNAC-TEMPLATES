@@ -413,10 +413,6 @@ Once all the steps have been completed, the *c9300-1.dcloud.cisco.com* **Target*
 
 At this point we are ready to set up our **Target** switch.
 
-This point on.
-
-![json](./images/underconstruction.png?raw=true "Import JSON")
-
 ## Lab Section 7 - Target Switch Deployment - In Development
 At this point in the lab the setup steps for the lab environment are done,the switch is in the unclaimed section of the Plug and Play section. In this section we will deploy the templates to configure the Target 9300 device with the dynamic templates discussed in detail in Lab 7. Note we could have automated this process too but wanted to separate this out so you can make modifications as you might need to for testing purposes.
 
@@ -506,16 +502,21 @@ We will manually do these steps to allow for modifications but again all of thes
       *   Gateway `192.168.5.1`
       *   VTP Domain `Cisco`   
       ![json](./images/DNAC-TemplateClaim.png?raw=true "Import JSON")
-   7. Section 4 review the elements including configuration to be deployed, then click **claim** to begin the process.
+   7. Section 4 review the elements including configuration to be deployed, then click **claim** and the **yes** on the popup to begin the process.
       ![json](./images/DNAC-DeviceClaim-1.png?raw=true "Import JSON")
       ![json](./images/DNAC-DeviceClaim-2.png?raw=true "Import JSON")
       ![json](./images/DNAC-DeviceClaim-3.png?raw=true "Import JSON")
       ![json](./images/DNAC-DeviceClaim-4.png?raw=true "Import JSON")
-   8. Click **claim** to initiate
-   9. At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete.       
-      ![json](./images/DNAC-Claimed.png?raw=true "Import JSON")
+   8. At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete.       
+      ![json](./images/DNAC-Claimed-1.png?raw=true "Import JSON")
+      ![json](./images/DNAC-Claimed-2.png?raw=true "Import JSON")
+      ![json](./images/DNAC-Claimed-3.png?raw=true "Import JSON")
    11. After the device is completed it will appear in the device inventory after being sync'd with DNA Center.      
-      ![json](./images/DNAC-Inventory.png?raw=true "Import JSON")
+      ![json](./images/DNAC-Claimed-to-Inventory.png?raw=true "Import JSON")
+
+This point on.
+
+![json](./images/underconstruction.png?raw=true "Import JSON")
 
 #### Step 4 - ***Provisioning Target 9300 Switch*** - Roughed Out
 We will now provision the distribution switch using the *DISTRO-C9300-2* DayN Composite Template. The template uses a *Tag* of **INFRA** so we need to first set that and then provision the switch. To do this, do the following:
