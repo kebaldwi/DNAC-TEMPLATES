@@ -498,7 +498,7 @@ We will manually do these steps to allow for modifications but again all of thes
       ![json](./images/DNAC-AssignConfig-Claim-1.png?raw=true "Import JSON")
       If you open the hyperlinks you can preview the image and template to be deployed, and in stacks select the master.
       ![json](./images/DNAC-AssignConfig-Claim-2.png?raw=true "Import JSON")
-   6. Section 3 select the device **serial number** on the left and fill in the variables within the template click **next**. Please use the following:
+   6. Section 3 select the device **serial number** on the left and check the variables within the template click **next**. Please use the following:
       *   Hostname type `ACCESS-9300-ASW`
       *   Management Vlan enter `5`
       *   IP Address `192.168.5.10`
