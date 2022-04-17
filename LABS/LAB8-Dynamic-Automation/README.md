@@ -478,18 +478,26 @@ The network profile is **already assigned** to the site, so this step is not req
 2. Select the **sites** to apply the profile within the hierarchy and click **Save**
    ![json](./images/DNAC-NetworkProfile-Switching-DayN-Assign-Site.png?raw=true "Import JSON")
 
-#### Step 3 - ***Claiming and Onboarding*** - Roughed Out
-At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find DNA Center and land in the plug n play set of the devices section within the provisioning page. Now you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
+#### Step 3 - ***Claiming and Onboarding*** 
+At this point DNAC is set up and ready for the Plug and Play process to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in discover DNA Center and land in the plug n play set of the devices section within the Provisioning Application. 
+
+We will manually do these steps to allow for modifications but again all of these steps could be automated through REST-API. Please claim the device by completing the following:
 
    1. Within DNA Center Navigate to *Provision>Plug and Play*      
       ![json](./images/DNAC-NavigatePnP.png?raw=true "Import JSON")
    2. Put a checkmark next to the device *Switch* to be claimed
    3. Click the **Actions>Claim** link and walk through the workflow    
       ![json](./images/DNAC-BeginClaim.png?raw=true "Import JSON")
-   4. Section 1 select the part of the hierarchy *floor1* to which the device will be deployed then click **next**    
-      ![json](./images/DNAC-SiteClaim.png?raw=true "Import JSON")
+   4. If this is the first time you have worked with images, you may see an EULA window if that has not been accepted under the settings of DNA Center. Simply click the **accept checkbox** and click **save**.
+      ![json](./images/DNAC-EULA.png?raw=true "Import JSON")
+   5. Section 1 select the **Assign** link to assign the device to the hierarchy *floor1* to where the device will be deployed then click **save** and then click **next**    
+      ![json](./images/DNAC-SiteClaim-1.png?raw=true "Import JSON")
+      ![json](./images/DNAC-SiteClaim-2.png?raw=true "Import JSON")
+      ![json](./images/DNAC-SiteClaim-3.png?raw=true "Import JSON")
    5. Section 2 you can click the hyperlinks to the right of the workflow page and view or amend the templates and images utilized then click **next** 
-      ![json](./images/DNAC-AssignConfig-Claim.png?raw=true "Import JSON")
+      ![json](./images/DNAC-AssignConfig-Claim-1.png?raw=true "Import JSON")
+      If you open the hyperlinks you can preview the image and template to be deployed, and in stacks select the master.
+      ![json](./images/DNAC-AssignConfig-Claim-2.png?raw=true "Import JSON")
    6. Section 3 select the device **serial number** on the left and fill in the variables within the template click **next**. Please use the following:
       *   Hostname type `ACCESS-9300-ASW`
       *   Management Vlan enter `5`
