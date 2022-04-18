@@ -413,7 +413,7 @@ Once all the steps have been completed, the *c9300-1.dcloud.cisco.com* **Target*
 
 At this point we are ready to set up our **Target** switch.
 
-## Lab Section 7 - Target Switch Deployment - In Development
+## Lab Section 7 - Target Switch Deployment
 At this point in the lab the setup steps for the lab environment are done,the switch is in the unclaimed section of the Plug and Play section. In this section we will deploy the templates to configure the Target 9300 device with the dynamic templates discussed in detail in Lab 7. Note we could have automated this process too but wanted to separate this out so you can make modifications as you might need to for testing purposes.
 
 ![json](./images/DNAC-Provision-Target-delete-4.png?raw=true "Import JSON")
@@ -544,8 +544,19 @@ We will now provision the target *ACCESS-c9300-ASW* access switch using the Comp
    9. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
       ![json](./images/DNAC-Provision-Access-flow-success.png?raw=true "Import JSON")
 
+## Lab Section 8 - ISE Authorization Policy for FlexConnect
+At this point in the lab the setup steps for the lab environment are done,the switch is in the provisioned. In this section we will deploy a policy by configuring ISE to alter the port behaviour on authorization by utilizing a interface template for Flex Connect in a Change of Authorization. 
+
 ## Summary
 Congratulations, at this point, you have successfully reviewed and setup the infrastructure equipment. The Composite template used will allow for *Low Impact* mode to be used on ports selectively where PoE devices power up.
+
+During your review of the configurations used in this lab, please review the distribution switch which should have onboarded a Wireless Access Point using **Autoconf**. Then compare that to the switch running 802.1x IBNS 2.0 namely the Access Switch. On the Access Switch we utilize closed mode by default. We automatically modify the config on the port using PoE to put the device into **Low Impact** mode using an **EEM Script** specifically to deal with devices which might need either altered Service Policy for Authentication for instance MAB first vs 802.1x or low impact mode for autoconf. The point is understanding the gated method allows you to modify behaviour no matter what the cause.
+
+### Use cases:
+1. Modify policy priority on Auth Failure events Switch side
+2. Modify policy to low impact mode
+3. Revert the port to Closed Mode
+
 
 ## Feedback
 If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
