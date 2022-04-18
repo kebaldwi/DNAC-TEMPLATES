@@ -46,7 +46,8 @@ Please use this menu to navigate the various sections of this Github repository.
 * [Composite Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/) - This lab covers building a composite template on DNA Center **(allow 0.5 hrs)**
 * [Application Policys](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB5-Application-Policy/) - This lab covers Application Policys & SDAVC in DNAC **(allow 1.0 hrs)**
 * [Telemetry](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB6-Telemetry-Enablement/) - This lab explains how to deploy Telemetry for assurance **(allow 0.5 hrs)**
-* [Advanced Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB7-Advanced-Automation/) - This lab will explore Advanced Automation examples 
+* [Advanced Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB7-Advanced-Automation/) - This lab will explore Advanced Automation examples **(allow 1.5 hrs)**
+* [Dynamic Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB8-Dynamic-Automation/) - This lab will use many Advanced Automation techniques discussed previously **(allow 2.0 hrs)**
 
 ## [DNAC Templates Store](https://github.com/kebaldwi/DNAC-Templates-Store)
 This repository is built out to share DNA Center Templates and allow for ongoing submissions from those inclined to share their work with the community. Initially the repository includes all the examples that we have used in this repository in RAW TEXT and JSON format. After your first submission you will be able to continually add your templates as you develop new and interesting approaches to device management. 
