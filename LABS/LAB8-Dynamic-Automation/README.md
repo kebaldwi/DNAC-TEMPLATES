@@ -534,7 +534,7 @@ We will now provision the target *ACCESS-c9300-ASW* access switch using the Comp
       ![json](./images/DNAC-Provision-Access-flow.png?raw=true "Import JSON")
    4. The floor was already selected during the **Claim** so click **next**    
       ![json](./images/DNAC-Provision-Access-flow-1.png?raw=true "Import JSON")
-   5. Select *ACCESS-c9300-ASW* on the left and the two tick boxes at the top of the page, then click **next**.
+   5. Select *ACCESS-c9300-ASW* on the left and the two tick boxes at the top of the page. Then select the *VLANs Ports per DF* use the dropdown and select **C9300-48U** then click **next**.
       ![json](./images/DNAC-Provision-Access-flow-2.png?raw=true "Import JSON")
    6. Check the settings and if you agree accept these settings by clicking  **Deploy**.
       ![json](./images/DNAC-Provision-Access-flow-3.png?raw=true "Import JSON")
