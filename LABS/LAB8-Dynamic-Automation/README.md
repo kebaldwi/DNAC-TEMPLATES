@@ -543,3 +543,9 @@ We will now provision the target *ACCESS-c9300-ASW* access switch using the Comp
    8. The task will be submitted, and the deployment will run.
    9. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
       ![json](./images/DNAC-Provision-Access-flow-success.png?raw=true "Import JSON")
+
+## Summary
+Congratulations, at this point, you have successfully reviewed and setup the infrastructure equipment. The Composite template used will allow for *Low Impact* mode to be used on ports selectively where PoE devices power up.
+
+## Feedback
+If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
