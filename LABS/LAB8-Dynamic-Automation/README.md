@@ -550,8 +550,8 @@ We will now provision the target *ACCESS-c9300-ASW* access switch using the Comp
 At this point in the lab the setup steps for the lab environment are done,the switch is in the provisioned. In this section we will deploy a policy by configuring ISE to alter the port behaviour on authorization by utilizing a interface template for FlexConnect in a Change of Authorization. 
 
 ### Step 1 - ***Build Logical Profiles for FlexConnect Access Point***
-1. Navigate to the **Tor** within ISE through the menu *XXX>Tools>Template Editor*.
-   ![json](./images/DNAC-Template-menu.png?raw=true "Import JSON")
+1. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
+   ![json](./images/ISE-Dashboard-Menu.png?raw=true "Import JSON")
 
 
 
