@@ -432,7 +432,7 @@ In this subsection we will begin preparation of this **Target** device by adding
 4. Within the properties under the **Tag** section make sure *Access* appears
    ![json](./images/DNAC-Template-Properties.png?raw=true "Import JSON")
 
-#### Step 1 - ***Modifying the Building Switching Network Profiles***
+#### Step 2 - ***Modifying the Building Switching Network Profiles***
 1. Navigate to the **Design** within DNA Center through the menu *Design>Network Profile*.
    ![json](./images/DNAC-NetworkProfile-menu.png?raw=true "Import JSON")
 2. Click the **Edit** beside the *DNAC-Templates-C9300* Profile Name.
@@ -468,7 +468,7 @@ In this subsection we will begin preparation of this **Target** device by adding
 3. Click **View** to ensure the *Access* tag is **the only tag** then proceed to **Save**. 
    ![json](./images/DNAC-NetworkProfile-Switching-DayN-Composite-Template-Save.png?raw=true "Import JSON")
 
-#### Step 2 - ***Assigning Switching Network Profile to a Site***
+#### Step 3 - ***Assigning Switching Network Profile to a Site***
 The network profile is **already assigned** to the site, so this step is not required but for review purposes only these were the steps we used to accomplish that originally. As this is already completed you can skip to **Step 3**
 
 1. **Assign** the network profile to the hierarchy 
@@ -476,7 +476,7 @@ The network profile is **already assigned** to the site, so this step is not req
 2. Select the **sites** to apply the profile within the hierarchy and click **Save**
    ![json](./images/DNAC-NetworkProfile-Switching-DayN-Assign-Site.png?raw=true "Import JSON")
 
-#### Step 3 - ***Claiming and Onboarding*** 
+#### Step 4 - ***Claiming and Onboarding*** 
 At this point DNAC is set up and ready for the Plug and Play process to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in discover DNA Center and land in the plug n play set of the devices section within the Provisioning Application. 
 
 We will manually do these steps to allow for modifications but again all of these steps could be automated through REST-API. Please claim the device by completing the following:
@@ -516,7 +516,7 @@ We will manually do these steps to allow for modifications but again all of thes
    11. After the device is completed it will appear in the device inventory after being sync'd with DNA Center.      
       ![json](./images/DNAC-Claimed-to-Inventory.png?raw=true "Import JSON")
 
-#### Step 4 - ***Provisioning Target 9300 Switch***
+#### Step 5 - ***Provisioning Target 9300 Switch***
 We will now provision the target *ACCESS-c9300-ASW* access switch using the Composite Template. The template uses a *Tag* of **Access** as previously defined so we need to first set that **Tag** and then **provision** the switch. To do this, do the following:
 
 ##### Tag Switch
@@ -547,7 +547,13 @@ We will now provision the target *ACCESS-c9300-ASW* access switch using the Comp
       ![json](./images/DNAC-Provision-Access-flow-success.png?raw=true "Import JSON")
 
 ## Lab Section 8 - ISE Authorization Policy for FlexConnect
-At this point in the lab the setup steps for the lab environment are done,the switch is in the provisioned. In this section we will deploy a policy by configuring ISE to alter the port behaviour on authorization by utilizing a interface template for Flex Connect in a Change of Authorization. 
+At this point in the lab the setup steps for the lab environment are done,the switch is in the provisioned. In this section we will deploy a policy by configuring ISE to alter the port behaviour on authorization by utilizing a interface template for FlexConnect in a Change of Authorization. 
+
+### Step 1 - ***Build Logical Profiles for FlexConnect Access Point***
+1. Navigate to the **Tor** within ISE through the menu *XXX>Tools>Template Editor*.
+   ![json](./images/DNAC-Template-menu.png?raw=true "Import JSON")
+
+
 
 ## Summary
 Congratulations, at this point, you have successfully reviewed and setup the infrastructure equipment. The Composite template used will allow for *Low Impact* mode to be used on ports selectively where PoE devices power up.
@@ -558,7 +564,6 @@ During your review of the configurations used in this lab, please review the dis
 1. Modify policy priority on Auth Failure events Switch side
 2. Modify policy to low impact mode
 3. Revert the port to Closed Mode
-
 
 ## Feedback
 If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
