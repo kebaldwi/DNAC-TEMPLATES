@@ -552,6 +552,18 @@ At this point in the lab the setup steps for the lab environment are done,the sw
 ### Step 1 - ***Build Logical Profiles for FlexConnect Access Point***
 1. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
    ![json](./images/ISE-Dashboard-Menu.png?raw=true "Import JSON")
+2. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
+   ![json](./images/ISE-Menu-WorkCenter-ProfilingPolicies.png?raw=true "Import JSON")
+3. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
+   ![json](./images/ISE-Profilng-LogicalProfiles-add.png?raw=true "Import JSON")
+4. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
+   ![json](./images/ISE-Profilng-LogicalProfiles-1.png?raw=true "Import JSON")
+5. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
+   ![json](./images/ISE-Profilng-LogicalProfiles-2.png?raw=true "Import JSON")
+6. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
+   ![json](./images/ISE-Profilng-LogicalProfiles-3.png?raw=true "Import JSON")
+7. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
+   ![json](./images/ISE-Profilng-LogicalProfiles-Success.png?raw=true "Import JSON")
 
 
 
