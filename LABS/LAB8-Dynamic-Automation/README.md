@@ -606,24 +606,23 @@ Next set up the Authorization Policy which will allow for a successful authentic
    2. Select **Insert new row above**
       ![json](./images/ISE-PolicySets-Authorization-Add.png?raw=true "Import JSON")
 5. Continue the creation of the Authorization Policy by doing the following:
-   1. Scroll down under *Common Tasks* 
-   2. Select the **checkmark** beside *Interface Template* 
-   3. Enter *FLEX_ACCESS_POINT*
+   1. Enter a policy name *Cisco FlexConnect AP* 
+   2. Click the **+** under *Conditions* 
       ![json](./images/ISE-PolicySets-Authorization-1.png?raw=true "Import JSON")
-6. Continue the creation of the Authorization Profile by doing the following:
-   1. Scroll down again and select the **checkmark** beside *Reauthentication* 
-   2. Enter *3600* for the timer which is in milliseconds 
-   3. Ensure *RADIUS-Request* is selected
-      ![json](./images/ISE-PolicySets-Authorization-2.png?raw=true "Import JSON")
-7. Ensure the values shown are displayed at the bottom of the page and click **Save**.
-![json](./images/ISE-PolicySets-Authorization-3.png?raw=true "Import JSON")
-
-
-![json](./images/ISE-PolicySets-Authorization-4.png?raw=true "Import JSON")
-![json](./images/ISE-PolicySets-Authorization-5.png?raw=true "Import JSON")
-![json](./images/ISE-PolicySets-Authorization-6.png?raw=true "Import JSON")
-![json](./images/ISE-PolicySets-Authorization-7.png?raw=true "Import JSON")
-![json](./images/ISE-PolicySets-Authorization-8.png?raw=true "Import JSON")
+6. In the conditions studio click **click to add an attribute** 
+   ![json](./images/ISE-PolicySets-Authorization-2.png?raw=true "Import JSON")
+7. Select **All Dictionaries** a list will appear search and select *Endpoints*
+   ![json](./images/ISE-PolicySets-Authorization-3.png?raw=true "Import JSON")
+8. Under **Attributes** search and select *LogicalProfile*
+   ![json](./images/ISE-PolicySets-Authorization-4.png?raw=true "Import JSON")
+9. Ensure the **Equals** operator is selected then select **Choose from the list or type** and select **Cisco-AP** for the Profile
+   ![json](./images/ISE-PolicySets-Authorization-5.png?raw=true "Import JSON")
+10. Click **Use**
+   ![json](./images/ISE-PolicySets-Authorization-6.png?raw=true "Import JSON")
+11. Under **Profiles** click *Select from list* and choose the **Cisco_FlexAccessPoints** Profile created earlier
+   ![json](./images/ISE-PolicySets-Authorization-7.png?raw=true "Import JSON")
+12. Scroll to bottom of the page and click **Save**.
+   ![json](./images/ISE-PolicySets-Authorization-8.png?raw=true "Import JSON")
 
 ## Summary
 Congratulations, at this point, you have successfully reviewed and setup the infrastructure equipment. The Composite template used will allow for *Low Impact* mode to be used on ports selectively where PoE devices power up.
