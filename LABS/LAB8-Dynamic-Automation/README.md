@@ -564,6 +564,22 @@ First set up the Logical Profile we will reference for the Access Points. Logica
 6. The new Logical Profile will then be shown in the list of Logical Profiles.
    ![json](./images/ISE-Profilng-LogicalProfiles-Success.png?raw=true "Import JSON")
 
+### Step 2 - ***Build Authorization Profile for FlexConnect Access Point***
+Next set up the Authorization Profile which will be the result of a successful authentication and authorization of the Access Points. 
+1. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
+   ![json](./images/ISE-Dashboard-Menu.png?raw=true "Import JSON")
+2. Navigate to and select *Policy>Policy Set*.
+   ![json](./images/ISE-Menu-Policy-Results.png?raw=true "Import JSON")
+3. On the *Profiling Policies* page select *Logical Profiles* on the left and then click *Add*.
+   ![json](./images/ISE-AuthorizationProfile-Add.png?raw=true "Import JSON")
+4. Enter the name *Cisco-AP* under the available profiles select all the *Cisco Access Points* then click the arrow to move them to *Assigned*.
+   ![json](./images/ISE-AuthorizationProfile-1.png?raw=true "Import JSON")
+5. Then click **Save** to save the new Logical Profile.
+   ![json](./images/ISE-AuthorizationProfile-2.png?raw=true "Import JSON")
+6. The new Logical Profile will then be shown in the list of Logical Profiles.
+   ![json](./images/ISE-AuthorizationProfile-3.png?raw=true "Import JSON")
+6. The new Logical Profile will then be shown in the list of Logical Profiles.
+   ![json](./images/ISE-AuthorizationProfile-4.png?raw=true "Import JSON")
 
 
 ## Summary
