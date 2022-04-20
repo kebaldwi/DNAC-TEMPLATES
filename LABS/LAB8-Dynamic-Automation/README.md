@@ -562,7 +562,7 @@ First set up the Logical Profile we will reference for the Access Points. Logica
    2. Under the available profiles select all the *Cisco Access Points* 
    3. Click the arrow to move them to *Assigned*.
       ![json](./images/ISE-Profilng-LogicalProfiles-1.png?raw=true "Import JSON")
-5. Then click **Save** to save the new Logical Profile.
+5. Then click **Submit** to save the new Logical Profile. (Note on subsequent edits the button will be a **Save**)
    ![json](./images/ISE-Profilng-LogicalProfiles-3.png?raw=true "Import JSON")
 6. The new Logical Profile will then be shown in the list of Logical Profiles.
    ![json](./images/ISE-Profilng-LogicalProfiles-Success.png?raw=true "Import JSON")
