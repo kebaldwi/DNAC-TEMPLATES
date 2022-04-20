@@ -550,19 +550,18 @@ We will now provision the target *ACCESS-c9300-ASW* access switch using the Comp
 At this point in the lab the setup steps for the lab environment are done,the switch is in the provisioned. In this section we will deploy a policy by configuring ISE to alter the port behaviour on authorization by utilizing a interface template for FlexConnect in a Change of Authorization. 
 
 ### Step 1 - ***Build Logical Profiles for FlexConnect Access Point***
+First set up the Logical Profile we will reference for the Access Points. Logical Profile are a method of grouping and referencing multiple device profiles at the same time and may be used policy purposes.
 1. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
    ![json](./images/ISE-Dashboard-Menu.png?raw=true "Import JSON")
-2. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
+2. Navigate to and select *Work Centers>Profiler>Profiling Policies*.
    ![json](./images/ISE-Menu-WorkCenter-ProfilingPolicies.png?raw=true "Import JSON")
-3. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
+3. On the *Profiling Policies* page select *Logical Profiles* on the left and then click *Add*.
    ![json](./images/ISE-Profilng-LogicalProfiles-add.png?raw=true "Import JSON")
-4. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
+4. Enter the name *Cisco-AP* under the available profiles select all the *Cisco Access Points* then click the arrow to move them to *Assigned*.
    ![json](./images/ISE-Profilng-LogicalProfiles-1.png?raw=true "Import JSON")
-5. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
-   ![json](./images/ISE-Profilng-LogicalProfiles-2.png?raw=true "Import JSON")
-6. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
+5. Then click **Save** to save the new Logical Profile.
    ![json](./images/ISE-Profilng-LogicalProfiles-3.png?raw=true "Import JSON")
-7. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
+6. The new Logical Profile will then be shown in the list of Logical Profiles.
    ![json](./images/ISE-Profilng-LogicalProfiles-Success.png?raw=true "Import JSON")
 
 
