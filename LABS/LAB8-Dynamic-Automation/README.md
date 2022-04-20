@@ -555,10 +555,13 @@ First set up the Logical Profile we will reference for the Access Points. Logica
    ![json](./images/ISE-Dashboard-Menu.png?raw=true "Import JSON")
 2. Navigate to and select *Work Centers>Profiler>Profiling Policies*.
    ![json](./images/ISE-Menu-WorkCenter-ProfilingPolicies.png?raw=true "Import JSON")
-3. On the *Profiling Policies* page select *Logical Profiles* on the left and then click *Add*.
+3. On the *Profiling Policies* page select *Logical Profiles* on the left and then click **Add**.
    ![json](./images/ISE-Profilng-LogicalProfiles-add.png?raw=true "Import JSON")
-4. Enter the name *Cisco-AP* under the available profiles select all the *Cisco Access Points* then click the arrow to move them to *Assigned*.
-   ![json](./images/ISE-Profilng-LogicalProfiles-1.png?raw=true "Import JSON")
+4. Do the following to create the profile:
+   1. Enter the name *Cisco-AP* 
+   2. Under the available profiles select all the *Cisco Access Points* 
+   3. Click the arrow to move them to *Assigned*.
+      ![json](./images/ISE-Profilng-LogicalProfiles-1.png?raw=true "Import JSON")
 5. Then click **Save** to save the new Logical Profile.
    ![json](./images/ISE-Profilng-LogicalProfiles-3.png?raw=true "Import JSON")
 6. The new Logical Profile will then be shown in the list of Logical Profiles.
@@ -568,17 +571,26 @@ First set up the Logical Profile we will reference for the Access Points. Logica
 Next set up the Authorization Profile which will be the result of a successful authentication and authorization of the Access Points. 
 1. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
    ![json](./images/ISE-Dashboard-Menu.png?raw=true "Import JSON")
-2. Navigate to and select *Policy>Policy Set*.
+2. Navigate to and select *Policy>Policy Elements>Results*.
    ![json](./images/ISE-Menu-Policy-Results.png?raw=true "Import JSON")
-3. On the *Profiling Policies* page select *Logical Profiles* on the left and then click *Add*.
+3. On the *Results* page select *Authorization>Authorization Profiles* on the left and then click **Add**.
    ![json](./images/ISE-AuthorizationProfile-Add.png?raw=true "Import JSON")
-4. Enter the name *Cisco-AP* under the available profiles select all the *Cisco Access Points* then click the arrow to move them to *Assigned*.
-   ![json](./images/ISE-AuthorizationProfile-1.png?raw=true "Import JSON")
-5. Then click **Save** to save the new Logical Profile.
-   ![json](./images/ISE-AuthorizationProfile-2.png?raw=true "Import JSON")
-6. The new Logical Profile will then be shown in the list of Logical Profiles.
+4. Start the Creation of the Authorization Profile by doing the following:
+   1. Enter the name *Cisco_FlexAccessPoints* 
+   2. Ensure *ACCESS_ACCEPT* is selected for **Access Type** 
+   3. Then under *Common Tasks* select the **checkmark** beside *Vlan* and enter *10* for the *ID*
+      ![json](./images/ISE-AuthorizationProfile-1.png?raw=true "Import JSON")
+5. Continue the creation of the Authorization Profile by doing the following:
+   1. Scroll down under *Common Tasks* 
+   2. Select the **checkmark** beside *Interface Template* 
+   3. Enter *FLEX_ACCESS_POINT*
+      ![json](./images/ISE-AuthorizationProfile-2.png?raw=true "Import JSON")
+6. Continue the creation of the Authorization Profile by doing the following:
+   1. Scroll down again and select the **checkmark** beside *Reauthentication* 
+   2. Enter *3600* for the timer which is in milliseconds 
+   3. Ensure *RADIUS-Request* is selected
    ![json](./images/ISE-AuthorizationProfile-3.png?raw=true "Import JSON")
-6. The new Logical Profile will then be shown in the list of Logical Profiles.
+7. Ensure the values shown are displayed at the bottom of the page and click **Save**.
    ![json](./images/ISE-AuthorizationProfile-4.png?raw=true "Import JSON")
 
 
