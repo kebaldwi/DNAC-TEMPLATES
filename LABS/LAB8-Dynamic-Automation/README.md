@@ -624,6 +624,8 @@ Next set up the Authorization Policy which will allow for a successful authentic
 12. Scroll to bottom of the page and click **Save**.
    ![json](./images/ISE-PolicySets-Authorization-8.png?raw=true "Import JSON")
 
+Congratulations you have set up ISE to perform the required Authentication and Authorization of the Access Point.
+
 ## Summary
 Congratulations, at this point, you have successfully reviewed and setup the infrastructure equipment. The Composite template used will allow for *Low Impact* mode to be used on ports selectively where PoE devices power up.
 
