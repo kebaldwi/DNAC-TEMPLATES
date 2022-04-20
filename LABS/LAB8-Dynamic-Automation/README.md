@@ -593,6 +593,41 @@ Next set up the Authorization Profile which will be the result of a successful a
 7. Ensure the values shown are displayed at the bottom of the page and click **Save**.
    ![json](./images/ISE-AuthorizationProfile-4.png?raw=true "Import JSON")
 
+### Step 3 - ***Build Authorization Policy for FlexConnect Access Point***
+Next set up the Authorization Policy which will allow for a successful authentication and authorization of the Access Points. 
+1. Navigate to and click the **Hamburger Button** **☰** on the ISE Dashboard.
+   ![json](./images/ISE-Dashboard-Menu.png?raw=true "Import JSON")
+2. Navigate to and select *Policy>Policy Sets*.
+   ![json](./images/ISE-Menu-Policy-PolicySet.png?raw=true "Import JSON")
+3. On the *Policy Sets* page select the *>* on the right to enter the **Default Policy**.
+   ![json](./images/ISE-PolicySets-Default.png?raw=true "Import JSON")
+4. Select and begin the Creation of the Authorization Policy by completing the following:
+   1. Click the **Cog** ⚙️ as shown 
+   2. Select 
+   3. Then under *Common Tasks* select the **checkmark** beside *Vlan* and enter *10* for the *ID*
+      ![json](./images/ISE-PolicySets-Authorization-Add.png?raw=true "Import JSON")
+5. Continue the creation of the Authorization Profile by doing the following:
+   1. Scroll down under *Common Tasks* 
+   2. Select the **checkmark** beside *Interface Template* 
+   3. Enter *FLEX_ACCESS_POINT*
+      ![json](./images/ISE-AuthorizationProfile-2.png?raw=true "Import JSON")
+6. Continue the creation of the Authorization Profile by doing the following:
+   1. Scroll down again and select the **checkmark** beside *Reauthentication* 
+   2. Enter *3600* for the timer which is in milliseconds 
+   3. Ensure *RADIUS-Request* is selected
+   ![json](./images/ISE-AuthorizationProfile-3.png?raw=true "Import JSON")
+7. Ensure the values shown are displayed at the bottom of the page and click **Save**.
+   ![json](./images/ISE-AuthorizationProfile-4.png?raw=true "Import JSON")
+
+![json](./images/ISE-PolicySets-Authorization-Add.png?raw=true "Import JSON")
+![json](./images/ISE-PolicySets-Authorization-1.png?raw=true "Import JSON")
+![json](./images/ISE-PolicySets-Authorization-2.png?raw=true "Import JSON")
+![json](./images/ISE-PolicySets-Authorization-3.png?raw=true "Import JSON")
+![json](./images/ISE-PolicySets-Authorization-4.png?raw=true "Import JSON")
+![json](./images/ISE-PolicySets-Authorization-5.png?raw=true "Import JSON")
+![json](./images/ISE-PolicySets-Authorization-6.png?raw=true "Import JSON")
+![json](./images/ISE-PolicySets-Authorization-7.png?raw=true "Import JSON")
+![json](./images/ISE-PolicySets-Authorization-8.png?raw=true "Import JSON")
 
 ## Summary
 Congratulations, at this point, you have successfully reviewed and setup the infrastructure equipment. The Composite template used will allow for *Low Impact* mode to be used on ports selectively where PoE devices power up.
