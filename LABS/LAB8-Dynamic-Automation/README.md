@@ -589,7 +589,7 @@ Next set up the Authorization Profile which will be the result of a successful a
    1. Scroll down again and select the **checkmark** beside *Reauthentication* 
    2. Enter *3600* for the timer which is in milliseconds 
    3. Ensure *RADIUS-Request* is selected
-   ![json](./images/ISE-AuthorizationProfile-3.png?raw=true "Import JSON")
+      ![json](./images/ISE-AuthorizationProfile-3.png?raw=true "Import JSON")
 7. Ensure the values shown are displayed at the bottom of the page and click **Save**.
    ![json](./images/ISE-AuthorizationProfile-4.png?raw=true "Import JSON")
 
@@ -603,26 +603,22 @@ Next set up the Authorization Policy which will allow for a successful authentic
    ![json](./images/ISE-PolicySets-Default.png?raw=true "Import JSON")
 4. Select and begin the Creation of the Authorization Policy by completing the following:
    1. Click the **Cog** ⚙️ as shown 
-   2. Select 
-   3. Then under *Common Tasks* select the **checkmark** beside *Vlan* and enter *10* for the *ID*
+   2. Select **Insert new row above**
       ![json](./images/ISE-PolicySets-Authorization-Add.png?raw=true "Import JSON")
-5. Continue the creation of the Authorization Profile by doing the following:
+5. Continue the creation of the Authorization Policy by doing the following:
    1. Scroll down under *Common Tasks* 
    2. Select the **checkmark** beside *Interface Template* 
    3. Enter *FLEX_ACCESS_POINT*
-      ![json](./images/ISE-AuthorizationProfile-2.png?raw=true "Import JSON")
+      ![json](./images/ISE-PolicySets-Authorization-1.png?raw=true "Import JSON")
 6. Continue the creation of the Authorization Profile by doing the following:
    1. Scroll down again and select the **checkmark** beside *Reauthentication* 
    2. Enter *3600* for the timer which is in milliseconds 
    3. Ensure *RADIUS-Request* is selected
-   ![json](./images/ISE-AuthorizationProfile-3.png?raw=true "Import JSON")
+      ![json](./images/ISE-PolicySets-Authorization-2.png?raw=true "Import JSON")
 7. Ensure the values shown are displayed at the bottom of the page and click **Save**.
-   ![json](./images/ISE-AuthorizationProfile-4.png?raw=true "Import JSON")
-
-![json](./images/ISE-PolicySets-Authorization-Add.png?raw=true "Import JSON")
-![json](./images/ISE-PolicySets-Authorization-1.png?raw=true "Import JSON")
-![json](./images/ISE-PolicySets-Authorization-2.png?raw=true "Import JSON")
 ![json](./images/ISE-PolicySets-Authorization-3.png?raw=true "Import JSON")
+
+
 ![json](./images/ISE-PolicySets-Authorization-4.png?raw=true "Import JSON")
 ![json](./images/ISE-PolicySets-Authorization-5.png?raw=true "Import JSON")
 ![json](./images/ISE-PolicySets-Authorization-6.png?raw=true "Import JSON")
