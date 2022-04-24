@@ -166,6 +166,9 @@ While it is possible to click through these processes manually, which can be tim
 ## Summary
 The next step will be to build and deploy an Application (QoS) Policy in the network infrastructure. 
 
+## Acknowledgments
+Thanks to Chanii Haley for taking on the task of creating Jinja 2 templates for use as an option in this lab. If there is any feedback or you as a reader wish to contribute in any way to help this community please reach out on the feedback form.
+
 ## Feedback
 If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 

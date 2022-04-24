@@ -263,7 +263,10 @@ If you populate the UI with settings those parameters should **not** be in your 
 While it is possible to click through the claiming and process, for bulk deployments its important to be able to address that as well. With DNAC after the templates are built and assigned to the network profile and assigned to a site they may be referenced and used by uploading a csv file to DNA Center via REST API.
 
 ## Summary
-The next step will be to build DayN Templates for the switches to be pushed out to the various devices in the network infrastructure. 
+The next step will be to build DayN Templates for the switches to be pushed out to the various devices in the network infrastructure.
+
+## Acknowledgments
+Thanks to Chanii Haley for taking on the task of creating Jinja 2 templates for use as an option in this lab. If there is any feedback or you as a reader wish to contribute in any way to help this community please reach out on the feedback form. 
 
 ## Feedback
 If you found this set of Labs helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
