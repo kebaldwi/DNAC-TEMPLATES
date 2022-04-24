@@ -25,23 +25,21 @@ This section will explain which lab to utilize within the **DCLOUD** environment
 ### DCLOUD Labs
 This lab environment has been tested on the following DCLOUD session
 
-#### RTP
-[Cisco Enterprise Networks Hardware Sandbox v3](https://dcloud2-rtp.cisco.com/content/demo/798846?returnPathTitleKey=content-view)
-
 #### SJC
-[Cisco Enterprise Networks Hardware Sandbox v3](https://dcloud2-sjc.cisco.com/content/demo/267385?returnPathTitleKey=favourites-view)
+[Cisco Enterprise Networks Hardware Sandbox](https://dcloud2-sjc.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen)
 
 #### Components
 The DCLOUD session includes the following equipment:
 
 Virtual Machines:
 
-    DNA Center 2.2.2.3
-    Identity Services Engine (ISE) 3.0 (deployed)
+    DNA Center 2.2.3.4
+    Identity Services Engine (ISE) 3.0 Patch 4 (deployed)
     Identity Services Engine (ISE) 3.0 (Not deployed)
-    Stealthwatch 7.1
-    FlowCollector 7.1
-    Cisco Prime Infrastructure 3.9
+    Stealthwatch 7.4.0
+    FlowCollector 7.4.0
+    Cisco Prime Infrastructure 3.
+    Script Server - Ubuntu 20.04
     Wireless LAN Controller - C9800 running IOS-XE Bengaluru 17.5.1 code.
     Windows 10 Jump Host 
     Windows Server 2019 - Can be configured to provide identity, DHCP, DNS, etc.
@@ -49,25 +47,14 @@ Virtual Machines:
 
 Hardware Devices:
 
-RTP
-
-    ISR 4451 Router - 17.3.3 IOS-XE Code
-    Catalyst 9300 Switch - 17.3.3 IOS-XE Code with Embedded Wireless Controller (EWC) and ThousandEyes Enterprise Agent
-    Catalyst 3850 Switch - 16.12.5 IOS-XE Code
-    4800 Access Points
-    Silex Controller (2 NIC's)
-
 SJC
 
-    ISR 4451 Router - 17.5.1a IOS-XE Code
-    Catalyst 9300 Switch - 17.5.1 IOS-XE Code with Embedded Wireless Controller (EWC) and ThousandEyes Enterprise Agent
+    ISR 4451 Router - 17.06.01a IOS-XE Code
+    Catalyst 9300 Switch - 17.06.01 IOS-XE Code with Embedded Wireless Controller (EWC) and ThousandEyes Enterprise Agent
     9130AX Access Points
     Silex Controllers (3 Wired NIC's and 1 Wireless NIC)
 
 The lab envionment that is available is depicted here:
-
-RTP
-![json](./LAB1-PNP-PREP/images/DCLOUD_Topology.png?raw=true "Import JSON")
 
 SJC
 ![json](./LAB1-PNP-PREP/images/DCLOUD_Topology2.png?raw=true "Import JSON")
