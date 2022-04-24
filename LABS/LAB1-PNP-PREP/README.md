@@ -3,9 +3,6 @@
 This lab is the first one in a series of labs. You may use the steps in the DCLOUD environment, or equally, you might utilize them as part of a Proof of Concept setup at a customer's lab. These procedures may also help form part of a deployment or implementation. Use them to ensure that all the necessary steps are complete before onboarding any devices within DNA Center.
 
 We will be utilizing the lab in this manner:
-RTP Topology
-![json](./images/DCLOUD_Topology_PnPLab.png?raw=true "Import JSON")
-
 SJC Topology
 ![json](./images/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON")
 
@@ -15,21 +12,7 @@ As you may recall, in the informational sections of this repository, we set for 
 ### Lab Preparation
 To set up the lab, please log into the console connection to the ***4451X*** and issue the following commands:
 
-***Warning** use the correct commands for the correct DC... East and West have Different Architectures.*
-
-RTP
-```
-!
-conf t
-!
-!disable port 0/0/2 for the templating lab
-int gi 0/0/2
- shutdown
- end
-!
-wr
-!
-```
+***Warning** use the check the commands against the LAB Architecture.*
 
 SJC
 ```
