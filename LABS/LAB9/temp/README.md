@@ -1,6 +1,3 @@
-# In Development
-![json](./images/underconstruction.png?raw=true "Import JSON")
-
 # API Automation & Orchestration Techniques 
 ## Overview
 This Lab is designed as a standalone lab to help customers with varying challenges in Automating and Orchestrating their network infrastructure. Within the lab we will make use of various tools and techniques to Automate various tasks, and orchestrate over DNA Center.
