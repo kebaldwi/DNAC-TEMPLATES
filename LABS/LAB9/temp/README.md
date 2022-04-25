@@ -11,7 +11,7 @@ While a more extensive set of settings can be built out for deployment, we will 
 Should you desire to deploy rapidly and build the lab faster then use the following approach:
 
 ### Step 1 - ***Import Postman Collection***
-1. Download and import the collection within the ***Postman*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/postman/DCLOUD_DNACTemplatesLab_Workflow.postman_collection.json">⬇︎DCLOUD_DNACTemplateLab_Workflow.postman_collection.json⬇︎</a> file.
+1. Download and import the collection within the ***Postman*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB9/postman/DCLOUD_DNACTemplatesLab_Workflow.postman_collection.json">⬇︎DCLOUD_DNACTemplateLab_Workflow.postman_collection.json⬇︎</a> file.
 2. Extract the file to the desktop using **Winrar** to expand them
 3. Open the **postman** application from the desktop. Once the application is open select *Collections* then click the *Import* link. 
 ![json](../images/Postman-Pre-Collection-Import.png?raw=true "Import JSON")
@@ -21,7 +21,7 @@ Should you desire to deploy rapidly and build the lab faster then use the follow
 ![json](../images/Postman-Post-Collection-Import.png?raw=true "Import JSON")
 
 ### Step 2 - ***Import Postman Environment***
-1. Download and import the environment within the ***Postman*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/postman/DCLOUD_DNACTemplateLabs.postman_environment.json">⬇︎DCLOUD_DNACTemplateLabs.postman_environment.json⬇︎</a> file.
+1. Download and import the environment within the ***Postman*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB9/postman/DCLOUD_DNACTemplateLabs.postman_environment.json">⬇︎DCLOUD_DNACTemplateLabs.postman_environment.json⬇︎</a> file.
 2. Extract the file to the desktop using **Winrar** to expand them
 3. If not open, open the **postman** application from the desktop. Once the application is open select *Environments* and then the *Import* link. 
 ![json](../images/Postman-Pre-Environment-Import.png?raw=true "Import JSON")
