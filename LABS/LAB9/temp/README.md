@@ -14,40 +14,40 @@ Should you desire to deploy rapidly and build the lab faster then use the follow
 1. Download and import the collection within the ***Postman*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/postman/DCLOUD_DNACTemplatesLab_Workflow.postman_collection.json">⬇︎DCLOUD_DNACTemplateLab_Workflow.postman_collection.json⬇︎</a> file.
 2. Extract the file to the desktop using **Winrar** to expand them
 3. Open the **postman** application from the desktop. Once the application is open select *Collections* then click the *Import* link. 
-![json](./images/Postman-Pre-Collection-Import.png?raw=true "Import JSON")
+![json](../images/Postman-Pre-Collection-Import.png?raw=true "Import JSON")
 4. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the file named `DCLOUD_DNACTemplatesLab_Workflow.postman_collection.json` and click open. 
-![json](./images/Postman-Collection-Select.png?raw=true "Import JSON")
+![json](../images/Postman-Collection-Select.png?raw=true "Import JSON")
 5. Then click import and the collection should be loaded into the collections as shown.
-![json](./images/Postman-Post-Collection-Import.png?raw=true "Import JSON")
+![json](../images/Postman-Post-Collection-Import.png?raw=true "Import JSON")
 
 ### Step 2 - ***Import Postman Environment***
 1. Download and import the environment within the ***Postman*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/postman/DCLOUD_DNACTemplateLabs.postman_environment.json">⬇︎DCLOUD_DNACTemplateLabs.postman_environment.json⬇︎</a> file.
 2. Extract the file to the desktop using **Winrar** to expand them
 3. If not open, open the **postman** application from the desktop. Once the application is open select *Environments* and then the *Import* link. 
-![json](./images/Postman-Pre-Environment-Import.png?raw=true "Import JSON")
+![json](../images/Postman-Pre-Environment-Import.png?raw=true "Import JSON")
 4. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the file named `DCLOUD_DNACTemplateLabs.postman_environment.json` and click open. 
-![json](./images/Postman-Environment-Select.png?raw=true "Import JSON")
+![json](../images/Postman-Environment-Select.png?raw=true "Import JSON")
 5. Then click import and the environment should be loaded into the environments as shown. 
-![json](./images/Postman-Post-Environment-Import.png?raw=true "Import JSON")
+![json](../images/Postman-Post-Environment-Import.png?raw=true "Import JSON")
 6. Next we will choose the environment by clicking the checkmark on the right of Environment in postman as shown here. 
-![json](./images/Postman-Environment-Selection.png?raw=true "Import JSON")
+![json](../images/Postman-Environment-Selection.png?raw=true "Import JSON")
 
 ### Step 3 - ***Turn off SSL validation for LAB purposes within Postman***
 1. Turn off SSL verification for lab purposes in the settings of Postman by click the **Gear** icon to select **settings** and **deselect** `SSL certificate verification` and then close the settings window. 
-![json](./images/Postman-SSL-Deselect.png?raw=true "Import JSON")
+![json](../images/Postman-SSL-Deselect.png?raw=true "Import JSON")
 2. With these steps completed we are prepared to start the walk through of the sections below.
 
 ### Step 4 - ***Run the Collection within Postman***
 This collection is built with a flow and delay timers wait for the collection to finish entirely.
 1. If not open, open the **postman** application from the desktop. Once the application is open select *Collections* and then the '...' link and select **run collection**. </br>
-![json](./images/Postman-CollectionRunner.png?raw=true "Import JSON")
+![json](../images/Postman-CollectionRunner.png?raw=true "Import JSON")
 2. On the right ensure all API are selected and click run collection. 
-![json](./images/Postman-CollectionRunner-Run.png?raw=true "Import JSON")
+![json](../images/Postman-CollectionRunner-Run.png?raw=true "Import JSON")
 3. After the entire collection has run you will see all of them listed on the left as shown, and two buttons on the top right, one for results and the other to run again.
-![json](./images/Postman-CollectionRunner-Results.png?raw=true "Import JSON")
+![json](../images/Postman-CollectionRunner-Results.png?raw=true "Import JSON")
 4. Within DNA Center you should see 3 devices within the inventory and additionally you should observe a complete hierarchy as well as settings and telemetry configured. The Devices will be discovered in the Building level at this stage.
-![json](./images/Postman-Discovery.png?raw=true "Import JSON")
-![json](./images/Postman-Settings.png?raw=true "Import JSON")
+![json](../images/Postman-Discovery.png?raw=true "Import JSON")
+![json](../images/Postman-Settings.png?raw=true "Import JSON")
 
 
 
