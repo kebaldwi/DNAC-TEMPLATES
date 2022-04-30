@@ -33,21 +33,19 @@ The DCLOUD session includes the following equipment:
 
 Virtual Machines:
 
-    DNA Center 2.2.3.4
-    Identity Services Engine (ISE) 3.0 Patch 4 (deployed)
+    DNA Center 2.2.3.4 or better
+    Identity Services Engine (ISE) 3.0 Patch 4 or better (deployed)
     Identity Services Engine (ISE) 3.0 (Not deployed)
-    Stealthwatch 7.4.0
-    FlowCollector 7.4.0
-    Cisco Prime Infrastructure 3.
-    Script Server - Ubuntu 20.04
-    Wireless LAN Controller - C9800 running IOS-XE Bengaluru 17.5.1 code.
+    Stealthwatch 7.4.0 or better
+    FlowCollector 7.4.0 or better
+    Cisco Prime Infrastructure 3.10  or better
+    Script Server - Ubuntu 20.04  or better
+    Wireless LAN Controller - C9800 running IOS-XE Bengaluru 17.5.1 code or better
     Windows 10 Jump Host 
     Windows Server 2019 - Can be configured to provide identity, DHCP, DNS, etc.
-    Windows 10 Clients 
+    Windows 10 Clients
 
 Hardware Devices:
-
-SJC
 
     ISR 4451 Router - 17.06.01a IOS-XE Code
     Catalyst 9300 Switch - 17.06.01 IOS-XE Code with Embedded Wireless Controller (EWC) and ThousandEyes Enterprise Agent
@@ -56,7 +54,6 @@ SJC
 
 The lab envionment that is available is depicted here:
 
-SJC
 ![json](./LAB1-PNP-PREP/images/DCLOUD_Topology2.png?raw=true "Import JSON")
 
 ## Disclaimer
