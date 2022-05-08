@@ -10,7 +10,7 @@ SJC Topology
 As you may recall, in the informational sections of this repository, we set for the various methods of discovery for a device and the preliminary things required for proper zero-touch provisioning. This lab will ensure a successful connection to DNA Center by helping to deploy the initial concepts.
 
 ### Lab Preparation
-To set up the lab, please log into the console connection to the ***4451X*** and issue the following commands:
+To set up the lab, please log into the console connection to the ***4331*** and issue the following commands:
 
 ***Warning** use the check the commands against the LAB Architecture.*
 
@@ -35,9 +35,9 @@ For PnP processes to work, we intend to have a management interface on the devic
 As you may recall, a factory default configuration is using VLAN one as no other VLAN exists, and by default, it accepts DHCP addresses. We can use this method in the PnP process. However, the management VLAN may be different, and so may the native VLAN structure of our environment. To that end, we must use the *pnp startup-vlan* command, which allows the device to use varying VLANs in PnP and should be set up and configured on the upstream switch.
 
 ### Step 1.1 - ***Upstream Neighbor Setup***
-As depicted in the diagram above, the 3850 will serve as the upstream neighbor for this exercise and the environment's distribution switch. The Catalyst 9300 will act as the target switch, which we will deploy via PnP and Day 0 and N templates.
+As depicted in the diagram above, the 9300 will serve as the upstream neighbor for this exercise and the environment's distribution switch. The Catalyst 9300 will act as the target switch, which we will deploy via PnP and Day 0 and N templates.
 
-For the lab, we will utilize ***VLAN 5*** as the management VLAN. Connect to switch ***c3850-1*** and paste the following configuration:
+For the lab, we will utilize ***VLAN 5*** as the management VLAN. Connect to switch ***c9300-2*** and paste the following configuration:
 
 ```
 config t
@@ -81,7 +81,7 @@ During this lab setup, please choose which option you wish to use for DHCP for P
 #### Step 1.2a - ***IOS DHCP Configuration***
 Configured on an IOS device, the DHCP pool elements would be configured either on a router or switch in the network. 
 
-If we want to use the IOS DHCP configuration method, connect to switch ***c3850-1*** and paste the following configuration:
+If we want to use the IOS DHCP configuration method, connect to switch ***c9300-2*** and paste the following configuration:
 
 ```
 !
@@ -97,7 +97,7 @@ wr
 !
 ```
 
-Next, we will configure the helper address statement on the management VLAN's SVI to point to the router or switch to the DHCP configuration. Connect to switch ***c3850-1*** and paste the following configuration:
+Next, we will configure the helper address statement on the management VLAN's SVI to point to the router or switch to the DHCP configuration. Connect to switch ***c9300-2*** and paste the following configuration:
 
 ```
 !
@@ -126,7 +126,7 @@ The DHCP scope will look like this in Windows DHCP Administrative tool:
 
 ![json](./images/WindowsDHCPscoperouteronly.png?raw=true "Import JSON")
 
-Next, we will introduce the helper address statement on the management VLAN's SVI to point to the Windows DHCP server. Connect to switch ***c3850-1*** and paste the following configuration:
+Next, we will introduce the helper address statement on the management VLAN's SVI to point to the Windows DHCP server. Connect to switch ***c9300-2*** and paste the following configuration:
 
 ```
 !
