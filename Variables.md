@@ -161,10 +161,10 @@ Within DNA Center it is possible to Bind Variables to devices. Within DNA Center
 
 2. Select the option *Bind to Source* as above
 3. Choose the *Source* use the drop down and select from as shown in image below:
-   - Network Profile     *-use this option for SSID
-   - Common Settings     *-use this option to poll settings like ntp, dns
-   - Cloud Connect       *-use this option to poll tunnel information
-   - Inventory           *-use this option for device information
+   - Network Profile     *-use this option for SSID*
+   - Common Settings     *-use this option to poll settings like ntp, dns*
+   - Cloud Connect       *-use this option to poll tunnel information*
+   - Inventory           *-use this option for device information*
    
 ![json](images/variable-bind-inventory.png?raw=true "Import JSON")
 
