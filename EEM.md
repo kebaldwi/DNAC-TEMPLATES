@@ -190,8 +190,158 @@ event manager applet DETECT_SW_INT_DOWN
 
 This EEM script makes sure the interface is not a portchannel member and then reverts the interface to the **BASE CONFIG** automatically.
 
+## Case 5 - ***Using Scheduling capability to make changes - Use Case***
+For situations where you need to automate a repeated task over a number of days at a specific set of times, you can make use of this type of design. Here we use the built-in scheduling system and tie the EEM script to the time. This script completes port resets at 8:30 am Monday through Friday.
 
+```
+event manager applet DAILY-RESET
+ event timer cron name DAILY-RESET cron-entry "30 08 * * 1-5"
+ action 1.0 syslog msg "RUN: 'DAILY-RESET'  EEM applet."
+ action 2.0 puts "DAILY-RESET"
+ action 2.1 cli command "enable"
+ action 2.2 cli command "config t"
+ action 2.3 cli command "int ra gi 1/0/23-24"
+ action 2.4 puts "SHUTDOWN"
+ action 2.5 cli command "shut"
+ action 2.6 puts "NO SHUTDOWN"
+ action 2.7 cli command "no shut"
+ action 2.8 cli command "exit"
+```
 
+Here is an example that does a periodic save of the configuration for compliance reasons.
 
+```
+event manager applet PERIODIC-CONFIG-SAVE
+ event timer cron name CONFIG-SAVE-TIMER cron-entry "55 23 * * 1-5" action 1.0 cli command "enable"
+ action 1.0 cli command "copy running-config startup-config"
+```
+
+### Case 6 - ***Collecting Forensics when an event happens - Use Case***
+For situations where you need to collect forensics using multiple show commands you can collapse the results of all those appending them to a file on flash and then attach them in the body of an email to be sent off to the companies Network Operations Center. This example helps with those situations.
+
+```
+event manager session cli username admin 
+event manager applet LINK-EVENT-NOTIFIER
+event syslog pattern "%BGP-5-ADJCHANGE: neighbor 10.1.1.10 Down BGP Notification Sent"
+action 1.0 cli command "enable"
+action 1.5 cli command "term len 0"
+action 2.0 cli command "show ip bgp summary | redirect flash:/output.txt"
+action 2.5 cli command "show ip int br | ex un | append flash:/output.txt"
+action 3.0 cli command "show ip bgp | append flash:/output.txt"
+action 3.5 cli command "show ip bgp neigh 10.1.1.20 adv | append flash:/output.txt"
+action 4.0 cli command "more flash:/UNION-EVENTS/output.txt"
+action 4.5 cli command "term len 25"
+action 5.0 mail server "10.100.100.25" to "noc@cisco.com" from "SomeRouter@cisco.com" subject "ASR-LINK-EVENT from ASR1002-EXTRANET" body "$_cli_result"
+action 5.5 cli command "del /force flash:/output.txt"
+```
+
+### Case 7 - ***Configuration Change Notification and Tracking - Use Case***
+For compliance reasons you might want a northbound notification to occur if the configuration is modified on a device. This can be accomplished in the following way.
+
+First turn on Configuration Archiving and keep copies of the configurations over time locally or remotely.
+
+```
+archive
+ log config
+  logging enable
+  notify syslog contenttype plaintext
+  hidekeys
+ path flash:/BACKUP-CONFIG
+ maximum 5
+ write-memory
+```
+
+Then look for 
+```
+event manager applet CONF_MODIFIED
+ event syslog pattern "%PARSER.*LOGGEDCMD:.*logged command:.*"
+ action 1.0 cli command "enable"
+ action 1.1 set Check "!No changes were found"
+ action 1.2 cli command "sh archive config diff nvram:startup-config"
+ action 1.3 puts "$_cli_result"
+ action 1.4 if $_cli_result ne $Check
+ action 1.5  cli command "show clock | append flash:TESTCCIE.txt"
+ action 1.6  cli command "wri mem"
+ action 1.7  syslog msg "THE CONFIG WAS MODIFIED"
+ action 1.8 end
+
+```
+
+### Case 8 - ***Configuring Customized Commands - Use Case***
+The alias command is used as a short form for the `clear counters` cli command. The `cc` custom command is then mapped to the applet which clears the counters. Look more closely this applet also deals with questions the IOS presents when entering a command.
+
+```
+event manager applet CLEAR-COUNTERS
+event none
+action 1.0 cli command "enable"
+action 2.0 cli command "clear counters" pattern "\[confirm\]"
+ action 3.0 cli command "y"
+!
+alias exec cc event manager run CLEAR-COUNTERS 
+```
+
+Another example which displays to screen multiple show commands in a specific way.
+
+```
+alias exec showdemo event manager run showdemo
+
+no event manager applet showdemo
+event manager applet showdemo
+event none sync yes
+action 1000 cli command "enable"
+action 1010 puts ""
+action 1020 puts "Showing DEMO switch ASW-C9300-48-DEMO connectivity"
+action 1030 puts ""
+action 1110 puts "Showing Interface Switch connected on"
+action 1120 cli command "show int status | i 1/1/4"
+action 1130 puts "$_cli_result"
+action 1140 puts ""
+action 1210 puts "Showing IP Address for Downstream Switch"
+action 1220 cli command "show cdp ne te 1/1/4 det | i IP|Device"
+action 1230 puts "$_cli_result"
+action 1240 puts ""
+action 1310 puts "Showing if ISIS Routing Established"
+action 1320 cli command "show isis ne | i .1.30"
+action 1330 puts "$_cli_result"
+action 1340 puts ""
+```
+
+### Case 9 - ***Automatically Configuring PnP Startup Vlan for PnP - Use Case***
+Here we have two examples that will allow for the automated configuration of the `pnp startup-vlan` command on an interface for seed devices connected downstream.
+
+```
+ event manager applet pnp_checker authorization bypass
+  event syslog pattern "%CDP.*NATIVE_VLAN_MISMATCH:"
+  action 010 cli command "enable"
+  action 020 regexp ".* \((.*)\)," "$_syslog_msg" match nativevlan
+  action 030 cli command "show run | i ^pnp startup-vlan"
+  action 035 regexp "pnp startup-vlan (.*)\n" $_cli_result match current_pnp
+  action 036 put $current_pnp
+  action 037 put $nativevlan
+  action 038 string match $current_pnp $nativevlan
+  action 039 put $_string_result
+  action 040 if $_string_result eq 0
+  action 041  syslog msg "i am going to place config in"
+  action 050  cli command "conf t"
+  action 060  cli command "pnp startup-vlan $nativevlan"
+  action 070  cli command "end"
+  action 075  put "end of config"
+  action 080 end
+```
+```
+event manager applet pnp_checker authorization bypass
+ event syslog pattern "%CDP-4-NATIVE_VLAN_MISMATCH:"
+ action 010 cli command "enable"
+ action 020 regexp ".* \((.*)\)," "$_syslog_msg" match nativevlan
+ action 030 cli command "show run | i ^pnp startup-vlan"
+ action 040 regexp "pnp startup-vlan ([^[:space:]]+)" $_cli_result match current_pnp
+ action 050 if $current_pnp ne $nativevlan
+ action 060  cli command "conf t"
+ action 070  cli command "pnp startup-vlan $nativevlan"
+ action 080  cli command "end"
+ action 090 end
+ ```
+
+The examples are designed to get you thinking about operations, and what is possible. They may need heavy modification for a production use-case and so these are provided for LAB purposes only. Any use in a production environment should not be done without testing and validation.
 
 If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
