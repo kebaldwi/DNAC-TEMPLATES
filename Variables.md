@@ -50,6 +50,7 @@ Both examples follow:
 ```
 
 ```
+#set( $L2Bgps = [] )
 #set( $L2Bgps[0] = 10 )
 #set( $L2Bgps[1] = 18 )
 ```
@@ -84,6 +85,30 @@ Simple arithmetic expressions can be accomplished as follows:
     Division:       $answer = 5
     Remainder:      $answer = 0
 ```
+
+## Modifiers
+With variables there are modifiers that can be used to do specific operations with regard to variables. Modifiers can be used to determine size, split, add or even replace data. Take a look at the following:
+
+
+1. An example that splits a string result using on a specific character as a delimeter and fills an array $StackPIDs.
+   ```
+   #set( $StackPIDs = $ProductID.split(",") )
+   ```
+
+2. This example determines the number of elements in an array.
+   ```
+   #set( $StackMemberCount = $StackPIDs.size() )
+   ```
+
+3. This example uses a regular expression to reduce the PID of a switch to either 24 or 48 to reflect port count.
+   ```
+   #set( $PortCount = $Model.replaceAll("C9300L?-([2|4][4|8]).*","$1") )
+   ```
+
+4. This last example adds the value of $PortCount as a new element appending it within the array $PortTotal
+   ```
+     #set( $foo = $PortTotal.add($PortCount) )
+   ```
 
 ## DNA Center & Working with Variables
 As with anything DNA Center the UI allows for flexibility and the ability to not only further define how the Variables are populated but how they are used during the provisioning workflows. 
@@ -152,6 +177,18 @@ Within DNA Center it is possible to Bind Variables to devices. Within DNA Center
 ![json](images/variable-bind-platformid.png?raw=true "Import JSON")
 
 6. Save the Input Form through Actions menu on Input Form
+
+### Built-in Variables
+Within DNA Center it is possible to utilize Built-in variables for a number of values allowing you to address network settings within the design, to other interface information from devices. This example of code utilizes the `$__interface` built in variable to determine the characteristics of a port and then apply a macro to each port for a specific device.
+
+```
+#foreach( $interface in $__interface )
+  #if( $interface.portMode == "trunk" && $interface.interfaceType == "Physical")
+    interface $interface.portName
+     #uplink_physical
+  #end
+#end
+```
 
 If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
