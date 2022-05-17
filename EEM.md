@@ -1,5 +1,22 @@
 # EEM - Embedded Event Manager [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
-Embedded Evenet Manager is a tool which allows a switch to automate actions based on triggers. Triggers can come in many forms from Syslog through to Timers as depicted in the following slide. Actions can be then taken by the device utilizing cli commands through to TCL or Python Scripts. This section will start to dive into various capabilities and use cases for EEM scripts which can be deployed on Cisco Catalyst Products.
+Embedded Event Manager is a Flexible and Powerful tool in Cisco IOS & IOS-XE Software which allows a switch to automate actions based on user enabled system events. Events trigger the execution of user defined set of actions. Triggers can come in many forms from Syslog through to Timers as depicted in the following slide. 
+
+![json](./images/EEMDetectors.png?raw=true "Import JSON")
+
+Actions can be then taken by the device utilizing cli commands through to TCL or Python Scripts. This section will start to dive into various capabilities and use cases for EEM scripts which can be deployed on Cisco Catalyst Products.
+
+![json](./images/EEMOperation.png?raw=true "Import JSON")
+
+## Capabilities and Uses
+EEM can be used to:
+1. Automate operational activities done manually
+2. Change the behavior of Catalyst Switch or Cisco Router
+   1. Customize switch or router behavior
+   2. Automatically apply workarounds ( aka Fix bugs)
+   3. Change configuration dynamically
+4. Notify network admin on event for example send email on temperature, cpu or memory threshold crossing
+
+The configuration of EEM will be examined in the following use cases along with the capabilities. From a configuration point of view
 
 ## Case 1 - ***Renaming Interfaces - Use Case***
 Previously within the Composite Templating Lab, we introduced a methodology of automatically naming the interfaces within the switch. When a new device or switch/router/access point connects to a switch, we want to describe those interfaces. Naming the uplinks specifically and the various wireless access points and IP Phones would be an excellent addition. 
@@ -172,3 +189,9 @@ event manager applet DETECT_SW_INT_DOWN
 ```
 
 This EEM script makes sure the interface is not a portchannel member and then reverts the interface to the **BASE CONFIG** automatically.
+
+
+
+
+
+If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
