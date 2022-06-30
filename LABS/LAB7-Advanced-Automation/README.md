@@ -126,8 +126,8 @@ The second part of the problem within this use case is solving the issue present
     action 2.0 cli command "config t"
     action 2.1 cli command "no event manager applet POST_PNP"
     action 2.2 cli command "end"
-    action 2.3 cli command "wr
-    action 2.4 cli command "exit
+    action 2.3 cli command "wr"
+    action 2.4 cli command "exit"
 ```
 
 This code allows us to *clear the CDP table* and delete itself but leave the other EEM script on the switch for any moves, adds, and changes to the devices connected to the switch.
