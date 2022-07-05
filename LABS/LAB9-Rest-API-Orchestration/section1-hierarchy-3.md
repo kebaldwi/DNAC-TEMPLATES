@@ -1,4 +1,5 @@
-# Use Case 1.1 - Building Hierarchy
+# Use Case 1.1 - Building Hierarchy - lablet *[1](./section1-hierarchy-1.md)*
+*[2](./section1-hierarchy-2.md)* **[3]**
 Within Postman we will utilize the collection `Build Hierarchy Student` to build out the Hierarchy of DNA Center in which to associate settings and discover devices. This Collection may be run whenever you wish to create a new section of the Hierarchy to either add additional Areas, Buildings, or floors.
 
 ## Student Hierarchy Environment Modifications

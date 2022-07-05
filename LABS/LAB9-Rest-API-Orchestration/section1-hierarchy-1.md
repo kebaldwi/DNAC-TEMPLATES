@@ -1,4 +1,5 @@
-# Use Case 1.1 - Building Hierarchy
+# Use Case 1.1 - Building Hierarchy - Lablet [1]
+*[2](./section1-hierarchy-2.md)* *[3](./section1-hierarchy-3.md)*
 In this lablet we will use *Postman* to build and deploy a hierarchy within DNA Center. DNA Center uses hierarchy to align infrastructure needs logically against intent. This allows the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
 
 ## Hierarchy Background

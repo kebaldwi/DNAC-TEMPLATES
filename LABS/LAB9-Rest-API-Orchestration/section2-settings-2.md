@@ -1,4 +1,5 @@
-# Use Case 1.2 - Defining Settings and Credentials
+# Use Case 1.2 - Defining Settings and Credentials - Sections [1]
+*[2](./section2-settings-2.md)*
 
 ## Student Settings and Credentials Assignment
 We will now assign the settings credentials and telemetry settings using the environment variables which can be modified in the previous step.
