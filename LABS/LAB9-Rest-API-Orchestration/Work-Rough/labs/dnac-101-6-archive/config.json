@@ -1,0 +1,51 @@
+{
+	"items": [
+		{
+			"title": "Get started with Authentication API - Postman",
+			"content": "1.md"
+		},
+		{
+			"title": "DNA Center Authentication API - Postman",
+			"content": "2.md"
+		},
+		{
+			"title": "Get started with Authentication API - Python",
+			"content": "3.md"
+		}
+	],
+	"meta": {
+		"code_name": "dnac-101-auth",
+		"tags": [
+			{
+				"title": "Cisco DNA Center"
+			}
+		],
+		"time": "0",
+		"poweredBy": "",
+		"authors": [
+			{
+				"name": "Kareem Iskander",
+				"email": "kiskande@cisco.com"
+			}
+		],
+		"slug": "Get Started Cisco DNA Center Platform",
+		"repo": "DNAC-101-LL",
+		"moduleOnly": false,
+		"hasResources": false,
+		"byod": true,
+		"access": "public"
+	},
+	"config": {
+		"id": "dnac-101-auth",
+		"devEnv": {
+			"id": "devenv-base",
+			"defaultFile": "",
+			"default_content": "main.py"
+		},
+		"sandbox": {},
+		"video": {
+			"link": "",
+			"type": ""
+		}
+	}
+}
