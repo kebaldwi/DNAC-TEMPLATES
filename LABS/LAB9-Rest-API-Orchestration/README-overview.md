@@ -1,19 +1,19 @@
 # DNA Center APIs and Postman
-This set of Cisco Learning Labs is developed around a set of simple use cases to show both the power of DNA Center, the APIs and easy methodologies for execution through Postman.
+This set of Labs is developed around a set of simple use cases to show both the power of DNA Center, the APIs and easy methodologies for execution through Postman.
 
 ## Use Case Lab Approach:
 The use cases are separated out into each lab so that the examples given can be used separately. For familiarization with how the collections are set up please review the following:
 
-- [Postman Orientation](./labs/dnac-101-0-orientation/1.md)
+- [Postman Orientation](./postman-orientation.md)
 
 The use cases we will cover are the following which you can access via links below:
 
-1. [Building a Hierarchy](./labs/dnac-101-1-hierarchy/1.md)
-2. [Defining Settings and Credentials](./labs/dnac-101-1-hierarchy/1.md)
-3. [Running Show Commands](./labs/dnac-101-1-hierarchy/1.md)
-4. [Deploying Projects and Templates](./labs/dnac-101-1-hierarchy/1.md)
-5. [Retrieving Network Inventory](./labs/dnac-101-1-hierarchy/1.md)
-6. [Downloading Configuration Archives](./labs/dnac-101-1-hierarchy/1.md)
+1. [Building a Hierarchy](./section1-hierarchy-1.md)
+2. [Defining Settings and Credentials](./section2-settings-1.md)
+3. [Running Show Commands](./labs/section3-cmdrun.md)
+4. [Deploying Projects and Templates](./section4-templates.md)
+5. [Retrieving Network Inventory](./labs/section5-inventory.md)
+6. [Downloading Configuration Archives](./labs/section6-archives.md)
 
 ## Lab Requirements
 This lab is designed to be run in Cisco dClouds - Enterprise Network Sandbox Lab. It was developed in version 4 which includes DNA Center 2.2.3.5 and equipment running at least 17.x versions of code.
