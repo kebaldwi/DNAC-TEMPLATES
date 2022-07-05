@@ -23,19 +23,19 @@ Once the file has been downloaded uncompress/unzip it and import all the files i
 Follow these steps:
 
 1. First click on the postman shortcut on the desktop, here it is shown in Windows, but you will have a similar icon on MAC
-![json](./assets/Postman.png?raw=true "Import JSON")
+![json](./images/Postman.png?raw=true "Import JSON")
 2. Click the import button and a window for importing files will appear
-![json](./assets/Postman-Import-Begin.png?raw=true "Import JSON")
+![json](./images/Postman-Import-Begin.png?raw=true "Import JSON")
 3. Click the upload file button to begin the files select process
-![json](./assets/Postman-Import-File.png?raw=true "Import JSON")
+![json](./images/Postman-Import-File.png?raw=true "Import JSON")
 4. Select the files from the Student Folder by highlighting and click open
-![json](./assets/Postman-Import-Select-Open.png?raw=true "Import JSON")
+![json](./images/Postman-Import-Select-Open.png?raw=true "Import JSON")
 5. You will see the files listed for import, then click import
-![json](./assets/Postman-Import-Upload.png?raw=true "Import JSON")
+![json](./images/Postman-Import-Upload.png?raw=true "Import JSON")
 6. Confirm all the Collections are present.
-![json](./assets/Postman-Collection-Confirm.png?raw=true "Import JSON")
+![json](./images/Postman-Collection-Confirm.png?raw=true "Import JSON")
 7. Confirm the environment is present.
-![json](./assets/Postman-Environment-Confirm.png?raw=true "Import JSON")
+![json](./images/Postman-Environment-Confirm.png?raw=true "Import JSON")
 
 The next step is to set up the client with the correct environmental variables and SSL settings.
 
@@ -45,11 +45,11 @@ To ensure we have uniformity across all calls made from the client when we use d
 Follow these steps:
 
 1. Navigate to the environment on the left sidebar.
-![json](./assets/Postman-Environment-Confirm.png?raw=true "Import JSON")
+![json](./images/Postman-Environment-Confirm.png?raw=true "Import JSON")
 2. Hovering over the environment listed you will notice a checkmark to set active
-![json](./assets/Postman-Environment-Check.png?raw=true "Import JSON")
+![json](./images/Postman-Environment-Check.png?raw=true "Import JSON")
 3. Click checkmark to set the environment active
-![json](./assets/Postman-Environment-Active.png?raw=true "Import JSON")
+![json](./images/Postman-Environment-Active.png?raw=true "Import JSON")
 
 This environment is prepopulated with the information to build DNA Center. At specific points in the lab we will customize it for your use.
 
@@ -59,11 +59,11 @@ For lab purposes DNA Center utilizes a self signed certificate which would fail 
 Follow these steps:
 
 1. Click the settings gear icon on the top right of postman to select settings.
-![json](./assets/Postman-Settings-Menu.png?raw=true "Import JSON")
+![json](./images/Postman-Settings-Menu.png?raw=true "Import JSON")
 2. Deselect the `SSL certificate verification`
-![json](./assets/Postman-Settings-SSL-Validation-On.png?raw=true "Import JSON")
+![json](./images/Postman-Settings-SSL-Validation-On.png?raw=true "Import JSON")
 3. It should look as shown and then close the settings window.
-![json](./assets/Postman-Settings-SSL-Validation-Off.png?raw=true "Import JSON")
+![json](./images/Postman-Settings-SSL-Validation-Off.png?raw=true "Import JSON")
 
 # Summary
 At this point you have set up the postman client with a collection the environment and the necessary settings to complete the lab. In the following sextions we will utilize the environment variables within each collection to perform a task on DNA Center.
