@@ -14,21 +14,21 @@ To investigate the collections we have built follow these steps:
    2. Expand the collection `DNE LAB 1.0 - Build Hierarchy Student` by clicking the arrow.
    3. The tab with the API within the collection will appear to the right
    4. You can view the configuration of the API through these tabs. As a quick reference a green dot appears wherever configuration is applied.
-      ![json](./assets/Postman-Collection-Token-Begin.png?raw=true "Import JSON")
+      ![json](./images/Postman-Collection-Token-Begin.png?raw=true "Import JSON")
 2. Within the API you will notice the following:
    1. The method **POST** is used for this API
    2. The URL *https://***{{DNACip}}***/dna/system/api/v1/auth/token* where the Environmental variable **{{DNACip}}** holds the actual IP. Hover briefly over the variable to display the current data.
    3. Click the `Authorization` tab to to display the Authorization parameters
    4. Here we see that this API is using Basic Auth to get a TOKEN
    5. Two environmental variables **{{DNACuser}}** and **{{DNACpwd}}** are used and can be viewed by hovering over the variables presented
-      ![json](./assets/Postman-Collection-Token-Auth.png?raw=true "Import JSON")
+      ![json](./images/Postman-Collection-Token-Auth.png?raw=true "Import JSON")
 3. Within the API we will investigate the Headers through the following:
    1. Click the `Headers` tab to to display the Header parameters:
    2. The API is using the **Content-Type** `application/json`
-      ![json](./assets/Postman-Collection-Token-Header.png?raw=true "Import JSON")
+      ![json](./images/Postman-Collection-Token-Header.png?raw=true "Import JSON")
 4. Within the API we will investigate the Tests through the following:
    1. Click the `Tests` tab to to display the Test parameters:
-   ![json](./assets/Postman-Collection-Token-Header.png?raw=true "Import JSON")
+   ![json](./images/Postman-Collection-Token-Header.png?raw=true "Import JSON")
    2. The API has the following defined:
 
       ``` 

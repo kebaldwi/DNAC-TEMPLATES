@@ -18,12 +18,12 @@ Follow these steps:
 1. Navigate and open the desired environment and modify the variables indicated in the following steps:
    1. Within Postman click on the environment shortcut in the sidebar
    2. Clicking the environment `DNAC Template Labs Student`
-      ![json](./assets/Postman-Environment.png?raw=true "Import JSON")
+      ![json](./images/Postman-Environment.png?raw=true "Import JSON")
 2. Scroll down in the Environment variables shown:
    1. Find the variable `HierarchyArea`
    2. Edit the data in the forth column with your student info `Student-12` 
    3. Click the `Save` button to commit the changes
-      ![json](./assets/Postman-Environment-Area-Modify.png?raw=true "Import JSON")
+      ![json](./images/Postman-Environment-Area-Modify.png?raw=true "Import JSON")
 
 Within the environment please review the DNS, DHCP, TimeZone, and other components which are utilized within the settings of the environment. Please feel free to modify the DNS, or DHCP settings with your own values.
 

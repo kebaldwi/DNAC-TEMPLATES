@@ -15,22 +15,22 @@ Follow these steps:
    1. Within Postman click on the collection shortcut in the sidebar
    2. Hover over the collection `DNE LAB 1.4 - Device Inventory Student`
    3. Click the `Run Collection` submenu option
-      ![json](./assets/Postman-Collection-DeviceInventory.png?raw=true "Import JSON")
+      ![json](./images/Postman-Collection-DeviceInventory.png?raw=true "Import JSON")
 2. To run the collection do the following:
    1. Locate the sub-components of the `Runner`
    2. Select the `Save Responses` option as we will need the output
    3. Click  the `Run DNE LAB 1.4 - Device Inventory Student` button
-      ![json](./assets/Postman-Collection-DeviceInventory-Runner.png?raw=true "Import JSON")
+      ![json](./images/Postman-Collection-DeviceInventory-Runner.png?raw=true "Import JSON")
 3. The following summary will slowly appear as the collection is processed
-   ![json](./assets/Postman-Collection-DeviceInventory-Summary.png?raw=true "Import JSON")
+   ![json](./images/Postman-Collection-DeviceInventory-Summary.png?raw=true "Import JSON")
 4. To view the results do the following:
    1. Click the `Console` option at the bottom of postman
    2. Select the `Popout Window` option as we will need the output
    3. Expand the Get request that begins `GET https://198.18.129.100/api/v1/network-device` 
    4. Within the `Response Body` click the `Popout Window` option
-      ![json](./assets/Postman-Collection-DeviceInventory-Console.png?raw=true "Import JSON")
+      ![json](./images/Postman-Collection-DeviceInventory-Console.png?raw=true "Import JSON")
 5. The following results will appear in a text window allowing for copy to export or to use the file save options
-   ![json](./assets/Postman-Collection-DeviceInventory-Export.png?raw=true "Import JSON")
+   ![json](./images/Postman-Collection-DeviceInventory-Export.png?raw=true "Import JSON")
 
 
 ## Summary
