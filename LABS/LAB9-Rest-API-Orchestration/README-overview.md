@@ -1,5 +1,5 @@
 # DNA Center APIs and Postman
-This set of Labs is developed around a set of simple use cases to show both the power of DNA Center, the APIs and easy methodologies for execution through Postman.
+This set of Labs is developed around a set of simple use cases to show both the power of DNA Center, the APIs and easy methodologies for execution through Postman. Instructors click here for lab [prep](./section7-instructions.md/) documentation.
 
 ## Use Case Lab Approach:
 The use cases are separated out into each lab so that the examples given can be used separately. For familiarization with how the collections are set up please review the following:
