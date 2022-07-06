@@ -16,7 +16,7 @@ In order to utilize Postman with DNA Center we will first import the collection 
 ## Postman Collection and Environment Import
 To prepare Postman for the lab please download the following collection and environment zip file and upload them into Postman. Download the following Student Collection which includes 6 collections and one environment. To do this right click and open this link in a new tab to download them:
    
-- <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-DNE-LAB/blob/main/labs/assets/Student-Collection.zip" target="_blank">⬇︎Student-Collection⬇︎</a>
+- <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB9-Rest-API-Orchestration/postman/Student-Collection.zip" target="_blank">⬇︎Student-Collection⬇︎</a>
 
 Once the file has been downloaded uncompress/unzip it and import all the files into Postman.
 
