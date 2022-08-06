@@ -57,6 +57,20 @@ The lab envionment that is available is depicted here:
 
 ![json](./LAB1-PNP-PREP/images/DCLOUD_Topology2.png?raw=true "Import JSON")
 
+#### DCLOUD LAB Preparation
+##### dCLOUD VPN Connection
+Use AnyConnect VPN to connect to dCLOUD. When connecting, look at the session details and copy the credentials from the session booked into the client to connect.
+
+![json](./assets/VPN-to-dCLOUD.png?raw=true "Import JSON")
+
+##### dCLOUD Service Optimization
+The dCLOUD environment used in the lab need to be optimized prior to the session, and to do this we need to disable the following:
+
+![json](./assets/ShutdownUnused.png?raw=true "Import JSON")
+
+In order to accomplish this, use the drop down menu item by each that is shutdown in the image and click the shutdown link.
+
+
 ## Disclaimer
 Various labs are designed for use in the **DCLOUD** environment but can but are for use elsewhere. What is important to realize is the impact of each type of test. For instance, in the ***PnP Preparation*** lab, we go through discovery methods such as ***option 43*** and ***DNS Discovery***. If we were to use the DHCP option 43 and place that in the server options on the DHCP server, it would affect multiple scopes. **Care** is required, therefore, to ensure you do not get unexpected results. Similarly with ***DNS Discovery***, if the sub domain used was available to all devices, more than one device would discover DNA Center. Changes like this may be suitable for production in the future but detrimental during testing.
 

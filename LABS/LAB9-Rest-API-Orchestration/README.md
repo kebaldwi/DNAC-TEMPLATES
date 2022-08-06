@@ -12,14 +12,14 @@ The lab will utilize a set of collections publically shared on postmans workspac
 ## Lab Modules
 The use cases we will cover are the following which you can access via links below:
 
-1. [**Postman Orientation**](./postman.md)
-2. [**Building Hierarchy**](./labs/dnac-101-1-hierarchy/1.md)
-3. [**Assign Settings and Credentials**](./labs/dnac-101-2-settings/1.md)
-4. [**Device Discovery**]()
-5. [**Template Deployment**](./labs/dnac-101-4-templates/1.md)
-6. [**Configuration Archive**](./labs/dnac-101-6-archive/1.md)
-7. [**Retrieving Network Inventory**](./labs/dnac-101-5-inventory/1.md)
-8. [**Running Show Commands**](./labs/dnac-101-3-cmd-run/1.md)
+1. [**Postman Orientation**](./module1-postman.md)
+2. [**Building Hierarchy**](./module2-hierarchy.md)
+3. [**Assign Settings and Credentials**](./module3-settings.md)
+4. [**Device Discovery**](./module4-discovery.md)
+5. [**Template Deployment**](./module5-templates.md)
+6. [**Configuration Archive**](./module6-archive.md)
+7. [**Retrieving Network Inventory**](./module7-inventory.md)
+8. [**Running Show Commands**](./module8-commands.md)
 
 ## Preparation
 In order to compete this module, its best to connect to the dCloud lab environment using your own laptop so that you can get accustomed to and begin using the tools. In the event that you cannot install postman though it is possible to complete all tasks via the workstation in the dCloud environment.
