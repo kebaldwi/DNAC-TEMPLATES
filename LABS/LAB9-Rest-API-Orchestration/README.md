@@ -50,6 +50,8 @@ If you do not have the anyconnect client please visit
 #### Postman
 Postman is an API platform for building and using APIs. Postman simplifies each step of the API lifecycle and streamlines collaboration so you can create better APIs—faster.
 
+Once Postman has been downloaded to your desktop it is advisable to set up an account and sign in so that all your changes can be used within any system with the client or a web browser much in the same way as a chrome or firefox profile work. This additional capability I have found incredibly useful when working in multiple environments. 
+
 - <a href="https://www.postman.com/downloads/" target="_blank">⬇︎Postman Download⬇︎</a>
 
 ##### Postman Documentation
