@@ -15,7 +15,7 @@ The use cases we will cover are the following which you can access via links bel
 1. [**Postman Orientation**](./postman.md)
 2. [**Building Hierarchy**](./labs/dnac-101-1-hierarchy/1.md)
 3. [**Assign Settings and Credentials**](./labs/dnac-101-2-settings/1.md)
-4. [**Device Discovery**]
+4. [**Device Discovery**]()
 5. [**Template Deployment**](./labs/dnac-101-4-templates/1.md)
 6. [**Configuration Archive**](./labs/dnac-101-6-archive/1.md)
 7. [**Retrieving Network Inventory**](./labs/dnac-101-5-inventory/1.md)
