@@ -32,22 +32,22 @@ We will **open** but **not save** the CSV file to view the hierarchy that will b
 
 You can see the settings begin to the right of the hierarchy.
 
-## Summary
+## Settings and Credentials Assignment
 At this point we have reviewed the settings within the environment and ensured we will be targeting the correct hierarchy and we are ready to continue pushing the settings and credentials to our newly created hierarchy.
 
-## Settings and Credentials Assignment
-We will now assign the settings credentials and telemetry settings using the environment variables which can be modified in the previous step.
+We will now assign the settings credentials and telemetry settings using the CSV variables which were provided in the previous step.
 
 Follow these steps:
 
 1. Navigate and open the desired collection runner through the following:
    1. Within Postman click on the collection shortcut in the sidebar
-   2. Hover over the collection `DNE LAB 1.1 - Settings Student`
+   2. Hover over the collection `DNA Center API LAB 101 - Assign Settings Creds`
    3. Click the `Run Collection` submenu option
       ![json](./images/Postman-Collection-Settings.png?raw=true "Import JSON")
 2. To run the collection do the following:
    1. Ensure all the sub-components of the `Runner` are selected
-   2. Click  the `Run DNE LAB 1.1 - Settings Student` button
+   2. On the right under data, click *select* to browse and select the CSV
+   3. Click  the `Run DNA Center API LAB 101 - Assign Settings Creds` button
       ![json](./images/Postman-Collection-Settings-Runner.png?raw=true "Import JSON")
 3. The following summary will slowly appear as the collection is processed
    ![json](./images/Postman-Collection-Settings-Summary.png?raw=true "Import JSON")
