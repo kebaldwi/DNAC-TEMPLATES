@@ -10,27 +10,32 @@ This allows for us to deploy not only changes to the network, with localized mai
 
 As with all the Design, Policy & Provisioning elements they are all tied to the hierarchial nature of DNA Center. 
 
-## Student Environment
-To ensure you are working on all your changes and not interfering with others, we will modify the settings and Hierarchy to personalize it for your use within the lab. We did this step in the previous lablet, but for confirmation please ensure it is complete.
+## Assigning Settings and Credentials to Hierarchy
+### Objectives
+- Authenticate and retrieve a token from Cisco DNA Center.
+- Assign the Hierarchy Settings and Credentials
 
-Follow these steps:
+### Prerequisites
+The prerequisites steps for preparing for the lab are the following;
+1. Complete [Module 2 Build Hierarchy](./module2-hierarchy.md)
 
-1. Navigate and open the desired environment and modify the variables indicated in the following steps:
-   1. Within Postman click on the environment shortcut in the sidebar
-   2. Clicking the environment `DNAC Template Labs Student`
-      ![json](./images/Postman-Environment.png?raw=true "Import JSON")
-2. Scroll down in the Environment variables shown:
-   1. Find the variable `HierarchyArea`
-   2. Edit the data in the forth column with your student info `Student-12` 
-   3. Click the `Save` button to commit the changes
-      ![json](./images/Postman-Environment-Area-Modify.png?raw=true "Import JSON")
+### CSV Data Source
+Within Postman we will utilize the collection `Assign Settings Creds` to assign settings and credentials to the Hierarchy of DNA Center in order to associate settings to devices. This Collection may be run whenever you wish to assign or modify the settings and credentials of the Hierarchy to either add additional settings or modify credentials. 
 
-Within the environment please review the DNS, DHCP, TimeZone, and other components which are utilized within the settings of the environment. Please feel free to modify the DNS, or DHCP settings with your own values.
+Accompanying the Collection is a required Comma Separated Value (CSV) file which is essentially an answer file for the values used to build the design. The CSV may be found here. 
+
+<a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB9-Rest-API-Orchestration/csv/DNAC-Design-Settings.csv" target="_blank">⬇︎DNA Center Design Settings CSV⬇︎</a>
+
+We will **open** but **not save** the CSV file to view the hierarchy that will be built during the lab. You will see each row has hierarchal information as well as settings and credentials and other information. **Be Careful NOT to modify the file**, If you feel you have modified the file please download it again.
+
+<p align="center"><img src="./images/csv.png" width="800" height="385"></p>
+
+You can see the settings begin to the right of the hierarchy.
 
 ## Summary
 At this point we have reviewed the settings within the environment and ensured we will be targeting the correct hierarchy and we are ready to continue pushing the settings and credentials to our newly created hierarchy.
 
-## Student Settings and Credentials Assignment
+## Settings and Credentials Assignment
 We will now assign the settings credentials and telemetry settings using the environment variables which can be modified in the previous step.
 
 Follow these steps:
