@@ -14,7 +14,7 @@ One such use case is configuraiton compliance. If we wanted to create a python b
 
 ### Prerequisites
 The prerequisites steps for preparing for the lab are the following;
-1. Complete [Module 3 - Assign Settings and Credentials](./module5-templates.md)
+1. Complete [Module 5 - Template Deployment](./module5-templates.md)
 
 ## Retrieving a Configuration Archive for a Device
 We will now use the Rest-API's within the collection `Configuration Archive` to pull the configuration archive for all devices within the inventory. This collection will first get a list of devices, then download the configuration archive for each one. You will need to save the responses to download them.

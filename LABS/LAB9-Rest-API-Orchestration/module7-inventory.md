@@ -1,10 +1,20 @@
-## Use Case 1.5 - Retrieving Network Inventory
+# Module 7 - Retrieving Network Inventory
 In this lablet we will use *Postman* to retrieve the device inventory of the hierarchy within DNA Center. DNA Center uses hierarchy to align infrastructure needs logically against intent. This allows the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
 
 ## DNA Center Inventory Background
 DNA Center has keeps a detailed inventory of the devices that are discovered or onboarded from the network. The inventory is used to reference devices, in the DNA Center UI, but also offers a place to see detailed information about the Product ID, Hostname, Software Image, and much more.
 
 The inventory could be used in reports to determine compliance or to reference the devices within the system for either deploying templates, or issuing show commands with the command runner used earlier.
+
+## Deploying Templates to Devices
+### Objectives
+- Authenticate and retrieve a token from Cisco DNA Center.
+- Build configuration archives based on the devices in DNA Center.
+- Download each archive file.
+
+### Prerequisites
+The prerequisites steps for preparing for the lab are the following;
+1. Complete [Module 6 - Configuration Archive](./module6-archive.md)
 
 ## Retrieving the Device Inventory from DNA Center 
 We will now retrive the device inventory from DNA Center.

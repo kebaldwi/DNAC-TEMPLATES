@@ -1,4 +1,4 @@
-# Module 5 - Deploying Projects and Templates
+# Module 5 - Template Deployment
 In this module we will use *Postman* to build and deploy Projects and a Regular Template for a specific site within the hierarchy within DNA Center. DNA Center uses hierarchy to align infrastructure needs logically against intent. This allows the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
 
 ## Template Background
@@ -16,7 +16,7 @@ In this lab we will deploy a template within a project to be ready for deploymen
 
 ### Prerequisites
 The prerequisites steps for preparing for the lab are the following;
-1. Complete [Module 3 - Assign Settings and Credentials](./module3-settings.md)
+1. Complete [Module 4 - Device Discovery](./module4-discovery.md)
 
 ### CSV Data Source
 Within Postman we will utilize the collection `Template Deployment` to build a projects within the Template Editor, and add Regular Templates to them in order to configure devices. This Collection may be run whenever you wish to configure or modify the configuration of a device within DNA Center. 
