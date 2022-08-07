@@ -1,8 +1,8 @@
-## Use Case 1.4 - Deploying Projects and Templates
-In this lablet we will use *Postman* to build and deploy a Project and a Regular Template for the site within the hierarchy within DNA Center. DNA Center uses hierarchy to align infrastructure needs logically against intent. This allows the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
+# Module 5 - Deploying Projects and Templates
+In this module we will use *Postman* to build and deploy Projects and a Regular Template for a specific site within the hierarchy within DNA Center. DNA Center uses hierarchy to align infrastructure needs logically against intent. This allows the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
 
 ## DNA Center Templates Background
-DNA Center has a Template Editor which allows for the import and export of custom templates written in Jinja2 or Velocity. These templates and associated parameters allow for the configuration of  devices when associated to the hierarchy through a Network Profile. 
+DNA Center has a Template Editor which allows for the import and export of custom templates written in Jinja2 or Velocity and encapsulated within JSON inside DNA Center. These templates and associated parameters allow for the configuration of  devices when associated to the hierarchy through a Network Profile. 
 
 Templates both Regular and Composite are grouped logically into Projects.
 

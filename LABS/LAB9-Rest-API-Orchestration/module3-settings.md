@@ -1,4 +1,4 @@
-# Module3 - Assign Settings and Credentials
+# Module 3 - Assign Settings and Credentials
 In this module we will use *Postman* to deploy settings and credentials to a hierarchy within DNA Center. DNA Center uses hierarchy to align infrastructure needs logically against intent. This allows the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
 
 ## Settings and Credentials Background
