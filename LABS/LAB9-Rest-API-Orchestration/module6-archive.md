@@ -1,10 +1,20 @@
-## Use Case 1.5 - Downloading Configuration Archives
+# Module 6 - Configuration Archive
 In this lablet we will use *Postman* to download an archive of the running and startup configurations of a device in the hierarchy within DNA Center. DNA Center uses hierarchy to align infrastructure needs logically against intent. This allows the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
 
 ## Configuration Archive Background
 DNA Center allows for the Archiving of both the Running and Startup Configurations for devices within the inventory of DNA Center. In the earlier DNA Center GUI's there was no capability to archive the configurations apart for this Rest-API based approach. That has since been remedied, but there still remains good use cases for this capability.
 
-One such use case is configuraiton compliance. If I wanted to create a python based complaince tool, which utilized the Device Inventory as well as the configuration files, I could keep track of devices code and configurations to make sure that the code was of a certain version and perhaps certain lines of code were included in the configuration. 
+One such use case is configuraiton compliance. If we wanted to create a python based complaince tool, which utilized the Device Inventory as well as the configuration files, we could keep track of devices code and configurations to make sure that the code was of a certain version and perhaps certain lines of code were included in the configuration. 
+
+## Deploying Templates to Devices
+### Objectives
+- Authenticate and retrieve a token from Cisco DNA Center.
+- Build configuration archives based on the devices in DNA Center.
+- Download each archive file.
+
+### Prerequisites
+The prerequisites steps for preparing for the lab are the following;
+1. Complete [Module 3 - Assign Settings and Credentials](./module5-templates.md)
 
 ## Retrieving a Configuration Archive for a Device
 We will now use the Rest-API's within the collection `DNE LAB 1.5 - Configuration Archive Student` to pull the configuration archive for device `C9300-2`.
