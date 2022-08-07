@@ -1,5 +1,5 @@
-# Use Case 1.2 - Defining Settings and Credentials - Sections *[1](./section2-settings-2.md)* **[2]**
-In this lablet we will use *Postman* to deploy settings and credentials to a hierarchy within DNA Center. DNA Center uses hierarchy to align infrastructure needs logically against intent. This allows the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
+# Module3 - Assign Settings and Credentials
+In this module we will use *Postman* to deploy settings and credentials to a hierarchy within DNA Center. DNA Center uses hierarchy to align infrastructure needs logically against intent. This allows the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
 
 ## Settings and Credentials Background
 The Design area is where you create the structure and framework of your network, including the logical topology, network settings, and device type profiles that you can apply to devices throughout your network.
