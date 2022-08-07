@@ -1,6 +1,5 @@
-# Use Case 1.1 - Building Hierarchy - Lablet [1]
-*[2](./section1-hierarchy-2.md)* *[3](./section1-hierarchy-3.md)*
-In this lablet we will use *Postman* to build and deploy a hierarchy within DNA Center. DNA Center uses hierarchy to align infrastructure needs logically against intent. This allows the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
+# Module 2 - Building Hierarchy
+In this module we will use *Postman* to build and deploy a hierarchy within DNA Center. DNA Center uses hierarchy to align infrastructure needs logically against intent. This allows the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
 
 ## Hierarchy Background
 The Design area is where you create the structure and framework of your network, including the logical topology, network settings, and device type profiles that you can apply to devices throughout your network.
@@ -21,7 +20,7 @@ The network hierarchy has a predetermined hierarchy:
 
 ## Prerequisites
 The prerequisites steps for preparing for the lab are the following;
-1. Download and install the [AnyConnect client](https://wwwin-github.cisco.com/kebaldwi/llabsource-DNAC-102-LL#cisco-anyconnect-vpn-client)
+1. Download and install the [AnyConnect client](../README.md#cisco-anyconnect-vpn-client)
 2. Download and install [Postman](https://wwwin-github.cisco.com/kebaldwi/llabsource-DNAC-102-LL#postman)
 3. Import and set up [Postman](https://wwwin-github.cisco.com/kebaldwi/llabsource-DNAC-102-LL/blob/master/labs/dnac-101-0-orientation/1.md#preparing-postman-for-use-with-dna-center)
 4. Connect to the dCloud environment the details of which will be displayed by the instructor within the class
