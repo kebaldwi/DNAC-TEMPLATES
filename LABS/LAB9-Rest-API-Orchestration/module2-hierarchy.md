@@ -81,3 +81,59 @@ To investigate the collections we have built follow these steps:
          Within the if condition in line 4 we load the Token from the field within the    JSON response into the environmentatl variable.
          
          We culminate the section by calling for the next API within the collection.
+
+## Hierarchy Settings within the CSV
+Wwe will **open** but **not save** the CSV file to view the hierarchy that will be built during the lab. You will see each row has hierarchal information as well as settings and credentials and other information. **Be Careful NOT to modify the file**, If you feel you have modified the file please download it again.
+
+<p align="center"><img src="./images/csv.png" width="500" height="690"></p>
+
+The hierarchy the CSV will build will be this:
+
+```
+Global > State
+Global > State > California > Building10 > Floor1
+Global > State > California > Building10 > Floor2
+Global > State > California > Building10 > Floor3
+Global > State > NorthCarolina > Building3 > Floor1
+Global > State > NorthCarolina > Building3 > Floor2
+Global > State > Texas > Building1 > Floor1
+```
+
+## Student Hierarchy Build
+We will now build the Hierarchy using the environment variables modified in the previous step.
+
+Follow these steps:
+
+1. Navigate and open the desired collection runner through the following:
+   1. Within Postman click on the collection shortcut in the sidebar
+   2. Hover over the collection `DNE LAB 1.0 - Build Hierarchy Student`
+   3. Click the `Run Collection` submenu option
+      ![json](./images/Postman-Collection-Hierarchy.png?raw=true "Import JSON")
+2. To run the collection do the following:
+   1. Ensure all the sub-components of the `Runner` are selected
+   2. Click  the `Run DNE LAB 1.0 - Build Hierarchy` button
+      ![json](./images/Postman-Collection-Hierarchy-Runner.png?raw=true "Import JSON")
+3. The following summary will slowly appear as the collection is processed
+   ![json](./images/Postman-Collection-Hierarchy-Summary.png?raw=true "Import JSON")
+
+## Verifying Student Hierarchy Build
+To verify that the Hierarchy was built successfully we will inspect the site in DNA Center.
+
+Follow these steps:
+
+1. Open a browser and navigate to `https;//198.18.129.100` where you will see an SSL Error displayed as depicted. Click the `Proceed to https://192.18.129.100 (unsafe)` link to continue
+![json](./images/DNAC-SSLERROR.png?raw=true "Import JSON")
+2. Log into DNA Center using the username of `admin` and the password `C1sco12345`.
+![json](./images/DNAC-Login.png?raw=true "Import JSON")
+3. When the DNA Center Dashboard is displayed, Click the  icon to display the menu'
+![json](./images/DNAC-Menu.png?raw=true "Import JSON")
+4. Select `Design>Network Hierarchy` from the menu to continue.
+![json](./images/DNAC-Menu-Hierarchy.png?raw=true "Import JSON")
+5. Expand the Hierarchy on the left to show your specific `Area`
+![json](./images/DNAC-Hierarchy-Student-Verify.png?raw=true "Import JSON")
+
+## Summary
+At this point we have built the Hierarchy utilizing environment variables and REST-API's within the collection runner. To continue your learning, lookk at the various REST-API utilized to complete this task. Notice that there was a task to create a **{{Token}}** for authentication which was used and prceeded the calls to create the Area, Building and Floor. Each layer of the hierarchy was a singular call. 
+
+Additionally if there is time, look at the pre and post scripts.
+
