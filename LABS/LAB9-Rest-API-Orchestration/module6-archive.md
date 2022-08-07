@@ -1,5 +1,5 @@
 # Module 6 - Configuration Archive
-In this lablet we will use *Postman* to download an archive of the running and startup configurations of a device in the hierarchy within DNA Center. DNA Center uses hierarchy to align infrastructure needs logically against intent. This allows the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
+In this module we will use *Postman* to download an archive of the running and startup configurations of a device in the hierarchy within DNA Center. DNA Center uses hierarchy to align infrastructure needs logically against intent. This allows the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
 
 ## Configuration Archive Background
 DNA Center allows for the Archiving of both the Running and Startup Configurations for devices within the inventory of DNA Center. In the earlier DNA Center GUI's there was no capability to archive the configurations apart for this Rest-API based approach. That has since been remedied, but there still remains good use cases for this capability.

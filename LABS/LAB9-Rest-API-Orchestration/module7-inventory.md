@@ -1,5 +1,5 @@
 # Module 7 - Retrieving Network Inventory
-In this lablet we will use *Postman* to retrieve the device inventory of the hierarchy within DNA Center. DNA Center uses hierarchy to align infrastructure needs logically against intent. This allows the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
+In this module we will use *Postman* to retrieve the device inventory of the hierarchy within DNA Center. DNA Center uses hierarchy to align infrastructure needs logically against intent. This allows the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
 
 ## DNA Center Inventory Background
 DNA Center has keeps a detailed inventory of the devices that are discovered or onboarded from the network. The inventory is used to reference devices, in the DNA Center UI, but also offers a place to see detailed information about the Product ID, Hostname, Software Image, and much more.
@@ -9,8 +9,7 @@ The inventory could be used in reports to determine compliance or to reference t
 ## Deploying Templates to Devices
 ### Objectives
 - Authenticate and retrieve a token from Cisco DNA Center.
-- Build configuration archives based on the devices in DNA Center.
-- Download each archive file.
+- Retrieve the inventory of devices in DNA Center.
 
 ### Prerequisites
 The prerequisites steps for preparing for the lab are the following;
@@ -23,23 +22,24 @@ Follow these steps:
 
 1. Navigate and open the desired collection runner through the following:
    1. Within Postman click on the collection shortcut in the sidebar
-   2. Hover over the collection `DNE LAB 1.4 - Device Inventory Student`
+   2. Hover over the collection `DNA Center API LAB 401 - Device Inventory`
    3. Click the `Run Collection` submenu option
       ![json](./images/Postman-Collection-DeviceInventory.png?raw=true "Import JSON")
 2. To run the collection do the following:
    1. Locate the sub-components of the `Runner`
    2. Select the `Save Responses` option as we will need the output
-   3. Click  the `Run DNE LAB 1.4 - Device Inventory Student` button
+   3. Click  the `DNA Center API LAB 401 - Device Inventory` button
       ![json](./images/Postman-Collection-DeviceInventory-Runner.png?raw=true "Import JSON")
 3. The following summary will slowly appear as the collection is processed
    ![json](./images/Postman-Collection-DeviceInventory-Summary.png?raw=true "Import JSON")
-4. To view the results do the following:
+4. Under `Test\Results` a summary of all the devices will be listed.
+5. To view the results do the following:
    1. Click the `Console` option at the bottom of postman
    2. Select the `Popout Window` option as we will need the output
    3. Expand the Get request that begins `GET https://198.18.129.100/api/v1/network-device` 
    4. Within the `Response Body` click the `Popout Window` option
       ![json](./images/Postman-Collection-DeviceInventory-Console.png?raw=true "Import JSON")
-5. The following results will appear in a text window allowing for copy to export or to use the file save options
+6. The following results will appear in a text window allowing for copy to export or to use the file save options
    ![json](./images/Postman-Collection-DeviceInventory-Export.png?raw=true "Import JSON")
 
 
