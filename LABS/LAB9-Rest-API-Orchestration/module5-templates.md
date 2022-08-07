@@ -1,12 +1,35 @@
 # Module 5 - Deploying Projects and Templates
 In this module we will use *Postman* to build and deploy Projects and a Regular Template for a specific site within the hierarchy within DNA Center. DNA Center uses hierarchy to align infrastructure needs logically against intent. This allows the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
 
-## DNA Center Templates Background
+## Template Background
 DNA Center has a Template Editor which allows for the import and export of custom templates written in Jinja2 or Velocity and encapsulated within JSON inside DNA Center. These templates and associated parameters allow for the configuration of  devices when associated to the hierarchy through a Network Profile. 
 
 Templates both Regular and Composite are grouped logically into Projects.
 
 In this lab we will deploy a template within a project to be ready for deployment at a later date. Included in the repository is a Deployment API which is there for informational purposes and due to the nature of the lab environment should not be invoked.
+
+## Deploying Templates to Devices
+### Objectives
+- Authenticate and retrieve a token from Cisco DNA Center.
+- Build a Project and add a Regular Template.
+- Deploy a Template to a Device.
+
+### Prerequisites
+The prerequisites steps for preparing for the lab are the following;
+1. Complete [Module 3 - Assign Settings and Credentials](./module3-settings.md)
+
+### CSV Data Source
+Within Postman we will utilize the collection `Template Deployment` to build a projects within the Template Editor, and add Regular Templates to them in order to configure devices. This Collection may be run whenever you wish to configure or modify the configuration of a device within DNA Center. 
+
+Accompanying the Collection is a required Comma Separated Value (CSV) file which is essentially an answer file for the values used to build the design. The CSV may be found here. 
+
+<a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB9-Rest-API-Orchestration/csv/DNAC-Design-Settings.csv" target="_blank">⬇︎DNA Center Design Settings CSV⬇︎</a>
+
+We will **open** but **not save** the CSV file to view the hierarchy that will be built during the lab. You will see each row has hierarchal information as well as settings and credentials and other information. **Be Careful NOT to modify the file**, If you feel you have modified the file please download it again.
+
+<p align="center"><img src="./images/csv.png" width="800" height="385"></p>
+
+Within the CSV look all the way to the right for the columns pertaining to this collection.
 
 ## Template Deployment to DNA Center 
 We will now deploy a template within a Project with your Area Name within DNA Centers template editor.
@@ -15,14 +38,14 @@ Follow these steps:
 
 1. Navigate and open the desired collection runner through the following:
    1. Within Postman click on the collection shortcut in the sidebar
-   2. Hover over the collection `DNE LAB 1.3 - Template Deployment Student`
+   2. Hover over the collection `DNA Center API LAB 302 - Template Deployment`
    3. Click the `Run Collection` submenu option
       ![json](./images/Postman-Collection-DeployTemplate.png?raw=true "Import JSON")
 2. To run the collection do the following:
    1. Locate the sub-components of the `Runner`
-   2. Deselect the `POST Deploy Template` sub-component
+   2. On the right under data, click *select* to browse and select the CSV
    3. Optionally select the `Save Responses` option
-   4. Click  the `Run DNE LAB 1.3 - Template Deployment Student` button
+   4. Click  the `Run DNA Center API LAB 302 - Template Deployment` button
       ![json](./images/Postman-Collection-DeployTemplate-Runner.png?raw=true "Import JSON")
 3. The following summary will slowly appear as the collection is processed
    ![json](./images/Postman-Collection-DeployTemplate-Summary.png?raw=true "Import JSON")

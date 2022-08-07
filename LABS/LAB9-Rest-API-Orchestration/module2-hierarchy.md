@@ -99,7 +99,7 @@ To investigate the collections we have built follow these steps:
          
          We culminate the section by calling for the next API within the collection.
 
-#### Hierarchy Build Collection Run
+## Hierarchy Build Collection Run
 We will now build the Hierarchy using the CSV variables previously discussed.
 
 Follow these steps:
