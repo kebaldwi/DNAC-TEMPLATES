@@ -85,7 +85,7 @@ To investigate the collections we have built follow these steps:
 ## Hierarchy Settings within the CSV
 Wwe will **open** but **not save** the CSV file to view the hierarchy that will be built during the lab. You will see each row has hierarchal information as well as settings and credentials and other information. **Be Careful NOT to modify the file**, If you feel you have modified the file please download it again.
 
-<p align="center"><img src="./images/csv.png" width="500" height="690"></p>
+<p align="center"><img src="./images/csv.png" width="500" height="240"></p>
 
 The hierarchy the CSV will build will be this:
 
