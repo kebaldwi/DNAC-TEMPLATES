@@ -25,16 +25,33 @@ The prerequisites steps for preparing for the lab are the following;
 3. Import and set up [Postman](./module1-postman.md)
 
 ## Building Hierarchy
+### CSV Data Source
 Within Postman we will utilize the collection `Build Hierarchy` to build out the Hierarchy of DNA Center in which to associate settings and discover devices. This Collection may be run whenever you wish to create a new section of the Hierarchy to either add additional Areas, Buildings, or floors. 
 
 Accompanying the Collection is a required Comma Separated Value (CSV) file which is essentially an answer file for the values used to build the design. The CSV may be found here. 
 
 <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB9-Rest-API-Orchestration/csv/DNAC-Design-Settings.csv" target="_blank">⬇︎DNA Center Design Settings CSV⬇︎</a>
 
-## Hierarchy Build and the Postman Collection Runner
+We will **open** but **not save** the CSV file to view the hierarchy that will be built during the lab. You will see each row has hierarchal information as well as settings and credentials and other information. **Be Careful NOT to modify the file**, If you feel you have modified the file please download it again.
+
+<p align="center"><img src="./images/csv.png" width="800" height="385"></p>
+
+The hierarchy the CSV will build will be this:
+
+```
+Global > State
+Global > State > California > Building10 > Floor1
+Global > State > California > Building10 > Floor2
+Global > State > California > Building10 > Floor3
+Global > State > NorthCarolina > Building3 > Floor1
+Global > State > NorthCarolina > Building3 > Floor2
+Global > State > Texas > Building1 > Floor1
+```
+
+### Hierarchy Build and the Postman Collection Run
 Postman being a powerful tool for editing and creating Rest-API calls, allows us to utilize a number of features to accomplish every day tasks. In this short tutorial, we will use a simple set of Rest-API which have been grouped into a Postman Collection.
 
-### Collections
+#### Collections
 Collections are groupings of API, which allow us to have flows for specific defined tasks. 
 
 To investigate the collections we have built follow these steps:
@@ -82,25 +99,8 @@ To investigate the collections we have built follow these steps:
          
          We culminate the section by calling for the next API within the collection.
 
-## Hierarchy Settings within the CSV
-Wwe will **open** but **not save** the CSV file to view the hierarchy that will be built during the lab. You will see each row has hierarchal information as well as settings and credentials and other information. **Be Careful NOT to modify the file**, If you feel you have modified the file please download it again.
-
-<p align="center"><img src="./images/csv.png" width="800" height="385"></p>
-
-The hierarchy the CSV will build will be this:
-
-```
-Global > State
-Global > State > California > Building10 > Floor1
-Global > State > California > Building10 > Floor2
-Global > State > California > Building10 > Floor3
-Global > State > NorthCarolina > Building3 > Floor1
-Global > State > NorthCarolina > Building3 > Floor2
-Global > State > Texas > Building1 > Floor1
-```
-
-## Student Hierarchy Build
-We will now build the Hierarchy using the environment variables modified in the previous step.
+#### Hierarchy Build Collection Run
+We will now build the Hierarchy using the CSV variables previously discussed.
 
 Follow these steps:
 
@@ -117,7 +117,7 @@ Follow these steps:
 3. The following summary will slowly appear as the collection is processed
    ![json](./images/Postman-Collection-Hierarchy-Summary.png?raw=true "Import JSON")
 
-## Verifying Student Hierarchy Build
+## Verifying Hierarchy Build
 To verify that the Hierarchy was built successfully we will inspect the site in DNA Center.
 
 Follow these steps:
