@@ -20,7 +20,7 @@ The network hierarchy has a predetermined hierarchy:
 
 ## Prerequisites
 The prerequisites steps for preparing for the lab are the following;
-1. Download and install the [AnyConnect client](../README.md#cisco-anyconnect-vpn-client)
+1. Download and install the [AnyConnect client](./README.md#cisco-anyconnect-vpn-client)
 2. Download and install [Postman](https://wwwin-github.cisco.com/kebaldwi/llabsource-DNAC-102-LL#postman)
 3. Import and set up [Postman](https://wwwin-github.cisco.com/kebaldwi/llabsource-DNAC-102-LL/blob/master/labs/dnac-101-0-orientation/1.md#preparing-postman-for-use-with-dna-center)
 4. Connect to the dCloud environment the details of which will be displayed by the instructor within the class
