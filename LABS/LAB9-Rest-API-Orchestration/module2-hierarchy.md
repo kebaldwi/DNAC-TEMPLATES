@@ -106,12 +106,13 @@ Follow these steps:
 
 1. Navigate and open the desired collection runner through the following:
    1. Within Postman click on the collection shortcut in the sidebar
-   2. Hover over the collection `DNE LAB 1.0 - Build Hierarchy Student`
+   2. Hover over the collection `DNA Center API LAP 100 - Build Hierarchy`
    3. Click the `Run Collection` submenu option
       ![json](./images/Postman-Collection-Hierarchy.png?raw=true "Import JSON")
 2. To run the collection do the following:
    1. Ensure all the sub-components of the `Runner` are selected
-   2. Click  the `Run DNE LAB 1.0 - Build Hierarchy` button
+   2. On the right under data, click *select* to browse and select the CSV
+   3. Click  the `Run DNA Center API LAP 100 - Build Hierarchy` button
       ![json](./images/Postman-Collection-Hierarchy-Runner.png?raw=true "Import JSON")
 3. The following summary will slowly appear as the collection is processed
    ![json](./images/Postman-Collection-Hierarchy-Summary.png?raw=true "Import JSON")
