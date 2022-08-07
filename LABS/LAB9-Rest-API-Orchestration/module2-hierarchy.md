@@ -14,17 +14,17 @@ The network hierarchy has a predetermined hierarchy:
 
 **Floors** are within buildings and consist of cubicles, walled offices, wiring closets, and so on. You can add floors only to buildings.
 
-## Objectives
+## Building Hierarchy
+### Objectives
 - Authenticate and retrieve a token from Cisco DNA Center.
 - Build an **Area**, **Building** and **Floor** in the Hierarchy.
 
-## Prerequisites
+### Prerequisites
 The prerequisites steps for preparing for the lab are the following;
 1. Download and install the [AnyConnect client](./README.md#tools-required)
 2. Download and install [Postman](./README.md#tools-required)
 3. Import and set up [Postman](./module1-postman.md)
 
-## Building Hierarchy
 ### CSV Data Source
 Within Postman we will utilize the collection `Build Hierarchy` to build out the Hierarchy of DNA Center in which to associate settings and discover devices. This Collection may be run whenever you wish to create a new section of the Hierarchy to either add additional Areas, Buildings, or floors. 
 
