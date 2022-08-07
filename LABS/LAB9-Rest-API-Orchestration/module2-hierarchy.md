@@ -22,4 +22,4 @@ The network hierarchy has a predetermined hierarchy:
 The prerequisites steps for preparing for the lab are the following;
 1. Download and install the [AnyConnect client](./README.md#tools-required)
 2. Download and install [Postman](./README.md#tools-required)
-3. Import and set up [Postman](./postman.md)
+3. Import and set up [Postman](./module1-postman.md)
