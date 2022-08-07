@@ -67,7 +67,7 @@ Use AnyConnect VPN to connect to dCLOUD. When connecting, look at the session de
 The dCLOUD environment used in the lab need to be optimized prior to the session, and to do this we need to disable the following:
 
 ![json](./LAB9-Rest-API-Orchestration/images/ShutdownUnused.png?raw=true "Import JSON")
-<img src="./LAB9-Rest-API-Orchestration/images/ShutdownUnused.png" width="500" height="600">
+<img src="./LAB9-Rest-API-Orchestration/images/ShutdownUnused.png" width="500" height="690">
 
 In order to accomplish this, use the drop down menu item by each that is shutdown in the image and click the shutdown link.
 
