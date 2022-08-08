@@ -19,7 +19,12 @@ This type of request is built into every collection.
 # Preparing Postman for use with DNA Center
 In order to utilize Postman with DNA Center we will first import the collection and environment into our workspace. 
 
-## Postman Collection and Environment Import
+## Option 1 - Easy Button to Import Collection and Environment
+There is a Public Workspace, which can be easily added to Postman via the following link. This will allow you to rapidly start using the Rest-API suite created for this lab.
+
+[Public DNA Center Use-Case API Collection](https://www.postman.com/dark-capsule-39992/workspace/dna-center-use-case-api-collections)
+
+## Option 2 - Postman Collection and Environment Import
 To prepare Postman for the lab please download the following collection and environment zip file and upload them into Postman. Download the following Student Collection which includes 7 collections and one environment. To do this right click and open this link in a new tab to download them:
    
 <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB9-Rest-API-Orchestration/postman/DNACenter-UseCase-API-Collection.zip" target="_blank">⬇︎DNACenter Use-Case API Collection⬇︎</a>
