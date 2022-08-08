@@ -73,7 +73,7 @@ Follow these steps:
 5. Expand the Hierarchy on the left to show all specific `Area` select it and scroll through the credentials.
 ![json](./images/DNAC-Settings-Verify2.gif?raw=true "Import JSON")
 5. Expand the Hierarchy on the left to show all specific `Area` select it and scroll through the telemetry settings.
-![json](./images/DNAC-Settings-Verify3.gif?raw=true "Import JSON")
+![json](./images/DNAC-Settings-Verify3.png?raw=true "Import JSON")
 
 ## Summary
 At this point we have assigned settings, credentials, and telemetry settings to the Hierarchy utilizing environment variables and REST-API's within the collection runner. 
