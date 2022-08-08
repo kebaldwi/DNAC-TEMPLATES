@@ -114,6 +114,7 @@ Follow these steps:
    2. On the right under data, click *select* 
    3. Browse and select the CSV using explorer
    4. Click Open to select the file to be used
+      ![json](./images/Postman-Collection-Hierarchy-Run-CSV.png?raw=true "Import JSON")
    5. Click  the `Run DNA Center API LAP 100 - Build Hierarchy` button
       ![json](./images/Postman-Collection-Hierarchy-Runner.png?raw=true "Import JSON")
 3. Select `View Results` to view the following summary which will slowly appear as the collection is processed. Notice API are only run when they are required. You may view the pre and post script logic which causes this behaviour. Each iteration is a row of the CSV being processed.
@@ -133,7 +134,7 @@ Follow these steps:
 4. Select `Design>Network Hierarchy` from the menu to continue.
 ![json](./images/DNAC-Menu-Hierarchy.png?raw=true "Import JSON")
 5. Expand the Hierarchy on the left to show your specific `Area`
-![json](./images/DNAC-Hierarchy-Student-Verify.png?raw=true "Import JSON")
+![json](./images/DNAC-Hierarchy-Verify.png?raw=true "Import JSON")
 
 ## Summary
 At this point we have built the Hierarchy utilizing environment variables and REST-API's within the collection runner. To continue your learning, lookk at the various REST-API utilized to complete this task. Notice that there was a task to create a **{{Token}}** for authentication which was used and prceeded the calls to create the Area, Building and Floor. Each layer of the hierarchy was a singular call. 
