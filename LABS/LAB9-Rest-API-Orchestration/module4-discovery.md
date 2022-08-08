@@ -38,20 +38,20 @@ Follow these steps:
 
 1. Navigate and open the desired collection runner through the following:
    1. Within Postman click on the collection shortcut in the sidebar
-   2. Hover over the collection `DNA Center API LAB 302 - Template Deployment`
+   2. Hover over the collection `DNA Center API LAB 201 - Device Discovery`
    3. Click the `Run Collection` submenu option
       ![json](./images/Postman-Collection-DeployTemplate.png?raw=true "Import JSON")
 2. To run the collection do the following:
    1. Locate the sub-components of the `Runner`
    2. On the right under data, click *select* to browse and select the CSV
    3. Optionally select the `Save Responses` option
-   4. Click  the `Run DNA Center API LAB 302 - Template Deployment` button
+   4. Click  the `Run DNA Center API LAB 201 - Device Discovery` button
       ![json](./images/Postman-Collection-DeployTemplate-Runner.png?raw=true "Import JSON")
 3. The following summary will slowly appear as the collection is processed
    ![json](./images/Postman-Collection-DeployTemplate-Summary.png?raw=true "Import JSON")
 
-## Verifying Template Deployment 
-To verify that the template was deployed successfully we will inspect the template editor within DNA Center.
+## Verifying Device Discovery 
+To verify that the devices were discovered successfully we will inspect the Discovery Tool within DNA Center as well as the inventory.
 
 Follow these steps:
 
@@ -67,6 +67,5 @@ Follow these steps:
 ![json](./images/DNAC-TemplateEditor-DeployTemplate-Verify.png?raw=true "Import JSON")
 
 ## Summary
-We have been able to deploy a template within a project inside DNA Centers template editor. This scenario may be augmented and modified to use of imported files within Postman to allow for a more dynamic approach. The flow allows for us to rapidly stage Projects and Templates perhaps iimporting them from GitHub in CICD pipeline. 
+We have been able to discover devices within the network and import them into DNA Center. This scenario may be augmented and modified to create a brownfield learn which would allow for the provisioning of a template to nullify AAA settings and then assign the device to a site for provisioning.
 
-Additionally if there is time, look at the pre and post scripts within Postman and take a look at the additionally included Deploy Template API.
