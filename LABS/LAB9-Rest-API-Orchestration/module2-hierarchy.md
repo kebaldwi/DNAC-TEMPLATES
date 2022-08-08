@@ -75,7 +75,7 @@ To investigate the collections we have built follow these steps:
       ![json](./images/Postman-Collection-Token-Header.png?raw=true "Import JSON")
 4. Within the API we will investigate the Tests through the following:
    1. Click the `Tests` tab to to display the Test parameters:
-   ![json](./images/Postman-Collection-Token-Header.png?raw=true "Import JSON")
+   ![json](./images/Postman-Collection-Token-Test.png?raw=true "Import JSON")
    2. The API has the following defined:
 
       ``` 
@@ -111,10 +111,12 @@ Follow these steps:
       ![json](./images/Postman-Collection-Hierarchy.png?raw=true "Import JSON")
 2. To run the collection do the following:
    1. Ensure all the sub-components of the `Runner` are selected
-   2. On the right under data, click *select* to browse and select the CSV
-   3. Click  the `Run DNA Center API LAP 100 - Build Hierarchy` button
+   2. On the right under data, click *select* 
+   3. Browse and select the CSV using explorer
+   4. Click Open to select the file to be used
+   5. Click  the `Run DNA Center API LAP 100 - Build Hierarchy` button
       ![json](./images/Postman-Collection-Hierarchy-Runner.png?raw=true "Import JSON")
-3. The following summary will slowly appear as the collection is processed
+3. Select `View Results` to view the following summary which will slowly appear as the collection is processed. Notice API are only run when they are required. You may view the pre and post script logic which causes this behaviour. Each iteration is a row of the CSV being processed.
    ![json](./images/Postman-Collection-Hierarchy-Summary.png?raw=true "Import JSON")
 
 ## Verifying Hierarchy Build
