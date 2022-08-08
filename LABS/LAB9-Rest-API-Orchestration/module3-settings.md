@@ -46,13 +46,16 @@ Follow these steps:
       ![json](./images/Postman-Collection-Settings.png?raw=true "Import JSON")
 2. To run the collection do the following:
    1. Ensure all the sub-components of the `Runner` are selected
-   2. On the right under data, click *select* to browse and select the CSV
-   3. Click  the `Run DNA Center API LAB 101 - Assign Settings Creds` button
+   2. On the right under data, click *select* 
+   3. Browse and select the CSV using explorer
+   4. Click Open to select the file to be used
+      ![json](./images/Postman-Collection-Settings-Run-CSV.png?raw=true "Import JSON")
+   5. Click  the `Run DNA Center API LAB 101 - Assign Settings Creds` button
       ![json](./images/Postman-Collection-Settings-Runner.png?raw=true "Import JSON")
 3. The following summary will slowly appear as the collection is processed
    ![json](./images/Postman-Collection-Settings-Summary.png?raw=true "Import JSON")
 
-## Verifying Student Settings Assignment
+## Verifying Settings Assignment
 To verify that the settings were assigned successfully we will inspect the site in DNA Center.
 
 Follow these steps:
@@ -65,8 +68,12 @@ Follow these steps:
 ![json](./images/DNAC-Menu.png?raw=true "Import JSON")
 4. Select `Design>Network Settings` from the menu to continue.
 ![json](./images/DNAC-Menu-Settings.png?raw=true "Import JSON")
-5. Expand the Hierarchy on the left to show your specific `Area` select it and scroll through the settings.
-![json](./images/DNAC-Settings-Student-Verify.png?raw=true "Import JSON")
+5. Expand the Hierarchy on the left to show all specific `Area` select it and scroll through the settings.
+![json](./images/DNAC-Settings-Verify1.gif?raw=true "Import JSON")
+5. Expand the Hierarchy on the left to show all specific `Area` select it and scroll through the credentials.
+![json](./images/DNAC-Settings-Verify2.gif?raw=true "Import JSON")
+5. Expand the Hierarchy on the left to show all specific `Area` select it and scroll through the telemetry settings.
+![json](./images/DNAC-Settings-Verify3.gif?raw=true "Import JSON")
 
 ## Summary
 At this point we have assigned settings, credentials, and telemetry settings to the Hierarchy utilizing environment variables and REST-API's within the collection runner. 
