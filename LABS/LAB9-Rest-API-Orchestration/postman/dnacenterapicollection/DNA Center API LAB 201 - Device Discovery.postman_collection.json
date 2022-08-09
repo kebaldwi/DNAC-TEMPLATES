@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "87bfe7f9-e303-46a9-8451-7dee2688fe89",
 		"name": "DNA Center API LAB 201 - Device Discovery",
-		"description": "This collection will set up the dCLOUD environment for the dCLOUD. This collection will discover all the various devices, and assign them to the Building 3 within the North Carolina area.\n\nPlease use the csv provided...",
+		"description": "This collection will set up the dCLOUD environment for the dCLOUD. This collection will discover all the various devices, and assign them to the Building 3 within the North Carolina area.\n\nPlease use the csv provided...\n\n<a href=\"https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB9-Rest-API-Orchestration/csv/DNAC-Design-Settings.csv\">⬇︎DNA Center Design Settings CSV⬇︎</a>",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "13375428"
 	},
@@ -696,7 +696,7 @@
 							"        }\r",
 							"    }\r",
 							"}\r",
-							"pm.environment.set(\"DeviceIP\", JSON.stringify(DeviceIP));\r",
+							"pm.environment.set(\"DeviceIP\", DeviceIP);\r",
 							"setTimeout(function(){}, [1000]);\r",
 							"postman.setNextRequest(\"Get SiteIDs\");"
 						],
@@ -835,8 +835,18 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"pm.environment.get(\"DeviceIP\")\r",
-							""
+							"var ip = pm.environment.get(\"DeviceIP\");\r",
+							"var ip = ip.split(\",\");\r",
+							"for (var i = 0;i<ip.length;i++) {\r",
+							"    if ( i===0 ) {\r",
+							"        Devices = '{ \"ip\": \"' + ip[i] + '\" }';\r",
+							"    }\r",
+							"    else {\r",
+							"        Devices = Devices + ',' + '{ \"ip\": \"' + ip[i] + '\" }';\r",
+							"    }\r",
+							"}\r",
+							"pm.environment.set(\"Devices\", Devices);\r",
+							"pm.environment.get(\"Devices\");"
 						],
 						"type": "text/javascript"
 					}
@@ -880,7 +890,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"device\": [ { \"ip\": {{DeviceIP}} } ] }"
+					"raw": "{ \"device\": [ {{Devices}} ] }"
 				},
 				"url": {
 					"raw": "https://{{DNACip}}/dna/system/api/v1/site/{{TargetSiteId}}/device",
