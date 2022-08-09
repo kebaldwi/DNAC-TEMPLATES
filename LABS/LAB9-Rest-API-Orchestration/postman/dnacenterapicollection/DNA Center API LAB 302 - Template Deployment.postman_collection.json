@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "fcc5bf7a-51fc-41ff-bc4a-7068ab461158",
 		"name": "DNA Center API LAB 302 - Template Deployment",
-		"description": "This Collection is designed for the student to build a project in the template editor, and upload and commit a template ready for deployment.  \n  \nAn additional Task is shown which is not run but there for the student to gain an understanding of how the template would be run.",
+		"description": "This Collection is designed to build a project in the template editor, and upload and commit a template ready for deployment.\n\nPlease use the csv provided...\n\n<a href=\"https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB9-Rest-API-Orchestration/csv/DNAC-Design-Settings.csv\">⬇︎DNA Center Design Settings CSV⬇︎</a>",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "13375428"
 	},
@@ -501,10 +501,13 @@
 							"    postman.setNextRequest(\"null\");\r",
 							"}\r",
 							"setTimeout(function(){}, [5000]);\r",
-							"if (pm.iterationData.get(\"DeployTemplate\") === \"true\"){\r",
+							"pm.environment.set(\"GeneralTestString\", pm.iterationData.get(\"DeployTemplate\"));\r",
+							"if (pm.environment.get(\"GeneralTestString\") === \"true\"){\r",
 							"    postman.setNextRequest(\"Get Device Id\");\r",
 							"}\r",
-							""
+							"else {\r",
+							"    postman.setNextRequest(\"null\");\r",
+							"}"
 						],
 						"type": "text/javascript"
 					}
@@ -558,6 +561,9 @@
 							"var DeviceList = pm.iterationData.get(\"DeviceList\");",
 							"var DeviceList = DeviceList.split(\",\");",
 							"var DeviceId = \"\";",
+							"var DeviceIp = \"\";",
+							"var FLAG = DeviceList.length;",
+							"pm.environment.set(\"FLAG\", FLAG);",
 							"for (var i = 0; i < jsonData.response.length; i++) {",
 							"    for (var dl = 0; dl < DeviceList.length; dl++) {",
 							"        if (jsonData[\"response\"][i][\"managementIpAddress\"] === DeviceList[dl]){",
@@ -574,9 +580,17 @@
 							"}",
 							"pm.environment.set(\"DeviceId\", DeviceId);",
 							"pm.environment.set(\"DeviceIp\", DeviceIp);",
-							"pm.environment.set(\"FLAG\", 0);",
 							"pm.test(\"Devices acquired\",() => {pm.expect(pm.response.text()).to.include(\"response\");});",
 							"postman.setNextRequest(\"Deploy Template\");"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"FLAG\", 0);"
 						],
 						"type": "text/javascript"
 					}
@@ -627,6 +641,7 @@
 							"var c = i.length;\r",
 							"if (c > 1){\r",
 							"    var FLAG = pm.environment.get(\"FLAG\");\r",
+							"    FLAG = FLAG - 1;\r",
 							"    pm.environment.set(\"TargetDeviceId\", i[FLAG]);\r",
 							"}\r",
 							"else{\r",
@@ -634,7 +649,7 @@
 							"}\r",
 							"pm.environment.get(\"TargetDeviceId\");\r",
 							"pm.environment.get(\"TemplateId\");\r",
-							""
+							"pm.environment.set(\"FLAG\", FLAG);"
 						],
 						"type": "text/javascript"
 					}
@@ -644,34 +659,15 @@
 					"script": {
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);\r",
-							"if (jsonData.deploymentId) {\r",
-							"    pm.test(\"Template deployed\",() => {pm.expect(pm.response.text()).to.include(\"deploy\");});\r",
-							"    var i = pm.environment.get(\"DeviceId\");\r",
-							"    var i = i.split(\",\");\r",
-							"    var c = i.length;\r",
-							"    if (c > 1){\r",
-							"        var FLAG = pm.environment.get(\"FLAG\");\r",
-							"        FLAG = FLAG + 1;\r",
-							"        pm.environment.set(\"FLAG\", FLAG);\r",
-							"        var qc = c - FLAG;\r",
-							"        if (qc = 0){\r",
-							"            postman.setNextRequest(\"null\");\r",
-							"        }\r",
-							"        else {\r",
-							"            postman.setNextRequest(\"Deploy Template\");\r",
-							"        }\r",
-							"    }\r",
-							"    else{\r",
-							"        var FLAG = pm.environment.get(\"FLAG\");\r",
-							"        FLAG = FLAG + 1;\r",
-							"        pm.environment.set(\"FLAG\", FLAG);\r",
-							"        postman.setNextRequest(\"null\");\r",
-							"    } \r",
+							"pm.test(\"Template deployed\",() => {pm.expect(pm.response.text()).to.include(\"nt Id:\");});\r",
+							"var FLAG = pm.environment.get(\"FLAG\");\r",
+							"if (FLAG > 0){\r",
+							"    postman.setNextRequest(\"Deploy Template\");\r",
 							"}\r",
-							"else {\r",
-							"    pm.test(\"Template not deployed\",() => {pm.expect(pm.response.text()).to.include(\"deploymentId\");});\r",
+							"else{\r",
 							"    postman.setNextRequest(\"null\");\r",
-							"}"
+							"} \r",
+							""
 						],
 						"type": "text/javascript"
 					}

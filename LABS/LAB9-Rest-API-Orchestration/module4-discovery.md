@@ -40,18 +40,18 @@ Follow these steps:
    1. Within Postman click on the collection shortcut in the sidebar
    2. Hover over the collection `DNA Center API LAB 201 - Device Discovery`
    3. Click the `Run Collection` submenu option
-      ![json](./images/Postman-Collection-DeployTemplate.png?raw=true "Import JSON")
+      ![json](./images/Postman-Collection-Discovery.png?raw=true "Import JSON")
 2. To run the collection do the following:
    1. Locate the sub-components of the `Runner`
    2. On the right under data, click *select* 
    3. Browse and select the CSV using explorer
    4. Click Open to select the file to be used
    5. Optionally select the `Save Responses` option
-      ![json](./images/Postman-Collection-DeployTemplate-Run-CSV.png?raw=true "Import JSON")
+      ![json](./images/Postman-Collection-Discovery-Run-CSV.png?raw=true "Import JSON")
    6. Click  the `Run DNA Center API LAB 201 - Device Discovery` button
-      ![json](./images/Postman-Collection-DeployTemplate-Runner.png?raw=true "Import JSON")
+      ![json](./images/Postman-Collection-Discovery-Runner.png?raw=true "Import JSON")
 3. The following summary will slowly appear as the collection is processed
-   ![json](./images/Postman-Collection-DeployTemplate-Summary.png?raw=true "Import JSON")
+   ![json](./images/Postman-Collection-Discovery-Summary.png?raw=true "Import JSON")
 
 ## Verifying Device Discovery 
 To verify that the devices were discovered successfully we will inspect the Discovery Tool within DNA Center as well as the inventory.
@@ -67,7 +67,7 @@ Follow these steps:
 4. Select `Tools>Template Editor` from the menu to continue.
 ![json](./images/DNAC-Menu-TemplateEditor.png?raw=true "Import JSON")
 5. Expand the Project with your Area Name on the left to show your specific Project with the template, then select it and view it on the right.
-![json](./images/DNAC-TemplateEditor-DeployTemplate-Verify.gif?raw=true "Import JSON")
+![json](./images/DNAC-TemplateEditor-Discovery-Verify.gif?raw=true "Import JSON")
 
 ## Summary
 We have been able to discover devices within the network and import them into DNA Center. This scenario may be augmented and modified to create a brownfield learn which would allow for the provisioning of a template to nullify AAA settings and then assign the device to a site for provisioning.
