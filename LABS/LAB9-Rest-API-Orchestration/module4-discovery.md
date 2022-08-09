@@ -67,7 +67,7 @@ Follow these steps:
 4. Select `Tools>Template Editor` from the menu to continue.
 ![json](./images/DNAC-Menu-TemplateEditor.png?raw=true "Import JSON")
 5. Expand the Project with your Area Name on the left to show your specific Project with the template, then select it and view it on the right.
-![json](./images/DNAC-TemplateEditor-DeployTemplate-Verify.png?raw=true "Import JSON")
+![json](./images/DNAC-TemplateEditor-DeployTemplate-Verify.gif?raw=true "Import JSON")
 
 ## Summary
 We have been able to discover devices within the network and import them into DNA Center. This scenario may be augmented and modified to create a brownfield learn which would allow for the provisioning of a template to nullify AAA settings and then assign the device to a site for provisioning.
