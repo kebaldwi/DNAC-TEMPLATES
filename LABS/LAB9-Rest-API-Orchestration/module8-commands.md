@@ -31,17 +31,15 @@ Follow these steps:
    2. Select the `Save Responses` option as we will need the output
    3. Click  the `Run DNA Center API LAB 402 - Command Runner` button
       ![json](./images/Postman-Collection-CmdRun-Runner.png?raw=true "Import JSON")
-3. The following summary will slowly appear as the collection is processed
+3. The following results will slowly appear as the collection is processed.
+   1. Click `View Results` on the Left
+   2. Watch the Results slowly appear. The API has been set up to give device info in the test area.
    ![json](./images/Postman-Collection-CmdRun-Summary.png?raw=true "Import JSON")
-4. In `Test\Results` a stringified output of the show command will appear.
-5. To view the results do the following:
+4. To view the results do the following:
    1. Click the `Console` option at the bottom of postman
-   2. Select the `Popout Window` option as we will need the output
-   3. Expand the Get request that begins `GET https://198.18.129.100/dna/intent/api/v1/file/...` 
-   4. Within the `Response Body` click the `Popout Window` option
+   2. Expand the Get request that begins `GET https://198.18.129.100/dna/intent/api/v1/file/...` 
+   3. Within the `Response Body` click the `Drop Down` arrow and view the Response
       ![json](./images/Postman-Collection-CmdRun-Console.png?raw=true "Import JSON")
-6. The following results will appear in a text window allowing for copy to export or to use the file save options
-   ![json](./images/Postman-Collection-CmdRun-Export.png?raw=true "Import JSON")
 
 ## Summary
 We have been able to run diagnostic commands via Rest-API, which is useful if we want to get any show command or output from any diagnostic command to a third party system. This allows us to augment DNA Center and create whatever we like in regards to troubleshooting support for other platforms like ServiceNow or other 3rd party Rest-API based ITSM tools. 

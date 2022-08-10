@@ -37,7 +37,7 @@ Follow these steps:
 5. To view the results do the following:
    1. Click the `Console` option at the bottom of postman
    2. Expand the Get request that begins `GET https://198.18.129.100/api/v1/network-device` 
-   4. Within the `Response Body` click the `Drop Down` arrow and view the Response
+   3. Within the `Response Body` click the `Drop Down` arrow and view the Response
       ![json](./images/Postman-Collection-DeviceInventory-Console.png?raw=true "Import JSON")
 
 ## Summary
