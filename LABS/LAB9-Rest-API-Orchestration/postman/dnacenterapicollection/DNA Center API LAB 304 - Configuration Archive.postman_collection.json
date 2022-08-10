@@ -313,9 +313,9 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
+							"var jsonData = responseBody;",
 							"let pwd = pm.environment.get(\"ConfigZipFilePwd\");",
-							"pm.test(\"Please use \"+ pwd + \" to open file\",() => {pm.expect(pm.response.text()).to.include(\"response\");});",
+							"pm.test(\"Please use \"+ pwd + \" to open file\",() => {pm.expect(pm.response.text()).to.include(\"STARTUP\");});",
 							"let FLAG = pm.environment.get(\"FLAG\");",
 							"if (FLAG > 1) {",
 							"    FLAG = FLAG - 1;",
@@ -325,8 +325,7 @@
 							"else {",
 							"    FLAG = 0;",
 							"    pm.environment.set(\"FLAG\", FLAG);",
-							"    postman.setNextRequest(\"null\");",
-							"}"
+							"    postman.setNextRequest(\"null\");"
 						],
 						"type": "text/javascript"
 					}
