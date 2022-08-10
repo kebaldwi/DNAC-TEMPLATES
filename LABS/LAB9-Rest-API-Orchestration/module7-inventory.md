@@ -30,18 +30,15 @@ Follow these steps:
    2. Select the `Save Responses` option as we will need the output
    3. Click  the `DNA Center API LAB 401 - Device Inventory` button
       ![json](./images/Postman-Collection-DeviceInventory-Runner.png?raw=true "Import JSON")
-3. The following summary will slowly appear as the collection is processed
+3. The following results will slowly appear as the collection is processed.
+   1. Click `View Results` on the Left
+   2. Watch the Results slowly appear. The API has been set up to give device info in the test area.
    ![json](./images/Postman-Collection-DeviceInventory-Summary.png?raw=true "Import JSON")
-4. Under `Test\Results` a summary of all the devices will be listed.
 5. To view the results do the following:
    1. Click the `Console` option at the bottom of postman
-   2. Select the `Popout Window` option as we will need the output
-   3. Expand the Get request that begins `GET https://198.18.129.100/api/v1/network-device` 
-   4. Within the `Response Body` click the `Popout Window` option
+   2. Expand the Get request that begins `GET https://198.18.129.100/api/v1/network-device` 
+   4. Within the `Response Body` click the `Drop Down` arrow and view the Response
       ![json](./images/Postman-Collection-DeviceInventory-Console.png?raw=true "Import JSON")
-6. The following results will appear in a text window allowing for copy to export or to use the file save options
-   ![json](./images/Postman-Collection-DeviceInventory-Export.png?raw=true "Import JSON")
-
 
 ## Summary
 We have run a collection against DNA Center, to retrieve the device inventory and can export that to a file within our host. There are plenty of uses that this information might be used for, which include making decisions on template deployment SWIM upgrades and so forth. The limits of what can be done from here on are only those of your imagination.
