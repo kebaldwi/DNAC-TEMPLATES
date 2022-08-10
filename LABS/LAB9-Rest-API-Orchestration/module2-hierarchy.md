@@ -14,6 +14,50 @@ The network hierarchy has a predetermined hierarchy:
 
 **Floors** are within buildings and consist of cubicles, walled offices, wiring closets, and so on. You can add floors only to buildings.
 
+## Lab Preparation
+### DNA Center and ISE Integration
+In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate DNA Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
+
+#### Step 1 - ***Prepare ISE for DNA Center Integration***
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to Identity Services Engine (ISE) and select the hamburger menu icon to open the system menu.
+
+![json](./images/ise-dashboard.png?raw=true "Import JSON")
+
+2. From the system menu under Administration select PxGrid Settings
+
+![json](./images/ise-menu.png?raw=true "Import JSON")
+
+3. On the PxGrid Settings page select both of the available options and click Save to allow DNA Center to integrate.
+
+![json](./images/ise-pxgrid-settings.png?raw=true "Import JSON")
+![json](./images/ise-pxgrid-setup.png?raw=true "Import JSON")
+
+#### Step 2 - ***DNA Center and ISE Integration***
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to Dna Center and select the hamburger menu icon and navigate to the System > Settings menu item.
+
+![json](./images/dnac-system-settings.png?raw=true "Import JSON")
+
+2. Within the System Settings page navigate down the list on the left and select the Authentication and Policy Server section.
+
+![json](./images/dnac-system-settings-aaa.png?raw=true "Import JSON")
+
+3. On the page select from the dropdown ISE to configure ISE integration.
+
+![json](./images/dnac-system-settings-aaa-ise.png?raw=true "Import JSON")
+
+4. Enter the information as seen on the page and click save.
+
+![json](./images/dnac-system-settings-aaa-ise-config.png?raw=true "Import JSON")
+
+5. A popup will appear as the ISE node is using an untrusted SelfSigned Certificate. For lab purposes Accept the certificate, this may appear a couple of times as shown.
+
+![json](./images/dnac-system-settings-aaa-ise-trust.png?raw=true "Import JSON")
+
+6. You will see the the various stages of integration proceed and finally a success message as shown below.
+
+![json](./images/dnac-system-settings-aaa-ise-done.png?raw=true "Import JSON")
+![json](./images/dnac-system-settings-aaa-ise-complete.png?raw=true "Import JSON")
+
 ## Building Hierarchy
 ### Objectives
 - Authenticate and retrieve a token from Cisco DNA Center.
