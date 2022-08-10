@@ -79,3 +79,6 @@ Follow these steps:
 At this point we have assigned settings, credentials, and telemetry settings to the Hierarchy utilizing environment variables and REST-API's within the collection runner. 
 
 Additionally if there is time, look at the results of the Credentials and Telemetry tabs with DNA Center and the various pre and post scripts within Postman.
+
+## Feedback
+If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.

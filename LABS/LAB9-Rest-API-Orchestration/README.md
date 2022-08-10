@@ -68,3 +68,8 @@ To download Google Chrome please visit
 
 ## Summary
 This lab is intended for educational purposes only. Use outside of a lab environment should be done at the operators risk. Cisco assumes no liability for incorrect usage.
+
+This lab is intended to help drive adoption of Rest-API, and will be added to over time with various use cases. The Public Workspace will mirror the changes and be kept up to date as well. Our hope is that this helps explain how the Rest-API are used and goes a little further in helping to explain and document them.
+
+## Feedback
+If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.

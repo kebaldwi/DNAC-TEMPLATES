@@ -73,3 +73,6 @@ Follow these steps:
 We have been able to deploy a template within a project inside DNA Centers template editor. This scenario may be augmented and modified to use of imported files within Postman to allow for a more dynamic approach. The flow allows for us to rapidly stage Projects and Templates perhaps iimporting them from GitHub in CICD pipeline. 
 
 Additionally if there is time, look at the pre and post scripts within Postman and take a look at the additionally included Deploy Template API.
+
+## Feedback
+If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.

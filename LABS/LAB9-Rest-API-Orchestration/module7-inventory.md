@@ -44,3 +44,6 @@ Follow these steps:
 We have run a collection against DNA Center, to retrieve the device inventory and can export that to a file within our host. There are plenty of uses that this information might be used for, which include making decisions on template deployment SWIM upgrades and so forth. The limits of what can be done from here on are only those of your imagination.
 
 Additionally if there is time, look at the pre and post scripts within Postman.
+
+## Feedback
+If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.

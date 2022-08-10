@@ -45,3 +45,6 @@ Follow these steps:
 We have been able to run diagnostic commands via Rest-API, which is useful if we want to get any show command or output from any diagnostic command to a third party system. This allows us to augment DNA Center and create whatever we like in regards to troubleshooting support for other platforms like ServiceNow or other 3rd party Rest-API based ITSM tools. 
 
 Additionally if there is time, look at the pre and post scripts within Postman.
+
+## Feedback
+If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.

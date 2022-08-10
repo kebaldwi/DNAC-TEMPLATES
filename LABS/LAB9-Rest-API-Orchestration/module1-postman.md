@@ -83,3 +83,5 @@ At this point you have set up the postman client with a collection the environme
 
 We have performed a few operations in the client, and you have seen the areas we will be working in briefly, those being the Collections where the REST-API are configured and the Environment, where the data is stored in variables within the database. Take additional time to navigate postman to become more familiar. 
 
+## Feedback
+If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.

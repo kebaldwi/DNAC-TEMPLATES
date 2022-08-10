@@ -72,3 +72,5 @@ Follow these steps:
 ## Summary
 We have been able to discover devices within the network and import them into DNA Center. This scenario may be augmented and modified to create a brownfield learn which would allow for the provisioning of a template to nullify AAA settings and then assign the device to a site for provisioning.
 
+## Feedback
+If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
