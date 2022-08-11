@@ -16,7 +16,7 @@ The network hierarchy has a predetermined hierarchy:
 
 ## Lab Preparation
 ### DNA Center and ISE Integration
-In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate DNA Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
+In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate DNA Center with Identity Services Engine. This integration allows pxGrid communication between the DNA Center and ISE. For this reason the PxGrid personal does need to be enabled on at least 1 ISE Node within an ISE Cluster. This has already been completed in the sandbox. PxGrid integration between the DNA Center and ISE allows for automation from DNA Center of configuration within ISE for Network Access Devices, SGT creation, and SGACL builds via Contracts, and Policys.
 
 #### Step 1 - ***Prepare ISE for DNA Center Integration***
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to Identity Services Engine (ISE) and select the hamburger menu icon to open the system menu.

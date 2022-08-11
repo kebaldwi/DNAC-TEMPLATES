@@ -6,7 +6,7 @@ The Design area is where you create the structure and framework of your network,
 
 The settings and credentials which we assign to the hierarchy allow us to be deterministic in where we inherit settings from parent objects and where we overide settings in the child objects.
 
-This allows for us to deploy not only changes to the network, with localized maintenance windows but also to slowly role out changes through multiple sites without impact to the entire network. 
+This allows for us to deploy not only changes to the network, with localized maintenance windows but also to slowly roll out changes through multiple sites without impact to the entire network. 
 
 As with all the Design, Policy & Provisioning elements they are all tied to the hierarchial nature of DNA Center. 
 

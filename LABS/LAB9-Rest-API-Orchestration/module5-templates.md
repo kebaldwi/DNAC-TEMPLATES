@@ -70,7 +70,7 @@ Follow these steps:
 ![json](./images/DNAC-TemplateEditor-DeployTemplate-Verify.gif?raw=true "Import JSON")
 
 ## Summary
-We have been able to deploy a template within a project inside DNA Centers template editor. This scenario may be augmented and modified to use of imported files within Postman to allow for a more dynamic approach. The flow allows for us to rapidly stage Projects and Templates perhaps iimporting them from GitHub in CICD pipeline. 
+We have been able to deploy a template within a project inside DNA Centers template editor. This scenario may be augmented and modified to use of imported files within Postman to allow for a more dynamic approach. The flow allows for us to rapidly stage Projects and Templates perhaps importing them from GitHub in CICD pipeline. 
 
 Additionally if there is time, look at the pre and post scripts within Postman and take a look at the additionally included Deploy Template API.
 

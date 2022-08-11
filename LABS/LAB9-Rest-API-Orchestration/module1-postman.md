@@ -1,6 +1,6 @@
 
 # Module 1 - Postman Preparation
-In this module we will get the postman client operational and ready for use in the various sections of this lab. The first step will be to either import the collections and enviroment into postman, or to them in from the publicly shared workspace.
+In this module we will get the postman client operational and ready for use in the various sections of this lab. The first step will be to either import the collections and enviroment into postman, or to pull them in from the publicly shared workspace.
 
 ## Orientation
 **Collections** are groupings of requests within postman. They are logical structures which allow for requests to be grouped and run as a collection within Postman. Within this lab we have built collections around specific use cases. Each collection can be exported and imported separately, or together within a workspace. **Workspaces** are separate tenants within Postman and operate separately from each other. 
@@ -79,7 +79,7 @@ Follow these steps:
 ![json](./images/Postman-Settings-SSL-Validation-Off.png?raw=true "Import JSON")
 
 # Summary
-At this point you have set up the postman client with a collection the environment and the necessary settings to complete the lab. In the following sextions we will utilize the environment variables within each collection to perform a task on DNA Center.
+At this point you have set up the postman client with a collection the environment and the necessary settings to complete the lab. In the following sections we will utilize the environment variables within each collection to perform a task on DNA Center.
 
 We have performed a few operations in the client, and you have seen the areas we will be working in briefly, those being the Collections where the REST-API are configured and the Environment, where the data is stored in variables within the database. Take additional time to navigate postman to become more familiar. 
 
