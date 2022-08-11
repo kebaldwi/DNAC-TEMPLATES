@@ -68,7 +68,10 @@ Follow these steps:
 5. On the left you can click on the view all discoveries , then select it and view it on the right. 
 ![json](./images/DNAC-Menu-Discovery.gif?raw=true "Import JSON")
 6. Within that screen you can select the various discoveries and look at the details of them.
+7. Alternatively you can go Provision>Inventory and view the devices in the Global Level.
 ![json](./images/DNAC-TemplateEditor-Discovery-Verify.gif?raw=true "Import JSON")
+
+You will notice the devices have been discovered and assigned to the appropriate level of the Hierarchy as per the CSV.
 
 ## Summary
 We have been able to discover devices within the network and import them into DNA Center. This scenario may be augmented and modified to create a brownfield learn which would allow for the provisioning of a template to nullify AAA settings and then assign the device to a site for provisioning.
