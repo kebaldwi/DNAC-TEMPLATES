@@ -325,7 +325,8 @@
 							"else {",
 							"    FLAG = 0;",
 							"    pm.environment.set(\"FLAG\", FLAG);",
-							"    postman.setNextRequest(\"null\");"
+							"    postman.setNextRequest(\"null\");",
+							"}"
 						],
 						"type": "text/javascript"
 					}
