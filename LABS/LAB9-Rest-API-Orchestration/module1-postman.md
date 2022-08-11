@@ -83,5 +83,25 @@ At this point you have set up the postman client with a collection the environme
 
 We have performed a few operations in the client, and you have seen the areas we will be working in briefly, those being the Collections where the REST-API are configured and the Environment, where the data is stored in variables within the database. Take additional time to navigate postman to become more familiar. 
 
+To continue your learning experience continue on to the next module in the series which is module 2 below.
+
+## Lab Modules
+The use cases we will cover are the following which you can access via links below:
+
+1. [**Postman Orientation**](./module1-postman.md)
+2. [**Building Hierarchy**](./module2-hierarchy.md)
+3. [**Assign Settings and Credentials**](./module3-settings.md)
+4. [**Device Discovery**](./module4-discovery.md)
+5. [**Template Deployment**](./module5-templates.md)
+6. [**Configuration Archive**](./module6-archive.md)
+7. [**Retrieving Network Inventory**](./module7-inventory.md)
+8. [**Running Show Commands**](./module8-commands.md)
+
+## Main Menus
+To return to the main menus
+1. [Rest-API Orchestration Main Menu](./README.md)
+2. [DNAC-TEMPLATES-LABS Main Menu](../README.md)
+3. [DNAC-TEMPLATES Repository Main Menu](.../README.md)
+
 ## Feedback
 If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.

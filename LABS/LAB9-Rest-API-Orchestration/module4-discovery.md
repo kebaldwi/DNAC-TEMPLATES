@@ -64,13 +64,34 @@ Follow these steps:
 ![json](./images/DNAC-Login.png?raw=true "Import JSON")
 3. When the DNA Center Dashboard is displayed, Click the  icon to display the menu'
 ![json](./images/DNAC-Menu.png?raw=true "Import JSON")
-4. Select `Tools>Template Editor` from the menu to continue.
-![json](./images/DNAC-Menu-TemplateEditor.png?raw=true "Import JSON")
-5. Expand the Project with your Area Name on the left to show your specific Project with the template, then select it and view it on the right.
+4. Select `Tools>Discovery` from the menu to continue.
+5. On the left you can click on the view all discoveries , then select it and view it on the right. 
+![json](./images/DNAC-Menu-Discovery.gif?raw=true "Import JSON")
+6. Within that screen you can select the various discoveries and look at the details of them.
 ![json](./images/DNAC-TemplateEditor-Discovery-Verify.gif?raw=true "Import JSON")
 
 ## Summary
 We have been able to discover devices within the network and import them into DNA Center. This scenario may be augmented and modified to create a brownfield learn which would allow for the provisioning of a template to nullify AAA settings and then assign the device to a site for provisioning.
+
+To continue your learning experience continue on to the next module in the series which is module 5 below.
+
+## Lab Modules
+The use cases we will cover are the following which you can access via links below:
+
+1. [**Postman Orientation**](./module1-postman.md)
+2. [**Building Hierarchy**](./module2-hierarchy.md)
+3. [**Assign Settings and Credentials**](./module3-settings.md)
+4. [**Device Discovery**](./module4-discovery.md)
+5. [**Template Deployment**](./module5-templates.md)
+6. [**Configuration Archive**](./module6-archive.md)
+7. [**Retrieving Network Inventory**](./module7-inventory.md)
+8. [**Running Show Commands**](./module8-commands.md)
+
+## Main Menus
+To return to the main menus
+1. [Rest-API Orchestration Main Menu](./README.md)
+2. [DNAC-TEMPLATES-LABS Main Menu](../README.md)
+3. [DNAC-TEMPLATES Repository Main Menu](.../README.md)
 
 ## Feedback
 If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.

@@ -46,5 +46,25 @@ We have been able to run diagnostic commands via Rest-API, which is useful if we
 
 Additionally if there is time, look at the pre and post scripts within Postman.
 
+To continue your learning experience continue with the various other labs within the Labs main menu. Please also watch this space for new lab modules as they appear.
+
+## Lab Modules
+The use cases we will cover are the following which you can access via links below:
+
+1. [**Postman Orientation**](./module1-postman.md)
+2. [**Building Hierarchy**](./module2-hierarchy.md)
+3. [**Assign Settings and Credentials**](./module3-settings.md)
+4. [**Device Discovery**](./module4-discovery.md)
+5. [**Template Deployment**](./module5-templates.md)
+6. [**Configuration Archive**](./module6-archive.md)
+7. [**Retrieving Network Inventory**](./module7-inventory.md)
+8. [**Running Show Commands**](./module8-commands.md)
+
+## Main Menus
+To return to the main menus
+1. [Rest-API Orchestration Main Menu](./README.md)
+2. [DNAC-TEMPLATES-LABS Main Menu](../README.md)
+3. [DNAC-TEMPLATES Repository Main Menu](.../README.md)
+
 ## Feedback
 If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.

@@ -3,7 +3,7 @@
 This Lab is designed as a standalone lab to help customers with varying challenges in Automating and Orchestrating their network infrastructure. Within the lab we will make use of various tools and techniques to Automate various tasks, and orchestrate over DNA Center.
 
 ## General Information
-Up until this point we have used Rest-API for some basic set up tasks, but their are so many varying situations that can be solved or at least eased utilizing Rest-API inconjunction with DNA Center. In this lab we will use a complete set of REST-API collections which will build upon the foundational knowledge acquired in the previous labs. For this lab we will concentrate on DNA Center configuration, and how DNA Center can be automated to perform various functions which we have already covered. 
+Up until this point we have used Rest-API for some basic set up tasks, but there are so many varying situations that can be solved or at least eased utilizing Rest-API inconjunction with DNA Center. In this lab we will use a complete set of REST-API collections which will build upon the foundational knowledge acquired in the previous labs. For this lab we will concentrate on DNA Center configuration, and how DNA Center can be automated to perform various functions which we have already covered. 
 
 This page will serve as the landing page for this lab section due to the amount of content it will cover and the need to expand on it over time. 
 
