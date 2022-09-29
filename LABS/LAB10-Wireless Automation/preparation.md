@@ -45,7 +45,22 @@ In this lab our focus changes slightly as we start to automate for host onboardi
 ![json](./images/dnac-system-settings-aaa-ise-done.png?raw=true "Import JSON")
 ![json](./images/dnac-system-settings-aaa-ise-complete.png?raw=true "Import JSON")
 
-## Lab Section 2 - DNA Center Design Preparation
+## Lab Section 2 - DHCP & DNS Service Preparation
+In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server for the lab environment. The reasons for the configurations made here are detailed heavily in Lab 2 titled [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/)
+
+### Step 1 - ***Configuring DHCP and DNS via Powershell***
+1. Download the powershell script to the ***windows server*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/scripts/powershell.ps1">⬇︎powershell.ps1⬇︎</a> file.
+2. Once downloaded, extract the file.
+   ![json](./images/Powershell-Extract.png?raw=true "Import JSON")
+   ![json](./images/Powershell-Extract-Location.png?raw=true "Import JSON")
+3. Right click on the file and run with powershell.
+   ![json](./images/Powershell-Run.png?raw=true "Import JSON")
+4. You may see a security warning. If you do accept it by entering **Y**.
+   ![json](./images/Powershell-Security.png?raw=true "Import JSON")
+At this point all the DNS and DHCP configuration on the ***windows server*** will be generated.
+   ![json](./images/DNS-DHCP.png?raw=true "Import JSON")
+
+## Lab Section 3 - DNA Center Design Preparation
 While we could deploy more extensive settings for deployment, we will limit the configuration to the minimum necessary to perform this step, building off the completed tasks in labs one, [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB1-PNP-PREP/) and two, [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/).
 
 Should you desire to deploy rapidly and build the lab faster then use the following approach:
