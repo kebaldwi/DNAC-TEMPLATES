@@ -33,6 +33,38 @@ If you would like to connect to the dCloud environment, please ensure you instal
 ### Lab Requirements
 This lab is designed to be run in Cisco dClouds - Enterprise Network Sandbox Lab. It was developed in version 4, including DNA Center 2.2.3.5 and equipment running at least 17.x versions of code.
 
+#### SJC
+[Cisco Enterprise Networks Hardware Sandbox](https://dcloud2-sjc.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen)
+
+#### Components
+The DCLOUD session includes the following equipment:
+
+Virtual Machines:
+
+    DNA Center 2.2.3.4 or better
+    Identity Services Engine (ISE) 3.0 Patch 4 or better (deployed)
+    Identity Services Engine (ISE) 3.0 (Not deployed)
+    Stealthwatch 7.4.0 or better
+    FlowCollector 7.4.0 or better
+    Cisco Prime Infrastructure 3.10  or better
+    Script Server - Ubuntu 20.04  or better
+    Wireless LAN Controller - C9800 running IOS-XE Bengaluru 17.5.1 code or better
+    Windows 10 Jump Host 
+    Windows Server 2019 - Can be configured to provide identity, DHCP, DNS, etc.
+    Windows 10 Clients
+
+Hardware Devices:
+
+    ISR 4451 Router - 17.06.01a IOS-XE Code
+    Catalyst 9300 Switch - 17.06.01 IOS-XE Code with Embedded Wireless Controller (EWC) and ThousandEyes Enterprise Agent
+    9130AX Access Points
+    Silex Controllers (3 Wired NIC's and 1 Wireless NIC)
+
+The lab envionment that is available is depicted here:
+
+![json](./LAB1-PNP-PREP/images/DCLOUD_Topology2.png?raw=true "Import JSON")
+
+
 ### Tools Required
 Please utilize the following tools to run the lab effectively and ensure they are installed on your workstation/laptop before attempting the lab.
 
