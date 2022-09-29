@@ -1,7 +1,7 @@
 # In Development
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 
-# Lab Preparation
+# Wireless Lab Preparation
 ## Lab Section 1 - DNA Center and ISE Integration
 In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate DNA Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
 
