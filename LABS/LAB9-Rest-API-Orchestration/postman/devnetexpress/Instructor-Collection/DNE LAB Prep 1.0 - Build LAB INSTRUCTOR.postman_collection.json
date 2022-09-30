@@ -1,0 +1,1390 @@
+{
+	"info": {
+		"_postman_id": "6e2ef44f-82e5-4d14-b3df-c431b27455d6",
+		"name": "DNE LAB Prep 1.0 - Build LAB INSTRUCTOR",
+		"description": "This is the instructors collection to set up the dCLOUD environment for the DevNet Express Class. This collection will set up the following hierarchy.\n\nGlobal > DNAC Template Labs > Building > Floor 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13375428"
+	},
+	"item": [
+		{
+			"name": "DNAC Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"if (jsonData.Token) {\r",
+							"  tests[\"Body has Token\"] = true;\r",
+							"  postman.setEnvironmentVariable(\"TOKEN\", jsonData[\"Token\"]); \r",
+							"}\r",
+							"else {\r",
+							"  tests[\"Body has no Token\"] = false;\r",
+							"  postman.setNextRequest(\"null\");\r",
+							"}\r",
+							"setTimeout(function(){}, [5000]);\r",
+							"postman.setNextRequest(\"Create Area\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{DNACpwd}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{DNACuser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/system/api/v1/auth/token",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"system",
+						"api",
+						"v1",
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Area",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"if ((jsonData.executionId) && (jsonData.message == \"The request has been accepted for execution\")) {\r",
+							"  tests[\"Area has been created\"] = true;\r",
+							"  tests[\"This first call takes a minute and a half\"] = true;\r",
+							"}\r",
+							"else {\r",
+							"  tests[\"Area has not been created\"] = false;\r",
+							"  postman.setNextRequest(\"null\");\r",
+							"}\r",
+							"setTimeout(function(){}, [90000]);\r",
+							"postman.setNextRequest(\"Create Building\")"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"HierarchyParent\");\r",
+							"pm.environment.get(\"HierarchyArea\");\r",
+							"let Counter = 0\r",
+							"postman.setEnvironmentVariable(\"FLAG\", Counter);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"area\",\r\n    \"site\": {\r\n        \"area\": {\r\n            \"name\": \"{{HierarchyArea}}\",\r\n            \"parentName\": \"{{HierarchyParent}}\"\r\n        }\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/intent/api/v1/site",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"site"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Building",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"if ((jsonData.executionId) && (jsonData.message == \"The request has been accepted for execution\")) {\r",
+							"  tests[\"Building has been created\"] = true;\r",
+							"}\r",
+							"else {\r",
+							"  tests[\"Building has not been created\"] = false;\r",
+							"  postman.setNextRequest(\"null\");\r",
+							"}\r",
+							"setTimeout(function(){}, [25000]);\r",
+							"postman.setNextRequest(\"Create Floor\")"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"HierarchyParent\");\r",
+							"pm.environment.get(\"HierarchyArea\");\r",
+							"pm.environment.get(\"HierarchyBldg\");\r",
+							"pm.environment.get(\"HierarchyBldgAddress\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"building\",\r\n    \"site\": {\r\n        \"building\": {\r\n            \"name\": \"{{HierarchyBldg}}\",\r\n            \"address\": \"{{HierarchyBldgAddress}}\",\r\n            \"parentName\": \"{{HierarchyParent}}/{{HierarchyArea}}\"\r\n        }\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/intent/api/v1/site",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"site"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Floor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"if ((jsonData.executionId) && (jsonData.message == \"The request has been accepted for execution\")) {\r",
+							"  tests[\"Floor has been created\"] = true;\r",
+							"}\r",
+							"else {\r",
+							"  tests[\"Floor has not been created\"] = false;\r",
+							"  postman.setNextRequest(\"null\");\r",
+							"}\r",
+							"setTimeout(function(){}, [25000]);\r",
+							"postman.setNextRequest(\"Get Global SiteID\")"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"HierarchyParent\");\r",
+							"pm.environment.get(\"HierarchyArea\");\r",
+							"pm.environment.get(\"HierarchyBldg\");\r",
+							"pm.environment.get(\"HierarchyBldgAddress\");\r",
+							"pm.environment.get(\"HierarchyFloor\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"floor\",\r\n    \"site\": {\r\n        \"floor\": {\r\n            \"name\": \"{{HierarchyFloor}}\",\r\n            \"parentName\": \"{{HierarchyParent}}/{{HierarchyArea}}/{{HierarchyBldg}}\",\r\n            \"rfModel\": \"Cubes And Walled Offices\",\r\n            \"width\": \"100\",\r\n            \"length\": \"100\",\r\n            \"height\": \"10\"\r\n        }\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/intent/api/v1/site",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"site"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Global SiteID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"for (var i = 0;i<jsonData.response.length;i++) {\r",
+							"if (jsonData.response[i].name == pm.environment.get(\"HierarchyParent\")) {\r",
+							"postman.setEnvironmentVariable(\"GlobalSiteId\", jsonData[\"response\"][i][\"id\"]);\r",
+							"tests[\"Global Site Id acquired\"] = true; \r",
+							"}\r",
+							"else if (jsonData.response[i].name == pm.environment.get(\"HierarchyArea\")) {\r",
+							"postman.setEnvironmentVariable(\"AreaSiteId\", jsonData[\"response\"][i][\"id\"]); \r",
+							"tests[\"Area Site Id acquired\"] = true; \r",
+							"}\r",
+							"else if (jsonData.response[i].name == pm.environment.get(\"HierarchyBldg\")) {\r",
+							"postman.setEnvironmentVariable(\"BuildingSiteId\", jsonData[\"response\"][i][\"id\"]); \r",
+							"tests[\"Building Site Id acquired\"] = true; \r",
+							"} \r",
+							"else if (jsonData.response[i].name == pm.environment.get(\"HierarchyFloor\")) {\r",
+							"postman.setEnvironmentVariable(\"FloorSiteId\", jsonData[\"response\"][i][\"id\"]);\r",
+							"tests[\"Floor Site Id acquired\"] = true; \r",
+							"}\r",
+							"}\r",
+							"setTimeout(function(){}, [25000]);\r",
+							"postman.setNextRequest(\"Create Settings\")\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/intent/api/v1/site",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"site"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Settings",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"if ((jsonData.executionId) && (jsonData.message == \"The request has been accepted for execution\")) {\r",
+							"  tests[\"Global settings created\"] = true;\r",
+							"}\r",
+							"else {\r",
+							"  tests[\"Global settings not created\"] = false;\r",
+							"  postman.setNextRequest(\"null\");\r",
+							"}\r",
+							"setTimeout(function(){}, [15000]);\r",
+							"postman.setNextRequest(\"Create Credentials\")"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"domainName\");\r",
+							"pm.environment.get(\"dnsServer1\");\r",
+							"pm.environment.get(\"dnsServer2\");\r",
+							"pm.environment.get(\"dhcpServer\");\r",
+							"pm.environment.get(\"syslogServer\");\r",
+							"pm.environment.get(\"syslogBoolean\");\r",
+							"pm.environment.get(\"netflowServer\");\r",
+							"pm.environment.get(\"netflowPort\");\r",
+							"pm.environment.get(\"netflowBoolean\");\r",
+							"pm.environment.get(\"ntpServer\");\r",
+							"pm.environment.get(\"timeZone\");\r",
+							"pm.environment.get(\"aaaEndpointServer\");\r",
+							"pm.environment.get(\"aaaEndpointIpAddress\");\r",
+							"pm.environment.get(\"aaaEndpointProtocol\");\r",
+							"pm.environment.get(\"aaaEndpointSharedSecret\");\r",
+							"pm.environment.get(\"bannerMessage\");\r",
+							"pm.environment.get(\"bannerBoolean\");\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"settings\": {\r\n        \"dhcpServer\": [\r\n            \"{{dhcpServer}}\"\r\n        ],\r\n        \"dnsServer\": {\r\n            \"domainName\": \"{{domainName}}\",\r\n            \"primaryIpAddress\": \"{{dnsServer1}}\"\r\n        },\r\n           \"syslogServer\": {\r\n            \"ipAddresses\": [\r\n                \"{{syslogServer}}\"\r\n            ],\r\n            \"configureDnacIP\": {{syslogBoolean}}\r\n        },\r\n        \"snmpServer\": {\r\n            \"ipAddresses\": [\r\n                \"{{snmpServer}}\"\r\n            ],\r\n            \"configureDnacIP\": {{snmpBoolean}}\r\n        },\r\n        \"netflowcollector\": {\r\n            \"ipAddress\": \"{{netflowServer}}\",\r\n            \"port\": {{netflowPort}},\r\n            \"configureDnacIP\": {{netflowBoolean}}\r\n        },\r\n        \"ntpServer\": [\r\n            \"{{ntpServer}}\"\r\n        ],\r\n        \"timezone\": \"{{timeZone}}\",\r\n        \"messageOfTheday\": {\r\n            \"bannerMessage\": \"{{bannerMessage}}\",\r\n            \"retainExistingBanner\": \"{{bannerBoolean}}\"\r\n\t\t}    \r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/intent/api/v1/network/{{GlobalSiteId}}",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"network",
+						"{{GlobalSiteId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Credentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"if ((jsonData.executionId) && (jsonData.message == \"The request has been accepted for execution\")) {\r",
+							"  tests[\"Credentials created\"] = true;\r",
+							"}\r",
+							"else {\r",
+							"  tests[\"Credentials not created\"] = false;\r",
+							"  postman.setNextRequest(\"null\");\r",
+							"}\r",
+							"setTimeout(function(){}, [25000]);\r",
+							"postman.setNextRequest(\"Get Credentials\")"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"DcloudUser\");\r",
+							"pm.environment.get(\"DcloudPwd\");\r",
+							"pm.environment.get(\"DcloudSnmpRO\");\r",
+							"pm.environment.get(\"DcloudSnmpRO-Desc\");\r",
+							"pm.environment.get(\"DcloudSnmpRW\");\r",
+							"pm.environment.get(\"DcloudSnmpRW-Desc\");\r",
+							"pm.environment.get(\"DcloudNetconf\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"settings\": {\r\n        \"cliCredential\": [\r\n            {\r\n                \"description\": \"{{DcloudUser}}\",\r\n                \"username\": \"{{DcloudUser}}\",\r\n                \"password\": \"{{DcloudPwd}}\",\r\n                \"enablePassword\": \"{{DcloudPwd}}\"\r\n            }\r\n        ],\r\n        \"snmpV2cRead\": [\r\n            {\r\n                \"description\": \"{{DcloudSnmpRO-Desc}}\",\r\n                \"readCommunity\": \"{{DcloudSnmpRO}}\"\r\n            }\r\n        ],\r\n        \"snmpV2cWrite\": [\r\n            {\r\n                \"description\": \"{{DcloudSnmpRW-Desc}}\",\r\n                \"writeCommunity\": \"{{DcloudSnmpRW}}\"\r\n            }\r\n        ]\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/intent/api/v1/device-credential",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"device-credential"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Credentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"for (var i = 0;i<jsonData.snmp_v2_read.length;i++) {\r",
+							"if (jsonData.snmp_v2_read[i].description == pm.environment.get(\"DcloudSnmpRO-Desc\")) {\r",
+							"  postman.setEnvironmentVariable(\"GlobalCredentialSnmpRO\", jsonData[\"snmp_v2_read\"][i][\"id\"]);\r",
+							"  tests[\"SNMP RO credentials acquired\"] = true;\r",
+							"}\r",
+							"}\r",
+							"for (var i = 0;i<jsonData.snmp_v2_write.length;i++) {\r",
+							"if (jsonData.snmp_v2_write[i].description == pm.environment.get(\"DcloudSnmpRW-Desc\")) {\r",
+							"  postman.setEnvironmentVariable(\"GlobalCredentialSnmpRW\", jsonData[\"snmp_v2_write\"][i][\"id\"]);\r",
+							"  tests[\"SNMP RW credentials acquired\"] = true;\r",
+							"}\r",
+							"}\r",
+							"for (var i = 0;i<jsonData.cli.length;i++) {\r",
+							"if (jsonData.cli[i].username == pm.environment.get(\"DcloudUser\")) {\r",
+							"  postman.setEnvironmentVariable(\"GlobalCredentialCli\", jsonData[\"cli\"][i][\"id\"]);\r",
+							"  tests[\"CLI credentials acquired\"] = true;\r",
+							"}\r",
+							"}\r",
+							"setTimeout(function(){}, [15000]);\r",
+							"postman.setNextRequest(\"Assign Credentials\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/intent/api/v1/device-credential",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"device-credential"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign Credentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"if ((jsonData.executionId) && (jsonData.message == \"The request has been accepted for execution\")) {",
+							"  tests[\"Credentials assigned\"] = true;",
+							"}",
+							"else {",
+							"  tests[\"Credentials not assigned\"] = false;",
+							"  postman.setNextRequest(\"null\");",
+							"}",
+							"setTimeout(function(){}, [25000]);",
+							"postman.setNextRequest(\"Get Global Credentials CLI\")"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"GlobalCredentialCli\");\r",
+							"pm.environment.get(\"GlobalCredentialSnmpRO\");\r",
+							"pm.environment.get(\"GlobalCredentialSnmpRW\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cliId\": \"{{GlobalCredentialCli}}\",\r\n    \"snmpV2ReadId\": \"{{GlobalCredentialSnmpRO}}\",\r\n    \"snmpV2WriteId\": \"{{GlobalCredentialSnmpRW}}\"\r\n}"
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/intent/api/v1/credential-to-site/{{GlobalSiteId}}",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"credential-to-site",
+						"{{GlobalSiteId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Global Credentials CLI",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"for (var i = 0;i<jsonData.response.length;i++) {\r",
+							"if (jsonData.response[i].username == pm.environment.get(\"DcloudUser\")) {\r",
+							"  postman.setEnvironmentVariable(\"GlobalCredentialCli\", jsonData[\"response\"][i][\"id\"]);\r",
+							"  tests[\"CLI credentials acquired\"] = true;\r",
+							"}\r",
+							"}\r",
+							"setTimeout(function(){}, [5000]);\r",
+							"postman.setNextRequest(\"Get Global Credentials SNMP RO\")"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/intent/api/v1/global-credential?credentialSubType=CLI",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"global-credential"
+					],
+					"query": [
+						{
+							"key": "credentialSubType",
+							"value": "CLI",
+							"description": "CLI / SNMPV2_READ_COMMUNITY / SNMPV2_WRITE_COMMUNITY"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Global Credentials SNMP RO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"for (var i = 0;i<jsonData.response.length;i++) {\r",
+							"if (jsonData.response[i].description == pm.environment.get(\"DcloudSnmpRO-Desc\")) {\r",
+							"  postman.setEnvironmentVariable(\"GlobalCredentialSnmpRO\", jsonData[\"response\"][i][\"id\"]);\r",
+							"  tests[\"SNMP RO credentials acquired\"] = true;\r",
+							"}\r",
+							"}\r",
+							"setTimeout(function(){}, [5000]);\r",
+							"postman.setNextRequest(\"Get Global Credentials SNMP RW\")"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/intent/api/v1/global-credential?credentialSubType=SNMPV2_READ_COMMUNITY",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"global-credential"
+					],
+					"query": [
+						{
+							"key": "credentialSubType",
+							"value": "SNMPV2_READ_COMMUNITY",
+							"description": "CLI / SNMPV2_READ_COMMUNITY / SNMPV2_WRITE_COMMUNITY"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Global Credentials SNMP RW",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"for (var i = 0;i<jsonData.response.length;i++) {\r",
+							"if (jsonData.response[i].description == pm.environment.get(\"DcloudSnmpRW-Desc\")) {\r",
+							"  postman.setEnvironmentVariable(\"GlobalCredentialSnmpRW\", jsonData[\"response\"][i][\"id\"]);\r",
+							"  tests[\"SNMP RW credentials acquired\"] = true;\r",
+							"}\r",
+							"}\r",
+							"setTimeout(function(){}, [5000]);\r",
+							"postman.setNextRequest(\"Get Global Credentials NETCONF\")"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/intent/api/v1/global-credential?credentialSubType=SNMPV2_WRITE_COMMUNITY",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"global-credential"
+					],
+					"query": [
+						{
+							"key": "credentialSubType",
+							"value": "SNMPV2_WRITE_COMMUNITY",
+							"description": "CLI / SNMPV2_READ_COMMUNITY / SNMPV2_WRITE_COMMUNITY"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Global Credentials NETCONF",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"for (var i = 0;i<jsonData.response.length;i++) {\r",
+							"if (jsonData.response[i].netconfPort == pm.environment.get(\"DcloudNetconf\")) {\r",
+							"  postman.setEnvironmentVariable(\"GlobalCredentialNetconf\", jsonData[\"response\"][i][\"id\"]);\r",
+							"  tests[\"NetConf credentials acquired\"] = true;\r",
+							"}\r",
+							"}\r",
+							"pm.environment.set(\"FLAG\", \"0\");\r",
+							"setTimeout(function(){}, [5000]);\r",
+							"postman.setNextRequest(\"Create Discovery\")"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/intent/api/v1/global-credential?credentialSubType=NETCONF",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"global-credential"
+					],
+					"query": [
+						{
+							"key": "credentialSubType",
+							"value": "NETCONF",
+							"description": "CLI / SNMPV2_READ_COMMUNITY / SNMPV2_WRITE_COMMUNITY"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Discovery",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"GlobalCredentialCli\");\r",
+							"pm.environment.get(\"GlobalCredentialSnmpRO\");\r",
+							"pm.environment.get(\"GlobalCredentialSnmpRW\");\r",
+							"pm.environment.get(\"GlobalCredentialNetconf\");\r",
+							"\r",
+							"const DeviceArray = [\r",
+							"    \"198.19.1.2\",\r",
+							"    \"198.19.2.2\",\r",
+							"    \"198.18.133.145\"\r",
+							"];\r",
+							"let Flag = pm.environment.get(\"FLAG\");\r",
+							"\r",
+							"postman.setEnvironmentVariable(\"DeviceIP\", JSON.stringify(DeviceArray[Flag]));\r",
+							"postman.setEnvironmentVariable(\"DeviceRange\", JSON.stringify(DeviceArray[Flag] + \"-\" + DeviceArray[Flag]));\r",
+							"\r",
+							"pm.environment.get(\"FLAG\");\r",
+							"pm.environment.get(\"DeviceIP\");\r",
+							"pm.environment.get(\"DeviceRange\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"if (jsonData.response.taskId) {\r",
+							"  tests[\"Discovery Created\"] = true;\r",
+							"  tests[\"Body has taskId\"] = true;\r",
+							"  postman.setEnvironmentVariable(\"DiscoveryTaskId\", jsonData[\"response\"][\"taskId\"]);\r",
+							"}\r",
+							"else {\r",
+							"  tests[\"Discovery not Created\"] = false;\r",
+							"  tests[\"Body has no taskId\"] = false;\r",
+							"  postman.setNextRequest(\"null\");\r",
+							"}\r",
+							"setTimeout(function(){}, [200000]);\r",
+							"postman.setNextRequest(\"Get Discovery From Task\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"DNAC-TEST-{{FLAG}}\",\r\n    \"discoveryType\": \"Range\",\r\n    \"ipAddressList\": {{DeviceRange}},\r\n    \"protocolOrder\": \"ssh\",\r\n    \"timeout\": 5,\r\n    \"retry\": 3,\r\n    \"globalCredentialIdList\": [\r\n        \"{{GlobalCredentialCli}}\",\r\n        \"{{GlobalCredentialSnmpRO}}\",\r\n        \"{{GlobalCredentialSnmpRW}}\",\r\n        \"{{GlobalCredentialNetconf}}\"\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/intent/api/v1/discovery",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"discovery"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Discovery From Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"if (jsonData.response.progress) {\r",
+							"  tests[\"Discovery Id acquired\"] = true;\r",
+							"  postman.setEnvironmentVariable(\"DiscoveryId\", jsonData[\"response\"][\"progress\"]); \r",
+							"}\r",
+							"else {\r",
+							"  tests[\"Discovery Id not acquired\"] = false;\r",
+							"  postman.setNextRequest(\"null\");\r",
+							"}\r",
+							"setTimeout(function(){}, [15000]);\r",
+							"postman.setNextRequest(\"Get Discovery Devices\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/intent/api/v1/task/{{DiscoveryTaskId}}",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"task",
+						"{{DiscoveryTaskId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Discovery Devices",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"for (var i = 0;i<jsonData.response.length;i++) {\r",
+							"if (jsonData.response[i].managementIpAddress) {\r",
+							"  tests[\"Device IP acquired\"] = true;\r",
+							"  postman.setEnvironmentVariable(\"DeviceIP\", JSON.stringify(jsonData[\"response\"][i][\"managementIpAddress\"])); \r",
+							"}\r",
+							"else {\r",
+							"  tests[\"Device IP not acquired\"] = false;\r",
+							"  postman.setNextRequest(\"null\");\r",
+							"}\r",
+							"}\r",
+							"let Flag = Number(pm.environment.get(\"FLAG\", 1));\r",
+							"if (Flag == 2) {\r",
+							"     setTimeout(function(){}, [60000]);\r",
+							"     postman.setNextRequest(\"Create Discovery\");\r",
+							"}\r",
+							"setTimeout(function(){}, [15000]);\r",
+							"postman.setNextRequest(\"Add Discovered Devices to Site\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/intent/api/v1/discovery/{{DiscoveryId}}/network-device",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"discovery",
+						"{{DiscoveryId}}",
+						"network-device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Discovered Devices to Site",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"DeviceIP\")\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"if ((jsonData.executionId) && (jsonData.message == \"The request has been accepted for execution\")) {\r",
+							"  tests[\"Discovered device assigned to site\"] = true;\r",
+							"}\r",
+							"else {\r",
+							"  tests[\"Discovered device not assigned to site\"] = false;\r",
+							"  postman.setNextRequest(\"null\");\r",
+							"}\r",
+							"const SetNumberOfDevices = 2; // your max number of tries\r",
+							"const SleepBetweenTries = 20000; // sleep between tries\r",
+							"let Flag = Number(pm.environment.get(\"FLAG\", 1));\r",
+							"if (Flag < SetNumberOfDevices) {\r",
+							"     let Sum = Flag + 1;\r",
+							"     pm.environment.set(\"FLAG\", Sum);\r",
+							"     setTimeout(function(){}, [SleepBetweenTries]);\r",
+							"     postman.setNextRequest(\"Create Discovery\");\r",
+							"}\r",
+							" else {\r",
+							"     postman.setNextRequest(\"Get Devices\");\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"device\": [ { \"ip\": {{DeviceIP}} } ] }"
+				},
+				"url": {
+					"raw": "https://{{DNACip}}/dna/system/api/v1/site/{{BuildingSiteId}}/device",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"system",
+						"api",
+						"v1",
+						"site",
+						"{{BuildingSiteId}}",
+						"device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Devices",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"if (0<jsonData.response.length) {\r",
+							"    tests[\"Device list acquired\"] = true;\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{DNACip}}/dna/intent/api/v1/network-device",
+					"protocol": "https",
+					"host": [
+						"{{DNACip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"network-device"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
