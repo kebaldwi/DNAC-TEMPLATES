@@ -46,3 +46,7 @@ Add-DnsServerResourceRecordCName -Name "dnac" -HostNameAlias "dnac-vip.dcloud.ci
 #Additional line for DNS Discovery - to use remove leading HASH from next line
 #Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
 Add-DnsServerResourceRecordA -Name "ise" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.133.27" -TimeToLive 01:00:00
+Add-DnsServerResourceRecordCName -Name "guest" -HostNameAlias "ise.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
+Add-DnsServerResourceRecordCName -Name "mydevice" -HostNameAlias "ise.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
+Add-DnsServerResourceRecordCName -Name "sponsor" -HostNameAlias "ise.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
+Add-DnsServerResourceRecordA -Name "wlc" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.134.100" -TimeToLive 01:00:00
