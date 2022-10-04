@@ -835,7 +835,7 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"var ip = pm.environment.get(\"DeviceIP\");\r",
+							"var ip = pm.environment.get(\"DeviceList\");\r",
 							"var ip = ip.split(\",\");\r",
 							"for (var i = 0;i<ip.length;i++) {\r",
 							"    if ( i===0 ) {\r",
