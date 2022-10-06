@@ -45,13 +45,25 @@ While we have the ability to PnP a Wireless Controller typically these are estan
 
 ### Step 1 - ***Setup Discovery Job***
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Tools>Discovery`.
+
+![json](./images/module1-pnpdiscovery/dnac-navigation-discovery.png?raw=true "Import JSON")
+
 2. On the Discovery page click `Add Discovery`.
+
+![json](./images/module1-pnpdiscovery/dnac-discovery-dashboard.png?raw=true "Import JSON")
+
 3. On the **New Discovery** Page enter the following:
    1. *Discovery Name* for the discovery `Wireless Controller`
    2. Select *Discovery Type* of `IP Address/Range`
    3. Enter *From - To* fields with `198.18.134.100`
+
+![json](./images/module1-pnpdiscovery/dnac-discovery-new.png?raw=true "Import JSON")
+
 4. Scroll down the page to Credentials. The credentials on the controller are different to those of the Global settings shown. DNA Center allows for us to use separate credentials where necesssary. Do the following;
    1. Click **Add Credentials**
+
+![json](./images/module1-pnpdiscovery/dnac-discovery-new-add-creds.png?raw=true "Import JSON")
+
    2. Click the *CLI* tab
    3. Enter the following:
       - *Name* as `admin`
@@ -59,6 +71,11 @@ While we have the ability to PnP a Wireless Controller typically these are estan
       - *Password* as `C1sco12345`
       - *Enable Password* as `C1sco12345`
       - Click *Save* to add the credential 
+
+![json](./images/module1-pnpdiscovery/dnac-discovery-new-add-cli.png?raw=true "Import JSON")
+
+![json](./images/module1-pnpdiscovery/dnac-discovery-new-add-cli-results.png?raw=true "Import JSON")
+
    4. Click the *SNMPv2c* tab
       1. Enter the following on the *READ* sub-tab:
          - *Name* as `public`
@@ -90,6 +107,13 @@ While we have the ability to PnP a Wireless Controller typically these are estan
 8. Click *Assign* to assign the device to the site.
 9. At this point the Wireless Controller will show as assigned to the site `Floor 1`
 
+### Step 3 - ***Provision Controller to Managed State***
+It is important to have the settings and telemetry set up prior to completing this. Initially we do not need any SSID set up, but for us to further manage the Wireless Controller, and to start receiving telemetry and to be able to push updates a managed state is first required. 
+
+1. Navigate to the Inventory through the menu. Select `Provision>Network Devices>Inventory`
+2. Select the Wireless Controller from the inventory.
+3. Click the *Actions>Provision>Provision Device* from the actions menu.
+4. Within the workflow
 
 
 ## Summary
