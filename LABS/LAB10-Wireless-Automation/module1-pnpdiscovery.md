@@ -22,10 +22,15 @@ Hardware Devices:
     9130AX Access Points
     Silex Controllers (3 Wired NIC's and 1 Wireless NIC)
 
+### Physical Topology
 The lab envionment that is available is depicted here:
 
 ![json](../LAB1-PNP-PREP/images/DCLOUD_Topology2.png?raw=true "Import JSON")
 
+### Logical Topology
+The lab envionment that is available is depicted here:
+
+![json](../images/DCLOUD_Topology_Wireless-v1.png?raw=true "Import JSON")
 
 
 
