@@ -137,16 +137,34 @@ While we have the ability to PnP a Wireless Controller typically these are estan
 ![json](./images/module1-pnpdiscovery/dnac-navigation-inventory.png?raw=true "Import JSON")
 
 2. After some time the Wireless Controller will appear as shown in the inventory.
+3. Click the *Assign* link to begin the assignment of the Wireless Controller.
 
 ![json](./images/module1-pnpdiscovery/dnac-inventory-assign.png?raw=true "Import JSON")
 
-3. Click the *Assign* link to begin the assignment of the Wireless Controller.
 4. Click *Choose a site*.
+
+![json](./images/module1-pnpdiscovery/dnac-inventory-choose.png?raw=true "Import JSON")
+
 5. Select *Floor 1* from the hierarchy and click *Save*.
+
+![json](./images/module1-pnpdiscovery/dnac-inventory-hierarchy.png?raw=true "Import JSON")
+
 6. Click *Next* to complete the get to the summary.
+
+![json](./images/module1-pnpdiscovery/dnac-inventory-hierarchychosen.png?raw=true "Import JSON")
+
 7. Review the *Summary* and click next.
+
+![json](./images/module1-pnpdiscovery/dnac-inventory-hierarchysummary.png?raw=true "Import JSON")
+
 8. Click *Assign* to assign the device to the site.
+
+![json](./images/module1-pnpdiscovery/dnac-inventory-assignment.png?raw=true "Import JSON")
+
 9. At this point the Wireless Controller will show as assigned to the site `Floor 1`
+
+![json](./images/module1-pnpdiscovery/dnac-inventory-assignment-results.png?raw=true "Import JSON")
+
 
 ### Step 3 - ***Provision Controller to Managed State***
 It is important to have the settings and telemetry set up prior to completing this. Initially we do not need any SSID set up, but for us to further manage the Wireless Controller, and to start receiving telemetry and to be able to push updates a managed state is first required. 
