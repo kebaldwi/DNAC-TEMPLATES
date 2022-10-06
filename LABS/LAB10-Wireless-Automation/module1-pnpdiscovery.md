@@ -1,7 +1,7 @@
 # In Development
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 
-## Wireless PnP or Discovery
+## Wireless Controller PnP or Discovery
 Within this lab module, we will concentrate our efforts on the discovery or PnP of each of the devices by **Cisco DNA Center**, so that we can onboard and gain management of those devices. The lab within DCLOUD does not today have the ability to run PnP of the Controller, but that is possible and we will have a separate section to talk about those aspects. 
 
 Within this lab we will concentrate on the following which are typical in most Enterprise Networks today:
@@ -165,25 +165,15 @@ While we have the ability to PnP a Wireless Controller typically these are estan
 
 ![json](./images/module1-pnpdiscovery/dnac-inventory-assignment-results.png?raw=true "Import JSON")
 
-
-### Step 3 - ***Provision Controller to Managed State***
-It is important to have the settings and telemetry set up prior to completing this. Initially we do not need any SSID set up, but for us to further manage the Wireless Controller, and to start receiving telemetry and to be able to push updates a managed state is first required. 
-
-1. Navigate to the Inventory through the menu. Select `Provision>Network Devices>Inventory`
-2. Select the Wireless Controller from the inventory.
-3. Click the *Actions>Provision>Provision Device* from the actions menu.
-4. Within the workflow
-
-
 ## Summary
-Congratulations you have completed the XXX module of the lab and . Please use the navigatation below to continue your learning.
+Congratulations you have completed the Controller Discovery module of the lab and the Wireless LAN Controller is ready for configuration and provisioning. Please use the navigatation below to continue your learning.
 
 ## Lab Modules
 The lab will be split into modules to concentrate on specific tasks. Eash is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
 
-1. [**Wireless PnP or Discovery**](./module1-pnpdiscovery.md)
-2. [**Controller HA**](./module2-controllerha.md)
-3. [**WLAN Creation**](./module3-wlans.md)
+1. [**Wireless Controller PnP or Discovery**](./module1-ctrlpnpdiscovery.md)
+2. [**WLAN Creation**](./module2-wlans.md)
+3. [**Controller HA**](./module3-controllerha.md)
 4. [**AP Provisioning**](./module4-approvisioning.md)
 5. [**Application QoS**](./module5-applicationqos.md)
 6. [**Model Based Config**](./module6-modelbasedconfig.md)
@@ -193,7 +183,7 @@ The lab will be split into modules to concentrate on specific tasks. Eash is des
 To return to the main menus
 1. [Wireless Automation Main Menu](./README.md)
 2. [DNAC-TEMPLATES-LABS Main Menu](../README.md)
-3. [DNAC-TEMPLATES Repository Main Menu](.../README.md)
+3. [DNAC-TEMPLATES Repository Main Menu](../../README.md)
 
 ## Feedback
 If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.

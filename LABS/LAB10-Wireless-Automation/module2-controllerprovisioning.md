@@ -1,15 +1,13 @@
 # In Development
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 
-## Wireless Access Point PnP
-Within this lab module, we will concentrate our efforts on the PnP of each of the access points by **Cisco DNA Center**, so that we can onboard and gain management of those devices. 
+## Wireless PnP or Discovery
+Within this lab module, we will concentrate our efforts on the discovery or PnP of each of the devices by **Cisco DNA Center**, so that we can onboard and gain management of those devices. The lab within DCLOUD does not today have the ability to run PnP of the Controller, but that is possible and we will have a separate section to talk about those aspects. 
 
 Within this lab we will concentrate on the following which are typical in most Enterprise Networks today:
-
-1. DHCP Address Scope
-2. DNA Center Discovery
-3. Access Point switch port configuration
-4. Access Point Onboarding
+1. Controller Discovery
+2. Access Point switch port configuration
+3. Access Point Onboarding
 
 To begin lets review the wireless within the Cisco DCLOUD environment.
 
@@ -40,7 +38,136 @@ The 9130AX Access Points are connected to both access switches and the ports are
 
 ![json](./images/DCLOUD_Topology_Wireless-v1.png?raw=true "Import JSON")
 
-## Lab Section 1 - Access Point PnP
+## Lab Section 1 - Controller Discovery
+To get started with Wireless configuration and automation we first need to onboard the Wireless Controller into DNA Center. In the preparation lab we discovered the rest of the topology, set up the required services, and so we will now concentrate her on the controller. 
+
+While we have the ability to PnP a Wireless Controller typically these are estantiated initially with IP information on the physical hardware. As a result, and because of the current liimitations within the DCLOUD lab, we will concentrate on Discovery methods here. We will cover Controller PnP separately in another module (TBD).
+
+### Step 1 - ***Setup Discovery Job***
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Tools>Discovery`.
+
+![json](./images/module1-pnpdiscovery/dnac-navigation-discovery.png?raw=true "Import JSON")
+
+2. On the Discovery page click `Add Discovery`.
+
+![json](./images/module1-pnpdiscovery/dnac-discovery-dashboard.png?raw=true "Import JSON")
+
+3. On the **New Discovery** Page enter the following:
+   1. *Discovery Name* for the discovery `Wireless Controller`
+   2. Select *Discovery Type* of `IP Address/Range`
+   3. Enter *From - To* fields with `198.18.134.100`
+
+   ![json](./images/module1-pnpdiscovery/dnac-discovery-new.png?raw=true "Import JSON")
+
+4. Scroll down the page to Credentials. The credentials on the controller are different to those of the Global settings shown. DNA Center allows for us to use separate credentials where necesssary. Do the following;
+   1. Click **Add Credentials**
+
+   ![json](./images/module1-pnpdiscovery/dnac-discovery-new-add-creds.png?raw=true "Import JSON")
+
+   2. Click the *CLI* tab
+   3. Enter the following:
+      - *Name* as `admin`
+      - *Username* as `admin`
+      - *Password* as `C1sco12345`
+      - *Enable Password* as `C1sco12345`
+      - Click *Save* to add the credential 
+      - a Warning will appear after the Save. Click `Ok` this is expected.
+
+      ![json](./images/module1-pnpdiscovery/dnac-discovery-new-add-cli.png?raw=true "Import JSON")
+
+      ![json](./images/module1-pnpdiscovery/dnac-discovery-new-add-cli-warning.png?raw=true "Import JSON")
+
+      ![json](./images/module1-pnpdiscovery/dnac-discovery-new-add-cli-results.png?raw=true "Import JSON")
+
+   4. Click the *SNMPv2c* tab
+      1. Enter the following on the *READ* sub-tab:
+         - *Name* as `public`
+         - *Read Community* as `public`
+         - Click *Save* to add the credential 
+
+         ![json](./images/module1-pnpdiscovery/dnac-discovery-new-add-snmpro.png?raw=true "Import JSON")
+
+         ![json](./images/module1-pnpdiscovery/dnac-discovery-new-add-snmpro-results.png?raw=true "Import JSON")
+
+      2. Click and Enter the following on the *WRITE* sub-tab:
+         - *Name* as `private`
+         - *Write Community* as `private`
+         - Click *Save* to add the credential 
+
+         ![json](./images/module1-pnpdiscovery/dnac-discovery-new-add-snmprw.png?raw=true "Import JSON")
+
+         ![json](./images/module1-pnpdiscovery/dnac-discovery-new-add-snmprw-results.png?raw=true "Import JSON")
+
+   5. If *NETCONF* was not enabled for some reason click the *NETCONF* tab
+
+      ![json](./images/module1-pnpdiscovery/dnac-discovery-new-add-netconf-results.png?raw=true "Import JSON")
+
+   6. Enter the following:
+      - *Port* as `830`
+   7. Click *Save*
+
+      ![json](./images/module1-pnpdiscovery/dnac-discovery-new-add-netconf.png?raw=true "Import JSON")
+
+      ![json](./images/module1-pnpdiscovery/dnac-discovery-new-add-netconf-results.png?raw=true "Import JSON")
+
+   8. Close the **Add Credentials** Slide Out App.
+5. Review and deselect unused credentials as shown for this device.
+
+![json](./images/module1-pnpdiscovery/dnac-discovery-new-select-creds.png?raw=true "Import JSON")
+
+6. Ensure *NETCONF* is enabled as shown.
+
+![json](./images/module1-pnpdiscovery/dnac-discovery-new-add-netconf-results.png?raw=true "Import JSON")
+
+7. Click **Discover** to start the device discovery.
+
+![json](./images/module1-pnpdiscovery/dnac-discovery-begin.png?raw=true "Import JSON")
+
+8. Click Start to begin the discovery process.
+
+![json](./images/module1-pnpdiscovery/dnac-discovery-begin-schedule.png?raw=true "Import JSON")
+
+9. When the Discovery is complete the summary should show as the following:
+
+![json](./images/module1-pnpdiscovery/dnac-discovery-results.png?raw=true "Import JSON")
+
+### Step 2 - ***Assign Controller to Site***
+1. Navigate to the Inventory through the menu. Select `Provision>Network Devices>Inventory`
+
+![json](./images/module1-pnpdiscovery/dnac-navigation-inventory.png?raw=true "Import JSON")
+
+2. After some time the Wireless Controller will appear as shown in the inventory.
+3. Click the *Assign* link to begin the assignment of the Wireless Controller.
+
+![json](./images/module1-pnpdiscovery/dnac-inventory-assign.png?raw=true "Import JSON")
+
+4. Click *Choose a site*.
+
+![json](./images/module1-pnpdiscovery/dnac-inventory-choose.png?raw=true "Import JSON")
+
+5. Select *Floor 1* from the hierarchy and click *Save*.
+
+![json](./images/module1-pnpdiscovery/dnac-inventory-hierarchy.png?raw=true "Import JSON")
+
+6. Click *Next* to complete the get to the summary.
+
+![json](./images/module1-pnpdiscovery/dnac-inventory-hierarchychosen.png?raw=true "Import JSON")
+
+7. Review the *Summary* and click next.
+
+![json](./images/module1-pnpdiscovery/dnac-inventory-hierarchysummary.png?raw=true "Import JSON")
+
+8. Click *Assign* to assign the device to the site.
+
+![json](./images/module1-pnpdiscovery/dnac-inventory-assignment.png?raw=true "Import JSON")
+
+9. At this point the Wireless Controller will show as assigned to the site `Floor 1`
+
+![json](./images/module1-pnpdiscovery/dnac-inventory-assignment-results.png?raw=true "Import JSON")
+
+At this point the Wireless Controller is onboarded and ready for configuration and provisioning. We will start that process in the following lab called [**WLAN Creation**](./module3-wlans.md).
+
+## Lab Section 2 - Access Point PnP
 In the preparation lab we discovered the rest of the topology, set up the required services, and part of those services were DHCP addresses which are help within scopes on the Windows AD Server. 
 
 There are a few options for discovery using PnP. These were thoroughly discussed in the switching section and in a tutorial in the main menu. 
@@ -112,7 +239,7 @@ The switch port configuration used in this lab is:
                 end
 ```
 
-### Step 3 - ***Access Point Claim*** TBC
+### Step 3 - ***Access Point Claim***
 The Access Points are typically in varied state, use the DCLOUD UI to console into each one then complete the following steps to clear them of any configuration:
 
 1. Login to the Access Point with the following credentials: 
@@ -135,9 +262,10 @@ Congratulations you have completed the XXX module of the lab and . Please use th
 ## Lab Modules
 The lab will be split into modules to concentrate on specific tasks. Eash is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
 
-1. [**Wireless Controller PnP or Discovery**](./module1-ctrlpnpdiscovery.md)
-2. [**WLAN Creation**](./module2-wlans.md)
-3. [**Controller HA**](./module3-controllerha.md)
+1. [**Wireless Controller PnP or Discovery**](./module1-pnpdiscovery.md)
+
+2. [**Controller HA**](./module2-controllerha.md)
+3. [**WLAN Creation**](./module3-wlans.md)
 4. [**AP Provisioning**](./module4-approvisioning.md)
 5. [**Application QoS**](./module5-applicationqos.md)
 6. [**Model Based Config**](./module6-modelbasedconfig.md)
@@ -147,7 +275,7 @@ The lab will be split into modules to concentrate on specific tasks. Eash is des
 To return to the main menus
 1. [Wireless Automation Main Menu](./README.md)
 2. [DNAC-TEMPLATES-LABS Main Menu](../README.md)
-3. [DNAC-TEMPLATES Repository Main Menu](../../README.md)
+3. [DNAC-TEMPLATES Repository Main Menu](.../README.md)
 
 ## Feedback
 If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.

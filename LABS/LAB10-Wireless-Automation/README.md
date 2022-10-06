@@ -15,9 +15,9 @@ Please set up the lab using the following:
 ## Lab Modules
 The lab will be split into modules to concentrate on specific tasks. Eash is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
 
-1. [**Wireless PnP or Discovery**](./module1-pnpdiscovery.md)
-2. [**Controller HA**](./module2-controllerha.md)
-3. [**WLAN Creation**](./module3-wlans.md)
+1. [**Wireless Controller PnP or Discovery**](./module1-ctrlpnpdiscovery.md)
+2. [**WLAN Creation**](./module2-wlans.md)
+3. [**Controller HA**](./module3-controllerha.md)
 4. [**AP Provisioning**](./module4-approvisioning.md)
 5. [**Application QoS**](./module5-applicationqos.md)
 6. [**Model Based Config**](./module6-modelbasedconfig.md)
