@@ -1,8 +1,15 @@
 # In Development
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 
-## Controller PnP or Discovery
-To begin lets review the wireless within the Cisco DCLOUD environment. 
+## Wireless PnP or Discovery
+Within this lab module, we will concentrate our efforts on the discovery or PnP of each of the devices by **Cisco DNA Center**, so that we can onboard and gain management of those devices. The lab within DCLOUD does not today have the ability to run PnP of the Controller, but that is possible and we will have a separate section to talk about those aspects. 
+
+Within this lab we will concentrate on the following which are typical in most Enterprise Networks today:
+1. Controller Discovery
+2. Access Point switch port configuration
+3. Access Point Onboarding
+
+To begin lets review the wireless within the Cisco DCLOUD environment.
 
 ### Required Components 
 For these labs we will be focusing on the wireless aspects, and while the switching and routing has been setup ahead of time our focus will be on the following:
@@ -22,13 +29,12 @@ Hardware Devices:
     9130AX Access Points
     Silex Controllers (3 Wired NIC's and 1 Wireless NIC)
 
-### Physical Topology
-The lab envionment that is available is depicted here:
-
-![json](../LAB1-PNP-PREP/images/DCLOUD_Topology2.png?raw=true "Import JSON")
-
 ### Logical Topology
 The lab envionment that is available is depicted here:
+
+For routing in the environment an OSPF IGP process has been created to propogate internal route information. Within the access switches which are connected at Layer 3 to the router, we have estansiated a layer 2 port channel between them and initiated various vlans for Access Point connectivity and for the clients, whose gateway is built on an HSRP instance shared between the two switches.
+
+The 9130AX Access Points are connected to both access switches and the ports are automatically configured via the AUTOCONF feature.
 
 ![json](./images/DCLOUD_Topology_Wireless-v1.png?raw=true "Import JSON")
 
@@ -50,7 +56,7 @@ Congratulations you have completed the XXX module of the lab and . Please use th
 ## Lab Modules
 The lab will be split into modules to concentrate on specific tasks. Eash is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
 
-1. [**Controller PnP or Discovery**](./module1-pnpdiscovery.md)
+1. [**Wireless PnP or Discovery**](./module1-pnpdiscovery.md)
 2. [**Controller HA**](./module2-controllerha.md)
 3. [**WLAN Creation**](./module3-wlans.md)
 4. [**AP Provisioning**](./module4-approvisioning.md)

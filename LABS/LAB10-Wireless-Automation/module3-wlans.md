@@ -1,13 +1,10 @@
 # In Development
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 
-## Summary
-Congratulations you have completed the XXX module of the lab and . Please use the navigatation below to continue your learning.
-
 ## Lab Modules
 The lab will be split into modules to concentrate on specific tasks. Eash is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
 
-1. [**Controller PnP or Discovery**](./module1-pnpdiscovery.md)
+1. [**Wireless PnP or Discovery**](./module1-pnpdiscovery.md)
 2. [**Controller HA**](./module2-controllerha.md)
 3. [**WLAN Creation**](./module3-wlans.md)
 4. [**AP Provisioning**](./module4-approvisioning.md)
