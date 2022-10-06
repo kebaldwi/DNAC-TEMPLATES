@@ -30,7 +30,7 @@ The lab envionment that is available is depicted here:
 ### Logical Topology
 The lab envionment that is available is depicted here:
 
-![json](../images/DCLOUD_Topology_Wireless-v1.png?raw=true "Import JSON")
+![json](./images/DCLOUD_Topology_Wireless-v1.png?raw=true "Import JSON")
 
 
 
