@@ -133,7 +133,13 @@ While we have the ability to PnP a Wireless Controller typically these are estan
 
 ### Step 2 - ***Assign Controller to Site***
 1. Navigate to the Inventory through the menu. Select `Provision>Network Devices>Inventory`
+
+![json](./images/module1-pnpdiscovery/dnac-navigation-inventory.png?raw=true "Import JSON")
+
 2. After some time the Wireless Controller will appear as shown in the inventory.
+
+![json](./images/module1-pnpdiscovery/dnac-inventory-assign.png?raw=true "Import JSON")
+
 3. Click the *Assign* link to begin the assignment of the Wireless Controller.
 4. Click *Choose a site*.
 5. Select *Floor 1* from the hierarchy and click *Save*.
