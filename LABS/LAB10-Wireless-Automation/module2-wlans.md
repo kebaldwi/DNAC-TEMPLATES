@@ -22,6 +22,15 @@ The 9130AX Access Points are connected to both access switches and the ports are
 
 The clients will be connected connected to the network via FlexConnect due to the nature of the DCLOUD labs design. Where applicable we will call out the differences between FlexConnect and Local Mode Design.
 
+The Wireless Clients will associate and connect to the SSID's within the lab and will then be dropped into one of the following VLAN via the trunk from the FlexConnect Access Point.
+
+1. Vlan 20 - datavlan - 192.168.20.0/24
+2. Vlan 30 - voicevlan - 192.168.30.0/24
+3. Vlan 40 - guestvlan - 192.168.40.0/24
+
+For simplicity we may utilize the Vlan 30 as a second Data network when proving out CoA or AAA Overide features.
+
+
 
 
 ## Lab Modules
