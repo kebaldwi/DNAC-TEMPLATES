@@ -1,6 +1,44 @@
 # In Development
 ![json](./images/underconstruction.png?raw=true "Import JSON")
 
+## Controller PnP or Discovery
+To begin lets review the wireless within the Cisco DCLOUD environment. 
+
+### Required Components 
+For these labs we will be focusing on the wireless aspects, and while the switching and routing has been setup ahead of time our focus will be on the following:
+
+Virtual Machines:
+
+    DNA Center 2.2.3.4 or better
+    Identity Services Engine (ISE) 3.0 Patch 4 or better (deployed)
+    Wireless LAN Controller - C9800 running IOS-XE Bengaluru 17.5.1 code or better
+    Windows 10 Jump Host 
+    Windows Server 2019 - Can be configured to provide identity, DHCP, DNS, etc.
+    Windows 10 Clients
+
+Hardware Devices:
+
+    Catalyst 9300 Switch - 17.06.01 IOS-XE Code with Embedded Wireless Controller (EWC) and ThousandEyes Enterprise Agent
+    9130AX Access Points
+    Silex Controllers (3 Wired NIC's and 1 Wireless NIC)
+
+The lab envionment that is available is depicted here:
+
+![json](../LAB1-PNP-PREP/images/DCLOUD_Topology2.png?raw=true "Import JSON")
+
+
+
+
+
+
+
+
+## Lab Section 1 - DNA Center and ISE Integration
+In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate DNA Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
+
+### Step 1 - ***Prepare ISE for DNA Center Integration***
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to Identity Services Engine (ISE) and select the hamburger menu icon to open the system menu.
+
 ## Summary
 Congratulations you have completed the XXX module of the lab and . Please use the navigatation below to continue your learning.
 
