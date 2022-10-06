@@ -38,17 +38,59 @@ The 9130AX Access Points are connected to both access switches and the ports are
 
 ![json](./images/DCLOUD_Topology_Wireless-v1.png?raw=true "Import JSON")
 
+## Lab Section 1 - Controller Discovery
+To get started with Wireless configuration and automation we first need to onboard the Wireless Controller into DNA Center. In the preparation lab we discovered the rest of the topology, set up the required services, and so we will now concentrate her on the controller. 
+
+While we have the ability to PnP a Wireless Controller typically these are estantiated initially with IP information on the physical hardware. As a result, and because of the current liimitations within the DCLOUD lab, we will concentrate on Discovery methods here. We will cover Controller PnP separately in another module (TBD).
+
+### Step 1 - ***Setup Discovery Job***
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Tools>Discovery`.
+2. On the Discovery page click `Add Discovery`.
+3. On the **New Discovery** Page enter the following:
+   1. *Discovery Name* for the discovery `Wireless Controller`
+   2. Select *Discovery Type* of `IP Address/Range`
+   3. Enter *From - To* fields with `198.18.134.100`
+4. Scroll down the page to Credentials. The credentials on the controller are different to those of the Global settings shown. DNA Center allows for us to use separate credentials where necesssary. Do the following;
+   1. Click **Add Credentials**
+   2. Click the *CLI* tab
+   3. Enter the following:
+      - *Name* as `admin`
+      - *Username* as `admin`
+      - *Password* as `C1sco12345`
+      - *Enable Password* as `C1sco12345`
+      - Click *Save* to add the credential 
+   4. Click the *SNMPv2c* tab
+      1. Enter the following on the *READ* sub-tab:
+         - *Name* as `public`
+         - *Read Community* as `public`
+         - Click *Save* to add the credential 
+      2. Click and Enter the following on the *WRITE* sub-tab:
+         - *Name* as `private`
+         - *Write Community* as `private`
+         - Click *Save* to add the credential 
+   5. If *NETCONF* was not enabled for some reason click the *NETCONF* tab
+   6. Enter the following:
+      - *Port* as `830`
+   7. Click *Save*
+   8. Close the **Add Credentials** Slide Out App.
+5. Review and deselect unused credentials as shown for this device.
+6. Ensure *NETCONF* is enabled as shown.
+7. Click **Discover** to start the device discovery.
+8. Click Start to begin the discovery process.
+9. When the Discovery is complete the summary should show as the following:
+
+### Step 2 - ***Assign Controller to Site***
+1. Navigate to the Inventory through the menu. Select `Provision>Network Devices>Inventory`
+2. After some time the Wireless Controller will appear as shown in the inventory.
+3. Click the *Assign* link to begin the assignment of the Wireless Controller.
+4. Click *Choose a site*.
+5. Select *Floor 1* from the hierarchy and click *Save*.
+6. Click *Next* to complete the get to the summary.
+7. Review the *Summary* and click next.
+8. Click *Assign* to assign the device to the site.
+9. At this point the Wireless Controller will show as assigned to the site `Floor 1`
 
 
-
-
-
-
-## Lab Section 1 - DNA Center and ISE Integration
-In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate DNA Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
-
-### Step 1 - ***Prepare ISE for DNA Center Integration***
-1. Open a web browser on the Windows Workstation Jump host. Open a connection to Identity Services Engine (ISE) and select the hamburger menu icon to open the system menu.
 
 ## Summary
 Congratulations you have completed the XXX module of the lab and . Please use the navigatation below to continue your learning.
