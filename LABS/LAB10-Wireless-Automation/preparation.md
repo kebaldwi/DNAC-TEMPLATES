@@ -99,6 +99,9 @@ This collection is built with a flow and delay timers wait for the collection to
 ![json](./images/Postman-Discovery.png?raw=true "Import JSON")
 ![json](./images/Postman-Settings.png?raw=true "Import JSON")
 
+## Summary
+The lab is now prepared for the Wireless Automation modules of the lab. Please navigate to **Controller PnP or Discovery** to get started.
+
 ## Lab Modules
 The lab will be split into modules to concentrate on specific tasks. Eash is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
 
