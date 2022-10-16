@@ -51,14 +51,25 @@ In this subsection we will build a Wireless LAN for PSK authentication.
 
 ![json](./images/module2-wlans/dnac-wireless-ssid-psk-begin.png?raw=true "Import JSON")
 
-4. A Wireless SSID workflow will begin which will guide you through the build process of the WLAN. Complete the following steps:
+4. A Wireless SSID workflow will begin with *BASIC Settings* which will guide you through the build process of the WLAN. Complete the following steps:
    1. Enter the **Wireless Network Name (SSID)** as `CAMPUS-PSK`
    2. **Dual Band Operation (2.4 Ghz and 5 Ghz)** *enables the SSID for dual band operation*
    3. **Voice and Data** *configuring best practices for Both Voice and Data*
    4. **Admin Status** *enables the SSID*
    5. **Broadcast SSID** *enables the SSID to be broadcast allowing clients to see it*
+   6. Click **Next** to continue
 
    ![json](./images/module2-wlans/dnac-wireless-ssid-psk-basic.png?raw=true "Import JSON")
+
+5. The Wireless SSID workflow will continue with *Security Settings*. Complete the following steps:
+   1. In the *Level of Security* section select **Personal**
+   2. Additionally in the *Level of Security* section select **WPA2**
+   3. For *Passphrase Type* select **ASCII**
+   4. Enter `C1sco12345C1sco12345` for the *Passphrase*
+   5. In the *AAA Configuration section* select **Fast Lane**
+   6. Click **Next** to continue
+
+   ![json](./images/module2-wlans/dnac-wireless-ssid-psk-security.png?raw=true "Import JSON")
 
 
 
