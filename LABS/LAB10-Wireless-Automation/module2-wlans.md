@@ -77,6 +77,25 @@ In this subsection we will build a Wireless LAN for PSK authentication.
 
    ![json](./images/module2-wlans/dnac-wireless-ssid-psk-advance.png?raw=true "Import JSON")
 
+#### Step 1 - ***Associate SSID to Profile***
+1. The Wireless SSID workflow continues with *Associate SSID to Profile*. As no *Wireless Profile* exists, we must click **Add Profile** to add one to DNA Center.
+
+   ![json](./images/module2-wlans/dnac-wireless-ssid-psk-profile-begin.png?raw=true "Import JSON")
+
+2. A Wireless SSID workflow will continue continues with *Associate SSID to Profile*. Complete the following steps:
+   1. Enter the **Profile Name** as `DNAC-WIRELESS`
+   2. Select **No** *under Fabric*
+   3. Select **Interface**
+   4. Select **management** for the *Interface Name*
+   5. Select **No** for *do you need Anchor for the SSID*
+   6. Select **FlexConnect Local Switching** for the SSID
+   7. Enter **20** for *Local to VLAN*
+   8. Click **Next** to continue
+
+   ![json](./images/module2-wlans/dnac-wireless-ssid-psk-profile-campus-psk.png?raw=true "Import JSON")
+
+
+
 
 ## Lab Modules
 The lab will be split into modules to concentrate on specific tasks. Eash is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
