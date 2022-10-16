@@ -58,7 +58,7 @@ In this subsection we will build a Wireless LAN for PSK authentication.
    4. **Admin Status** *enables the SSID*
    5. **Broadcast SSID** *enables the SSID to be broadcast allowing clients to see it*
 
-   ![json](./images/module1-pnpdiscovery/dnac-wireless-ssid-psk-name.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-psk-name.png?raw=true "Import JSON")
 
 
 
