@@ -30,6 +30,35 @@ The Wireless Clients will associate and connect to the SSID's within the lab and
 
 For simplicity we may utilize the Vlan 30 as a second Data network when proving out CoA or AAA Overide features.
 
+## Lab Section 1 - Wireless LAN's
+To get started with Wireless Controller configuration and automation we first need to build the settings, Wireless LAN environments and associated profiles for deployment. Each Wireless LAN can be built by DNA Center and all settings may be deployed either through the UI, from Model-Based Config (covered separately), and by Templates (covered separately)for extranious configuration which might be required.
+
+This section will be devoted to building Wireless LAN's. Subsequent sections will cover the profiles and provisioning.
+
+### Building a PreShared Key (PSK) Wireless LAN
+In this subsection we will build a Wireless LAN for PSK authentication. 
+
+#### Step 1 - ***Create SSID***
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
+
+![json](./images/module2-wlans/dnac-menu-network-settings.png?raw=true "Import JSON")
+
+2. On the Network page click the `Wireless` tab to navigate to the wireless page.
+
+![json](./images/module2-wlans/dnac-navigation-wireless-settings.png?raw=true "Import JSON")
+
+3. On the **Wireless** page click `Add` above the *SSID* section to create a new Wireless LAN
+
+![json](./images/module2-wlans/dnac-wireless-ssid-psk-begin.png?raw=true "Import JSON")
+
+4. A Wireless SSID workflow will begin which will guide you through the build process of the WLAN. Complete the following steps:
+   1. Enter the *Wireless Network Name (SSID)* as `CAMPUS-PSK`
+   2. **Dual Band Operation (2.4 Ghz and 5 Ghz)** *enables the SSID for dual band operation*
+   3. **Voice and Data** *configuring best practices for Both Voice and Data*
+   4. **Admin Status** *enables the SSID*
+   5. **Broadcast SSID** *enables the SSID to be broadcast allowing clients to see it*
+
+   ![json](./images/module1-pnpdiscovery/dnac-wireless-ssid-psk-name.png?raw=true "Import JSON")
 
 
 
