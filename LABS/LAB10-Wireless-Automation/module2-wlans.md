@@ -71,6 +71,11 @@ In this subsection we will build a Wireless LAN for PSK authentication.
 
    ![json](./images/module2-wlans/dnac-wireless-ssid-psk-security.png?raw=true "Import JSON")
 
+6. The Wireless SSID workflow continues with *Advance Settings*. Complete the following steps:
+   1. Leave all sections here as default as shown
+   2. Click **Next** to continue
+
+   ![json](./images/module2-wlans/dnac-wireless-ssid-psk-advance.png?raw=true "Import JSON")
 
 
 ## Lab Modules
