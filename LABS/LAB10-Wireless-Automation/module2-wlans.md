@@ -52,7 +52,7 @@ In this subsection we will build a Wireless LAN for PSK authentication.
 ![json](./images/module2-wlans/dnac-wireless-ssid-psk-begin.png?raw=true "Import JSON")
 
 4. A Wireless SSID workflow will begin which will guide you through the build process of the WLAN. Complete the following steps:
-   1. Enter the *Wireless Network Name (SSID)* as `CAMPUS-PSK`
+   1. Enter the **Wireless Network Name (SSID)** as `CAMPUS-PSK`
    2. **Dual Band Operation (2.4 Ghz and 5 Ghz)** *enables the SSID for dual band operation*
    3. **Voice and Data** *configuring best practices for Both Voice and Data*
    4. **Admin Status** *enables the SSID*
