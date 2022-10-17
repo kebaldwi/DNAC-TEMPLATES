@@ -156,7 +156,7 @@ There are many things that can be accomplished from an RF Profile, to tweek the 
 5. Continue creating the RF Profile by completing the following steps:
    1. Under the 5 Ghz Section set the *Channel Width* to **20 Mhz**
    2. Set the *Mandatory Data Rates* to **12** and **24** as shown
-   4. Click **Save** continue
+   3. Click **Save** continue
 
    ![json](./images/module2-wlans/dnac-wireless-rfprofile-5ghz.png?raw=true "Import JSON")
 
@@ -165,12 +165,29 @@ There are many things that can be accomplished from an RF Profile, to tweek the 
 ![json](./images/module2-wlans/dnac-wireless-rfprofile-results.png?raw=true "Import JSON")
 
 ### Creating a FlexConnect Local Vlans - TBC
-In this subsection we will build a Wireless RF Profile. 
+In this subsection we will add additional vlans for local switching for our FlexConnect deployment. *Note: If we were utilizing* ***Local Mode*** *for the Access Points we would add additional Wireless Interfaces or vlan groups respectively to the Controller.* 
 
-#### Step 1 - ***Create Vlans***
-1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
+In this lab, we need to utilize FlexConnect, and so to allow for CoA of clients to other Vlans we need to add those to the configuration of our Access Points. 
 
-![json](./images/underconstruction.png?raw=true "Import JSON")
+#### Step 1 - ***Add FlexConnect VLANs***
+1. To create an RF Profile, first open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
+
+![json](./images/module2-wlans/dnac-menu-network-settings.png?raw=true "Import JSON")
+
+2. On the Network page click the `Wireless` tab to navigate to the wireless page.
+
+![json](./images/module2-wlans/dnac-navigation-wireless-settings.png?raw=true "Import JSON")
+
+3. On the **Wireless** page scroll down to the *FlexConnect VLAN* section and enter the following:
+   1. Enter *Native VLAN ID* as `10`
+   2. Under *AAA Override VLAN* Section click the **⨁**
+   3. In the first *AAA Overide VLAN* set the *VLAN ID* to start at **30**
+   4. Set the *VLAN Name* to **voicevlan** as shown
+   5. In the second *AAA Overide VLAN* set the *VLAN ID* to start at **40**
+   6. Set the *VLAN Name* to **guestvlan** as shown
+   7. Click **Save** continue
+
+   ![json](./images/module2-wlans/dnac-wireless-flexconnect-vlan.png?raw=true "Import JSON")
 
 ### Wireless Controller Provisioning - TBC
 In this subsection we will build a Wireless RF Profile. 
