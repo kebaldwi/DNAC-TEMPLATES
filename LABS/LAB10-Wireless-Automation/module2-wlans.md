@@ -164,7 +164,7 @@ There are many things that can be accomplished from an RF Profile, to tweek the 
 
 ![json](./images/module2-wlans/dnac-wireless-rfprofile-results.png?raw=true "Import JSON")
 
-### Creating a FlexConnect Local Vlans - TBC
+### Creating a FlexConnect Local Vlans
 In this subsection we will add additional vlans for local switching for our FlexConnect deployment. *Note: If we were utilizing* ***Local Mode*** *for the Access Points we would add additional Wireless Interfaces or vlan groups respectively to the Controller.* 
 
 In this lab, we need to utilize FlexConnect, and so to allow for CoA of clients to other Vlans we need to add those to the configuration of our Access Points. 
