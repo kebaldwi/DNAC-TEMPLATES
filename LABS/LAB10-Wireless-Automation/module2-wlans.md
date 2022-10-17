@@ -189,13 +189,43 @@ In this lab, we need to utilize FlexConnect, and so to allow for CoA of clients 
 
    ![json](./images/module2-wlans/dnac-wireless-flexconnect-vlan.png?raw=true "Import JSON")
 
-### Wireless Controller Provisioning - TBC
-In this subsection we will build a Wireless RF Profile. 
+### Wireless Controller Provisioning
+In this subsection we will provision the Wireless Controller with the settings for network services, credentials, telemetry and the additional wireless settings of WLAN's, RF Profiles, FlexConnect Vlans.
 
-#### Step 1 - ***Provisioning***
-1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
+This can be augmented with Model-Based Configurations as well as Templates which we will discuss in future modules.
 
-![json](./images/underconstruction.png?raw=true "Import JSON")
+#### Step 1 - ***Provisioning the Wireless Controller***
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Provision>Network Devices>Inventory`.
+
+![json](./images/module2-wlans/dnac-menu-provision-inventory.png?raw=true "Import JSON")
+
+2. On the Inventory page click the `Inventory` tab and complete the following:
+   1. Select the *C9800-WLC.dcloud.cisco.com* device as shown
+   2. Select from the *Actions* submenu
+   3. Select *Provision*
+   4. Select *Provision Device*
+
+![json](./images/module2-wlans/dnac-menu-provision-inventory-begin.png?raw=true "Import JSON")
+
+3. The **Inventory > Provision Devices** 5 stage workflow will begin. Make no changes on screen 1 and click **Next** to continue.
+
+![json](./images/module2-wlans/dnac-menu-provision-inventory-stage1.png?raw=true "Import JSON")
+
+4. On screen 2 of the **Inventory > Provision Devices** workflow select *Managing 1 Primary location(s)* which is where we tell **DNA Center** where the Access Points will be that this Wireless Controller will manage.
+
+![json](./images/module2-wlans/dnac-menu-provision-inventory-stage2.png?raw=true "Import JSON")
+
+5. On the slideout window select **Floor 1** which is where our Access Points will be that this Wireless Controller will manage. Click **Save** to continue.
+
+![json](./images/module2-wlans/dnac-menu-provision-inventory-stage2-manage.png?raw=true "Import JSON")
+
+6. It is recommended to enable the *AP Reboot Percentage* which aides in upgrades by selecting how many Acee Points are upgraded at any one time. For purposes of the lab we will **Enable** this feature and select **25%** from the dropdown menu. Click **Next** to continue.
+
+![json](./images/module2-wlans/dnac-menu-provision-inventory-stage2-reboot.png?raw=true "Import JSON")
+
+
+
+
 
 ## Lab Modules
 The lab will be split into modules to concentrate on specific tasks. Eash is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
