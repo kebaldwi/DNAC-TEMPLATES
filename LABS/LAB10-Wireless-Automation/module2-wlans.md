@@ -243,6 +243,11 @@ This can be augmented with Model-Based Configurations as well as Templates which
 
 ![json](./images/module2-wlans/dnac-menu-provision-inventory-stage5-generate.png?raw=true "Import JSON")
 
+#### Step 2 - ***Verifying the Wireless Controller Configuration***
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Provision>Network Devices>Inventory`.
+
+
+
 
 ## Lab Modules
 The lab will be split into modules to concentrate on specific tasks. Eash is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
