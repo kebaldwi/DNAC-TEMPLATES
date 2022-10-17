@@ -223,8 +223,25 @@ This can be augmented with Model-Based Configurations as well as Templates which
 
 ![json](./images/module2-wlans/dnac-menu-provision-inventory-stage2-reboot.png?raw=true "Import JSON")
 
+7. On screen 3 of the **Inventory > Provision Devices** workflow we would see the Model-Based Configurations which would be deployed, but none are assigned at this time. This will be covered in later sections. Click **Next** to continue.
 
+![json](./images/module2-wlans/dnac-menu-provision-inventory-stage3.png?raw=true "Import JSON")
 
+8. On screen 4 of the **Inventory > Provision Devices** workflow we would see the Templates which would be deployed, but none are assigned at this time. This will be covered in later sections. Click **Next** to continue.
+
+![json](./images/module2-wlans/dnac-menu-provision-inventory-stage4.png?raw=true "Import JSON")
+
+9. On screen 5 of the **Inventory > Provision Devices** workflow we see a *Summary* of what will be configured. Please take time to review this section. Click **Deploy** to continue.
+
+![json](./images/module2-wlans/dnac-menu-provision-inventory-stage5.png?raw=true "Import JSON")
+
+10. A warning message about **Fastlane Configuration** is displayed to warn about wireless disruptions. Click **OK** to continue.
+
+![json](./images/module2-wlans/dnac-menu-provision-inventory-stage5-deploy.png?raw=true "Import JSON")
+
+11. A *Provision Device* Sidemenu appears, giving 3 options abut when to deploy. Choose the **3rd option** allows for you to review the configuration prior to deployment.. Click **Apply** to continue.
+
+![json](./images/module2-wlans/dnac-menu-provision-inventory-stage5-generate.png?raw=true "Import JSON")
 
 
 ## Lab Modules
