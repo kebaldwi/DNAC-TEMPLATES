@@ -127,6 +127,30 @@ In this subsection we will build a Wireless LAN for PSK authentication.
 
    ![json](./images/module2-wlans/dnac-wireless-ssid-psk-results.png?raw=true "Import JSON")
 
+### Creating a Wireless RF Profile - TBC
+In this subsection we will build a Wireless RF Profile. 
+
+#### Step 1 - ***Create RF Profile***
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
+
+![json](./images/underconstruction.png?raw=true "Import JSON")
+
+### Creating a FlexConnect Local Vlans - TBC
+In this subsection we will build a Wireless RF Profile. 
+
+#### Step 1 - ***Create Vlans***
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
+
+![json](./images/underconstruction.png?raw=true "Import JSON")
+
+### Wireless Controller Provisioning - TBC
+In this subsection we will build a Wireless RF Profile. 
+
+#### Step 1 - ***Provisioning***
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
+
+![json](./images/underconstruction.png?raw=true "Import JSON")
+
 ## Lab Modules
 The lab will be split into modules to concentrate on specific tasks. Eash is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
 
