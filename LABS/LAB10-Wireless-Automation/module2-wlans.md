@@ -1,7 +1,4 @@
-# In Development
-![json](./images/underconstruction.png?raw=true "Import JSON")
-
-## Wireless LAN Design
+# Wireless LAN Design
 Within this lab module, we will concentrate our efforts on the design aspects of creating Wireless LANs (WLANs) via **DNA Center**. Previously we have discovered the Wireless LAN Controller by **Cisco DNA Center**, and assigned it to a site within the hierarchy. At this point we will configure the various settings for the Wireless Design.
 
 Within this lab we will concentrate on the following which are typical in most Enterprise Networks today:

@@ -1,7 +1,4 @@
-# In Development
-![json](./images/underconstruction.png?raw=true "Import JSON")
-
-## Wireless Controller PnP or Discovery
+# Wireless Controller PnP or Discovery
 Within this lab module, we will concentrate our efforts on the discovery or PnP of each of the devices by **Cisco DNA Center**, so that we can onboard and gain management of those devices. The lab within DCLOUD does not today have the ability to run PnP of the Controller, but that is possible and we will have a separate section to talk about those aspects. 
 
 Within this lab we will concentrate on the following which are typical in most Enterprise Networks today:
