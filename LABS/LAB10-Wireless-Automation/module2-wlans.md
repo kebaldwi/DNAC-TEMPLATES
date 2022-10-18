@@ -194,7 +194,7 @@ In this subsection we will provision the Wireless Controller with the settings f
 
 This can be augmented with Model-Based Configurations as well as Templates which we will discuss in future modules.
 
-#### Step 1 - ***Provisioning the Wireless Controller***
+#### Step 1 - ***Provisioning Workflow for the Wireless Controller***
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Provision>Network Devices>Inventory`.
 
 ![json](./images/module2-wlans/dnac-menu-provision-inventory.png?raw=true "Import JSON")
@@ -243,11 +243,46 @@ This can be augmented with Model-Based Configurations as well as Templates which
 
 ![json](./images/module2-wlans/dnac-menu-provision-inventory-stage5-generate.png?raw=true "Import JSON")
 
-#### Step 2 - ***Verifying the Wireless Controller Configuration***
-1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Provision>Network Devices>Inventory`.
+#### Step 2 - ***Deploying the Configuration for the Wireless Controller***
+1. From **DNA Centers** hamburger menu icon, open the menu and select `Activities`.
 
+![json](./images/module2-wlans/dnac-navigation-activities.png?raw=true "Import JSON")
 
+2. On the *Activites* page select the **Work Items** tab. You will notice the work item *Provision Device - Configuration Preview* on the page. It will probably say in progress. Wait for it to say *success* before proceding.
 
+![json](./images/module2-wlans/dnac-activities-psk-preview.png?raw=true "Import JSON")
+
+3. When the work item *Provision Device - Configuration Preview* status displays *success* click the link to display the configuration.
+
+![json](./images/module2-wlans/dnac-activities-psk-click.png?raw=true "Import JSON")
+
+4. The Wireless Controller configuration will be displayed. Click **Deploy** to continue deploying the configuration.
+
+![json](./images/module2-wlans/dnac-activities-psk-display.png?raw=true "Import JSON")
+
+5. To continue to deploy the Wireless Controller configuration select **Now** and then click **Apply**.
+
+![json](./images/module2-wlans/dnac-activities-psk-now.png?raw=true "Import JSON")
+
+. A popup to ask if you want to delete the work item will appear, click **No** to keep a record of events.
+
+![json](./images/module2-wlans/dnac-activities-psk-nodelete.png?raw=true "Import JSON")
+
+#### Step 3 - ***Checking for successful configuration of the Wireless Controller***
+1. Navigate back to the *Inventory*, and change the *Inventory Focus* to **Provision** to watch the progress of the provisioning.
+
+![json](./images/module2-wlans/dnac-inventory-psk-focus-provision.png?raw=true "Import JSON")
+
+2. When the *Provisioning Status* of the *C9800-WLC* shows as success, click **see details** to look at the logs.
+
+![json](./images/module2-wlans/dnac-inventory-psk-seedetails.png?raw=true "Import JSON")
+
+3. Click to display the logs and examine the output as much as possible.
+
+![json](./images/module2-wlans/dnac-inventory-psk-success.png?raw=true "Import JSON")
+
+## Summary
+At this point you will have successfully configured the **Wireless Controller** from **DNA Center**. During this lab we configured SSID's, Wireless Network Profiles, RF Profiles, FlexConnect VLANs and deployed the configuration. The next step is **Access Point** provisioning.
 
 ## Lab Modules
 The lab will be split into modules to concentrate on specific tasks. Eash is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
