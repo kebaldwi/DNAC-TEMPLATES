@@ -32,11 +32,11 @@ To get started with Wireless Controller configuration and automation we first ne
 
 This section will be devoted to building Wireless LAN's. Subsequent sections will cover the profiles and provisioning.
 
+<details closed>
+<summary> 1. Building a WLAN with a Pre-Shared Key</summary>
+
 ### Building a PreShared Key (PSK) Wireless LAN
 In this subsection we will build a Wireless LAN for PSK authentication. 
-
-<details closed>
-<summary>Building a WLAN with a Pre-Shared Key</summary>
 
 #### Step 1 - ***Create SSID***
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
