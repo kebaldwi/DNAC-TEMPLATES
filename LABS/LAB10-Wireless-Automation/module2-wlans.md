@@ -33,7 +33,7 @@ To get started with Wireless Controller configuration and automation we first ne
 This section will be devoted to building Wireless LAN's. Subsequent sections will cover the profiles and provisioning.
 
 <details closed>
-<summary> 1. Building a WLAN with a Pre-Shared Key</summary>
+<summary> 1. Building a WLAN with a Pre-Shared Key (PSK)</summary>
 
 ### Building a PreShared Key (PSK) Wireless LAN
 In this subsection we will build a Wireless LAN for PSK authentication. 
@@ -126,6 +126,11 @@ In this subsection we will build a Wireless LAN for PSK authentication.
 5. Return to the **Wireless Settings** page and you should see now our new *SSID* **CAMPUS-PSK**.
 
    ![json](./images/module2-wlans/dnac-wireless-ssid-psk-results.png?raw=true "Import JSON")
+</details>
+
+<details closed>
+<summary> 2. Building a WLAN with a Identity Pre-Shared Key (iPSK)</summary>
+
 </details>
 
 ### Creating a Wireless Radio Frequency RF Profile
