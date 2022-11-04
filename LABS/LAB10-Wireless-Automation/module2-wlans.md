@@ -34,7 +34,9 @@ This section will be devoted to building Wireless LAN's. Subsequent sections wil
 
 ### Building a PreShared Key (PSK) Wireless LAN
 In this subsection we will build a Wireless LAN for PSK authentication. 
+
 <details closed>
+
 #### Step 1 - ***Create SSID***
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
 
@@ -124,6 +126,7 @@ In this subsection we will build a Wireless LAN for PSK authentication.
 
    ![json](./images/module2-wlans/dnac-wireless-ssid-psk-results.png?raw=true "Import JSON")
 </details>
+
 ### Creating a Wireless Radio Frequency RF Profile
 In this subsection we will build a Wireless Radio Frequency (RF) Profile. This helpful tool, allows the administrator to tune the RF spectrum for the type of environment, and channels which are needed to support clients within their carpeted and non carpeted spaces. 
 
