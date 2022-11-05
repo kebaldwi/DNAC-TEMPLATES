@@ -8,7 +8,7 @@ In the following example a variable is bind to DNA Centers database and a value 
 
 In order to acomplish this we need to use this example. First we need to create an integer variable to be used to parse the bind variable too. Then set the result of that equation into a variable called native_vlan. We can then perform mathematical equations to extrapolate other values.
 
-```
+```vtl
    #set( $integer = 0 )
    #set( $native_vlan = $integer.parseInt($native_vlan_bind) )
    #set( $data_vlan = $native_vlan + 10 )
@@ -17,7 +17,7 @@ In order to acomplish this we need to use this example. First we need to create 
 ### Working with Arrays or Lists
 To create an array we have to perform the following. First we need to concatenate the values into a variable with some kind of delimiter. Then using the delimiter we can split the values into separate elements within the array and call them separately.
 
-```
+```vtl
    #set( $Switches = 8 )
    #foreach( $Switch in [1..${Switches}] )
        #if( $Switch == 1 )
@@ -38,7 +38,7 @@ To create an array we have to perform the following. First we need to concatenat
 
 Another way we may work with arrays is to use the add operator. This method would look like this.
 
-```
+```vtl
    #set( $PortArray = [] )
    #set( $PortsCount = 48 )
    !
@@ -60,13 +60,13 @@ One area we need to address is how to effectively deal with stacking 9300's and 
 
 In order to acomplish this we need to first identify how many switches are in the stack... please use this example. 
 
-```
+```vtl
    #set( $StackPIDs = $ProductID.split(",") )
    #set( $StackMemberCount = $StackPIDs.size() )
 ```
 Then we need a logical construct which iterates through each switch setting not only the priority correctly but also setting the powerstack correctly.
 
-```
+```vtl
    #if( $StackMemberCount > 1 )
       stack-power stack Powerstack1
       mode redundant strict
@@ -101,13 +101,13 @@ Then we need a logical construct which iterates through each switch setting not 
 Explained here...
 1. The code shared will run only if the number of switches in the stack is found to be greater than 1.
 
-```
+```vtl
    #if( $StackMemberCount > 1 )
 ```
 
 2. The next step is to correctly set the number of powerstack required. If the number of switches exceeds 4 then we need two powerstacks set up.
 
-```
+```vtl
    stack-power stack Powerstack1
    mode redundant strict
    #if( $StackMemberCount > 4 )
@@ -118,7 +118,7 @@ Explained here...
 
 3. The next step is to iterate through the switches in the stack setting the stackpower appropriately for each switch and adding them to the correct powerstack 
 
-```
+```vtl
    #foreach( $Switch in [1..$StackMemberCount] )
       #if( $Switch < 5 )
          stack-power switch ${Switch}
@@ -131,7 +131,7 @@ Explained here...
 ```
 4. Lastly, we will set the switch priority appropriately on each switch for master and standby, and then for the remaining switches withijn the stack so that switch numbering matches the priority levels.
 
-```
+```vtl
    #MODE_ENABLE
    #MODE_END_ENABLE
    #MODE_ENABLE
@@ -154,7 +154,7 @@ First we would need to identify how many ports we have on each switch or linecar
 
 We set up variables to track in Array format the number of ports per switch.
 
-```
+```vtl
    #set( $StackPIDs = $ProductID.split(",") )
    #set( $StackMemberCount = $StackPIDs.size() )
    #set( $PortTotal = [] )
@@ -168,7 +168,7 @@ We set up variables to track in Array format the number of ports per switch.
 
 The next step would be to build macros and vlans to configure the various ports.
 
-```
+```vtl
    vlan ${data_vlan_number}
      name ${site_code}-Employees
    vlan ${voice_vlan_number}
