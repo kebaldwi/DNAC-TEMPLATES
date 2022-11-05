@@ -108,7 +108,7 @@ So let's modify the EEM script first to solve the naming aspect concerning conne
     action 270 end
     action 280 cli command "write"
 ```
-<green>First</green>, let's address the primary problem, the naming of interfaces with descriptions.
+First, let's address the primary problem, the naming of interfaces with descriptions.
 
 You will see that lines *201 to 220* were added to the EEM script. We look for the keyword `Trans-Bridge` within the built-in variable to determine if the port is connected to an Access Point within that section. It results in a True or binary 1 state, and the included code from lines *211 to 220* runs line by line. The configuration adds a description to the interface for the phone of `description AP - KO-AP0C75 - GigabitEthernet0`, for example.
 
