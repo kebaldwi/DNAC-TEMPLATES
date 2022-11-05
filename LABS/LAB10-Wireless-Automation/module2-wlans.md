@@ -425,6 +425,9 @@ In this subsection we will build a Wireless Radio Frequency (RF) Profile. This h
 
 There are many things that can be accomplished from an RF Profile, to tweek the environment, from channels used, to data rates, to power settings deployed. Access points when deployed will utilize these RF Profiles to deploy the SSID's and the intention is to have the best wireless experience for the clients served in a specific area.
 
+<details closed>
+<summary> Click the arrow for details</summary>
+
 ### Step 1 - ***Create RF Profile***
 1. To create an RF Profile, first open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
 
@@ -457,10 +460,15 @@ There are many things that can be accomplished from an RF Profile, to tweek the 
 
 ![json](./images/module2-wlans/dnac-wireless-rfprofile-results.png?raw=true "Import JSON")
 
+</details>
+
 ## Lab Section 3 - Creating a FlexConnect Local Vlans
 In this subsection we will add additional vlans for local switching for our FlexConnect deployment. *Note: If we were utilizing* ***Local Mode*** *for the Access Points we would add additional Wireless Interfaces or vlan groups respectively to the Controller.* 
 
 In this lab, we need to utilize FlexConnect, and so to allow for CoA of clients to other Vlans we need to add those to the configuration of our Access Points. 
+
+<details closed>
+<summary> Click the arrow for details</summary>
 
 ### Step 1 - ***Add FlexConnect VLANs***
 1. To create an RF Profile, first open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
@@ -482,10 +490,15 @@ In this lab, we need to utilize FlexConnect, and so to allow for CoA of clients 
 
    ![json](./images/module2-wlans/dnac-wireless-flexconnect-vlan.png?raw=true "Import JSON")
 
+</details>
+
 ## Lab Section 4 - Wireless Controller Provisioning
 In this subsection we will provision the Wireless Controller with the settings for network services, credentials, telemetry and the additional wireless settings of WLAN's, RF Profiles, FlexConnect Vlans.
 
 This can be augmented with Model-Based Configurations as well as Templates which we will discuss in future modules.
+
+<details closed>
+<summary> Click the arrow for details</summary>
 
 ### Step 1 - ***Provisioning Workflow for the Wireless Controller***
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Provision>Network Devices>Inventory`.
@@ -573,6 +586,8 @@ This can be augmented with Model-Based Configurations as well as Templates which
 3. Click to display the logs and examine the output as much as possible.
 
 ![json](./images/module2-wlans/dnac-inventory-psk-success.png?raw=true "Import JSON")
+
+</details>
 
 ## Summary
 At this point you will have successfully configured the **Wireless Controller** from **DNA Center**. During this lab we configured SSID's, Wireless Network Profiles, RF Profiles, FlexConnect VLANs and deployed the configuration. The next step is **Access Point** provisioning.
