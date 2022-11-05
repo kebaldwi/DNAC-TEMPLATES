@@ -420,12 +420,12 @@ In this subsection we will build a Wireless LAN for Guest authentication.
 
 </details>
 
-### Creating a Wireless Radio Frequency RF Profile
+## Lab Section 2 - Creating a Wireless Radio Frequency RF Profile
 In this subsection we will build a Wireless Radio Frequency (RF) Profile. This helpful tool, allows the administrator to tune the RF spectrum for the type of environment, and channels which are needed to support clients within their carpeted and non carpeted spaces. 
 
 There are many things that can be accomplished from an RF Profile, to tweek the environment, from channels used, to data rates, to power settings deployed. Access points when deployed will utilize these RF Profiles to deploy the SSID's and the intention is to have the best wireless experience for the clients served in a specific area.
 
-#### Step 1 - ***Create RF Profile***
+### Step 1 - ***Create RF Profile***
 1. To create an RF Profile, first open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
 
 ![json](./images/module2-wlans/dnac-menu-network-settings.png?raw=true "Import JSON")
@@ -457,12 +457,12 @@ There are many things that can be accomplished from an RF Profile, to tweek the 
 
 ![json](./images/module2-wlans/dnac-wireless-rfprofile-results.png?raw=true "Import JSON")
 
-### Creating a FlexConnect Local Vlans
+## Lab Section 3 - Creating a FlexConnect Local Vlans
 In this subsection we will add additional vlans for local switching for our FlexConnect deployment. *Note: If we were utilizing* ***Local Mode*** *for the Access Points we would add additional Wireless Interfaces or vlan groups respectively to the Controller.* 
 
 In this lab, we need to utilize FlexConnect, and so to allow for CoA of clients to other Vlans we need to add those to the configuration of our Access Points. 
 
-#### Step 1 - ***Add FlexConnect VLANs***
+### Step 1 - ***Add FlexConnect VLANs***
 1. To create an RF Profile, first open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
 
 ![json](./images/module2-wlans/dnac-menu-network-settings.png?raw=true "Import JSON")
@@ -482,12 +482,12 @@ In this lab, we need to utilize FlexConnect, and so to allow for CoA of clients 
 
    ![json](./images/module2-wlans/dnac-wireless-flexconnect-vlan.png?raw=true "Import JSON")
 
-### Wireless Controller Provisioning
+## Lab Section 4 - Wireless Controller Provisioning
 In this subsection we will provision the Wireless Controller with the settings for network services, credentials, telemetry and the additional wireless settings of WLAN's, RF Profiles, FlexConnect Vlans.
 
 This can be augmented with Model-Based Configurations as well as Templates which we will discuss in future modules.
 
-#### Step 1 - ***Provisioning Workflow for the Wireless Controller***
+### Step 1 - ***Provisioning Workflow for the Wireless Controller***
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Provision>Network Devices>Inventory`.
 
 ![json](./images/module2-wlans/dnac-menu-provision-inventory.png?raw=true "Import JSON")
@@ -536,7 +536,7 @@ This can be augmented with Model-Based Configurations as well as Templates which
 
 ![json](./images/module2-wlans/dnac-menu-provision-inventory-stage5-generate.png?raw=true "Import JSON")
 
-#### Step 2 - ***Deploying the Configuration for the Wireless Controller***
+### Step 2 - ***Deploying the Configuration for the Wireless Controller***
 1. From **DNA Centers** hamburger menu icon, open the menu and select `Activities`.
 
 ![json](./images/module2-wlans/dnac-navigation-activities.png?raw=true "Import JSON")
@@ -561,7 +561,7 @@ This can be augmented with Model-Based Configurations as well as Templates which
 
 ![json](./images/module2-wlans/dnac-activities-psk-nodelete.png?raw=true "Import JSON")
 
-#### Step 3 - ***Checking for successful configuration of the Wireless Controller***
+### Step 3 - ***Checking for successful configuration of the Wireless Controller***
 1. Navigate back to the *Inventory*, and change the *Inventory Focus* to **Provision** to watch the progress of the provisioning.
 
 ![json](./images/module2-wlans/dnac-inventory-psk-focus-provision.png?raw=true "Import JSON")
