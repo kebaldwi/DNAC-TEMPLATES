@@ -312,7 +312,7 @@ There are now two methods for this The first and simplest method is to make use 
 
 Failing that we have an EEM script which you may use iterated below.
 
-```tcl
+```tcsh
 tclsh                            
 puts [open "flash:prep4dnac" w+] {
 !
@@ -359,7 +359,7 @@ end
 tclquit
 ```
 Additionally, for help with troubleshooting, install this helpful EEM script in the directory in the same manner as above. This will help to see which lines were sent to the switch and helps deduce where a template may be failing.
-```tcl
+```tcsh
 tclsh
 puts [open "flash:dnacts" w+] {
 !
