@@ -15,7 +15,7 @@ To set up the lab, please log into the console connection to the ***4331*** and 
 ***Warning** use the check the commands against the LAB Architecture.*
 
 SJC
-```bash
+```vtl
 !
 conf t
 !
@@ -39,7 +39,7 @@ As depicted in the diagram above, the 9300 will serve as the upstream neighbor f
 
 For the lab, we will utilize ***VLAN 5*** as the management VLAN. Connect to switch ***c9300-2*** and paste the following configuration:
 
-```
+```vtl
 config t
 !
 vlan 5
@@ -83,7 +83,7 @@ Configured on an IOS device, the DHCP pool elements would be configured either o
 
 If we want to use the IOS DHCP configuration method, connect to switch ***c9300-2*** and paste the following configuration:
 
-```
+```vtl
 !
 conf t
 !
@@ -99,7 +99,7 @@ wr
 
 Next, we will configure the helper address statement on the management VLAN's SVI to point to the router or switch to the DHCP configuration. Connect to switch ***c9300-2*** and paste the following configuration:
 
-```
+```vtl
 !
 conf t
 !
@@ -116,7 +116,7 @@ For a complete configuration example please see [Configuring the Cisco IOS DHCP 
 #### Step 1.2b - ***Windows Server Configuration***
 If we want to use the Windows DHCP service, connect to the windows ***AD1*** server. On the windows server, you have two options to deploy DHCP scopes the UI or PowerShell. We will deploy the scope via PowerShell. Paste the following into PowerShell to create the required DHCP scope:
 
-```
+```ps
 Add-DhcpServerv4Scope -Name "DNAC-Templates-Lab" -StartRange 192.168.5.1 -EndRange 192.168.5.254 -SubnetMask 255.255.255.0 -LeaseDuration 6.00:00:00 -SuperScope "PnP Onboarding"
 Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -Router 192.168.5.1 
 Add-Dhcpserverv4ExclusionRange -ScopeId 192.168.5.0 -StartRange 192.168.5.1 -EndRange 192.168.5.1
@@ -128,7 +128,7 @@ The DHCP scope will look like this in Windows DHCP Administrative tool:
 
 Next, we will introduce the helper address statement on the management VLAN's SVI to point to the Windows DHCP server. Connect to switch ***c9300-2*** and paste the following configuration:
 
-```
+```vtl
 !
 conf t
 !
@@ -159,7 +159,7 @@ Please choose one of the following subsections as the discovery method.
 #### Step 2.1a - ***Option 43 with IOS DHCP Configuration***
 If using the IOS DHCP Server and the desire is to use Option 43 discovery method, then paste the following configuration:
 
-```
+```vtl
 !
 conf t
 !
@@ -174,7 +174,7 @@ wr
 #### Step 2.1b - ***Option 43 with Windows DHCP Configuration***
 If using the Windows DHCP Server and the desire is to use Option 43 discovery method, then paste the following configuration into PowerShell:
 
-```
+```ps
 Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -OptionId 43 -Value ([System.Text.Encoding]::ASCII.GetBytes("5A1N;B2;K4;I198.18.129.100;J80"))
 ```
 
@@ -185,7 +185,7 @@ The DHCP scope modification will resemble the following image of the Windows DHC
 #### Step 2.1c - ***DNS Lookup with IOS DHCP Configuration***
 If using the IOS DHCP Server and the desire is to use the DNS Lookup discovery method, then paste the following configuration:
 
-```
+```vtl
 !
 conf t
 !
@@ -200,7 +200,7 @@ wr
 
 Next, add the DNS entries to allow for the DNA Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
 
-```
+```ps
 Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.100" -TimeToLive 01:00:00
 Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
 ```
@@ -212,7 +212,7 @@ The DNS Zone will look like this in Windows DNS Administrative tool:
 #### Step 2.1d - ***DNS Lookup with Windows DHCP Configuration***
 If using the Windows DHCP Server and the desire is to use the DNS Lookup discovery method, then paste the following configuration into PowerShell:
 
-```
+```ps
 Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -DnsServer 198.18.133.1 -DnsDomain "dcloud.cisco.com"
 ```
 
@@ -222,7 +222,7 @@ The DHCP scope will resemble the following image of the Windows DHCP Administrat
 
 Next, add the DNS entries to allow for the DNA Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
 
-```
+```ps
 Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.100" -TimeToLive 01:00:00
 Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
 ```
@@ -236,7 +236,7 @@ Typically, the Target switch is connected via a trunk to a single port or a bund
 
 If it is a single port connection to the target switch, then use a simplified configuration; however, we will not be utilizing this method in this lab. An example provided here:
 
-```
+```vtl
 !
 conf t
 !
@@ -252,7 +252,7 @@ wr
 
 In this exercise, the port where the Target switch connects is a layer two trunk as part of a Port Channel. 
 
-```
+```vtl
 !
 conf t
 !
@@ -286,7 +286,7 @@ To test the environment to ensure it's ready, we need to try a few things.
 
 First, from a Windows host, use the *nslookup* command to resolve ***pnpserver.dcloud.cisco.com***. Connect to the Windows workstation, and within the search window, search for CMD. Open the application and type the following command:
 
-```
+```bash
 nslookup pnpserver.dcloud.cisco.com
 ```
 
@@ -297,7 +297,7 @@ The following output or something similar shows the resolution of the alias to t
 ### Step 4.1b - ***DNS Resolution***
 Second, we need to ensure the DNA Center responds on the VIP, so use the ping command within the CMD application window previously opened as follows:
 
-```
+```bash
 ping pnpserver.dcloud.cisco.com
 ```
 
@@ -312,7 +312,7 @@ There are now two methods for this The first and simplest method is to make use 
 
 Failing that we have an EEM script which you may use iterated below.
 
-```
+```tcl
 tclsh                            
 puts [open "flash:prep4dnac" w+] {
 !
@@ -359,7 +359,7 @@ end
 tclquit
 ```
 Additionally, for help with troubleshooting, install this helpful EEM script in the directory in the same manner as above. This will help to see which lines were sent to the switch and helps deduce where a template may be failing.
-```
+```tcl
 tclsh
 puts [open "flash:dnacts" w+] {
 !
@@ -374,7 +374,7 @@ tclquit
 ### Step 4.3 - ***Reset Switch and Test Discovery***
 Finally, we want to test the routing, connectivity, DHCP, DNS services, and discovery mechanism. Reset the ***c9300-1*** Target switch by pasting the following sequence into the console. We will watch the switch come up but not intercede or type anything into the console after the reboot has started.
 
-```
+```vtl
 !
 copy prep4dnac running-config
 !
