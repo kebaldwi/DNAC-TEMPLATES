@@ -145,6 +145,17 @@ In this subsection we will build a Wireless LAN for PSK authentication.
 
 <iframe src="https://codesandbox.io/embed/6zk98l6w0k" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
+<style>
+  iframe {
+    width: 1px;
+    min-width: 100%;
+  }
+</style>
+<script src="/js/iframeResizer.min.js"></script>
+<iframe id="myIframe" src="http://www.google.com"></iframe>
+<script>
+  iFrameResize({ log: true }, '#myIframe')
+</script>
 
 ### Creating a Wireless Radio Frequency RF Profile
 In this subsection we will build a Wireless Radio Frequency (RF) Profile. This helpful tool, allows the administrator to tune the RF spectrum for the type of environment, and channels which are needed to support clients within their carpeted and non carpeted spaces. 
