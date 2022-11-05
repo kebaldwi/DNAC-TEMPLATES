@@ -133,6 +133,19 @@ In this subsection we will build a Wireless LAN for PSK authentication.
 
 </details>
 
+<details closed>
+<summary> 3. Building a WLAN with a Extensible Authentication Protocols (EAP)</summary>
+
+</details>
+
+<details closed>
+<summary> 4. Building a Guest WLAN </summary>
+
+</details>
+
+<iframe src="https://codesandbox.io/embed/6zk98l6w0k" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+
 ### Creating a Wireless Radio Frequency RF Profile
 In this subsection we will build a Wireless Radio Frequency (RF) Profile. This helpful tool, allows the administrator to tune the RF spectrum for the type of environment, and channels which are needed to support clients within their carpeted and non carpeted spaces. 
 
