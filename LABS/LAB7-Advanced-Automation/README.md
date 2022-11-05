@@ -41,7 +41,7 @@ Previously within the Composite Templating Lab, we introduced a methodology of a
 ### ***Examine Code***
 The script we used on the Composite Templates uses an EEM script that runs whenever a CDP event occurs.
 
-```
+```vtl
    event manager applet update-port
     event neighbor-discovery interface regexp GigabitEthernet.* cdp add
     action 101 regexp "(Switch|Router)" "$_nd_cdp_capabilities_string"
@@ -68,7 +68,7 @@ While this script will rename the uplinks connected to a Router or Switch, it is
 ### ***Modify Code***
 So let's modify the EEM script first to solve the naming aspect concerning connected devices.
 
-```
+```vtl
    event manager applet update-port
     event neighbor-discovery interface regexp GigabitEthernet.* cdp add
     action 101 regexp "(Switch|Router)" "$_nd_cdp_capabilities_string"
@@ -118,7 +118,7 @@ The second part of the problem within this use case is solving the issue present
 
 *Self-Destructing EEM scripts* are those that delete themselves on termination. Within the code below, you will notice that line 2.1 removes the EEM applet from the configuration, and then line 2.3 ensures the configuration is written to NVRAM before terminating.
 
-```
+```vtl
    event manager applet POST_PNP
     event timer countdown time 30
     action 1.0 cli command "enable"
@@ -138,7 +138,7 @@ Previously within the Composite Templating Lab, we introduced a methodology of a
 ### ***Examine Code***
 To that end, the following configuration has been built previously:
 
-```
+```vtl
    ## 9300 Stack Power and Priority
    ##Variables
    #set( $StackCount = $Serial.split(",") )
@@ -188,7 +188,7 @@ Previously within the Composite Templating Lab, we introduced a methodology of a
 ### ***Examine Code***
 We will analyze the configuration in more detail below and modify it for greater capabilities toward the end of this section.
 
-```
+```vtl
    ##Stack information variables
    #set( $StackPIDs = $ProductID.split(",") )
    #set( $StackMemberCount = $StackPIDs.size() )
@@ -205,7 +205,7 @@ Within the first block of code, some interesting concepts are dealt with. First,
 Within the loop structure, we iterate through using the variable PortCount to load the regex value grep'd from the Product ID accomplished via the `.replaceAll(""C9300L?-([2|4][4|8]).*","$1"")` *method* which in each case is either 24 or 48 to denote a 24 or 48 port switch. The PortCount variable is then appended to the *array* PortTotal using the add *method*.
 
 We now have the data we need to configure the switch's ports, being the number of switches and the number of ports in each switch.
-```
+```vtl
    !
    ## VLANs per MDF
    #set( $data_vlan_number = 200 + ${MDF} )
@@ -216,7 +216,7 @@ We now have the data we need to configure the switch's ports, being the number o
    !
 ```
 In the configuration above, we use simple addition to determine the VLAN ID for each VLAN built from a set of constants and a numeric variable to denote the MDF.
-```
+```vtl
    !
    vlan ${data_vlan_number}
     name data
@@ -250,14 +250,14 @@ In the configuration above, we use simple addition to determine the VLAN ID for 
    #end
 ```
 Here we define a Macro to configure the various ports of the switch with a standard voice and data VLAN.
-```
+```vtl
    !
    #macro( uplink_interface )
      switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
    #end
 ```
 Within the above code, we define a Macro to add the various VLANs to the trunk interface via the Port-Channel.
-```
+```vtl
    !
    ##Access Port Configuration
    #foreach( $Switch in [0..$offset] )
@@ -278,7 +278,7 @@ While this is an elegant script, it could be more automated and include ways to 
 
 First, let's deal with VLANs on the Target switch. We use one variable to extrapolate the various VLANs in the example above. Alternatively, that could be accomplished using a built-in variable like the native VLAN and a similar approach.
 
-```
+```vtl
    #set( $Integer = 0 ) ##defines Integer as numeric variable
    #set( $native_bind = $native_vlan) ) ##bind variable to native vlan
    #set( $mgmt_vlan = $Integer.parseInt($native_bind) ) 
@@ -296,7 +296,7 @@ In this example, we no longer need to input any information, and as the offsets 
 
 Secondly, we could allow for various device types of Access Point and IoT devices with the introduction of more Macros. As each device type may each require differing VLANs and port settings: *(note: in the guest example below, the assumption is a layer 2 to a firewall providing a local gateway for guest access DIA to the internet)*
 
-```
+```vtl
    ##Macros
    ## Use Bind to Source variable to select access interfaces 
    #macro( access_interface )
@@ -333,7 +333,7 @@ Secondly, we could allow for various device types of Access Point and IoT device
 ```
 The last puzzle piece would be to programmatically determine where the ports were configured for the various tasks and devices. To accomplish this, we can again resort to logic. First, we need to account for whether a switch is PoE capable or not, so let's add some magic.
 
-```
+```vtl
    ##Stack information variables
    #set( $StackPIDs = $ProductID.split(",") )
    #set( $StackMemberCount = $StackPIDs.size() )
@@ -360,7 +360,7 @@ So six lines of logic added, an *array* is created PoECapable to track switches 
 
 The next chunk of code first resolves any accidental division by zero anomalies we might encounter by iterating through the two asked for variables for the number of Access Points, determining if they are even or odd, and making them even in the latter case. Additionally, we need to determine how to distribute the Access Points.
 
-```
+```vtl
    ##Determine how many switches we can support Access Points on
    #foreach( $PoE in $PoECapable)
       #if( $PoECapable[$Switch] == 1 )
@@ -379,7 +379,7 @@ The next chunk of code first resolves any accidental division by zero anomalies 
 
 Next, we need to iterate through the switches logically to set the correct macro to the port. The example might look like the following;
 
-```
+```vtl
    !
    ##Start with AP distribution evenly across the stack
    !
@@ -435,7 +435,7 @@ In previous code revisions, we could deal with some of the problems with Auto Sm
 ### ***Modify Code***
 First, let's deal with VLANs on the Target switch. In the example above, we modified the existing code to extrapolate the various device VLANs using a built-in variable like the native VLAN. This is not a bad idea. Then you could define different native VLANs for downstream switches on a distribution, thereby building out the VLANs dynamically. If you prefer, an excel list of numbers could be an alternative. In that case, you would not need this section and rely on the variables being used after this code block.
 
-```
+```vtl
    #set( $Integer = 0 ) ##defines Integer as numeric variable
    #set( $native_bind = $native_vlan) ) ##bind variable to native vlan
    #set( $mgmt_vlan = $Integer.parseInt($native_bind) ) 
@@ -452,7 +452,7 @@ First, let's deal with VLANs on the Target switch. In the example above, we modi
 
 The next block of code sets up the VLANs, and should the dynamic creation as mentioned not be desired; an excel list could be used to assign them as the template is run through the UI through importing the variable settings.
 
-```
+```vtl
    !
    vlan ${data_vlan_number}
     name data
@@ -475,7 +475,7 @@ The next block of code sets up the VLANs, and should the dynamic creation as men
 ```
 Next, we need to set up the macros, but we will make use of **Autoconf** and **Templates**. **Autoconf** is a solution that can be used to manage port configurations for data or voice VLAN, quality of service (QoS) parameters, storm control, and MAC-based port security on end devices that are deployed in the access layer of a network. Device classification is enabled when you enable the Autoconf feature using the `autoconf enable` command in global configuration mode. The device detection acts as an event trigger, which applies the appropriate automatic template to the interface. When the Autoconf feature is enabled using the autoconf enable command, the default Autoconf service policy is applied to all the interfaces. For more information about **[Autoconf](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9400/software/release/16-12/configuration_guide/nmgmt/b_1612_nmgmt_9400_cg/configuring_autoconf.pdf)** or alternatively [Autoconf](./configuring_autoconf.pdf)
 
-```
+```vtl
    #INTERACTIVE
    autoconf enable<IQ>yes<R>y
    #END_INTERACTIVE
@@ -542,7 +542,7 @@ This will configure the interface with the normal VLAN and commands listed, and 
 Delivering the code to the interfaces becomes simpler now because we utilize a more dynamic device classification approach. 
 
 We can continue to configure the uplink via the following Macro.
-```
+```vtl
    !
    #macro( uplink_interface )
      switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
@@ -552,7 +552,7 @@ Within the above code, we define a Macro to add the various VLANs to the trunk i
 
 As we configure the interfaces, we can continue to use the previously defined method as the templates will be called and assigned more dynamically.
 
-```
+```vtl
    !
    ##Access Port Configuration
    #foreach( $Switch in [0..$offset] )
@@ -583,7 +583,7 @@ Considering DNA Center will push at that point all the relevant IBNS2.0 settings
 ### ***Examine Code***
 We will take the script as amended from above, which should look like this now;
 
-```
+```vtl
    #set( ${Integer} = 0 ) 
    #set( ${mgmt_vlan} = $Integer.parseInt($native_bind) ) 
    #set( ${data_offset} = 100 ) 
@@ -698,7 +698,7 @@ We will take the script as amended from above, which should look like this now;
 
 Lastly, you could modify how you address ports using the built-in variable as it removes tthe need for indexing and additionally can be used with logic to address port types.
 
-```
+```vtl
    ##Access Port Configuration
    #foreach( $interface in $__interface )
      #if( $interface.portMode == "access" && $interface.interfaceType == "Physical")
@@ -713,7 +713,7 @@ As it stands, this is not a bad place to start, and only a few additions and mod
 ### ***Modify Code***
 First, we will ensure that the following lines change device tracking to the modern standard.
 
-```
+```vtl
    device-tracking upgrade-cli force
    !
    device-tracking policy IPDT_MAX_10
@@ -723,7 +723,7 @@ First, we will ensure that the following lines change device tracking to the mod
 ```
 Then we need to define the class maps utilized in the Dot1x policy. The policy and class maps follow the MQC methods previously used for QoS. These have been exploited for other service policies, and now we build IBNS2.0 using the same schema.
 
-```
+```vtl
    !
    class-map type control subscriber match-all DOT1X_FAILED
     match method dot1x
@@ -760,7 +760,7 @@ Then we need to define the class maps utilized in the Dot1x policy. The policy a
 ```
 As we would with MQC, once we have defined the various class maps, we can then call upon them in a policy-map as follows;
 
-```
+```vtl
 	policy-map type control subscriber PMAP_DefaultWiredDot1xClosedAuth_1X_MAB
 	 event session-started match-all
 	  10 class always do-until-failure
@@ -860,7 +860,7 @@ This policy-map allows for all eventualities and gracefully flows top down in a 
 
 Once the class maps and policies have been defined, we need to utilize them.
 
-```
+```vtl
    template ACCESS_POINT
     description Access Point Interface
     switchport access vlan ${ap_vlan_number}
@@ -896,7 +896,7 @@ We have defined the various interface templates for use with the MQC DOT1X servi
 Next, we can then modify the parameter map to suit the policy. Remember that with **IBNS2.0** and templates or interfaces running in ***closed mode***, the dynamic capability of **Autoconf** is not going to operate because only EAP packets are allowed by **Secure Access** on the interface initially until authentication occurs. Alternatively, if the interface is in ***low impact mode***, then and only then will **Autoconf** operate properly. I always leave the config on the switch in case of that eventuality.
 
 
-```
+```vtl
    #INTERACTIVE
    autoconf enable<IQ>yes<R>y
    #END_INTERACTIVE
@@ -954,7 +954,7 @@ Lastly, we need to build the macros for interface configuration,
 ```
 Then we need to configure the various interfaces with the new interface templates via macro and modify the uplink port-channel. Additionally, we need to add two CTS commands to the physical interfaces within the port-channel bundle that are not available at the logical level and only available at the physical layer.
 
-```
+```vtl
    !Add SGACL enforcement
    cts role-based enforcement
    cts role-based enforcement vlan-list $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
@@ -986,7 +986,7 @@ So how do we have our cake and eat it too...
 
 Luckily we can create a fully dynamic environment with a gated procedure. You might build out the following EEM scripts to give that Dynamic look and feel entirely. Typically, the types of devices where we might have issues like this where *MAB* or *EAP* are not going to work maybe those which identify themselves in another way. In the following instance, we can use **PoE** power events to trigger an EEM. See the following code:
 
-```
+```vtl
 event manager applet DETECT_SW_IEEE_POE_UP
  event syslog pattern "%.*POWER.*GRANTED.* Interface.*"
  action 10    regexp "Interface ([^ ]+):" "$_syslog_msg" match intf
@@ -1021,7 +1021,7 @@ The template could be designed for either **low-impact mode** or a differing **s
 
 Two examples you might use for a differing **ACCESS-POINT** template. The first with *MAB* before *DOT1x*:
 
-```
+```vtl
 template ACCESS_POINT
  dot1x pae authenticator
  dot1x timeout supp-timeout 7
@@ -1039,7 +1039,7 @@ template ACCESS_POINT
 
 The second example is low impact mode, and session-access closed is removed:
 
-```
+```vtl
 template ACCESS_POINT
  dot1x pae authenticator
  dot1x timeout supp-timeout 7
@@ -1056,7 +1056,7 @@ template ACCESS_POINT
 
 If you need a trunk interface for this scenario, you might add a **FLEXCONNECT** specific configuration like so:
 
-```
+```vtl
 template FLEX_ACCESS_POINT
  dot1x pae authenticator
  dot1x timeout supp-timeout 7
@@ -1077,7 +1077,7 @@ Alternatively, you might send this as an **AV-PAIR** within the **AUTHZ Profile*
 
 But you may say, we have modified the physical interface configuration, well we can reset that too to the **BASE CONFIG** through another EEM script as follows:
 
-```
+```vtl
 event manager applet DETECT_SW_INT_DOWN
  event syslog pattern "%LINK.* Interface.* changed state to .* down"
  action 10    regexp "Interface ([^ ]+)," "$_syslog_msg" match intf
