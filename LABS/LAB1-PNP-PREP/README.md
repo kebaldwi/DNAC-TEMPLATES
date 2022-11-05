@@ -15,7 +15,7 @@ To set up the lab, please log into the console connection to the ***4331*** and 
 ***Warning** use the check the commands against the LAB Architecture.*
 
 SJC
-```
+```shell
 !
 conf t
 !
