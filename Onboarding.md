@@ -33,7 +33,7 @@ Before DNA Center can automate the deployment we have to do a couple of tasks to
 ## Onboarding Templates
 Onboarding templates are regular templates which serve the purpose of onboarding the device as mentioned sith the minimal amount of code necessary to get connectivity up to the device in a consistent manner to allow for further configuration via Day N  templates and provisioning. Typically there are two types of configuration that are used here Layer 3 routed or Layer 2 access. Both have different use cases and while they are typical they are by no means the only types of configuration used. To that end a set of examples has been provided in the [Onboarding folder](./ONBOARDING) within this repository. One of those examples is the one I most typically see used with customers. Included there is a [JSON Import File](./ONBOARDING/Platinum_Onboarding_Template.json) for import into DNA Center 2.1.X and above.
 
-```
+```vtl
 ##<------Onboarding-Template------->
 ##To be used for onboarding when using Day N Templates
 ##Define Variables provision with vlan and port channel

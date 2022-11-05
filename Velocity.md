@@ -8,14 +8,14 @@ Velocity language typically allows for If/elseif/else constructs, macros and mor
 ## Comment Statements
 Comment statements are a useful tool for scripting and allow for descriptive text to be used to explain the design or functionality of code. In simple IOS configurations anything after a '!' is not implemented but this is not true in velocity. To that end anything with a '!' is rendered as actual code so if something is desired not to be processed within this templating language please use '##' sequence.
 
-```
+```vtl
 ## Comments can be placed here
 ```
 
 ## Variable Usage
 Variables when combined in Velocity for the most part you can use them by calling them in either Formal or Regular notation.
 
-```
+```vtl
 Formal Notation.        ${Switch} 
 Regular Notation:       $Switch
 ```
@@ -24,7 +24,7 @@ There are occassions where those viarables will need to be used in descriptions 
 
 Take this example of a macro with an interface description:
 
-```
+```vtl
 #macro(uplink_interface)
  description "${site_code} - ${closet}"
 ```
@@ -32,7 +32,7 @@ Take this example of a macro with an interface description:
 ### Combining Bind Variables
 You can also extrapolate variables from known values once the device has been onboarded into the inventory. If the device was populated with the pnp startup-vlan command value then then the native vlan would be set to follow that automatically on the target switch. You could bind a variable and then use that to determine many other values for the device automatically.
 
-```
+```vtl
 #set( $voice-offset = 4000 )
 #set( $data_offset = 1 )
 #set( $integer = 0 )
@@ -45,7 +45,7 @@ You can also extrapolate variables from known values once the device has been on
 ## IF Statements
 IF statements are a useful tool for scripting and allow for a decision tree in which under certain circumstances various commands can be used alone or in combination. To create an IF statement examples have been provided below. That said it is important to understand that the IF statement may be used alone or in combination with the following;
 
-```
+```vtl
 #if
 #end
 
@@ -63,7 +63,7 @@ That said it is important to understand that these decisions allow for you to sc
 
 If/elseif/else construct with a check to see if data in variable contains a string:
 
- ```
+ ```vtl
  #if( $hostname.contains("C9300-48") )
     !some commands
  #elseif( $hostname.contains("C9300-24") )
@@ -78,7 +78,7 @@ A Macro is a snippit of code which can be called over and over again within a te
 
 Macro format is as follows:
 
-```
+```vtl
       #[{]macro[}] (vmname $arg1[= def1] ... $argn [= defn] ]) [ VTL code ] #[{]end[}]
 
       Usage:
@@ -95,7 +95,7 @@ Macro format is as follows:
 
 An example Macro of interface configurations:
 
-```
+```vtl
 #macro(Interfaces)
 int lo 0
   desc mgmt address
@@ -110,7 +110,7 @@ int vlan 1
 
 When combined with the IF statements below, the above Macro allows for various IP's to be set on the same interface on multiple switches as long as the hostname variable contains a specific string value.
 
-```
+```vtl
 #if( $hostname.contains("C9300-48") )
 #set( $Switch = 30 )
 #Interfaces
@@ -128,7 +128,7 @@ A For loop allows for multiple iterations of a sequence of commands perhaps incl
 
 Command Construct:
 
-```
+```vtl
 #[{]foreach[}] ( $ref in arg ) statements [#[{]else[}] alternate statements] #[{]end[}]
 
 Usage:
@@ -142,7 +142,7 @@ Usage:
 ```
 Additionally you can use these methods within the loop:
 
-```
+```vtl
     $foreach.count : 1-based loop index
     $foreach.index : 0-based loop index
     $foreach.first : true on the first iteration
@@ -153,7 +153,7 @@ Additionally you can use these methods within the loop:
 
 An example of a For Loop
 
-```
+```vtl
     Reference Example: 
     
     #foreach ( $Vlan in $Vlans ) 
@@ -178,7 +178,7 @@ An example of a For Loop
 
 For Safety the maximum allowed number of loop iterations can be controlled engine-wide with velocity.properties. By default, there is no limit:
 
-```
+```vtl
     #The maximum allowed number of loops.
     directive.foreach.max_loops = -1
 ```
@@ -186,7 +186,7 @@ For Safety the maximum allowed number of loop iterations can be controlled engin
 ## Multi Line Commands
 These can be used for building entries for multiple lines which need to be used within a command like with banners.
 
-```
+```vtl
 !BANNER LOGIN
 <MLTCMD>banner login ^
   Session On $hostname Is Monitored!!!

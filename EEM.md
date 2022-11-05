@@ -24,7 +24,7 @@ Previously within the Composite Templating Lab, we introduced a methodology of a
 ### ***Examine Code***
 The script we used on the Composite Templates uses an EEM script that runs whenever a CDP event occurs.
 
-```
+```vtl
    event manager applet update-port
     event neighbor-discovery interface regexp GigabitEthernet.* cdp add
     action 101 regexp "(Switch|Router)" "$_nd_cdp_capabilities_string"
@@ -51,7 +51,7 @@ While this script will rename the uplinks connected to a Router or Switch, it is
 ### ***Modify Code***
 So let's modify the EEM script first to solve the naming aspect concerning connected devices.
 
-```
+```vtl
    event manager applet update-port
     event neighbor-discovery interface regexp GigabitEthernet.* cdp add
     action 101 regexp "(Switch|Router)" "$_nd_cdp_capabilities_string"
@@ -102,7 +102,7 @@ The second part of the problem within this use case is solving the issue present
 
 *Self-Destructing EEM scripts* are those that delete themselves on termination. Within the code below, you will notice that line 2.1 removes the EEM applet from the configuration, and then line 2.3 ensures the configuration is written to NVRAM before terminating.
 
-```
+```vtl
    event manager applet POST_PNP
     event timer countdown time 30
     action 1.0 cli command "enable"
@@ -123,7 +123,7 @@ So how do we have our cake and eat it too...
 
 Luckily we can create a fully dynamic environment with a gated procedure. You might build out the following EEM scripts to give that Dynamic look and feel entirely. Typically, the types of devices where we might have issues like this where *MAB* or *EAP* are not going to work maybe those which identify themselves in another way. In the following instance, we can use **PoE** power events to trigger an EEM. See the following code:
 
-```
+```vtl
 event manager applet DETECT_SW_IEEE_POE_UP
  event syslog pattern "%.*POWER.*GRANTED.* Interface.*"
  action 10    regexp "Interface ([^ ]+):" "$_syslog_msg" match intf
@@ -155,7 +155,7 @@ event manager applet DETECT_SW_IEEE_POE_UP
 ## Case 4 - ***Dynamic Port Configuration for Closed Mode - Use Case***
 But you may say, we have modified the physical interface configuration, well we can reset that too to the **BASE CONFIG** through another EEM script as follows:
 
-```
+```vtl
 event manager applet DETECT_SW_INT_DOWN
  event syslog pattern "%LINK.* Interface.* changed state to .* down"
  action 10    regexp "Interface ([^ ]+)," "$_syslog_msg" match intf
@@ -193,7 +193,7 @@ This EEM script makes sure the interface is not a portchannel member and then re
 ## Case 5 - ***Using Scheduling capability to make changes - Use Case***
 For situations where you need to automate a repeated task over a number of days at a specific set of times, you can make use of this type of design. Here we use the built-in scheduling system and tie the EEM script to the time. This script completes port resets at 8:30 am Monday through Friday.
 
-```
+```vtl
 event manager applet DAILY-RESET
  event timer cron name DAILY-RESET cron-entry "30 08 * * 1-5"
  action 1.0 syslog msg "RUN: 'DAILY-RESET'  EEM applet."
@@ -210,7 +210,7 @@ event manager applet DAILY-RESET
 
 Here is an example that does a periodic save of the configuration for compliance reasons.
 
-```
+```vtl
 event manager applet PERIODIC-CONFIG-SAVE
  event timer cron name CONFIG-SAVE-TIMER cron-entry "55 23 * * 1-5" action 1.0 cli command "enable"
  action 1.0 cli command "copy running-config startup-config"
@@ -219,7 +219,7 @@ event manager applet PERIODIC-CONFIG-SAVE
 ### Case 6 - ***Collecting Forensics when an event happens - Use Case***
 For situations where you need to collect forensics using multiple show commands you can collapse the results of all those appending them to a file on flash and then attach them in the body of an email to be sent off to the companies Network Operations Center. This example helps with those situations.
 
-```
+```vtl
 event manager session cli username admin 
 event manager applet LINK-EVENT-NOTIFIER
 event syslog pattern "%BGP-5-ADJCHANGE: neighbor 10.1.1.10 Down BGP Notification Sent"
@@ -240,7 +240,7 @@ For compliance reasons you might want a northbound notification to occur if the 
 
 First turn on Configuration Archiving and keep copies of the configurations over time locally or remotely.
 
-```
+```vtl
 archive
  log config
   logging enable
@@ -252,7 +252,7 @@ archive
 ```
 
 Then look for 
-```
+```vtl
 event manager applet CONF_MODIFIED
  event syslog pattern "%PARSER.*LOGGEDCMD:.*logged command:.*"
  action 1.0 cli command "enable"
@@ -270,7 +270,7 @@ event manager applet CONF_MODIFIED
 ### Case 8 - ***Configuring Customized Commands - Use Case***
 The alias command is used as a short form for the `clear counters` cli command. The `cc` custom command is then mapped to the applet which clears the counters. Look more closely this applet also deals with questions the IOS presents when entering a command.
 
-```
+```vtl
 event manager applet CLEAR-COUNTERS
 event none
 action 1.0 cli command "enable"
@@ -282,7 +282,7 @@ alias exec cc event manager run CLEAR-COUNTERS
 
 Another example which displays to screen multiple show commands in a specific way.
 
-```
+```vtl
 alias exec showdemo event manager run showdemo
 
 no event manager applet showdemo
@@ -309,7 +309,7 @@ action 1340 puts ""
 ### Case 9 - ***Automatically Configuring PnP Startup Vlan for PnP - Use Case***
 Here we have two examples that will allow for the automated configuration of the `pnp startup-vlan` command on an interface for seed devices connected downstream.
 
-```
+```vtl
  event manager applet pnp_checker authorization bypass
   event syslog pattern "%CDP.*NATIVE_VLAN_MISMATCH:"
   action 010 cli command "enable"
@@ -328,7 +328,7 @@ Here we have two examples that will allow for the automated configuration of the
   action 075  put "end of config"
   action 080 end
 ```
-```
+```vtl
 event manager applet pnp_checker authorization bypass
  event syslog pattern "%CDP-4-NATIVE_VLAN_MISMATCH:"
  action 010 cli command "enable"

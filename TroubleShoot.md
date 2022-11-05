@@ -10,7 +10,7 @@ The assumption is that no errors were visible in the template and that it seems 
 
 In this situation it helps to understand where in the template we are experiencing an issue. To find that deploy this code temporarily on the device. This will allow the commands deployed from the template 
 
-```
+```vtl
 event manager applet CLI_COMMANDS-->
  event cli pattern ".*" sync no skip no
  action 1 syslog msg "$_cli_msg"
@@ -20,7 +20,7 @@ term mon
 
 An alternative solution would be to log the lines to a file on the flash drive of the device.
 
-```
+```vtl
 !
 event manager applet CLI_COMMANDS-->
 event cli pattern ".*" sync no skip no

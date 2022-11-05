@@ -1,7 +1,7 @@
 # Variables [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 Variables are used to allow scripts or code for that matter to be reused. A variable within a script allows us to replace the data on demand thereby allowing the reuse of parts of or entire templates. Variables may be defined in a couple of ways but the data entered will either numerical or string. A numerical value is just that a number where as a string is either a line of text or perhaps just a name.
 
-``` 
+```vtl
     Variable reference:     #set( $monkey = $bill )
     String literal:         #set( $monkey.Friend = 'monica' )
     Property reference:     #set( $monkey.Blame = $whitehouse.Leak )
@@ -23,7 +23,7 @@ Usage:
 
 Types of Notation:
 
-```
+```vtl
     $[{]identifier.identifier([ parameter list... ])[|alternate value][}]
     
     Formal Notation.        ${Switch} 
@@ -33,7 +33,7 @@ Types of Notation:
 
 Data may be set to the variables via a set command
 
-```
+```vtl
 #set( $StringVariable = "text" )
 #set( $NumericVariable = 10 )
 ```
@@ -45,11 +45,11 @@ It is possible to create arrays as well which can be iterated through with Forea
 * Define each element of the list with an identifier
 
 Both examples follow:
-```
+```vtl
 #set( $L2Bgps = ["10" , "18"] )
 ```
 
-```
+```vtl
 #set( $L2Bgps = [] )
 #set( $L2Bgps[0] = 10 )
 #set( $L2Bgps[1] = 18 )
@@ -57,7 +57,7 @@ Both examples follow:
 
 Additional set commands available are the following:
 
-```
+```vtl
     Variable reference:    #set( $monkey = $bill )
     String literal:        #set( $monkey.Friend = 'monica' )
     Property reference:    #set( $monkey.Blame = $whitehouse.Leak )
@@ -70,7 +70,7 @@ Additional set commands available are the following:
 
 Simple arithmetic expressions can be accomplished as follows:
 
-```
+```vtl
     Addition:       #set( $answer = $number + 1 )
     Subtraction:    #set( $answer = $number - 1 )
     Multiplication: #set( $answer = $number * $mod )
@@ -91,22 +91,22 @@ With variables there are modifiers that can be used to do specific operations wi
 
 
 1. An example that splits a string result using on a specific character as a delimeter and fills an array $StackPIDs.
-   ```
+   ```vtl
    #set( $StackPIDs = $ProductID.split(",") )
    ```
 
 2. This example determines the number of elements in an array.
-   ```
+   ```vtl
    #set( $StackMemberCount = $StackPIDs.size() )
    ```
 
 3. This example uses a regular expression to reduce the PID of a switch to either 24 or 48 to reflect port count.
-   ```
+   ```vtl
    #set( $PortCount = $Model.replaceAll("C9300L?-([2|4][4|8]).*","$1") )
    ```
 
 4. This last example adds the value of $PortCount as a new element appending it within the array $PortTotal
-   ```
+   ```vtl
      #set( $foo = $PortTotal.add($PortCount) )
    ```
 
@@ -181,7 +181,7 @@ Within DNA Center it is possible to Bind Variables to devices. Within DNA Center
 ### Built-in Variables
 Within DNA Center it is possible to utilize Built-in variables for a number of values allowing you to address network settings within the design, to other interface information from devices. This example of code utilizes the `$__interface` built in variable to determine the characteristics of a port and then apply a macro to each port for a specific device.
 
-```
+```vtl
 #foreach( $interface in $__interface )
   #if( $interface.portMode == "trunk" && $interface.interfaceType == "Physical")
     interface $interface.portName

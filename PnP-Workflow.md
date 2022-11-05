@@ -12,7 +12,7 @@ By default the target switch is using vlan 1 as no other vlan exists, and vlan 1
 
 If the management vlan is going to be different from vlan 1 we will use a command on the upstream switch to communicate that to the downstream target switch. To that end we must make use of the *pnp startup-vlan* command which allows the device to use any vlan in pnp. This command introduced on the upstream neighbor enables automatic downstream configuration on the target enabling it for DHCP and making it ready for the pnp process.
  
-```
+```vtl
 pnp startup-vlan 100
 ```
 
@@ -20,7 +20,7 @@ The target switch will then set up a separate vlan for management. This command 
 
 The Target switch will typically be connected to either a single port or as part of a port channel. The port where the Target switch will be connected needs for this lab to be connected as a trunk. 
 
-```
+```vtl
 interface Port-channel1
 switchport trunk native vlan 5
 switchport mode dynamic desirable
@@ -61,11 +61,11 @@ The PnP components are as follows:
 There are 3 automated methods to make that occur:
 
 1. **DHCP with option 43**
-```
+```shell
    PnP string: 5A1D;B2;K4;I172.19.45.222;J80 added to DHCP Server
 ``` 
 2. **DNS lookup**
-``` 
+```shell
    pnpserver.localdomain resolves to DNA Center VIP Address
 ```
 3. **Cloud re-direction https://devicehelper.cisco.com/device-helper**
@@ -88,7 +88,7 @@ Option 43 format follows as documented on the [DNA Center User Guide](https://ww
 
 Benefits to this method are that you can contain the connectivity in a finite manner and perscriptively by only allowing equipment on specific subnets to find DNA Center.
 
-```
+```shell
 Option 43 format 
  The option 43 string has the following components, delimited by semicolons:
  
@@ -131,7 +131,7 @@ Jxxxx             Port number to use to connect to the Cisco DNA Center controll
 #### IOS Configuration Example
 Configured on a IOS device it would look like this example:
 
-```
+```vtl
   ip dhcp pool pnp_device_pool                          <-- Name of DHCP pool
      network 192.168.1.0 255.255.255.0                  <-- Range of IP addresses assigned to clients
      default-router 192.168.1.1                         <-- Gateway address
@@ -149,14 +149,14 @@ Benefits to this methodology are that you can cover a large organization rapidly
 
 **Option 1:** An A record would be created pointing to the VIP address. Another A record may also be added for the pnpserver record to resolve to the same address. In this regard the two entries might look like this:
 
-```
+```shell
              A - dnac.domain.com -> 10.10.0.20
              A - pnpserver.domain.com -> 10.10.0.20
              
              where 10.10.0.20 is the VIP address on the Enterprise Network
 ```
 This might show the following when using **nslookup**
-```
+```shell
 nslookup dnac.domain.com
 Server:		10.10.0.250
 Address:	10.10.0.250#53
@@ -173,7 +173,7 @@ Address: 10.10.0.20
 ```
 **Option 2:** An A record would be created pointing to the VIP address. A CNAME alias record may also be added for the pnpserver record to resolve to the address via . In this regard the two entries might look like this: This allows for changes to the A record to automatically be propogated to any child records easily and at the same time.
 
-```
+```shell
              A - dnac.domain.com -> 10.10.0.20
              CNAME - pnpserver.domain.com -> dnac.domain.com
              
@@ -181,7 +181,7 @@ Address: 10.10.0.20
 ```
 
 This might show the following when using **nslookup**
-```
+```shell
 nslookup dnac.domain.com
 Server:		10.10.0.250
 Address:	10.10.0.250#53
