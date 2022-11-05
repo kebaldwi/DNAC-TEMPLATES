@@ -127,7 +127,7 @@ For Jinja2 download and import an Onboarding Template in the **Template Editor**
 
 The Onboarding template has the minimal configuration to bring up device connectivity with DNAC. Below is for explanation purposes only. (Please Import the Template JSON above)
 
-```
+```vtl
 ##<------Onboarding-Template------->
 ##To be used for onboarding when using Day N Templates
 ##Define Variables provision with vlan and port channel
@@ -237,7 +237,7 @@ At this point you can claim the device putting it in a planned state for onboard
 ### Step 2 - ***Post PnP Onboarding***
 To complete this exercise, the port where the Target switch connects is a layer two trunk as part of a Port Channel needs to have a final tweak. To ensure ongoing connectivity we need to modify the upstream connection to put it in bundled mode. 
 
-```
+```vtl
 !
 conf t
 !

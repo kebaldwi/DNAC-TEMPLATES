@@ -73,7 +73,7 @@ Follow these steps:
 
 1. Click the settings gear icon on the top right of postman to select settings.
 ![json](./images/Postman-Settings-Menu.png?raw=true "Import JSON")
-2. Deselect the 'SSL certificate verification`
+2. Deselect the 'SSL certificate verification'
 ![json](./images/Postman-Settings-SSL-Validation-On.png?raw=true "Import JSON")
 3. It should look as shown, and then close the settings window.
 ![json](./images/Postman-Settings-SSL-Validation-Off.png?raw=true "Import JSON")

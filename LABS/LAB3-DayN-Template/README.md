@@ -36,7 +36,7 @@ Download and import a simple Day N Template in the **Template Editor** using the
 
 The DayN regular template has the minimal AAA configuration to configure the device for local AAA connectivity independent of ISE to work with DNAC. Below is for explanation purposes only. (Please Import the Template JSON above)
 
-```
+```vtl
 aaa new-model
 !
 aaa authentication username-prompt "Authorized Username:"

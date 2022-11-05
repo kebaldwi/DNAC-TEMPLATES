@@ -82,7 +82,7 @@ We will **open** but **not save** the CSV file to view the hierarchy that will b
 
 The hierarchy the CSV will build will be this:
 
-```
+```text
 Global > State
 Global > State > California > Building10 > Floor1
 Global > State > California > Building10 > Floor2
@@ -122,7 +122,7 @@ To investigate the collections we have built, follow these steps:
    ![json](./images/Postman-Collection-Token-Test.png?raw=true "Import JSON")
    2. The API has the following defined:
 
-      ``` 
+      ``` js
        1.     var jsonData = JSON.parse(responseBody);
        2.     if (jsonData.Token) {
        3.       pm.test("Token acquired",() => {pm.expect(pm.response.text()).to.include("Token");});
