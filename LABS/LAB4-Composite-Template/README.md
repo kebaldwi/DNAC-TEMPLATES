@@ -17,6 +17,9 @@ While we could deploy more extensive settings for deployment, we will limit the 
 ## Lab Section 2 - DNA Center Day N Composite Template Preparation
 You can create Day N Composite Templates within the ***Template Editor*** within **DNA Center**. Go to the ***Template Editor*** to complete the next task. In this lab, we will deploy a Composite Template and additional Regular Templates within a project.  The import and export function within **DNA Center** allows both the import and export of templates and projects, along with the ability to clone them.
 
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
+
 ### Step 1 - ***Import Project with Templates***
 Download and import the project within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/templates/2125templates/DNAC_Template_Lab_DayN_project.json">⬇︎DNAC_Template_Lab_DayN_project.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then use the previously built project within Lab 3 and build the templates located within the following <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/templates/Platinum_Templates.zip">⬇︎Platinum_Templates.zip⬇︎</a> file located within this lab. 
 
@@ -54,7 +57,12 @@ The project we imported contains the following templates:
 
 Additionally, it contains a Composite Template. The composite template will allow us to reuse multiple Regular templates, thereby allowing modularity. Thus we can keep our configuration scripts in smaller files allowing reuse across various platforms. Subsequently helps in troubleshooting as the configurations become smaller and less complex as a result.
 
+</details>
+
 ## Lab Section 3 - DNA Center Composite Template Preparation
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 ### Step 1 - ***Create Composite Template***
 Within the project is a Composite Template, but the steps involved to create one are simple. **The next steps are optional**.
@@ -124,8 +132,13 @@ Next, we need to assign the DayN Composite Template to a site using the Network 
 
 Now the Composite Template has been applied to the Network Profile, any changes made to the template would immediately be ready for provisioning to the sites aligned to the profile where the template is deployed. This allows for ongoing changes and modifications to the network infrastructure.
 
+</details>
+
 ## Lab Section 4 - Provisioning
 At this point, DNAC is set up and ready to provision the new composite template to the device. This next set of sequences will push the various Network Settings, Services, and DayN Templates as part of the composite sequence to the device.
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 ### Step 1 - ***Provisioning the Device***
 We will now provision the switch using DayN Composite Templates. To do this, do the following:
@@ -159,6 +172,8 @@ We will now provision the switch using DayN Composite Templates. To do this, do 
       ![json](./images/DNAC-DeviceConfig.png?raw=true "Import JSON")
 
 At this point, we have onboarded a device and successfully pushed configuration via Onboarding and DayN Templates as well as Composite Templates. 
+
+</details>
 
 ## Automating Composite Templates
 While it is possible to click through these processes manually, which can be time-consuming, we can handle this differently. We may automate them further via REST API.

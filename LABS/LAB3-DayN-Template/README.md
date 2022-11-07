@@ -15,6 +15,9 @@ While a more extensive set of settings can be built out for deployment, we will 
 ## Lab Section 2 - DNA Center Day N Template Preparation
 You can create Day N Templates within the ***Template Editor*** within **DNA Center**. Go to the ***Template Editor*** to complete the next task. Initially, we will keep things pretty simple and deploy one Day N regular template. Once the process has been discussed in detail, we will build on this within the following labs. 
 
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
+
 ### Step 1 - ***Create a Day N Template***
 Download and import a simple Day N Template in the **Template Editor** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/templates/2125templates/Platinum_AAA_Template.json">⬇︎Platinum_AAA_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/templates/Platinum_AAA_Template.txt">⬇︎Platinum_AAA_Template.txt⬇︎</a> located within this lab. 
 
@@ -67,8 +70,13 @@ Next, we need to assign the DayN Template to a site using the Network Profile. A
       4. Click **Save** to save the modifications to the Network Profile.
          ![json](./images/DNAC-ProfileSuccess.png?raw=true "Import JSON")   
 
+</details>
+
 ## Lab Section 3 - Provisioning
 At this point, DNAC is set up and ready to provision the new regular template AAA to the device. This next set of sequences will push the various Network Settings, Services, and DayN Templates to the device.
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 ### Step 1 - ***Provisioning the Device***
 We will now provision the switch using DayN Templates. To do this, do the following:
@@ -100,6 +108,8 @@ At this point, we have onboarded a device and successfully pushed configuration 
 
 #### Note:
 If you populate the UI with settings, those parameters should **not** be in your templates as they will conflict, and the deployment through provisioning will fail. While it is easy to populate these settings, it is best to test with a switch to see what configuration is pushed.
+
+</details>
 
 ## Automating Claiming and Provisioning
 While it is possible to click through the claiming and provisioning processes manually, which can be time-consuming, we can handle bulk deployments differently. For Bulk deployments, after the templates are built and assigned to the network profile and a site, we may automate them further by uploading a CSV file to DNA Center via REST API.

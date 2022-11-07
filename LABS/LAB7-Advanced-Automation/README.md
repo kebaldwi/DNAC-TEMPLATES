@@ -38,6 +38,9 @@ The Topics listed above will be covered in several use cases to show the capabil
 ## Step 1 - ***Renaming Interfaces - Use Case***
 Previously within the Composite Templating Lab, we introduced a methodology of automatically naming the interfaces within the switch. When a new device or switch/router/access point connects to a switch, we want to describe those interfaces. Naming the uplinks specifically and the various wireless access points and IP Phones would be an excellent addition. 
 
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
+
 ### ***Examine Code***
 The script we used on the Composite Templates uses an EEM script that runs whenever a CDP event occurs.
 
@@ -132,8 +135,13 @@ The second part of the problem within this use case is solving the issue present
 
 This code allows us to *clear the CDP table* and delete itself but leave the other EEM script on the switch for any moves, adds, and changes to the devices connected to the switch.
 
+</details>
+
 ## Step 2 - ***Building Stacks - Use Case***
 Previously within the Composite Templating Lab, we introduced a methodology of automatically building a data stack and power stack configuration within the switch. When a new device or switch is built, we may want to control which switch is Active and standby within the stack. 
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 ### ***Examine Code***
 To that end, the following configuration has been built previously:
@@ -182,8 +190,13 @@ Within this script, you can see the Conditional Statements `#if #elseif #else #e
 
 Within this script, you can see the use of the Enable Statements `#MODE_ENABLE #MODE_END_ENABLE`. These commands allow for enable level configuration commands to be entered. This script needs to configure the enable level command to set switch priority for individual switches `switch $Switch priority #`. Bracketing this configuration command with the velocity statements `#MODE_ENABLE #MODE_END_ENABLE` allows us to change from configuration mode to enable mode and back again.
 
+</details>
+
 ## Step 3 - ***Assigning Port Configuration - Use Case***
 Previously within the Composite Templating Lab, we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relied on a few variables used to extrapolate the settings that were then configured via the template. This allowed a set of macros to be utilized to build out the various settings for VLANs, Ports, and Uplinks. 
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 ### ***Examine Code***
 We will analyze the configuration in more detail below and modify it for greater capabilities toward the end of this section.
@@ -425,12 +438,17 @@ While this methodology deals programmatically with port configuration, and while
 
 To deal with all these outstanding issues, we will look at the next lab section to provide the final solution to the problem.
 
+</details>
+
 ## Step 4 - ***Autoconf Port Configuration - Use Case***
 Previously within the Composite Templating Lab and in the previous section, we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relies on a few variables used to extrapolate the settings that were then configured via the template. This allowed a set of macros to be utilized to build out the various settings for VLANs, Ports, and Uplinks. 
 
 While these were methodologies that dealt programmatically with port configuration, and while you may adapt them for an environment, they are both lacking in the fact that they are not dynamic enough. Again, it's impossible to determine without looking at the configuration where something is plugged in. Secondly, if equipment or users are plugged into the wrong interface, they may get the wrong level of access. 
 
 In previous code revisions, we could deal with some of the problems with Auto Smart Port technology, but that has been deprecated, and its replacement is a lot more dynamic. This section will deal with the first part of the problem concerning assigning ports for hardware like Access Points.
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 ### ***Modify Code***
 First, let's deal with VLANs on the Target switch. In the example above, we modified the existing code to extrapolate the various device VLANs using a built-in variable like the native VLAN. This is not a bad idea. Then you could define different native VLANs for downstream switches on a distribution, thereby building out the VLANs dynamically. If you prefer, an excel list of numbers could be an alternative. In that case, you would not need this section and rely on the variables being used after this code block.
@@ -570,12 +588,17 @@ We apply the various previously defined Macros in the above code to configure th
 
 While we have configured all the various interfaces, this does not consider Authentication and Authorization scenarios. It sets us up nicely to reuse the templates calling them directly from Identity Services Engine in Authorization Policies.
 
+</details>
+
 ## Step 5 - ***Non SDA IBNS2.0 Port Configuration - Use Case***
 The last sections of this lab will walk through the various considerations for **IBNS2.0** and how to deal with host onboarding in a Non **SD-Access** Fabric environment. Once the Identity Services Engine is integrated with DNA Center, then not only do you get the benefit of pxgrid integration allowing for the building of policy, but the AAA Server section within Design will build out the various settings which inturn program the network access devices for AAA Network and Client Dot1x settings.
 
 It is also essential to understand that with **IBNS2.0** and templates or interfaces running in ***closed mode***, the dynamic capability of **Autoconf** is not going to operate because there is a service-policy applied to the interface. While the device classifier will operate, for some devices that require an IP address, they may reboot before the classifier has done its job and so inconsistancies can occur. Remember in closed mode no packets are forwarded including DHCP prior to authentication occurring. If the interface is in ***low impact mode***, then and only then will **Autoconf** operate properly and as a result of the pre-auth acl DHCP may be allowed.
 
 Considering DNA Center will push at that point all the relevant IBNS2.0 settings to the device, this leaves us with the mere setting up of **Host Onboarding**, which we will detail below.
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 #### **Important Note:** 
 *We need to remember that for the use of this section, ISE needs first to have been integrated with DNA Center. Additionally, the Design Settings will need to be modified for the sites to include at the very least* **Client AAA**.
@@ -979,8 +1002,13 @@ Now that we have defined all the various IBNS2.0 configurations on the switch, a
 
 Lastly, to create a fully dynamic environment, you might build out the following EEM scripts to entirely give that Dynamic look and feel. Because of the **Autoconf** vs **Closed Mode** limitation, we do not have a **Fully Dynamic environment**. Luckily, we have a way to resolve that issue. 
 
+</details>
+
 ## Step 6 - ***Non SDA IBNS2.0 Fully Dynamic Port Configuration - Use Case***
 So as explained, we have a chicken and the egg scenario, whereby we can't use **Autoconf** with **Closed Mode** as no packets can pass, which can be used with the parameter map to configure the interface automatically. Additionally, we want to have a **Secure Access** environment with **Zero Trust** using a policy on the interface that initially blocks traffic until authentication occurs. 
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 So how do we have our cake and eat it too...
 
@@ -1111,6 +1139,8 @@ event manager applet DETECT_SW_INT_DOWN
 ```
 
 This EEM script makes sure the interface is not a portchannel member and then reverts the interface to the **BASE CONFIG** automatically.
+
+</details>
 
 ## Summary
 Congratulations, at this point, you have successfully reviewed and may have adopted the various use cases or parts of them.

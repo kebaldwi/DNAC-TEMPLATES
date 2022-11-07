@@ -32,6 +32,9 @@ As the number of applications is always changing and protocol packs are always b
 
 Lets get started.
 
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
+
 ### Step 1 - ***Enabling Controller Based Application Recognition***
 The first step will be to enable the CBAR service. During the course of this operation we will enable CBAR on the switch, as well as instantiate feeds and connect with external authoritative sources at Cisco and Microsofts 0365.
 
@@ -77,8 +80,13 @@ Within the CBAR Application, we will now update the protocol pack for the **ACCE
 3. Eventually the protocol pack will show as *updated*.
    ![json](./images/DNAC-Protocol-Updating.png?raw=true "Import JSON")
 
+</details>
+
 ## Lab Section 2 - Building and Deploying an Application Policy
 The Application Policy methodology within DNA Center allows for two types of policies to be constructed, wired and wireless. During this section we will build and deploy an Application Policy for a wired environment.
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 ### Step 1 - ***Build Application Policy Draft***
 1. Navigate to **Application Policy** within DNA Center through the menu *Policy>Application*.
@@ -137,8 +145,13 @@ The Application Policy methodology within DNA Center allows for two types of pol
 
 At this point you have successfully pushed a CVD QoS Policy to the network.
 
+</details>
+
 ## Lab Section 3 - Building and Deploying a Custom Application
 The Application Policy methodology within DNA Center allows for two types of policies to be constructed, wired and wireless. During this section we will build and deploy an Application Policy for a wired environment.
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 ### Step 1 - ***Building a Custom Application***
 1. Navigate to **Application Sets** within DNA Center from the Application Policies tab select **Application Sets** and then the redirect.
@@ -184,6 +197,8 @@ The Application Policy methodology within DNA Center allows for two types of pol
    ![json](./images/DNAC-AppPolicy-17-Final.png?raw=true "Import JSON")
 
 At this point you have successfully built and deployed a custom Application within a QoS Policy.
+
+</details>
 
 ## Automating Application Policies
 While it is possible to click through these processes manually, which can be time-consuming, we can handle this differently. We may automate them further via REST API.

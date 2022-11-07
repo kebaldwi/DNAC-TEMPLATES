@@ -16,6 +16,9 @@ While a more extensive set of settings can be built out for a deployment we will
 
 Before DNA Center can automate the deployment we have to do a couple of tasks to prepare. Please log into the DNA Center using a browser within the Windows **Jump host**. Use the credentials of username: ***admin*** password: ***C1sco12345***. Then browse to [DNA Center](https://198.18.129.100). Use the credentials of username: ***admin*** password: ***C1sco12345*** within the DCLOUD environment.
 
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
+
 Although you can manually set up the hierarchy we will use automation scripts built to implement the hierarchy via **postman** which will utilize the **DNA Center API's** To do this we will make use of the application `postman` in the Windows workstation and install json files.
 
 1. Download the following two files by right clicking and opening each in a new tab to download them to the downloads folder on the workstation:
@@ -107,8 +110,13 @@ The image used in this lab for the 9300 is downloadable from here [⬇︎Amsterd
 6. Select the image and mark it as golden for PnP to use it.   
    ![json](./images/DNAC-GoldenImageRepo.png?raw=true "Import JSON")
 
+</details>
+
 ## Lab Section 2 - DNA Center Onboarding Template Preparation
 You can create onboarding templates within the ***Template Editor*** within **DNA Center**. Go to the ***Template Editor*** to complete the next task.
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 ### Step 1 - ***Create an Onboarding Template***
 Download and import an Onboarding Template in the **Template Editor** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/templates/Platinum_Onboarding_Template_2125.json">⬇︎Onboarding_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/templates/Platinum-Onboarding.txt">⬇︎Onboarding.txt⬇︎</a> located within this lab. 
@@ -204,8 +212,13 @@ Next we need to assign the Onboarding Template to a site using the Network Profi
    6. Select the sites to apply the profile within the hierarchy and click save
    ![json](./images/DNAC-ProfileAssigned.png?raw=true "Import JSON")
 
+</details>
+
 ## Lab Section 3 - Claiming and Onboarding
 At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find DNA Center and land in the plug n play set of the devices section within the provisioning page.
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 ### Step 1 - ***Claiming the Device***
 At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
@@ -261,6 +274,8 @@ If you populate the UI with settings those parameters should **not** be in your 
 
 ## Automating Claiming and Provisioning
 While it is possible to click through the claiming and process, for bulk deployments its important to be able to address that as well. With DNAC after the templates are built and assigned to the network profile and assigned to a site they may be referenced and used by uploading a csv file to DNA Center via REST API.
+
+</details>
 
 ## Summary
 The next step will be to build DayN Templates for the switches to be pushed out to the various devices in the network infrastructure.

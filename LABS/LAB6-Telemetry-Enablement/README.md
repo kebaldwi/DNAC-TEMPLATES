@@ -8,6 +8,9 @@ Within this lab we will direct Netflow to DNA Center. It is important to underst
 ## Lab Section 1 - Enabling Telemetry
 In this lab we will enable the Telemetry Settings and Provision the new settings to a device on DNA Center.
 
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
+
 1. Navigate to the **Network Settings** within DNA Center through the menu *Design>Network Settings>*.
    ![json](./images/DNAC-Navigate-Settings.png?raw=true "Import JSON")
 2. Navigate to the **Telemetry** tab within the **Network Settings** page within DNA Center through the submenu.
@@ -31,8 +34,13 @@ In this lab we will enable the Telemetry Settings and Provision the new settings
 11. Click the **Success** message for more information.
    ![json](./images/DNAC-Provision-Telemetry-5.png?raw=true "Import JSON")
 
+</details>
+
 ## Lab Section 2 - Reviewing Telemetry Configuration
 In this section we will review the configuration that has been pushed to the device.
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 1. Select the **Inventory** focus.
    ![json](./images/DNAC-Provision-Telemetry-1.png?raw=true "Import JSON")
@@ -44,6 +52,8 @@ In this section we will review the configuration that has been pushed to the dev
    ![json](./images/DNAC-Provision-Config.png?raw=true "Import JSON")
 
 Notice the Netflow configuation that has been pushed and additinally scroll through the fully configured switch to see all the various telemetry settings whcih have been deployed from Syslog to SNMP.
+
+</details>
 
 At this point you have successfully built and deployed Telemety to a switch from DNA Center.
 

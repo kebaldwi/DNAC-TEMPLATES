@@ -38,6 +38,9 @@ Luckily we can create a fully dynamic environment with a gated procedure. We inc
 ## Lab Section 1 - DNA Center and ISE Integration
 In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate DNA Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
 
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
+
 ### Step 1 - ***Prepare ISE for DNA Center Integration***
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to Identity Services Engine (ISE) and select the hamburger menu icon to open the system menu.
 
@@ -78,10 +81,15 @@ In this lab our focus changes slightly as we start to automate for host onboardi
 ![json](./images/dnac-system-settings-aaa-ise-done.png?raw=true "Import JSON")
 ![json](./images/dnac-system-settings-aaa-ise-complete.png?raw=true "Import JSON")
 
+</details>
+
 ## Lab Section 2 - DNA Center Design Preparation
 While we could deploy more extensive settings for deployment, we will limit the configuration to the minimum necessary to perform this step, building off the completed tasks in labs one, [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB1-PNP-PREP/) and two, [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/).
 
 Should you desire to deploy rapidly and build the lab faster then use the following approach:
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 ### Step 1 - ***Import Postman Collection***
 1. Download and import the collection within the ***Postman*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/postman/DCLOUD_DNACTemplatesLab_Workflow.postman_collection.json">⬇︎DCLOUD_DNACTemplateLab_Workflow.postman_collection.json⬇︎</a> file.
@@ -122,12 +130,17 @@ This collection is built with a flow and delay timers wait for the collection to
 ![json](./images/Postman-Discovery.png?raw=true "Import JSON")
 ![json](./images/Postman-Settings.png?raw=true "Import JSON")
 
+</details>
+
 ## Lab Section 3 - DNA Center Template Preparation
 We will now import the various templates for use in this lab. Three will be utilized:
 
 1. Onboarding Template
 2. Lab Preparation Project & Templates
 3. Dynamic DayN Composite Project & Templates
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 ### Step 1 - ***Import Onboarding Template***
 The Onboarding Template previously discussed in Lab 2 will be used to Plug and Play a switch within the environment. for more information on this please see [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/)
@@ -186,8 +199,13 @@ Please un-zip the file and import the *json* file which will automatically creat
 
 Take a few moments and examine the construction of these projects and templates, as each has a specific function. Their design is modular to allow reuse of them within other composite templates for other switches or routers. 
 
+</details>
+
 ## Lab Section 4 - DHCP & DNS Service Preparation
 In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server for the lab environment. The reasons for the configurations made here are detailed heavily in Lab 2 titled [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/)
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 ### Step 1 - ***Configuring DHCP and DNS via Powershell***
 1. Download the powershell script to the ***windows server*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB8-Dynamic-Automation/scripts/powershell.ps1">⬇︎powershell.ps1⬇︎</a> file.
@@ -201,12 +219,17 @@ In this section we will prepare Domain Name System (DNS) and Dynamic Host Config
 At this point all the DNS and DHCP configuration on the ***windows server*** will be generated.
    ![json](./images/DNS-DHCP.png?raw=true "Import JSON")
 
+</details>
+
 ## Lab Section 5 - Image Repository
 As we have discovered the devices, from the network, DNA Center has the capability to pull those images deployed from the network devices in bundle mode. If the device is in install mode then you would manually have to add the images. We can then mark them as **Golden** for *Plug and Play* and *image upgrade* purposes. 
 
 For our purposes as we will be focusing on only the **9300-2** switch we will complete the following steps.
 
 The image used in this lab for the 9300-2 is downloadable from here [⬇︎Bengaluru-17.06.01 MD⬇︎](https://software.cisco.com/download/home/286315874/type/282046477/release/Bengaluru-17.6.1) **(required)** 
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 1. Within DNA Center Navigate to *Design>Image Repository*  
    ![json](./images/DNAC-Design-ImageRepo-menu.png?raw=true "Import JSON")
@@ -219,11 +242,16 @@ The image used in this lab for the 9300-2 is downloadable from here [⬇︎Benga
 4. Once the file is imported and as the devices were previously discovered and assigned to the infrastructure we will navigate to the *Floor 1* in the hierarchy and mark the *17.06.01* as **Golden** as shown for PnP to use it.  
    ![json](./images/DNAC-Design-ImageRepo-golden.png?raw=true "Import JSON")
 
+</details>
+
 ## Lab Section 6 - Setup of Discovered Devices
 At this point in the lab the setup steps for the lab environment are done, DNS and DHCP are set up, ISE is integrated and DNA Center is ready for deploying configurations. In this section we will deploy the templates to configure the discovered devices. Note we could have automated this process too but wanted to separate this out so you can make modifications as you might need to for testing purposes.
 
 ### Lab SubSection 6.1 - 9300 Target Preparation
 In this subsection we will prepare the **Target** using the *c9300-2.dcloud.cisco.com*. To begin preparation of this **Target** device we can deploy a template to modify discovered device within the infrastructure to reset it automatically. In order to accomplish this we will need to complete the following stages.
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 #### Step 1 - ***Building Switching Network Profiles***
 1. Navigate to the **Design** within DNA Center through the menu *Design>Network Profile*.
@@ -294,8 +322,13 @@ We will now delete the **Target** switch to allow for the switch to be discovere
    5. DNA Center will then delete the switch from the Database.  
       ![json](./images/DNAC-Provision-Target-delete-3.png?raw=true "Import JSON")
 
+</details>
+
 ### Lab SubSection 6.2 - ISR Preparation
 In this subsection we will apply a small template to the ISR 4331. This is to prove out that we can deploy templates to modify discovered devices within the infrastructure no matter what variant they are. You could also use this method to apply configuration to a router to mitigate vulnerabilities discovered as part of a tennable security scan. 
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 #### Step 1 - ***Building Routing Network Profiles***
 1. Navigate to the **Design** within DNA Center through the menu *Design>Network Profile*.
@@ -350,8 +383,13 @@ In this subsection we will apply a small template to the ISR 4331. This is to pr
    10. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
       ![json](./images/DNAC-Provision-ISR-success.png?raw=true "Import JSON")
 
+</details>
+
 ### Lab SubSection 6.3 - Distribution 9300 Preparation
 In this subsection we will apply a small templates to the Cat 9300-2 which is used as a distribution switch. This is to prove out that we can deploy templates to modify discovered devices within the infrastructure no matter what variant they are. You could also use this method to apply configuration to a switch to mitigate vulnerabilities discovered as part of a tennable security scan. 
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 #### Step 1 - ***Building Switching Network Profiles***
 1. Navigate to the **Design** within DNA Center through the menu *Design>Network Profile*.
@@ -412,8 +450,13 @@ We will now provision the distribution switch using the *DISTRO-C9300-2* DayN Co
    9. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
       ![json](./images/DNAC-Provision-Distro-flow-success.png?raw=true "Import JSON")
 
+</details>
+
 ### Lab SubSection 6.4 - Preparation Confirmation
 Once all the steps have been completed, the *c9300-1.dcloud.cisco.com* **Target** will have rebooted in a default state, acquired an IP address, discovered DNA Center and will appear in the **Plug and Play** tab in the **Provisioning** application. Confirm this by 
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
    1. Within DNA Center Navigate to *Provision>Inventory*.      
       ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
@@ -422,6 +465,8 @@ Once all the steps have been completed, the *c9300-1.dcloud.cisco.com* **Target*
 
 At this point we are ready to set up our **Target** switch.
 
+</details>
+
 ## Lab Section 7 - Target Switch Deployment
 At this point in the lab the setup steps for the lab environment are done,the switch is in the unclaimed section of the Plug and Play section. In this section we will deploy the templates to configure the Target 9300 device with the dynamic templates discussed in detail in Lab 7. Note we could have automated this process too but wanted to separate this out so you can make modifications as you might need to for testing purposes.
 
@@ -429,6 +474,9 @@ At this point in the lab the setup steps for the lab environment are done,the sw
 
 ### Lab SubSection 7.1 - 9300 Templates
 In this subsection we will begin preparation of this **Target** device by adding the templates previously uploaded to the network profile associated with the hierarchy. Please note that in DNA Center a single network profile of a given type may be used on a site within the hierarchy. In order to accomplish multiple use cases we use **Tags** and associate them to both the device and the template in question. In order to accomplish this we will need to complete the following stages.
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 #### Step 1 - ***Check for Access Tag on Templates***
 1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor*.
@@ -553,8 +601,13 @@ We will now provision the target *ACCESS-c9300-ASW* access switch using the Comp
    9. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
       ![json](./images/DNAC-Provision-Access-flow-success.png?raw=true "Import JSON")
 
+</details>
+
 ## Lab Section 8 - ISE Authorization Policy for FlexConnect
 At this point in the lab the setup steps for the lab environment are done,the switch is in the provisioned. In this section we will deploy a policy by configuring ISE to alter the port behaviour on authorization by utilizing a interface template for FlexConnect in a Change of Authorization. 
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 ### Step 1 - ***Build Logical Profiles for FlexConnect Access Point***
 First set up the Logical Profile we will reference for the Access Points. Logical Profile are a method of grouping and referencing multiple device profiles at the same time and may be used policy purposes.
@@ -630,6 +683,8 @@ Next set up the Authorization Policy which will allow for a successful authentic
    ![json](./images/ISE-PolicySets-Authorization-7.png?raw=true "Import JSON")
 12. Scroll to bottom of the page and click **Save**.
    ![json](./images/ISE-PolicySets-Authorization-8.png?raw=true "Import JSON")
+
+</details>
 
 Congratulations you have set up ISE to perform the required Authentication and Authorization of the Access Point.
 
