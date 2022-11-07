@@ -170,11 +170,11 @@ The lab will be split into modules to concentrate on specific tasks. Eash is des
 
 1. [**Wireless Controller PnP or Discovery**](./module1-ctrlpnpdiscovery.md)
 2. [**WLAN Creation**](./module2-wlans.md)
-3. [**Controller HA**](./module3-controllerha.md)
-4. [**AP Provisioning**](./module4-approvisioning.md)
-5. [**Application QoS**](./module5-applicationqos.md)
-6. [**Model Based Config**](./module6-modelbasedconfig.md)
-7. [**Wireless Templates**](./module7-wirelesstemplates.md)
+3. [**AP Provisioning**](./module3-approvisioning.md)
+4. [**Application QoS**](./module4-applicationqos.md)
+5. [**Model Based Config**](./module5-modelbasedconfig.md)
+6. [**Wireless Templates**](./module6-wirelesstemplates.md)
+7. [**Controller HA**](./module3-controllerha.md)
 
 ## Main Menus
 To return to the main menus
