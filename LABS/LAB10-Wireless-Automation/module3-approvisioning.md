@@ -92,7 +92,7 @@ In this lab as we are focusing on Wireless, the port configuration was automatic
 
 The switch port configuration used in this lab is:
 
-```bash
+```sh
 c9300-1#sh der int gi 1/0/2
   Building configuration...
   
