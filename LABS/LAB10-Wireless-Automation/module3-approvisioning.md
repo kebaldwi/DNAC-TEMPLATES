@@ -122,6 +122,7 @@ The Access Points are typically in varied states. Use the DCLOUD UI to console i
 5. When prompted enter at the `[confirm]` prompt.
 6. The AP will clear its config and reboot.
 7. After a few moments have passed check the PnP Claim page and the AP should be in the list.
+![json](./images/module3-approvisioning/dnac-pnp-ap-unclaimed.png?raw=true "Import JSON")
 
 At this point of the process the Access Points should appear in the PnP Claim window.
 
@@ -130,7 +131,9 @@ At this point of the process the Access Points should appear in the PnP Claim wi
 
 ![json](./images/module3-approvisioning/dnac-menu-provision-pnp.png?raw=true "Import JSON")
 
+2. On the Plug and Play page the following will appear. Notice the two access points have discovered and landed on DNA Center.
 
+![json](./images/module3-approvisioning/dnac-pnp-ap-unclaimed.png?raw=true "Import JSON")
 
 
 
