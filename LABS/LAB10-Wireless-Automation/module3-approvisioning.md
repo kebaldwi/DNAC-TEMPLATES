@@ -131,17 +131,73 @@ At this point of the process the Access Points should appear in the PnP Claim wi
 
 ![json](./images/module3-approvisioning/dnac-menu-provision-pnp.png?raw=true "Import JSON")
 
-2. On the Plug and Play page the following will appear. Notice the two access points have discovered and landed on DNA Center.
+2. On the *Plug and Play* page the following will appear. Notice the two access points have discovered and landed on DNA Center.
 
 ![json](./images/module3-approvisioning/dnac-pnp-ap-unclaimed.png?raw=true "Import JSON")
 
+3. On the *Plug and Play* page select the two access points as shown, then click on *Actions > Claim* within the **Actions** menu. 
 
+![json](./images/module3-approvisioning/dnac-pnp-ap-claim.png?raw=true "Import JSON")
 
+4. Within the *Claim* workflow on page *1* you will notice the Access Points may already be within the site `Global/DNAC Template Lab/Building/Floor 1` if not you have an option to select the Floor1 at this time if necessary complete the task. When ready click **Next** to continue the workflow. 
 
+![json](./images/module3-approvisioning/dnac-pnp-ap-claim-1.png?raw=true "Import JSON")
 
+5. Within the *Claim* workflow on page *2* we need to assign an *RF Profile*. When ready click **Assign** to continue on this section. 
 
+![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-assign-a.png?raw=true "Import JSON")
 
+6. A slide out *Configuration* window will appear. Please complete the following:
+   1. Click the *Radio Frequency Profile* drop down selection window
+   2. From the list that appears select **DNAC-WIRELESS** which we previously created
+   ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-a.png?raw=true "Import JSON")
 
+7. Within the slide out *Configuration* window click **Save** to continue on this section. 
+
+![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-save-a.png?raw=true "Import JSON")
+
+8. We will now repeeat the same process with the second access point. Within the *Claim* workflow on page *2* we need to assign an *RF Profile*. When ready click **Assign** beside the second access point to continue on this section. 
+
+![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-assign-b.png?raw=true "Import JSON")
+
+9. A slide out *Configuration* window will appear. Please complete the following:
+   1. Click the *Radio Frequency Profile* drop down selection window
+   2. From the list that appears select **DNAC-WIRELESS** which we previously created
+   ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-b.png?raw=true "Import JSON")
+
+10. Within the slide out *Configuration* window click **Save** to continue on this section. 
+
+![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-save-b.png?raw=true "Import JSON")
+
+11. Within the *Claim* workflow on page *2* ensure both access points have assigned *RF Profile's*. When ready click **Next** to continue the workflow. 
+
+![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-finish.png?raw=true "Import JSON")
+
+12. Within the *Claim* workflow on page *3* ensure both access points appear as shown. Click the **Preview Day-0 Config** links to discover what will be pushed to the access points.
+
+![json](./images/module3-approvisioning/dnac-pnp-ap-claim-summary-1.png?raw=true "Import JSON")
+
+13. Within the *Claim* workflow on page *3*  a *Summary Page* will slide out. Click on the details to display the relevant information. When ready click **X** at the top right to close the *Summary Page* and to continue the workflow. 
+
+![json](./images/module3-approvisioning/dnac-pnp-ap-claim-summary-2.png?raw=true "Import JSON")
+
+14. Within the *Claim* workflow on page *3* when ready click **Claim** to Claim the access points and begin the Day-0 provisioning process. 
+
+![json](./images/module3-approvisioning/dnac-pnp-ap-claiming.png?raw=true "Import JSON")
+
+15. A verification popup will appear, when ready click **Yes** to continue the Claim of the access points and begin the Day-0 provisioning process. 
+
+![json](./images/module3-approvisioning/dnac-pnp-ap-claiming-verify.png?raw=true "Import JSON")
+
+16. The access points will be displayed within the *Plug and Play* *Unclaimed* window as shown here initally as **Planned**. They will over time show **Onboarding**. 
+
+![json](./images/module3-approvisioning/dnac-pnp-ap-claim-planned.png?raw=true "Import JSON")
+
+17. Eventually will show as **Provisoned** under the *Provisioned* section
+
+![json](./images/module3-approvisioning/dnac-pnp-ap-claim-provisioned.png?raw=true "Import JSON")
+
+At this point the access points will synchronize with the inventory and display there for Day-N Provisioning.
 
 # Lab Section 2 - Access Point Provisioning
 In the preparation lab we discovered the rest of the topology, set up the required services, and part of those services were DHCP addresses which are help within scopes on the Windows AD Server. 
