@@ -92,21 +92,21 @@ In this lab as we are focusing on Wireless, the port configuration was automatic
 
 The switch port configuration used in this lab is:
 
-```vm
-				c9300-1#sh der int gi 1/0/2
-                Building configuration...
-                
-                Derived configuration : 261 bytes
-                !
-                interface GigabitEthernet1/0/2
-                 description Access Point Interface
-                 switchport access vlan 999
-                 switchport trunk native vlan 10
-                 switchport trunk allowed vlan 10,20,30,40,999
-                 switchport mode trunk
-                 spanning-tree portfast
-                 spanning-tree bpduguard enable
-                end
+```vtl
+c9300-1#sh der int gi 1/0/2
+  Building configuration...
+  
+  Derived configuration : 261 bytes
+  !
+  interface GigabitEthernet1/0/2
+   description Access Point Interface
+   switchport access vlan 999
+   switchport trunk native vlan 10
+   switchport trunk allowed vlan 10,20,30,40,999
+   switchport mode trunk
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+  end
 ```
 
 ### Step 3 - ***Access Point Claim*** TBC
