@@ -40,6 +40,9 @@ To get started with Wireless configuration and automation we first need to onboa
 
 While we have the ability to PnP a Wireless Controller typically these are estantiated initially with IP information on the physical hardware. As a result, and because of the current liimitations within the DCLOUD lab, we will concentrate on Discovery methods here. We will cover Controller PnP separately in another module (TBD).
 
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
+
 ### Step 1 - ***Setup Discovery Job***
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Tools>Discovery`.
 
@@ -161,6 +164,8 @@ While we have the ability to PnP a Wireless Controller typically these are estan
 9. At this point the Wireless Controller will show as assigned to the site `Floor 1`
 
 ![json](./images/module1-pnpdiscovery/dnac-inventory-assignment-results.png?raw=true "Import JSON")
+
+</details>
 
 ## Summary
 Congratulations you have completed the Controller Discovery module of the lab and the Wireless LAN Controller is ready for configuration and provisioning. Please use the navigatation below to continue your learning.
