@@ -81,7 +81,7 @@ Within the Scopes is a scope for the Access Point Vlan, aptly named *APVLAN* and
 
 ![json](./images/module1-pnpdiscovery/dhcp-apvlan-option43.png?raw=true "Import JSON")
 
-### Step 2 - ***Access Point Port Configuration***
+## Step 2 - ***Access Point Port Configuration***
 The second part of the PnP equation is setting the environment up to allow for the device to get the address in question. This was previously accomplished in the setup procedure of the lab utilizing a template which was auto provisioned to the switch after discovery.
 
 The Switch was configured to automatically configure switch ports with connected Access Points with the following configuration. This was accomplished through *AUTOCONF* as explained in previous labs 7 and 8.
@@ -92,7 +92,7 @@ In this lab as we are focusing on Wireless, the port configuration was automatic
 
 The switch port configuration used in this lab is:
 
-```sh
+```
 c9300-1#sh der int gi 1/0/2
   Building configuration...
   
@@ -109,22 +109,43 @@ c9300-1#sh der int gi 1/0/2
   end
 ```
 
-### Step 3 - ***Access Point Claim*** TBC
-The Access Points are typically in varied state, use the DCLOUD UI to console into each one then complete the following steps to clear them of any configuration:
+## Step 3 - ***Access Point Reset***
+The Access Points are typically in varied states. Use the DCLOUD UI to console into each one then complete the following steps to clear them of any configuration:
 
 1. Login to the Access Point with the following credentials: 
-   - Username: Cisco
-   - Password: Cisco
+   - Username: `Cisco`
+   - Password: `Cisco`
 2. Enter privileged mode by issuing the command `enable`
 3. when prompted for the enable password use the following credential:
-   - Enable Password: Cisco
+   - Enable Password: `Cisco`
 4. At the command prompt issue the following command, `capwap ap erase all`
 5. When prompted enter at the `[confirm]` prompt.
 6. The AP will clear its config and reboot.
 7. After a few moments have passed check the PnP Claim page and the AP should be in the list.
 
+At this point of the process the Access Points should appear in the PnP Claim window.
 
-1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the 
+## Step 4 - ***Access Point Claim***
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
+
+![json](./images/module3-approvisioning/dnac-menu-provision-pnp.png?raw=true "Import JSON")
+
+
+
+
+
+
+
+
+
+
+
+# Lab Section 2 - Access Point Provisioning
+In the preparation lab we discovered the rest of the topology, set up the required services, and part of those services were DHCP addresses which are help within scopes on the Windows AD Server. 
+
+
+
+
 
 ## Summary
 Congratulations you have completed the XXX module of the lab and . Please use the navigatation below to continue your learning.
