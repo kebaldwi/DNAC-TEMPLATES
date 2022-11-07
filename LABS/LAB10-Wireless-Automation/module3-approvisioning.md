@@ -72,6 +72,9 @@ There are 3 automated methods to make that occur:
 
 Once one of the options has been built devices will get the address and be pointed to and land on DNA Center within the PnP Device list.
 
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
+
 ## Step 1 - ***DHCP as a Discovery Method***
 DHCP services are important to understand primarily because along with the address and the gateway for connectivity is assigned option 43 which primes or directs the Cisco Access Point towards **DNA Center** or typically a **Wireless Controller**.
 
@@ -199,8 +202,13 @@ At this point of the process the Access Points should appear in the PnP Claim wi
 
 At this point the access points will synchronize with the inventory and display there for Day-N Provisioning.
 
+</details>
+
 # Lab Section 2 - Access Point Provisioning
 With the access points now onboarded through the claim process, they are now in a manageable state. We can now provision the *Wireless SSID* to them within the *Wireless RF Profile*. To accomplish this please follow the steps in this section. This will need to be completed whenever the SSID, are changed or modified within the Wireless Profile for the access points and normally AP provioning check box facilitates that operation. As this is the initial configuration of the access points we must complete this process.
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 1. Click the *Inventory* tab within the Provision Window. The following page will appear in the *Inventory* focus. 
 
@@ -234,10 +242,12 @@ With the access points now onboarded through the claim process, they are now in 
 8. Within the *Inventory* tab within the Provision Window change the focus by clicking the area indicated and select the *Provision* focus. Then click the **See Details** link beside one of the access points and view the information displayed.
 
 ![json](./images/module3-approvisioning/dnac-provision-ap-focus-provision.png?raw=true "Import JSON")
-
+                                        dnac-provision-ap-focus-provison
 10. A summary of the tasks applied to the selected access point will be displayed. 
 
 ![json](./images/module3-approvisioning/dnac-provision-ap-device-summary.png?raw=true "Import JSON")
+
+</details>
 
 ## Summary
 Congratulations you have completed the Access Point Plug and Play, and Provisioning and now have two correctly configured access points with SSID that can be used for testing. Please use the navigation below to continue your learning.
