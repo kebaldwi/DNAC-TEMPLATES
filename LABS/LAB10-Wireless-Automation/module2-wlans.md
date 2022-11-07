@@ -32,7 +32,7 @@ To get started with Wireless Controller configuration and automation we first ne
 
 This section will be devoted to building Wireless LAN's. Subsequent sections will cover the profiles and provisioning.
 
-<details closed>
+<details open>
 <summary> 1. Building a WLAN with a Pre-Shared Key (PSK)</summary>
 
 ### Building a PreShared Key (PSK) Wireless LAN
@@ -130,7 +130,7 @@ In this subsection we will build a Wireless LAN for PSK authentication.
 </details>
 
 <details closed>
-<summary> 2. Building a WLAN with a Identity Pre-Shared Key (iPSK)</summary>
+<summary> 2. Building a WLAN with a Identity Pre-Shared Key (iPSK) - in Development</summary>
 
 ### Building a Identity PreShared Key (iPSK) Wireless LAN
 In this subsection we will build a Wireless LAN for PSK authentication. 
@@ -227,7 +227,7 @@ In this subsection we will build a Wireless LAN for PSK authentication.
 </details>
 
 <details closed>
-<summary> 3. Building a WLAN with a Extensible Authentication Protocols (EAP)</summary>
+<summary> 3. Building a WLAN with a Extensible Authentication Protocols (EAP) - in Development</summary>
 
 ### Building a Extensible Authentication Protocol (EAP) Wireless LAN
 In this subsection we will build a Wireless LAN for EAP authentication. 
@@ -324,7 +324,7 @@ In this subsection we will build a Wireless LAN for EAP authentication.
 </details>
 
 <details closed>
-<summary> 4. Building a Guest WLAN </summary>
+<summary> 4. Building a Guest WLAN - in Development</summary>
 
 ### Building a Guest Wireless LAN
 In this subsection we will build a Wireless LAN for Guest authentication. 

@@ -200,14 +200,47 @@ At this point of the process the Access Points should appear in the PnP Claim wi
 At this point the access points will synchronize with the inventory and display there for Day-N Provisioning.
 
 # Lab Section 2 - Access Point Provisioning
-In the preparation lab we discovered the rest of the topology, set up the required services, and part of those services were DHCP addresses which are help within scopes on the Windows AD Server. 
+With the access points now onboarded through the claim process, they are now in a manageable state. We can now provision the *Wireless SSID* to them within the *Wireless RF Profile*. To accomplish this please follow the steps in this section. This will need to be completed whenever the SSID, are changed or modified within the Wireless Profile for the access points and normally AP provioning check box facilitates that operation. As this is the initial configuration of the access points we must complete this process.
 
+1. Click the *Inventory* tab within the Provision Window. The following page will appear in the *Inventory* focus. 
 
+![json](./images/module3-approvisioning/dnac-provision-inventory.png?raw=true "Import JSON")
 
+2. Please do the following:
+   1. Select the two access points as shown
+   2. Click the *Actions* menu and select `Actions > Provision > Provision Device` to begin the provisioning workflow.
+   ![json](./images/module3-approvisioning/dnac-provision-ap.png?raw=true "Import JSON")
 
+3. Within the *Provisioning* workflow on page *1* observe the settings only. When ready click **Next** to continue the Day-N provisioning process. 
+
+![json](./images/module3-approvisioning/dnac-provision-ap-1.png?raw=true "Import JSON")
+
+4. Within the *Provisioning* workflow on page *2* observe the settings only. When ready click **Next** to continue the Day-N provisioning process. 
+
+![json](./images/module3-approvisioning/dnac-provision-ap-2.png?raw=true "Import JSON")
+
+5. Within the *Provisioning* workflow on page *3* observe the device summarys only. When ready click **Deploy** to continue the Day-N provisioning process. 
+
+![json](./images/module3-approvisioning/dnac-provision-ap-3.png?raw=true "Import JSON")
+
+6. Within the *Provisioning* workflow a slide-out Provision Device window will appear on page *3*. Leave the default selection of **Now**. When ready click **Apply** to continue the Day-N provisioning process. 
+
+![json](./images/module3-approvisioning/dnac-provision-ap-start.png?raw=true "Import JSON")
+
+7. A verification popup will appear, when ready click **Yes** to continue the Claim of the access points and begin the Day-N provisioning process. 
+
+![json](./images/module3-approvisioning/dnac-provision-ap-start-verify.png?raw=true "Import JSON")
+
+8. Within the *Inventory* tab within the Provision Window change the focus by clicking the area indicated and select the *Provision* focus. Then click the **See Details** link beside one of the access points and view the information displayed.
+
+![json](./images/module3-approvisioning/dnac-provision-ap-focus-provision.png?raw=true "Import JSON")
+
+10. A summary of the tasks applied to the selected access point will be displayed. 
+
+![json](./images/module3-approvisioning/dnac-provision-ap-device-summary.png?raw=true "Import JSON")
 
 ## Summary
-Congratulations you have completed the XXX module of the lab and . Please use the navigatation below to continue your learning.
+Congratulations you have completed the Access Point Plug and Play, and Provisioning and now have two correctly configured access points with SSID that can be used for testing. Please use the navigation below to continue your learning.
 
 ## Lab Modules
 The lab will be split into modules to concentrate on specific tasks. Eash is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
