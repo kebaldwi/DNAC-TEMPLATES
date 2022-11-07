@@ -1,7 +1,4 @@
-# In Development
-![json](./images/underconstruction.png?raw=true "Import JSON")
-
-## Wireless Access Point PnP
+# Wireless Access Point Provisioning
 Within this lab module, we will concentrate our efforts on the PnP of each of the access points by **Cisco DNA Center**, so that we can onboard and gain management of those devices. 
 
 Within this lab we will concentrate on the following which are typical in most Enterprise Networks today:
@@ -13,7 +10,7 @@ Within this lab we will concentrate on the following which are typical in most E
 
 To begin lets review the wireless within the Cisco DCLOUD environment.
 
-### Required Components 
+## Required Components 
 For these labs we will be focusing on the wireless aspects, and while the switching and routing has been setup ahead of time our focus will be on the following:
 
 Virtual Machines:
@@ -31,7 +28,7 @@ Hardware Devices:
     9130AX Access Points
     Silex Controllers (3 Wired NIC's and 1 Wireless NIC)
 
-### Logical Topology
+## Logical Topology
 The lab envionment that is available is depicted here:
 
 For routing in the environment an OSPF IGP process has been created to propogate internal route information. Within the access switches which are connected at Layer 3 to the router, we have estansiated a layer 2 port channel between them and initiated various vlans for Access Point connectivity and for the clients, whose gateway is built on an HSRP instance shared between the two switches.
@@ -40,12 +37,12 @@ The 9130AX Access Points are connected to both access switches and the ports are
 
 ![json](./images/DCLOUD_Topology_Wireless-v1.png?raw=true "Import JSON")
 
-## Lab Section 1 - Access Point PnP
+# Lab Section 1 - Access Point PnP
 In the preparation lab we discovered the rest of the topology, set up the required services, and part of those services were DHCP addresses which are help within scopes on the Windows AD Server. 
 
 There are a few options for discovery using PnP. These were thoroughly discussed in the switching section and in a tutorial in the main menu. 
 
-#### Background 
+## Background 
 In order to land on DNA Center though the device needs help in finding it. 
 
 The PnP components are as follows:
@@ -75,7 +72,7 @@ There are 3 automated methods to make that occur:
 
 Once one of the options has been built devices will get the address and be pointed to and land on DNA Center within the PnP Device list.
 
-### Step 1 - ***DHCP as a Discovery Method***
+## Step 1 - ***DHCP as a Discovery Method***
 DHCP services are important to understand primarily because along with the address and the gateway for connectivity is assigned option 43 which primes or directs the Cisco Access Point towards **DNA Center** or typically a **Wireless Controller**.
 
 ![json](./images/module1-pnpdiscovery/dhcp-lab-scope.png?raw=true "Import JSON")
