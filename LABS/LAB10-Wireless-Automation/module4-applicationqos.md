@@ -102,23 +102,23 @@ The Application Policy methodology within DNA Center allows for two types of pol
    ![json](./images/module4-applicationqos/DNAC-AppPolicy-3-SiteEdit.png?raw=true "Import JSON")
 6. Please note that the gear icon you may have noticed on the right of the floor allows access to either exclude devices or interfaces from the QoS Policy should it be required. 
    ![json](./images/module4-applicationqos/DNAC-AppPolicy-4-SiteExclude.png?raw=true "Import JSON")
-   #### Queuing Policy to Apply
+#### Queuing Policy to Apply
 7. Click the **CVD_QUEUING_PROFILE** link to open the Queuing Profile Editor.
    ![json](./images/module4-applicationqos/DNAC-AppPolicy-5-Queue.png?raw=true "Import JSON")
 8. If you wished to deviate from the CVD Queuing Profile you could click **Add Profile**
    ![json](./images/module4-applicationqos/DNAC-AppPolicy-6-QueueCVD.png?raw=true "Import JSON")
 9. Within the Queuing Profile Editor you would name the new profile and then adjust the sliders to set your queuing policy. Once complete you would click **Select** to use that policy. We will not deviate from the CVD standard at this time so click **Cancel**.
    ![json](./images/module4-applicationqos/DNAC-AppPolicy-7-QueueCustom.png?raw=true "Import JSON")
-   #### Host Tracking
+#### Host Tracking
 10. Click the **Host Tracking Slider** to allow for QoS policy to work with endpoint mobility. When host tracking is turned on, Cisco DNA Center tracks the connectivity of the collaboration endpoints within the site scope and automatically reconfigures the ACL entries when the collaboration endpoints connect to the network or move from one interface to another. 
    ![json](./images/module4-applicationqos/DNAC-AppPolicy-8-Tracking.png?raw=true "Import JSON")
-   #### Saving Draft Policy
+#### Saving Draft Policy
 11. At this point we could save a copy of the Application Policy by selecting the three dots beside Deploy a pop up menu will appear.
    ![json](./images/module4-applicationqos/DNAC-AppPolicy-8.5-Menu.png?raw=true "Import JSON")
 12. Click **Save Draft** from the pop up menu 
    ![json](./images/module4-applicationqos/DNAC-AppPolicy-9-SaveDraft.png?raw=true "Import JSON")
 ### Step 2 - ***Deploying Application Policy***
-   #### Preview Policy
+#### Preview Policy
 1. Click the three dots beside Deploy a pop up menu will appear.
    ![json](./images/module4-applicationqos/DNAC-AppPolicy-8.5-Menu.png?raw=true "Import JSON")
 2. Click **Preview** on the popup menu to preview the policy.
@@ -129,7 +129,7 @@ The Application Policy methodology within DNA Center allows for two types of pol
    ![json](./images/module4-applicationqos/DNAC-AppPolicy-12-PreviewView.png?raw=true "Import JSON")
 5. Take a look at the policy in the popup on the right.
    ![json](./images/module4-applicationqos/DNAC-AppPolicy-13-Preview.png?raw=true "Import JSON")
-   #### Deploy Policy
+#### Deploy Policy
 6. Click the **Deploy** and click **Yes** on the pop up that will appear.
    ![json](./images/module4-applicationqos/DNAC-AppPolicy-14-Deploy.png?raw=true "Import JSON")
 7. Click the **Apply** on the pop up on the right that will appear. You could alternatively schedule this task.
