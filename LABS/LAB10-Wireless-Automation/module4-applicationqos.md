@@ -20,11 +20,14 @@ The Application Policy methodology within DNA Center allows for two types of pol
 
 ### Step 1 - ***Build Application Policy Draft***
 1. Navigate to **Application Policy** within DNA Center through the menu *Policy>Application*.
-   ![json](./images/module4-applicationqos/DNAC-AppPolicyNavigate.png?raw=true "Import JSON")
+   ![json](./images/module4-applicationqos/dnac-menu-appqos.png?raw=true "Import JSON")
 2. In the Application Policy page, click **Add Policy**. 
-   ![json](./images/module4-applicationqos/DNAC-AppPolicy-0-Start.png?raw=true "Import JSON")
-3. Enter `DNAC-Template-Lab` as the name for the Application Policy Name.
-   ![json](./images/module4-applicationqos/DNAC-AppPolicy-1-Name.png?raw=true "Import JSON")
+   ![json](./images/module4-applicationqos/dnac-menu-appqos-addpolicy?raw=true "Import JSON")
+3. Complete the following steps:
+   1. Enter `Wireless-CAMPUS-PSK` as the name for the Application Policy Name. 
+   2. Select *Wireless* as the type of Application Policy to be built.
+   ![json](./images/module4-applicationqos/dnac-menu-appqos-policy-name.png?raw=true "Import JSON")
+4. Select *Wireless* as the type of Application Policy to be built.
    
 #### Site to Apply Policy
 4. Click the **Site** and then on the popup on the right click **Edit Scope**
