@@ -25,17 +25,16 @@ The Application Policy methodology within DNA Center allows for two types of pol
    ![json](./images/module4-applicationqos/dnac-menu-appqos-addpolicy?raw=true "Import JSON")
 3. Complete the following steps:
    1. Enter `Wireless-CAMPUS-PSK` as the name for the Application Policy Name. 
-   2. Select *Wireless* as the type of Application Policy to be built.
-   ![json](./images/module4-applicationqos/dnac-menu-appqos-policy-name.png?raw=true "Import JSON")
-4. Select *Wireless* as the type of Application Policy to be built.
-   
+   2. Select **Wireless** as the type of Application Policy to be built.
+      ![json](./images/module4-applicationqos/dnac-menu-appqos-policy-name.png?raw=true "Import JSON")
+4. Select **Yes** in the popup window that appears.
+   ![json](./images/module4-applicationqos/dnac-menu-appqos-policy-wifi.png?raw=true "Import JSON")
+
 #### Site to Apply Policy
-4. Click the **Site** and then on the popup on the right click **Edit Scope**
-   ![json](./images/module4-applicationqos/DNAC-AppPolicy-2-Site.png?raw=true "Import JSON")
-5. Put a tick next to *Floor 1*. Click **Save**  
-   ![json](./images/module4-applicationqos/DNAC-AppPolicy-3-SiteEdit.png?raw=true "Import JSON")
-6. Please note that the gear icon you may have noticed on the right of the floor allows access to either exclude devices or interfaces from the QoS Policy should it be required. 
-   ![json](./images/module4-applicationqos/DNAC-AppPolicy-4-SiteExclude.png?raw=true "Import JSON")
+5. Click the **Site** and then on the popup on the right click **Edit Scope**
+   ![json](./images/module4-applicationqos/dnac-menu-appqos-policy-wifi-sites?raw=true "Import JSON")
+6. Put a tick next to *Building*. Click **Save**  
+   ![json](./images/module4-applicationqos/dnac-menu-appqos-policy-wifi-sites-edit.png?raw=true "Import JSON")
 
 #### Queuing Policy to Apply
 7. Click the **CVD_QUEUING_PROFILE** link to open the Queuing Profile Editor.
