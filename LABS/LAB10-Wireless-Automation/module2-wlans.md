@@ -32,7 +32,9 @@ To get started with Wireless Controller configuration and automation we first ne
 
 This section will be devoted to building Wireless LAN's. Subsequent sections will cover the profiles and provisioning.
 
-<details open>
+Click on the details arrow below to expand and follow the details.
+
+<details closed>
 <summary> 1. Building a WLAN with a Pre-Shared Key (PSK)</summary>
 
 ### Building a PreShared Key (PSK) Wireless LAN
