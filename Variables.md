@@ -141,18 +141,17 @@ Usage:
 
 Types of Notation:
 
-```Jinja
+```j2
     {{ identifier.attribute|modifier|['attribute'] }}
     
     Formal Notation:        {{ Switch }} 
-
 ```
 
 Data may be set to the variables via a set command
 
-```vtl
-#set( $StringVariable = "text" )
-#set( $NumericVariable = 10 )
+```j2
+{% set( StringVariable = "text" ) %}
+{% set( NumericVariable = 10 ) %}
 ```
 
 ### Arrays (aka Ordered Lists): 
