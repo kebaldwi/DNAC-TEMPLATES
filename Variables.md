@@ -141,7 +141,7 @@ Usage:
 
 Types of Notation:
 
-```j2
+```vm
     {{ identifier.attribute|modifier|['attribute'] }}
     
     Formal Notation.        {{ Switch }} 
