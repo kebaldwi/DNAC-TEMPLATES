@@ -161,8 +161,8 @@ It is possible to create arrays as well which can be iterated through with Forea
 * Define each element of the list with an identifier
 
 Both examples follow:
-```vtl
-#set( $L2Bgps = ["10" , "18"] )
+```j2
+{% set( L2vlans = ["10" , "18"] ) %}
 ```
 
 ```vtl
