@@ -3,10 +3,16 @@
 This Repository will give examples of templates used in DNA Center that can be modified. Additional information will be included to hopefully give a well rounded explanation of Automation methods with Templates using DNA Center and flows with both Onboarding and DayN Templates and concepts.
 
 The repository will include scripts and examples with the following:
-1. Velocity Scripting
-2. Variables
+1. Template Scripting in both
+   - Velocity Language
+   - Jinja2 Language
+2. Variables in both
+   - Velocity Language
+   - Jinja2 Language
 3. Binding Variables
-4. Composite Templates
+4. System Variables
+5. Regular Templates
+6. Composite Templates
 
 The goal of this repository is a practical guide to allow engineers to rapidly begin using DNAC automation and begin conversion of IOS CLI Templates. The Templates they may have been using over the years and with various use cases and so the intent is to reduce the lift to begin automating.
 
@@ -22,14 +28,21 @@ Additionally:
 ## Tutorial Sections
 Various sections will be covered within this github repository please use this menu for navigation. Within the various folders are examples, explanation readme files for reference.
 
+### Workflows
 * [PnP Workflow](./PnP-Workflow.md#pnp-workflow) - This section explains the overall Plug and Play Methodology
-* [Variables](./Variables.md#variables) - This section explains Variables in depth and how and where to use them
-* [Velocity Scripting](./Velocity.md#velocity-scripting) - This section will dive into Velocity Scripting constructs and use cases
-* [Building Templates](./Templates.md#building-templates) - This section will explain how to build a template on DNAC
 * [Onboarding Templates](./Onboarding.md#onboarding-templates-and-flows) - This section will explain Onboarding Templates in DNAC and their use
 * [DayN Templates](./DayN.md#day-n-templates-and-flows) - This section will explain how to use templates for ongoing changes to the network
+### Templating
+#### Velocity Language
+* [Variables](./Variables.md#variables) - This section explains Variables in depth and how and where to use them
+* [Velocity Scripting](./Velocity.md#velocity-scripting) - This section will dive into Velocity Scripting constructs and use cases
 * [Advanced Velocity](./AdvancedVelocity.md#advanced-velocity) - This section will dive into Advanced Velocity examples
+* [Building Templates](./Templates.md#building-templates) - This section will explain how to build a template on DNAC
+#### Jinja2 Language
+* TBD
+### Advanced Use Cases
 * [Embedded Event Manager](./EEM.md#EEM) - This section will dive into EEM Scripting and various use cases 
+### Fault-Finding
 * [Troubleshooting](./TroubleShoot.md#Troubleshooting) - This section will dive into Troubleshooting Velocity 
 
 ## [DNAC Template LABS](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS#dnac-template-labs-)
