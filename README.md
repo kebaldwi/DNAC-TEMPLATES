@@ -35,7 +35,7 @@ Various sections will be covered within this github repository please use this m
 ### Templating
 * [Building Templates](./Templates.md#building-templates) - This section will explain how to build a template on DNAC
 #### Velocity Language
-* [Velocity Variables](./Variables.md#velocity) - This section explains Variables in depth and how and where to use them
+* [Velocity Variables](./Variables.md#velocity-variables) - This section explains Variables in depth and how and where to use them
 * [Velocity Scripting](./Velocity.md#velocity-scripting) - This section will dive into Velocity Scripting constructs and use cases
 * [Advanced Velocity Scripting](./AdvancedVelocity.md#advanced-velocity) - This section will dive into Advanced Velocity examples
 #### Jinja2 Language
