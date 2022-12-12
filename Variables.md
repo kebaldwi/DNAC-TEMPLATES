@@ -41,7 +41,7 @@ Data may be set to the variables via a set command
 #set( $NumericVariable = 10 )
 ```
 
-### Arrays: 
+### Arrays (aka Ordered Lists): 
 It is possible to create arrays as well which can be iterated through with Foreach loop constructs. In Velocity we call an array a list. You can set a list up in two ways:
 
 * Define all the elements of the list in one line comma delimited 
@@ -114,7 +114,7 @@ With variables there are modifiers that can be used to do specific operations wi
    ```
 
 ## Jinja2 Variables
-In this section we will go into the various aspects of Jinja2 Variables and nomenclature.
+In this section we will go into the various aspects of Jinja2 Variables and nomenclature as they are used on DNA Center for templating.
 
 ```j2
     Variable reference:     {% set( monkey = bill ) %}
@@ -127,6 +127,105 @@ In this section we will go into the various aspects of Jinja2 Variables and nome
     Object map:             {% set( monkey.Map = {"banana" : "good", "roast beef" : "bad"}) %}
     Dictionary Object:      {% set Deployment_Codes =[{'port':'1/0/1','code':'S028'},{'port':'1/0/2','code':'S020'}]%}
 ```
+
+### Variable Notation
+The Notation used in variables is as follows: 
+
+   [{{]identifier.attribute|modifier|['attribute'][}}]
+
+It’s important to know that the outer double-curly braces are not part of the variable, but the print statement. If you access variables inside tags don’t put the braces around them.
+
+Usage:
+   * identifier: variable name
+   * attribute value: attributes are variables within a variable creating a variable set if used
+
+Types of Notation:
+
+```j2
+    [{{]identifier.attribute|modifier|['attribute'][}}]
+    
+    Formal Notation.        {{ Switch }} 
+
+```
+
+Data may be set to the variables via a set command
+
+```vtl
+#set( $StringVariable = "text" )
+#set( $NumericVariable = 10 )
+```
+
+### Arrays (aka Ordered Lists): 
+It is possible to create arrays as well which can be iterated through with Foreach loop constructs. In Velocity we call an array a list. You can set a list up in two ways:
+
+* Define all the elements of the list in one line comma delimited 
+* Define each element of the list with an identifier
+
+Both examples follow:
+```vtl
+#set( $L2Bgps = ["10" , "18"] )
+```
+
+```vtl
+#set( $L2Bgps = [] )
+#set( $L2Bgps[0] = 10 )
+#set( $L2Bgps[1] = 18 )
+```
+
+Additional set commands available are the following:
+
+```vtl
+    Variable reference:    #set( $monkey = $bill )
+    String literal:        #set( $monkey.Friend = 'monica' )
+    Property reference:    #set( $monkey.Blame = $whitehouse.Leak )
+    Method reference:      #set( $monkey.Plan = $spindoctor.weave($web) )
+    Number literal:        #set( $monkey.Number = 123 )
+    Range operator:        #set( $monkey.Numbers = [1..3] )
+    Object list:           #set( $monkey.Say = ["Not", $my, "fault"] )
+    Object map:            #set( $monkey.Map = {"banana" : "good", "roast beef" : "bad"})
+```
+
+Simple arithmetic expressions can be accomplished as follows:
+
+```vtl
+    Addition:       #set( $answer = $number + 1 )
+    Subtraction:    #set( $answer = $number - 1 )
+    Multiplication: #set( $answer = $number * $mod )
+    Division:       #set( $answer = $number / $mod )
+    Remainder:      #set( $answer = $number % $mod )
+
+    where $number = 10 and $mod = 2 the answers from above would be for:
+    
+    Addition:       $answer = 11
+    Subtraction:    $answer = 9
+    Multiplication: $answer = 20
+    Division:       $answer = 5
+    Remainder:      $answer = 0
+```
+
+### Modifiers
+With variables there are modifiers that can be used to do specific operations with regard to variables. Modifiers can be used to determine size, split, add or even replace data. Take a look at the following:
+
+
+1. An example that splits a string result using on a specific character as a delimeter and fills an array $StackPIDs.
+   ```vtl
+   #set( $StackPIDs = $ProductID.split(",") )
+   ```
+
+2. This example determines the number of elements in an array.
+   ```vtl
+   #set( $StackMemberCount = $StackPIDs.size() )
+   ```
+
+3. This example uses a regular expression to reduce the PID of a switch to either 24 or 48 to reflect port count.
+   ```vtl
+   #set( $PortCount = $Model.replaceAll("C9300L?-([2|4][4|8]).*","$1") )
+   ```
+
+4. This last example adds the value of $PortCount as a new element appending it within the array $PortTotal
+   ```vtl
+     #set( $foo = $PortTotal.add($PortCount) )
+   ```
 
 
 ## DNA Center & Working with Variables
