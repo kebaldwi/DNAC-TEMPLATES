@@ -29,7 +29,7 @@ Types of Notation:
 ```vtl
     $[{]identifier.identifier([ parameter list... ])[|alternate value][}]
     
-    Formal Notation.        ${Switch} 
+    Formal Notation:        ${Switch} 
     Regular Notation:       $Switch
     Alternate Value:        ${Switch.name|'ASW-C9300-ACCESS'}
 ```
@@ -141,10 +141,10 @@ Usage:
 
 Types of Notation:
 
-```vtl
+```Jinja
     {{ identifier.attribute|modifier|['attribute'] }}
     
-    Formal Notation.        {{ Switch }} 
+    Formal Notation:        {{ Switch }} 
 
 ```
 
