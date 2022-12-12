@@ -142,7 +142,7 @@ Usage:
 Types of Notation:
 
 ```j2
-    [{{]identifier.attribute|modifier|['attribute'][}}]
+    {{ identifier.attribute|modifier|['attribute'] }}
     
     Formal Notation.        {{ Switch }} 
 
