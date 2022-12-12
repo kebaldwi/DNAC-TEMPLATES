@@ -116,7 +116,17 @@ With variables there are modifiers that can be used to do specific operations wi
 ## Jinja2 Variables
 In this section we will go into the various aspects of Jinja2 Variables and nomenclature.
 
-
+```j2
+    Variable reference:     {% #set( monkey = bill ) %}
+    String literal:         {% #set( monkey.Friend = 'monica' ) %}
+    Property reference:     {% #set( monkey.Blame = whitehouse.Leak ) %}
+    Method reference:       {% #set( monkey.Plan = spindoctor.weave($web) ) %}
+    Number literal:         {% #set( monkey.Number = 123 ) %}
+    Range operator:         {% #set( monkey.Numbers = [1..3] ) %}
+    Object list:            {% #set( monkey.Say = ["Not", $my, "fault"] ) %}
+    Object map:             {% #set( monkey.Map = {"banana" : "good", "roast beef" : "bad"}) %}
+    Dictionary Object:      {% set Deployment_Codes =[{'port':'1/0/1','code':'S028'},{'port':'1/0/2','code':'S020'}]%}
+```
 
 
 ## DNA Center & Working with Variables
