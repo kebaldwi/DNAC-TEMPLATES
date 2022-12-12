@@ -113,7 +113,13 @@ With variables there are modifiers that can be used to do specific operations wi
      #set( $foo = $PortTotal.add($PortCount) )
    ```
 
-### DNA Center & Working with Variables
+## Jinja2 Variables
+In this section we will go into the various aspects of Jinja2 Variables and nomenclature.
+
+
+
+
+## DNA Center & Working with Variables
 As with anything DNA Center the UI allows for flexibility and the ability to not only further define how the Variables are populated but how they are used during the provisioning workflows. 
 
 ![json](images/TemplateEditor.png?raw=true "Import JSON")
