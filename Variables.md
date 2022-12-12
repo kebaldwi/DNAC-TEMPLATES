@@ -141,7 +141,7 @@ Usage:
 
 Types of Notation:
 
-```vm
+```vtl
     {{ identifier.attribute|modifier|['attribute'] }}
     
     Formal Notation.        {{ Switch }} 
