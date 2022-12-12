@@ -33,13 +33,15 @@ Various sections will be covered within this github repository please use this m
 * [Onboarding Templates](./Onboarding.md#onboarding-templates-and-flows) - This section will explain Onboarding Templates in DNAC and their use
 * [DayN Templates](./DayN.md#day-n-templates-and-flows) - This section will explain how to use templates for ongoing changes to the network
 ### Templating
-#### Velocity Language
-* [Variables](./Variables.md#variables) - This section explains Variables in depth and how and where to use them
-* [Velocity Scripting](./Velocity.md#velocity-scripting) - This section will dive into Velocity Scripting constructs and use cases
-* [Advanced Velocity](./AdvancedVelocity.md#advanced-velocity) - This section will dive into Advanced Velocity examples
 * [Building Templates](./Templates.md#building-templates) - This section will explain how to build a template on DNAC
+#### Velocity Language
+* [Velocity Variables](./Variables.md#velocity) - This section explains Variables in depth and how and where to use them
+* [Velocity Scripting](./Velocity.md#velocity-scripting) - This section will dive into Velocity Scripting constructs and use cases
+* [Advanced Velocity Scripting](./AdvancedVelocity.md#advanced-velocity) - This section will dive into Advanced Velocity examples
 #### Jinja2 Language
-* TBD
+* [Jinja2 Variables](./Variables.md#jinja2) - This section explains Variables in depth and how and where to use them
+* [Jinja2 Scripting](./jinja2.md#jinja2-scripting) - This section will dive into Velocity Scripting constructs and use cases
+* [Advanced Jinja2 Scripting](./AdvancedJinja2.md#advanced-jinja2) - This section will dive into Advanced Velocity examples
 ### Advanced Use Cases
 * [Embedded Event Manager](./EEM.md#EEM) - This section will dive into EEM Scripting and various use cases 
 ### Fault-Finding
