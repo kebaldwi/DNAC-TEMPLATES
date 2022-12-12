@@ -181,8 +181,8 @@ Within DNA Center it is possible to Bind Variables to devices. Within DNA Center
 
 6. Save the Input Form through Actions menu on Input Form
 
-#### Built-in Variables
-Within DNA Center it is possible to utilize Built-in variables for a number of values allowing you to address network settings within the design, to other interface information from devices. This example of code utilizes the `$__interface` built in variable to determine the characteristics of a port and then apply a macro to each port for a specific device.
+#### System Variables
+Within DNA Center it is possible to utilize Built-in System type variables for a number of values allowing you to address network settings within the design, to other interface information from devices. This example of code utilizes the `$__interface` built in variable to determine the characteristics of a port and then apply a macro to each port for a specific device.
 
 ```vtl
 #foreach( $interface in $__interface )
