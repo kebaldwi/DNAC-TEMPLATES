@@ -129,7 +129,7 @@ A For loop allows for multiple iterations of a sequence of commands perhaps incl
 Command Construct:
 
 ```vtl
-#[{]foreach[}] ( $ref in arg ) statements [#[{]else[}] alternate statements] #[{]end[}]
+#[{]foreach[}] ( $ref in arg ) statements #[{]end[}]
 
 Usage:
     $ref                 - The first variable reference is the item.

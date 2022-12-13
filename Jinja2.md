@@ -87,7 +87,7 @@ Macro format is as follows:
             arg1 ... argn   - Arguments or Variables to the Macro. There can be any number of arguments, but the number 
                               used at invocation must match the number specified in the definition, unless 
                               there is a default value provided for missing parameters.
-            Jinja2 code        - Any valid Jinja2 code, anything you can put into a template, can be put into a Macro
+            Jinja2 code     - Any valid Jinja2 code, anything you can put into a template, can be put into a Macro
 
 ```
 
@@ -126,21 +126,19 @@ A For loop allows for multiple iterations of a sequence of commands perhaps incl
 
 Command Construct:
 
-```vtl
-#[{]foreach[}] ( $ref in arg ) statements [#[{]else[}] alternate statements] #[{]end[}]
+```j2
+[{%] for ref in arg ) [%}] statements [{%] endfor [%}]
 
 Usage:
-    $ref                 - The first variable reference is the item.
+    ref                  - The first variable reference is the item.
     arg                  - May be one of the following: a reference to a list 
                            (i.e. object array, collection, or map), an array list, or the range operator.
-    statements           - What is output each time Velocity finds a valid item in the list denoted above as arg. 
-                           This output is any valid VTL and is rendered each iteration of the loop.
-    alternate statements - What is to display whenever Velocity did not enter the loop (
-                           when arg is null, empty, or doesn't have any valid iterator).
+    statements           - What is output each time Jinja2 finds a valid item in the list denoted above as arg. 
+                           This output is any valid J2 and is rendered each iteration of the loop.
 ```
 Additionally you can use these methods within the loop:
 
-```vtl
+```j2
     $foreach.count : 1-based loop index
     $foreach.index : 0-based loop index
     $foreach.first : true on the first iteration
