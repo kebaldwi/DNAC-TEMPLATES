@@ -136,16 +136,6 @@ Usage:
     statements           - What is output each time Jinja2 finds a valid item in the list denoted above as arg. 
                            This output is any valid J2 and is rendered each iteration of the loop.
 ```
-Additionally you can use these methods within the loop:
-
-```j2
-    $foreach.count : 1-based loop index
-    $foreach.index : 0-based loop index
-    $foreach.first : true on the first iteration
-    $foreach.last : true on the last iteration
-    $foreach.hasNext : false on the last iteration
-    $foreach.stop() : exists the loop, synonym for #break
-```
 
 An example of a For Loop
 
@@ -154,7 +144,7 @@ An example of a For Loop
     
     {% for Vlanid in Vlans ) 
          interface vlan {{ Vlanid }} 
-    {% end %}
+    {% endfor %}
     
     Array List Example: 
     
@@ -170,17 +160,10 @@ An example of a For Loop
     {% endfor %}
 ```
 
-For Safety the maximum allowed number of loop iterations can be controlled engine-wide with velocity.properties. By default, there is no limit:
-
-```vtl
-    #The maximum allowed number of loops.
-    directive.foreach.max_loops = -1
-```
-
 ## Multi Line Commands
 These can be used for building entries for multiple lines which need to be used within a command like with banners.
 
-```vtl
+```j2
 !BANNER LOGIN
 <MLTCMD>banner login ^
   Session On $hostname Is Monitored!!!
@@ -199,4 +182,4 @@ These can be used for building entries for multiple lines which need to be used 
 
 If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-Special mention to: https://explore.cisco.com/dnac-use-cases/apache-velocity as examples and extrapolations were made using this documentation.
+Special mention to: https://jinja.palletsprojects.com/en/3.0.x/ as examples and extrapolations were made using this documentation.
