@@ -63,22 +63,22 @@ That said it is important to understand that these decisions allow for you to sc
 
 If/elif/else construct with a check to see if data in variable contains a string:
 
- ```j2
-{% if hostname.contains("C9300-48") %}
+```j2
+{% if hostname.contains("edge") %}
     {# some commands #}
-{% elif hostname.contains("C9300-24") #}
+{% elif hostname.contains("border") %}
     {# some more commands #}
-{% else #}
+{% else %}
     {# even more commands #}
 {% endif %}
- ```
+```
  
 ## Macro's
-A Macro is a snippit of code which can be called over and over again within a template. Take the following example into consideration. Alone the Macro does not seem that powerful but when combined with the previous sections IF statement it suddenly allows for a more powerful script.
+A Macro is a snippit of code which can be called over and over again within a template. Take the following example into consideration. Alone the Macro does not seem that powerful but when combined with the previous sections conditional statements it suddenly allows for a more powerful script.
 
 Macro format is as follows:
 
-```vtl
+```j2
       #[{]macro[}] (vmname $arg1[= def1] ... $argn [= defn] ]) [ VTL code ] #[{]end[}]
 
       Usage:
