@@ -79,33 +79,31 @@ A Macro is a snippit of code which can be called over and over again within a te
 Macro format is as follows:
 
 ```j2
-      #[{]macro[}] (vmname $arg1[= def1] ... $argn [= defn] ]) [ VTL code ] #[{]end[}]
+      [{%] macro macro-name(arg1,...argn) [%}] ...{# Jinja2 code #}... [{%] endmacro [%}]
 
       Usage:
 
-            vmname          - Name used to call the VM (#vmname)
-            $arg1 ... $argn - Arguments to the VM. There can be any number of arguments, but the number 
+            macro-name      - Name used to call the Macro (macro-name)
+            arg1 ... argn   - Arguments or Variables to the Macro. There can be any number of arguments, but the number 
                               used at invocation must match the number specified in the definition, unless 
                               there is a default value provided for missing parameters.
-            def1 ... defn   - Optional default values provided for macro arguments. If a default value is 
-                              provided for an argument, a default value must also be provided to all subsequent arguments.
-            VTL code        - Any valid VTL code, anything you can put into a template, can be put into a VM
+            Jinja2 code        - Any valid Jinja2 code, anything you can put into a template, can be put into a Macro
 
 ```
 
 An example Macro of interface configurations:
 
-```vtl
-#macro(Interfaces)
+```j2
+{% macro Interfaces() %}
 int lo 0
   desc mgmt address
-  ip address 10.0.0.${Switch} 255.255.255.255
+  ip address 10.0.0.{{ Switch }} 255.255.255.255
 !
 int vlan 1
   desc mgmt vlan - with pnp
-  ip address 10.1.1.${Switch} 255.255.255.0
+  ip address 10.1.1.{{ Switch }} 255.255.255.0
 !
-#end
+{% endmacro %}
 ```
 
 When combined with the IF statements below, the above Macro allows for various IP's to be set on the same interface on multiple switches as long as the hostname variable contains a specific string value.
