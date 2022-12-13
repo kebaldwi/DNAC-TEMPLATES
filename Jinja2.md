@@ -108,17 +108,17 @@ int vlan 1
 
 When combined with the IF statements below, the above Macro allows for various IP's to be set on the same interface on multiple switches as long as the hostname variable contains a specific string value.
 
-```vtl
-#if( $hostname.contains("C9300-48") )
-#set( $Switch = 30 )
-#Interfaces
-#elif( $hostname.contains("C9300-24") )
-#set( $Switch = 20 )
-#Interfaces
-#else
-#set ( $Switch = 10 )
-#Interfaces
-#end
+```j2
+{% if hostname.contains("C9300-48") %}
+   {% set Switch = 30 %}
+   {{ Interfaces() }}
+{% elif hostname.contains("C9300-24") %}
+   {% set Switch = 20 %}
+   {{ Interfaces() }}
+{% else %}
+   {% set Switch = 10 %}
+   {{ Interfaces() }}
+{% endif %}
 ```
 
 ## For Loops
