@@ -1,39 +1,38 @@
-# Advanced Velocity [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
-This section will describe the various advanced techniques used to make a powerful script out of normal CLI command scripts which are used by organizations on IOS devices around the world. This section builds on the previous sections and is an attempt to demystify the hows and to bring clarity on what is truely possible. While it is possible to take a CLI script for one device and create a template for one device at a time, that would leave us with a lot of templates and make it harder to make changes on an ongoing basis. Using the techniques below will allow us to deploy equipment with scripts which can be reused, allowing us to keep configurations similar for conformity reasons but also to reduce the number of places where changes would have to be made. 
+# Advanced Jinja2 [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
+This section will describe the various advanced templating techniques used to make a powerful script out of normal CLI command scripts which are used by organizations on IOS devices around the world. This section builds on the previous sections and is an attempt to demystify the hows and to bring clarity on what is truely possible. While it is possible to take a CLI script for one device and create a template for one device at a time, that would leave us with a lot of templates and make it harder to make changes on an ongoing basis. Using the techniques below will allow us to deploy equipment with scripts which can be reused, allowing us to keep configurations similar for conformity reasons but also to reduce the number of places where changes would have to be made. 
 
 Below will be examples of various use cases that could be implemented.
 
 ### Parsing Integers from String Variables
-In the following example a variable is bind to DNA Centers database and a value is called for the Native Vlan. As all data within the database is essentially in string format, if we wish to use it with some mathematics tto calculate other values, we would first need to change it from a string to a integer.
+In the following example a variable is bind to DNA Centers database and a value is called for the Native Vlan. As all data within the database is essentially in string format, if we wish to use it with some mathematics to calculate other values, we would first need to change it from a string to a integer.
 
-In order to acomplish this we need to use this example. First we need to create an integer variable to be used to parse the bind variable too. Then set the result of that equation into a variable called native_vlan. We can then perform mathematical equations to extrapolate other values.
+In order to acomplish this we need to use this example. We will use the *int* modifier to parse the bind variable to an integer variable using set notation.
 
-```vtl
-   #set( $integer = 0 )
-   #set( $native_vlan = $integer.parseInt($native_vlan_bind) )
-   #set( $data_vlan = $native_vlan + 10 )
+```j2
+   {% set native_vlan = native_vlan_bind | int %}
+   {% set data_vlan = native_vlan + 10 %}
 ```
 
-### Working with Arrays or Lists
+### Working with Arrays or Ordered Lists
 To create an array we have to perform the following. First we need to concatenate the values into a variable with some kind of delimiter. Then using the delimiter we can split the values into separate elements within the array and call them separately.
 
-```vtl
-   #set( $Switches = 8 )
-   #foreach( $Switch in [1..${Switches}] )
-       #if( $Switch == 1 )
-           #set( $PortArray = $PortsCount )
-       #else
-           #set( $PortArray = $PortArray + "," + $PortsCount )
-       #end
-   #end
+```j2
+   {% set Switches = 8 %}
+   {% for Switch in range(Switches) %}
+       {% if Switch == 1 %}
+            {% set PortArray = PortsCount %}
+       {% else %}
+            {% do PortArray | append(PortsCount) %}
+       {% endif %}
+   {% endfor %}
    !
-   #set( $SwitchPorts = $PortArray.split(",") ) ## Number of ports in the switches in stack
+   {% set SwitchPorts = PortArray.split(',') %} {# Number of ports in the switches in stack#}
    !
-   #foreach( $Switch in [1..${Switches}] )
-       #set( $ID = $Switch - 1 )
-       interface ${Switch}/0/1 - $SwitchPorts[$ID]
-       desc test
-   #end
+   {% for Switch in range(Switches) %}
+       {% set ID = Switch - 1 ) %}
+       interface {{ Switch }}/0/1 - {{ SwitchPorts[$ID] }}
+         desc test
+   {% endfor %}
 ```
 
 Another way we may work with arrays is to use the add operator. This method would look like this.
