@@ -49,13 +49,13 @@ It is possible to create arrays as well which can be iterated through with Forea
 
 Both examples follow:
 ```vtl
-#set( $L2Bgps = ["10" , "18"] )
+#set( $L2vlans = ["10" , "18"] )
 ```
 
 ```vtl
-#set( $L2Bgps = [] )
-#set( $L2Bgps[0] = 10 )
-#set( $L2Bgps[1] = 18 )
+#set( $L2Vlans = [] )
+#set( $L2Vlans[0] = 10 )
+#set( $L2Vlans[1] = 18 )
 ```
 
 Additional set commands available are the following:
@@ -117,15 +117,13 @@ With variables there are modifiers that can be used to do specific operations wi
 In this section we will go into the various aspects of Jinja2 Variables and nomenclature as they are used on DNA Center for templating.
 
 ```j2
-    Variable reference:     {% set( monkey = bill ) %}
-    String literal:         {% set( monkey.Friend = 'monica' ) %}
-    Property reference:     {% set( monkey.Blame = whitehouse.Leak ) %}
-    Method reference:       {% set( monkey.Plan = spindoctor.weave($web) ) %}
-    Number literal:         {% set( monkey.Number = 123 ) %}
-    Range operator:         {% set( monkey.Numbers = [1..3] ) %}
-    Object list:            {% set( monkey.Say = ["Not", $my, "fault"] ) %}
-    Object map:             {% set( monkey.Map = {"banana" : "good", "roast beef" : "bad"}) %}
-    Dictionary Object:      {% set Deployment_Codes =[{'port':'1/0/1','code':'S028'},{'port':'1/0/2','code':'S020'}]%}
+    Variable reference:     {% set monkey = bill  %}
+    String literal:         {% set monkey = 'monica'  %}
+    Integer literal:        {% set number = 123  %}
+    Range operator:         {% set range = [1..3]  %}
+    List:                   {% set monkey = ['Not','my','fault']  %}
+    Object map:             {% set monkey = {'banana' : 'good', 'roast beef' : 'bad'} %}
+    Object list:            {% set Deployment_Codes = [{'port':'1/0/1','code':'S028'},{'port':'1/0/2','code':'S020'}]%}
 ```
 
 ### Variable Notation
@@ -150,8 +148,8 @@ Types of Notation:
 Data may be set to the variables via a set command
 
 ```j2
-{% set( StringVariable = "text" ) %}
-{% set( NumericVariable = 10 ) %}
+{% set StringVariable = 'text'  %}
+{% set NumericVariable = 10  %}
 ```
 
 ### Arrays (aka Ordered Lists): 
@@ -162,44 +160,11 @@ It is possible to create arrays as well which can be iterated through with Forea
 
 Both examples follow:
 ```j2
-{% set( L2vlans = ["10" , "18"] ) %}
+{% set L2vlans = ['10','18'] %}
 ```
 
-```vtl
-#set( $L2Bgps = [] )
-#set( $L2Bgps[0] = 10 )
-#set( $L2Bgps[1] = 18 )
-```
-
-Additional set commands available are the following:
-
-```vtl
-    Variable reference:    #set( $monkey = $bill )
-    String literal:        #set( $monkey.Friend = 'monica' )
-    Property reference:    #set( $monkey.Blame = $whitehouse.Leak )
-    Method reference:      #set( $monkey.Plan = $spindoctor.weave($web) )
-    Number literal:        #set( $monkey.Number = 123 )
-    Range operator:        #set( $monkey.Numbers = [1..3] )
-    Object list:           #set( $monkey.Say = ["Not", $my, "fault"] )
-    Object map:            #set( $monkey.Map = {"banana" : "good", "roast beef" : "bad"})
-```
-
-Simple arithmetic expressions can be accomplished as follows:
-
-```vtl
-    Addition:       #set( $answer = $number + 1 )
-    Subtraction:    #set( $answer = $number - 1 )
-    Multiplication: #set( $answer = $number * $mod )
-    Division:       #set( $answer = $number / $mod )
-    Remainder:      #set( $answer = $number % $mod )
-
-    where $number = 10 and $mod = 2 the answers from above would be for:
-    
-    Addition:       $answer = 11
-    Subtraction:    $answer = 9
-    Multiplication: $answer = 20
-    Division:       $answer = 5
-    Remainder:      $answer = 0
+```j2
+{% set monkey = {'banana' : 'good', 'roast beef' : 'bad'} %}
 ```
 
 ### Modifiers
@@ -207,25 +172,24 @@ With variables there are modifiers that can be used to do specific operations wi
 
 
 1. An example that splits a string result using on a specific character as a delimeter and fills an array $StackPIDs.
-   ```vtl
-   #set( $StackPIDs = $ProductID.split(",") )
+   ```j2
+   {% set StackPIDs = ProductID.split(',) %}
    ```
 
 2. This example determines the number of elements in an array.
-   ```vtl
-   #set( $StackMemberCount = $StackPIDs.size() )
+   ```j2
+   {% set StackMemberCount = StackPIDs.length %}
    ```
 
 3. This example uses a regular expression to reduce the PID of a switch to either 24 or 48 to reflect port count.
-   ```vtl
-   #set( $PortCount = $Model.replaceAll("C9300L?-([2|4][4|8]).*","$1") )
+   ```j2
+   {% set PortCount = Model.replace('C9300L?-([2|4][4|8]).*','$1') %}
    ```
 
 4. This last example adds the value of $PortCount as a new element appending it within the array $PortTotal
-   ```vtl
-     #set( $foo = $PortTotal.add($PortCount) )
+   ```j2
+   {% do PortTotal.append(PortCount) %}
    ```
-
 
 ## DNA Center & Working with Variables
 As with anything DNA Center the UI allows for flexibility and the ability to not only further define how the Variables are populated but how they are used during the provisioning workflows. 
@@ -306,6 +270,16 @@ Within DNA Center it is possible to utilize Built-in System type variables for a
   #end
 #end
 ```
+
+```j2
+{% for interface in __interface %}
+  {% if interface.portMode == "access" && interface.interfaceType == "Physical" %}
+    interface {{ interface.portName }}
+     {{ access_physical() }}
+  {% endif %}
+{% endfor %}
+```
+
 
 If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
