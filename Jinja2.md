@@ -112,7 +112,7 @@ When combined with the IF statements below, the above Macro allows for various I
 #if( $hostname.contains("C9300-48") )
 #set( $Switch = 30 )
 #Interfaces
-#elseif( $hostname.contains("C9300-24") )
+#elif( $hostname.contains("C9300-24") )
 #set( $Switch = 20 )
 #Interfaces
 #else
