@@ -14,88 +14,86 @@ In order to acomplish this we need to use this example. We will use the *int* mo
 ```
 
 ### Working with Arrays or Ordered Lists
-To create an array we have to perform the following. First we need to concatenate the values into a variable with some kind of delimiter. Then using the delimiter we can split the values into separate elements within the array and call them separately.
+To create an array we have to perform the following. First we need to concatenate the values into a variable with some kind of delimiter. Then using the delimiter we can split the values into separate elements within the array and call them separately through a loop.
 
 ```j2
-   {% set Switches = 8 %}
-   {% for Switch in range(Switches) %}
-       {% if Switch == 1 %}
-            {% set PortArray = PortsCount %}
-       {% else %}
-            {% do PortArray | append(PortsCount) %}
-       {% endif %}
+   {% set StackPIDs = ProductID.split(",") %}
+   !
+   {% for Switch in StackPIDs %}
+        {% set PortCount = Switch.replaceAll('^.*([2|4][4|8]).*','$1') %}
+   {% endfor %}
+```
+Another way we may work with arrays is to use the append operator. We will add this to the previous block of code and the method would look like this. In order to use the Append method we need an empty array. Then we append into the array with each iteration placing only the *24* or *48* from the Product ID.
+
+```j2
+   {% set PortTotal = [] %}
+   {% set StackPIDs = ProductID.split(",") %}
+   !
+   {% for Switch in StackPIDs %}
+        {% set PortCount = Switch.replaceAll('^.*([2|4][4|8]).*','$1') %}
+        {% do PortTotal.append(PortCount) %}
+   {% endfor %}
+```
+
+We can utilize other methods like length but in the next addition we build out ports for the switch based on ranges. Take note of the use of the loop.index variable.
+
+```j2
+   {% set PortTotal = [] %}
+   {% set StackPIDs = ProductID.split(",") %}
+   !
+   {% for Switch in StackPIDs %}
+        {% set PortCount = Switch.replaceAll('^.*([2|4][4|8]).*','$1') %}
+        {% do PortTotal.append(PortCount) %}
    {% endfor %}
    !
-   {% set SwitchPorts = PortArray.split(',') %} {# Number of ports in the switches in stack#}
-   !
-   {% for Switch in range(Switches) %}
-       {% set ID = Switch - 1 ) %}
-       interface {{ Switch }}/0/1 - {{ SwitchPorts[$ID] }}
+   {% for SwitchPort in PortTotal %}
+       interface {{ loop.index }}/0/1 - {{ SwitchPort }}
          desc test
    {% endfor %}
 ```
 
-Another way we may work with arrays is to use the add operator. This method would look like this.
-
-```vtl
-   #set( $PortArray = [] )
-   #set( $PortsCount = 48 )
-   !
-   #set( $Switches = 8 )
-   #foreach( $Switch in [1..${Switches}] )
-       #set( $unused = $PortArray.add($PortsCount))
-   #end
-   !$PortArray
-   !
-   #foreach( $Switch in [1..${Switches}] )
-       #set( $ID = $Switch - 1 )
-       interface ${Switch}/0/1 - $PortArray[$ID]
-       desc test
-   #end
-```
-
 ### Working with Stacks of 9300/9200 and Powerstacking
-One area we need to address is how to effectively deal with stacking 9300's and how to deal with a stack of 8 switches where a powerstack only allows 4. Although not supported by TAC this is supported from a platform point of view. Essentially you would build the data stack of 8 switches, and then build two powerstacks of four switches in each. In the following example I share the code which allows this to happen which was co-written by Josh Bronikowski. 
+One area we need to address is how to effectively deal with stacking 9300's and how to deal with a stack of 8 switches where a powerstack only allows 4. Although not supported by TAC this is supported from a platform point of view. Essentially you would build the data stack of 8 switches, and then build two powerstacks of four switches in each. In the following example I share is based on velocity code which was co-written by Josh Bronikowski. 
 
 In order to acomplish this we need to first identify how many switches are in the stack... please use this example. 
 
-```vtl
-   #set( $StackPIDs = $ProductID.split(",") )
-   #set( $StackMemberCount = $StackPIDs.size() )
+```j2
+   {% set StackPIDs = ProductID.split(",") %}
+   {% set StackMemberCount = StackPIDs|length %}
 ```
 Then we need a logical construct which iterates through each switch setting not only the priority correctly but also setting the powerstack correctly.
 
-```vtl
-   #if( $StackMemberCount > 1 )
+```j2
+   {% if StackMemberCount > 1 %}
       stack-power stack Powerstack1
       mode redundant strict
-      #if( $StackMemberCount > 4 )
+      {% if StackMemberCount > 4 %}
          stack-power stack Powerstack2
          mode redundant strict
-      #end
-      #foreach( $Switch in [1..$StackMemberCount] )
-         #if( $Switch < 5 )
-            stack-power switch ${Switch}
+      {% endif %}
+      {% for Switch in range(1,StackMemberCount,1) %}
+         {% if Switch <= (StackMemberCount/2|round('ceil')) %}
+            stack-power switch {{ Switch }}
             stack Powerstack1
-         #elseif( $Switch > 4 )
-            stack-power switch ${Switch}
+         {% elif Switch > (StackMemberCount/2|round('ceil')) %}
+            stack-power switch {{ Switch }}
             stack Powerstack2
-         #end
-       #end
+         {% endif %}
+       {% endfor %}
        #MODE_ENABLE
        #MODE_END_ENABLE
        #MODE_ENABLE
-       #foreach( $Switch in [1..$StackMemberCount] )
-          #if($Switch == 1)
-             switch $Switch priority 10
-          #elseif($Switch == 2)
-             switch $Switch priority 9
-          #else
-             switch $Switch priority 8
-          #end 
-       #end
+       {% for Switch in range(1,StackMemberCount,1) %}
+          {% if Switch == 1 %}
+             switch {{ Switch }} priority 10
+          {% elif Switch == 2 %}
+             switch {{ Switch }} priority 9
+          {% else %}
+             switch {{ Switch }} priority 8
+          {% endif %}
+       {% endfor %}
        #MODE_END_ENABLE
-   #end
+   {% endif %}   
 ```
 Explained here...
 1. The code shared will run only if the number of switches in the stack is found to be greater than 1.
