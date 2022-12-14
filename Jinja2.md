@@ -160,6 +160,13 @@ An example of a For Loop
     {% endfor %}
 ```
 
+Inside of a for-loop block, you can access some special variables:
+
+| **Variable** | **Description** |
+|--------|-------------|
+| loop.index | The current iteration of the loop. (1 indexed) |
+
+
 ## Multi Line Commands
 These can be used for building entries for multiple lines which need to be used within a command like with banners.
 
