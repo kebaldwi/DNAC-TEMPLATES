@@ -129,7 +129,7 @@ Explained here...
       #end
     #end
 ```
-4. Lastly, we will set the switch priority appropriately on each switch for master and standby, and then for the remaining switches withijn the stack so that switch numbering matches the priority levels.
+4. Lastly, we will set the switch priority appropriately on each switch for master and standby, and then for the remaining switches within the stack so that switch numbering matches the priority levels.
 
 ```vtl
    #MODE_ENABLE

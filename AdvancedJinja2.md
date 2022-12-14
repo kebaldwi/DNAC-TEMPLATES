@@ -80,69 +80,66 @@ Then we need a logical construct which iterates through each switch setting not 
             stack Powerstack2
          {% endif %}
          {{ loop.index }}
-       {% endfor %}
-       #MODE_ENABLE
-       #MODE_END_ENABLE
-       #MODE_ENABLE
-       {% for Switch in range(0,StackMemberCount,1) %}
-          {% if loop.index == 1 %}
-             switch {{ loop.index }} priority 10
-          {% elif Switch == 2 %}
-             switch {{ loop.index }} priority 9
-          {% else %}
-             switch {{ loop.index }} priority 8
-          {% endif %}
-       {% endfor %}
-       #MODE_END_ENABLE
+      {% endfor %}
+      #MODE_ENABLE
+      #MODE_END_ENABLE
+      #MODE_ENABLE
+      {% for Switch in range(0,StackMemberCount,1) %}
+         {% if loop.index == 1 %}
+            switch {{ loop.index }} priority 10
+         {% elif Switch == 2 %}
+            switch {{ loop.index }} priority 9
+         {% else %}
+            switch {{ loop.index }} priority 8
+         {% endif %}
+      {% endfor %}
+      #MODE_END_ENABLE
    {% endif %}
 ```
 Explained here...
-1. The code shared will run only if the number of switches in the stack is found to be greater than 1.
+1. The code shared will run only if the number of switches in the stack is found to be greater than 1. This means that stackpower is only configured on stacks of two or more switches. 
 
-```vtl
-   #if( $StackMemberCount > 1 )
+```j2
+   {% if StackMemberCount > 1 %}
 ```
 
 2. The next step is to correctly set the number of powerstack required. If the number of switches exceeds 4 then we need two powerstacks set up.
 
-```vtl
+```j2
    stack-power stack Powerstack1
    mode redundant strict
-   #if( $StackMemberCount > 4 )
+   {% if StackMemberCount > 4 %}
       stack-power stack Powerstack2
       mode redundant strict
-   #end
+   {% endif %}
 ```
 
 3. The next step is to iterate through the switches in the stack setting the stackpower appropriately for each switch and adding them to the correct powerstack 
 
-```vtl
-   #foreach( $Switch in [1..$StackMemberCount] )
-      #if( $Switch < 5 )
-         stack-power switch ${Switch}
+```j2
+   {% for Switch in range(0,StackMemberCount,1) %}
+      {% if loop.index <= (StackMemberCount/2|round('ceil')) %}
+         stack-power switch {{ loop.index }}
          stack Powerstack1
-      #elseif( $Switch > 4 )
-         stack-power switch ${Switch}
+      {% elif loop.index > (StackMemberCount/2|round('ceil')) %}
+         stack-power switch {{ loop.index }}
          stack Powerstack2
-      #end
-    #end
+      {% endif %}
+      {{ loop.index }}
+   {% endfor %}
 ```
-4. Lastly, we will set the switch priority appropriately on each switch for master and standby, and then for the remaining switches withijn the stack so that switch numbering matches the priority levels.
+4. Lastly, we will set the switch priority appropriately on each switch for master and standby, and then for the remaining switches within the stack so that switch numbering matches the priority levels.
 
 ```vtl
-   #MODE_ENABLE
-   #MODE_END_ENABLE
-   #MODE_ENABLE
-   #foreach( $Switch in [1..$StackMemberCount] )
-      #if($Switch == 1)
-         switch $Switch priority 10
-      #elseif($Switch == 2)
-         switch $Switch priority 9
-      #else
-         switch $Switch priority 8
-      #end 
-   #end
-   #MODE_END_ENABLE
+   {% for Switch in range(0,StackMemberCount,1) %}
+      {% if loop.index == 1 %}
+         switch {{ loop.index }} priority 10
+      {% elif Switch == 2 %}
+         switch {{ loop.index }} priority 9
+      {% else %}
+         switch {{ loop.index }} priority 8
+      {% endif %}
+   {% endfor %}
 ```
 
 ### Working port counts within Catalyst 9k
@@ -152,53 +149,49 @@ First we would need to identify how many ports we have on each switch or linecar
 
 We set up variables to track in Array format the number of ports per switch.
 
-```vtl
-   #set( $StackPIDs = $ProductID.split(",") )
-   #set( $StackMemberCount = $StackPIDs.size() )
-   #set( $PortTotal = [] )
-   #set( $offset = $StackMemberCount - 1 )
-   #foreach( $Switch in [0..$offset] )
-     #set( $Model = $StackPIDs[$Switch])
-     #set( $PortCount = $Model.replaceAll("C9300L?-([2|4][4|8]).*","$1") )
-     #set( $foo = $PortTotal.add($PortCount) )
-   #end
+```j2
+   {% set PortTotal = [] %}
+   {% set StackPIDs = ProductID.split(",") %}
+   {% for Switch in StackPIDs %}
+        {% set PortCount = Switch.replaceAll('^.*([2|4][4|8]).*','$1') %}
+        {% do PortTotal.append(PortCount) %}
+   {% endfor %}
 ```
 
 The next step would be to build macros and vlans to configure the various ports.
 
 ```vtl
-   vlan ${data_vlan_number}
-     name ${site_code}-Employees
-   vlan ${voice_vlan_number}
-     name ${site_code}-Voice
-   vlan ${iot_vlan_number}
-     name ${site_code}-IOT
-   vlan ${guest_vlan_number}
-     name ${site_code}-Guests
-   vlan ${ap_vlan_number}
-     name ${site_code}-AP
+   vlan {{data_vlan_number}}
+     name {{site_code}}-Employees
+   vlan {{voice_vlan_number}}
+     name {{site_code}}-Voice
+   vlan {{iot_vlan_number}}
+     name {{site_code}}-IOT
+   vlan {{guest_vlan_number}}
+     name {{site_code}}-Guests
+   vlan {{ap_vlan_number}}
+     name {{site_code}}-AP
    
-   #macro( uplink_interface )
-       switchport trunk allowed vlan add ${voice_vlan_number},${iot_vlan_number},${guest_vlan_number},${ap_vlan_number}     
-   #end
+   {% macro uplink_interface() %}
+       switchport trunk allowed vlan add {{voice_vlan_number}},{{iot_vlan_number}},{{guest_vlan_number}},{{ap_vlan_number}}     
+   {% endmacro %}
    
-   #macro( access_interface )
-     description base port config
-     switchport mode access
-     switchport access vlan ${data_vlan_number}
-     switchport voice vlan ${voice_vlan_number}
-     spanning-tree portfast
-     spanning-tree bpduguard enable
-   #end
+   {% macro access_interface () %}
+      description base port config
+      switchport mode access
+      switchport access vlan {{data_vlan_number}}
+      switchport voice vlan {{voice_vlan_number}}
+      spanning-tree portfast
+      spanning-tree bpduguard enable
+   {% endmacro %}
    
-   #foreach( $Switch in [0..$offset] )
-     #set( $SwiNum = $Switch + 1 )
-     interface range gi ${SwiNum}/0/1 - $PortTotal[$Switch]
-       #access_interface
-   #end
+   {% for SwitchPort in PortTotal %}
+        interface range gi {{ loop.index }}/0/1 - {{ SwitchPort }}
+          {{ access_interface() }}
+   {% endfor %}
    
    interface portchannel 1
-    #uplink_interface
+    {{ uplink_interface() }}
 ```
 
 While this would configure the access ports, and modify the port channel for upstream connectivity we could do more to automate we will look at that next.
