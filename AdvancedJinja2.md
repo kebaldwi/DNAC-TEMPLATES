@@ -71,29 +71,30 @@ Then we need a logical construct which iterates through each switch setting not 
          stack-power stack Powerstack2
          mode redundant strict
       {% endif %}
-      {% for Switch in range(1,StackMemberCount,1) %}
-         {% if Switch <= (StackMemberCount/2|round('ceil')) %}
-            stack-power switch {{ Switch }}
+      {% for Switch in range(0,StackMemberCount,1) %}
+         {% if loop.index <= (StackMemberCount/2|round('ceil')) %}
+            stack-power switch {{ loop.index }}
             stack Powerstack1
-         {% elif Switch > (StackMemberCount/2|round('ceil')) %}
-            stack-power switch {{ Switch }}
+         {% elif loop.index > (StackMemberCount/2|round('ceil')) %}
+            stack-power switch {{ loop.index }}
             stack Powerstack2
          {% endif %}
+         {{ loop.index }}
        {% endfor %}
        #MODE_ENABLE
        #MODE_END_ENABLE
        #MODE_ENABLE
-       {% for Switch in range(1,StackMemberCount,1) %}
-          {% if Switch == 1 %}
-             switch {{ Switch }} priority 10
+       {% for Switch in range(0,StackMemberCount,1) %}
+          {% if loop.index == 1 %}
+             switch {{ loop.index }} priority 10
           {% elif Switch == 2 %}
-             switch {{ Switch }} priority 9
+             switch {{ loop.index }} priority 9
           {% else %}
-             switch {{ Switch }} priority 8
+             switch {{ loop.index }} priority 8
           {% endif %}
        {% endfor %}
        #MODE_END_ENABLE
-   {% endif %}   
+   {% endif %}
 ```
 Explained here...
 1. The code shared will run only if the number of switches in the stack is found to be greater than 1.
