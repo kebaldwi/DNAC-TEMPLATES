@@ -283,4 +283,7 @@ Within DNA Center it is possible to utilize Built-in System type variables for a
 
 If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-Special mention to: https://explore.cisco.com/dnac-use-cases/apache-velocity as examples and extrapolations were made using this documentation.
+Special mention to: https://explore.cisco.com/dnac-use-cases/apache-velocity as Velocity examples and extrapolations were made using this documentation.
+
+Special mention to: https://jinja.palletsprojects.com/en/3.0.x/templates as Jinja2 examples and extrapolations were made using this documentation.
+
