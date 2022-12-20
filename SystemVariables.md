@@ -71,7 +71,7 @@ vlan {{ voice_vlan }}
 ```
 #### Calling System Variables for Operator Selection
 
-Consider the example that we've been working with so far, but with an alternate slant.  What if we want the operator to select the interfaces to apply our vlan configuration?  We could put a text box in the template and have the operator type or copy/paste an interface range, but if we want to reduce the possibility of manual error, we can use what we call **Source Binding** or **Variable Binding**.
+Consider the example that we've been working with so far, but with an alternate use case.  What if we want the operator to select the interfaces to apply our vlan configuration?  We could put a text box in the template and have the operator type or copy/paste an interface range, but if we want to reduce the possibility of manual error, we can use what we call **Source Binding** or **Variable Binding**.
 
 Let's make a single modification to our template.  Here we will remove the reference to **__interface** and replace it with a custom variable name called
 **selected_interfaces**.  Our template now looks like this:
