@@ -1,5 +1,5 @@
 
-# DNA Center System Variables
+# DNA Center System Variables [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 
 ## What are System Varibles?
 Cisco DNA Center has a lot of information about devices.  It collects inventory data from discovered devices and keeps track of what site, network profile and settings are applied to the devices in your network.  You can use this information in your templates by calling system variables.  System variables extend the benefits of adding variables to your templates by augmenting the dynamic capabilities of templates while also reducing the number of manual inputs required from engineering staff at provisioning time.   
