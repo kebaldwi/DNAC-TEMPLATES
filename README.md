@@ -44,6 +44,7 @@ Various sections will be covered within this github repository please use this m
 * [Advanced Jinja2 Scripting](./AdvancedJinja2.md#advanced-jinja2) - This section will dive into Advanced Velocity examples
 ### Advanced Use Cases
 * [Embedded Event Manager](./EEM.md#EEM) - This section will dive into EEM Scripting and various use cases 
+* [System Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/SystemVariables.md#dna-center-system-variables) - This section explains DNA Centers System Variables
 ### Fault-Finding
 * [Troubleshooting](./TroubleShoot.md#Troubleshooting) - This section will dive into Troubleshooting Velocity 
 

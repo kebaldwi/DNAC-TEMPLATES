@@ -280,6 +280,7 @@ Within DNA Center it is possible to utilize Built-in System type variables for a
 {% endfor %}
 ```
 
+This will be explained in more depth in the section [System Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/SystemVariables.md#dna-center-system-variables).
 
 If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
