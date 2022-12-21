@@ -102,6 +102,10 @@ Next we need to specify that this variable is going to be bound.  If we go to th
 ![json](images/calculator_icon.png?raw=true "Import JSON") 
 
 We can select our new variable **selected_interfaces** and apply the settings needed to make this a multi-select field from a list of interfaces on a device.
+1. Select Variable
+2. Choose Type
+3. Check Bind to Source
+4. Choose which system variable to bind
 
 ![json](images/Input_Form_SystemVariables.png?raw=true "Import JSON") 
 
@@ -123,6 +127,11 @@ Next, click **Create Simulation**.  When you reach the Simulation Input Page, yo
 ![json](images/create_simulation.png?raw=true "Import JSON")
 
 When you reach the Simulation Input Page, you'll have to give the simulation a name and then supply values for any variables.  For our bound variables to work, we also need to supply a target device to test against.
+
+1. Choose the Device as a target
+2. Enter the name of the simulation
+3. Fill in variable value for access_vlan
+4. Fill in variable value for voice_vlan
 
 ![json](images/simulation_input.png?raw=true "Import JSON")
 
