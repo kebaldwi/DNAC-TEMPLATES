@@ -65,6 +65,7 @@ In order to acomplish this we need to first identify how many switches are in th
    #set( $StackMemberCount = $StackPIDs.size() )
 ```
 Then we need a logical construct which iterates through each switch setting not only the priority correctly but also setting the powerstack correctly.
+mod
 
 ```vtl
    #if( $StackMemberCount > 1 )
@@ -75,10 +76,10 @@ Then we need a logical construct which iterates through each switch setting not 
          mode redundant strict
       #end
       #foreach( $Switch in [1..$StackMemberCount] )
-         #if( $Switch < 5 )
+         #if( $Switch <= ($StackMemberCount/2 + $StackMemberCount%2) )
             stack-power switch ${Switch}
             stack Powerstack1
-         #elseif( $Switch > 4 )
+         #elseif( $Switch > ($StackMemberCount/2 + $StackMemberCount%2) )
             stack-power switch ${Switch}
             stack Powerstack2
          #end
