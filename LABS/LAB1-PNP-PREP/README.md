@@ -34,6 +34,28 @@ For PnP processes to work, we intend to have a management interface on the devic
 
 As you may recall, a factory default configuration is using VLAN one as no other VLAN exists, and by default, it accepts DHCP addresses. We can use this method in the PnP process. However, the management VLAN may be different, and so may the native VLAN structure of our environment. To that end, we must use the *pnp startup-vlan* command, which allows the device to use varying VLANs in PnP and should be set up and configured on the upstream switch.
 
+Of the discovery methods **DHCP** is the easiest to implement as no changes are required with the *Self Signed Certificate (SSC)* on **DNA Center** as it already includes the IP address by default. If you are deploying PnP using **DNS** discovery or you are building a cluster then you will need to go through the process of acquiring a certificate with Subject Alternative Names to include the **DNS** and **IP** entries to allow for the following:
+
+1. All Node IP Addresses
+2. All VIP Addresses for Cluster
+3. All DNS Host entries for Nodes
+4. VIP DNS Host entry for Cluster
+5. pnpserver Host or CNAME entries
+
+<details closed>
+<summary>To build a certificate in dCLOUD follow these steps </summary>
+
+1. On the Active Directory Server add the roles for the Certificate Authority to allow WEB enrollment
+2. Add the required DNS entries for DNA Center as per the sections below
+3. On DNA Center in CLI create a CSR using openssl 
+4. Enroll DNA Center via the CSR on the Windows CA
+5. Upload the Certificate to DNA Center
+
+Follow this guide for more information on the finer details.
+
+[DNA Center Security Best Practices Guide](./DNACenter_security_best_practices_guide.pdf)
+</details>
+
 ### Step 1.1 - ***Upstream Neighbor Setup***
 As depicted in the diagram above, the 9300 will serve as the upstream neighbor for this exercise and the environment's distribution switch. The Catalyst 9300 will act as the target switch, which we will deploy via PnP and Day 0 and N templates.
 
