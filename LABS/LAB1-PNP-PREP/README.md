@@ -44,6 +44,7 @@ Of the discovery methods **DHCP** is the easiest to implement as no changes are 
 
 <details closed>
 <summary>To build a certificate in dCLOUD follow these steps </summary>
+To Build a certificate for use in DNA Center for PnP, please follow this outline of steps. Each step can take some time so plan accordingly.
 
 1. On the Active Directory Server add the roles for the Certificate Authority to allow WEB enrollment
 2. Add the required DNS entries for DNA Center as per the sections below
