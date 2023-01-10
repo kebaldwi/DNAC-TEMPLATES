@@ -5,9 +5,9 @@
 {% for Switch in range(StackMemberCount) -%}
   {% set Model = StackPIDs[Switch] -%}
   {% if '48' in Model -%}
-    {% set PortTotal = PortTotal.append(48) -%}
+    {% do PortTotal.append(48) -%}
   {% elif '24' in Model %}
-    {% set PortTotal = PortTotal.append(24) -%}  
+    {% do PortTotal.append(24) -%}  
   {% endif -%}
 {% endfor -%}
 !
