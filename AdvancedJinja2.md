@@ -52,6 +52,52 @@ We can utilize other methods like length but in the next addition we build out p
    {% endfor %}
 ```
 
+### Working with Objects
+It is also possible to create objects which can then be referenced through similar looping constructs. Below we create an object which contains Vlan ID's to build the Vlan Database on a target switch. This might be kept in a separate file regular template which may be included or extended to utilize it. 
+
+```
+{% set SiteAVlans = [
+  {'vlan':'2','name':'MGMT'},
+  {'vlan':'100','name':'Data'},
+  {'vlan':'200','name':'Voice'},
+  {'vlan':'300','name':'AccessPoints'},
+  {'vlan':'400','name':'IOT'},
+  {'vlan':'500','name':'PCI'}
+  ]%}
+
+{% set SiteBVlans = [
+  {'vlan':'4','name':'MGMT'},
+  {'vlan':'10','name':'Data'},
+  {'vlan':'20','name':'Voice'},
+  {'vlan':'30','name':'AccessPoints'},
+  {'vlan':'40','name':'IOT'},
+  {'vlan':'50','name':'PCI'}
+  ]%}
+
+```
+
+We then build a loop stucture to deploy the Vlans and perhaps build that into a macro for deployment.
+
+```
+{% macro configure_vlans(vlanpairs)  %}
+  {% for vlanpair in vlanpairs %}
+    vlan {{ vlanpair['vlan'] }}
+    name {{ vlanpair['name'] }}
+  {% endfor %}
+{% endmacro %}
+```
+
+Then perhaps build a logical structure to account for differing Site Objects.
+
+```
+{% if Site == "SiteA" %}
+  {{ configure_vlans(SiteAvlans) }}
+{% elif Site == "SiteB" %}
+  {{ configure_vlans(SiteBvlans) }}
+{% endif %}
+```
+
+
 ### Working with Stacks of 9300/9200 and Powerstacking
 One area we need to address is how to effectively deal with stacking 9300's and how to deal with a stack of 8 switches where a powerstack only allows 4. Although not supported by TAC this is supported from a platform point of view. Essentially you would build the data stack of 8 switches, and then build two powerstacks of four switches in each. In the following example I share is based on velocity code which was co-written by Josh Bronikowski. 
 
