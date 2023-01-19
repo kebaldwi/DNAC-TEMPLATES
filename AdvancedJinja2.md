@@ -55,7 +55,7 @@ We can utilize other methods like length but in the next addition we build out p
 ### Working with Objects
 It is also possible to create objects which can then be referenced through similar looping constructs. Below we create an object which contains Vlan ID's to build the Vlan Database on a target switch. This might be kept in a separate file regular template which may be included or extended to utilize it. 
 
-```
+```j2
 {% set SiteAVlans = [
   {'vlan':'2','name':'MGMT'},
   {'vlan':'100','name':'Data'},
@@ -78,7 +78,7 @@ It is also possible to create objects which can then be referenced through simil
 
 We then build a loop stucture to deploy the Vlans and perhaps build that into a macro for deployment.
 
-```
+```j2
 {% macro configure_vlans(vlanpairs)  %}
   {% for vlanpair in vlanpairs %}
     vlan {{ vlanpair['vlan'] }}
@@ -89,7 +89,7 @@ We then build a loop stucture to deploy the Vlans and perhaps build that into a 
 
 Then perhaps build a logical structure to account for differing Site Objects.
 
-```
+```j2
 {% if Site == "SiteA" %}
   {{ configure_vlans(SiteAvlans) }}
 {% elif Site == "SiteB" %}
@@ -103,7 +103,7 @@ Within Jinja2 templates in DNA Center its possible to both Include and Extend re
 #### Include
 Include statements may be used in Jinja2 to augment regular templates. They are used to allow ann entire regular template file to be inserted at the point of the include statement. The include statement shown here is an example, but you can see the parent project and then the regular template name are referenced as you would a file system:
 
-```
+```j2
 {% include "Some-Project/VlanDatabases" %}
 ```
 
@@ -113,7 +113,7 @@ This allows you to maintain code within separate templates for development purpo
 
 Extend statements are used in Jinja2 similarly to augment regular templates, but they differ in a number of ways. First the code to be extended is contained in block within the regular template. Here is an theoretical example:
 
-```
+```j2
 {% block SiteAVlans %}
 !
 {#- Vlans per Site Type -#}
@@ -145,20 +145,20 @@ Extend statements are used in Jinja2 similarly to augment regular templates, but
 
 This regular template may then be extended by using a statement shown here is an example. This line is put in the extended template. You can see the parent project and then the regular template name are referenced as you would a file system: 
 
-```
+```j2
 {% extends "Some-Project/GlobalServices" %}
 ```
 
 The extended regular template is then referenced within the source template ('GlobalServices' in the example above) with this code block
 
-```
+```j2
 {% block SiteAVlans %}
 {% endblock %}
 ```
 
 This allows you to put logical structures around this code augmenting when it is used and when it is not. For example:
 
-```
+```j2
 {% if Site == "SiteA" %}
   {% block SiteAVlans %}
   {% endblock %}
