@@ -169,7 +169,7 @@ It is also possible to create objects which can then be referenced through simil
 ```j2
 {% set monkey = {'banana' : 'good', 'roast beef' : 'bad'} %}
 
-{% set CAMvlans = [
+{% set SiteVlans = [
   {'vlan':'2','name':'MGMT'},
   {'vlan':'100','name':'Data'},
   {'vlan':'200','name':'Voice'},
