@@ -97,6 +97,78 @@ Then perhaps build a logical structure to account for differing Site Objects.
 {% endif %}
 ```
 
+### Include and Extend with Jinja2
+Within Jinja2 templates in DNA Center its possible to both Include and Extend regular templates. Lets discuss first what these are and how they differ from each other, and then how they may be leveraged.
+
+#### Include
+Include statements may be used in Jinja2 to augment regular templates. They are used to allow ann entire regular template file to be inserted at the point of the include statement. The include statement shown here is an example, but you can see the parent project and then the regular template name are referenced as you would a file system:
+
+```
+{% include "Some-Project/VlanDatabases" %}
+```
+
+This allows you to maintain code within separate templates for development purposes and to reuse code without the need for a composite template.
+
+#### Extend
+
+Extend statements are used in Jinja2 similarly to augment regular templates, but they differ in a number of ways. First the code to be extended is contained in block within the regular template. Here is an theoretical example:
+
+```
+{% block SiteAVlans %}
+!
+{#- Vlans per Site Type -#}
+{% set SiteAVlans = [
+  {'vlan':'2','name':'MGMT'},
+  {'vlan':'100','name':'Data'},
+  {'vlan':'200','name':'Voice'},
+  {'vlan':'300','name':'AccessPoints'},
+  {'vlan':'400','name':'IOT'},
+  {'vlan':'500','name':'PCI'}
+  ]%}
+{% endblock %}
+
+{% block SiteBVlans %}
+!
+{#- Vlans per Site Type -#}
+{% set SiteBVlans = [
+  {'vlan':'4','name':'MGMT'},
+  {'vlan':'10','name':'Data'},
+  {'vlan':'20','name':'Voice'},
+  {'vlan':'30','name':'AccessPoints'},
+  {'vlan':'40','name':'IOT'},
+  {'vlan':'50','name':'PCI'}
+  ]%}
+!
+{% endblock %}
+
+```
+
+This regular template may then be extended by using a statement shown here is an example. This line is put in the extended template. You can see the parent project and then the regular template name are referenced as you would a file system: 
+
+```
+{% extends "Some-Project/GlobalServices" %}
+```
+
+The extended regular template is then referenced within the source template ('GlobalServices' in the example above) with this code block
+
+```
+{% block SiteAVlans %}
+{% endblock %}
+```
+
+This allows you to put logical structures around this code augmenting when it is used and when it is not. For example:
+
+```
+{% if Site == "SiteA" %}
+  {% block SiteAVlans %}
+  {% endblock %}
+{% elif Site == "SiteB" %}
+  {% block SiteBVlans %}
+  {% endblock %}
+{% endif %}   
+```
+
+Now only the code required is used when rendering the template.
 
 ### Working with Stacks of 9300/9200 and Powerstacking
 One area we need to address is how to effectively deal with stacking 9300's and how to deal with a stack of 8 switches where a powerstack only allows 4. Although not supported by TAC this is supported from a platform point of view. Essentially you would build the data stack of 8 switches, and then build two powerstacks of four switches in each. In the following example I share is based on velocity code which was co-written by Josh Bronikowski. 
