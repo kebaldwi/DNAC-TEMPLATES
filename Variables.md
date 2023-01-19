@@ -152,7 +152,7 @@ Data may be set to the variables via a set command
 {% set NumericVariable = 10  %}
 ```
 
-### Arrays (aka Ordered Lists): 
+### Arrays(aka Ordered Lists): 
 It is possible to create arrays as well which can be iterated through with Foreach loop constructs. In Velocity we call an array a list. You can set a list up in two ways:
 
 * Define all the elements of the list in one line comma delimited 
@@ -163,8 +163,20 @@ Both examples follow:
 {% set L2vlans = ['10','18'] %}
 ```
 
+### Objects:
+It is also possible to create objects which can then be referenced through similar looping constructs. Please review the examples:
+
 ```j2
 {% set monkey = {'banana' : 'good', 'roast beef' : 'bad'} %}
+
+{% set CAMvlans = [
+  {'vlan':'2','name':'MGMT'},
+  {'vlan':'100','name':'Data'},
+  {'vlan':'200','name':'Voice'},
+  {'vlan':'300','name':'AccessPoints'},
+  {'vlan':'400','name':'IOT'},
+  {'vlan':'500','name':'PCI'}
+  ]%}
 ```
 
 ### Modifiers
@@ -173,7 +185,7 @@ With variables there are modifiers that can be used to do specific operations wi
 
 1. An example that splits a string result using on a specific character as a delimeter and fills an array $StackPIDs.
    ```j2
-   {% set StackPIDs = ProductID.split(',) %}
+   {% set StackPIDs = ProductID.split(',') %}
    ```
 
 2. This example determines the number of elements in an array.
