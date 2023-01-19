@@ -248,7 +248,7 @@ Explained here...
 ```
 4. Lastly, we will set the switch priority appropriately on each switch for master and standby, and then for the remaining switches within the stack so that switch numbering matches the priority levels.
 
-```vtl
+```j2
    {% for Switch in range(0,StackMemberCount,1) %}
       {% if loop.index == 1 %}
          switch {{ loop.index }} priority 10
@@ -278,7 +278,7 @@ We set up variables to track in Array format the number of ports per switch.
 
 The next step would be to build macros and vlans to configure the various ports.
 
-```vtl
+```j2
    vlan {{data_vlan_number}}
      name {{site_code}}-Employees
    vlan {{voice_vlan_number}}
