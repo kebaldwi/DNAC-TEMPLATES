@@ -54,8 +54,18 @@ This template includes a number of built in features, which allow for the majori
 <details closed>
 <summary> Click for Details and Sub Tasks</summary>
 
+Within the form you can see many fields which can be populated with a csv file. These are the typical responses necessary that are different from switch to switch which allow us to template the configuration for repeated use. 
+
+1. The hostname.
+2. System MTU is a default setting which if entered changes the configuration. You can have the switch reload to set that setting if you want using an additional EEM script.
+3. The typical management VLAN and IP address information for management purposes.
+4. The interfaces can be entered comma delimited which allows us to create or not create Etherchannels as necessary. 
+
 ![json](./images/DNAC-SAMPLE-TEMPLATE-PnP-Form.png?raw=true "Import JSON")
-examples
+
+Once you have imported the template you can look at the logic but its well documented [here]().
+
+![json](./ONBOARDING/Switch-Initial-Provision.vtl?raw=true "Import JSON")
 
 </details>
 
