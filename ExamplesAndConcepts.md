@@ -21,17 +21,27 @@ To help get started with and better understand the PnP process we have provided 
 ### What
 To help get started with the PnP process and to better understand the process, please review the following information:
 
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
+
 1. [PnP Workflow](./PnP-Workflow.md) - This section explains the overall Plug and Play Methodology
 2. [Onboarding](./Onboarding.md) - This section will explain Onboarding Templates in DNAC and their use
 3. [Building Templates](./Templates.md#building-templates) - This section will explain how to build a template on DNAC
 
+</details>
+
 ### How
 To let you practice and get experience with the PnP process to better understand it. The labs referenced here use templates and projects within those labs, but you may substitute the example below. Please review the following lab information:
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 1. [PnP Preparation](./LABS/LAB1-PNP-PREP/README.md)
 2. [Onboarding Templates](./LABS/LAB2-Onboarding-Template/README.md)
 
 This material is designed to help you understand the Plug and Play process, templates and deployment of these within a lab setting.
+
+</details>
 
 ### Where 
 Within the following location is an example template written in ***Jinja2*** in JSON format which can be imported into the **Onboarding Configuration** section in the Template Editor/Hub:
@@ -41,7 +51,12 @@ Within the following location is an example template written in ***Jinja2*** in 
 ### Features
 This template includes a number of built in features, which allow for the majority of use cases. We will explore those here in this section.
 
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
+
 examples
+
+</details>
 
 ## DayN Template Project
 ### Why
@@ -50,32 +65,47 @@ To help get started with and better understand the DayN process we have provided
 ### What
 To help get started with the PnP process and to better understand the process, please review the following information:
 
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
+
 1. [DayN Templates](./DayN.md#day-n-templates-and-flows) - This section will explain how to use templates for ongoing changes to the network
 2. [Building Templates](./Templates.md#building-templates) - This section will explain how to build a template on DNAC
 
+</details>
+
 #### Jinja2 Language
 Here we concentrate on building **Jinja2** templates, and work with logical concepts.
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 1. [Jinja2 Variables](./Variables.md#jinja2-variables) - This section explains Variables in depth and how and where to use them
 2. [Jinja2 Scripting](./Jinja2.md#jinja2-scripting) - This section will dive into Velocity Scripting constructs and use cases
 3. [Advanced Jinja2 Scripting](./AdvancedJinja2.md#advanced-jinja2) - This section will dive into Advanced Velocity examples
 
-#### Advanced Use Cases
+##### Advanced Use Cases
 Here we concentrate on advanced uses of templating, and work system variables.
 
-* [Embedded Event Manager](./EEM.md#EEM) - This section will dive into EEM Scripting and various use cases 
-* [System Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/SystemVariables.md#dna-center-system-variables) - This section explains DNA Centers System Variables
+1. [Embedded Event Manager](./EEM.md#EEM) - This section will dive into EEM Scripting and various use cases 
+2. [System Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/SystemVariables.md#dna-center-system-variables) - This section explains DNA Centers System Variables
 
-#### Fault-Finding
-* [Troubleshooting](./TroubleShoot.md#Troubleshooting) - This section will dive into Troubleshooting in general terms 
+##### Fault-Finding
+1. [Troubleshooting](./TroubleShoot.md#Troubleshooting) - This section will dive into Troubleshooting in general terms 
+
+</details>
 
 ### How
 To let you practice and get experience with the DayN process to better understand it. The labs referenced here use templates and projects within those labs, but you may substitute the example below. Please review the following lab information:
+
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
 
 1. [Day N Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/) - The lab covers Day N template constructs and use cases **(allow 0.5 hrs)**
 2. [Composite Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB4-Composite-Template/) - This lab covers building a composite template on DNA Center **(allow 0.5 hrs)**
 3. [Advanced Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB7-Advanced-Automation/) - This lab will explore Advanced Automation examples **(allow 1.5 hrs)**
 4. [Dynamic Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB8-Dynamic-Automation/) - This lab uses Advanced Automation techniques **(allow 2.0 hrs)**
+
+</details>
 
 ### Where
 This is an example which you may want to test with in the lab in combination with the **PnP Template** offered [here](./ExamplesAndConcepts.md#plug-and-play-pnp-template). Within the following location is an example project written in ***Jinja2*** in JSON format which can be imported into the Template Editor/Hub:
@@ -85,7 +115,12 @@ This is an example which you may want to test with in the lab in combination wit
 ### Features
 This project includes templates with a number of built in features, which allow for the majority of use cases. We will explore those here in this section.
 
+<details closed>
+<summary> Click for Details and Sub Tasks</summary>
+
 examples
+
+</details>
 
 ## Summary
 These examples are ready for testing in your lab. These are aides to help you get up to speed with what is possible when automating with DNA Center. The intent of this part of the repository is to aide in learning and not provide production ready templates. All templates here are for **LAB Purposes ONLY** and by downloading any content you acknowledge that this is not production ready code.
