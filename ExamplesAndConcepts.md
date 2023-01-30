@@ -54,7 +54,7 @@ This template includes a number of built in features, which allow for the majori
 <details closed>
 <summary> Click for Details and Sub Tasks</summary>
 
-![json](./images/DNAC-SAMPLE-TEMPLATE-PnP-Form "Import JSON")
+![json](./images/DNAC-SAMPLE-TEMPLATE-PnP-Form?raw=true "Import JSON")
 examples
 
 </details>
