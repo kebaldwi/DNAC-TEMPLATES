@@ -21,7 +21,7 @@ To help get started with and better understand the PnP process we have provided 
 ### What
 To help get started with the PnP process and to better understand the process, please review the following information:
 
-<details closed>
+<details open>
 <summary> Click for Details and Sub Tasks</summary>
 
 1. [PnP Workflow](./PnP-Workflow.md) - This section explains the overall Plug and Play Methodology
@@ -33,7 +33,7 @@ To help get started with the PnP process and to better understand the process, p
 ### How
 To let you practice and get experience with the PnP process to better understand it. The labs referenced here use templates and projects within those labs, but you may substitute the example below. Please review the following lab information:
 
-<details closed>
+<details open>
 <summary> Click for Details and Sub Tasks</summary>
 
 1. [PnP Preparation](./LABS/LAB1-PNP-PREP/README.md)
@@ -65,7 +65,7 @@ To help get started with and better understand the DayN process we have provided
 ### What
 To help get started with the PnP process and to better understand the process, please review the following information:
 
-<details closed>
+<details open>
 <summary> Click for Details and Sub Tasks</summary>
 
 1. [DayN Templates](./DayN.md#day-n-templates-and-flows) - This section will explain how to use templates for ongoing changes to the network
@@ -98,7 +98,7 @@ Here we concentrate on advanced uses of templating, and work system variables.
 ### How
 To let you practice and get experience with the DayN process to better understand it. The labs referenced here use templates and projects within those labs, but you may substitute the example below. Please review the following lab information:
 
-<details closed>
+<details open>
 <summary> Click for Details and Sub Tasks</summary>
 
 1. [Day N Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB3-DayN-Template/) - The lab covers Day N template constructs and use cases **(allow 0.5 hrs)**
