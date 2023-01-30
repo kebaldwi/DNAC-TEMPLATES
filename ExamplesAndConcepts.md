@@ -9,14 +9,14 @@ Within this section we will only deal with the non Fabric environment and deploy
 Why
 What
 How
-Where
+Where [⬇︎Full DNA Center PnP Onboarding Template⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/ONBOARDING/DNAC-SAMPLE-TEMPLATES-01302023-PnP-template.json)
 Features
 
 ## DayN Template Project
 Why
 What
 How
-Where
+Where [⬇︎Full DNA Center Sample Project⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/DAYN/DNAC-SAMPLE-TEMPLATES-01302023-project.json)
 Features
 
 ## Summary
