@@ -65,7 +65,7 @@ Within the form you can see many fields which can be populated with a csv file. 
 
 Once you have imported the template you can look at the logic but its well documented [here]().
 
-![json](./ONBOARDING/Switch-Initial-Provision.vtl?raw=true "Import JSON")
+![vtl](./ONBOARDING/Switch-Initial-Provision.vtl?raw=true "Import vtl")
 
 </details>
 
