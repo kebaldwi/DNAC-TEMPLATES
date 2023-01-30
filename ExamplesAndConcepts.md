@@ -63,9 +63,79 @@ Within the form you can see many fields which can be populated with a csv file. 
 
 ![json](./images/DNAC-SAMPLE-TEMPLATE-PnP-Form.png?raw=true "Import JSON")
 
-Once you have imported the template you can look at the logic but its well documented [here]().
+Once you have imported the template you can look at the logic.
 
-![vtl](./ONBOARDING/Switch-Initial-Provision.vtl?raw=true "Import vtl")
+```J2
+{# <------Onboarding-Template-------> #}
+{# To be used for onboarding when using Day N Templates #}
+{# Define Variables provision with vlan and port channel #}
+!
+{# Set MTU if required #}
+{% if SystemMTU != 1500 %}
+    system mtu {{ SystemMTU }}
+{% endif %}
+!
+{# Set hostname #}
+hostname {{ Hostname }}
+!
+{% set VtpDomain = Hostname %}
+!
+{# Set VTP and VLAN for onboarding #}
+vtp domain {{ VtpDomain }}
+vtp mode transparent
+!
+{# Set Management VLAN #}
+vlan {{ MgmtVlan }}
+!
+{% if MgmtVlan > 1 %}
+  name MgmtVlan
+  {# Disable Vlan 1 (optional) #}
+  interface Vlan 1
+   shutdown
+{% endif %}
+!
+{# Set Interfaces and Build Port Channel #}
+!{{ Portchannel }}
+interface range {{ Interfaces }}
+ shut
+ switchport mode trunk
+ switchport trunk allowed vlan {{ MgmtVlan }}
+ {% if "," in Interfaces %}
+    channel-protocol lacp
+    channel-group {{ Portchannel }} mode active
+ {% endif %}
+ no shut
+!
+{% if "," in Interfaces %}
+  interface Port-channel {{ Portchannel }}
+   switchport trunk native vlan {{ MgmtVlan }}
+   switchport trunk allowed vlan {{ MgmtVlan }}
+   switchport mode trunk
+   no port-channel standalone-disable
+{% endif %}
+!
+{# Set Up Managment Vlan {{ MgmtVlan }} #}
+interface Vlan {{ MgmtVlan }}
+ description MgmtVlan
+ ip address {{ SwitchIP }} {{ SubnetMask }}
+ no ip redirects
+ no ip proxy-arp
+ no shut
+!
+ip default-gateway {{ Gateway }}
+!
+{# Set Source of Management Traffic #}
+ip domain lookup source-interface Vlan {{ MgmtVlan }}
+ip http client source-interface Vlan {{ MgmtVlan }}
+ip ftp source-interface Vlan {{ MgmtVlan }}
+ip tftp source-interface Vlan {{ MgmtVlan }}
+ip ssh source-interface Vlan {{ MgmtVlan }}
+ip radius source-interface Vlan {{ MgmtVlan }}
+logging source-interface Vlan {{ MgmtVlan }}
+snmp-server trap-source Vlan {{ MgmtVlan }}
+ntp source Vlan {{ MgmtVlan }}
+!
+```
 
 </details>
 
