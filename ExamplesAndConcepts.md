@@ -65,6 +65,12 @@ Within the form you can see many fields which can be populated with a csv file. 
 
 Once you have imported the template you can look at the logic.
 
+#### Key Features
+1. System MTU set by default, but modifiable via the form
+2. VTP Domain set to Hostname, you can change to variable by removing `{% set VtpDomain = Hostname %}`
+3. Shuts downn Vlan 1 if not in use
+4. Automatically builds Etherchannel if required
+
 ```J2
 {# <------Onboarding-Template-------> #}
 {# To be used for onboarding when using Day N Templates #}
@@ -200,7 +206,25 @@ This project includes templates with a number of built in features, which allow 
 <details closed>
 <summary> Click for Details and Sub Tasks</summary>
 
-examples
+The package or project includes Jinja2 templates which are rolled into Composite templates to allow for quick deployment of:
+
+1. Simple Access Point and Workstation Deployments.
+2. The use or incorporation of AutoConf to Autoconfigure ports based off Device Classification
+3. The use of IBNS 2.0 policy to enforce and deploy configuration.
+
+The last of the two above, allow for Dynamic Configuration of networks to allow for networks where devices consistently move but where user and application experience needs to be consistent.
+
+Once you have imported the template you can look at the logic within each template.
+
+#### Key Features
+1. System MTU set by default, but modifiable via the form
+2. VTP Domain set to Hostname, you can change to variable by removing `{% set VtpDomain = Hostname %}`
+3. Shuts downn Vlan 1 if not in use
+4. Automatically builds Etherchannel if required
+
+```J2
+```
+
 
 </details>
 

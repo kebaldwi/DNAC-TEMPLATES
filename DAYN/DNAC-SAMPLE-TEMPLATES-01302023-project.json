@@ -50,7 +50,7 @@
         ],
         "softwareType": "IOS",
         "softwareVariant": "XE",
-        "templateContent": "{# System Management for Catalyst Only #}\n{% include \"DNAC-Templates-Samples/Sensitive-Info\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n\nno service pad\nservice timestamps debug datetime msec localtime\nservice timestamps log datetime msec localtime\nno platform punt-keepalive disable-kernel-core\n!\nspanning-tree mode rapid-pvst\nspanning-tree portfast default\nspanning-tree portfast bpduguard default\n!\n{% if Site == \"A\" %}\n  {{ configure_vlans(SiteAvlans) }}\n  {{ configure_stp_dualuplink(SiteAvlans) }}\n{% elif Site == \"B\" %}\n  {{ configure_vlans(SiteBvlans) }}\n  {{ configure_stp_singleuplink(SiteBvlans) }}\n{% endif %}\n!\n{%- include \"DNAC-Templates-Samples/ACLs-Info\" -%}\n!\nsnmp-server location {{ snmpLocation }} \n{% for snmpCommunityString in snmpCommunityStrings %}\n  snmp-server community {{ snmpCommunityString['string'] }} RW 10\n{% endfor %}\n!\ninterface GigabitEthernet0/0\n no ip address\n shutdown\n!\nnetconf-yang",
+        "templateContent": "{# System Management for Catalyst Only #}\n{% include \"DNAC-Templates-Samples/Sensitive-Info\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n\nno service pad\nservice timestamps debug datetime msec localtime\nservice timestamps log datetime msec localtime\nno platform punt-keepalive disable-kernel-core\n!\nspanning-tree mode rapid-pvst\nspanning-tree portfast default\nspanning-tree portfast bpduguard default\n!\n{% if Site == \"A\" %}\n  {{ configure_vlans(SiteAvlans) }}\n  {{ configure_stp_dualuplink(SiteAvlans) }}\n{% elif Site == \"B\" %}\n  {{ configure_vlans(SiteBvlans) }}\n  {{ configure_stp_singleuplink(SiteBvlans) }}\n{% endif %}\n!\n{%- include \"DNAC-Templates-Samples/ACLs-Info\" -%}\n!\nsnmp-server location {{ snmpLocation }} \n{% for snmpCommunityString in snmpCommunityStrings %}\n  snmp-server community {{ snmpCommunityString['string'] }} RW 10\n{% endfor %}\n!\n{% for user in users %}\n  username {{ user.name }} priv {{ user.priv }} secret 9 {{ user.key }}\n{% endfor %}\n!\ninterface GigabitEthernet0/0\n no ip address\n shutdown\n!\nnetconf-yang",
         "rollbackTemplateContent": "",
         "templateParams": [
           {
@@ -78,12 +78,41 @@
             "displayName": null
           },
           {
-            "parameterName": "snmpLocation",
+            "parameterName": "Site",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
             "required": true,
             "notParam": false,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 2,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "SINGLE_SELECT",
+              "selectionValues": {
+                "A": "A",
+                "B": "B"
+              },
+              "defaultSelectedValues": [
+                "A"
+              ],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "displayName": null
+          },
+          {
+            "parameterName": "snmpLocation",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": false,
+            "notParam": true,
             "paramArray": false,
             "instructionText": null,
             "group": null,
@@ -100,73 +129,14 @@
             "provider": null,
             "binding": "",
             "displayName": null
-          },
-          {
-            "parameterName": "Site",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 2,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "SINGLE_SELECT",
-              "selectionValues": {
-                "A": "A",
-                "B": "B"
-              },
-              "defaultSelectedValues": [
-                "A"
-              ],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "displayName": null
           }
         ],
         "rollbackTemplateParams": [],
         "composite": false,
         "containingTemplates": [],
         "language": "JINJA",
-        "promotedTemplateContent": "{# System Management for Catalyst Only #}\n{% include \"DNAC-Templates-Samples/Sensitive-Info\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n\nno service pad\nservice timestamps debug datetime msec localtime\nservice timestamps log datetime msec localtime\nno platform punt-keepalive disable-kernel-core\n!\nspanning-tree mode rapid-pvst\nspanning-tree portfast default\nspanning-tree portfast bpduguard default\n!\n{% if Site == \"A\" %}\n  {{ configure_vlans(SiteAvlans) }}\n  {{ configure_stp_dualuplink(SiteAvlans) }}\n{% elif Site == \"B\" %}\n  {{ configure_vlans(SiteBvlans) }}\n  {{ configure_stp_singleuplink(SiteBvlans) }}\n{% endif %}\n!\n{%- include \"DNAC-Templates-Samples/ACLs-Info\" -%}\n!\nsnmp-server location {{ snmpLocation }} \n{% for snmpCommunityString in snmpCommunityStrings %}\n  snmp-server community {{ snmpCommunityString['string'] }} RW 10\n{% endfor %}\n!\ninterface GigabitEthernet0/0\n no ip address\n shutdown\n!\nnetconf-yang",
+        "promotedTemplateContent": "{# System Management for Catalyst Only #}\n{% include \"DNAC-Templates-Samples/Sensitive-Info\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n\nno service pad\nservice timestamps debug datetime msec localtime\nservice timestamps log datetime msec localtime\nno platform punt-keepalive disable-kernel-core\n!\nspanning-tree mode rapid-pvst\nspanning-tree portfast default\nspanning-tree portfast bpduguard default\n!\n{% if Site == \"A\" %}\n  {{ configure_vlans(SiteAvlans) }}\n  {{ configure_stp_dualuplink(SiteAvlans) }}\n{% elif Site == \"B\" %}\n  {{ configure_vlans(SiteBvlans) }}\n  {{ configure_stp_singleuplink(SiteBvlans) }}\n{% endif %}\n!\n{%- include \"DNAC-Templates-Samples/ACLs-Info\" -%}\n!\nsnmp-server location {{ snmpLocation }} \n{% for snmpCommunityString in snmpCommunityStrings %}\n  snmp-server community {{ snmpCommunityString['string'] }} RW 10\n{% endfor %}\n!\n{% for user in users %}\n  username {{ user.name }} priv {{ user.priv }} secret 9 {{ user.key }}\n{% endfor %}\n!\ninterface GigabitEthernet0/0\n no ip address\n shutdown\n!\nnetconf-yang",
         "promotedTemplateParams": [
-          {
-            "parameterName": "Site",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 2,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "SINGLE_SELECT",
-              "selectionValues": {
-                "A": "A",
-                "B": "B"
-              },
-              "defaultSelectedValues": [
-                "A"
-              ],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "id": null,
-            "displayName": null
-          },
           {
             "parameterName": "__interface",
             "dataType": "STRING",
@@ -193,12 +163,42 @@
             "displayName": null
           },
           {
-            "parameterName": "snmpLocation",
+            "parameterName": "Site",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
             "required": true,
             "notParam": false,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 2,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "SINGLE_SELECT",
+              "selectionValues": {
+                "A": "A",
+                "B": "B"
+              },
+              "defaultSelectedValues": [
+                "A"
+              ],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "id": null,
+            "displayName": null
+          },
+          {
+            "parameterName": "snmpLocation",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": false,
+            "notParam": true,
             "paramArray": false,
             "instructionText": null,
             "group": null,
@@ -220,7 +220,7 @@
         ],
         "customParamsOrder": false,
         "createTime": 1674762318741,
-        "lastUpdateTime": 1675088462135,
+        "lastUpdateTime": 1675378812972,
         "latestVersionTime": 1674762318741,
         "projectName": "DNAC-Templates-Samples",
         "validationErrors": {
@@ -278,24 +278,59 @@
         ],
         "softwareType": "IOS",
         "softwareVariant": "XE",
-        "templateContent": "{# Dictionaries of SNMP V2 Community Strings #}\n{% set snmpCommunityStrings = [\n  {'string':'EXAMPLE1'},\n  {'string':'EXAMPLE2'}\n  ]%}\n",
+        "templateContent": "{# Dictionaries of SNMP V2 Community Strings #}\n{% set snmpCommunityStrings = [\n  {'string':'EXAMPLE1'},\n  {'string':'EXAMPLE2'}\n  ]%}\n\n{# Dictionaries of User information #}\n{% set users = [\n  {'name':'kbaldwin','priv':'15','key':'$9$DwFGXgdsukL4qE$7LI.Kq6vijfo/BkM53McdTrlfS.ou4CmOQ6zYH8iba2'},\n  {'name':'plukasze','priv':'3','key':'$9$DwFGXgdsukL4qE$7LI.Kq6vijfo/BkM53McdTrlfS.ou4CmOQ6zYH8iba2'}\n  ]%}\n",
         "rollbackTemplateContent": "",
         "templateParams": [],
         "rollbackTemplateParams": [],
         "composite": false,
         "containingTemplates": [],
         "language": "JINJA",
-        "promotedTemplateContent": "{# Dictionaries of SNMP V2 Community Strings #}\n{% set snmpCommunityStrings = [\n  {'string':'EXAMPLE1'},\n  {'string':'EXAMPLE2'}\n  ]%}\n",
+        "promotedTemplateContent": "{# Dictionaries of SNMP V2 Community Strings #}\n{% set snmpCommunityStrings = [\n  {'string':'EXAMPLE1'},\n  {'string':'EXAMPLE2'}\n  ]%}\n\n{# Dictionaries of User information #}\n{% set users = [\n  {'name':'kbaldwin','priv':'15','key':'$9$DwFGXgdsukL4qE$7LI.Kq6vijfo/BkM53McdTrlfS.ou4CmOQ6zYH8iba2'},\n  {'name':'plukasze','priv':'3','key':'$9$DwFGXgdsukL4qE$7LI.Kq6vijfo/BkM53McdTrlfS.ou4CmOQ6zYH8iba2'}\n  ]%}\n",
         "promotedTemplateParams": [],
         "customParamsOrder": false,
         "createTime": 1674762318823,
-        "lastUpdateTime": 1674763232101,
+        "lastUpdateTime": 1675378618357,
         "latestVersionTime": 1674762318823,
         "projectName": "DNAC-Templates-Samples",
         "validationErrors": {
           "templateErrors": [],
           "rollbackTemplateErrors": [],
           "templateId": "ed52e56e-055a-40f3-84d2-91697a95298b",
+          "templateVersion": null
+        },
+        "projectAssociated": true,
+        "documentDatabase": false
+      },
+      {
+        "name": "ACLs-Info",
+        "description": "",
+        "tags": [],
+        "deviceTypes": [
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco Catalyst 9300 Series Switches"
+          }
+        ],
+        "softwareType": "IOS",
+        "softwareVariant": "XE",
+        "templateContent": "{# Dictionaries of VLANS per Site #}\n{% set MgmtAceEntries = [\n  {'entry':'10','rule':'permit','range':'10.10.0.100','mask':'0.0.0.0'},\n  {'entry':'20','rule':'permit','range':'10.10.0.200','mask':'0.0.0.0'},\n  {'entry':'30','rule':'permit','range':'10.10.0.0','mask':'0.0.0.255'},\n  {'entry':'40','rule':'permit','range':'10.20.0.0','mask':'0.0.0.255'}\n  ]%}\n{% set VtyAccessAceEntries = [\n  {'entry':'10','rule':'permit','range':'10.10.0.100','mask':'0.0.0.0'},\n  {'entry':'20','rule':'permit','range':'10.10.0.200','mask':'0.0.0.0'},\n  {'entry':'30','rule':'permit','range':'10.10.0.0','mask':'0.0.0.255'},\n  {'entry':'40','rule':'permit','range':'10.20.0.0','mask':'0.0.0.255'},\n  {'entry':'50','rule':'permit','range':'10.30.0.0','mask':'0.0.0.255'},\n  {'entry':'60','rule':'permit','range':'10.40.0.0','mask':'0.0.0.255'}\n  ]%}\n{% set AclDefaultEntries = [\n  {'entry':'10','rule':'permit','range':'10.10.0.100','mask':'0.0.0.0'},\n  {'entry':'20','rule':'permit','range':'10.10.0.200','mask':'0.0.0.0'},\n  {'entry':'30','rule':'permit','range':'10.10.0.0','mask':'0.0.0.255'}\n  ]%}\n\n{# ACLs Standard Macro #}\n{% macro StandardAcl(name,lists) %}\n  ip access-list standard {{ name }}\n  {% for list in lists %}\n    {{ list['entry'] }} {{ list['rule'] }} {{ list['range'] }} {{ list['mask'] }}\n  {% endfor %}\n{% endmacro %}\n\n{# ACLs Extended Macro #}\n{% macro ExtendedAcl(name,lists) %}\n  ip access-list extended {{ name}}\n  {% for list in lists %}\n    {{ list.entry }} {{ list.rule }} {{ list.srange }} {{ list.smask }} {{ list.sport }} {{ list.drange }} {{ list.dmask }} {{ list.dport }}\n  {% endfor %}\n{% endmacro %}\n\n{# SNMP ACL #}\n{% macro StandardSnmpLineAcl() %}\n access-list 10 permit 10.10.0.100\n access-list 10 permit 10.20.0.200\n access-list 10 permit 10.10.0.0 0.0.0.255\n access-list 10 permit 10.20.0.0 0.0.0.255\n{% endmacro %}\n!\n{# SNMP ACL #}\n{% macro StandardSnmpAcl() %}\nip access-list standard SNMP\n 10 permit 10.10.0.100\n 20 permit 10.20.0.200\n 30 permit 10.10.0.0 0.0.0.255\n 40 permit 10.20.0.0 0.0.0.255\n{% endmacro %}\n!\n{# VTY ACL #}\n{% macro StandardVtyLineAcl() %}\n access-list 20 permit 10.10.0.100\n access-list 20 permit 10.20.0.200\n access-list 20 permit 10.10.0.0 0.0.0.255\n access-list 20 permit 10.20.0.0 0.0.0.255\n{% endmacro %}\n!\n{# VTY ACL #}\n{% macro StandardVtyAcl() %}\nip access-list standard VTY\n 10 permit 10.10.0.100\n 20 permit 10.20.0.200\n 30 permit 10.10.0.0 0.0.0.255\n 40 permit 10.20.0.0 0.0.0.255\n{% endmacro %}\n!\n{# The below example uses the macros above #}\n{{ StandardSnmpLineAcl() }}\n{{ StandardSnmpAcl() }}\n{{ StandardVtyLineAcl() }}\n{{ StandardVtyAcl() }}\n\n{# The below example uses the objects above and macros #}\n{# ip access-list standard ACL-DEFAULT #}\n{#  10 permit any #}\n{{ StandardAcl(\"ACL-DEFAULT\",AclDefaultEntries) }}\n",
+        "rollbackTemplateContent": "",
+        "templateParams": [],
+        "rollbackTemplateParams": [],
+        "composite": false,
+        "containingTemplates": [],
+        "language": "JINJA",
+        "promotedTemplateContent": "{# Dictionaries of VLANS per Site #}\n{% set MgmtAceEntries = [\n  {'entry':'10','rule':'permit','range':'10.10.0.100','mask':'0.0.0.0'},\n  {'entry':'20','rule':'permit','range':'10.10.0.200','mask':'0.0.0.0'},\n  {'entry':'30','rule':'permit','range':'10.10.0.0','mask':'0.0.0.255'},\n  {'entry':'40','rule':'permit','range':'10.20.0.0','mask':'0.0.0.255'}\n  ]%}\n{% set VtyAccessAceEntries = [\n  {'entry':'10','rule':'permit','range':'10.10.0.100','mask':'0.0.0.0'},\n  {'entry':'20','rule':'permit','range':'10.10.0.200','mask':'0.0.0.0'},\n  {'entry':'30','rule':'permit','range':'10.10.0.0','mask':'0.0.0.255'},\n  {'entry':'40','rule':'permit','range':'10.20.0.0','mask':'0.0.0.255'},\n  {'entry':'50','rule':'permit','range':'10.30.0.0','mask':'0.0.0.255'},\n  {'entry':'60','rule':'permit','range':'10.40.0.0','mask':'0.0.0.255'}\n  ]%}\n{% set AclDefaultEntries = [\n  {'entry':'10','rule':'permit','range':'10.10.0.100','mask':'0.0.0.0'},\n  {'entry':'20','rule':'permit','range':'10.10.0.200','mask':'0.0.0.0'},\n  {'entry':'30','rule':'permit','range':'10.10.0.0','mask':'0.0.0.255'}\n  ]%}\n\n{# ACLs Standard Macro #}\n{% macro StandardAcl(name,lists) %}\n  ip access-list standard {{ name }}\n  {% for list in lists %}\n    {{ list['entry'] }} {{ list['rule'] }} {{ list['range'] }} {{ list['mask'] }}\n  {% endfor %}\n{% endmacro %}\n\n{# ACLs Extended Macro #}\n{% macro ExtendedAcl(name,lists) %}\n  ip access-list extended {{ name}}\n  {% for list in lists %}\n    {{ list.entry }} {{ list.rule }} {{ list.srange }} {{ list.smask }} {{ list.sport }} {{ list.drange }} {{ list.dmask }} {{ list.dport }}\n  {% endfor %}\n{% endmacro %}\n\n{# SNMP ACL #}\n{% macro StandardSnmpLineAcl() %}\n access-list 10 permit 10.10.0.100\n access-list 10 permit 10.20.0.200\n access-list 10 permit 10.10.0.0 0.0.0.255\n access-list 10 permit 10.20.0.0 0.0.0.255\n{% endmacro %}\n!\n{# SNMP ACL #}\n{% macro StandardSnmpAcl() %}\nip access-list standard SNMP\n 10 permit 10.10.0.100\n 20 permit 10.20.0.200\n 30 permit 10.10.0.0 0.0.0.255\n 40 permit 10.20.0.0 0.0.0.255\n{% endmacro %}\n!\n{# VTY ACL #}\n{% macro StandardVtyLineAcl() %}\n access-list 20 permit 10.10.0.100\n access-list 20 permit 10.20.0.200\n access-list 20 permit 10.10.0.0 0.0.0.255\n access-list 20 permit 10.20.0.0 0.0.0.255\n{% endmacro %}\n!\n{# VTY ACL #}\n{% macro StandardVtyAcl() %}\nip access-list standard VTY\n 10 permit 10.10.0.100\n 20 permit 10.20.0.200\n 30 permit 10.10.0.0 0.0.0.255\n 40 permit 10.20.0.0 0.0.0.255\n{% endmacro %}\n!\n{# The below example uses the macros above #}\n{{ StandardSnmpLineAcl() }}\n{{ StandardSnmpAcl() }}\n{{ StandardVtyLineAcl() }}\n{{ StandardVtyAcl() }}\n\n{# The below example uses the objects above and macros #}\n{# ip access-list standard ACL-DEFAULT #}\n{#  10 permit any #}\n{{ StandardAcl(\"ACL-DEFAULT\",AclDefaultEntries) }}\n",
+        "promotedTemplateParams": [],
+        "customParamsOrder": false,
+        "createTime": 1674762318782,
+        "lastUpdateTime": 1675380768341,
+        "latestVersionTime": 1674762318782,
+        "projectName": "DNAC-Templates-Samples",
+        "validationErrors": {
+          "templateErrors": [],
+          "rollbackTemplateErrors": [],
+          "templateId": "92449c24-cd1e-4ee7-9a57-a025ab5a6393",
           "templateVersion": null
         },
         "projectAssociated": true,
@@ -341,6 +376,30 @@
             "displayName": "AP Interfaces"
           },
           {
+            "parameterName": "vlan_number",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": false,
+            "notParam": true,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 4,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": null,
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "displayName": null
+          },
+          {
             "parameterName": "Site",
             "dataType": "STRING",
             "defaultValue": null,
@@ -361,30 +420,6 @@
               "defaultSelectedValues": [
                 "A"
               ],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "displayName": null
-          },
-          {
-            "parameterName": "vlan_number",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": false,
-            "notParam": true,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 4,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": null,
-              "selectionValues": {},
-              "defaultSelectedValues": [],
               "id": null
             },
             "range": [],
@@ -425,6 +460,31 @@
         "promotedTemplateContent": "{# Interface Configurations #}\n{% include \"DNAC-Templates-Samples/Interfaces-Macros\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n!\n{% set vlanArray = [] %}\n{% if Site == \"A\" %}\n  {% for vlanpair in SiteAvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n{% elif Site == \"B\" %}\n  {% for vlanpair in SiteBvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n{% endif %}\n!\n{# Interface Interations #}\n!\n{# System Variable example interfaces in one logical code construct #}\n{# Select and Configure Access Point interfaces#}\n{% set apintlog = [] %}\n!\n{% for apinterface in accesspoint_interfaces %}\n  {% for interface in __interface %}\n    {% if interface.portName == apinterface %}\n      interface {{ interface.portName }}\n       {{ accesspoint(vlanArray[0]) }}\n      {% do apintlog.append(interface.portName) %}\n    {% endif %}\n  {% endfor %}\n{% endfor %}\n!\n{# Automatically Configure Workstation Remaining interfaces#}\n{% for interface in __interface %}\n  {% if interface.interfaceType == \"Physical\" && interface.portName.replaceAll(\"(^[a-zA-Z]+).*\",\"$1\") == \"GigabitEthernet\"  %}\n    {% if interface.portName.replaceAll(\"(^[a-zA-Z]+.).*\", \"$1\") != \"GigabitEthernet0\" %}\n      {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$2\") != 1 %}\n        {% if interface.portName in apintlog %}\n        {% else %}\n          interface {{ interface.portName }}\n            {{ workstation_interface(vlanArray[1], vlanArray[2]) }}\n        {% endif %}\n      {% endif %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n\n",
         "promotedTemplateParams": [
           {
+            "parameterName": "accesspoint_interfaces",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": "Select the ports where Access Points will be deployed. The other interfaces will be automatically provisioned as workstation interfaces.",
+            "required": true,
+            "notParam": false,
+            "paramArray": true,
+            "instructionText": null,
+            "group": null,
+            "order": 2,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "MULTI_SELECT",
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "{\"provider\":\"Inventory\",\"attributeToDisplay\":\"portName\",\"params\":[{\"type\":\"MANAGED_DEVICE_UUID\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_IP\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_HOSTNAME\",\"scope\":\"RUNTIME\",\"value\":null}],\"value\":null,\"source\":\"Inventory\",\"entity\":\"Interface\",\"attribute\":\"portName\",\"filterType\":\"regex\",\"filterValue\":\"GigabitEthernet[1-9]/0/[1-9]+\",\"filterByAttribute\":\"portName\"}",
+            "id": null,
+            "displayName": "AP Interfaces"
+          },
+          {
             "parameterName": "Site",
             "dataType": "STRING",
             "defaultValue": null,
@@ -445,31 +505,6 @@
               "defaultSelectedValues": [
                 "A"
               ],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "id": null,
-            "displayName": null
-          },
-          {
-            "parameterName": "__interface",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": true,
-            "instructionText": null,
-            "group": null,
-            "order": 3,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "MULTI_SELECT",
-              "selectionValues": {},
-              "defaultSelectedValues": [],
               "id": null
             },
             "range": [],
@@ -505,16 +540,16 @@
             "displayName": null
           },
           {
-            "parameterName": "accesspoint_interfaces",
+            "parameterName": "__interface",
             "dataType": "STRING",
             "defaultValue": null,
-            "description": "Select the ports where Access Points will be deployed. The other interfaces will be automatically provisioned as workstation interfaces.",
+            "description": null,
             "required": true,
             "notParam": false,
             "paramArray": true,
             "instructionText": null,
             "group": null,
-            "order": 2,
+            "order": 3,
             "customOrder": 0,
             "selection": {
               "selectionType": "MULTI_SELECT",
@@ -525,9 +560,9 @@
             "range": [],
             "key": null,
             "provider": null,
-            "binding": "{\"provider\":\"Inventory\",\"attributeToDisplay\":\"portName\",\"params\":[{\"type\":\"MANAGED_DEVICE_UUID\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_IP\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_HOSTNAME\",\"scope\":\"RUNTIME\",\"value\":null}],\"value\":null,\"source\":\"Inventory\",\"entity\":\"Interface\",\"attribute\":\"portName\",\"filterType\":\"regex\",\"filterValue\":\"GigabitEthernet[1-9]/0/[1-9]+\",\"filterByAttribute\":\"portName\"}",
+            "binding": "",
             "id": null,
-            "displayName": "AP Interfaces"
+            "displayName": null
           }
         ],
         "customParamsOrder": false,
@@ -539,41 +574,6 @@
           "templateErrors": [],
           "rollbackTemplateErrors": [],
           "templateId": "b27b9485-8076-4ed3-bc99-edad41e26942",
-          "templateVersion": null
-        },
-        "projectAssociated": true,
-        "documentDatabase": false
-      },
-      {
-        "name": "ACLs-Info",
-        "description": "",
-        "tags": [],
-        "deviceTypes": [
-          {
-            "productFamily": "Switches and Hubs",
-            "productSeries": "Cisco Catalyst 9300 Series Switches"
-          }
-        ],
-        "softwareType": "IOS",
-        "softwareVariant": "XE",
-        "templateContent": "{# SNMP ACL #}\naccess-list 10 permit 10.10.0.100\naccess-list 10 permit 10.20.0.200\naccess-list 10 permit 10.10.0.0 0.0.0.255\naccess-list 10 permit 10.20.0.0 0.0.0.255\n!\nip access-list standard SNMP\n 10 permit 10.10.0.100\n 20 permit 10.20.0.200\n 30 permit 10.10.0.0 0.0.0.255\n 40 permit 10.20.0.0 0.0.0.255\n!\n{# VTY ACL #}\naccess-list 20 permit 10.10.0.100\naccess-list 20 permit 10.20.0.200\naccess-list 20 permit 10.10.0.0 0.0.0.255\naccess-list 20 permit 10.20.0.0 0.0.0.255\n!\nip access-list standard VTY\n 10 permit 10.10.0.100\n 20 permit 10.20.0.200\n 30 permit 10.10.0.0 0.0.0.255\n 40 permit 10.20.0.0 0.0.0.255\n!\nip access-list standard ACL-DEFAULT\n 10 permit any\n",
-        "rollbackTemplateContent": "",
-        "templateParams": [],
-        "rollbackTemplateParams": [],
-        "composite": false,
-        "containingTemplates": [],
-        "language": "JINJA",
-        "promotedTemplateContent": "{# SNMP ACL #}\naccess-list 10 permit 10.10.0.100\naccess-list 10 permit 10.20.0.200\naccess-list 10 permit 10.10.0.0 0.0.0.255\naccess-list 10 permit 10.20.0.0 0.0.0.255\n!\nip access-list standard SNMP\n 10 permit 10.10.0.100\n 20 permit 10.20.0.200\n 30 permit 10.10.0.0 0.0.0.255\n 40 permit 10.20.0.0 0.0.0.255\n!\n{# VTY ACL #}\naccess-list 20 permit 10.10.0.100\naccess-list 20 permit 10.20.0.200\naccess-list 20 permit 10.10.0.0 0.0.0.255\naccess-list 20 permit 10.20.0.0 0.0.0.255\n!\nip access-list standard VTY\n 10 permit 10.10.0.100\n 20 permit 10.20.0.200\n 30 permit 10.10.0.0 0.0.0.255\n 40 permit 10.20.0.0 0.0.0.255\n!\nip access-list standard ACL-DEFAULT\n 10 permit any\n",
-        "promotedTemplateParams": [],
-        "customParamsOrder": false,
-        "createTime": 1674762318782,
-        "lastUpdateTime": 1675088418687,
-        "latestVersionTime": 1674762318782,
-        "projectName": "DNAC-Templates-Samples",
-        "validationErrors": {
-          "templateErrors": [],
-          "rollbackTemplateErrors": [],
-          "templateId": "92449c24-cd1e-4ee7-9a57-a025ab5a6393",
           "templateVersion": null
         },
         "projectAssociated": true,
@@ -595,7 +595,7 @@
         "rollbackTemplateContent": "",
         "templateParams": [
           {
-            "parameterName": "wvlan",
+            "parameterName": "svlan",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
@@ -604,7 +604,7 @@
             "paramArray": false,
             "instructionText": null,
             "group": null,
-            "order": 5,
+            "order": 4,
             "customOrder": 0,
             "selection": null,
             "range": [],
@@ -614,23 +614,18 @@
             "displayName": null
           },
           {
-            "parameterName": "__interface",
+            "parameterName": "vvlan",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
             "required": true,
             "notParam": false,
-            "paramArray": true,
+            "paramArray": false,
             "instructionText": null,
             "group": null,
-            "order": 1,
+            "order": 6,
             "customOrder": 0,
-            "selection": {
-              "selectionType": "MULTI_SELECT",
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
+            "selection": null,
             "range": [],
             "key": null,
             "provider": null,
@@ -681,18 +676,23 @@
             "displayName": null
           },
           {
-            "parameterName": "svlan",
+            "parameterName": "__interface",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
             "required": true,
             "notParam": false,
-            "paramArray": false,
+            "paramArray": true,
             "instructionText": null,
             "group": null,
-            "order": 4,
+            "order": 1,
             "customOrder": 0,
-            "selection": null,
+            "selection": {
+              "selectionType": "MULTI_SELECT",
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
             "range": [],
             "key": null,
             "provider": null,
@@ -700,7 +700,7 @@
             "displayName": null
           },
           {
-            "parameterName": "vvlan",
+            "parameterName": "wvlan",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
@@ -709,7 +709,7 @@
             "paramArray": false,
             "instructionText": null,
             "group": null,
-            "order": 6,
+            "order": 5,
             "customOrder": 0,
             "selection": null,
             "range": [],
@@ -771,6 +771,26 @@
             "displayName": null
           },
           {
+            "parameterName": "svlan",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 4,
+            "customOrder": 0,
+            "selection": null,
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "id": null,
+            "displayName": null
+          },
+          {
             "parameterName": "__interface",
             "dataType": "STRING",
             "defaultValue": null,
@@ -826,26 +846,6 @@
             "instructionText": null,
             "group": null,
             "order": 6,
-            "customOrder": 0,
-            "selection": null,
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "id": null,
-            "displayName": null
-          },
-          {
-            "parameterName": "svlan",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 4,
             "customOrder": 0,
             "selection": null,
             "range": [],
@@ -941,6 +941,89 @@
         "documentDatabase": false
       },
       {
+        "name": "AAA-Configuration-nonPXgrid",
+        "description": "",
+        "tags": [],
+        "deviceTypes": [
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco Catalyst IE3400 Rugged Series"
+          },
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco IE 4000 Series Switches"
+          },
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco Catalyst 9300 Series Switches"
+          },
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco Catalyst IE9300 Rugged Series"
+          },
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco IE 2000 Series Switches"
+          },
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco Industrial Ethernet 4010 Series Switches"
+          },
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco Industrial Ethernet 2000U Series Switches"
+          },
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco Catalyst IE3300 Rugged Series"
+          },
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco IE 3010 Series Switches"
+          },
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco IE 3000 Series Switches"
+          },
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco IE 5000 Series Switches"
+          },
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco Catalyst IE3200 Rugged Series"
+          },
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco Catalyst IE3400 Heavy Duty Series"
+          }
+        ],
+        "softwareType": "IOS",
+        "softwareVariant": "XE",
+        "templateContent": "{% extends \"DNAC-Templates-Samples/Security-AAA-Modifications\" %}\n!\n{% block aaa-configuration %}\n{#- aaa configuration if required -#}\n!\nauthentication convert-to new-style\naaa new-model\naaa session-id common\n!\n{% endblock %}\n!\n{% block radius-configuration %}\n{#- RADIUS configuration if required -#}\n!\n{#- Radius Server configuration #}\naaa group server radius dnac-client-radius-group\n server name dnac-radius_{{ AaaIpAddress }}\n ip radius source-interface {{ MgmtVlan }}\n exit\n!\naaa server radius dynamic-author\n client {{ AaaIpAddress }} server-key {{ AaaRadiusSecret }} \n exit\n!\n{#- AAA Radius configuration #}\naaa accounting identity default start-stop group dnac-client-radius-group\naaa accounting update newinfo periodic 2880\naaa authorization network default group dnac-client-radius-group\naaa authorization network dnac-cts-list group dnac-client-radius-group\naaa authorization exec default local\naaa authentication login default local\naaa authentication dot1x default group dnac-client-radius-group\naaa authentication login dnac-cts-list group dnac-client-radius-group local\n!\n{#- Radius configuration #}\nradius server dnac-radius_{{ AaaIpAddress }}\n address ipv4 {{ AaaIpAddress }} auth-port 1812 acct-port 1813\n pac key {{ AaaCtsPacKey }} \n retransmit 3\n timeout 4\n automate-tester username dummy ignore-acct-port probe-on\n exit\n!\nradius-server vsa send authentication\nradius-server vsa send accounting\nradius-server dead-criteria time 5 tries 3\nradius-server deadtime 3\nradius-server attribute 31 send nas-port-detail mac-only\nradius-server attribute 31 mac format ietf upper-case\nradius-server attribute 8 include-in-access-req\nradius-server attribute 25 access-request include\nradius-server attribute 6 on-for-login-auth\nradius-server attribute 6 support-multiple\n!\n{#- Radius source interfaces configuration #}\nip radius source-interface {{ MgmtVlan }}\n!\ndot1x system-auth-control\ncts authorization list dnac-cts-list\n!\n{#- Radius Dot1x WWW for Guest configuration #}\nip http server\nip http max-connections 16\nip http secure-server\n!\nip access-list extended ACL_WEBAUTH_REDIRECT\n 40 deny ip any host {{ AaaIpAddress }}\n 500 permit tcp any any eq www\n 600 permit tcp any any eq 443\n 700 permit tcp any any eq 8443\n 800 deny udp any any eq domain\n 900 deny udp any eq bootpc any eq bootps\n exit\n!\nip domain lookup source-interface {{ MgmtVlan }}\n!\n{% endblock %}\n!\n{% block tacacs-configuration %}\n{#- TACACS Server configuration #}\ntacacs server dnac-tacacs_{{ AaaIpAddress }}\n address ipv4 {{ AaaIpAddress }}\n key {{ AaaTacacsSecret }} \n timeout 4\n exit\n!\naaa group server tacacs+ dnac-network-tacacs-group\n server name dnac-tacacs_{{ AaaIpAddress }}\n exit\n!\naaa accounting exec default start-stop group dnac-network-tacacs-group\naaa authorization exec VTY_author group dnac-network-tacacs-group local if-authenticated\naaa authentication login VTY_authen group dnac-network-tacacs-group local\n!\n{#- source interfaces configuration #}\nip tacacs source-interface {{ MgmtVlan }}\n!\n{#- Console & VTY configuration #}\nline con 0\n exec-timeout 15 0\n login authentication VTY_authen\n logging synchronous\n authorization exec VTY_author\n!\nline vty 0 15\n access-class 12 in\n exec-timeout 15 0\n login authentication VTY_authen\n logging synchronous\n authorization exec VTY_author\n transport input ssh\n{% endblock %}\n",
+        "rollbackTemplateContent": "",
+        "templateParams": [],
+        "rollbackTemplateParams": [],
+        "composite": false,
+        "containingTemplates": [],
+        "language": "JINJA",
+        "promotedTemplateContent": "{% extends \"DNAC-Templates-Samples/Security-AAA-Modifications\" %}\n!\n{% block aaa-configuration %}\n{#- aaa configuration if required -#}\n!\nauthentication convert-to new-style\naaa new-model\naaa session-id common\n!\n{% endblock %}\n!\n{% block radius-configuration %}\n{#- RADIUS configuration if required -#}\n!\n{#- Radius Server configuration #}\naaa group server radius dnac-client-radius-group\n server name dnac-radius_{{ AaaIpAddress }}\n ip radius source-interface {{ MgmtVlan }}\n exit\n!\naaa server radius dynamic-author\n client {{ AaaIpAddress }} server-key {{ AaaRadiusSecret }} \n exit\n!\n{#- AAA Radius configuration #}\naaa accounting identity default start-stop group dnac-client-radius-group\naaa accounting update newinfo periodic 2880\naaa authorization network default group dnac-client-radius-group\naaa authorization network dnac-cts-list group dnac-client-radius-group\naaa authorization exec default local\naaa authentication login default local\naaa authentication dot1x default group dnac-client-radius-group\naaa authentication login dnac-cts-list group dnac-client-radius-group local\n!\n{#- Radius configuration #}\nradius server dnac-radius_{{ AaaIpAddress }}\n address ipv4 {{ AaaIpAddress }} auth-port 1812 acct-port 1813\n pac key {{ AaaCtsPacKey }} \n retransmit 3\n timeout 4\n automate-tester username dummy ignore-acct-port probe-on\n exit\n!\nradius-server vsa send authentication\nradius-server vsa send accounting\nradius-server dead-criteria time 5 tries 3\nradius-server deadtime 3\nradius-server attribute 31 send nas-port-detail mac-only\nradius-server attribute 31 mac format ietf upper-case\nradius-server attribute 8 include-in-access-req\nradius-server attribute 25 access-request include\nradius-server attribute 6 on-for-login-auth\nradius-server attribute 6 support-multiple\n!\n{#- Radius source interfaces configuration #}\nip radius source-interface {{ MgmtVlan }}\n!\ndot1x system-auth-control\ncts authorization list dnac-cts-list\n!\n{#- Radius Dot1x WWW for Guest configuration #}\nip http server\nip http max-connections 16\nip http secure-server\n!\nip access-list extended ACL_WEBAUTH_REDIRECT\n 40 deny ip any host {{ AaaIpAddress }}\n 500 permit tcp any any eq www\n 600 permit tcp any any eq 443\n 700 permit tcp any any eq 8443\n 800 deny udp any any eq domain\n 900 deny udp any eq bootpc any eq bootps\n exit\n!\nip domain lookup source-interface {{ MgmtVlan }}\n!\n{% endblock %}\n!\n{% block tacacs-configuration %}\n{#- TACACS Server configuration #}\ntacacs server dnac-tacacs_{{ AaaIpAddress }}\n address ipv4 {{ AaaIpAddress }}\n key {{ AaaTacacsSecret }} \n timeout 4\n exit\n!\naaa group server tacacs+ dnac-network-tacacs-group\n server name dnac-tacacs_{{ AaaIpAddress }}\n exit\n!\naaa accounting exec default start-stop group dnac-network-tacacs-group\naaa authorization exec VTY_author group dnac-network-tacacs-group local if-authenticated\naaa authentication login VTY_authen group dnac-network-tacacs-group local\n!\n{#- source interfaces configuration #}\nip tacacs source-interface {{ MgmtVlan }}\n!\n{#- Console & VTY configuration #}\nline con 0\n exec-timeout 15 0\n login authentication VTY_authen\n logging synchronous\n authorization exec VTY_author\n!\nline vty 0 15\n access-class 12 in\n exec-timeout 15 0\n login authentication VTY_authen\n logging synchronous\n authorization exec VTY_author\n transport input ssh\n{% endblock %}\n",
+        "promotedTemplateParams": [],
+        "customParamsOrder": false,
+        "createTime": 1675183238353,
+        "lastUpdateTime": 1675183333081,
+        "latestVersionTime": 1675183373473,
+        "projectName": "DNAC-Templates-Samples",
+        "validationErrors": {
+          "templateErrors": [],
+          "rollbackTemplateErrors": [],
+          "templateId": "8de648bf-55a7-42ef-9eb8-38f0aef0833f",
+          "templateVersion": null
+        },
+        "projectAssociated": true,
+        "documentDatabase": false
+      },
+      {
         "name": "Security-AAA-Modifications",
         "description": "",
         "tags": [],
@@ -987,47 +1070,23 @@
         ],
         "softwareType": "IOS",
         "softwareVariant": "XE",
-        "templateContent": "{# Interface Configurations #}\n{% include \"DNAC-Templates-Samples/Interfaces-Macros\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n!\n{% set vlanArray = [] %}\n{% if Site == \"A\" %}\n  {% for vlanpair in SiteAvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n{% elif Site == \"B\" %}\n  {% for vlanpair in SiteBvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n{% endif %}\n!\n{{ autoconf_accesspoint(vlanArray[0]) }}\n{{ autoconf_workstation(vlanArray[1], vlanArray[2]) }}\n{{ autoconf_baseconfig(vlanArray[1]) }}\n!\n{% include \"DNAC-Templates-Samples/AutoConf-Configuration-Option\" %}\n!\n{# Interface Interations #}\n!\n{# System Variable example interfaces in one logical code construct #}\n{% for interface in __interface %}\n  {% if interface.interfaceType == \"Physical\" && interface.portName.replaceAll(\"(^[a-zA-Z]+).*\",\"$1\") == \"GigabitEthernet\"  %}\n    {% if interface.portName.replaceAll(\"(^[a-zA-Z]+.).*\", \"$1\") != \"GigabitEthernet0\" %}\n      {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$2\") != 1 %}\n        {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 10 %}\n          {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 11 %}\n            interface {{ interface.portName }}\n              {{ baseconf_interface() }}\n          {% endif %}\n        {% endif %}\n      {% endif %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n\n\n",
+        "templateContent": "{# Interface Configurations #}\n{% include \"DNAC-Templates-Samples/Interfaces-Macros\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n!\n{% set vlanArray = [] %}\n{% if Site == \"A\" %}\n  {% for vlanpair in SiteAvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n{% elif Site == \"B\" %}\n  {% for vlanpair in SiteBvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n{% endif %}\n!\n{{ autoconf_accesspoint(vlanArray[0]) }}\n{{ autoconf_workstation(vlanArray[1], vlanArray[2]) }}\n{{ autoconf_baseconfig(vlanArray[1]) }}\n!\n{% include \"DNAC-Templates-Samples/AutoConf-Configuration-Option\" %}\n!\n{# Interface Interations #}\n!\n{# System Variable example interfaces in one logical code construct #}\n{% for interface in __interface %}\n  {% if interface.interfaceType == \"Physical\" && interface.portName.replaceAll(\"(^[a-zA-Z]+).*\",\"$1\") == \"GigabitEthernet\"  %}\n    {% if interface.portName.replaceAll(\"(^[a-zA-Z]+.).*\", \"$1\") != \"GigabitEthernet0\" %}\n      {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$2\") != 1 %}\n        {#{% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 10 %}#}\n          {#{% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 11 %}#}\n            interface {{ interface.portName }}\n              {{ baseconf_interface() }}\n          {#{% endif %}#}\n        {#{% endif %}#}\n      {% endif %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n\n\n",
         "rollbackTemplateContent": "",
         "templateParams": [
           {
-            "parameterName": "Site",
+            "parameterName": "__interface",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
             "required": true,
             "notParam": false,
-            "paramArray": false,
+            "paramArray": true,
             "instructionText": null,
             "group": null,
-            "order": 1,
+            "order": 4,
             "customOrder": 0,
             "selection": {
-              "selectionType": "SINGLE_SELECT",
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "displayName": null
-          },
-          {
-            "parameterName": "voice_number",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": false,
-            "notParam": true,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 3,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": null,
+              "selectionType": "MULTI_SELECT",
               "selectionValues": {},
               "defaultSelectedValues": [],
               "id": null
@@ -1063,21 +1122,50 @@
             "displayName": null
           },
           {
-            "parameterName": "__interface",
+            "parameterName": "voice_number",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": false,
+            "notParam": true,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 3,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": null,
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "displayName": null
+          },
+          {
+            "parameterName": "Site",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
             "required": true,
             "notParam": false,
-            "paramArray": true,
+            "paramArray": false,
             "instructionText": null,
             "group": null,
-            "order": 4,
+            "order": 1,
             "customOrder": 0,
             "selection": {
-              "selectionType": "MULTI_SELECT",
-              "selectionValues": {},
-              "defaultSelectedValues": [],
+              "selectionType": "SINGLE_SELECT",
+              "selectionValues": {
+                "A": "A",
+                "B": "B"
+              },
+              "defaultSelectedValues": [
+                "A"
+              ],
               "id": null
             },
             "range": [],
@@ -1091,7 +1179,7 @@
         "composite": false,
         "containingTemplates": [],
         "language": "JINJA",
-        "promotedTemplateContent": "{# Interface Configurations #}\n{% include \"DNAC-Templates-Samples/Interfaces-Macros\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n!\n{% set vlanArray = [] %}\n{% if Site == \"A\" %}\n  {% for vlanpair in SiteAvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n{% elif Site == \"B\" %}\n  {% for vlanpair in SiteBvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n{% endif %}\n!\n{{ autoconf_accesspoint(vlanArray[0]) }}\n{{ autoconf_workstation(vlanArray[1], vlanArray[2]) }}\n{{ autoconf_baseconfig(vlanArray[1]) }}\n!\n{% include \"DNAC-Templates-Samples/AutoConf-Configuration-Option\" %}\n!\n{# Interface Interations #}\n!\n{# System Variable example interfaces in one logical code construct #}\n{% for interface in __interface %}\n  {% if interface.interfaceType == \"Physical\" && interface.portName.replaceAll(\"(^[a-zA-Z]+).*\",\"$1\") == \"GigabitEthernet\"  %}\n    {% if interface.portName.replaceAll(\"(^[a-zA-Z]+.).*\", \"$1\") != \"GigabitEthernet0\" %}\n      {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$2\") != 1 %}\n        {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 10 %}\n          {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 11 %}\n            interface {{ interface.portName }}\n              {{ baseconf_interface() }}\n          {% endif %}\n        {% endif %}\n      {% endif %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n\n\n",
+        "promotedTemplateContent": "{# Interface Configurations #}\n{% include \"DNAC-Templates-Samples/Interfaces-Macros\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n!\n{% set vlanArray = [] %}\n{% if Site == \"A\" %}\n  {% for vlanpair in SiteAvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n{% elif Site == \"B\" %}\n  {% for vlanpair in SiteBvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n{% endif %}\n!\n{{ autoconf_accesspoint(vlanArray[0]) }}\n{{ autoconf_workstation(vlanArray[1], vlanArray[2]) }}\n{{ autoconf_baseconfig(vlanArray[1]) }}\n!\n{% include \"DNAC-Templates-Samples/AutoConf-Configuration-Option\" %}\n!\n{# Interface Interations #}\n!\n{# System Variable example interfaces in one logical code construct #}\n{% for interface in __interface %}\n  {% if interface.interfaceType == \"Physical\" && interface.portName.replaceAll(\"(^[a-zA-Z]+).*\",\"$1\") == \"GigabitEthernet\"  %}\n    {% if interface.portName.replaceAll(\"(^[a-zA-Z]+.).*\", \"$1\") != \"GigabitEthernet0\" %}\n      {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$2\") != 1 %}\n        {#{% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 10 %}#}\n          {#{% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 11 %}#}\n            interface {{ interface.portName }}\n              {{ baseconf_interface() }}\n          {#{% endif %}#}\n        {#{% endif %}#}\n      {% endif %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n\n\n",
         "promotedTemplateParams": [
           {
             "parameterName": "__interface",
@@ -1201,7 +1289,7 @@
         ],
         "customParamsOrder": false,
         "createTime": 1674762318655,
-        "lastUpdateTime": 1675089227847,
+        "lastUpdateTime": 1675291266836,
         "latestVersionTime": 1674762318655,
         "projectName": "DNAC-Templates-Samples",
         "validationErrors": {
@@ -1225,7 +1313,7 @@
         ],
         "softwareType": "IOS",
         "softwareVariant": "XE",
-        "templateContent": "{#- 9300 Stack Power and 9300, 9200 Priority -#}\n{% set StackCount = __device.serialNumber | split(\",\")  %}\n{% set StackMemberCount =  StackCount | length  -%}\n\n{% if StackMemberCount > 1 %}\n  {% if \"C93\" in __device.serialNumber %}\n     stack-power stack Powerstack1\n     mode redundant strict\n     {% if StackMemberCount > 4 %}\n        stack-power stack Powerstack2\n        mode redundant strict\n     {% endif %}\n     {% for Switch in range(0,StackMemberCount,1) %}\n        {% if loop.index <= (StackMemberCount/2|round('ceil')) %}\n           stack-power switch {{ loop.index }}\n           stack Powerstack1\n        {% elif loop.index > (StackMemberCount/2|round('ceil')) %}\n           stack-power switch {{ loop.index }}\n           stack Powerstack2\n        {% endif %}\n        {{ loop.index }}\n     {% endfor %}\n  {% endif %}\n  #MODE_ENABLE\n  {% for Switch in range(0,StackMemberCount,1) %}\n    {% if loop.index == 1 %}\n       switch {{ loop.index }} priority 10\n    {% elif Switch == 2 %}\n       switch {{ loop.index }} priority 9\n    {% else %}\n       switch {{ loop.index }} priority 8\n    {% endif %}\n  {% endfor %}\n  #MODE_END_ENABLE\n{% endif %}",
+        "templateContent": "{#- 9300 Stack Power and 9300, 9200 Priority -#}\n{% set StackCount = __device.platformId | split(\",\")  %}\n{% set StackMemberCount =  StackCount | length  -%}\n\n{% if StackMemberCount > 1 %}\n  {% if \"C93\" in __device.platformId %}\n     stack-power stack Powerstack1\n     mode redundant strict\n     {% if StackMemberCount > 4 %}\n        stack-power stack Powerstack2\n        mode redundant strict\n     {% endif %}\n     {% for Switch in range(0,StackMemberCount,1) %}\n        {% if loop.index <= (StackMemberCount/2|round('ceil')) %}\n           stack-power switch {{ loop.index }}\n           stack Powerstack1\n        {% elif loop.index > (StackMemberCount/2|round('ceil')) %}\n           stack-power switch {{ loop.index }}\n           stack Powerstack2\n        {% endif %}\n        {{ loop.index }}\n     {% endfor %}\n  {% endif %}\n  #MODE_ENABLE\n  {% for Switch in range(0,StackMemberCount,1) %}\n    {% if loop.index == 1 %}\n       switch {{ loop.index }} priority 10\n    {% elif Switch == 2 %}\n       switch {{ loop.index }} priority 9\n    {% else %}\n       switch {{ loop.index }} priority 8\n    {% endif %}\n  {% endfor %}\n  #MODE_END_ENABLE\n{% endif %}",
         "rollbackTemplateContent": "",
         "templateParams": [
           {
@@ -1252,7 +1340,7 @@
         "composite": false,
         "containingTemplates": [],
         "language": "JINJA",
-        "promotedTemplateContent": "{#- 9300 Stack Power and 9300, 9200 Priority -#}\n{% set StackCount = __device.serialNumber | split(\",\")  %}\n{% set StackMemberCount =  StackCount | length  -%}\n\n{% if StackMemberCount > 1 %}\n  {% if \"C93\" in __device.serialNumber %}\n     stack-power stack Powerstack1\n     mode redundant strict\n     {% if StackMemberCount > 4 %}\n        stack-power stack Powerstack2\n        mode redundant strict\n     {% endif %}\n     {% for Switch in range(0,StackMemberCount,1) %}\n        {% if loop.index <= (StackMemberCount/2|round('ceil')) %}\n           stack-power switch {{ loop.index }}\n           stack Powerstack1\n        {% elif loop.index > (StackMemberCount/2|round('ceil')) %}\n           stack-power switch {{ loop.index }}\n           stack Powerstack2\n        {% endif %}\n        {{ loop.index }}\n     {% endfor %}\n  {% endif %}\n  #MODE_ENABLE\n  {% for Switch in range(0,StackMemberCount,1) %}\n    {% if loop.index == 1 %}\n       switch {{ loop.index }} priority 10\n    {% elif Switch == 2 %}\n       switch {{ loop.index }} priority 9\n    {% else %}\n       switch {{ loop.index }} priority 8\n    {% endif %}\n  {% endfor %}\n  #MODE_END_ENABLE\n{% endif %}",
+        "promotedTemplateContent": "{#- 9300 Stack Power and 9300, 9200 Priority -#}\n{% set StackCount = __device.platformId | split(\",\")  %}\n{% set StackMemberCount =  StackCount | length  -%}\n\n{% if StackMemberCount > 1 %}\n  {% if \"C93\" in __device.platformId %}\n     stack-power stack Powerstack1\n     mode redundant strict\n     {% if StackMemberCount > 4 %}\n        stack-power stack Powerstack2\n        mode redundant strict\n     {% endif %}\n     {% for Switch in range(0,StackMemberCount,1) %}\n        {% if loop.index <= (StackMemberCount/2|round('ceil')) %}\n           stack-power switch {{ loop.index }}\n           stack Powerstack1\n        {% elif loop.index > (StackMemberCount/2|round('ceil')) %}\n           stack-power switch {{ loop.index }}\n           stack Powerstack2\n        {% endif %}\n        {{ loop.index }}\n     {% endfor %}\n  {% endif %}\n  #MODE_ENABLE\n  {% for Switch in range(0,StackMemberCount,1) %}\n    {% if loop.index == 1 %}\n       switch {{ loop.index }} priority 10\n    {% elif Switch == 2 %}\n       switch {{ loop.index }} priority 9\n    {% else %}\n       switch {{ loop.index }} priority 8\n    {% endif %}\n  {% endfor %}\n  #MODE_END_ENABLE\n{% endif %}",
         "promotedTemplateParams": [
           {
             "parameterName": "__device",
@@ -1277,7 +1365,7 @@
         ],
         "customParamsOrder": false,
         "createTime": 1674762318611,
-        "lastUpdateTime": 1674764472052,
+        "lastUpdateTime": 1675371440428,
         "latestVersionTime": 1674762318611,
         "projectName": "DNAC-Templates-Samples",
         "validationErrors": {
@@ -1567,19 +1655,19 @@
         ],
         "softwareType": "IOS",
         "softwareVariant": "XE",
-        "templateContent": "{#- Automated Uplink Description Script -#}\n{#- This will always ensure the uplink descriptions are correct to upstream -#}\n{#- Switches within the infrastructure  -#}\n event manager applet update-port\n  event neighbor-discovery interface regexp GigabitEthernet.* cdp add\n  action 101 regexp \"(Switch|Router)\" \"$_nd_cdp_capabilities_string\"\n  action 200 if $_regexp_result eq \"1\"\n  action 201  regexp \"(Trans-Bridge)\" \"$_nd_cdp_capabilities_string\"\n  action 210  if $_regexp_result eq \"1\"\n  action 211   cli command \"enable\"\n  action 212   cli command \"config t\"\n  action 213   cli command \"interface $_nd_local_intf_name\"\n  action 214   regexp \"^([^\\.]+)\" \"$_nd_cdp_entry_name\" match host\n  action 215   regexp \"^([^\\.]+)\" \"$_nd_port_id\" match connectedport\n  action 216   cli command \"no description\"\n  action 217   cli command \"description AP - $host - $connectedport\"\n  action 220  else\n  action 221   cli command \"enable\"\n  action 222   cli command \"config t\"\n  action 223   cli command \"interface $_nd_local_intf_name\"\n  action 224   regexp \"^([^\\.]+)\\.\" \"$_nd_cdp_entry_name\" match host\n  action 225   regexp \"^([^\\.]+)\" \"$_nd_port_id\" match connectedport\n  action 226   cli command \"no description\"\n  action 227   cli command \"description Link - $host - $connectedport\"\n  action 228   cli command \"interface port-channel 1\"\n  action 229   cli command \"no description\"\n  action 230   cli command \"description Link - $host\"\n  action 240  end\n  action 250 else\n  action 251  regexp \"(Phone)\" \"$_nd_cdp_capabilities_string\"\n  action 252  if $_regexp_result eq \"1\"\n  action 253   cli command \"enable\"\n  action 254   cli command \"config t\"\n  action 255   cli command \"interface $_nd_local_intf_name\"\n  action 256   regexp \"^([^\\.]+)\" \"$_nd_cdp_entry_name\" match host\n  action 257   regexp \"^([^\\.]+)\" \"$_nd_port_id\" match connectedport\n  action 258   cli command \"no description\"\n  action 259   cli command \"description Phone - $host - $connectedport\"\n  action 260  end\n  action 270 end\n  action 280 cli command \"write\"\n!\nevent manager applet POST_PNP\n event timer countdown time 30\n action 1.0 cli command \"enable\"\n action 1.1 cli command \"clear cdp table\"\n action 2.0 cli command \"config t\"\n action 2.1 cli command \"no event manager applet POST_PNP\"\n action 2.2 cli command \"end\"\n action 2.3 cli command \"wr\"\n action 2.4 cli command \"exit\"",
+        "templateContent": "{#- Automated Uplink Description Script -#}\n{#- This will always ensure the uplink descriptions are correct to upstream -#}\n{#- Switches within the infrastructure  -#}\n event manager applet update-port\n  event neighbor-discovery interface regexp GigabitEthernet.* cdp add\n  action 101 regexp \"(Switch|Router)\" \"$_nd_cdp_capabilities_string\"\n  action 200 if $_regexp_result eq \"1\"\n  action 201  regexp \"(Trans-Bridge)\" \"$_nd_cdp_capabilities_string\"\n  action 210  if $_regexp_result eq \"1\"\n  action 211   cli command \"enable\"\n  action 212   cli command \"config t\"\n  action 213   cli command \"interface $_nd_local_intf_name\"\n  action 214   regexp \"^([^\\.]+)\" \"$_nd_cdp_entry_name\" match host\n  action 215   regexp \"^([^\\.]+)\" \"$_nd_port_id\" match connectedport\n  action 216   cli command \"no description\"\n  action 217   cli command \"description AP - $host - $connectedport\"\n  action 220  else\n  action 221   cli command \"enable\"\n  action 222   cli command \"config t\"\n  action 223   cli command \"interface $_nd_local_intf_name\"\n  action 224   regexp \"^([^\\.]+)\\.\" \"$_nd_cdp_entry_name\" match host\n  action 225   regexp \"^([^\\.]+)\" \"$_nd_port_id\" match connectedport\n  action 226   cli command \"no description\"\n  action 227   cli command \"description Link - $host - $connectedport\"\n{#-action 228   cli command \"interface port-channel 1\"-#}\n{#-action 229   cli command \"no description\"-#}\n{#-action 230   cli command \"description Link - $host\"-#}\n  action 240  end\n  action 250 else\n  action 251  regexp \"(Phone)\" \"$_nd_cdp_capabilities_string\"\n  action 252  if $_regexp_result eq \"1\"\n  action 253   cli command \"enable\"\n  action 254   cli command \"config t\"\n  action 255   cli command \"interface $_nd_local_intf_name\"\n  action 256   regexp \"^([^\\.]+)\" \"$_nd_cdp_entry_name\" match host\n  action 257   regexp \"^([^\\.]+)\" \"$_nd_port_id\" match connectedport\n  action 258   cli command \"no description\"\n  action 259   cli command \"description Phone - $host - $connectedport\"\n  action 260  end\n  action 270 end\n  action 280 cli command \"write\"\n!\nevent manager applet POST_PNP\n event timer countdown time 30\n action 1.0 cli command \"enable\"\n action 1.1 cli command \"clear cdp table\"\n action 2.0 cli command \"config t\"\n action 2.1 cli command \"no event manager applet POST_PNP\"\n action 2.2 cli command \"end\"\n action 2.3 cli command \"wr\"\n action 2.4 cli command \"exit\"",
         "rollbackTemplateContent": "",
         "templateParams": [],
         "rollbackTemplateParams": [],
         "composite": false,
         "containingTemplates": [],
         "language": "JINJA",
-        "promotedTemplateContent": "{#- Automated Uplink Description Script -#}\n{#- This will always ensure the uplink descriptions are correct to upstream -#}\n{#- Switches within the infrastructure  -#}\n event manager applet update-port\n  event neighbor-discovery interface regexp GigabitEthernet.* cdp add\n  action 101 regexp \"(Switch|Router)\" \"$_nd_cdp_capabilities_string\"\n  action 200 if $_regexp_result eq \"1\"\n  action 201  regexp \"(Trans-Bridge)\" \"$_nd_cdp_capabilities_string\"\n  action 210  if $_regexp_result eq \"1\"\n  action 211   cli command \"enable\"\n  action 212   cli command \"config t\"\n  action 213   cli command \"interface $_nd_local_intf_name\"\n  action 214   regexp \"^([^\\.]+)\" \"$_nd_cdp_entry_name\" match host\n  action 215   regexp \"^([^\\.]+)\" \"$_nd_port_id\" match connectedport\n  action 216   cli command \"no description\"\n  action 217   cli command \"description AP - $host - $connectedport\"\n  action 220  else\n  action 221   cli command \"enable\"\n  action 222   cli command \"config t\"\n  action 223   cli command \"interface $_nd_local_intf_name\"\n  action 224   regexp \"^([^\\.]+)\\.\" \"$_nd_cdp_entry_name\" match host\n  action 225   regexp \"^([^\\.]+)\" \"$_nd_port_id\" match connectedport\n  action 226   cli command \"no description\"\n  action 227   cli command \"description Link - $host - $connectedport\"\n  action 228   cli command \"interface port-channel 1\"\n  action 229   cli command \"no description\"\n  action 230   cli command \"description Link - $host\"\n  action 240  end\n  action 250 else\n  action 251  regexp \"(Phone)\" \"$_nd_cdp_capabilities_string\"\n  action 252  if $_regexp_result eq \"1\"\n  action 253   cli command \"enable\"\n  action 254   cli command \"config t\"\n  action 255   cli command \"interface $_nd_local_intf_name\"\n  action 256   regexp \"^([^\\.]+)\" \"$_nd_cdp_entry_name\" match host\n  action 257   regexp \"^([^\\.]+)\" \"$_nd_port_id\" match connectedport\n  action 258   cli command \"no description\"\n  action 259   cli command \"description Phone - $host - $connectedport\"\n  action 260  end\n  action 270 end\n  action 280 cli command \"write\"\n!\nevent manager applet POST_PNP\n event timer countdown time 30\n action 1.0 cli command \"enable\"\n action 1.1 cli command \"clear cdp table\"\n action 2.0 cli command \"config t\"\n action 2.1 cli command \"no event manager applet POST_PNP\"\n action 2.2 cli command \"end\"\n action 2.3 cli command \"wr\"\n action 2.4 cli command \"exit\"",
+        "promotedTemplateContent": "{#- Automated Uplink Description Script -#}\n{#- This will always ensure the uplink descriptions are correct to upstream -#}\n{#- Switches within the infrastructure  -#}\n event manager applet update-port\n  event neighbor-discovery interface regexp GigabitEthernet.* cdp add\n  action 101 regexp \"(Switch|Router)\" \"$_nd_cdp_capabilities_string\"\n  action 200 if $_regexp_result eq \"1\"\n  action 201  regexp \"(Trans-Bridge)\" \"$_nd_cdp_capabilities_string\"\n  action 210  if $_regexp_result eq \"1\"\n  action 211   cli command \"enable\"\n  action 212   cli command \"config t\"\n  action 213   cli command \"interface $_nd_local_intf_name\"\n  action 214   regexp \"^([^\\.]+)\" \"$_nd_cdp_entry_name\" match host\n  action 215   regexp \"^([^\\.]+)\" \"$_nd_port_id\" match connectedport\n  action 216   cli command \"no description\"\n  action 217   cli command \"description AP - $host - $connectedport\"\n  action 220  else\n  action 221   cli command \"enable\"\n  action 222   cli command \"config t\"\n  action 223   cli command \"interface $_nd_local_intf_name\"\n  action 224   regexp \"^([^\\.]+)\\.\" \"$_nd_cdp_entry_name\" match host\n  action 225   regexp \"^([^\\.]+)\" \"$_nd_port_id\" match connectedport\n  action 226   cli command \"no description\"\n  action 227   cli command \"description Link - $host - $connectedport\"\n{#-action 228   cli command \"interface port-channel 1\"-#}\n{#-action 229   cli command \"no description\"-#}\n{#-action 230   cli command \"description Link - $host\"-#}\n  action 240  end\n  action 250 else\n  action 251  regexp \"(Phone)\" \"$_nd_cdp_capabilities_string\"\n  action 252  if $_regexp_result eq \"1\"\n  action 253   cli command \"enable\"\n  action 254   cli command \"config t\"\n  action 255   cli command \"interface $_nd_local_intf_name\"\n  action 256   regexp \"^([^\\.]+)\" \"$_nd_cdp_entry_name\" match host\n  action 257   regexp \"^([^\\.]+)\" \"$_nd_port_id\" match connectedport\n  action 258   cli command \"no description\"\n  action 259   cli command \"description Phone - $host - $connectedport\"\n  action 260  end\n  action 270 end\n  action 280 cli command \"write\"\n!\nevent manager applet POST_PNP\n event timer countdown time 30\n action 1.0 cli command \"enable\"\n action 1.1 cli command \"clear cdp table\"\n action 2.0 cli command \"config t\"\n action 2.1 cli command \"no event manager applet POST_PNP\"\n action 2.2 cli command \"end\"\n action 2.3 cli command \"wr\"\n action 2.4 cli command \"exit\"",
         "promotedTemplateParams": [],
         "customParamsOrder": false,
         "createTime": 1675029538674,
-        "lastUpdateTime": 1675029883772,
-        "latestVersionTime": 1675029895623,
+        "lastUpdateTime": 1675146523657,
+        "latestVersionTime": 1675146527907,
         "projectName": "DNAC-Templates-Samples",
         "validationErrors": {
           "templateErrors": [],
@@ -1602,62 +1690,9 @@
         ],
         "softwareType": "IOS",
         "softwareVariant": "XE",
-        "templateContent": "{# Interface Configurations #}\n{% include \"DNAC-Templates-Samples/Interfaces-Macros\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n{% include \"DNAC-Templates-Samples/IBNS2.0-Configuration\" %}\n!\n{% set vlanArray = [] %}\n{% if Site == \"A\" %}\n  {% for vlanpair in SiteAvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n  {{ configure_cts(SiteAvlans) }}\n{% elif Site == \"B\" %}\n  {% for vlanpair in SiteBvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"guest\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"disabled\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n  {{ configure_cts(SiteBvlans) }}\n{% endif %}\n!\n{# Determine uplinks for cts manual #}\n{% set uplink_portarray = [] %}\n{% for interface in __interface %}\n  {% if interface.portMode == \"trunk\" && interface.interfaceType == \"Physical\" %}\n    {% do uplink_portarray.append(interface.portName) %}\n  {% endif %}\n{% endfor %}\n!\n{{ ibns_baseconfig(vlanArray[1]) }}\n{{ ibns_accesspoint(vlanArray[0]) }}\n{{ ibns_flexaccesspoint(vlanArray[0], vlanArray[1], vlanArray[2], vlanArray[3]) }} \n{{ ibns_workstation(vlanArray[1], vlanArray[2]) }}\n{{ ibns_guest(vlanArray[3]) }} \n!\n{# Interface Interations #}\n!\n{# System Variable example interfaces in one logical code construct #}\n{% for interface in __interface %}\n  {% if interface.interfaceType == \"Physical\" && interface.portName.replaceAll(\"(^[a-zA-Z]+).*\",\"$1\") == \"GigabitEthernet\"  %}\n    {% if interface.portName.replaceAll(\"(^[a-zA-Z]+.).*\", \"$1\") != \"GigabitEthernet0\" %}\n      {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$2\") != 1 %}\n        {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 10 %}\n          {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 11 %}\n            interface {{ interface.portName }}\n              {{ ibns_baseconf_interface() }}\n          {% endif %}\n        {% endif %}\n      {% endif %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n!\n{#- Automated Script for cts manual disruptive config -#}\n{#- This will always ensure the uplink get the cts manual for with  -#}\n{#- timed self deleting EEM script  -#}\nevent manager applet POST_CTS_MANUAL\n event timer countdown time 30\n action 1.0 cli command \"enable\"\n action 1.1 cli command \"config t\"\n action 2.0 cli command \"interface range {{ uplink_portarray|join(',') }}\"\n action 2.1 cli command \"cts manual\"\n action 2.2 cli command \"policy static sgt 2 trusted\"\n action 2.3 cli command \"no event manager applet POST_CTS_MANUAL\"\n action 2.4 cli command \"end\"\n action 2.5 cli command \"wr\"\n action 2.6 cli command \"exit\"\n",
+        "templateContent": "{# Interface Configurations #}\n{% include \"DNAC-Templates-Samples/Interfaces-Macros\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n{% include \"DNAC-Templates-Samples/IBNS2.0-Configuration\" %}\n!\n{% set vlanArray = [] %}\n{% if Site == \"A\" %}\n  {% for vlanpair in SiteAvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n  {{ configure_cts(SiteAvlans) }}\n{% elif Site == \"B\" %}\n  {% for vlanpair in SiteBvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"guest\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"disabled\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n  {{ configure_cts(SiteBvlans) }}\n{% endif %}\n!\n{# Determine uplinks for cts manual #}\n{% set uplink_portarray = [] %}\n{% for interface in __interface %}\n  {% if interface.portMode == \"trunk\" && interface.interfaceType == \"Physical\" %}\n    {% do uplink_portarray.append(interface.portName) %}\n  {% endif %}\n{% endfor %}\n!\n{{ ibns_baseconfig(vlanArray[1]) }}\n{{ ibns_accesspoint(vlanArray[0]) }}\n{{ ibns_flexaccesspoint(vlanArray[0], vlanArray[1], vlanArray[2], vlanArray[3]) }} \n{{ ibns_workstation(vlanArray[1], vlanArray[2]) }}\n{{ ibns_guest(vlanArray[3]) }} \n!\n{# Interface Interations #}\n!\n{# System Variable example interfaces in one logical code construct #}\n{% for interface in __interface %}\n  {% if interface.interfaceType == \"Physical\" && interface.portName.replaceAll(\"(^[a-zA-Z]+).*\",\"$1\") == \"GigabitEthernet\"  %}\n    {% if interface.portName.replaceAll(\"(^[a-zA-Z]+.).*\", \"$1\") != \"GigabitEthernet0\" %}\n      {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$2\") != 1 %}\n        {#{% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 10 %}#}\n          {#{% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 11 %}#}\n            interface {{ interface.portName }}\n              {{ ibns_baseconf_interface() }}\n          {#{% endif %}#}\n        {#{% endif %}#}\n      {% endif %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n!\n{#- Automated Script for cts manual disruptive config -#}\n{#- This will always ensure the uplink get the cts manual for with  -#}\n{#- timed self deleting EEM script  -#}\nevent manager applet POST_CTS_MANUAL\n event timer countdown time 30\n action 1.0 cli command \"enable\"\n action 1.1 cli command \"config t\"\n action 2.0 cli command \"interface range {{ uplink_portarray|join(',') }}\"\n action 2.1 cli command \"cts manual\"\n action 2.2 cli command \"policy static sgt 2 trusted\"\n action 2.3 cli command \"no event manager applet POST_CTS_MANUAL\"\n action 2.4 cli command \"end\"\n action 2.5 cli command \"wr\"\n action 2.6 cli command \"exit\"\n",
         "rollbackTemplateContent": "",
         "templateParams": [
-          {
-            "parameterName": "data_number",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": false,
-            "notParam": true,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 4,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": null,
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "displayName": null
-          },
-          {
-            "parameterName": "Site",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 1,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "SINGLE_SELECT",
-              "selectionValues": {
-                "A": "A",
-                "B": "B"
-              },
-              "defaultSelectedValues": [
-                "A"
-              ],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "displayName": null
-          },
           {
             "parameterName": "guest_number",
             "dataType": "STRING",
@@ -1707,7 +1742,7 @@
             "displayName": null
           },
           {
-            "parameterName": "vlan_number",
+            "parameterName": "data_number",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
@@ -1716,7 +1751,7 @@
             "paramArray": false,
             "instructionText": null,
             "group": null,
-            "order": 3,
+            "order": 4,
             "customOrder": 0,
             "selection": {
               "selectionType": null,
@@ -1746,6 +1781,59 @@
               "selectionType": null,
               "selectionValues": {},
               "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "displayName": null
+          },
+          {
+            "parameterName": "vlan_number",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": false,
+            "notParam": true,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 3,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": null,
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "displayName": null
+          },
+          {
+            "parameterName": "Site",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 1,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "SINGLE_SELECT",
+              "selectionValues": {
+                "A": "A",
+                "B": "B"
+              },
+              "defaultSelectedValues": [
+                "A"
+              ],
               "id": null
             },
             "range": [],
@@ -1759,10 +1847,10 @@
         "composite": false,
         "containingTemplates": [],
         "language": "JINJA",
-        "promotedTemplateContent": "{# Interface Configurations #}\n{% include \"DNAC-Templates-Samples/Interfaces-Macros\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n{% include \"DNAC-Templates-Samples/IBNS2.0-Configuration\" %}\n!\n{% set vlanArray = [] %}\n{% if Site == \"A\" %}\n  {% for vlanpair in SiteAvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n  {{ configure_cts(SiteAvlans) }}\n{% elif Site == \"B\" %}\n  {% for vlanpair in SiteBvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"guest\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"disabled\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n  {{ configure_cts(SiteBvlans) }}\n{% endif %}\n!\n{# Determine uplinks for cts manual #}\n{% set uplink_portarray = [] %}\n{% for interface in __interface %}\n  {% if interface.portMode == \"trunk\" && interface.interfaceType == \"Physical\" %}\n    {% do uplink_portarray.append(interface.portName) %}\n  {% endif %}\n{% endfor %}\n!\n{{ ibns_baseconfig(vlanArray[1]) }}\n{{ ibns_accesspoint(vlanArray[0]) }}\n{{ ibns_flexaccesspoint(vlanArray[0], vlanArray[1], vlanArray[2], vlanArray[3]) }} \n{{ ibns_workstation(vlanArray[1], vlanArray[2]) }}\n{{ ibns_guest(vlanArray[3]) }} \n!\n{# Interface Interations #}\n!\n{# System Variable example interfaces in one logical code construct #}\n{% for interface in __interface %}\n  {% if interface.interfaceType == \"Physical\" && interface.portName.replaceAll(\"(^[a-zA-Z]+).*\",\"$1\") == \"GigabitEthernet\"  %}\n    {% if interface.portName.replaceAll(\"(^[a-zA-Z]+.).*\", \"$1\") != \"GigabitEthernet0\" %}\n      {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$2\") != 1 %}\n        {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 10 %}\n          {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 11 %}\n            interface {{ interface.portName }}\n              {{ ibns_baseconf_interface() }}\n          {% endif %}\n        {% endif %}\n      {% endif %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n!\n{#- Automated Script for cts manual disruptive config -#}\n{#- This will always ensure the uplink get the cts manual for with  -#}\n{#- timed self deleting EEM script  -#}\nevent manager applet POST_CTS_MANUAL\n event timer countdown time 30\n action 1.0 cli command \"enable\"\n action 1.1 cli command \"config t\"\n action 2.0 cli command \"interface range {{ uplink_portarray|join(',') }}\"\n action 2.1 cli command \"cts manual\"\n action 2.2 cli command \"policy static sgt 2 trusted\"\n action 2.3 cli command \"no event manager applet POST_CTS_MANUAL\"\n action 2.4 cli command \"end\"\n action 2.5 cli command \"wr\"\n action 2.6 cli command \"exit\"\n",
+        "promotedTemplateContent": "{# Interface Configurations #}\n{% include \"DNAC-Templates-Samples/Interfaces-Macros\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n{% include \"DNAC-Templates-Samples/IBNS2.0-Configuration\" %}\n!\n{% set vlanArray = [] %}\n{% if Site == \"A\" %}\n  {% for vlanpair in SiteAvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n  {{ configure_cts(SiteAvlans) }}\n{% elif Site == \"B\" %}\n  {% for vlanpair in SiteBvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"guest\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"disabled\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n  {{ configure_cts(SiteBvlans) }}\n{% endif %}\n!\n{# Determine uplinks for cts manual #}\n{% set uplink_portarray = [] %}\n{% for interface in __interface %}\n  {% if interface.portMode == \"trunk\" && interface.interfaceType == \"Physical\" %}\n    {% do uplink_portarray.append(interface.portName) %}\n  {% endif %}\n{% endfor %}\n!\n{{ ibns_baseconfig(vlanArray[1]) }}\n{{ ibns_accesspoint(vlanArray[0]) }}\n{{ ibns_flexaccesspoint(vlanArray[0], vlanArray[1], vlanArray[2], vlanArray[3]) }} \n{{ ibns_workstation(vlanArray[1], vlanArray[2]) }}\n{{ ibns_guest(vlanArray[3]) }} \n!\n{# Interface Interations #}\n!\n{# System Variable example interfaces in one logical code construct #}\n{% for interface in __interface %}\n  {% if interface.interfaceType == \"Physical\" && interface.portName.replaceAll(\"(^[a-zA-Z]+).*\",\"$1\") == \"GigabitEthernet\"  %}\n    {% if interface.portName.replaceAll(\"(^[a-zA-Z]+.).*\", \"$1\") != \"GigabitEthernet0\" %}\n      {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$2\") != 1 %}\n        {#{% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 10 %}#}\n          {#{% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 11 %}#}\n            interface {{ interface.portName }}\n              {{ ibns_baseconf_interface() }}\n          {#{% endif %}#}\n        {#{% endif %}#}\n      {% endif %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n!\n{#- Automated Script for cts manual disruptive config -#}\n{#- This will always ensure the uplink get the cts manual for with  -#}\n{#- timed self deleting EEM script  -#}\nevent manager applet POST_CTS_MANUAL\n event timer countdown time 30\n action 1.0 cli command \"enable\"\n action 1.1 cli command \"config t\"\n action 2.0 cli command \"interface range {{ uplink_portarray|join(',') }}\"\n action 2.1 cli command \"cts manual\"\n action 2.2 cli command \"policy static sgt 2 trusted\"\n action 2.3 cli command \"no event manager applet POST_CTS_MANUAL\"\n action 2.4 cli command \"end\"\n action 2.5 cli command \"wr\"\n action 2.6 cli command \"exit\"\n",
         "promotedTemplateParams": [
           {
-            "parameterName": "voice_number",
+            "parameterName": "vlan_number",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
@@ -1771,7 +1859,7 @@
             "paramArray": false,
             "instructionText": null,
             "group": null,
-            "order": 5,
+            "order": 3,
             "customOrder": 0,
             "selection": {
               "selectionType": null,
@@ -1812,31 +1900,6 @@
             "displayName": null
           },
           {
-            "parameterName": "data_number",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": false,
-            "notParam": true,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 4,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": null,
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "id": null,
-            "displayName": null
-          },
-          {
             "parameterName": "__interface",
             "dataType": "STRING",
             "defaultValue": null,
@@ -1862,7 +1925,7 @@
             "displayName": null
           },
           {
-            "parameterName": "vlan_number",
+            "parameterName": "voice_number",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
@@ -1871,7 +1934,7 @@
             "paramArray": false,
             "instructionText": null,
             "group": null,
-            "order": 3,
+            "order": 5,
             "customOrder": 0,
             "selection": {
               "selectionType": null,
@@ -1915,12 +1978,37 @@
             "binding": "",
             "id": null,
             "displayName": null
+          },
+          {
+            "parameterName": "data_number",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": false,
+            "notParam": true,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 4,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": null,
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "id": null,
+            "displayName": null
           }
         ],
         "customParamsOrder": false,
         "createTime": 1675031438349,
-        "lastUpdateTime": 1675054053388,
-        "latestVersionTime": 1675054058130,
+        "lastUpdateTime": 1675146651064,
+        "latestVersionTime": 1675146658171,
         "projectName": "DNAC-Templates-Samples",
         "validationErrors": {
           "templateErrors": [],
