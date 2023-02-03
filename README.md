@@ -49,7 +49,7 @@ Various sections will be covered within this github repository please use this m
 * [Troubleshooting](./TroubleShoot.md#Troubleshooting) - This section will dive into Troubleshooting Velocity 
 
 ## [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/ExamplesAndConcepts.md)
-In this section I have compiled a number of template samples using Jinja2. These samples include a wide ranging set of configurations which may be used in your labs to solve specific configuration requirements. This package is a culmination of a lot of aspects covered here in this templating repository, and is designed to help engineers understand various ways to solve problems.
+In this section I have compiled a number of template samples using Jinja2. These samples include a wide ranging set of configurations which may be used in your labs to solve specific configuration requirements. This package is a culmination of a lot of aspects covered here in this templating repository, and is designed to help engineers understand various ways to solve problems. Additionally these examples may be used in testing in dCLOUD with any of the labs on this repository.
 
 * [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/ExamplesAndConcepts.md)
 
