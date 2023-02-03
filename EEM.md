@@ -307,25 +307,28 @@ action 1340 puts ""
 ```
 
 ### Case 9 - ***Automatically Configuring PnP Startup Vlan for PnP - Use Case***
-Here we have two examples that will allow for the automated configuration of the `pnp startup-vlan` command on an interface for seed devices connected downstream.
+Here we have two examples that will allow for the automated configuration of the `pnp startup-vlan` command on an interface for seed devices connected downstream. The latest modification allows for the applet to work even if the `pnp startup-vlan` command has not been set.
 
 ```vtl
  event manager applet pnp_checker authorization bypass
-  event syslog pattern "%CDP.*NATIVE_VLAN_MISMATCH:"
+  event syslog pattern "%CDP-4-NATIVE_VLAN_MISMATCH:"
   action 010 cli command "enable"
-  action 020 regexp ".* \((.*)\)," "$_syslog_msg" match nativevlan
+  action 020 regexp ".* \(([1-9]+)\)," "$_syslog_msg" match native_vlan
   action 030 cli command "show run | i ^pnp startup-vlan"
-  action 035 regexp "pnp startup-vlan (.*)\n" $_cli_result match current_pnp
-  action 036 put $current_pnp
-  action 037 put $nativevlan
-  action 038 string match $current_pnp $nativevlan
-  action 039 put $_string_result
-  action 040 if $_string_result eq 0
-  action 041  syslog msg "i am going to place config in"
+  action 035 regexp "pnp startup-vlan (.*)\n" "$_cli_result" match current_pnp
+  action 036 if $_regexp_result eq 0
+  action 037  set current_pnp 10
+  action 038 end
+  action 039 puts "$current_pnp"
+  action 040 puts "$native_vlan"
+  action 041 string match "$current_pnp" "$native_vlan"
+  action 042 puts "$_string_result"
+  action 043 if $_string_result eq "0"
+  action 044  syslog msg ">SETTING PNP VLAN FOR ONBOARDING"
   action 050  cli command "conf t"
-  action 060  cli command "pnp startup-vlan $nativevlan"
+  action 060  cli command "pnp startup-vlan $native_vlan"
   action 070  cli command "end"
-  action 075  put "end of config"
+  action 075  puts "end of config"
   action 080 end
 ```
 ```vtl
