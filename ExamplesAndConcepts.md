@@ -214,17 +214,26 @@ The package or project includes Jinja2 templates which are rolled into Composite
 
 The last of the two above, allow for Dynamic Configuration of networks to allow for networks where devices consistently move but where user and application experience needs to be consistent.
 
-Once you have imported the template you can look at the logic within each template.
+Once you have imported the template you can look at the logic within each modularized regular template. Each of these templates is part of the composites above, and some are referenced using includes where necessary to avoid repeating code.
 
 #### Key Features
-1. System MTU set by default, but modifiable via the form
-2. VTP Domain set to Hostname, you can change to variable by removing `{% set VtpDomain = Hostname %}`
-3. Shuts downn Vlan 1 if not in use
-4. Automatically builds Etherchannel if required
+1. AAA Configuration for nonPxGrid *Deployments*
+2. ACLs 
+3. Autoconf Configuration Options
+4. AutoNaming EEM Scripting *for Interfaces* 
+5. DynamicPort EEM Scripting *for use in changing Auth profiles*
+6. IBNS2.0 Configuration
+7. Interface Assign Configuration *for standard interface configurations*
+8. Interface Autoconf Configuration *for dynamic configuration through device classification*
+9. Interface IBNS2.0 Configuration *for policy based interface configuration*
+10. Interface Macros *for multiple purpose built interface macros that are ready to use*
+11. Security AAA Modifications *to group various security configurations to be added*
+12. Sensitive Info *for securing and separating sensitive information from general configs*
+13. Stacking Configuration *for deploying power stack and stackwise opptions on 9200 and 9300*
+14. System Management *for general global configurations*
+15. Vlans Info *includes examples of how to deploy Vlans using objects*
 
-```J2
-```
-
+I hope you find these samples highly useful, and please provide feedback.
 
 </details>
 
