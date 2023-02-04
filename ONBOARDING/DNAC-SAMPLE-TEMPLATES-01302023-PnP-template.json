@@ -64,33 +64,9 @@
     ],
     "softwareType": "IOS",
     "softwareVariant": "XE",
-    "templateContent": "{# <------Onboarding-Template-------> #}\n{# To be used for onboarding when using Day N Templates #}\n{# Define Variables provision with vlan and port channel #}\n!\n{# Set MTU if required #}\n{% if SystemMTU != 1500 %}\n    system mtu {{ SystemMTU }}\n{% endif %}\n!\n{# Set hostname #}\nhostname {{ Hostname }}\n!\n{% set VtpDomain = Hostname %}\n!\n{# Set VTP and VLAN for onboarding #}\nvtp domain {{ VtpDomain }}\nvtp mode transparent\n!\n{# Set Management VLAN #}\nvlan {{ MgmtVlan }}\n!\n{% if MgmtVlan > 1 %}\n  name MgmtVlan\n  {# Disable Vlan 1 (optional) #}\n  interface Vlan 1\n   shutdown\n{% endif %}\n!\n{# Set Interfaces and Build Port Channel #}\n!{{ Portchannel }}\ninterface range {{ Interfaces }}\n shut\n switchport mode trunk\n switchport trunk allowed vlan {{ MgmtVlan }}\n {% if \",\" in Interfaces %}\n    channel-protocol lacp\n    channel-group {{ Portchannel }} mode active\n {% endif %}\n no shut\n!\n{% if \",\" in Interfaces %}\n  interface Port-channel {{ Portchannel }}\n   switchport trunk native vlan {{ MgmtVlan }}\n   switchport trunk allowed vlan {{ MgmtVlan }}\n   switchport mode trunk\n   no port-channel standalone-disable\n{% endif %}\n!\n{# Set Up Managment Vlan {{ MgmtVlan }} #}\ninterface Vlan {{ MgmtVlan }}\n description MgmtVlan\n ip address {{ SwitchIP }} {{ SubnetMask }}\n no ip redirects\n no ip proxy-arp\n no shut\n!\nip default-gateway {{ Gateway }}\n!\n{# Set Source of Management Traffic #}\nip domain lookup source-interface Vlan {{ MgmtVlan }}\nip http client source-interface Vlan {{ MgmtVlan }}\nip ftp source-interface Vlan {{ MgmtVlan }}\nip tftp source-interface Vlan {{ MgmtVlan }}\nip ssh source-interface Vlan {{ MgmtVlan }}\nip radius source-interface Vlan {{ MgmtVlan }}\nlogging source-interface Vlan {{ MgmtVlan }}\nsnmp-server trap-source Vlan {{ MgmtVlan }}\nntp source Vlan {{ MgmtVlan }}\n!\n",
+    "templateContent": "{# <------Onboarding-Template-------> #}\n{# To be used for onboarding when using Day N Templates #}\n{# Define Variables provision with vlan and port channel #}\n!\n{# Set MTU if required #}\n{% if SystemMTU != 1500 %}\n    system mtu {{ SystemMTU }}\n{% endif %}\n!\n{# Set hostname #}\nhostname {{ Hostname }}\n!\n{% set VtpDomain = Hostname %}\n!\n{# Set VTP and VLAN for onboarding #}\nvtp domain {{ VtpDomain }}\nvtp mode transparent\n!\n{# Set Management VLAN #}\nvlan {{ MgmtVlan }}\n!\n{% if MgmtVlan > 1 %}\n  name MgmtVlan\n  {# Disable Vlan 1 (optional) #}\n  interface Vlan 1\n   shutdown\n{% endif %}\n!\n{# Set Interfaces and Build Port Channel #}\n!{{ Portchannel }}\ninterface range {{ Interfaces }}\n shut\n switchport mode trunk\n switchport trunk allowed vlan {{ MgmtVlan }}\n {% if \",\" in Interfaces || \"-\" in Interfaces %}\n    channel-protocol lacp\n    channel-group {{ Portchannel }} mode active\n {% endif %}\n no shut\n!\n{% if \",\" in Interfaces || \"-\" in Interfaces %}\n  interface Port-channel {{ Portchannel }}\n   switchport trunk native vlan {{ MgmtVlan }}\n   switchport trunk allowed vlan {{ MgmtVlan }}\n   switchport mode trunk\n   no port-channel standalone-disable\n{% endif %}\n!\n{# Set Up Managment Vlan {{ MgmtVlan }} #}\ninterface Vlan {{ MgmtVlan }}\n description MgmtVlan\n ip address {{ SwitchIP }} {{ SubnetMask }}\n no ip redirects\n no ip proxy-arp\n no shut\n!\nip default-gateway {{ Gateway }}\n!\n{# Set Source of Management Traffic #}\nip domain lookup source-interface Vlan {{ MgmtVlan }}\nip http client source-interface Vlan {{ MgmtVlan }}\nip ftp source-interface Vlan {{ MgmtVlan }}\nip tftp source-interface Vlan {{ MgmtVlan }}\nip ssh source-interface Vlan {{ MgmtVlan }}\nip radius source-interface Vlan {{ MgmtVlan }}\nlogging source-interface Vlan {{ MgmtVlan }}\nsnmp-server trap-source Vlan {{ MgmtVlan }}\nntp source Vlan {{ MgmtVlan }}\n!\n",
     "rollbackTemplateContent": "",
     "templateParams": [
-      {
-        "parameterName": "Interfaces",
-        "dataType": "STRING",
-        "defaultValue": null,
-        "description": "Interface or interface range comma delimited",
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": "te 1/1/1 , te 1/1/2",
-        "group": null,
-        "order": 5,
-        "customOrder": 5,
-        "selection": {
-          "selectionType": null,
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "displayName": null
-      },
       {
         "parameterName": "MgmtVlan",
         "dataType": "INTEGER",
@@ -120,108 +96,6 @@
         "provider": null,
         "binding": "",
         "displayName": "Management Vlan"
-      },
-      {
-        "parameterName": "Portchannel",
-        "dataType": "INTEGER",
-        "defaultValue": "1",
-        "description": "Enter number from 1 to 192",
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": null,
-        "group": null,
-        "order": 4,
-        "customOrder": 4,
-        "selection": {
-          "selectionType": null,
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
-        "range": [
-          {
-            "minValue": 1,
-            "maxValue": 192,
-            "id": null
-          }
-        ],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "displayName": "PortChannel Number"
-      },
-      {
-        "parameterName": "SubnetMask",
-        "dataType": "IPADDRESS",
-        "defaultValue": null,
-        "description": "Enter the Management Subnet Mask",
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": "255.255.255.0",
-        "group": null,
-        "order": 7,
-        "customOrder": 7,
-        "selection": {
-          "selectionType": null,
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "displayName": "Management Subnet Mask"
-      },
-      {
-        "parameterName": "Gateway",
-        "dataType": "IPADDRESS",
-        "defaultValue": null,
-        "description": "Enter the Management Gateway Address",
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": "10.0.0.254",
-        "group": null,
-        "order": 8,
-        "customOrder": 8,
-        "selection": {
-          "selectionType": null,
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "displayName": "Management Gateway"
-      },
-      {
-        "parameterName": "Hostname",
-        "dataType": "STRING",
-        "defaultValue": null,
-        "description": null,
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": null,
-        "group": null,
-        "order": 2,
-        "customOrder": 1,
-        "selection": {
-          "selectionType": null,
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "displayName": null
       },
       {
         "parameterName": "SystemMTU",
@@ -254,6 +128,30 @@
         "displayName": "System MTU"
       },
       {
+        "parameterName": "Interfaces",
+        "dataType": "STRING",
+        "defaultValue": null,
+        "description": "Interface or interface range comma or dash delimited",
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "instructionText": "Te 1/1/1 || Te 1/1/1,  Te 1/1/2 || Te 1/1/1-2",
+        "group": null,
+        "order": 5,
+        "customOrder": 5,
+        "selection": {
+          "selectionType": null,
+          "selectionValues": {},
+          "defaultSelectedValues": [],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "displayName": null
+      },
+      {
         "parameterName": "SwitchIP",
         "dataType": "IPADDRESS",
         "defaultValue": null,
@@ -276,26 +174,122 @@
         "provider": null,
         "binding": "",
         "displayName": "Management IP Address"
+      },
+      {
+        "parameterName": "Portchannel",
+        "dataType": "STRING",
+        "defaultValue": "1",
+        "description": null,
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "instructionText": null,
+        "group": null,
+        "order": 4,
+        "customOrder": 4,
+        "selection": {
+          "selectionType": null,
+          "selectionValues": {},
+          "defaultSelectedValues": [],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "displayName": "Port Channel Number"
+      },
+      {
+        "parameterName": "Gateway",
+        "dataType": "IPADDRESS",
+        "defaultValue": null,
+        "description": "Enter the Management Gateway Address",
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "instructionText": "10.0.0.254",
+        "group": null,
+        "order": 8,
+        "customOrder": 8,
+        "selection": {
+          "selectionType": null,
+          "selectionValues": {},
+          "defaultSelectedValues": [],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "displayName": "Management Gateway"
+      },
+      {
+        "parameterName": "SubnetMask",
+        "dataType": "IPADDRESS",
+        "defaultValue": null,
+        "description": "Enter the Management Subnet Mask",
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "instructionText": "255.255.255.0",
+        "group": null,
+        "order": 7,
+        "customOrder": 7,
+        "selection": {
+          "selectionType": null,
+          "selectionValues": {},
+          "defaultSelectedValues": [],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "displayName": "Management Subnet Mask"
+      },
+      {
+        "parameterName": "Hostname",
+        "dataType": "STRING",
+        "defaultValue": null,
+        "description": null,
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "instructionText": null,
+        "group": null,
+        "order": 2,
+        "customOrder": 1,
+        "selection": {
+          "selectionType": null,
+          "selectionValues": {},
+          "defaultSelectedValues": [],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "displayName": null
       }
     ],
     "rollbackTemplateParams": [],
     "composite": false,
     "containingTemplates": [],
     "language": "JINJA",
-    "promotedTemplateContent": "{# <------Onboarding-Template-------> #}\n{# To be used for onboarding when using Day N Templates #}\n{# Define Variables provision with vlan and port channel #}\n!\n{# Set MTU if required #}\n{% if SystemMTU != 1500 %}\n    system mtu {{ SystemMTU }}\n{% endif %}\n!\n{# Set hostname #}\nhostname {{ Hostname }}\n!\n{% set VtpDomain = Hostname %}\n!\n{# Set VTP and VLAN for onboarding #}\nvtp domain {{ VtpDomain }}\nvtp mode transparent\n!\n{# Set Management VLAN #}\nvlan {{ MgmtVlan }}\n!\n{% if MgmtVlan > 1 %}\n  name MgmtVlan\n  {# Disable Vlan 1 (optional) #}\n  interface Vlan 1\n   shutdown\n{% endif %}\n!\n{# Set Interfaces and Build Port Channel #}\n!{{ Portchannel }}\ninterface range {{ Interfaces }}\n shut\n switchport mode trunk\n switchport trunk allowed vlan {{ MgmtVlan }}\n {% if \",\" in Interfaces %}\n    channel-protocol lacp\n    channel-group {{ Portchannel }} mode active\n {% endif %}\n no shut\n!\n{% if \",\" in Interfaces %}\n  interface Port-channel {{ Portchannel }}\n   switchport trunk native vlan {{ MgmtVlan }}\n   switchport trunk allowed vlan {{ MgmtVlan }}\n   switchport mode trunk\n   no port-channel standalone-disable\n{% endif %}\n!\n{# Set Up Managment Vlan {{ MgmtVlan }} #}\ninterface Vlan {{ MgmtVlan }}\n description MgmtVlan\n ip address {{ SwitchIP }} {{ SubnetMask }}\n no ip redirects\n no ip proxy-arp\n no shut\n!\nip default-gateway {{ Gateway }}\n!\n{# Set Source of Management Traffic #}\nip domain lookup source-interface Vlan {{ MgmtVlan }}\nip http client source-interface Vlan {{ MgmtVlan }}\nip ftp source-interface Vlan {{ MgmtVlan }}\nip tftp source-interface Vlan {{ MgmtVlan }}\nip ssh source-interface Vlan {{ MgmtVlan }}\nip radius source-interface Vlan {{ MgmtVlan }}\nlogging source-interface Vlan {{ MgmtVlan }}\nsnmp-server trap-source Vlan {{ MgmtVlan }}\nntp source Vlan {{ MgmtVlan }}\n!\n",
+    "promotedTemplateContent": "{# <------Onboarding-Template-------> #}\n{# To be used for onboarding when using Day N Templates #}\n{# Define Variables provision with vlan and port channel #}\n!\n{# Set MTU if required #}\n{% if SystemMTU != 1500 %}\n    system mtu {{ SystemMTU }}\n{% endif %}\n!\n{# Set hostname #}\nhostname {{ Hostname }}\n!\n{% set VtpDomain = Hostname %}\n!\n{# Set VTP and VLAN for onboarding #}\nvtp domain {{ VtpDomain }}\nvtp mode transparent\n!\n{# Set Management VLAN #}\nvlan {{ MgmtVlan }}\n!\n{% if MgmtVlan > 1 %}\n  name MgmtVlan\n  {# Disable Vlan 1 (optional) #}\n  interface Vlan 1\n   shutdown\n{% endif %}\n!\n{# Set Interfaces and Build Port Channel #}\n!{{ Portchannel }}\ninterface range {{ Interfaces }}\n shut\n switchport mode trunk\n switchport trunk allowed vlan {{ MgmtVlan }}\n {% if \",\" in Interfaces || \"-\" in Interfaces %}\n    channel-protocol lacp\n    channel-group {{ Portchannel }} mode active\n {% endif %}\n no shut\n!\n{% if \",\" in Interfaces || \"-\" in Interfaces %}\n  interface Port-channel {{ Portchannel }}\n   switchport trunk native vlan {{ MgmtVlan }}\n   switchport trunk allowed vlan {{ MgmtVlan }}\n   switchport mode trunk\n   no port-channel standalone-disable\n{% endif %}\n!\n{# Set Up Managment Vlan {{ MgmtVlan }} #}\ninterface Vlan {{ MgmtVlan }}\n description MgmtVlan\n ip address {{ SwitchIP }} {{ SubnetMask }}\n no ip redirects\n no ip proxy-arp\n no shut\n!\nip default-gateway {{ Gateway }}\n!\n{# Set Source of Management Traffic #}\nip domain lookup source-interface Vlan {{ MgmtVlan }}\nip http client source-interface Vlan {{ MgmtVlan }}\nip ftp source-interface Vlan {{ MgmtVlan }}\nip tftp source-interface Vlan {{ MgmtVlan }}\nip ssh source-interface Vlan {{ MgmtVlan }}\nip radius source-interface Vlan {{ MgmtVlan }}\nlogging source-interface Vlan {{ MgmtVlan }}\nsnmp-server trap-source Vlan {{ MgmtVlan }}\nntp source Vlan {{ MgmtVlan }}\n!\n",
     "promotedTemplateParams": [
       {
-        "parameterName": "Interfaces",
-        "dataType": "STRING",
+        "parameterName": "Gateway",
+        "dataType": "IPADDRESS",
         "defaultValue": null,
-        "description": "Interface or interface range comma delimited",
+        "description": "Enter the Management Gateway Address",
         "required": true,
         "notParam": false,
         "paramArray": false,
-        "instructionText": "te 1/1/1 , te 1/1/2",
+        "instructionText": "10.0.0.254",
         "group": null,
-        "order": 5,
-        "customOrder": 5,
+        "order": 8,
+        "customOrder": 8,
         "selection": {
           "selectionType": null,
           "selectionValues": {},
@@ -307,7 +301,7 @@
         "provider": null,
         "binding": "",
         "id": null,
-        "displayName": null
+        "displayName": "Management Gateway"
       },
       {
         "parameterName": "Hostname",
@@ -333,6 +327,31 @@
         "binding": "",
         "id": null,
         "displayName": null
+      },
+      {
+        "parameterName": "SubnetMask",
+        "dataType": "IPADDRESS",
+        "defaultValue": null,
+        "description": "Enter the Management Subnet Mask",
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "instructionText": "255.255.255.0",
+        "group": null,
+        "order": 7,
+        "customOrder": 7,
+        "selection": {
+          "selectionType": null,
+          "selectionValues": {},
+          "defaultSelectedValues": [],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "id": null,
+        "displayName": "Management Subnet Mask"
       },
       {
         "parameterName": "SwitchIP",
@@ -391,6 +410,31 @@
         "displayName": "System MTU"
       },
       {
+        "parameterName": "Interfaces",
+        "dataType": "STRING",
+        "defaultValue": null,
+        "description": "Interface or interface range comma or dash delimited",
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "instructionText": "Te 1/1/1 || Te 1/1/1,  Te 1/1/2 || Te 1/1/1-2",
+        "group": null,
+        "order": 5,
+        "customOrder": 5,
+        "selection": {
+          "selectionType": null,
+          "selectionValues": {},
+          "defaultSelectedValues": [],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "id": null,
+        "displayName": null
+      },
+      {
         "parameterName": "MgmtVlan",
         "dataType": "INTEGER",
         "defaultValue": null,
@@ -423,9 +467,9 @@
       },
       {
         "parameterName": "Portchannel",
-        "dataType": "INTEGER",
+        "dataType": "STRING",
         "defaultValue": "1",
-        "description": "Enter number from 1 to 192",
+        "description": null,
         "required": true,
         "notParam": false,
         "paramArray": false,
@@ -439,74 +483,18 @@
           "defaultSelectedValues": [],
           "id": null
         },
-        "range": [
-          {
-            "minValue": 1,
-            "maxValue": 192,
-            "id": null
-          }
-        ],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "id": null,
-        "displayName": "PortChannel Number"
-      },
-      {
-        "parameterName": "SubnetMask",
-        "dataType": "IPADDRESS",
-        "defaultValue": null,
-        "description": "Enter the Management Subnet Mask",
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": "255.255.255.0",
-        "group": null,
-        "order": 7,
-        "customOrder": 7,
-        "selection": {
-          "selectionType": null,
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
         "range": [],
         "key": null,
         "provider": null,
         "binding": "",
         "id": null,
-        "displayName": "Management Subnet Mask"
-      },
-      {
-        "parameterName": "Gateway",
-        "dataType": "IPADDRESS",
-        "defaultValue": null,
-        "description": "Enter the Management Gateway Address",
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": "10.0.0.254",
-        "group": null,
-        "order": 8,
-        "customOrder": 8,
-        "selection": {
-          "selectionType": null,
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "id": null,
-        "displayName": "Management Gateway"
+        "displayName": "Port Channel Number"
       }
     ],
     "customParamsOrder": true,
     "createTime": 1671483151135,
-    "lastUpdateTime": 1675027079346,
-    "latestVersionTime": 1675027094460,
+    "lastUpdateTime": 1675470321109,
+    "latestVersionTime": 1675470326907,
     "validationErrors": {
       "templateErrors": [],
       "rollbackTemplateErrors": [],

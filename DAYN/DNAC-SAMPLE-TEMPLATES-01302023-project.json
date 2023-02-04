@@ -4,6 +4,200 @@
     "tags": [],
     "templates": [
       {
+        "name": "SystemManagement",
+        "description": "",
+        "tags": [],
+        "deviceTypes": [
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco Catalyst 9300 Series Switches"
+          }
+        ],
+        "softwareType": "IOS",
+        "softwareVariant": "XE",
+        "templateContent": "{# System Management for Catalyst Only #}\n{% include \"DNAC-Templates-Samples/Sensitive-Info\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n\nno service pad\nservice timestamps debug datetime msec localtime\nservice timestamps log datetime msec localtime\nno platform punt-keepalive disable-kernel-core\n!\nspanning-tree mode rapid-pvst\nspanning-tree portfast default\nspanning-tree portfast bpduguard default\n!\n{% if Site == \"A\" %}\n  {{ configure_vlans(SiteAvlans) }}\n{% elif Site == \"B\" %}\n  {{ configure_vlans(SiteBvlans) }}\n{% endif %}\n!\n{# Determine whether target is Dual or Single Uplink Target #}\n{% set uplink_portarray = [] %}\n{% for interface in __interface %}\n  {% if interface.portMode == \"trunk\" && interface.interfaceType == \"Physical\" %}\n    {% do uplink_portarray.append(interface.portName) %}\n  {% endif %}\n{% endfor %}\n!\n{% if uplink_portarray | length == 2 %}\n  {{ configure_stp_dualuplink(SiteAvlans) }}\n{% elif uplink_portarray | length == 1 %}\n  {{ configure_stp_singleuplink(SiteBvlans) }}\n{% endif %}\n!\n{%- include \"DNAC-Templates-Samples/ACLs-Info\" -%}\n!\nsnmp-server location {{ snmpLocation }} \n{% for snmpCommunityString in snmpCommunityStrings %}\n  snmp-server community {{ snmpCommunityString['string'] }} RW 10\n{% endfor %}\n!\n{% for user in users %}\n  username {{ user.name }} priv {{ user.priv }} secret 9 {{ user.key }}\n{% endfor %}\n!\ninterface GigabitEthernet0/0\n no ip address\n shutdown\n!\nnetconf-yang",
+        "rollbackTemplateContent": "",
+        "templateParams": [
+          {
+            "parameterName": "snmpLocation",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 3,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": null,
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "displayName": null
+          },
+          {
+            "parameterName": "Site",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 1,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "SINGLE_SELECT",
+              "selectionValues": {
+                "A": "A",
+                "B": "B"
+              },
+              "defaultSelectedValues": [
+                "A"
+              ],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "displayName": null
+          },
+          {
+            "parameterName": "__interface",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": true,
+            "instructionText": null,
+            "group": null,
+            "order": 2,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "MULTI_SELECT",
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "displayName": null
+          }
+        ],
+        "rollbackTemplateParams": [],
+        "composite": false,
+        "containingTemplates": [],
+        "language": "JINJA",
+        "promotedTemplateContent": "{# System Management for Catalyst Only #}\n{% include \"DNAC-Templates-Samples/Sensitive-Info\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n\nno service pad\nservice timestamps debug datetime msec localtime\nservice timestamps log datetime msec localtime\nno platform punt-keepalive disable-kernel-core\n!\nspanning-tree mode rapid-pvst\nspanning-tree portfast default\nspanning-tree portfast bpduguard default\n!\n{% if Site == \"A\" %}\n  {{ configure_vlans(SiteAvlans) }}\n{% elif Site == \"B\" %}\n  {{ configure_vlans(SiteBvlans) }}\n{% endif %}\n!\n{# Determine whether target is Dual or Single Uplink Target #}\n{% set uplink_portarray = [] %}\n{% for interface in __interface %}\n  {% if interface.portMode == \"trunk\" && interface.interfaceType == \"Physical\" %}\n    {% do uplink_portarray.append(interface.portName) %}\n  {% endif %}\n{% endfor %}\n!\n{% if uplink_portarray | length == 2 %}\n  {{ configure_stp_dualuplink(SiteAvlans) }}\n{% elif uplink_portarray | length == 1 %}\n  {{ configure_stp_singleuplink(SiteBvlans) }}\n{% endif %}\n!\n{%- include \"DNAC-Templates-Samples/ACLs-Info\" -%}\n!\nsnmp-server location {{ snmpLocation }} \n{% for snmpCommunityString in snmpCommunityStrings %}\n  snmp-server community {{ snmpCommunityString['string'] }} RW 10\n{% endfor %}\n!\n{% for user in users %}\n  username {{ user.name }} priv {{ user.priv }} secret 9 {{ user.key }}\n{% endfor %}\n!\ninterface GigabitEthernet0/0\n no ip address\n shutdown\n!\nnetconf-yang",
+        "promotedTemplateParams": [
+          {
+            "parameterName": "Site",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 1,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "SINGLE_SELECT",
+              "selectionValues": {
+                "A": "A",
+                "B": "B"
+              },
+              "defaultSelectedValues": [
+                "A"
+              ],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "id": null,
+            "displayName": null
+          },
+          {
+            "parameterName": "__interface",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": true,
+            "instructionText": null,
+            "group": null,
+            "order": 2,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "MULTI_SELECT",
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "id": null,
+            "displayName": null
+          },
+          {
+            "parameterName": "snmpLocation",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 3,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": null,
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "id": null,
+            "displayName": null
+          }
+        ],
+        "customParamsOrder": false,
+        "createTime": 1674762318741,
+        "lastUpdateTime": 1675469199905,
+        "latestVersionTime": 1674762318741,
+        "projectName": "DNAC-Templates-Samples",
+        "validationErrors": {
+          "templateErrors": [],
+          "rollbackTemplateErrors": [],
+          "templateId": "803f581e-579d-483f-b8cf-add3fd81f85d",
+          "templateVersion": null
+        },
+        "projectAssociated": true,
+        "documentDatabase": false
+      },
+      {
         "name": "IBNS2.0-Configuration",
         "description": "",
         "tags": [],
@@ -33,200 +227,6 @@
           "templateErrors": [],
           "rollbackTemplateErrors": [],
           "templateId": "0a0c2026-f8c7-4af1-92d1-de3bda2ee00a",
-          "templateVersion": null
-        },
-        "projectAssociated": true,
-        "documentDatabase": false
-      },
-      {
-        "name": "SystemManagement",
-        "description": "",
-        "tags": [],
-        "deviceTypes": [
-          {
-            "productFamily": "Switches and Hubs",
-            "productSeries": "Cisco Catalyst 9300 Series Switches"
-          }
-        ],
-        "softwareType": "IOS",
-        "softwareVariant": "XE",
-        "templateContent": "{# System Management for Catalyst Only #}\n{% include \"DNAC-Templates-Samples/Sensitive-Info\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n\nno service pad\nservice timestamps debug datetime msec localtime\nservice timestamps log datetime msec localtime\nno platform punt-keepalive disable-kernel-core\n!\nspanning-tree mode rapid-pvst\nspanning-tree portfast default\nspanning-tree portfast bpduguard default\n!\n{% if Site == \"A\" %}\n  {{ configure_vlans(SiteAvlans) }}\n  {{ configure_stp_dualuplink(SiteAvlans) }}\n{% elif Site == \"B\" %}\n  {{ configure_vlans(SiteBvlans) }}\n  {{ configure_stp_singleuplink(SiteBvlans) }}\n{% endif %}\n!\n{%- include \"DNAC-Templates-Samples/ACLs-Info\" -%}\n!\nsnmp-server location {{ snmpLocation }} \n{% for snmpCommunityString in snmpCommunityStrings %}\n  snmp-server community {{ snmpCommunityString['string'] }} RW 10\n{% endfor %}\n!\n{% for user in users %}\n  username {{ user.name }} priv {{ user.priv }} secret 9 {{ user.key }}\n{% endfor %}\n!\ninterface GigabitEthernet0/0\n no ip address\n shutdown\n!\nnetconf-yang",
-        "rollbackTemplateContent": "",
-        "templateParams": [
-          {
-            "parameterName": "__interface",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": true,
-            "instructionText": null,
-            "group": null,
-            "order": 1,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "MULTI_SELECT",
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "displayName": null
-          },
-          {
-            "parameterName": "Site",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 2,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "SINGLE_SELECT",
-              "selectionValues": {
-                "A": "A",
-                "B": "B"
-              },
-              "defaultSelectedValues": [
-                "A"
-              ],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "displayName": null
-          },
-          {
-            "parameterName": "snmpLocation",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": false,
-            "notParam": true,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 3,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": null,
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "displayName": null
-          }
-        ],
-        "rollbackTemplateParams": [],
-        "composite": false,
-        "containingTemplates": [],
-        "language": "JINJA",
-        "promotedTemplateContent": "{# System Management for Catalyst Only #}\n{% include \"DNAC-Templates-Samples/Sensitive-Info\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n\nno service pad\nservice timestamps debug datetime msec localtime\nservice timestamps log datetime msec localtime\nno platform punt-keepalive disable-kernel-core\n!\nspanning-tree mode rapid-pvst\nspanning-tree portfast default\nspanning-tree portfast bpduguard default\n!\n{% if Site == \"A\" %}\n  {{ configure_vlans(SiteAvlans) }}\n  {{ configure_stp_dualuplink(SiteAvlans) }}\n{% elif Site == \"B\" %}\n  {{ configure_vlans(SiteBvlans) }}\n  {{ configure_stp_singleuplink(SiteBvlans) }}\n{% endif %}\n!\n{%- include \"DNAC-Templates-Samples/ACLs-Info\" -%}\n!\nsnmp-server location {{ snmpLocation }} \n{% for snmpCommunityString in snmpCommunityStrings %}\n  snmp-server community {{ snmpCommunityString['string'] }} RW 10\n{% endfor %}\n!\n{% for user in users %}\n  username {{ user.name }} priv {{ user.priv }} secret 9 {{ user.key }}\n{% endfor %}\n!\ninterface GigabitEthernet0/0\n no ip address\n shutdown\n!\nnetconf-yang",
-        "promotedTemplateParams": [
-          {
-            "parameterName": "__interface",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": true,
-            "instructionText": null,
-            "group": null,
-            "order": 1,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "MULTI_SELECT",
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "id": null,
-            "displayName": null
-          },
-          {
-            "parameterName": "Site",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 2,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "SINGLE_SELECT",
-              "selectionValues": {
-                "A": "A",
-                "B": "B"
-              },
-              "defaultSelectedValues": [
-                "A"
-              ],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "id": null,
-            "displayName": null
-          },
-          {
-            "parameterName": "snmpLocation",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": false,
-            "notParam": true,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 3,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": null,
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "id": null,
-            "displayName": null
-          }
-        ],
-        "customParamsOrder": false,
-        "createTime": 1674762318741,
-        "lastUpdateTime": 1675378812972,
-        "latestVersionTime": 1674762318741,
-        "projectName": "DNAC-Templates-Samples",
-        "validationErrors": {
-          "templateErrors": [],
-          "rollbackTemplateErrors": [],
-          "templateId": "803f581e-579d-483f-b8cf-add3fd81f85d",
           "templateVersion": null
         },
         "projectAssociated": true,
@@ -352,30 +352,6 @@
         "rollbackTemplateContent": "",
         "templateParams": [
           {
-            "parameterName": "accesspoint_interfaces",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": "Select the ports where Access Points will be deployed. The other interfaces will be automatically provisioned as workstation interfaces.",
-            "required": true,
-            "notParam": false,
-            "paramArray": true,
-            "instructionText": null,
-            "group": null,
-            "order": 2,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "MULTI_SELECT",
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "{\"provider\":\"Inventory\",\"attributeToDisplay\":\"portName\",\"params\":[{\"type\":\"MANAGED_DEVICE_UUID\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_IP\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_HOSTNAME\",\"scope\":\"RUNTIME\",\"value\":null}],\"value\":null,\"source\":\"Inventory\",\"entity\":\"Interface\",\"attribute\":\"portName\",\"filterType\":\"regex\",\"filterValue\":\"GigabitEthernet[1-9]/0/[1-9]+\",\"filterByAttribute\":\"portName\"}",
-            "displayName": "AP Interfaces"
-          },
-          {
             "parameterName": "vlan_number",
             "dataType": "STRING",
             "defaultValue": null,
@@ -427,6 +403,30 @@
             "provider": null,
             "binding": "",
             "displayName": null
+          },
+          {
+            "parameterName": "accesspoint_interfaces",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": "Select the ports where Access Points will be deployed. The other interfaces will be automatically provisioned as workstation interfaces.",
+            "required": true,
+            "notParam": false,
+            "paramArray": true,
+            "instructionText": null,
+            "group": null,
+            "order": 2,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "MULTI_SELECT",
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "{\"provider\":\"Inventory\",\"attributeToDisplay\":\"portName\",\"params\":[{\"type\":\"MANAGED_DEVICE_UUID\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_IP\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_HOSTNAME\",\"scope\":\"RUNTIME\",\"value\":null}],\"value\":null,\"source\":\"Inventory\",\"entity\":\"Interface\",\"attribute\":\"portName\",\"filterType\":\"regex\",\"filterValue\":\"GigabitEthernet[1-9]/0/[1-9]+\",\"filterByAttribute\":\"portName\"}",
+            "displayName": "AP Interfaces"
           },
           {
             "parameterName": "__interface",
@@ -595,44 +595,6 @@
         "rollbackTemplateContent": "",
         "templateParams": [
           {
-            "parameterName": "svlan",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 4,
-            "customOrder": 0,
-            "selection": null,
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "displayName": null
-          },
-          {
-            "parameterName": "vvlan",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 6,
-            "customOrder": 0,
-            "selection": null,
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "displayName": null
-          },
-          {
             "parameterName": "avlan",
             "dataType": "STRING",
             "defaultValue": null,
@@ -676,23 +638,37 @@
             "displayName": null
           },
           {
-            "parameterName": "__interface",
+            "parameterName": "vvlan",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
             "required": true,
             "notParam": false,
-            "paramArray": true,
+            "paramArray": false,
             "instructionText": null,
             "group": null,
-            "order": 1,
+            "order": 6,
             "customOrder": 0,
-            "selection": {
-              "selectionType": "MULTI_SELECT",
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
+            "selection": null,
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "displayName": null
+          },
+          {
+            "parameterName": "svlan",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 4,
+            "customOrder": 0,
+            "selection": null,
             "range": [],
             "key": null,
             "provider": null,
@@ -712,6 +688,30 @@
             "order": 5,
             "customOrder": 0,
             "selection": null,
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "displayName": null
+          },
+          {
+            "parameterName": "__interface",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": true,
+            "instructionText": null,
+            "group": null,
+            "order": 1,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "MULTI_SELECT",
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
             "range": [],
             "key": null,
             "provider": null,
@@ -726,26 +726,6 @@
         "promotedTemplateContent": "{# Interface Configurations #}\n{% include \"DNAC-Templates-Samples/Interfaces-Macros\" %}\n!\n{# Interface Interations #}\n!\n{# System Variable example interfaces in one logical code construct #}\n{% for interface in __interface %}\n  {% if interface.portMode == \"access\" && interface.interfaceType == \"Physical\" %}\n     interface {{ interface.portName }}\n       {{ access_interface(avlan) }}\n  {% endif %}\n{% endfor %}\n!\n{# Binding example interfaces in one logical code construct #}\n{% for interface in bindinterfaces %}\n  interface {{ interface.portname }}\n    {{ security_interface(svlan) }}\n{% endfor %}\n!\n{# Range example interfaces in one logical code construct #}\ninterface range 1/0/1-24\n    {{ workstation_interface(wvlan,vvlan) }}\n",
         "promotedTemplateParams": [
           {
-            "parameterName": "avlan",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 2,
-            "customOrder": 0,
-            "selection": null,
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "id": null,
-            "displayName": null
-          },
-          {
             "parameterName": "bindinterfaces",
             "dataType": "STRING",
             "defaultValue": null,
@@ -771,6 +751,26 @@
             "displayName": null
           },
           {
+            "parameterName": "vvlan",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 6,
+            "customOrder": 0,
+            "selection": null,
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "id": null,
+            "displayName": null
+          },
+          {
             "parameterName": "svlan",
             "dataType": "STRING",
             "defaultValue": null,
@@ -783,31 +783,6 @@
             "order": 4,
             "customOrder": 0,
             "selection": null,
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "id": null,
-            "displayName": null
-          },
-          {
-            "parameterName": "__interface",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": true,
-            "instructionText": null,
-            "group": null,
-            "order": 1,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "MULTI_SELECT",
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
             "range": [],
             "key": null,
             "provider": null,
@@ -836,7 +811,7 @@
             "displayName": null
           },
           {
-            "parameterName": "vvlan",
+            "parameterName": "avlan",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
@@ -845,9 +820,34 @@
             "paramArray": false,
             "instructionText": null,
             "group": null,
-            "order": 6,
+            "order": 2,
             "customOrder": 0,
             "selection": null,
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "id": null,
+            "displayName": null
+          },
+          {
+            "parameterName": "__interface",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": true,
+            "instructionText": null,
+            "group": null,
+            "order": 1,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "MULTI_SELECT",
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
             "range": [],
             "key": null,
             "provider": null,
@@ -1074,6 +1074,30 @@
         "rollbackTemplateContent": "",
         "templateParams": [
           {
+            "parameterName": "voice_number",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": false,
+            "notParam": true,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 3,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": null,
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "displayName": null
+          },
+          {
             "parameterName": "__interface",
             "dataType": "STRING",
             "defaultValue": null,
@@ -1108,30 +1132,6 @@
             "instructionText": null,
             "group": null,
             "order": 2,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": null,
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "displayName": null
-          },
-          {
-            "parameterName": "voice_number",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": false,
-            "notParam": true,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 3,
             "customOrder": 0,
             "selection": {
               "selectionType": null,
@@ -1182,31 +1182,6 @@
         "promotedTemplateContent": "{# Interface Configurations #}\n{% include \"DNAC-Templates-Samples/Interfaces-Macros\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n!\n{% set vlanArray = [] %}\n{% if Site == \"A\" %}\n  {% for vlanpair in SiteAvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n{% elif Site == \"B\" %}\n  {% for vlanpair in SiteBvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n{% endif %}\n!\n{{ autoconf_accesspoint(vlanArray[0]) }}\n{{ autoconf_workstation(vlanArray[1], vlanArray[2]) }}\n{{ autoconf_baseconfig(vlanArray[1]) }}\n!\n{% include \"DNAC-Templates-Samples/AutoConf-Configuration-Option\" %}\n!\n{# Interface Interations #}\n!\n{# System Variable example interfaces in one logical code construct #}\n{% for interface in __interface %}\n  {% if interface.interfaceType == \"Physical\" && interface.portName.replaceAll(\"(^[a-zA-Z]+).*\",\"$1\") == \"GigabitEthernet\"  %}\n    {% if interface.portName.replaceAll(\"(^[a-zA-Z]+.).*\", \"$1\") != \"GigabitEthernet0\" %}\n      {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$2\") != 1 %}\n        {#{% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 10 %}#}\n          {#{% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 11 %}#}\n            interface {{ interface.portName }}\n              {{ baseconf_interface() }}\n          {#{% endif %}#}\n        {#{% endif %}#}\n      {% endif %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n\n\n",
         "promotedTemplateParams": [
           {
-            "parameterName": "__interface",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": true,
-            "instructionText": null,
-            "group": null,
-            "order": 4,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "MULTI_SELECT",
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "id": null,
-            "displayName": null
-          },
-          {
             "parameterName": "Site",
             "dataType": "STRING",
             "defaultValue": null,
@@ -1227,6 +1202,31 @@
               "defaultSelectedValues": [
                 "A"
               ],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "id": null,
+            "displayName": null
+          },
+          {
+            "parameterName": "__interface",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": true,
+            "instructionText": null,
+            "group": null,
+            "order": 4,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "MULTI_SELECT",
+              "selectionValues": {},
+              "defaultSelectedValues": [],
               "id": null
             },
             "range": [],
@@ -1313,7 +1313,7 @@
         ],
         "softwareType": "IOS",
         "softwareVariant": "XE",
-        "templateContent": "{#- 9300 Stack Power and 9300, 9200 Priority -#}\n{% set StackCount = __device.platformId | split(\",\")  %}\n{% set StackMemberCount =  StackCount | length  -%}\n\n{% if StackMemberCount > 1 %}\n  {% if \"C93\" in __device.platformId %}\n     stack-power stack Powerstack1\n     mode redundant strict\n     {% if StackMemberCount > 4 %}\n        stack-power stack Powerstack2\n        mode redundant strict\n     {% endif %}\n     {% for Switch in range(0,StackMemberCount,1) %}\n        {% if loop.index <= (StackMemberCount/2|round('ceil')) %}\n           stack-power switch {{ loop.index }}\n           stack Powerstack1\n        {% elif loop.index > (StackMemberCount/2|round('ceil')) %}\n           stack-power switch {{ loop.index }}\n           stack Powerstack2\n        {% endif %}\n        {{ loop.index }}\n     {% endfor %}\n  {% endif %}\n  #MODE_ENABLE\n  {% for Switch in range(0,StackMemberCount,1) %}\n    {% if loop.index == 1 %}\n       switch {{ loop.index }} priority 10\n    {% elif Switch == 2 %}\n       switch {{ loop.index }} priority 9\n    {% else %}\n       switch {{ loop.index }} priority 8\n    {% endif %}\n  {% endfor %}\n  #MODE_END_ENABLE\n{% endif %}",
+        "templateContent": "{#- 9300 Stack Power and 9300, 9200 Priority -#}\n{% set StackCount = __device.platformId | split(\",\")  %}\n{% set StackMemberCount =  StackCount | length  -%}\n\n{% if StackMemberCount > 1 %}\n  {% if \"C93\" in __device.platformId %}\n     stack-power stack Powerstack1\n     mode redundant strict\n     {% if StackMemberCount > 4 %}\n        stack-power stack Powerstack2\n        mode redundant strict\n     {% endif %}\n     {% for Switch in range(0,StackMemberCount,1) %}\n        {% if loop.index <= (StackMemberCount/2|round('ceil')) %}\n           stack-power switch {{ loop.index }}\n           stack Powerstack1\n        {% elif loop.index > (StackMemberCount/2|round('ceil')) %}\n           stack-power switch {{ loop.index }}\n           stack Powerstack2\n        {% endif %}\n     {% endfor %}\n  {% endif %}\n  #MODE_ENABLE\n  {% for Switch in range(0,StackMemberCount,1) %}\n    {% if loop.index == 1 %}\n       switch {{ loop.index }} priority 10\n    {% elif Switch == 2 %}\n       switch {{ loop.index }} priority 9\n    {% else %}\n       switch {{ loop.index }} priority 8\n    {% endif %}\n  {% endfor %}\n  #MODE_END_ENABLE\n{% endif %}",
         "rollbackTemplateContent": "",
         "templateParams": [
           {
@@ -1340,7 +1340,7 @@
         "composite": false,
         "containingTemplates": [],
         "language": "JINJA",
-        "promotedTemplateContent": "{#- 9300 Stack Power and 9300, 9200 Priority -#}\n{% set StackCount = __device.platformId | split(\",\")  %}\n{% set StackMemberCount =  StackCount | length  -%}\n\n{% if StackMemberCount > 1 %}\n  {% if \"C93\" in __device.platformId %}\n     stack-power stack Powerstack1\n     mode redundant strict\n     {% if StackMemberCount > 4 %}\n        stack-power stack Powerstack2\n        mode redundant strict\n     {% endif %}\n     {% for Switch in range(0,StackMemberCount,1) %}\n        {% if loop.index <= (StackMemberCount/2|round('ceil')) %}\n           stack-power switch {{ loop.index }}\n           stack Powerstack1\n        {% elif loop.index > (StackMemberCount/2|round('ceil')) %}\n           stack-power switch {{ loop.index }}\n           stack Powerstack2\n        {% endif %}\n        {{ loop.index }}\n     {% endfor %}\n  {% endif %}\n  #MODE_ENABLE\n  {% for Switch in range(0,StackMemberCount,1) %}\n    {% if loop.index == 1 %}\n       switch {{ loop.index }} priority 10\n    {% elif Switch == 2 %}\n       switch {{ loop.index }} priority 9\n    {% else %}\n       switch {{ loop.index }} priority 8\n    {% endif %}\n  {% endfor %}\n  #MODE_END_ENABLE\n{% endif %}",
+        "promotedTemplateContent": "{#- 9300 Stack Power and 9300, 9200 Priority -#}\n{% set StackCount = __device.platformId | split(\",\")  %}\n{% set StackMemberCount =  StackCount | length  -%}\n\n{% if StackMemberCount > 1 %}\n  {% if \"C93\" in __device.platformId %}\n     stack-power stack Powerstack1\n     mode redundant strict\n     {% if StackMemberCount > 4 %}\n        stack-power stack Powerstack2\n        mode redundant strict\n     {% endif %}\n     {% for Switch in range(0,StackMemberCount,1) %}\n        {% if loop.index <= (StackMemberCount/2|round('ceil')) %}\n           stack-power switch {{ loop.index }}\n           stack Powerstack1\n        {% elif loop.index > (StackMemberCount/2|round('ceil')) %}\n           stack-power switch {{ loop.index }}\n           stack Powerstack2\n        {% endif %}\n     {% endfor %}\n  {% endif %}\n  #MODE_ENABLE\n  {% for Switch in range(0,StackMemberCount,1) %}\n    {% if loop.index == 1 %}\n       switch {{ loop.index }} priority 10\n    {% elif Switch == 2 %}\n       switch {{ loop.index }} priority 9\n    {% else %}\n       switch {{ loop.index }} priority 8\n    {% endif %}\n  {% endfor %}\n  #MODE_END_ENABLE\n{% endif %}",
         "promotedTemplateParams": [
           {
             "parameterName": "__device",
@@ -1365,7 +1365,7 @@
         ],
         "customParamsOrder": false,
         "createTime": 1674762318611,
-        "lastUpdateTime": 1675371440428,
+        "lastUpdateTime": 1675465824907,
         "latestVersionTime": 1674762318611,
         "projectName": "DNAC-Templates-Samples",
         "validationErrors": {
@@ -1632,7 +1632,7 @@
         "customParamsOrder": false,
         "createTime": 1675087335156,
         "lastUpdateTime": 1675089523378,
-        "latestVersionTime": 1675089526477,
+        "latestVersionTime": 1675468972267,
         "projectName": "DNAC-Templates-Samples",
         "validationErrors": {
           "templateErrors": [],
@@ -1694,7 +1694,7 @@
         "rollbackTemplateContent": "",
         "templateParams": [
           {
-            "parameterName": "guest_number",
+            "parameterName": "vlan_number",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
@@ -1703,7 +1703,7 @@
             "paramArray": false,
             "instructionText": null,
             "group": null,
-            "order": 6,
+            "order": 3,
             "customOrder": 0,
             "selection": {
               "selectionType": null,
@@ -1742,7 +1742,7 @@
             "displayName": null
           },
           {
-            "parameterName": "data_number",
+            "parameterName": "guest_number",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
@@ -1751,55 +1751,7 @@
             "paramArray": false,
             "instructionText": null,
             "group": null,
-            "order": 4,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": null,
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "displayName": null
-          },
-          {
-            "parameterName": "voice_number",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": false,
-            "notParam": true,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 5,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": null,
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "displayName": null
-          },
-          {
-            "parameterName": "vlan_number",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": false,
-            "notParam": true,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 3,
+            "order": 6,
             "customOrder": 0,
             "selection": {
               "selectionType": null,
@@ -1834,6 +1786,54 @@
               "defaultSelectedValues": [
                 "A"
               ],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "displayName": null
+          },
+          {
+            "parameterName": "voice_number",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": false,
+            "notParam": true,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 5,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": null,
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "displayName": null
+          },
+          {
+            "parameterName": "data_number",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": false,
+            "notParam": true,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 4,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": null,
+              "selectionValues": {},
+              "defaultSelectedValues": [],
               "id": null
             },
             "range": [],
@@ -1850,7 +1850,37 @@
         "promotedTemplateContent": "{# Interface Configurations #}\n{% include \"DNAC-Templates-Samples/Interfaces-Macros\" %}\n{% include \"DNAC-Templates-Samples/Vlans-Info\" %}\n{% include \"DNAC-Templates-Samples/IBNS2.0-Configuration\" %}\n!\n{% set vlanArray = [] %}\n{% if Site == \"A\" %}\n  {% for vlanpair in SiteAvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n  {{ configure_cts(SiteAvlans) }}\n{% elif Site == \"B\" %}\n  {% for vlanpair in SiteBvlans %}\n    {% if vlanpair['name'] == \"apvlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif vlanpair['name'] == \"datavlan\"%}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"voice\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"guest\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% elif \"disabled\" in vlanpair['name'] %}\n      {% do vlanArray.append(vlanpair['vlan']) %}\n    {% endif %}\n  {% endfor %}\n  {{ configure_cts(SiteBvlans) }}\n{% endif %}\n!\n{# Determine uplinks for cts manual #}\n{% set uplink_portarray = [] %}\n{% for interface in __interface %}\n  {% if interface.portMode == \"trunk\" && interface.interfaceType == \"Physical\" %}\n    {% do uplink_portarray.append(interface.portName) %}\n  {% endif %}\n{% endfor %}\n!\n{{ ibns_baseconfig(vlanArray[1]) }}\n{{ ibns_accesspoint(vlanArray[0]) }}\n{{ ibns_flexaccesspoint(vlanArray[0], vlanArray[1], vlanArray[2], vlanArray[3]) }} \n{{ ibns_workstation(vlanArray[1], vlanArray[2]) }}\n{{ ibns_guest(vlanArray[3]) }} \n!\n{# Interface Interations #}\n!\n{# System Variable example interfaces in one logical code construct #}\n{% for interface in __interface %}\n  {% if interface.interfaceType == \"Physical\" && interface.portName.replaceAll(\"(^[a-zA-Z]+).*\",\"$1\") == \"GigabitEthernet\"  %}\n    {% if interface.portName.replaceAll(\"(^[a-zA-Z]+.).*\", \"$1\") != \"GigabitEthernet0\" %}\n      {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$2\") != 1 %}\n        {#{% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 10 %}#}\n          {#{% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$3\") != 11 %}#}\n            interface {{ interface.portName }}\n              {{ ibns_baseconf_interface() }}\n          {#{% endif %}#}\n        {#{% endif %}#}\n      {% endif %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n!\n{#- Automated Script for cts manual disruptive config -#}\n{#- This will always ensure the uplink get the cts manual for with  -#}\n{#- timed self deleting EEM script  -#}\nevent manager applet POST_CTS_MANUAL\n event timer countdown time 30\n action 1.0 cli command \"enable\"\n action 1.1 cli command \"config t\"\n action 2.0 cli command \"interface range {{ uplink_portarray|join(',') }}\"\n action 2.1 cli command \"cts manual\"\n action 2.2 cli command \"policy static sgt 2 trusted\"\n action 2.3 cli command \"no event manager applet POST_CTS_MANUAL\"\n action 2.4 cli command \"end\"\n action 2.5 cli command \"wr\"\n action 2.6 cli command \"exit\"\n",
         "promotedTemplateParams": [
           {
-            "parameterName": "vlan_number",
+            "parameterName": "Site",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 1,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "SINGLE_SELECT",
+              "selectionValues": {
+                "A": "A",
+                "B": "B"
+              },
+              "defaultSelectedValues": [
+                "A"
+              ],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "id": null,
+            "displayName": null
+          },
+          {
+            "parameterName": "data_number",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
@@ -1859,7 +1889,7 @@
             "paramArray": false,
             "instructionText": null,
             "group": null,
-            "order": 3,
+            "order": 4,
             "customOrder": 0,
             "selection": {
               "selectionType": null,
@@ -1885,6 +1915,31 @@
             "instructionText": null,
             "group": null,
             "order": 6,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": null,
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "id": null,
+            "displayName": null
+          },
+          {
+            "parameterName": "vlan_number",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": false,
+            "notParam": true,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 3,
             "customOrder": 0,
             "selection": {
               "selectionType": null,
@@ -1935,61 +1990,6 @@
             "instructionText": null,
             "group": null,
             "order": 5,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": null,
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "id": null,
-            "displayName": null
-          },
-          {
-            "parameterName": "Site",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 1,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "SINGLE_SELECT",
-              "selectionValues": {
-                "A": "A",
-                "B": "B"
-              },
-              "defaultSelectedValues": [
-                "A"
-              ],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "id": null,
-            "displayName": null
-          },
-          {
-            "parameterName": "data_number",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": false,
-            "notParam": true,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 4,
             "customOrder": 0,
             "selection": {
               "selectionType": null,
