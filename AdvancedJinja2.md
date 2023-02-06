@@ -9,6 +9,7 @@ In the following example a variable is bind to DNA Centers database and a value 
 In order to acomplish this we need to use this example. We will use the *int* modifier to parse the bind variable to an integer variable using set notation.
 
 ```j2
+   {% set native_vlan_bind = 5 %} {# normally this would be set as a bind variable #}
    {% set native_vlan = native_vlan_bind | integer %}
    {% set data_vlan = native_vlan + 10 %}
 ```
