@@ -176,8 +176,8 @@ One area we need to address is how to effectively deal with stacking 9300's and 
 In order to acomplish this we need to first identify how many switches are in the stack... please use this example. 
 
 ```j2
-   {% set StackPIDs = ProductID.split(",") %}
-   {% set StackMemberCount = StackPIDs|length %}
+   {% set StackCount = __device.platformId | split(",")  %}
+   {% set StackMemberCount =  StackCount | length  -%}
 ```
 Then we need a logical construct which iterates through each switch setting not only the priority correctly but also setting the powerstack correctly.
 
