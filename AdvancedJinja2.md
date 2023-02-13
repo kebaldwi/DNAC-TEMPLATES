@@ -183,35 +183,34 @@ Then we need a logical construct which iterates through each switch setting not 
 
 ```j2
    {% if StackMemberCount > 1 %}
-      stack-power stack Powerstack1
-      mode redundant strict
-      {% if StackMemberCount > 4 %}
-         stack-power stack Powerstack2
-         mode redundant strict
-      {% endif %}
-      {% for Switch in range(0,StackMemberCount,1) %}
-         {% if loop.index <= (StackMemberCount/2|round('ceil')) %}
-            stack-power switch {{ loop.index }}
-            stack Powerstack1
-         {% elif loop.index > (StackMemberCount/2|round('ceil')) %}
-            stack-power switch {{ loop.index }}
-            stack Powerstack2
-         {% endif %}
-         {{ loop.index }}
-      {% endfor %}
-      #MODE_ENABLE
-      #MODE_END_ENABLE
-      #MODE_ENABLE
-      {% for Switch in range(0,StackMemberCount,1) %}
-         {% if loop.index == 1 %}
-            switch {{ loop.index }} priority 10
-         {% elif Switch == 2 %}
-            switch {{ loop.index }} priority 9
-         {% else %}
-            switch {{ loop.index }} priority 8
-         {% endif %}
-      {% endfor %}
-      #MODE_END_ENABLE
+     {% if "C93" in __device.platformId %}
+        stack-power stack Powerstack1
+        mode redundant strict
+        {% if StackMemberCount > 4 %}
+           stack-power stack Powerstack2
+           mode redundant strict
+        {% endif %}
+        {% for Switch in range(0,StackMemberCount,1) %}
+           {% if loop.index <= (StackMemberCount/2|round('ceil')) %}
+              stack-power switch {{ loop.index }}
+              stack Powerstack1
+           {% elif loop.index > (StackMemberCount/2|round('ceil')) %}
+              stack-power switch {{ loop.index }}
+              stack Powerstack2
+           {% endif %}
+        {% endfor %}
+     {% endif %}
+     #MODE_ENABLE
+     {% for Switch in range(0,StackMemberCount,1) %}
+       {% if loop.index == 1 %}
+          switch {{ loop.index }} priority 10
+       {% elif Switch == 2 %}
+          switch {{ loop.index }} priority 9
+       {% else %}
+          switch {{ loop.index }} priority 8
+       {% endif %}
+     {% endfor %}
+     #MODE_END_ENABLE
    {% endif %}
 ```
 Explained here...
