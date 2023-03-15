@@ -62,7 +62,7 @@ Hardware Devices:
 
 The lab envionment that is available is depicted here:
 
-![json](../LAB1-PNP-PREP/images/DCLOUD_Topology2.png?raw=true "Import JSON")
+![json](./images/DCLOUD_Topology_Wireless.png?raw=true "Import JSON")
 
 
 ### Tools Required

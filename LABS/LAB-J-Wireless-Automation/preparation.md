@@ -43,10 +43,10 @@ In this lab our focus changes slightly as we start to automate for host onboardi
 ![json](./images/module0-preparation/dnac-system-settings-aaa-ise-complete.png?raw=true "Import JSON")
 
 ## Lab Section 2 - DHCP & DNS Service Preparation
-In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server for the lab environment. The reasons for the configurations made here are detailed heavily in Lab 2 titled [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/)
+In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server for the lab environment. The reasons for the configurations made here are detailed heavily in Lab B titled [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-B-Onboarding-Template/)
 
 ### Step 1 - ***Configuring DHCP and DNS via Powershell***
-1. Download the powershell script to the ***windows server*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB10-Wireless-Automation/scripts/powershell.ps1">⬇︎powershell.ps1⬇︎</a> file.
+1. Download the powershell script to the ***windows server*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-J-Wireless-Automation/scripts/powershell.ps1">⬇︎powershell.ps1⬇︎</a> file.
 2. Once downloaded, extract the file.
    ![json](./images/module0-preparation/Powershell-Extract.png?raw=true "Import JSON")
    ![json](./images/module0-preparation/Powershell-Extract-Location.png?raw=true "Import JSON")
@@ -61,7 +61,7 @@ At this point all the DNS and DHCP configuration on the ***windows server*** wil
 We will now prepare DNA Center and onboard the devices in preparation for use in the lab. The reasons for the configurations made here are detailed heavily in previous Labs within the series. While we could deploy more extensive settings for deployment, we will limit the configuration to the minimum necessary to create a working lab in which to facilitate wireless automation.
 
 ### Step 1 - ***Import Postman Collection***
-1. Download and import the collection within the ***Postman*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB10-Wireless-Automation/postman/DCLOUD_DNACTemplatesLab_Workflow.postman_collection.json">⬇︎DCLOUD_DNACTemplateLab_Workflow.postman_collection.json⬇︎</a> file.
+1. Download and import the collection within the ***Postman*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-J-Wireless-Automation/postman/DCLOUD_DNACTemplatesLab_Workflow.postman_collection.json">⬇︎DCLOUD_DNACTemplateLab_Workflow.postman_collection.json⬇︎</a> file.
 2. Extract the file to the desktop using **Winrar** to expand them
 3. Open the **postman** application from the desktop. Once the application is open select *Collections* then click the *Import* link. 
 ![json](./images/module0-preparation/Postman-Pre-Collection-Import.png?raw=true "Import JSON")
@@ -71,7 +71,7 @@ We will now prepare DNA Center and onboard the devices in preparation for use in
 ![json](./images/module0-preparation/Postman-Post-Collection-Import.png?raw=true "Import JSON")
 
 ### Step 2 - ***Import Postman Environment***
-1. Download and import the environment within the ***Postman*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB10-Wireless-Automation/postman/DCLOUD_DNACTemplateLabs.postman_environment.json">⬇︎DCLOUD_DNACTemplateLabs.postman_environment.json⬇︎</a> file.
+1. Download and import the environment within the ***Postman*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-J-Wireless-Automation/postman/DCLOUD_DNACTemplateLabs.postman_environment.json">⬇︎DCLOUD_DNACTemplateLabs.postman_environment.json⬇︎</a> file.
 2. Extract the file to the desktop using **Winrar** to expand them
 3. If not open, open the **postman** application from the desktop. Once the application is open select *Environments* and then the *Import* link. 
 ![json](./images/module0-preparation/Postman-Pre-Environment-Import.png?raw=true "Import JSON")

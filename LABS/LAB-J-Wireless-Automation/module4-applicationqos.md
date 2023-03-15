@@ -10,7 +10,7 @@ There are a number of hurdles to applying Quality of Service. If we were to read
 3. Monitor application usage to assure application and user satisfaction
 In order to accomplish this we will discuss all the relevant aspects of these goals along with how we accomplish them in this lab.
 
-Previously we have built and deployed during [Lab 5](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB5-Application-Policy/) an Application Policy and Controller-based Application Recognition otherwise known as SDAVC. Please refer to that section to complete the building of the wired section and deploy SDAVC.
+Previously we have built and deployed during [Lab E](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-E-Application-Policy/) an Application Policy and Controller-based Application Recognition otherwise known as SDAVC. Please refer to that section to complete the building of the wired section and deploy SDAVC.
 
 ## Lab Section 1 - Building and Deploying a Wireless Application Policy
 The Application Policy methodology within DNA Center allows for two types of policies to be constructed, wired and wireless. During this section we will build and deploy an Application Policy for a wireless environment.
