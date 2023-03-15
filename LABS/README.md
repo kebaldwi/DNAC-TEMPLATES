@@ -55,18 +55,18 @@ Hardware Devices:
 
 The lab envionment that is available is depicted here:
 
-![json](./LAB1-PNP-PREP/images/DCLOUD_Topology2.png?raw=true "Import JSON")
+![json](./LAB-A-PNP-PREP/images/DCLOUD_Topology2.png?raw=true "Import JSON")
 
 #### DCLOUD LAB Preparation
 ##### dCLOUD VPN Connection
 Use AnyConnect VPN to connect to dCLOUD. When connecting, look at the session details and copy the credentials from the session booked into the client to connect.
 
-![json](./LAB9-Rest-API-Orchestration/images/VPN-to-dCLOUD.png?raw=true "Import JSON")
+![json](./LAB-I-Rest-API-Orchestration/images/VPN-to-dCLOUD.png?raw=true "Import JSON")
 
 ##### dCLOUD Service Optimization
 The dCLOUD environment used in the lab need to be optimized prior to the session, and to do this we need to disable the following:
 
-<p align="center"><img src="./LAB9-Rest-API-Orchestration/images/ShutdownUnused.png" width="500" height="690"></p>
+<p align="center"><img src="./LAB-I-Rest-API-Orchestration/images/ShutdownUnused.png" width="500" height="690"></p>
 
 In order to accomplish this, use the drop down menu item by each that is shutdown in the image and click the shutdown link.
 
