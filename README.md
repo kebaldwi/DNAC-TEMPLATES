@@ -40,8 +40,8 @@ Various sections will be covered within this github repository please use this m
 * [Advanced Velocity Scripting](./AdvancedVelocity.md#advanced-velocity) - This section will dive into Advanced Velocity examples
 #### Jinja2 Language
 * [Jinja2 Variables](./Variables.md#jinja2-variables) - This section explains Variables in depth and how and where to use them
-* [Jinja2 Scripting](./Jinja2.md#jinja2-scripting) - This section will dive into Velocity Scripting constructs and use cases
-* [Advanced Jinja2 Scripting](./AdvancedJinja2.md#advanced-jinja2) - This section will dive into Advanced Velocity examples
+* [Jinja2 Scripting](./Jinja2.md#jinja2-scripting) - This section will dive into Jinja2 Scripting constructs and use cases
+* [Advanced Jinja2 Scripting](./AdvancedJinja2.md#advanced-jinja2) - This section will dive into Advanced Jinja2 examples
 ### Advanced Use Cases
 * [Embedded Event Manager](./EEM.md#EEM) - This section will dive into EEM Scripting and various use cases 
 * [System Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/SystemVariables.md#dna-center-system-variables) - This section explains DNA Centers System Variables
