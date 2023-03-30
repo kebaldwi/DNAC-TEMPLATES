@@ -191,11 +191,10 @@ Then we need a logical construct which iterates through each switch setting not 
            mode redundant strict
         {% endif %}
         {% for Switch in range(0,StackMemberCount,1) %}
-           {% if loop.index <= (StackMemberCount/2|round('ceil')) %}
-              stack-power switch {{ loop.index }}
+           stack-power switch {{ loop.index }}
+           {% if loop.index <= (StackMemberCount/2|round('ceil')) or StackMemberCount < 5 %}
               stack Powerstack1
            {% elif loop.index > (StackMemberCount/2|round('ceil')) %}
-              stack-power switch {{ loop.index }}
               stack Powerstack2
            {% endif %}
         {% endfor %}
@@ -204,7 +203,7 @@ Then we need a logical construct which iterates through each switch setting not 
      {% for Switch in range(0,StackMemberCount,1) %}
        {% if loop.index == 1 %}
           switch {{ loop.index }} priority 10
-       {% elif Switch == 2 %}
+       {% elif loop.index == 2 %}
           switch {{ loop.index }} priority 9
        {% else %}
           switch {{ loop.index }} priority 8

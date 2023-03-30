@@ -76,11 +76,10 @@ mod
          mode redundant strict
       #end
       #foreach( $Switch in [1..$StackMemberCount] )
-         #if( $Switch <= ($StackMemberCount/2 + $StackMemberCount%2) )
-            stack-power switch ${Switch}
+         stack-power switch ${Switch}
+         #if( $Switch <= ($StackMemberCount/2 + $StackMemberCount%2) or $StackMemberCount < 5 )
             stack Powerstack1
          #elseif( $Switch > ($StackMemberCount/2 + $StackMemberCount%2) )
-            stack-power switch ${Switch}
             stack Powerstack2
          #end
        #end
