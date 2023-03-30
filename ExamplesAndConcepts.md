@@ -198,7 +198,7 @@ To let you practice and get experience with the DayN process to better understan
 ### Where
 This is an example which you may want to test with in the lab in combination with the **PnP Template** offered [here](./ExamplesAndConcepts.md#plug-and-play-pnp-template). Within the following location is an example project written in ***Jinja2*** in JSON format which can be imported into the Template Editor/Hub:
 
-[⬇︎Full DNA Center Sample Project⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/DAYN/DNAC-SAMPLE-TEMPLATES-03032023-project.json)
+[⬇︎Full DNA Center Sample Project⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/DAYN/DNAC-SAMPLE-TEMPLATES-03292023-project.json)
 
 ### Features
 This project includes templates with a number of built in features, which allow for the majority of use cases. We will explore those here in this section.
