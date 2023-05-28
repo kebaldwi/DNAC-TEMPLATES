@@ -1,0 +1,36 @@
+dnac_host: 198.18.129.100
+dnac_port: 443
+dnac_username: admin
+dnac_password: C1sco12345
+dnac_verify: False
+dnac_debug: True 
+site_details:
+  - type: "area"
+    site:
+      area:
+        name: "San Jose"
+        parentName: "Global"
+  - type: "building"
+    site:
+      building:
+        name: "Building 10"
+        parentName: "Global/San Jose"
+        address: "110 West Tasman Drive, San Jose, California 95134, United States"
+  - type: "floor"
+    site:
+      floor:
+        name: "Floor 1 - Exec Briefing Center"
+        parentName: "Global/San Jose/Building 10"
+        rfModel: "Cubes And Walled Offices"
+        width: "100.0"
+        length: "100.0"
+        height: "10.0" 
+site_name: "Global/San Jose/Building 10/Floor 1 - Exec Briefing Center"
+device_details:
+  - ip: "198.18.134.100"
+    cli_transport: "ssh"
+    snmp_rw: "private"
+    snmp_version: "v2"
+    username: "admin"
+    password: "C1sco12345"
+    netconf_port: "830"
