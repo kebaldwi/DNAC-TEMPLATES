@@ -20,9 +20,9 @@
           site: "{{ item.site }}"
       with_items: '{{ site_details }}'
 
-    - name: Wait 2 Seconds
+    - name: Wait 5 Seconds
       wait_for:
-        timeout: 2
+        timeout: 5
 
     - name: Get Site ID for The Floor
       cisco.dnac.site_info:
@@ -44,9 +44,9 @@
         netconfPort: "{{ item.netconf_port }}"
       with_items: '{{ device_details }}'
 
-    - name: Wait 2 Seconds
+    - name: Wait 5 Seconds
       wait_for:
-        timeout: 2
+        timeout: 5
 
     - name: Assign Devices to Floor
       cisco.dnac.assign_device_to_site:
