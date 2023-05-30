@@ -8,24 +8,29 @@ site_details:
   - type: "area"
     site:
       area:
-        name: "San Jose"
+        name: "State"
         parentName: "Global"
+  - type: "area"
+    site:
+      area:
+        name: "California"
+        parentName: "Global/State"
   - type: "building"
     site:
       building:
         name: "Building 10"
-        parentName: "Global/San Jose"
-        address: "110 West Tasman Drive, San Jose, California 95134, United States"
+        parentName: "Global/State/California/"
+        address: "300 E Tasman Dr, Bldg 10, San Jose, CA 95134"
   - type: "floor"
     site:
       floor:
-        name: "Floor 1 - Exec Briefing Center"
-        parentName: "Global/San Jose/Building 10"
+        name: "EBC - Exec Briefing Center"
+        parentName: "Global/State/California/Building 10"
         rfModel: "Cubes And Walled Offices"
         width: "100.0"
         length: "100.0"
         height: "10.0" 
-site_name: "Global/San Jose/Building 10/Floor 1 - Exec Briefing Center"
+site_name: "Global/State/California/Building 10/CX-Center"
 device_details:
   - ip: "198.18.134.100"
     cli_transport: "ssh"
