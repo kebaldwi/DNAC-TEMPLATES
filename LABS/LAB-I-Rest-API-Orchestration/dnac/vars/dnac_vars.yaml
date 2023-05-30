@@ -24,7 +24,7 @@ site_details:
   - type: "floor"
     site:
       floor:
-        name: "EBC - Exec Briefing Center"
+        name: "CX-Center"
         parentName: "Global/State/California/Building 10"
         rfModel: "Cubes And Walled Offices"
         width: "100.0"
