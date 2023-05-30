@@ -19,7 +19,7 @@ site_details:
     site:
       building:
         name: "Building 4"
-        parentName: "Global/State/California/"
+        parentName: "Global/State/California"
         address: "275 E Tasman Dr, San Jose, CA 95134"
   - type: "floor"
     site:
