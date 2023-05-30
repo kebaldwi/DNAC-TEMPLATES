@@ -18,19 +18,19 @@ site_details:
   - type: "building"
     site:
       building:
-        name: "Building 10"
+        name: "Building 4"
         parentName: "Global/State/California/"
-        address: "300 E Tasman Dr, Bldg 10, San Jose, CA 95134"
+        address: "275 E Tasman Dr, San Jose, CA 95134"
   - type: "floor"
     site:
       floor:
-        name: "CX-Center"
-        parentName: "Global/State/California/Building 10"
+        name: "Floor 1"
+        parentName: "Global/State/California/Building 4"
         rfModel: "Cubes And Walled Offices"
         width: "100.0"
         length: "100.0"
         height: "10.0" 
-site_name: "Global/State/California/Building 10/CX-Center"
+site_name: "Global/State/California/Building 4/Floor 1"
 device_details:
   - ip: "198.18.134.100"
     cli_transport: "ssh"
