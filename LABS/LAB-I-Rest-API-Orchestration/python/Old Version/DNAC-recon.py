@@ -295,11 +295,6 @@ def dnac_listprojects(url, token):
 
 #Define function for exporting projects with templates
 def dnac_exportprojects(url, token, projectList):
-    now = datetime.now()
-    timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
-    directory_name = f"my_directory_{timestamp}"
-    os.mkdir(directory_name)
-    os.chdir(directory_name)
     for project in projectList:
         projectName = project.name
         project = f'["{projectName}"]'
