@@ -4,8 +4,7 @@
 		"name": "DNA Center API LAB 201 - Device Discovery",
 		"description": "This collection will set up the dCLOUD environment for the dCLOUD. This collection will discover all the various devices, and assign them to the Building 3 within the North Carolina area.\n\nPlease use the csv provided...\n\n<a href=\"https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB9-Rest-API-Orchestration/csv/DNAC-Design-Settings.csv\">⬇︎DNA Center Design Settings CSV⬇︎</a>",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "13375428",
-		"_collection_link": "https://www.postman.com/dark-capsule-39992/workspace/dna-center-use-case-api-collections/collection/13375428-87bfe7f9-e303-46a9-8451-7dee2688fe89?action=share&creator=13375428&source=collection_link"
+		"_exporter_id": "13375428"
 	},
 	"item": [
 		{
@@ -544,7 +543,7 @@
 							"if (jsonData.response.taskId) {\r",
 							"    pm.test(\"Discovery created\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
 							"    pm.environment.set(\"DiscoveryTaskId\", jsonData[\"response\"][\"taskId\"]);\r",
-							"    setTimeout(function(){}, [240000]);\r",
+							"    setTimeout(function(){}, [120000]);\r",
 							"}\r",
 							"else {\r",
 							"    pm.test(\"Discovery created\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
