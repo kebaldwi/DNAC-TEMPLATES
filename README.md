@@ -14,7 +14,7 @@ The repository will include scripts and examples with the following:
 5. Regular Templates
 6. Composite Templates
 
-The goal of this repository is a practical guide to allow engineers to rapidly begin using DNAC automation and begin conversion of IOS CLI Templates. The Templates they may have been using over the years and with various use cases and so the intent is to reduce the lift to begin automating.
+The goal of this repository is a practical guide to allow engineers to rapidly begin using DNAC automation and begin conversion of IOS CLI Templates. The Templates have been developed over the years and with various use cases in mind, and so the intent sharing this collection is to reduce the lift to begin automating.
 
 ## Intent Based Networking
 Either one or multiple Templates may be used to deploy Intent in combination with the Design Settings and Policies deployed within the UI. One or Multiple templates may be used in Onboarding (PnP) or Day N methods. Day N methods are designed for making ongoing changes and may require 'no' statements depending on the configuration construct being modified. 
