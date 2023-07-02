@@ -14,7 +14,7 @@ The repository will include scripts and examples with the following:
 5. Regular Templates
 6. Composite Templates
 
-The goal of this repository is a practical guide to allow engineers to rapidly begin using DNAC automation and begin conversion of IOS CLI Templates. The Templates have been developed over the years and with various use cases in mind, and so the intent sharing this collection is to reduce the lift to begin automating.
+The goal of this repository is a practical guide to allow engineers to rapidly begin using DNAC automation and begin conversion of IOS CLI Templates. The Templates have been developed over the years and with various use cases in mind, and so the intent of sharing this collection is to reduce the lift to begin automating.
 
 ## Intent Based Networking
 Either one or multiple Templates may be used to deploy Intent in combination with the Design Settings and Policies deployed within the UI. One or Multiple templates may be used in Onboarding (PnP) or Day N methods. Day N methods are designed for making ongoing changes and may require 'no' statements depending on the configuration construct being modified. 
@@ -26,30 +26,31 @@ Additionally:
 4.	Variables may be used when the device is being onboarded or provisioned
 
 ## Tutorial Sections
-Various sections will be covered within this github repository please use this menu for navigation. Within the various folders are examples, explanation readme files for reference.
+Various sections will be covered within this github repository. Please use this menu as the main index for navigating content. 
+You will find various examples within the various folders of this repository, with supplied explanation readme files for reference.
 
 ### Workflows
 * [PnP Workflow](./PnP-Workflow.md#pnp-workflow) - This section explains the overall Plug and Play Methodology
-* [Onboarding Templates](./Onboarding.md#onboarding-templates-and-flows) - This section will explain Onboarding Templates in DNAC and their use
-* [DayN Templates](./DayN.md#day-n-templates-and-flows) - This section will explain how to use templates for ongoing changes to the network
+* [Onboarding Templates](./Onboarding.md#onboarding-templates-and-flows) - This section will explain Onboarding Templates in DNAC and their use in bringing various devices under DNA Center management
+* [DayN Templates](./DayN.md#day-n-templates-and-flows) - This section will explain how to use templates for ongoing (Day-N) changes to the network
 ### Templating
-* [Building Templates](./Templates.md#building-templates) - This section will explain how to build a template on DNAC
+* [Building Templates](./Templates.md#building-templates) - This section will explain how to build a template on DNAC from scratch
 #### Velocity Language
-* [Velocity Variables](./Variables.md#velocity-variables) - This section explains Variables in depth and how and where to use them
-* [Velocity Scripting](./Velocity.md#velocity-scripting) - This section will dive into Velocity Scripting constructs and use cases
-* [Advanced Velocity Scripting](./AdvancedVelocity.md#advanced-velocity) - This section will dive into Advanced Velocity examples
+* [Velocity Variables](./Variables.md#velocity-variables) - This section explains Template Variables in depth, and how and where to use them
+* [Velocity Scripting](./Velocity.md#velocity-scripting) - This section will dive into Velocity Language Template Scripting constructs and use cases
+* [Advanced Velocity Scripting](./AdvancedVelocity.md#advanced-velocity) - This section will dive into Advanced Velocity Language Template examples
 #### Jinja2 Language
-* [Jinja2 Variables](./Variables.md#jinja2-variables) - This section explains Variables in depth and how and where to use them
-* [Jinja2 Scripting](./Jinja2.md#jinja2-scripting) - This section will dive into Jinja2 Scripting constructs and use cases
-* [Advanced Jinja2 Scripting](./AdvancedJinja2.md#advanced-jinja2) - This section will dive into Advanced Jinja2 examples
+* [Jinja2 Variables](./Variables.md#jinja2-variables) - This section explains Template Variables in depth, and how and where to use them
+* [Jinja2 Scripting](./Jinja2.md#jinja2-scripting) - This section will dive into Jinja2 Language Template Scripting constructs and use cases
+* [Advanced Jinja2 Scripting](./AdvancedJinja2.md#advanced-jinja2) - This section will dive into Advanced Jinja2 Language Template examples
 ### Advanced Use Cases
-* [Embedded Event Manager](./EEM.md#EEM) - This section will dive into EEM Scripting and various use cases 
+* [Embedded Event Manager](./EEM.md#EEM) - This section will dive into EEM (Embedded Event Manager) Scripting and various use cases 
 * [System Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/SystemVariables.md#dna-center-system-variables) - This section explains DNA Centers System Variables
 ### Fault-Finding
-* [Troubleshooting](./TroubleShoot.md#Troubleshooting) - This section will dive into Troubleshooting Velocity 
+* [Troubleshooting](./TroubleShoot.md#Troubleshooting) - This section will dive into Troubleshooting Velocity based Template Constructs
 
 ## [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/ExamplesAndConcepts.md)
-In this section I have compiled a number of template samples using Jinja2. These samples include a wide ranging set of configurations which may be used in your labs to solve specific configuration requirements. This package is a culmination of a lot of aspects covered here in this templating repository, and is designed to help engineers understand various ways to solve problems. Additionally these examples may be used in testing in dCLOUD with any of the labs on this repository.
+In this section I have compiled a number of template examples using Jinja2. These samples include a wide ranging set of configurations which may be used in your labs to solve specific configuration requirements. This collection summarizes aspects covered previously in this templating repository, and are aimed at providing quick practical references to help engineers solve automation tasks with the help of DNA Center. Additionally these examples may be used in testing in [dCloud](https://dcloud.cisco.com) with any of the labs on this repository.
 
 * [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/ExamplesAndConcepts.md)
 
