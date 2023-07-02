@@ -50,28 +50,22 @@ You will find various examples within the various folders of this repository, wi
 * [Troubleshooting](./TroubleShoot.md#Troubleshooting) - This section will dive into Troubleshooting Velocity based Template Constructs
 
 ## [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/ExamplesAndConcepts.md)
-In this section I have compiled a number of template examples using Jinja2. These samples include a wide ranging set of configurations which may be used in your labs to solve specific configuration requirements. This collection summarizes aspects covered previously in this templating repository, and are aimed at providing quick practical references to help engineers solve automation tasks with the help of DNA Center. Additionally these examples may be used in testing in [dCloud](https://dcloud.cisco.com) with any of the labs on this repository.
+In this section I have compiled a number of template examples built with Jinja2 Language. These samples include a wide ranging set of configurations which may be used in your labs to solve specific configuration requirements. This collection summarizes aspects covered previously in this templating repository, and are aimed at providing quick practical references to help engineers solve automation tasks with the help of DNA Center. Additionally these examples may be used in testing in [dCloud](https://dcloud.cisco.com) with any of the labs on this repository.
 
 * [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/ExamplesAndConcepts.md)
 
 ## [DNAC Template LABS](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS#dnac-template-labs-)
-This section is built out in LAB form to guide you through the typical steps required to enable the various automation tasks delivered by DNA Center. This lab will give examples of templates used in DNA Center that can be modified for your use and tested on equipment within the LAB environment. Additional information within the lab provides a well-rounded explanation of Automation methods with Templates. Lastly, the lab allows for customers to use DNA Center workflows to practice deploying Onboarding, DayN Templates, and Application Policy automation on both Wired and Wireless Platforms.
-
-The goal of this lab is for it to be a practical guide to aid engineers to rapidly begin using DNA Center automation and help them work towards a template strategy. Additionally, this lab will give customers a permanent place to try out the templates and include configurations for various use cases. This environment will enable engineers to reduce the time and effort needed to instantiate the network.
-
-As a result, customers will gain experience setting up Plug and Play onboarding and templates. Additionally, they will use advanced velocity templating and troubleshooting tools, which may help during faultfinding to determine what is failing in a deployment.
-
-Please use this menu to navigate the various sections of this Github repository. Within the multiple folders are examples, explanation readme files for reference.
+This section built out in a lab format to guide you through the typical steps to complete various automation tasks delivered by DNA Center. It allows for customers to practice DNA Center workflows with Onboarding, DayN Templates, and Application Policy automation on both Wired and Wireless Platforms, while reducing the time and effort needed to instantiate the network The lab will also introduce advanced velocity templating topics and troubleshooting tools, which may help determine common failure scenarios in a deployment.
 
 * [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-A-PNP-PREP/) - The lab covers setup for Plug and Play **(allow 1.5 hrs)**
-* [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-B-Onboarding-Template/) - The lab covers in depth how to deploy Day 0 templates **(allow 1.5 hrs)**
+* [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-B-Onboarding-Template/) - The lab covers in depth topics in deploying Day 0 templates **(allow 1.5 hrs)**
 * [Day N Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-C-DayN-Template/) - The lab covers Day N template constructs and use cases **(allow 0.5 hrs)**
 * [Composite Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-D-Composite-Template/) - This lab covers building a composite template on DNA Center **(allow 0.5 hrs)**
-* [Application Policys](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-E-Application-Policy/) - This lab covers Application Policys & SDAVC in DNAC **(allow 1.0 hrs)**
-* [Telemetry](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-F-Telemetry-Enablement/) - This lab explains how to deploy Telemetry for assurance **(allow 0.5 hrs)**
+* [Application Policys](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-E-Application-Policy/) - This lab covers Application Policy & SDAVC in DNAC **(allow 1.0 hrs)**
+* [Telemetry](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-F-Telemetry-Enablement/) - This lab explains how to deploy Streaming Telemetry for DNA Center Assurance **(allow 0.5 hrs)**
 * [Advanced Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-G-Advanced-Automation/) - This lab will explore Advanced Automation examples **(allow 1.5 hrs)**
-* [Dynamic Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-H-Dynamic-Automation/) - This lab uses Advanced Automation techniques **(allow 2.0 hrs)**
-* [Rest-API Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-I-Rest-API-Orchestration/) - This lab uses Postman Collections to automate DNA Center **(allow 2.0 hrs)**
+* [Dynamic Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-H-Dynamic-Automation/) - This lab will explore additional Advanced Automation examples **(allow 2.0 hrs)**
+* [Rest-API Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-I-Rest-API-Orchestration/) - This lab uses [Postman](https://www.postman.com) Collections to automate DNA Center **(allow 2.0 hrs)**
 
 ## [DNAC Templates Store](https://github.com/kebaldwi/DNAC-Templates-Store)
 This repository is built out to share DNA Center Templates and allow for ongoing submissions from those inclined to share their work with the community. Initially the repository includes all the examples that we have used in this repository in RAW TEXT and JSON format. After your first submission you will be able to continually add your templates as you develop new and interesting approaches to device management. 
@@ -88,9 +82,9 @@ Please use this menu to navigate the various sections of this separate [DNAC Tem
 
 ## DCLOUD as a LAB
 ### Overview
-To help aid customers toward success with DNA Center Automation, You may utilize the above labs as they have been designed to work within DCLOUD's [Cisco Enterprise Networks Hardware Sandbox](https://dcloud2-sjc.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen) Lab. This allows you to run these labs and gives not only an environment to try the various code, but to develop and export your own code for use in production. This give the customer an environment where they can safely POC/POV methods and steps without harming their own production environments. This also negaes the need for shipping equipment, lead times, and licensing issues needed to get moving rapidly. Please do adhere to the best practices for the DCLOUD environment when using it.
+As a quick start with DNA Center Automation, you may utilize the above labs in conjuction with DCLOUD's sandbox [Cisco Enterprise Networks Hardware Sandbox](https://dcloud2-sjc.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen) Lab. This allows you to run these labs and gives not only an environment to try the various code samples, but also to develop and export your own code for use in your production environment. DCLOUD  provides for rapid and safe POC/POV on-demand environment without impacting production environments. DCLOUD also negates the need for shipping equipment, associated lead times, and licensing issues associated with setting up your own private testing environment. Please do adhere to the best practices for the DCLOUD environment when using it.
 
-The environment allows for use with a web-based browser client for VPN-less connectivity, access as well as AnyConnect VPN client connectivity for those who prefer it. The labs are hosted out of our San Jose Facility and so you would choose sessions from US West. Choose the Cisco Enterprise Network Sandbox version you prefer. To access this or any other content, including demonstrations, labs, and training in Cloud please work with your Cisco Account team or Cisco Partner Account Team directly. Your Account teams will make sure the session is scheduled and shared for you to use. Once booked follow the guide within Github to complete the tasks adhering to the best practices of the dCLOUD environment.
+DCLOUD allows for use with a web-based browser client for VPN-less connectivity, as well as AnyConnect VPN client connectivity for those who prefer it. The labs are hosted in Cisco San Jose Facility (Select US West Region when scheduling in DCLOUD). Choose the Cisco Enterprise Network Sandbox version you prefer. To access this or any other content, including demonstrations, labs, and training in Cloud please work with your Cisco Account team or Cisco Partner Account Team directly. Your Account teams will make sure the session is scheduled and shared for you to use. Once booked follow the guide within Github to complete the tasks adhering to the best practices of the dCLOUD environment.
 
 ## Examples
 These examples must be used with two conditions:
@@ -101,5 +95,5 @@ Specific examples of Templates are available in the following folders:
 * [PnP Onboarding](./ONBOARDING) - Examples of PnP/ZTP Templates explained in [Onboarding Templates](./Onboarding.md#onboarding-templates-and-flows)
 * [DayN](./DAYN) - Examples of DayN Templates explained in [DayN Templates](./DayN.md#day-n-templates-and-flows)
 
-If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+If you found this repository please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
