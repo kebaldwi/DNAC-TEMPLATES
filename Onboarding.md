@@ -28,12 +28,11 @@ Before DNA Center can automate the deployment we have to complete a few tasks in
    1. **CLI Credentials** - *Usernames, Passwords and Enable Passwords*
    2. **SNMP Credentials** - *SNMP v1, v2 for both Read and Write as well as SNMP v3*
    3. **HTTP(S) Credentials** - *HTTP(S) usernames and passwords for both Read and Write Access*
-4. **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. You then indicate whether the file is Cisco or 3rd Party image and click import. Once the file is imported, you can go into the imported images section and assign it to a specific type of device. Select the image and mark it as golden for PnP to use it. 
+4. **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. You then indicate whether the file is Cisco or 3rd Party image and click import. Once the file is imported, you can go into the imported images section and assign it to a specific type of device. Select the image and mark it as golden for PnP to use it. **(required)**
 ![json](images/imported_images.png?raw=true "Import JSON")
-**(required)**
 
 ## Onboarding Templates
-Onboarding templates are regular templates which serve the purpose of onboarding the device as mentioned sith the minimal amount of code necessary to get connectivity up to the device in a consistent manner to allow for further configuration via Day N  templates and provisioning. Typically there are two types of configuration that are used here Layer 3 routed or Layer 2 access. Both have different use cases and while they are typical they are by no means the only types of configuration used. To that end a set of examples has been provided in the [Onboarding folder](./ONBOARDING) within this repository. One of those examples is the one I most typically see used with customers. Included there is a [JSON Import File](./ONBOARDING/Platinum_Onboarding_Template.json) for import into DNA Center 2.1.X and above.
+Onboarding templates are regular templates which serve the purpose of onboarding the device as mentioned with the minimal amount of code necessary to get connectivity up to the device in a consistent manner and to allow for further configuration via Day N templates, and device provisioning. Typically, there are two types of configurations that are used here: Layer 3 routed, or Layer 2 access. Both have different use cases, and while they are typical, they are by no means the only types of configuration used in this context. To that end, a set of examples has been provided in the [Onboarding folder](./ONBOARDING) within this repository. One of those examples is the one I most typically see used with customer deployments. Included there is a [JSON Import File](./ONBOARDING/Platinum_Onboarding_Template.json) for import into DNA Center 2.1.X and above.
 
 ```vtl
 ##<------Onboarding-Template------->
@@ -89,7 +88,7 @@ ntp source Vlan ${MgmtVlan}
 interface Vlan 1
  shutdown
 !
-``````
+```
 This file has the settings necessary to bring up a Layer 2 access switch with enough configration to be supported by DNA Center for the rest of the provisioning process.
 
 ## Onboarding Template Deployment
