@@ -45,7 +45,7 @@ You will find various examples within the various folders of this repository, wi
 * [Advanced Jinja2 Scripting](./AdvancedJinja2.md#advanced-jinja2) - This section will dive into Advanced Jinja2 Language Template examples
 ### Advanced Use Cases
 * [Embedded Event Manager](./EEM.md#EEM) - This section will dive into EEM (Embedded Event Manager) Scripting and various use cases 
-* [System Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/SystemVariables.md#dna-center-system-variables) - This section explains DNA Centers System Variables
+* [System Variables](./SystemVariables.md#dna-center-system-variables) - This section explains DNA Centers System Variables
 ### Fault-Finding
 * [Troubleshooting](./TroubleShoot.md#Troubleshooting) - This section will dive into Troubleshooting Velocity based Template Constructs
 
