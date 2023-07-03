@@ -2,14 +2,14 @@
 # DNA Center System Variables [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 
 ## What are System Variables?
-Cisco DNA Center has a lot of information about devices.  It collects inventory data from discovered devices and keeps track of what site, network profile and settings are applied to the devices in your network.  You can use this information in your templates by calling system variables.  System variables extend the benefits of adding variables to your templates by augmenting the dynamic capabilities of templates while also reducing the number of manual inputs required from engineering staff at provisioning time.   
+Cisco DNA Center maintains a lot of information about devices.  It collects inventory data from discovered devices and keeps track of what site, network profile and settings are applied to the devices in your network.  You can use this information in your templates by calling system variables.  System variables extend the benefits of adding variables to your templates by augmenting the dynamic capabilities of templates while also reducing the number of manual inputs required from engineering staff at provisioning time.   
 
-For example, there is a system variable called **__interface**.  This variable, part of the Inventory category, is an object containing an entry for each interface on a network device and within the entry for each interface, you can surface interface details, such as admin status, speed and duplex, IP Address, port name and many others.  
+For example, there is a system variable called **__interface**.  This variable, part of the Inventory category, is an object containing an entry for each interface on a network device. By referencing this variable, you can access interface details, such as admin status, speed and duplex, IP Address, port name and many others.  
 
-Using this variable allows you to create templates that are agnostic to the types and names of interfaces (GigabitEthernet or TenGigabitEthernet), as well as allowing you to iterate through all interfaces on a device and apply configuration to interfaces that match the conditions you set, such as applying configuration only to access interfaces, only interfaces m-n or those with a specific description.
+Using this variable allows you to create Templates that are agnostic to the types and names of interfaces (GigabitEthernet or TenGigabitEthernet), as well as allowing you to iterate through all interfaces on a device and apply configuration to interfaces that match the conditions you set, such as applying configuration only to access interfaces, only interfaces m-n or those with a specific description.
 
 ### What System Variables are available?
-The definitive list of available system variables for a particular version of Cisco DNA Center is the Template Editor UI itself.  Within the template view, you will see a link the UI called "Template System Variables":  
+The definitive list of available system variables for a particular version of Cisco DNA Center is the DNA Center Template Editor UI itself.  Within the template view, you will see a link the UI called "Template System Variables":  
 
 ![json](images/button.png?raw=true "Import JSON")  
 
@@ -35,10 +35,10 @@ To continue with our example of using the **__interface** system variable, we ca
 You can also find high-level details on the available system variables for your version of Cisco DNA Center in the **[Cisco DNA Center User Guide](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/2-3-4/user_guide/b_cisco_dna_center_ug_2_3_4/b_cisco_dna_center_ug_2_3_4_chapter_01000.html#id_92757)**.  This links to version 2.3.4.x, which was current at the time of writing.
 
 ### Using System Variables in Templates
-Now that we have explored what system variables are available, we can look at how to incorporate them into our templates.  I will use the Jinja2 format in the below examples, but Velocity will work as well.
+Now that we have explored what system variables are available, we can look at ways to incorporate them into our templates.  I will use the Jinja2 format in the below examples, but Velocity will work as well.
 
 ### Calling System Variables with no operator interaction
-The first example we can explore is manually calling system variables under the hood in order to perform an action.  See the below very simple example.  We will iterate over all of the interfaces and if they are physical interfaces (eg, excluding the App interface, SVIs, tunnels, etc..) and they are assigned to VLAN 1, we want to change the vlan assignment.
+The first example we can explore is manually calling system variables under the hood in order to perform an action.  See below as a simple example.  We will iterate over all of the interfaces and if they are physical interfaces (eg, excluding the App interface, SVIs, tunnels, etc..) and they are assigned to VLAN 1, we want to change the vlan assignment.
 
 ![json](images/set_vlan.png?raw=true "Import JSON") 
 

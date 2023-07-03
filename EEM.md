@@ -14,7 +14,7 @@ EEM can be used to:
    1. Customize switch or router behavior
    2. Automatically apply workarounds ( aka Fix bugs)
    3. Change configuration dynamically
-4. Notify network admin on event for example send email on temperature, cpu or memory threshold crossing
+3. Notify network admin on event for example send email on temperature, cpu or memory threshold crossing
 
 The configuration of EEM will be examined in the following use cases along with the capabilities. From a configuration point of view
 
