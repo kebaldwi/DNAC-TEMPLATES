@@ -81,14 +81,14 @@ If DHCP Option 43 is not configured, the device cannot contact the DHCP server, 
 
 ![json](images/pnp-connect.png?raw=true "Import JSON")
 
-Once one of the options has been built devices will get the address and be pointed to and land on DNA Center within the PnP Device list.
+Once the above has been configured, devices undergoing PnP process will discover DNA Center IP address and be redirected to it via "Plug and Play Connect" cloud proxy discovery process.
 
 ## Setup Information:
 
 ### Option 43 
-Option 43 format follows as documented on the [DNA Center User Guide](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/1-2-8/user_guide/b_dnac_ug_1_2_8/b_dnac_ug_1_2_8_chapter_01100.html#id_90877) It may be offered by any DHCP server including but not limited to IOS, Windows, Infoblox and many more.
+Option 43 format follows as documented on the [DNA Center User Guide](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/1-2-8/user_guide/b_dnac_ug_1_2_8/b_dnac_ug_1_2_8_chapter_01100.html#id_90877). It may be offered by any DHCP server including but not limited to IOS, Windows, Infoblox and many more.
 
-Benefits to this method are that you can contain the connectivity in a finite manner and perscriptively by only allowing equipment on specific subnets to find DNA Center.
+Benefits to this method are that you can contain the connectivity in a finite manner and prescriptively by only allowing equipment on specific subnets to find DNA Center.
 
 ```shell
 Option 43 format 
@@ -131,7 +131,7 @@ Jxxxx             Port number to use to connect to the Cisco DNA Center controll
 ```
 
 #### IOS Configuration Example
-Configured on a IOS device it would look like this example:
+Configured on an IOS device it would look like this example:
 
 ```vtl
   ip dhcp pool pnp_device_pool                          <-- Name of DHCP pool
@@ -140,12 +140,12 @@ Configured on a IOS device it would look like this example:
      option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80"    <-- Option 43 string
 ```
 #### Windows Server Configuration Example
-On windows you have two options to deploy DHCP scopes the UI or PowerShell. We will show you Option 43 set up on a specific scope but it can be quickly replicated to other scopes using the binary entry gathered from a dhcp dump via netshell. That said here is what the option looks like as configured as option 43:
+On MS Windows DHCP Server, you have two options to deploy DHCP scopes the UI or PowerShell. We will show you Option 43 set up on a specific scope but it can be quickly replicated to other scopes using the binary entry gathered from a dhcp dump via netshell. That said here is what the option looks like as configured as option 43:
 
 ![json](images/WindowsDHCP.png?raw=true "Import JSON")
 
 ### DNS Setup
-DNS may be set up on many types of servers, but for simplification we will speak about the records which can be created. Typically it is good to remember to add DNS entries for all interface server nodes within the cluster and a DNS entry for the **Virtual IP address(VIP)** on the Enterprise Network which may be used for Management and Enterprise Network connectivity.
+DNS may be set up on many types of servers, but for simplification we will speak about the records which can be created. Typically it is a good practice to add DNS entries for all interfaces of DNA Center cluster members, and a DNS entry for the DNA Center **Virtual IP address(VIP)** on the Enterprise Network which may be used for Management and Enterprise Network connectivity.
 
 Benefits to this methodology are that you can cover a large organization rapidly avoiding the need to make changes to multiple DHCP scopes, and can accomplish a regional approach through the use of sub domains within an organization like * *pnpserver.west.us.domain.com* * or * *pnpserver.east.us.domain.com* * which allows for 2 different clusters due to RTT times perhaps.
 
@@ -173,7 +173,7 @@ Address:	10.10.0.250#53
 Name:	pnpserver.domain.com
 Address: 10.10.0.20
 ```
-**Option 2:** An A record would be created pointing to the VIP address. A CNAME alias record may also be added for the pnpserver record to resolve to the address via . In this regard the two entries might look like this: This allows for changes to the A record to automatically be propogated to any child records easily and at the same time.
+**Option 2:** An 'A' record would be created pointing to the VIP address. A CNAME alias record may also be added for the pnpserver record to resolve to the address via its parent record name. In this regard the two entries might look like below. This allows for changes to the A record to automatically be propogated to any child records at the same time.
 
 ```shell
              A - dnac.domain.com -> 10.10.0.20
@@ -191,19 +191,19 @@ Address:	10.10.0.250#53
 Name:	dnac.domain.com
 Address: 10.10.0.20
 
-nslookup pnpserver.base2hq.com
+nslookup pnpserver.domain.com
 Server:		10.10.0.250
 Address:	10.10.0.250#53
 
-pnpserver.base2hq.com	canonical name = dnac.base2hq.com.
-Name:	dnac.base2hq.com
+pnpserver.domain.com	canonical name = dnac.domain.com.
+Name:	dnac.domain.com
 Address: 10.10.0.20
 ```
 
 ### PnP Connect Portal
 The PNP connect portal is where a device would land that had internet connectivity which had not been able to contact DNA Center through either * *option 43* * or * *dns resolution* * and for this method to work, the pnp connect portal must be set up accordingly on the customers virtual account. 
 
-Benefits to this methodology are that devices can be whitelisted on the pnp-connect portal and specifically pointed to one cluster or another with the profile file configured.
+Benefits to this methodology are that devices can be whitelisted on the pnp-connect portal and specifically redirected to one cluster vs another with the profile file configured for the matching device serial number.
 
 The steps to complete in order to use this method are as follows:
 
@@ -221,6 +221,8 @@ The steps to complete in order to use this method are as follows:
 8. Enter a name for the profile or accept the default
 9. Click Register
 10. Ensure Sync Success is reported
+
+Upon completion, DNA Center Controller Profile will be created in PnP Connect portal
 
 #### To Stage Devices in PnP Connect Portal on software.cisco.com
 1. Navigate to https://Software.cisco.com and log in.
