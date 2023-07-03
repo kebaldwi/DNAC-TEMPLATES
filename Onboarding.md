@@ -116,6 +116,9 @@ If the Network Profile is already deployed it can be edited at a later date to a
    4. Save the network profile
    5. Assign the network profile to the hierarchy
 
+#### Note:
+If you populate the DNA Center Design section, those parameters should **not** be in your templates CLI payload as they will conflict and device provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what resultant CLI configuration statements are pushed.
+
 ## Claiming and Provisioning
 At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided DNA Center discovery methods are properly configured (ie DHCP-based, or DNS record-based), the out-of-box device during boot up process discover DNA Center, and register itself in the plug n play section of the provisioning page.
 
@@ -131,12 +134,9 @@ At this point you can claim the device putting it in a planned state for onboard
    
 At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete. After the device is completed it will appear in the device inventory after being sync'd with DNA Center.
 ![json](images/pnp-registered.png?raw=true "Import JSON")
-   
-#### Note:
-If you populate the UI with settings those parameters should **not** be in your templates as they will conflict and the deployment through provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what configuration is pushed.
 
 ## Automating Claiming and Provisioning
-While it is possible to click through the claiming and process, for bulk deployments its important to be able to address that as well. With DNAC after the templates are built and assigned to the network profile and assigned to a site they may be referenced and used by uploading a csv file to DNA Center via REST API.
+While it is possible to click through the claiming and process, for bulk deployments its important to be able to automate this process as well. With DNA Center after the templates are built and assigned to the network profile and assigned to a site, they may be referenced and used by uploading a csv file to DNA Center via REST API.
 
 This methodology allows for you to specify variables within the csv, serial numbers, and put devices into a planned state waiting for them to land on the Plug and Play page on DNA Center.
 
