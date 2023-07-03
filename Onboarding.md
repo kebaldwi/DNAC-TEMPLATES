@@ -89,10 +89,10 @@ interface Vlan 1
  shutdown
 !
 ```
-This file has the settings necessary to bring up a Layer 2 access switch with enough configration to be supported by DNA Center for the rest of the provisioning process.
+This Template has the settings necessary to bring up a Layer 2 access switch with enough configration to be supported by DNA Center for the rest of the provisioning process.
 
 ## Onboarding Template Deployment
-Once you have built your onboarding template you then have to let **DNA Center** know where you want to use the template. We will assume at this point you have already built out the template for use. You would then follow the following steps:
+Once you have built your onboarding template you then have to let **DNA Center** know where you want it to apply it. We will assume at this point you have already created/imported the above template. You would then follow the following steps:
    1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile** 
    ![json](images/NetworkProfile.png?raw=true "Import JSON")
    2. Select the type of device (ie Switching)
@@ -106,9 +106,9 @@ Once you have built your onboarding template you then have to let **DNA Center**
    ![json](images/DayNtemplates.png?raw=true "Import JSON")
    7. On the DayN Template page select the template(s) to be used for Day N provisioning **(optional)** (for more info [DayN Templates](./DayN.md))
    8. Save the network profile
-   9. Assign the network profile to the hierarchy
+   9. Assign the network profile to the site hierarchy element
 
-If the Network Profile is already deployed it can be edited at a later date to add Onboarding templates by simply:
+If the Network Profile is already deployed it can be edited at a later date to add Onboarding templates by following these steps:
    1. Click edit next to the network profile Under *Design> Network Profiles*  
    2. On the Onboarding Template page select device type **(required)**
    ![json](images/DayNtemplates.png?raw=true "Import JSON")
@@ -117,7 +117,7 @@ If the Network Profile is already deployed it can be edited at a later date to a
    5. Assign the network profile to the hierarchy
 
 ## Claiming and Provisioning
-At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find DNA Center and land in the plug n play set of the devices section within the provisioning page.
+At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided DNA Center discovery methods are properly configured (ie DHCP-based, or DNS record-based), the out-of-box device during boot up process discover DNA Center, and register itself in the plug n play section of the provisioning page.
 
 At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
 
@@ -130,6 +130,7 @@ At this point you can claim the device putting it in a planned state for onboard
    7. Click claim to initiate
    
 At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete. After the device is completed it will appear in the device inventory after being sync'd with DNA Center.
+![json](images/pnp-registered.png?raw=true "Import JSON")
    
 #### Note:
 If you populate the UI with settings those parameters should **not** be in your templates as they will conflict and the deployment through provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what configuration is pushed.
