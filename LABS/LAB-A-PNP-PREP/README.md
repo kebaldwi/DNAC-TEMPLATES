@@ -1,18 +1,18 @@
 # PnP Preparation 
 ## Overview
-This lab is the first one in a series of labs. You may use the steps in the DCLOUD environment, or equally, you might utilize them as part of a Proof of Concept setup at a customer's lab. These procedures may also help form part of a deployment or implementation. Use them to ensure that all the necessary steps are complete before onboarding any devices within DNA Center.
+This lab is the first one in a series of labs. You may use the steps in the [Cisco Enterprise Networks Hardware Sandbox](https://dcloud2-sjc.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen) environment, or equally, you might utilize them as part of a Proof of Concept setup at a customer's lab. These procedures may also help form part of a deployment or implementation. Use them to ensure that all the necessary steps are complete before onboarding any devices within DNA Center.
 
 We will be utilizing the lab in this manner:
 SJC Topology
 ![json](./images/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON")
 
 ## General Information
-As you may recall, in the informational sections of this repository, we set for the various methods of discovery for a device and the preliminary things required for proper zero-touch provisioning. This lab will ensure a successful connection to DNA Center by helping to deploy the initial concepts.
+As you may recall, in the informational sections of this repository, we described various methods of discovery for a device and the preliminary things required for proper zero-touch provisioning. This lab will ensure a successful connection to DNA Center by helping to deploy the initial concepts.
 
 ### Lab Preparation
-To set up the lab, please log into the console connection to the ***4331*** and issue the following commands:
+To set up the lab, please log into the console connection of the ***4331*** by clicking on dropdown button under the icon in DCLOUD, and selecting 'Console'. New tab will open, click 'Connect' - you should now be connected to the console of the router. To obtain enable password, navigate back to topology diagram in DCLOUD and click on any of Windows Clients or Devices and copy-paste the password into Hardware Console tab after issuing enable CLI.  Once you are in enable mode on 4331 hardware console, issue commands:
 
-***Warning** use the check the commands against the LAB Architecture.*
+***Warning** use commands against the LAB Environment.*
 
 SJC
 ```vtl
@@ -32,7 +32,7 @@ wr
 ## Lab Section 1 - Device Connectivity
 For PnP processes to work, we intend to have a management interface on the device. In this lab, we will set up a VLAN interface for both management and connectivity. You don't have to do it this way; we are just giving a relatively uncomplicated example, and you can alter this to suit your needs. As the device connects to the front-facing ports, we have to rely on the default configuration. 
 
-As you may recall, a factory default configuration is using VLAN one as no other VLAN exists, and by default, it accepts DHCP addresses. We can use this method in the PnP process. However, the management VLAN may be different, and so may the native VLAN structure of our environment. To that end, we must use the *pnp startup-vlan* command, which allows the device to use varying VLANs in PnP and should be set up and configured on the upstream switch.
+As you may recall, a factory default configuration is using VLAN 1 as no other VLAN exists, and by default, it accepts DHCP addresses. We can use this method in the PnP process. However, the management VLAN may be different, and so may the native VLAN structure of our environment. To that end, we must use the *pnp startup-vlan* command, which allows the device to use varying VLANs in PnP and should be set up and configured on the upstream switch.
 
 Of the discovery methods **DHCP** is the easiest to implement as no changes are required with the *Self Signed Certificate (SSC)* on **DNA Center** as it already includes the IP address by default. If you are deploying PnP using **DNS** discovery or you are building a cluster then you will need to go through the process of acquiring a certificate with Subject Alternative Names to include the **DNS** and **IP** entries to allow for the following:
 
@@ -58,7 +58,7 @@ Follow this guide for more information on the finer details.
 </details>
 
 ### Step 1.1 - ***Upstream Neighbor Setup***
-As depicted in the diagram above, the 9300 will serve as the upstream neighbor for this exercise and the environment's distribution switch. The Catalyst 9300 will act as the target switch, which we will deploy via PnP and Day 0 and N templates.
+As depicted in the ![json](./images/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON"), the 9300 will serve as the upstream neighbor for this exercise and the environment's distribution switch. The Catalyst 9300 will act as the target switch, which we will deploy via PnP and Day 0 and N templates.
 
 For the lab, we will utilize ***VLAN 5*** as the management VLAN. Connect to switch ***c9300-2*** and paste the following configuration:
 
@@ -80,7 +80,7 @@ wr
 !
 ```
 
-The ***pnp startup-vlan 5*** command will program the target switches port connected with a trunk and automatically add the vlan and SVI to the target switch making that vlan ready to accept a DHCP address. The feature is available on switches running 16.6 code or greater as upstream neighbors. Older switches or upstream devices that cannot run the command should utilize VLAN 1 and then set up the correct management VLAN modified as part of the onboarding process.
+The ***pnp startup-vlan 5*** command will program the target switches port connected with a trunk and automatically add the vlan and SVI to the target switch making that vlan ready to accept a DHCP address. The feature is available on switches running IOS-XE 16.6 code or greater as upstream neighbors. Older switches or upstream devices that cannot run the command should utilize VLAN 1 and then set up the correct management VLAN modified as part of the onboarding process.
 
 ### Step 1.2 - ***DHCP Setup***
 We need a DHCP scope to temporarily supply the address within the management network to complete the configuration and onboarding. Configure the scope to offer IP addresses from the part of the address's range, leaving the other part of the scope for static addresses. You could also make use of reservations as DHCP servers can reserve addresses for specific MAC addresses. One benefit of this is that DNS host entries are automatically updated depending on the DHCP Server.
