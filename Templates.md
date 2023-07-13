@@ -1,8 +1,8 @@
 # Building Templates [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
-In this section we will explain how to build a template in DNA Center.
+In this section we will explain how to build a configuration Template in DNA Center.
 
 ## Intent Based Networking
-Either one or multiple Templates may be used to deploy Intent in combination with the Design Settings and Policies deployed within the UI. One or Multiple templates may be used in Onboarding (PnP) or Day N methods. Day N methods are designed for making ongoing changes and may require 'no' statements depending on the configuration construct being modified. 
+Either one or multiple Templates may be used to deploy Intent in combination with the Design Settings and Policies defined in DNA Center UI. One or Multiple templates may be used in Onboarding (PnP) or Day N methods. Day N methods are designed for making ongoing changes and may require 'no' statements depending on the configuration construct being modified. 
 
 Additionally:
 1.	Intent can be defined as the set of configuration constructs deployed via a template.
@@ -13,51 +13,63 @@ Additionally:
 ## Phylosophies
 There are a number of coding paradigms which various programmers use when building, maintaining and publishing programming code which are extremely useful when trying to integrate programmability for use in modern day infrastructure use cases. Lets deal with each concept in turn:
 
-  - imperative in which the programmer instructs the machine how to change its state
-      - procedural which groups instructions into procedures
+  - imperative in which the programmer defines explicit instructions for the machine describing its state transitions
+      - procedural which groups instructions into logical collections (ie procedures) which can be referenced by a name elsewhere in code
       - object-oriented which groups instructions together with the part of the state they operate on
-  - declarative in which the programmer merely declares properties of the desired result, but not how to compute it
-      - functional in which the desired result is declared as the value of a series of function applications
-      - logic in which the desired result is declared as the answer to a question about a system of facts and rules
-      - mathematical in which the desired result is declared as the solution of an optimization problem
+  - declarative in which the programmer merely declares properties of the desired outcome, but defines no explicit instructions on not how to achieve it
+      - functional, in which the desired outcome is declared as the value of a series of function applications
+      - logical, in which the desired outcome is declared as the answer to a question about a system of facts and rules
+      - mathematical, in which the desired outcome is declared as the solution of an optimization problem
         
 ## Modular Programming    
-Modular programming is a software design technique that emphasizes separating the functionality of a program into independent, interchangeable modules, such that each contains everything necessary to execute only one aspect of the desired functionality.
+Modular programming is a software design technique that emphasizes separating the functionality of a program into independent, interchangeable self-contained modules, such that each contains everything necessary to execute only one aspect of the desired functionality.
 
-A module refers to high-level decomposition of the code of an entire program into pieces: structured programming to the low-level code use of structured control flow, and object-oriented programming to the data use of objects, a kind of data structure.
+A module refers to high-level decomposition of the code of an entire program into pieces: 
+- structured programming to the low-level code use of structured control flow
+- object-oriented programming to the data use of objects, a kind of data structure.
 
 This calls out two very key points: 
 
   1. **Functionality**
-     Code segmented into small chunks to reduce complexity 
+     Code segmented into small chunks to manage complexity 
   2. **Reusability**
      Modular code designed for reuse as parts of functions
 
 ## Parsing IOS Configurations
-As you begin your builds of Templates it helps to analyze the various IOS configurations and group logical syntactic components and where we see reusability, for example in service statements, we can create groupings of commands and put those into either separate templates (modules) to be used in a composite template or separate them into a separate template you can reuse.
+As you begin your builds of Templates it helps to analyze the various IOS configurations and group logical syntactic components where we see reusability. 
 
-Remember the DNA Center **Network Profile** that you will build offers a couple of options, additional templates or in the Day N role, a composite template. Either is available for use.
+Remember the DNA Center **Network Profile** offers a couple of options: independent template attachments, or in the Day N role - a composite template. Either is available for use.
 
-Once you have grouped configuration snippets into separate logical constructs you can then see what additional platforms you might apply them too, as this will steer you in the direction of whether multiple modules (snippets) are required or whether you will need a complete duplication of certain functions.
+Once you have grouped configuration snippets into separate logical constructs you can then see what additional platforms you might apply them too, as this will steer you in the direction of whether multiple modules (snippets) are required or whether you will need a complete duplication of certain functions (ie, code re-use concept).
 
-Once we have identified all the various modules we will need, we can then start to analyze which of the codes the Design App can facilitate, and ensure the design has those settings and remove them from the modules.
+Once we have identified all of the various modules we will need to achieve the desired configuration outcome, we can then start to analyze which functions can be accomplished via DNA Center 'Design' App. As noted earlier, we should avoid overlap of CLI statements defined in Templates and CLI statements generated by 'Design' App automatically. Wherever we see the overlap, the DNA Center Design App should have those settings defined, and we would remove the matching CLI statements from Template modules.
 
 ## Templates
 We have two templates offered in DNA Center. A **Regular Template** which is designed to stand alone for a specific function and a **Composite template** which will group standard templates and which can only be used in Day N Projects.
 
-As we build out a Regular Template we can either as has previously been mentioned put all the IOS commands which makes the configuration within the template more complex to maintain, or we can separate out the various sections into separate templates and call them as additional templates in either the Onboarding or Day N flows.
+As we build out a Regular Template we can either put all the IOS commands making up the configuration within the single Template - making it more complex to maintain, or we can separate out the various sections into separate Templates and associate them as additional templates in either the Onboarding or Day N flows.
 
-Once you have created a new template and pasted the IOS configurations into the template editor you can then look for values which can be replaced by variables. 
+Once you have created a new Template and pasted the IOS configurations into the template editor you can then look for repeating values (or placeholders) within the CLI statements which can be replaced by variables. 
 
 ### Variables
-Variables are used to allow scripts or code for that matter to be reused. A variable within a script allows us to replace the data on demand thereby allowing the reuse of parts of or entire templates. Variables may be defined in a couple of ways but the data entered will either numerical or string. A numerical value is just that a number where as a string is either a line of text or perhaps just a name.
+Variables are used to allow a script to dynamically substitute those placeholders with values applicable to that specific deployment. A variable within a script allows us to replace the data on demand, thereby allowing the reuse of parts or entire templates. Variables may be defined in a couple of ways, but the type of data will always be defined as either numeric or string. A numeric value is that which is treated as number (ie can be added or subtracted, for example) whereas a string is a collection of characters.
 
-Analyse your configuration to make optimium use of variables which will allow reuse. Please refer to [Variables](./Variables.md).
+Inspect your configuration to make optimal use of variables to allow code reuse. Please refer to [Variables](./Variables.md).
+
+### Velocity vs Jinja2 scripting considerations
+When creating configuration Templates in DNA Center, you are offered a choice between Velocity and Jinja2 as the underlying scripting language that you want to use within your Template. 
+
+[Jinja](https://jinja.palletsprojects.com/en/3.1.x/) is defined a fast, expressive, extensible templating engine. Special placeholders in the template allow writing code similar to Python syntax. Then the template is passed data to render the final document.
+
+[Velocity](https://velocity.apache.org) is a Java-based template engine. It permits anyone to use a simple yet powerful template language to reference objects defined in Java code.
+
+Making a choice between the two would come down mostly to personal preference between Pythonic (Jinja2) and Java (Velocity) statements. 
+Due to Python popularity, we are seeing more customers leveraging Jinja2 as the Template Scripting language but capabilities and outcomes that can be achieved with either of these two are equivalent.
 
 ### Velocity Scripting
-To further simplify your IOS configuration analyze your IOS template for manipulations that might occur if it were a 24 port switch as opposed to a 48 port switch, and then build logical constructs to allow for one template to address multiple platforms.
+To further simplify your IOS configuration analyze your IOS template for repeat patterns (ie, 24 port switch as opposed to a 48 port interface CLIs), and then build logical constructs to allow for one template to address multiple platforms.
 
-While it is possible to take a CLI script for one device and create a template for one device at a time, that would leave us with a lot of templates and make it harder to make changes on an ongoing basis. Using the techniques of Velocity Scripting will allow us to deploy equipment with scripts which can be reused on a broader basis, allowing us to keep configurations similar for conformity reasons but also to reduce the number of places where changes would have to be made. For additional information please see [Velocity Scripting](./Velocity.md).
+While it is possible to take a CLI script for each device flavour, and create individual templates for each device type at a time, that would leave us with a lot of templates and make it harder to make changes on an ongoing basis. Using the techniques of Velocity Scripting will allow us to deploy equipment with scripts which can be reused on a broader basis, allowing us to keep configurations similar for conformity reasons but also to reduce the number of places where changes would have to be made. For additional information please see [Velocity Scripting](./Velocity.md).
 
 Within these logical constructs you have many tools, please review each section as needed:
 * [If Statements](./Velocity.md#if-statements)

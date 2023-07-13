@@ -4,7 +4,7 @@ This section will describe the various advanced templating techniques used to ma
 Below will be examples of various use cases that could be implemented.
 
 ### Parsing Integers from String Variables
-In the following example a variable is bind to DNA Centers database and a value is called for the Native Vlan. As all data within the database is essentially in string format, if we wish to use it with some mathematics to calculate other values, we would first need to change it from a string to a integer.
+In the following example a variable is bound to DNA Centers database and a value is called for the Native Vlan. As all data within the database is essentially in string format, if we wish to use it with some mathematics to calculate other values, we would first need to change it (ie cast) from a string to a integer.
 
 In order to acomplish this we need to use this example. We will use the *int* modifier to parse the bind variable to an integer variable using set notation.
 
@@ -14,7 +14,7 @@ In order to acomplish this we need to use this example. We will use the *int* mo
 ```
 
 ### Working with Arrays or Ordered Lists
-To create an array we have to perform the following. First we need to concatenate the values into a variable with some kind of delimiter. Then using the delimiter we can split the values into separate elements within the array and call them separately through a loop.
+To create an array we have to perform the following. First, we need to concatenate the values into a variable with some kind of delimiter. Then using the delimiter we can split the values into separate elements within the array and call them separately through a loop.
 
 ```j2
    {% set StackPIDs = ProductID.split(",") %}
@@ -101,7 +101,7 @@ Then perhaps build a logical structure to account for differing Site Objects.
 Within Jinja2 templates in DNA Center its possible to both Include and Extend regular templates. Lets discuss first what these are and how they differ from each other, and then how they may be leveraged.
 
 #### Include
-Include statements may be used in Jinja2 to augment regular templates. They are used to allow ann entire regular template file to be inserted at the point of the include statement. The include statement shown here is an example, but you can see the parent project and then the regular template name are referenced as you would a file system:
+Include statements may be used in Jinja2 to augment regular templates. They are used to allow an entire regular template file to be inserted at the point of the include statement. The include statement shown here is an example, but you can see the parent project and then the regular template name are referenced as you would a file system:
 
 ```j2
 {% include "Some-Project/VlanDatabases" %}
@@ -179,7 +179,7 @@ In order to acomplish this we need to first identify how many switches are in th
    {% set StackCount = __device.platformId | split(",")  %}
    {% set StackMemberCount =  StackCount | length  -%}
 ```
-Then we need a logical construct which iterates through each switch setting not only the priority correctly but also setting the powerstack correctly.
+Then we need a logical construct which iterates through each switch, setting not only the priority correctly but also setting the powerstack correctly.
 
 ```j2
    {% if StackMemberCount > 1 %}
@@ -258,7 +258,7 @@ Explained here...
    {% endfor %}
 ```
 
-### Working port counts within Catalyst 9k
+### Working with port counts within Catalyst 9k
 One area we need to address is how to effectively deal configuring multiple ports. For this we will make use of multiple concepts as we build out this use case.
 
 First we would need to identify how many ports we have on each switch or linecard, and how many linecards or switches within the stack or chassis there are. For this example we are using a stack of 9300's, but you can build this for 9400's.
