@@ -1,4 +1,5 @@
 # Troubleshooting Templates [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
+
 This section will describe the various advanced techniques used to troubleshoot the templating engine and the provisioning of a device via Day0|Onboarding and DayN Templates as deployed by DNA Center. While the methods described here are useful, they are not the only methods for troubleshooting and what is given here is a set of methods I use to troubleshoot templates. 
 
 The assumption will be that the device is able to be provisioned with an IP address via DHCP, and that it is able to land in the PNP section of the provisioning page within DNA Center. If this is not the case please see the section on PNP Workflow in the previous section wich explains the preliminary steps required for Zero Touch Provisioning [PnP Workflow](./PnP-Workflow.md#pnp-workflow).
@@ -6,6 +7,7 @@ The assumption will be that the device is able to be provisioned with an IP addr
 Below will be examples of various use cases that could be implemented.
 
 ### Template not deployed on target device
+
 The assumption is that no errors were visible in the template and that it seems to either partially work or not at all on the target device. The second assumption is that we are using a DayN template. Remember the Onboarding template should be kept to minimal code, so that it can deal with many use case devices, and so that you can reuse code more effectively in the DayN projects.
 
 In this situation it helps to understand where in the template we are experiencing an issue. To find that deploy this code temporarily on the device. This will allow the commands deployed from the template 

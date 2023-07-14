@@ -1,4 +1,5 @@
 # Practical Template Examples [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
+
 When working with many customers over the past 6 years with automation, I have seen the same questions asked in workshop after workshop. Are there practical examples of templates that we can use as a starting point to begin deploying with automation.
 
 After working with well over 30 customers, I have come up with templates which fit for the majority of typical access switch situations. 
@@ -6,6 +7,7 @@ After working with well over 30 customers, I have come up with templates which f
 Within this section we will only deal with the non Fabric environment and deployment.
 
 ## Intent Based Networking
+
 Either one or multiple Templates may be used to deploy Intent in combination with the Design Settings and Policies deployed within the UI. One or Multiple templates may be used in Onboarding (PnP) or Day N methods. Day N methods are designed for making ongoing changes and may require 'no' statements depending on the configuration construct being modified. 
 
 Additionally:
@@ -16,9 +18,11 @@ Additionally:
 
 ## Plug and Play (PnP) Template
 ### Why
+
 To help get started with and better understand the PnP process we have provided this material. It is designed to help you understand the Plug and Play process, templates and deployment of these within a lab setting. Once you are comfortable with the concepts you can work on a deployment and implementation plan for your network.
 
 ### What
+
 To help get started with the PnP process and to better understand the process, please review the following information:
 
 <details open>
@@ -31,6 +35,7 @@ To help get started with the PnP process and to better understand the process, p
 </details>
 
 ### How
+
 To let you practice and get experience with the PnP process to better understand it. The labs referenced here use templates and projects within those labs, but you may substitute the example below. Please review the following lab information:
 
 <details open>
@@ -43,12 +48,14 @@ This material is designed to help you understand the Plug and Play process, temp
 
 </details>
 
-### Where 
+### Where
+
 Within the following location is an example template written in ***Jinja2*** in JSON format which can be imported into the **Onboarding Configuration** section in the Template Editor/Hub:
 
 [⬇︎Full DNA Center PnP Onboarding Template⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/ONBOARDING/DNAC-SAMPLE-TEMPLATES-01302023-PnP-template.json)
 
 ### Features
+
 This template includes a number of built in features, which allow for the majority of use cases. We will explore those here in this section.
 
 <details closed>
@@ -66,6 +73,7 @@ Within the form you can see many fields which can be populated with a csv file. 
 Once you have imported the template you can look at the logic.
 
 #### Key Features
+
 1. System MTU set by default, but modifiable via the form
 2. VTP Domain set to Hostname, you can change to variable by removing `{% set VtpDomain = Hostname %}`
 3. Shuts downn Vlan 1 if not in use
@@ -147,9 +155,11 @@ ntp source Vlan {{ MgmtVlan }}
 
 ## DayN Template Project
 ### Why
+
 To help get started with and better understand the DayN process we have provided this material. It is designed to help you understand regular and composite templates and deployment of these within a lab setting. Once you are comfortable with the concepts you can work on a deployment and implementation plan for your network.
 
 ### What
+
 To help get started with the PnP process and to better understand the process, please review the following information:
 
 <details open>
@@ -161,28 +171,33 @@ To help get started with the PnP process and to better understand the process, p
 </details>
 
 #### Jinja2 Language
+
 Here we concentrate on building **Jinja2** templates, and work with logical concepts.
 
 <details closed>
 <summary> Click for Details and Sub Tasks</summary>
 
 ##### Jinja2 Templating
+
 1. [Jinja2 Variables](./Variables.md#jinja2-variables) - This section explains Variables in depth and how and where to use them
 2. [Jinja2 Scripting](./Jinja2.md#jinja2-scripting) - This section will dive into Velocity Scripting constructs and use cases
 3. [Advanced Jinja2 Scripting](./AdvancedJinja2.md#advanced-jinja2) - This section will dive into Advanced Velocity examples
 
 ##### Advanced Use Cases
+
 Here we concentrate on advanced uses of templating, and work system variables.
 
 1. [Embedded Event Manager](./EEM.md#EEM) - This section will dive into EEM Scripting and various use cases 
 2. [System Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/SystemVariables.md#dna-center-system-variables) - This section explains DNA Centers System Variables
 
 ##### Fault-Finding
+
 1. [Troubleshooting](./TroubleShoot.md#Troubleshooting) - This section will dive into Troubleshooting in general terms 
 
 </details>
 
 ### How
+
 To let you practice and get experience with the DayN process to better understand it. The labs referenced here use templates and projects within those labs, but you may substitute the example below. Please review the following lab information:
 
 <details open>
@@ -196,11 +211,13 @@ To let you practice and get experience with the DayN process to better understan
 </details>
 
 ### Where
+
 This is an example which you may want to test with in the lab in combination with the **PnP Template** offered [here](./ExamplesAndConcepts.md#plug-and-play-pnp-template). Within the following location is an example project written in ***Jinja2*** in JSON format which can be imported into the Template Editor/Hub:
 
 [⬇︎Full DNA Center Sample Project⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/DAYN/DNAC-SAMPLE-TEMPLATES-05312023-project.json)
 
 ### Features
+
 This project includes templates with a number of built in features, which allow for the majority of use cases. We will explore those here in this section.
 
 <details closed>
@@ -217,6 +234,7 @@ The last of the two above, allow for Dynamic Configuration of networks to allow 
 Once you have imported the template you can look at the logic within each modularized regular template. Each of these templates is part of the composites above, and some are referenced using includes where necessary to avoid repeating code.
 
 #### Key Features
+
 1. AAA Configuration for nonPxGrid - *Deployments*
 2. ACLs 
 3. Autoconf Configuration Options
@@ -238,6 +256,7 @@ I hope you find these samples highly useful, and please provide feedback.
 </details>
 
 ## Summary
+
 These examples are ready for testing in your lab. These are aides to help you get up to speed with what is possible when automating with DNA Center. The intent of this part of the repository is to aide in learning and not provide production ready templates. All templates here are for **LAB Purposes ONLY** and by downloading any content you acknowledge that this is not production ready code.
 
 If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.

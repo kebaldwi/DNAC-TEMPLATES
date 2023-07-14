@@ -1,4 +1,5 @@
 # EEM - Embedded Event Manager [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
+
 Embedded Event Manager is a Flexible and Powerful tool in Cisco IOS & IOS-XE Software which allows a switch to automate actions based on user enabled system events. Events trigger the execution of user defined set of actions. Triggers can come in many forms from Syslog through to Timers as depicted in the following slide. 
 
 ![json](./images/EEMDetectors.png?raw=true "Import JSON")
@@ -8,6 +9,7 @@ Actions can be then taken by the device utilizing cli commands through to TCL or
 ![json](./images/EEMOperation.png?raw=true "Import JSON")
 
 ## Capabilities and Uses
+
 EEM can be used to:
 1. Automate operational activities done manually
 2. Change the behavior of Catalyst Switch or Cisco Router
@@ -19,9 +21,11 @@ EEM can be used to:
 The configuration of EEM will be examined in the following use cases along with the capabilities. From a configuration point of view
 
 ## Case 1 - ***Renaming Interfaces - Use Case***
+
 Previously within the Composite Templating Lab, we introduced a methodology of automatically naming the interfaces within the switch. When a new device or switch/router/access point connects to a switch, we want to describe those interfaces. Naming the uplinks specifically and the various wireless access points and IP Phones would be an excellent addition. 
 
 ### ***Examine Code***
+
 The script we used on the Composite Templates uses an EEM script that runs whenever a CDP event occurs.
 
 ```vtl
@@ -49,6 +53,7 @@ While this script will rename the uplinks connected to a Router or Switch, it is
 2. Naming Access Points or other devices is also not taken into consideration
 
 ### ***Modify Code***
+
 So let's modify the EEM script first to solve the naming aspect concerning connected devices.
 
 ```vtl
@@ -91,6 +96,7 @@ So let's modify the EEM script first to solve the naming aspect concerning conne
     action 270 end
     action 280 cli command "write"
 ```
+
 First, let's address the primary problem, the naming of interfaces with descriptions.
 
 You will see that lines *201 to 220* were added to the EEM script. We look for the keyword `Trans-Bridge` within the built-in variable to determine if the port is connected to an Access Point within that section. It results in a True or binary 1 state, and the included code from lines *211 to 220* runs line by line. The configuration adds a description to the interface for the phone of `description AP - KO-AP0C75 - GigabitEthernet0`, for example.
@@ -98,6 +104,7 @@ You will see that lines *201 to 220* were added to the EEM script. We look for t
 You will see that lines *250 to 260* were added to the EEM script. We look for the keyword `Phone` within the built-in variable to determine if the port is connected to a Phone within that section. It results in a True or binary 1 state, and the included code from lines *253 to 260* runs line by line. For example, the configuration adds a description to the interface for the phone of `description Phone - SEPB07D47D34910 - Port 1`.
 
 ## Case 2 - ***Sending a IOS-XE command to clear a table - Use Case***
+
 The second part of the problem within this use case is solving the issue presented by a lack of functionality when the code is configured on the switch. While we can get the configuration in place, it will only run when the port is cycled or when the CDP information for the port is cleared. Therefore, to solve the problem, we employ a *Self-Destructing EEM script*.
 
 *Self-Destructing EEM scripts* are those that delete themselves on termination. Within the code below, you will notice that line 2.1 removes the EEM applet from the configuration, and then line 2.3 ensures the configuration is written to NVRAM before terminating.
@@ -117,6 +124,7 @@ The second part of the problem within this use case is solving the issue present
 This code allows us to *clear the CDP table* and delete itself but leave the other EEM script on the switch for any moves, adds, and changes to the devices connected to the switch.
 
 ## Case 3 - ***Dynamic Port Configuration for Low-Impact Mode - Use Case***
+
 To deal with the chicken and the egg scenario, whereby we can't use **Autoconf** with **Closed Mode** as no packets can pass, which can be used with the parameter map to configure the interface automatically. Additionally, we want to have a **Secure Access** environment with **Zero Trust** using a policy on the interface that initially blocks traffic until authentication occurs. 
 
 So how do we have our cake and eat it too...
@@ -153,6 +161,7 @@ event manager applet DETECT_SW_IEEE_POE_UP
 ``` 
 
 ## Case 4 - ***Dynamic Port Configuration for Closed Mode - Use Case***
+
 But you may say, we have modified the physical interface configuration, well we can reset that too to the **BASE CONFIG** through another EEM script as follows:
 
 ```vtl
@@ -191,6 +200,7 @@ event manager applet DETECT_SW_INT_DOWN
 This EEM script makes sure the interface is not a portchannel member and then reverts the interface to the **BASE CONFIG** automatically.
 
 ## Case 5 - ***Using Scheduling capability to make changes - Use Case***
+
 For situations where you need to automate a repeated task over a number of days at a specific set of times, you can make use of this type of design. Here we use the built-in scheduling system and tie the EEM script to the time. This script completes port resets at 8:30 am Monday through Friday.
 
 ```vtl
@@ -217,6 +227,7 @@ event manager applet PERIODIC-CONFIG-SAVE
 ```
 
 ### Case 6 - ***Collecting Forensics when an event happens - Use Case***
+
 For situations where you need to collect forensics using multiple show commands you can collapse the results of all those appending them to a file on flash and then attach them in the body of an email to be sent off to the companies Network Operations Center. This example helps with those situations.
 
 ```vtl
@@ -236,6 +247,7 @@ action 5.5 cli command "del /force flash:/output.txt"
 ```
 
 ### Case 7 - ***Configuration Change Notification and Tracking - Use Case***
+
 For compliance reasons you might want a northbound notification to occur if the configuration is modified on a device. This can be accomplished in the following way.
 
 First turn on Configuration Archiving and keep copies of the configurations over time locally or remotely.
@@ -268,6 +280,7 @@ event manager applet CONF_MODIFIED
 ```
 
 ### Case 8 - ***Configuring Customized Commands - Use Case***
+
 The alias command is used as a short form for the `clear counters` cli command. The `cc` custom command is then mapped to the applet which clears the counters. Look more closely this applet also deals with questions the IOS presents when entering a command.
 
 ```vtl
@@ -307,6 +320,7 @@ action 1340 puts ""
 ```
 
 ### Case 9 - ***Automatically Configuring PnP Startup Vlan for PnP - Use Case***
+
 Here we have two examples that will allow for the automated configuration of the `pnp startup-vlan` command on an interface for seed devices connected downstream. The latest modification allows for the applet to work even if the `pnp startup-vlan` command has not been set.
 
 ```vtl

@@ -1,9 +1,11 @@
 # Advanced Velocity [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
+
 This section will describe the various advanced templating techniques used to make a powerful script out of normal CLI command scripts which are used by organizations on IOS devices around the world. This section builds on the previous sections and is an attempt to demystify the hows and to bring clarity on what is truely possible. While it is possible to take a CLI script for one device and create a template for one device at a time, that would leave us with a lot of templates and make it harder to make changes on an ongoing basis. Using the techniques below will allow us to deploy equipment with scripts which can be reused, allowing us to keep configurations similar for conformity reasons but also to reduce the number of places where changes would have to be made. 
 
 Below will be examples of various use cases that could be implemented.
 
 ### Parsing Integers from String Variables
+
 In the following example a variable is bind to DNA Centers database and a value is called for the Native Vlan. As all data within the database is essentially in string format, if we wish to use it with some mathematics to calculate other values, we would first need to change it from a string to a integer.
 
 In order to acomplish this we need to use this example. First we need to create an integer variable to be used to parse the bind variable too. Then set the result of that equation into a variable called native_vlan. We can then perform mathematical equations to extrapolate other values.
@@ -15,6 +17,7 @@ In order to acomplish this we need to use this example. First we need to create 
 ```
 
 ### Working with Arrays or Lists
+
 To create an array we have to perform the following. First we need to concatenate the values into a variable with some kind of delimiter. Then using the delimiter we can split the values into separate elements within the array and call them separately.
 
 ```vtl
@@ -56,6 +59,7 @@ Another way we may work with arrays is to use the add operator. This method woul
 ```
 
 ### Working with Stacks of 9300/9200 and Powerstacking
+
 One area we need to address is how to effectively deal with stacking 9300's and how to deal with a stack of 8 switches where a powerstack only allows 4. Although not supported by TAC this is supported from a platform point of view. Essentially you would build the data stack of 8 switches, and then build two powerstacks of four switches in each. In the following example I share the code which allows this to happen which was co-written by Josh Bronikowski. 
 
 In order to acomplish this we need to first identify how many switches are in the stack... please use this example. 
@@ -98,7 +102,8 @@ mod
        #MODE_END_ENABLE
    #end
 ```
-Explained here...
+#### Explained here...
+
 1. The code shared will run only if the number of switches in the stack is found to be greater than 1.
 
 ```vtl
@@ -148,6 +153,7 @@ Explained here...
 ```
 
 ### Working port counts within Catalyst 9k
+
 One area we need to address is how to effectively deal configuring multiple ports. For this we will make use of multiple concepts as we build out this use case.
 
 First we would need to identify how many ports we have on each switch or linecard, and how many linecards or switches within the stack or chassis there are. For this example we are using a stack of 9300's, but you can build this for 9400's.

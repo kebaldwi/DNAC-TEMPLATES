@@ -1,4 +1,5 @@
 # Jinja2 Scripting [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
+
 This section will describe the various tools and techniques used to make a powerful script out of normal CLI statement collections which are used by organizations on IOS devices around the world. This section is an attempt to demystify the hows and to bring clarity on what is truely possible. While it is possible to take a CLI script for one device and create a template for one device at a time, that would leave us with a lot of templates and make it harder to make changes on an ongoing basis. Using the techniques below will allow us to deploy equipment with scripts which can be reused, allowing us to keep configurations similar for conformity reasons but also to reduce the number of places where changes would have to be made. 
 
 To that end it is important to write modular scripts which make use of all the power of programming but allow us to do it within the DNAC platform as templates. 
@@ -6,6 +7,7 @@ To that end it is important to write modular scripts which make use of all the p
 The Jinja2 language typically allows for logical constructs, macros and more. Its heredity is from the Python language and so a lot of its form, nomenclature and features will be very familiar to programmers familiar with Python.
 
 ## Comment Statements
+
 Comment statements are a useful tool for scripting and allow for descriptive text to be used to explain the design or functionality of code. In simple IOS configurations anything after a '!' is not implemented but this is not true in Jinja2. To that end anything with a '!' is rendered as actual code so if something is desired not to be processed within this templating language please use `{#...#}` encapsulation. This makes sure the included text is not evaluated nor rendered.
 
 ```j2
@@ -13,6 +15,7 @@ Comment statements are a useful tool for scripting and allow for descriptive tex
 ```
 
 ## Variable Usage
+
 Variables when combined in Jinja2 for the most part you can use them by calling them with Formal notation.
 
 ```j2
@@ -30,6 +33,7 @@ Take this example of a macro with an interface description, pay attention to the
 ```
 
 ### Combining Bind Variables
+
 You can also extrapolate variables from known values once the device has been onboarded into the inventory. If the device was populated with the pnp startup-vlan command value then then the native vlan would be set to follow that automatically on the target switch. You could bind a variable and then use that to determine many other values for the device automatically.
 
 ```j2
@@ -43,6 +47,7 @@ You can also extrapolate variables from known values once the device has been on
 ```
 
 ## Conditional Statements
+
 IF statements are a useful tool for scripting and allow for a decision tree in which under certain circumstances various commands can be used alone or in combination. To create an IF statement examples have been provided below. That said it is important to understand that the IF statement may be used alone or in combination with the following;
 
 ```j2
@@ -74,6 +79,7 @@ If/elif/else construct with a check to see if data in variable contains a string
 ```
  
 ## Macro's
+
 A Macro is a snippit of code which can be called over and over again within a template. Take the following example into consideration. Alone the Macro does not seem that powerful but when combined with the previous sections conditional statements it suddenly allows for a more powerful script.
 
 Macro format is as follows:
@@ -122,6 +128,7 @@ When combined with the IF statements below, the above Macro allows for various I
 ```
 
 ## For Loops
+
 A For loop allows for multiple iterations of a sequence of commands perhaps including some of the constructs mentioned above to iterate through and on each occasion use a different value.
 
 Command Construct:
@@ -180,6 +187,7 @@ Inside of a for-loop block, you can access some special variables: Try these ins
 
 
 ## Multi Line Commands
+
 These can be used for building entries for multiple lines which need to be used within a command like with banners.
 
 ```j2

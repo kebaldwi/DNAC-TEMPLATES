@@ -1,7 +1,9 @@
 # Variables [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
+
 Variables are used to allow scripts or code for that matter to be reused. A variable within a script allows us to replace the data on demand thereby allowing the reuse of parts of or entire templates. Variables may be defined in a couple of ways but the data entered will either numerical or string. A numerical value is just that a number where as a string is either a line of text or perhaps just a name.
 
 ## Velocity Variables
+
 In this section we will go into the various aspects of Velocity Variables and nomenclature.
 
 ```vtl
@@ -16,6 +18,7 @@ In this section we will go into the various aspects of Velocity Variables and no
 ```
 
 ### Variable Notation
+
 The Notation used in variables is as follows: 
 
    $[{]identifier.identifier[|alternate value][}]
@@ -41,7 +44,8 @@ Data may be set to the variables via a set command
 #set( $NumericVariable = 10 )
 ```
 
-### Arrays (aka Ordered Lists): 
+### Arrays (aka Ordered Lists):
+
 It is possible to create arrays as well which can be iterated through with Foreach loop constructs. In Velocity we call an array a list. You can set a list up in two ways:
 
 * Define all the elements of the list in one line comma delimited 
@@ -90,6 +94,7 @@ Simple arithmetic expressions can be accomplished as follows:
 ```
 
 ### Modifiers
+
 With variables there are modifiers that can be used to do specific operations with regard to variables. Modifiers can be used to determine size, split, add or even replace data. Take a look at the following:
 
 
@@ -114,6 +119,7 @@ With variables there are modifiers that can be used to do specific operations wi
    ```
 
 ## Jinja2 Variables
+
 In this section we will go into the various aspects of Jinja2 Variables and nomenclature as they are used on DNA Center for templating.
 
 ```j2
@@ -127,6 +133,7 @@ In this section we will go into the various aspects of Jinja2 Variables and nome
 ```
 
 ### Variable Notation
+
 The Notation used in variables is as follows: 
 
    [{{]identifier.attribute|modifier|['attribute'][}}]
@@ -152,7 +159,8 @@ Data may be set to the variables via a set command
 {% set NumericVariable = 10  %}
 ```
 
-### Arrays(aka Ordered Lists): 
+### Arrays(aka Ordered Lists):
+
 It is possible to create arrays as well which can be iterated through with Foreach loop constructs. In Velocity we call an array a list. You can set a list up in two ways:
 
 * Define all the elements of the list in one line comma delimited 
@@ -164,6 +172,7 @@ Both examples follow:
 ```
 
 ### Objects:
+
 It is also possible to create objects which can then be referenced through similar looping constructs. Please review the examples:
 
 ```j2
@@ -180,30 +189,36 @@ It is also possible to create objects which can then be referenced through simil
 ```
 
 ### Modifiers
+
 With variables there are modifiers that can be used to do specific operations with regard to variables. Modifiers can be used to determine size, split, add or even replace data. Take a look at the following:
 
 
 1. An example that splits a string result using on a specific character as a delimeter and fills an array $StackPIDs.
+
    ```j2
    {% set StackPIDs = ProductID.split(',') %}
    ```
 
 2. This example determines the number of elements in an array.
+
    ```j2
    {% set StackMemberCount = StackPIDs.length %}
    ```
 
 3. This example uses a regular expression to reduce the PID of a switch to either 24 or 48 to reflect port count.
+
    ```j2
    {% set PortCount = Model.replace('C9300L?-([2|4][4|8]).*','$1') %}
    ```
 
 4. This last example adds the value of $PortCount as a new element appending it within the array $PortTotal
+
    ```j2
    {% do PortTotal.append(PortCount) %}
    ```
 
 ## DNA Center & Working with Variables
+
 As with anything DNA Center the UI allows for flexibility and the ability to not only further define how the Variables are populated but how they are used during the provisioning workflows. 
 
 ![json](images/TemplateEditor.png?raw=true "Import JSON")
@@ -215,6 +230,7 @@ Once Variables have been scripted within the Template, You can click on the **fo
 Within the input form select the variables within the script and one at a time edit the form that they will take during provisioning on the right.
 
 #### Variable Naming and Instructional Text
+
 On each variable the form will appear in the with the name of the text used in the script pasted. The variable $hostname would appear as the following:
 
 ![json](images/variable-basic.png?raw=true "Import JSON")
@@ -228,6 +244,7 @@ The next field is *Tool Tip* which is a text box allowing for the entry of infor
 Additionally fill in perhaps the *Default Value* if not provided in the script. The default value will be populated in the form for submission during provisioning. This field is used when a string text entry variable is defined. *Instructional Text* appears if the default value is not used, or is deleted, and gives guidenace to how to fill in the required data. *Maximum Characters* is the maximum number of ascii characters that may be entered. This can be used for uniform lengths of data.
 
 #### Defining Variables
+
 The next step is *Variable Definition*. Similarly to the scripting and using the set command, we define variables as numeric or string type variables. Additionally though we have IP Address and MAC Address formats. In the UI this selection process is done through a dropdown selection menu.
 
 ![json](images/variable-definition.png?raw=true "Import JSON")
@@ -245,12 +262,14 @@ The first line is by default blank at first and as the only line is the *Default
 ![json](images/variable-selections.png?raw=true "Import JSON")
 
 #### Bind Variables
+
 Within DNA Center it is possible to Bind Variables to devices. Within DNA Center versions 1.2 and 1.3 this can only be used and populated by the device for use in **DayN Templates**. When used in **Onboarding Templates** the variable is not populated at this time although we believe that to be a roadmap item. Once the device is in the inventory this data populated by the dvice during onbaording may be used throughout the script to make decisions. For example if it is a 48 port 9300 the product ID would be populated with C9300-48U and so you can make decision trees to program 48 ports based off that value. See DayN Templates for more information.
 
 ##### Building a Bind Variable
+
 1. Build the variable as single select variable
 
-![json](images/variable-binding.png?raw=true "Import JSON")
+   ![json](images/variable-binding.png?raw=true "Import JSON")
 
 2. Select the option *Bind to Source* as above
 3. Choose the *Source* use the drop down and select from as shown in image below:
@@ -259,19 +278,20 @@ Within DNA Center it is possible to Bind Variables to devices. Within DNA Center
    - Cloud Connect       *-use this option to poll tunnel information*
    - Inventory           *-use this option for device information*
    
-![json](images/variable-bind-inventory.png?raw=true "Import JSON")
+   ![json](images/variable-bind-inventory.png?raw=true "Import JSON")
 
 4. Choose the *Entity* to poll within the Source as shown below
 
-![json](images/variable-bind-device.png?raw=true "Import JSON")
+   ![json](images/variable-bind-device.png?raw=true "Import JSON")
 
 5. Choose the *Attribute* as shown below
 
-![json](images/variable-bind-platformid.png?raw=true "Import JSON")
+   ![json](images/variable-bind-platformid.png?raw=true "Import JSON")
 
 6. Save the Input Form through Actions menu on Input Form
 
 #### System Variables
+
 Within DNA Center it is possible to utilize Built-in System type variables for a number of values allowing you to address network settings within the design, to other interface information from devices. This example of code utilizes the `$__interface` built in variable to determine the characteristics of a port and then apply a macro to each port for a specific device.
 
 ```vtl

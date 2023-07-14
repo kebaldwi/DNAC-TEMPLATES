@@ -1,4 +1,5 @@
 # PnP Workflow [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
+
 With the advent of Cisco DNA Center, Cisco has taken a leap forward in applying automation when deploying intended configuration to network devices at scale. Through the use of DNA Center PnP (plug and play) we can drastically simplify out-of-box device initialization and Day-0 configuration as the first step towards automation.
 
 For DNA Center to begin the process it must first learn of the device. The device therefore must communicate to DNA Center and this section will explain how this can be achieved.
@@ -6,6 +7,7 @@ For DNA Center to begin the process it must first learn of the device. The devic
 The first piece to the puzzle is that the device must obtain an IP address to have basic network reachability. It does not have one by default as it has not been primed nor do we want to do that in a fully automated flow.
 
 ## Device Connectivity
+
 For PnP processes to work our intention is to have a management interface on the device, such as a Loopback or Vlan interface. As the device is connected to the front facing ports by default there is little configuration required. As a result initially Vlan 1 is all that is available on the target device for the pnp workflow. We can manipulate addresses and even change the source of the management interface to a loopback, vlan, or routed interface through additional configuration steps.
 
 By default the target switch is using vlan 1 as no other vlan exists, and vlan 1 by default accepts DHCP assigned addresses. We could use vlan 1 for provisioning, but more than likely we would need to use some other vlan for our management vlan. 
@@ -37,6 +39,7 @@ channel-group 1 mode passive
 If a port channel is used initially, then you want to ensure that the port channel can operate as a single link within the bundle and for that reason use passive methods for building the port channel bundles on both the Target and Upstream Neighbor for maximum flexibility. Additionally add the **no port-channel standalone-disable** command to ensure the switch does not automatically disable the port channel if it does not come up properly.
 
 ## DHCP
+
 We require a DHCP scope to supply the IP address within the management network temporarily in order to complete the device configuration and onboarding. The scope should be carved out from an unused range. It also can be a static reservation, as DHCP servers can reserve addresses for specific MAC addresses. 
 
 The DHCP scope would incorporate the following parameters sufficient to issue an IP address:
@@ -52,6 +55,7 @@ The DHCP scope would incorporate the following parameters sufficient to issue an
 Obviously a dhcp relay or helper statement is required on the gateway router interface pointing towards the DHCP server.
 
 ## DNA Center Discovery
+
 In order to communicate with DNA Center the device going through the PnP process needs additional information while finding it. 
 
 The PnP components are as follows:
@@ -86,6 +90,7 @@ Once the above has been configured, devices undergoing PnP process will discover
 ## Setup Information:
 
 ### Option 43 
+
 Option 43 format follows as documented on the [DNA Center User Guide](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/1-2-8/user_guide/b_dnac_ug_1_2_8/b_dnac_ug_1_2_8_chapter_01100.html#id_90877). It may be offered by any DHCP server including but not limited to IOS, Windows, Infoblox and many more.
 
 Benefits to this method are that you can contain the connectivity in a finite manner and prescriptively by only allowing equipment on specific subnets to find DNA Center.
@@ -131,6 +136,7 @@ Jxxxx             Port number to use to connect to the Cisco DNA Center controll
 ```
 
 #### IOS Configuration Example
+
 Configured on an IOS device it would look like this example:
 
 ```vtl
@@ -140,11 +146,13 @@ Configured on an IOS device it would look like this example:
      option 43 ascii "5A1N;B2;K4;I172.19.45.222;J80"    <-- Option 43 string
 ```
 #### Windows Server Configuration Example
+
 On MS Windows DHCP Server, you have two options to deploy DHCP scopes the UI or PowerShell. We will show you Option 43 set up on a specific scope but it can be quickly replicated to other scopes using the binary entry gathered from a dhcp dump via netshell. That said here is what the option looks like as configured as option 43:
 
 ![json](images/WindowsDHCP.png?raw=true "Import JSON")
 
 ### DNS Setup
+
 DNS may be set up on many types of servers, but for simplification we will speak about the records which can be created. Typically it is a good practice to add DNS entries for all interfaces of DNA Center cluster members, and a DNS entry for the DNA Center **Virtual IP address(VIP)** on the Enterprise Network which may be used for Management and Enterprise Network connectivity.
 
 Benefits to this methodology are that you can cover a large organization rapidly avoiding the need to make changes to multiple DHCP scopes, and can accomplish a regional approach through the use of sub domains within an organization like * *pnpserver.west.us.domain.com* * or * *pnpserver.east.us.domain.com* * which allows for 2 different clusters due to RTT times perhaps.
@@ -201,6 +209,7 @@ Address: 10.10.0.20
 ```
 
 ### PnP Connect Portal
+
 The PNP connect portal is where a device would land that had internet connectivity which had not been able to contact DNA Center through either * *option 43* * or * *dns resolution* * and for this method to work, the pnp connect portal must be set up accordingly on the customers virtual account. 
 
 Benefits to this methodology are that devices can be whitelisted on the pnp-connect portal and specifically redirected to one cluster vs another with the profile file configured for the matching device serial number.
@@ -208,6 +217,7 @@ Benefits to this methodology are that devices can be whitelisted on the pnp-conn
 The steps to complete in order to use this method are as follows:
 
 #### To Set up PnP Connect
+
 1. Navigate to System Settings>Settings>Cisco Credentials>PnP Connect
 ![json](images/dnac-pnp-profile.png?raw=true "Import JSON")
 2. Click Add
@@ -216,7 +226,9 @@ The steps to complete in order to use this method are as follows:
 4. Enter the Virtual Account to be mapped to for the PnP Profile
 5. Select if this is to be the Default Profile for the Virtual Account
 6. Select whether you want the device to use IP or DNS entry to find DNAC.
-   - note DNS entry will need Domain Suffix to be provided in DHCP
+
+   > **Note:** DNS entry will need Domain Suffix to be provided in DHCP
+   
 7. Ensure VIP is shown or alternatively enter FQDN for VIP address
 8. Enter a name for the profile or accept the default
 9. Click Register
@@ -225,19 +237,29 @@ The steps to complete in order to use this method are as follows:
 Upon completion, DNA Center Controller Profile will be created in PnP Connect portal
 
 #### To Stage Devices in PnP Connect Portal on software.cisco.com
+
 1. Navigate to https://Software.cisco.com and log in.
 2. Select PnP Connect
-![json](images/software.png?raw=true "Import JSON")
+
+   ![json](images/software.png?raw=true "Import JSON")
+
 3. Navigate to the Virtual Account and Select the Device to be modified
 4. Click Edit Selected
-![json](images/pnp-connect-device.png?raw=true "Import JSON")
+
+   ![json](images/pnp-connect-device.png?raw=true "Import JSON")
+
 5. From the drop down selections choose Controller Profile
-![json](images/pnp-controller-profile.png?raw=true "Import JSON")
+
+   ![json](images/pnp-controller-profile.png?raw=true "Import JSON")
+
 6. Select the Controller Profile from the list
-![json](images/pnp-connect-profile.png?raw=true "Import JSON")
+
+   ![json](images/pnp-connect-profile.png?raw=true "Import JSON")
+
 7. Submit the settings
 
 #### For Devices
+
 1. DHCP Setup to include:
    - DNS Server Address for name resolution
 2. IP reachability to Internet

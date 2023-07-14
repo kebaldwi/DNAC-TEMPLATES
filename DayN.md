@@ -11,9 +11,11 @@ Another important consideration is that part of a typical configuration would in
 As a guidance try and use Design settings for as much of the configurations as you can leaving Templates light and nimble for configurations which might change ongoing. Day N templates allows for administrators to build either monolithic or regular templates and add them to workflows, or to build composite templates for use in provisioning. 
 
 ### Regular Templates
+
 The use of regular templates allows you to reuse build code in the form of a set of IOS commands listed out very much like a configuration file. Those commands may be nested within logical constructs using either Velocity or Jinja2 scripting language, but the intent is that this regular template is a set of instructions initiated on a target device to create a configuration.
 
 ### Composite Templates
+
 The use of composite templates allows you to reuse templates and code that you have previously used on other deployments without duplicating it on DNA Center. This allows you to manage those smaller templates or modules allowing for easier management moving forward.
 
 Composite templates may be created in a similar method to regular templates but a project must be specified for the Day N flow. Once the Composite template is built, saved and committed templates within the project may be dragged into the flow and moved up or down to adjust the order they are deployed.
@@ -25,6 +27,7 @@ I have given examples of composite templates within the folder [DayN](./DAYN). T
 3. SwitchInterfaces
 
 ## DNA Center Design Preparation
+
 Before DNA Center can automate the deployment we have to perform following tasks in preparation:
 
 1. The **Hierarchy** within DNA Center. This will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. There are plenty of blogs and guides about how to do this. **(required)**
@@ -38,7 +41,9 @@ Before DNA Center can automate the deployment we have to perform following tasks
    7. **NTP Servers** - *NTP Server Addresses*
    8. **Timezone** - *Timezone to be used in logging*
    9. **Message of Day** - *Banner displayed when you log into a device*
-   ![json](images/DesignSettings.png?raw=true "Import JSON")
+
+      ![json](images/DesignSettings.png?raw=true "Import JSON")
+
 3. **Device Credentials** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the credentials and configurations that can be pushed **(required)**:
    1. **CLI Credentials** - *Usernames, Passwords and Enable Passwords*
    2. **SNMP Credentials** - *SNMP v1, v2 for both Read and Write as well as SNMP v3*
@@ -46,21 +51,33 @@ Before DNA Center can automate the deployment we have to perform following tasks
 4. **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. You then indicate whether the file is Cisco or 3rd Party and click import. Once the file is imported if there is no instance of the device on the system you can go into the imported images section and assign it to a specific type of device. Select the image and mark it as golden for PnP to use it. **(required)**
 
 ## DayN Templates
+
 DayN templates can be regular or composite templates which serve the purpose of providing a method of making ongoing configuration changes to the device as mentioned during provisioning. Typically there are two types of configuration that are used here Layer 3 routed or Layer 2 access. Both have different use cases and while they are typical they are by no means the only types of configuration used. To that end a set of examples has been provided in the [DAYN folder](./DAYN) within this repository. Some of those examples are the ones I most typically use with customers in workshops. Included there are a number of **JSON Import Files** to facilitate import into DNA Center 2.1.X and above.
 
 ## DayN Template Deployment
+
 Once you have built your onboarding template you then have to let **DNA Center** know where you want to use the template. We will assume at this point you have already built out the template for use. You would then follow the following steps:
-   1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile** 
-   ![json](images/NetworkProfile.png?raw=true "Import JSON")
+   1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile**
+
+      ![json](images/NetworkProfile.png?raw=true "Import JSON")
+   
    2. Select the type of device (ie Switching)
    3. Profile name 
-   ![json](images/NetworkProfileTabs.png?raw=true "Import JSON")
+   
+      ![json](images/NetworkProfileTabs.png?raw=true "Import JSON")
+   
    4. On the Onboarding Template page select device type **(optional)**
-   ![json](images/OnboardingDevice.png?raw=true "Import JSON")
+   
+      ![json](images/OnboardingDevice.png?raw=true "Import JSON")
+   
    5. On the Onboarding Template page select the template(s) to be used for onboarding **(optional)**
-   ![json](images/OnboardingTemplate.png?raw=true "Import JSON")
+   
+      ![json](images/OnboardingTemplate.png?raw=true "Import JSON")
+   
    6. On the DayN Template page select device type **(required)**
-   ![json](images/DayNtemplates.png?raw=true "Import JSON")
+   
+      ![json](images/DayNtemplates.png?raw=true "Import JSON")
+   
    7. On the DayN Template page select the template(s) to be used for Day N provisioning **(required)**
    8. Save the network profile
    9. Assign the network profile to the hierarchy
@@ -68,12 +85,15 @@ Once you have built your onboarding template you then have to let **DNA Center**
 If the Network Profile is already deployed it can be edited at a later date to add DayN templates by simply:
    1. Click edit next to the network profile Under *Design> Network Profiles*  
    2. On the DayN Template page select device type **(required)**
-   ![json](images/DayNtemplates.png?raw=true "Import JSON")
+
+      ![json](images/DayNtemplates.png?raw=true "Import JSON")
+      
    3. On the DayN Template page select the template(s) to be used for Day N provisioning **(required)**
    4. Save the network profile
    5. Assign the network profile to the hierarchy
 
 ## Provisioning
+
 At this point DNAC is set up and ready for DayN templates to be used on the first device. Provided the device has been onboarded or discovered by DNAC and is present in DNA Center Device Inventory. If not, please discover the device through the tools menu or see the onboarding section [Onboarding Templates](./Onboarding.md)
 
 At this point you can select the device putting on the Device Inventory and provision it by do the following:
@@ -87,7 +107,6 @@ At this point you can select the device putting on the Device Inventory and prov
    
 At this stage the device will be placed in **configuring** state, and will cycle to **Managed** when complete. After the device is completed you may need to either wait for the next resync interval or you can resync the device for the changes in the configuration to appear within DNA Center.
    
-#### Note:
-If you populate the UI with settings those parameters should **not** be in your templates as they will conflict and the deployment through provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what configuration is pushed.
+> **Note:** If you populate the UI with settings those parameters should **not** be in your templates as they will conflict and the deployment through provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what configuration is pushed.
 
 If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
