@@ -39,19 +39,33 @@ You will find various examples within the various folders of this repository, wi
 * [PnP Workflow](./PnP-Workflow.md#pnp-workflow) - This section explains the overall Plug and Play Methodology
 * [Onboarding Templates](./Onboarding.md#onboarding-templates-and-flows) - This section will explain Onboarding Templates in DNAC and their use in bringing various devices under DNA Center management
 * [DayN Templates](./DayN.md#day-n-templates-and-flows) - This section will explain how to use templates for ongoing (Day-N) changes to the network
+
 ### Templating
+
 * [Building Templates](./Templates.md#building-templates) - This section will explain how to build a template on DNAC from scratch
+
 #### Velocity Language
+
 * [Velocity Variables](./Variables.md#velocity-variables) - This section explains Template Variables in depth, and how and where to use them
 * [Velocity Scripting](./Velocity.md#velocity-scripting) - This section will dive into Velocity Language Template Scripting constructs and use cases
 * [Advanced Velocity Scripting](./AdvancedVelocity.md#advanced-velocity) - This section will dive into Advanced Velocity Language Template examples
+
 #### Jinja2 Language
+
 * [Jinja2 Variables](./Variables.md#jinja2-variables) - This section explains Template Variables in depth, and how and where to use them
 * [Jinja2 Scripting](./Jinja2.md#jinja2-scripting) - This section will dive into Jinja2 Language Template Scripting constructs and use cases
 * [Advanced Jinja2 Scripting](./AdvancedJinja2.md#advanced-jinja2) - This section will dive into Advanced Jinja2 Language Template examples
+
 ### Advanced Use Cases
+
 * [Embedded Event Manager](./EEM.md#EEM) - This section will dive into EEM (Embedded Event Manager) Scripting and various use cases 
 * [System Variables](./SystemVariables.md#dna-center-system-variables) - This section explains DNA Centers System Variables
+
+### Orchestration of Cisco DNA Center
+
+* [REST API Orchestration](./RestAPI.md) - This section is a high level discussion of utlilizing REST API with Cisco DNA Center
+* [Python Orchestration](./images/underconstruction.png)
+* [Ansible Orchestration](./images/underconstruction.png)
 
 ### Fault-Finding
 
