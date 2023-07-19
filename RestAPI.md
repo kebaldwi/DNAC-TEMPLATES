@@ -8,6 +8,8 @@
 
 **REST APIs** are used with Cisco DNA Center to programmatically interact with the DNA Center platform. This allows you to automate tasks, retrieve data, and integrate DNA Center with other systems. With **REST APIs**, you can perform tasks like provisioning network devices, configuring network policies, and retrieving network analytics data. This can help simplify network management and reduce the time and effort required for network operations. Additionally, **REST APIs** allow you to build custom applications and integrations that leverage the capabilities of DNA Center.
 
+![json](images/dnac-api.png?raw=true "Import JSON")
+
 ## What can REST API do for Cisco DNA Center?
 **REST APIs** with Cisco DNA Center can be used to accomplish a variety of tasks, including:
 
@@ -37,11 +39,19 @@ Cisco DNA Center has several built-in integrations that use REST APIs, including
 
 3. **Cisco ThousandEyes**: ThousandEyes is a network monitoring platform that can be integrated with DNA Center to monitor network performance and troubleshoot issues. The integration uses **REST APIs** to retrieve data about network paths, devices, and applications.
 
-4. **ServiceNow**: ServiceNow is an IT service management (ITSM) platform that can be integrated with DNA Center to automate incident management and change management processes. The integration uses **REST APIs** to exchange information about network devices, users, and incidents.
+4. **Cisco Meraki**: Meraki is a cloud-managed networking platform that can be integrated with DNA Center to manage Meraki devices alongside other Cisco network devices. The integration uses **REST APIs** to exchange information about network devices, users, and policies.
 
-5. **Cisco Meraki**: Meraki is a cloud-managed networking platform that can be integrated with DNA Center to manage Meraki devices alongside other Cisco network devices. The integration uses **REST APIs** to exchange information about network devices, users, and policies.
+5. **Cisco SDWAN**: Cisco SD-WAN Viptela can also be integrated with Cisco DNA Center using REST APIs. This integration allows you to manage and monitor both your SD-WAN and SD-Access network devices from a single platform and Fabric.
 
-6. **Cisco SDWAN**: Cisco SD-WAN Viptela can also be integrated with Cisco DNA Center using REST APIs. This integration allows you to manage and monitor both your SD-WAN and SD-Access network devices from a single platform and Fabric.
+![json](images/crossdomain-integrations.png?raw=true "Import JSON")
+
+6. **ServiceNow**: ServiceNow is an IT service management (ITSM) platform that can be integrated with DNA Center to automate incident management and change management processes. The integration uses **REST APIs** to exchange information about network devices, users, and incidents.
+
+7. **Infoblox || Bluecat**: Both Infoblox and Bluecat IP address management suites (IPAM) may be leveraged with Cisco DNA Center thorugh direct integrations. This allows for Cisco DNA Center to automatically learn from the IPAM about address pools and facilitate the building of Virtual Networks within the infrastructure. Additionally the IPAM's DNS system can help inform the automatic discovery of internal FQDN for internal applications discovered on the network to help keep QoS up to date.
+
+8. **Liveaction and Tableaux**: can integrate with Cisco DNA Center to visualize the events and telemetry gathered from the network infrastructure to help facilitate notifications and awareness.
+
+![json](images/partner-integrations.png?raw=true "Import JSON")
 
 Overall, these built-in integrations can help streamline network management and improve security and performance by leveraging the capabilities of DNA Center and other Cisco platforms.
 
@@ -62,6 +72,8 @@ Cisco DNA Center has a comprehensive set of published **REST APIs** that allow d
 6. **Event APIs**: These APIs allow you to retrieve information about network events, such as device failures or configuration changes.
 
 7. **Command Runner APIs**: These APIs allow you to execute CLI commands on network devices and retrieve the output.
+
+![json](images/dnac-api.png?raw=true "Import JSON")
 
 Overall, the published **REST APIs** for Cisco DNA Center provide a wide range of capabilities for managing and monitoring your network infrastructure programmatically.
 
@@ -130,6 +142,14 @@ Overall, building production code for **REST API** for Cisco DNA Center requires
 ## Python and Cisco DNA Center REST API
 
 Cisco provides a **Python SDK library** for use with Cisco DNA Center, which can help simplify the process of building **REST API** integrations. The SDK is available on the Cisco DevNet website and can be installed using pip, the Python package manager. This augments the previously mentioned Developer Toolkit in Cisco DNA Center and Cisco's DevNet Documentation on **REST API**.
+
+The ultimate goal of most organizations considering CICD Pipelines with Cisco DNA Center is to augment the platform to provide a way of continual development, balanced with continual deployment. Sometimes *Orchestration Platforms* like **Ansible**, or **Teraform** are considered to help orchestrate through Cisco DNA Center.  
+
+![json](images/cicd-pipeline.png?raw=true "Import JSON")
+
+In the case above a repository, holds templates in JSON and settings in YAML which are tested for vulnerabilities and syntax and against CML. After successful testing the CICD pipeline builds the configurations and settings on Cisco DNA Center through a Ansible Playbook. Then the pipeline kicks off a deployment playbook which provisions the configurations from Cisco DNA Center toward the network infrastructure.
+
+In the heart of all this is **REST APIs** which are how code and configuration are built on Cisco DNA Center and through which are provisioned to the network.
 
 Here are some key features of the Cisco DNA Center Python SDK:
 
