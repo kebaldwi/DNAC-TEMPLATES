@@ -26,8 +26,18 @@ This section will explain which lab to utilize within the **DCLOUD** environment
 ### DCLOUD Labs
 This lab environment has been tested on the following DCLOUD session
 
-#### SJC
-[Cisco Enterprise Networks Hardware Sandbox](https://dcloud2-sjc.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen)
+#### Overview
+
+As a quick start with DNA Center Automation, you may utilize the above labs in conjuction with DCLOUD's sandbox:
+
+1. [Cisco Enterprise Networks Hardware Sandbox West DC](https://dcloud2-sjc.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen)
+2. [Cisco Enterprise Networks Hardware Sandbox East DC](https://dcloud2-rtp.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen)
+
+This allows you to run these labs and gives not only an environment to try the various code samples, but also to develop and export your own code for use in your production environment. DCLOUD  provides for rapid and safe POC/POV on-demand environment without impacting production environments. DCLOUD also negates the need for shipping equipment, associated lead times, and licensing issues associated with setting up your own private testing environment. Please do adhere to the best practices for the DCLOUD environment when using it.
+
+DCLOUD allows for use with a web-based browser client for VPN-less connectivity, as well as AnyConnect VPN client connectivity for those who prefer it. The labs are hosted in Cisco San Jose Facility (Select US East or US West Region when scheduling in DCLOUD). Choose the Cisco Enterprise Network Sandbox version you prefer. 
+
+>**Note:** To access this or any other content, including demonstrations, labs, and training in DCLOUD please work with your Cisco Account team or Cisco Partner Account Team directly. Your Account teams will make sure the session is scheduled and shared for you to use. Once booked follow the guide within Github to complete the tasks adhering to the best practices of the dCLOUD environment.
 
 #### Components
 The DCLOUD session includes the following equipment:
@@ -58,12 +68,12 @@ The lab envionment that is available is depicted here:
 ![json](./LAB-A-PNP-PREP/images/DCLOUD_Topology2.png?raw=true "Import JSON")
 
 #### DCLOUD LAB Preparation
-##### dCLOUD VPN Connection
+##### DCLOUD VPN Connection
 Use AnyConnect VPN to connect to dCLOUD. When connecting, look at the session details and copy the credentials from the session booked into the client to connect.
 
 ![json](./LAB-I-Rest-API-Orchestration/images/VPN-to-dCLOUD.png?raw=true "Import JSON")
 
-##### dCLOUD Service Optimization
+##### DCLOUD Service Optimization
 The dCLOUD environment used in the lab need to be optimized prior to the session, and to do this we need to disable the following:
 
 <p align="center"><img src="./LAB-I-Rest-API-Orchestration/images/ShutdownUnused.png" width="500" height="690"></p>
@@ -73,7 +83,7 @@ In order to accomplish this, use the drop down menu item by each that is shutdow
 ## Disclaimer
 Various labs are designed for use in the **DCLOUD** environment but can but are for use elsewhere. What is important to realize is the impact of each type of test. For instance, in the ***PnP Preparation*** lab, we go through discovery methods such as ***option 43*** and ***DNS Discovery***. If we were to use the DHCP option 43 and place that in the server options on the DHCP server, it would affect multiple scopes. **Care** is required, therefore, to ensure you do not get unexpected results. Similarly with ***DNS Discovery***, if the sub domain used was available to all devices, more than one device would discover DNA Center. Changes like this may be suitable for production in the future but detrimental during testing.
 
-The environment allows for use with a web-based browser client for VPN-less connectivity, access as well as AnyConnect VPN client connectivity for those who prefer it. The labs are hosted out of our San Jose and RTP Facilities and so you would choose sessions from either US East or US West. Choose the Cisco Enterprise Network Sandbox v2.1 or 3.1. To access this or any other content, including demonstrations, labs, and training in Cloud please work with your Cisco Account team or Cisco Partner Account Team directly. Your Account teams will make sure the session is scheduled and shared for you to use. Once booked follow the guide within Github to complete the tasks adhering to the best practices of the dCLOUD environment.
+The environment allows for use with a web-based browser client for VPN-less connectivity, access as well as AnyConnect VPN client connectivity for those who prefer it. The labs are hosted out of our San Jose and RTP Facilities and so you would choose sessions from either US East or US West. Choose the Cisco Enterprise Network Sandbox v3 or v4. To access this or any other content, including demonstrations, labs, and training in Cloud please work with your Cisco Account team or Cisco Partner Account Team directly. Your Account teams will make sure the session is scheduled and shared for you to use. Once booked follow the guide within Github to complete the tasks adhering to the best practices of the DCLOUD environment.
 
 If you found this set of Labs helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how we can improve.
 
