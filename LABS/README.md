@@ -1,5 +1,7 @@
-# DNAC-TEMPLATE LABS 
+# DNAC-TEMPLATE LABS [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
+
 ## Overview
+
 This section of the repository is built out in LAB form to guide you through the typical steps required to enable the various automation tasks delivered by DNA Center. This lab will give examples of templates used in DNA Center that can be modified for your use and tested on equipment within the LAB environment. Additional information within the lab provides a well-rounded explanation of Automation methods with Templates. Lastly, the lab allows for customers to use DNA Center workflows to practice deploying Onboarding, DayN Templates, and Application Policy automation on both Wired and Wireless Platforms.
 
 The goal of this lab is for it to be a practical guide to aid engineers to rapidly begin using DNA Center automation and help them work towards a template strategy. Additionally, this lab will give customers a permanent place to try out the templates and include configurations for various use cases. This environment will enable engineers to reduce the time and effort needed to instantiate the network.
@@ -7,6 +9,7 @@ The goal of this lab is for it to be a practical guide to aid engineers to rapid
 As a result, customers will gain experience setting up Plug and Play onboarding and templates. Additionally, they will use advanced velocity templating and troubleshooting tools, which may help during faultfinding to determine what is failing in a deployment.
 
 ## Labs
+
 Please use this menu to navigate the various sections of this Github repository. Within the multiple folders are examples, explanation readme files for reference.
 
 * [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-A-PNP-PREP/) - The lab covers setup for Plug and Play **(allow 1.5 hrs)**
@@ -20,10 +23,13 @@ Please use this menu to navigate the various sections of this Github repository.
 * [Rest-API Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-I-Rest-API-Orchestration/) - This lab uses Postman Collections to automate DNA Center **(allow 2.0 hrs)**
 
 ## DCLOUD as a LAB
+
 ### Overview
+
 This section will explain which lab to utilize within the **DCLOUD** environment to run these labs. It will also discuss a customer POC environment and the steps necessary to successfully run these sections within a customer environment for localized testing.
 
 ### DCLOUD Labs
+
 This lab environment has been tested on the following DCLOUD session
 
 #### Overview
@@ -40,6 +46,7 @@ DCLOUD allows for use with a web-based browser client for VPN-less connectivity,
 >**Note:** To access this or any other content, including demonstrations, labs, and training in DCLOUD please work with your Cisco Account team or Cisco Partner Account Team directly. Your Account teams will make sure the session is scheduled and shared for you to use. Once booked follow the guide within Github to complete the tasks adhering to the best practices of the dCLOUD environment.
 
 #### Components
+
 The DCLOUD session includes the following equipment:
 
 Virtual Machines:
@@ -67,20 +74,18 @@ The lab envionment that is available is depicted here:
 
 ![json](./LAB-A-PNP-PREP/images/DCLOUD_Topology2.png?raw=true "Import JSON")
 
-#### DCLOUD LAB Preparation
-##### DCLOUD VPN Connection
+#### DCLOUD VPN Connection
+
 Use AnyConnect VPN to connect to dCLOUD. When connecting, look at the session details and copy the credentials from the session booked into the client to connect.
 
 ![json](./LAB-I-Rest-API-Orchestration/images/VPN-to-dCLOUD.png?raw=true "Import JSON")
 
-##### DCLOUD Service Optimization
-The dCLOUD environment used in the lab need to be optimized prior to the session, and to do this we need to disable the following:
+#### DCLOUD LAB Preparation
 
-<p align="center"><img src="./LAB-I-Rest-API-Orchestration/images/ShutdownUnused.png" width="500" height="690"></p>
-
-In order to accomplish this, use the drop down menu item by each that is shutdown in the image and click the shutdown link.
+In order to prepare the lab for use with this section of the repository please ensure that you prepare the lab according to the information detailed in the [DCLOUD LAB PREPARATION](./DCLOUD.md) section.
 
 ## Disclaimer
+
 Various labs are designed for use in the **DCLOUD** environment but can but are for use elsewhere. What is important to realize is the impact of each type of test. For instance, in the ***PnP Preparation*** lab, we go through discovery methods such as ***option 43*** and ***DNS Discovery***. If we were to use the DHCP option 43 and place that in the server options on the DHCP server, it would affect multiple scopes. **Care** is required, therefore, to ensure you do not get unexpected results. Similarly with ***DNS Discovery***, if the sub domain used was available to all devices, more than one device would discover DNA Center. Changes like this may be suitable for production in the future but detrimental during testing.
 
 The environment allows for use with a web-based browser client for VPN-less connectivity, access as well as AnyConnect VPN client connectivity for those who prefer it. The labs are hosted out of our San Jose and RTP Facilities and so you would choose sessions from either US East or US West. Choose the Cisco Enterprise Network Sandbox v3 or v4. To access this or any other content, including demonstrations, labs, and training in Cloud please work with your Cisco Account team or Cisco Partner Account Team directly. Your Account teams will make sure the session is scheduled and shared for you to use. Once booked follow the guide within Github to complete the tasks adhering to the best practices of the DCLOUD environment.
