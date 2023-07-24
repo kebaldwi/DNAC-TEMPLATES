@@ -158,6 +158,8 @@ DNS may be set up on many types of servers, but for simplification we will speak
 
 Benefits to this methodology are that you can cover a large organization rapidly avoiding the need to make changes to multiple DHCP scopes, and can accomplish a regional approach through the use of sub domains within an organization like * *pnpserver.west.us.domain.com* * or * *pnpserver.east.us.domain.com* * which allows for 2 different clusters due to RTT times perhaps.
 
+When using the DNS methodology with the **pnpserver** host entry please be aware that the record should exist in the Subject Alternative Names section within the Certificate on DNA Center.
+
 **Option 1:** An A record would be created pointing to the VIP address. Another A record may also be added for the pnpserver record to resolve to the same address. In this regard the two entries might look like this:
 
 ```shell

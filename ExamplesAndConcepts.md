@@ -17,6 +17,7 @@ Additionally:
 4.	Variables may be used when the device is being onboarded or provisioned
 
 ## Plug and Play (PnP) Template
+
 ### Why
 
 To help get started with and better understand the PnP process we have provided this material. It is designed to help you understand the Plug and Play process, templates and deployment of these within a lab setting. Once you are comfortable with the concepts you can work on a deployment and implementation plan for your network.
@@ -154,6 +155,7 @@ ntp source Vlan {{ MgmtVlan }}
 </details>
 
 ## DayN Template Project
+
 ### Why
 
 To help get started with and better understand the DayN process we have provided this material. It is designed to help you understand regular and composite templates and deployment of these within a lab setting. Once you are comfortable with the concepts you can work on a deployment and implementation plan for your network.
