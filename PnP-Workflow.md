@@ -43,6 +43,7 @@ If a port channel is used initially, then you want to ensure that the port chann
 We require a DHCP scope to supply the IP address within the management network temporarily in order to complete the device configuration and onboarding. The scope should be carved out from an unused range. It also can be a static reservation, as DHCP servers can reserve addresses for specific MAC addresses. 
 
 The DHCP scope would incorporate the following parameters sufficient to issue an IP address:
+
 * **network**
 * **default gateway**
 * **domain**                
@@ -268,4 +269,6 @@ Upon completion, DNA Center Controller Profile will be created in PnP Connect po
    - DNS Server Address for name resolution
 2. IP reachability to Internet
 
-If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+> **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+
+> [**Return to Main Menu**](./README.md)

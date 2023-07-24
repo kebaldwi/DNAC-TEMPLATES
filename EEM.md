@@ -361,4 +361,6 @@ event manager applet pnp_checker authorization bypass
 
 The examples are designed to get you thinking about operations, and what is possible. They may need heavy modification for a production use-case and so these are provided for LAB purposes only. Any use in a production environment should not be done without testing and validation.
 
-If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+> **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+
+> [**Return to Main Menu**](./README.md)

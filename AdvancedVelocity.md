@@ -211,6 +211,8 @@ The next step would be to build macros and vlans to configure the various ports.
 
 While this would configure the access ports, and modify the port channel for upstream connectivity we could do more to automate we will look at that next.
 
-If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+> **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
 Special mention to: https://explore.cisco.com/dnac-use-cases/apache-velocity as examples and extrapolations were made using this documentation and Adam Radford and Josh Bronikowski for his help with some of the concepts discussed.
+
+> [**Return to Main Menu**](./README.md)

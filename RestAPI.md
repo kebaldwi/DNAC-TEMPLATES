@@ -178,4 +178,6 @@ We include in the Repository a full set of Labs designed to help customers with 
 7. [**Retrieving Network Inventory**](./LABS/LAB-I-Rest-API-Orchestration/module7-inventory.md)
 8. [**Running Show Commands**](./LABS/LAB-I-Rest-API-Orchestration/module8-commands.md)
 
-If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+> **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+
+> [**Return to Main Menu**](./README.md)
