@@ -162,4 +162,6 @@ While it is possible to click through the claiming and process, for bulk deploym
 
 This methodology allows for you to specify variables within the csv, serial numbers, and put devices into a planned state waiting for them to land on the Plug and Play page on DNA Center.
 
-If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+> **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+
+> [**Return to Main Menu**](./README.md)

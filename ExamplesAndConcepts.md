@@ -259,6 +259,8 @@ I hope you find these samples highly useful, and please provide feedback.
 
 These examples are ready for testing in your lab. These are aides to help you get up to speed with what is possible when automating with DNA Center. The intent of this part of the repository is to aide in learning and not provide production ready templates. All templates here are for **LAB Purposes ONLY** and by downloading any content you acknowledge that this is not production ready code.
 
-If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+> **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
 Special mention to: https://jinja.palletsprojects.com/en/3.0.x/templates as examples and extrapolations were made using this documentation.
+
+> [**Return to Main Menu**](./README.md)

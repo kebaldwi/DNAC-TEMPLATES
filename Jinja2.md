@@ -206,7 +206,8 @@ These can be used for building entries for multiple lines which need to be used 
   ****************************LEGAL WARNING*************************************
 ^</MLTCMD>
 ```
-
-If you found this repository or any section helpful please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+> **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
 Special mention to: https://jinja.palletsprojects.com/en/3.0.x/templates as examples and extrapolations were made using this documentation.
+
+> [**Return to Main Menu**](./README.md)
