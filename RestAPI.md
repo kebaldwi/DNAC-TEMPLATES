@@ -11,6 +11,7 @@
 ![json](images/dnac-api.png?raw=true "Import JSON")
 
 ## What can REST API do for Cisco DNA Center?
+
 **REST APIs** with Cisco DNA Center can be used to accomplish a variety of tasks, including:
 
 1. Provisioning and configuring network devices, such as routers, switches, and access points.
