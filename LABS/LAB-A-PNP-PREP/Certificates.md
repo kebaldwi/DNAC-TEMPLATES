@@ -36,6 +36,12 @@ Install-WindowsFeature -Name ADCS-Web-Enrollment -IncludeManagementTools
 
 # Configure the Certificate Authority Web Enrollment Service
 Install-AdcsWebEnrollment 
+
+# Enable the Certificate Authority Online Responder
+Add-WindowsFeature Adcs-Online-Cert -IncludeAllSubFeature -IncludeManagementTools
+
+# Configure the Certificate Authority Online Responder Service
+Install-AdcsOnlineResponder -Force
 ```
 
 Once the certificate authority service is operational, we will then add a template which we will utilize for Cisco DNA Center.
