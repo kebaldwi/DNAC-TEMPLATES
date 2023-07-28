@@ -5,7 +5,7 @@
 This lab is the first one in a series of labs. You may use the steps in the [Cisco Enterprise Networks Hardware Sandbox](https://dcloud2-sjc.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen) environment, or equally, you might utilize them as part of a Proof of Concept setup at a customer's lab. These procedures may also help form part of a deployment or implementation. Use them to ensure that all the necessary steps are complete before onboarding any devices within DNA Center.
 
 We will be utilizing the lab in this manner:
-SJC Topology
+
 ![json](./images/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON")
 
 ## General Information
