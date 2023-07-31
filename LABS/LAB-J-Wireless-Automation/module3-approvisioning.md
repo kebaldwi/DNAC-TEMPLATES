@@ -1,4 +1,5 @@
 # Wireless Access Point Provisioning
+
 Within this lab module, we will concentrate our efforts on the PnP of each of the access points by **Cisco DNA Center**, so that we can onboard and gain management of those devices. 
 
 Within this lab we will concentrate on the following which are typical in most Enterprise Networks today:
@@ -11,6 +12,7 @@ Within this lab we will concentrate on the following which are typical in most E
 To begin lets review the wireless within the Cisco DCLOUD environment.
 
 ## Required Components 
+
 For these labs we will be focusing on the wireless aspects, and while the switching and routing has been setup ahead of time our focus will be on the following:
 
 Virtual Machines:
@@ -29,6 +31,7 @@ Hardware Devices:
     Silex Controllers (3 Wired NIC's and 1 Wireless NIC)
 
 ## Logical Topology
+
 The lab envionment that is available is depicted here:
 
 For routing in the environment an OSPF IGP process has been created to propogate internal route information. Within the access switches which are connected at Layer 3 to the router, we have estansiated a layer 2 port channel between them and initiated various vlans for Access Point connectivity and for the clients, whose gateway is built on an HSRP instance shared between the two switches.
@@ -38,11 +41,13 @@ The 9130AX Access Points are connected to both access switches and the ports are
 ![json](./images/DCLOUD_Topology_Wireless-v1.png?raw=true "Import JSON")
 
 # Lab Section 1 - Access Point PnP
+
 In the preparation lab we discovered the rest of the topology, set up the required services, and part of those services were DHCP addresses which are help within scopes on the Windows AD Server. 
 
 There are a few options for discovery using PnP. These were thoroughly discussed in the switching section and in a tutorial in the main menu. 
 
 ## Background 
+
 In order to land on DNA Center though the device needs help in finding it. 
 
 The PnP components are as follows:
@@ -57,7 +62,7 @@ There are 3 automated methods to make that occur:
 ``` 
 2. **DNS lookup**
 ``` 
-   pnpserver.dcloud.cisco.com resolves to DNA Center VIP Address
+   pnpserver.pnp.dcloud.cisco.com resolves to DNA Center VIP Address
 ```
 3. **Cloud re-direction https://devicehelper.cisco.com/device-helper**
    **which, re-directs to on-prem DNA Center IP Address**
@@ -72,10 +77,11 @@ There are 3 automated methods to make that occur:
 
 Once one of the options has been built devices will get the address and be pointed to and land on DNA Center within the PnP Device list.
 
-<details closed>
+<details open>
 <summary> Click for Details and Sub Tasks</summary>
 
 ## Step 1 - ***DHCP as a Discovery Method***
+
 DHCP services are important to understand primarily because along with the address and the gateway for connectivity is assigned option 43 which primes or directs the Cisco Access Point towards **DNA Center** or typically a **Wireless Controller**.
 
 ![json](./images/module1-pnpdiscovery/dhcp-lab-scope.png?raw=true "Import JSON")
@@ -85,6 +91,7 @@ Within the Scopes is a scope for the Access Point Vlan, aptly named *APVLAN* and
 ![json](./images/module1-pnpdiscovery/dhcp-apvlan-option43.png?raw=true "Import JSON")
 
 ## Step 2 - ***Access Point Port Configuration***
+
 The second part of the PnP equation is setting the environment up to allow for the device to get the address in question. This was previously accomplished in the setup procedure of the lab utilizing a template which was auto provisioned to the switch after discovery.
 
 The Switch was configured to automatically configure switch ports with connected Access Points with the following configuration. This was accomplished through *AUTOCONF* as explained in previous labs 7 and 8.
@@ -113,6 +120,7 @@ c9300-1#sh der int gi 1/0/2
 ```
 
 ## Step 3 - ***Access Point Reset***
+
 The Access Points are typically in varied states. Use the DCLOUD UI to console into each one then complete the following steps to clear them of any configuration:
 
 1. Login to the Access Point with the following credentials: 
@@ -125,149 +133,142 @@ The Access Points are typically in varied states. Use the DCLOUD UI to console i
 5. When prompted enter at the `[confirm]` prompt.
 6. The AP will clear its config and reboot.
 7. After a few moments have passed check the PnP Claim page and the AP should be in the list.
-![json](./images/module3-approvisioning/dnac-pnp-ap-unclaimed.png?raw=true "Import JSON")
+
+   ![json](./images/module3-approvisioning/dnac-pnp-ap-unclaimed.png?raw=true "Import JSON")
 
 At this point of the process the Access Points should appear in the PnP Claim window.
 
 ## Step 4 - ***Access Point Claim***
+
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
 
-![json](./images/module3-approvisioning/dnac-menu-provision-pnp.png?raw=true "Import JSON")
+   ![json](./images/module3-approvisioning/dnac-menu-provision-pnp.png?raw=true "Import JSON")
 
 2. On the *Plug and Play* page the following will appear. Notice the two access points have discovered and landed on DNA Center.
 
-![json](./images/module3-approvisioning/dnac-pnp-ap-unclaimed.png?raw=true "Import JSON")
+   ![json](./images/module3-approvisioning/dnac-pnp-ap-unclaimed.png?raw=true "Import JSON")
 
 3. On the *Plug and Play* page select the two access points as shown, then click on *Actions > Claim* within the **Actions** menu. 
 
-![json](./images/module3-approvisioning/dnac-pnp-ap-claim.png?raw=true "Import JSON")
+   ![json](./images/module3-approvisioning/dnac-pnp-ap-claim.png?raw=true "Import JSON")
 
 4. Within the *Claim* workflow on page *1* you will notice the Access Points may already be within the site `Global/DNAC Template Lab/Building/Floor 1` if not you have an option to select the Floor1 at this time if necessary complete the task. When ready click **Next** to continue the workflow. 
 
-![json](./images/module3-approvisioning/dnac-pnp-ap-claim-1.png?raw=true "Import JSON")
+   ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-1.png?raw=true "Import JSON")
 
 5. Within the *Claim* workflow on page *2* we need to assign an *RF Profile*. When ready click **Assign** to continue on this section. 
 
-![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-assign-a.png?raw=true "Import JSON")
+   ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-assign-a.png?raw=true "Import JSON")
 
 6. A slide out *Configuration* window will appear. Please complete the following:
    1. Click the *Radio Frequency Profile* drop down selection window
    2. From the list that appears select **DNAC-WIRELESS** which we previously created
-   ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-a.png?raw=true "Import JSON")
+
+      ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-a.png?raw=true "Import JSON")
 
 7. Within the slide out *Configuration* window click **Save** to continue on this section. 
 
-![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-save-a.png?raw=true "Import JSON")
+   ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-save-a.png?raw=true "Import JSON")
 
 8. We will now repeeat the same process with the second access point. Within the *Claim* workflow on page *2* we need to assign an *RF Profile*. When ready click **Assign** beside the second access point to continue on this section. 
 
-![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-assign-b.png?raw=true "Import JSON")
+   ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-assign-b.png?raw=true "Import JSON")
 
 9. A slide out *Configuration* window will appear. Please complete the following:
    1. Click the *Radio Frequency Profile* drop down selection window
    2. From the list that appears select **DNAC-WIRELESS** which we previously created
-   ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-b.png?raw=true "Import JSON")
+   
+      ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-b.png?raw=true "Import JSON")
 
 10. Within the slide out *Configuration* window click **Save** to continue on this section. 
 
-![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-save-b.png?raw=true "Import JSON")
+    ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-save-b.png?raw=true "Import JSON")
 
 11. Within the *Claim* workflow on page *2* ensure both access points have assigned *RF Profile's*. When ready click **Next** to continue the workflow. 
 
-![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-finish.png?raw=true "Import JSON")
+    ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-finish.png?raw=true "Import JSON")
 
 12. Within the *Claim* workflow on page *3* ensure both access points appear as shown. Click the **Preview Day-0 Config** links to discover what will be pushed to the access points.
 
-![json](./images/module3-approvisioning/dnac-pnp-ap-claim-summary-1.png?raw=true "Import JSON")
+    ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-summary-1.png?raw=true "Import JSON")
 
 13. Within the *Claim* workflow on page *3*  a *Summary Page* will slide out. Click on the details to display the relevant information. When ready click **X** at the top right to close the *Summary Page* and to continue the workflow. 
 
-![json](./images/module3-approvisioning/dnac-pnp-ap-claim-summary-2.png?raw=true "Import JSON")
+    ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-summary-2.png?raw=true "Import JSON")
 
 14. Within the *Claim* workflow on page *3* when ready click **Claim** to Claim the access points and begin the Day-0 provisioning process. 
 
-![json](./images/module3-approvisioning/dnac-pnp-ap-claiming.png?raw=true "Import JSON")
+    ![json](./images/module3-approvisioning/dnac-pnp-ap-claiming.png?raw=true "Import JSON")
 
 15. A verification popup will appear, when ready click **Yes** to continue the Claim of the access points and begin the Day-0 provisioning process. 
 
-![json](./images/module3-approvisioning/dnac-pnp-ap-claiming-verify.png?raw=true "Import JSON")
+    ![json](./images/module3-approvisioning/dnac-pnp-ap-claiming-verify.png?raw=true "Import JSON")
 
 16. The access points will be displayed within the *Plug and Play* *Unclaimed* window as shown here initally as **Planned**. They will over time show **Onboarding**. 
 
-![json](./images/module3-approvisioning/dnac-pnp-ap-claim-planned.png?raw=true "Import JSON")
+    ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-planned.png?raw=true "Import JSON")
 
 17. Eventually will show as **Provisoned** under the *Provisioned* section
 
-![json](./images/module3-approvisioning/dnac-pnp-ap-claim-provisioned.png?raw=true "Import JSON")
+    ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-provisioned.png?raw=true "Import JSON")
 
 At this point the access points will synchronize with the inventory and display there for Day-N Provisioning.
 
 </details>
 
 # Lab Section 2 - Access Point Provisioning
+
 With the access points now onboarded through the claim process, they are now in a manageable state. We can now provision the *Wireless SSID* to them within the *Wireless RF Profile*. To accomplish this please follow the steps in this section. This will need to be completed whenever the SSID, are changed or modified within the Wireless Profile for the access points and normally AP provioning check box facilitates that operation. As this is the initial configuration of the access points we must complete this process.
 
-<details closed>
+<details open>
 <summary> Click for Details and Sub Tasks</summary>
 
 1. Click the *Inventory* tab within the Provision Window. The following page will appear in the *Inventory* focus. 
 
-![json](./images/module3-approvisioning/dnac-provision-inventory.png?raw=true "Import JSON")
+   ![json](./images/module3-approvisioning/dnac-provision-inventory.png?raw=true "Import JSON")
 
 2. Please do the following:
    1. Select the two access points as shown
    2. Click the *Actions* menu and select `Actions > Provision > Provision Device` to begin the provisioning workflow.
+
    ![json](./images/module3-approvisioning/dnac-provision-ap.png?raw=true "Import JSON")
 
 3. Within the *Provisioning* workflow on page *1* observe the settings only. When ready click **Next** to continue the Day-N provisioning process. 
 
-![json](./images/module3-approvisioning/dnac-provision-ap-1.png?raw=true "Import JSON")
+   ![json](./images/module3-approvisioning/dnac-provision-ap-1.png?raw=true "Import JSON")
 
 4. Within the *Provisioning* workflow on page *2* observe the settings only. When ready click **Next** to continue the Day-N provisioning process. 
 
-![json](./images/module3-approvisioning/dnac-provision-ap-2.png?raw=true "Import JSON")
+   ![json](./images/module3-approvisioning/dnac-provision-ap-2.png?raw=true "Import JSON")
 
 5. Within the *Provisioning* workflow on page *3* observe the device summarys only. When ready click **Deploy** to continue the Day-N provisioning process. 
 
-![json](./images/module3-approvisioning/dnac-provision-ap-3.png?raw=true "Import JSON")
+   ![json](./images/module3-approvisioning/dnac-provision-ap-3.png?raw=true "Import JSON")
 
 6. Within the *Provisioning* workflow a slide-out Provision Device window will appear on page *3*. Leave the default selection of **Now**. When ready click **Apply** to continue the Day-N provisioning process. 
 
-![json](./images/module3-approvisioning/dnac-provision-ap-start.png?raw=true "Import JSON")
+   ![json](./images/module3-approvisioning/dnac-provision-ap-start.png?raw=true "Import JSON")
 
 7. A verification popup will appear, when ready click **Yes** to continue the Claim of the access points and begin the Day-N provisioning process. 
 
-![json](./images/module3-approvisioning/dnac-provision-ap-start-verify.png?raw=true "Import JSON")
+   ![json](./images/module3-approvisioning/dnac-provision-ap-start-verify.png?raw=true "Import JSON")
 
 8. Within the *Inventory* tab within the Provision Window change the focus by clicking the area indicated and select the *Provision* focus. Then click the **See Details** link beside one of the access points and view the information displayed.
 
-![json](./images/module3-approvisioning/dnac-provision-ap-focus-provision.png?raw=true "Import JSON")
+   ![json](./images/module3-approvisioning/dnac-provision-ap-focus-provision.png?raw=true "Import JSON")
                                         dnac-provision-ap-focus-provison
 10. A summary of the tasks applied to the selected access point will be displayed. 
 
-![json](./images/module3-approvisioning/dnac-provision-ap-device-summary.png?raw=true "Import JSON")
+    ![json](./images/module3-approvisioning/dnac-provision-ap-device-summary.png?raw=true "Import JSON")
 
 </details>
 
 ## Summary
+
 Congratulations you have completed the Access Point Plug and Play, and Provisioning and now have two correctly configured access points with SSID that can be used for testing. Please use the navigation below to continue your learning.
 
-## Lab Modules
-The lab will be split into modules to concentrate on specific tasks. Eash is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
+> **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-1. [**Wireless Controller PnP or Discovery**](./module1-ctrlpnpdiscovery.md)
-2. [**WLAN Creation**](./module2-wlans.md)
-3. [**AP Provisioning**](./module3-approvisioning.md)
-4. [**Application QoS**](./module4-applicationqos.md)
-5. [**Model Based Config**](./module5-modelbasedconfig.md)
-6. [**Wireless Templates**](./module6-wirelesstemplates.md)
-7. [**Controller HA**](./module3-controllerha.md)
+> [**Continue to Application QoS Module**](../LAB-J-Wireless-Automation/module4-applicationqos.md)
 
-## Main Menus
-To return to the main menus
-1. [Wireless Automation Main Menu](./README.md)
-2. [DNAC-TEMPLATES-LABS Main Menu](../README.md)
-3. [DNAC-TEMPLATES Repository Main Menu](../../README.md)
-
-## Feedback
-If you found this set of Labs helpful, please fill in comments and [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+> [**Return to Lab Menu**](./README.md)
