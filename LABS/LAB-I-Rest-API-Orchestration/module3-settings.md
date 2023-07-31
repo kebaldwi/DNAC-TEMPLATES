@@ -105,7 +105,7 @@ Follow these steps:
 
 ## Summary
 
-At this point, we have assigned settings, credentials, and telemetry settings to the Hierarchy utilizing environment variables and REST-API's within the collection runner. 
+At this point, we have assigned settings, credentials, and telemetry settings to the Hierarchy utilizing environment variables and REST API's within the collection runner. 
 
 If there is time, look at the results of the Credentials and Telemetry tabs with DNA Center and the various pre and post-scripts within Postman.
 
