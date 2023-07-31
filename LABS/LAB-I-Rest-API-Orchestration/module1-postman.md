@@ -24,7 +24,7 @@ To utilize Postman with DNA Center, we will first import the collection and envi
 
 ## Option 1 - Easy Button to Import Collection and Environment
 
-There is a Public Workspace, which can be easily added to Postman via the following link. This will allow you to start using the Rest-API suite created for this lab rapidly. Click the following link and log into your Postman account, and the workspace, including the collections and the environment, will be automatically added. (see image below)
+There is a Public Workspace, which can be easily added to Postman via the following link. This will allow you to start using the REST API suite created for this lab rapidly. Click the following link and log into your Postman account, and the workspace, including the collections and the environment, will be automatically added. (see image below)
 
 [Public DNA Center Use-Case API Collection](https://www.postman.com/dark-capsule-39992/workspace/dna-center-use-case-api-collections)
 
@@ -112,7 +112,7 @@ Follow these steps:
 
 At this point, you have set up the postman client with a collection, the environment, and the necessary settings to complete the lab. In the following sections, we will utilize the environment variables within each collection to perform a task on DNA Center.
 
-We have performed a few operations in the client, and you have seen the areas we will be working in. Briefly, those are the Collections where the REST-API's are configured and the Environment, where the data is stored in variables within the database. Take additional time to navigate postman to become more familiar. 
+We have performed a few operations in the client, and you have seen the areas we will be working in. Briefly, those are the Collections where the REST API's are configured and the Environment, where the data is stored in variables within the database. Take additional time to navigate postman to become more familiar. 
 
 To continue your learning experience, continue to the next module in the series, module 2 below.
 

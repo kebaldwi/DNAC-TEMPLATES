@@ -23,7 +23,7 @@ The prerequisite steps for preparing for the lab are the following;
 
 ## Using Command Runner
 
-We will now initiate a `show cdp neighbor` command against `c9300-2` managed by DNA Center using the Rest-API within the collection `DNA Center API LAB 402 - Command Runner`
+We will now initiate a `show cdp neighbor` command against `c9300-2` managed by DNA Center using the REST API within the collection `DNA Center API LAB 402 - Command Runner`
 
 Follow these steps:
 
@@ -56,7 +56,7 @@ Follow these steps:
 
 ## Summary
 
-We have been able to run diagnostic commands via Rest-API, which is useful if we want to get any show command or output from any diagnostic command to a third-party system. This allows us to augment DNA Center and create whatever we like regarding troubleshooting support for other platforms like ServiceNow or other 3rd party Rest-API-based ITSM tools. 
+We have been able to run diagnostic commands via REST API, which is useful if we want to get any show command or output from any diagnostic command to a third-party system. This allows us to augment DNA Center and create whatever we like regarding troubleshooting support for other platforms like ServiceNow or other 3rd party REST API based ITSM tools. 
 
 Additionally, if there is time, look at the pre and post-scripts within Postman.
 

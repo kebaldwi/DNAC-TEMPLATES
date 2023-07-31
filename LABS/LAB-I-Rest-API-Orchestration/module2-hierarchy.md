@@ -105,7 +105,7 @@ Global > State > Texas > Building1 > Floor1
 
 ### Hierarchy Build and the Postman Collection Run
 
-Postman is a powerful tool for editing and creating Rest-API calls and allows us to utilize several features to accomplish everyday tasks. In this short tutorial, we will use a simple Rest-API set, which has been grouped into a Postman Collection.
+Postman is a powerful tool for editing and creating REST API calls and allows us to utilize several features to accomplish everyday tasks. In this short tutorial, we will use a simple REST API set, which has been grouped into a Postman Collection.
 
 #### Collections
 
@@ -221,7 +221,7 @@ Follow these steps:
 
 ## Summary
 
-At this point, we have built the Hierarchy utilizing environment variables and REST-API's within the collection runner. To continue your learning, look at the various REST-API's used to complete this task. Notice that there was a task to create a **{{Token}}** for authentication, which was used and proceeded with the calls to create the Area, Building, and Floor. Each layer of the hierarchy was a singular call. 
+At this point, we have built the Hierarchy utilizing environment variables and REST API's within the collection runner. To continue your learning, look at the various REST API's used to complete this task. Notice that there was a task to create a **{{Token}}** for authentication, which was used and proceeded with the calls to create the Area, Building, and Floor. Each layer of the hierarchy was a singular call. 
 
 Additionally, if there is time, look at the pre and post-scripts.
 
