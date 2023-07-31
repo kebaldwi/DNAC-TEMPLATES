@@ -39,7 +39,9 @@ For PnP processes to work, we intend to have a management interface on the devic
 
 As you may recall, a factory default configuration is using VLAN 1 as no other VLAN exists, and by default, it accepts DHCP addresses. We can use this method in the PnP process. However, the management VLAN may be different, and so may the native VLAN structure of our environment. To that end, we must use the *pnp startup-vlan* command, which allows the device to use varying VLANs in PnP and should be set up and configured on the upstream switch.
 
-Of the discovery methods **DHCP** is the easiest to implement as no changes are required with the *Self Signed Certificate (SSC)* on **DNA Center** as it already includes the IP address by default. If you are deploying PnP using **DNS** discovery or you are building a cluster then you will need to go through the process of acquiring a certificate with Subject Alternative Names to include the **DNS** and **IP** entries to allow for the following:
+Of the discovery methods **DHCP** is the easiest to implement as no changes are required with the *Self Signed Certificate (SSC)* on **DNA Center** as it already includes the IP address by default. 
+
+If you are deploying PnP using **DNS** discovery or you are building a cluster then you will need to go through the process of acquiring a certificate with Subject Alternative Names to include the **DNS** and **IP** entries to allow for the following:
 
 1. All Node IP Addresses
 2. All VIP Addresses for Cluster
@@ -49,6 +51,7 @@ Of the discovery methods **DHCP** is the easiest to implement as no changes are 
 
 <details closed>
 <summary>To build a certificate in dCLOUD follow these steps </summary>
+
 To Build a certificate for use in DNA Center for PnP, please follow this outline of steps. Each step can take some time so plan accordingly.
 
 1. On the Active Directory Server add the roles for the Certificate Authority to allow WEB enrollment
@@ -57,14 +60,19 @@ To Build a certificate for use in DNA Center for PnP, please follow this outline
 4. Enroll DNA Center via the CSR on the Windows CA
 5. Upload the Certificate to DNA Center
 
+To utilize DNS Entry for Discovery purposes Certificates will need to be rebuilt with Subject Alternative Names. Please utilize the process documented in the following [**DNA Center Certificates**](./Certificates.md) for information on that process.
+
 Follow this guide for more information on the finer details.
 
 [DNA Center Security Best Practices Guide](./DNACenter_security_best_practices_guide.pdf)
+
 </details>
 
 ### Step 1.1 - ***Upstream Neighbor Setup***
 
-As depicted in the ![json](./images/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON"), the 9300 will serve as the upstream neighbor for this exercise and the environment's distribution switch. The Catalyst 9300 will act as the target switch, which we will deploy via PnP and Day 0 and N templates.
+As depicted in the following image, the 9300 will serve as the upstream neighbor for this exercise and the environment's distribution switch. The Catalyst 9300 will act as the target switch, which we will deploy via PnP and Day 0 and N templates.
+
+![json](./images/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON")
 
 For the lab, we will utilize ***VLAN 5*** as the management VLAN. Connect to switch ***c9300-2*** and paste the following configuration:
 
@@ -184,9 +192,9 @@ There are three automated methods to make that occur:
 
 1. **DHCP with option 43** - ***requires the DHCP server to offer a PnP string via option 43***
 2. **DNS lookup** 
-    - ***requires the DHCP server to offer a domain suffix and a name server to resolve the **pnpserver** address***
-    - ***requires the **pnpserver** entry to appear in the Subject Alternative Name of the GUI Certificate***
-3. **Cloud re-direction via https://devicehelper.cisco.com/device-helper** - ***requires the DHCP server to offer a name server to make DNS resolutions***
+    - *requires the DHCP server to offer a domain suffix and a name server to resolve the **pnpserver** address*
+    - *requires the **pnpserver** entry to appear in the Subject Alternative Name of the GUI Certificate*
+3. **Cloud re-direction** via *https://devicehelper.cisco.com/device-helper* - *requires the DHCP server to offer a name server to make DNS resolutions*
 
 ### Step 2.1 - ***DNA Center Discovery***
 

@@ -1,5 +1,13 @@
 # Cisco DNA Center and Certificates
 
+## Overview
+
+Cisco DNA Center has a Graphical User Interface (GUI), which is protected by SSL encryption. This GUI utilizes a certificate which is automatically generated when the system is configured for the first time, and automatically incorporates the FQDN at that time. 
+
+Obviously, most organizations do not want self signed certificates used in their infrastructure, and so want to tie Cisco DNA Centers certificates into their PKI infrastructure. 
+
+In this small set of tasks we will accomodate that ask. It is important to note that while this set of tasks will always work, a new GUI tool has been incorporated in the newest version of Cisco DNA Center to facilitate the building of the Certificate Signing Request. For all versions prior to Cisco DNA Center **2.3.5.x** this method is detailed in the following [DNA Center Security Best Practices Guide](./DNACenter_security_best_practices_guide.pdf) guide.
+
 ## PKI Infrastructure Build
 
 For lab purposes we will utiize a Microsoft Certificate authority to be built on the Active Directory (AD) server with in the lab. Normally this would be built separately with an offline root, and subordinate certificate authority servers, but within the confines of our lab we will make do with the AD server provided.
