@@ -9,12 +9,14 @@ DNA Center programmable REST API capabilities are covered in our previous tutori
 
 In this section we will cover Python integrations with Cisco DNA Center's "Business and Network Intent APIs".
 
+Before diving into developing your own Python automation scripts with DNA Center, we will work through initial steps required to setup your development environment by installing:
+- Python environment 
+- Python PIP module manager
+- Cisco DNA Center Python SDK
 
 ## Prerequisites
 > It is assumed that the reader has basic level familiarity with Python language before proceeding with examples outlined in this section. 
 > Please ensure that you have Python v3.x installed on your machine 
-
-![json](images/dnac_python_automation.png?raw=true "Business and Network Intent APIs")
 
 ### Python installation, MacOS
 
@@ -50,9 +52,39 @@ And finally, verification of installed Python environment
 pyenv version
 ```
 
+Lets ensure that we have Python module manager PIP installed
+
+```
+python -m ensurepip --upgrade
+```
+
 ### Python installation, Windows
 > [Installing Python](https://www.python.org/downloads/) - Python distributions
 
+Lets ensure that we have Python module manager PIP installed
+
+```
+python -m ensurepip --upgrade
+```
+
+### Python DNA Center SDK installation
+
+## Cisco DNA Center Platform Overview
+Cisco DNA Center is at the heart of Cisco's Intent-based network architecture.
+Cisco DNA Center supports the expression of business intent for network use-cases, such as base automation capabilities in the enterprise network. Cisco customers and partners can use the Cisco DNA Center platform to create value-added applications that leverage the native capabilities of Cisco DNA Center
+
+![json](images/dnac_python_automation.png?raw=true "Business and Network Intent APIs")
+
+### Intent API (Northbound)
+The Intent API is a Northbound REST API that exposes specific capabilities of the Cisco DNA Center platform.
+The Intent API provides policy-based abstraction of business intent, allowing focus on an outcome rather than struggling with individual mechanisms steps.
+The RESTful Cisco DNA Center Intent API uses HTTPS verbs (GET, POST, PUT, and DELETE) with JSON structures to discover and control the network. For more information, see [Intent API](https://developer.cisco.com/dnacenter/intentapis/).
+The Intent API is grouped, hierarchically into functional 'domains' and 'subdomains' of service. These are:
+- Authentication Domain
+Cisco DNA Center platform REST methods require caller Authentication.
+
+Authentication method obtains a security token that identifies the privileges of an authenticated REST caller.
+Cisco DNA Center authorizes each requested operation according to the access privileges associated with the security token that accompanies the request.
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
