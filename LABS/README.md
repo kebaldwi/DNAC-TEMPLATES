@@ -21,6 +21,7 @@ Please use this menu to navigate the various sections of this Github repository.
 * [Advanced Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-G-Advanced-Automation/) - This lab will explore Advanced Automation examples **(allow 1.5 hrs)**
 * [Dynamic Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-H-Dynamic-Automation/) - This lab will use many Advanced Automation techniques discussed previously **(allow 2.0 hrs)**
 * [Rest-API Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-I-Rest-API-Orchestration/) - This lab uses Postman Collections to automate DNA Center **(allow 2.0 hrs)**
+* [Wireless Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-J-Wireless-Automation/) - This lab covers Traditional Wireless Automation  **(allow 4.0 hrs)**
 
 ## DCLOUD as a LAB
 
