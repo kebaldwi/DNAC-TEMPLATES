@@ -75,7 +75,7 @@ In this subsection we will build a Wireless LAN for PSK authentication. Click on
    5. In the *AAA Configuration section* select **Fast Lane**
    6. Click **Next** to continue
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-psk-security.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-psk-security.png?raw=true "Import JSON")
 
 6. The Wireless SSID workflow continues with *Advance Settings*. Complete the following steps:
    1. Leave all sections here as default as shown
@@ -99,22 +99,19 @@ In this subsection we will build a Wireless LAN for PSK authentication. Click on
    7. Enter **20** for *Local to VLAN*
    8. Click **Next** to continue
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-psk-profile-campus-psk.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-psk-profile-campus-psk.png?raw=true "Import JSON")
 
-3. The Wireless SSID workflow continues with *Associate SSID to Profile*. On the left the Profile **DNAC-WIRELESS** will be displayed with a green checkmark.
-   1. Click **Next** to continue
+3. The Wireless SSID workflow continues with *Associate SSID to Profile*. On the left the Profile **DNAC-WIRELESS** will be displayed with a green checkmark. Click **Next** to continue
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-psk-profile-campus-psk-associated.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-psk-profile-campus-psk-associated.png?raw=true "Import JSON")
 
-4. The Wireless SSID workflow continues with a *Summary* page. On the left the a summary of all the changes will be displayed.
-   1. Click **Save** to continue
+4. The Wireless SSID workflow continues with a *Summary* page. On the left the a summary of all the changes will be displayed. Click **Save** to continue
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-psk-profile-campus-psk-summary.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-psk-profile-campus-psk-summary.png?raw=true "Import JSON")
 
-5. The Wireless SSID workflow completes with a *Results* page displaying that both the SSID and the Profiles were successfully saved and updated. 
-   1. Click **Configure Network Profile** to assign the profile to a site.
+5. The Wireless SSID workflow completes with a *Results* page displaying that both the SSID and the Profiles were successfully saved and updated. Click **Configure Network Profile** to assign the profile to a site.
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-psk-profile-campus-psk-results.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-psk-profile-campus-psk-results.png?raw=true "Import JSON")
 
 #### Step 3 - ***Assign Sites to Network Profile***
 
@@ -166,7 +163,7 @@ In this subsection we will build a Wireless LAN for Identity iPSK authentication
    5. **Broadcast SSID** *enables the SSID to be broadcast allowing clients to see it*
    6. Click **Next** to continue
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-ipsk-basic.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-ipsk-basic.png?raw=true "Import JSON")
 
 5. The Wireless SSID workflow will continue with *Security Settings*. Complete the following steps:
    1. In the *Level of Security* section select **Enterprise**
@@ -197,7 +194,7 @@ In this subsection we will build a Wireless LAN for Identity iPSK authentication
 
    ![json](./images/module2-wlans/dnac-wireless-ssid-ipsk-profile-begin.png?raw=true "Import JSON")
 
-> **Note:** If no *Wireless Profile* exists, we must click **Add Profile** to add one to DNA Center.
+   > **Note:** If no *Wireless Profile* exists, we must click **Add Profile** to add one to DNA Center.
 
 2. The Wireless SSID workflow continues with *Associate SSID to Profile*. Complete the following steps:
    1. Enter the **Profile Name** as `DNAC-WIRELESS` if blank
@@ -207,24 +204,21 @@ In this subsection we will build a Wireless LAN for Identity iPSK authentication
    5. Select **FlexConnect Local Switching** and enter **20** for *Local to VLAN* setting
    6. Click **Associate Profile**
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-ipsk-profile-campus-ipsk-1.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-ipsk-profile-campus-ipsk-1.png?raw=true "Import JSON")
 
-3. The Wireless SSID workflow continues with *Associate SSID to Profile*. On the left the Profile **DNAC-WIRELESS** will be displayed with a green checkmark.
-   1. Click **Next** to continue
+3. The Wireless SSID workflow continues with *Associate SSID to Profile*. On the left the Profile **DNAC-WIRELESS** will be displayed with a green checkmark. Click **Next** to continue
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-ipsk-profile-campus-ipsk-2.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-ipsk-profile-campus-ipsk-2.png?raw=true "Import JSON")
 
-4. The Wireless SSID workflow continues with a *Summary* page. On the left the a summary of all the changes will be displayed.
-   1. Click **Save** to continue
+4. The Wireless SSID workflow continues with a *Summary* page. On the left the a summary of all the changes will be displayed. Click **Save** to continue
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-ipsk-profile-campus-ipsk-summary.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-ipsk-profile-campus-ipsk-summary.png?raw=true "Import JSON")
 
-5. The Wireless SSID workflow completes with a *Results* page displaying that both the SSID and the Profiles were successfully saved and updated. 
-   1. Click **Wireless Home** to finish the process.
+5. The Wireless SSID workflow completes with a *Results* page displaying that both the SSID and the Profiles were successfully saved and updated. Click **Wireless Home** to finish the process.
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-ipsk-profile-campus-ipsk-results.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-ipsk-profile-campus-ipsk-results.png?raw=true "Import JSON")
 
-      > **Note:** If this is a new **Wireless Profile** then select **Configure Network Profile** and complete the optional steps for assigning sites as detailed in Step 3 of creating a PSK WLAN above.
+   > **Note:** If this is a new **Wireless Profile** then select **Configure Network Profile** and complete the optional steps for assigning sites as detailed in Step 3 of creating a PSK WLAN above.
 
 6. Return to the **Wireless Settings** page and you should see now our new *SSID* **CAMPUS-iPSK**.
 
@@ -261,7 +255,7 @@ In this subsection we will build a Wireless LAN for EAP authentication. Click on
    5. **Broadcast SSID** *enables the SSID to be broadcast allowing clients to see it*
    6. Click **Next** to continue
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-eap-basic.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-eap-basic.png?raw=true "Import JSON")
 
 5. The Wireless SSID workflow will continue with *Security Settings*. Complete the following steps:
    1. In the *Level of Security* section select **Enterprise**
@@ -291,7 +285,7 @@ In this subsection we will build a Wireless LAN for EAP authentication. Click on
 
    ![json](./images/module2-wlans/dnac-wireless-ssid-eap-profile-begin.png?raw=true "Import JSON")
 
-> **Note:** If no *Wireless Profile* exists, we must click **Add Profile** to add one to DNA Center.
+   > **Note:** If no *Wireless Profile* exists, we must click **Add Profile** to add one to DNA Center.
 
 2. The Wireless SSID workflow continues with *Associate SSID to Profile*. Complete the following steps:
    1. Enter the **Profile Name** as `DNAC-WIRELESS` if blank
@@ -301,24 +295,21 @@ In this subsection we will build a Wireless LAN for EAP authentication. Click on
    5. Select **FlexConnect Local Switching** and enter **20** for *Local to VLAN* setting
    6. Click **Associate Profile**
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-eap-profile-campus-eap-1.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-eap-profile-campus-eap-1.png?raw=true "Import JSON")
 
-3. The Wireless SSID workflow continues with *Associate SSID to Profile*. On the left the Profile **DNAC-WIRELESS** will be displayed with a green checkmark.
-   1. Click **Next** to continue
+3. The Wireless SSID workflow continues with *Associate SSID to Profile*. On the left the Profile **DNAC-WIRELESS** will be displayed with a green checkmark. Click **Next** to continue
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-eap-profile-campus-eap-2.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-eap-profile-campus-eap-2.png?raw=true "Import JSON")
 
-4. The Wireless SSID workflow continues with a *Summary* page. On the left the a summary of all the changes will be displayed.
-   1. Click **Save** to continue
+4. The Wireless SSID workflow continues with a *Summary* page. On the left the a summary of all the changes will be displayed. Click **Save** to continue
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-eap-profile-campus-eap-summary.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-eap-profile-campus-eap-summary.png?raw=true "Import JSON")
 
-5. The Wireless SSID workflow completes with a *Results* page displaying that both the SSID and the Profiles were successfully saved and updated. 
-   1. Click **Wireless Home** to finish the process.
+5. The Wireless SSID workflow completes with a *Results* page displaying that both the SSID and the Profiles were successfully saved and updated. Click **Wireless Home** to finish the process.
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-eap-profile-campus-eap-results.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-eap-profile-campus-eap-results.png?raw=true "Import JSON")
 
-      > **Note:** If this is a new **Wireless Profile** then select **Configure Network Profile** and complete the optional steps for assigning sites as detailed in Step 3 of creating a PSK WLAN above.
+   > **Note:** If this is a new **Wireless Profile** then select **Configure Network Profile** and complete the optional steps for assigning sites as detailed in Step 3 of creating a PSK WLAN above.
 
 6. Return to the **Wireless Settings** page and you should see now our new *SSID* **CAMPUS-iPSK**.
 
@@ -326,7 +317,7 @@ In this subsection we will build a Wireless LAN for EAP authentication. Click on
 
 </details>
 
-### 4. Building a Guest Wireless LAN - *in development*
+### 4. Building a Guest Wireless LAN
 
 In this subsection we will build a Wireless LAN for Guest authentication. Click on the arrow below to expand and follow to complete the tasks.
 
@@ -345,85 +336,87 @@ In this subsection we will build a Wireless LAN for Guest authentication. Click 
 
 3. On the **Wireless** page click `Add` above the *SSID* section to create a new Wireless LAN
 
-   ![json](./images/module2-wlans/dnac-wireless-ssid-psk-begin.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-guest-begin.png?raw=true "Import JSON")
 
 4. A Wireless SSID workflow will begin with *BASIC Settings* which will guide you through the build process of the WLAN. Complete the following steps:
-   1. Enter the **Wireless Network Name (SSID)** as `CAMPUS-PSK`
+   1. Enter the **Wireless Network Name (SSID)** as `GUESTNET`
    2. **Dual Band Operation (2.4 Ghz and 5 Ghz)** *enables the SSID for dual band operation*
-   3. **Voice and Data** *configuring best practices for Both Voice and Data*
+   3. **Data only** *configuring best practices for Data*
    4. **Admin Status** *enables the SSID*
    5. **Broadcast SSID** *enables the SSID to be broadcast allowing clients to see it*
    6. Click **Next** to continue
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-psk-basic.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-guest-basic.png?raw=true "Import JSON")
 
 5. The Wireless SSID workflow will continue with *Security Settings*. Complete the following steps:
-   1. In the *Level of Security* section select **Personal**
-   2. Additionally in the *Level of Security* section select **WPA2**
-   3. For *Passphrase Type* select **ASCII**
-   4. Enter `C1sco12345C1sco12345` for the *Passphrase*
-   5. In the *AAA Configuration section* select **Fast Lane**
-   6. Click **Next** to continue
+   1. In the *Level of Security* section select **Open**
+   2. Additionally in the *L3 Security* section select **Web Policy**
+   3. Under Authentication server
+      1. Select **ISE Authentication**
+      2. Select **Self Registered**
+      3. Select **Original URL**
+   4. In the *AAA Configuration section* click **Configure AAA**
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-psk-security.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-guest-security.png?raw=true "Import JSON")
+
+   5. Click the dropdown arrow on the left to select a value and then select the VIP `198.18.133.27` of the **ISE Cluster**. Click **Configure** to continue.
+
+      ![json](./images/module2-wlans/dnac-wireless-ssid-guest-aaa-config.png?raw=true "Import JSON")
+      ![json](./images/module2-wlans/dnac-wireless-ssid-guest-aaa-configured.png?raw=true "Import JSON")
+
+   6. In the *AAA Configuration section* select **Fast Lane** and then click **Next** to continue
+
+      ![json](./images/module2-wlans/dnac-wireless-ssid-guest-security-complete.png?raw=true "Import JSON")
 
 6. The Wireless SSID workflow continues with *Advance Settings*. Complete the following steps:
-   1. Leave all sections here as default as shown
+   1. Select **Radius Client Profiling** and Leave all other sections here as default 
    2. Click **Next** to continue
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-psk-advance.png?raw=true "Import JSON")
+      ![json](./images/module2-wlans/dnac-wireless-ssid-guest-advance.png?raw=true "Import JSON")
 
 #### Step 2 - ***Associate SSID to Profile***
 
-1. The Wireless SSID workflow continues with *Associate SSID to Profile*. As no *Wireless Profile* exists, we must click **Add Profile** to add one to DNA Center.
+1. The Wireless SSID workflow continues with *Associate SSID to Profile*. Select the Wireless Profile on the left as shown `DNAC-WIRELESS`
 
-   ![json](./images/module2-wlans/dnac-wireless-ssid-psk-profile-begin.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-guest-profile-begin.png?raw=true "Import JSON")
+
+   > **Note:** If no *Wireless Profile* exists, we must click **Add Profile** to add one to DNA Center.
 
 2. The Wireless SSID workflow continues with *Associate SSID to Profile*. Complete the following steps:
-   1. Enter the **Profile Name** as `DNAC-WIRELESS`
+   1. Enter the **Profile Name** as `DNAC-WIRELESS` if blank
    2. Select **No** *under Fabric*
-   3. Select **Interface**
-   4. Select **management** for the *Interface Name*
-   5. Select **No** for *do you need Anchor for the SSID*
-   6. Select **FlexConnect Local Switching** for the SSID
-   7. Enter **20** for *Local to VLAN*
-   8. Click **Next** to continue
+   3. Select **Interface** and **management** for the *Interface Name*
+   4. Select **No** for *do you need Anchor for the SSID*
+   5. Select **FlexConnect Local Switching** and enter **20** for *Local to VLAN* setting
+   6. Click **Associate Profile**
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-psk-profile-campus-psk.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-guest-profile-campus-guest-1.png?raw=true "Import JSON")
 
-3. The Wireless SSID workflow continues with *Associate SSID to Profile*. On the left the Profile **DNAC-WIRELESS** will be displayed with a green checkmark.
-   1. Click **Next** to continue
+3. The Wireless SSID workflow continues with *Associate SSID to Profile*. On the left the Profile **DNAC-WIRELESS** will be displayed with a green checkmark. Click **Next** to continue
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-psk-profile-campus-psk-associated.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-guest-profile-campus-guest-2.png?raw=true "Import JSON")
 
-4. The Wireless SSID workflow continues with a *Summary* page. On the left the a summary of all the changes will be displayed.
-   1. Click **Next** to continue
+4. The Wireless SSID workflow continues launching the Guest SSID Portal Editor, which allows us to make configuration changes to the Guest Portal environment in an editor. Click **Save** to continue
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-psk-profile-campus-psk-summary.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-guest-portal.png)
 
-5. The Wireless SSID workflow completes with a *Results* page displaying that both the SSID and the Profiles were successfully saved and updated. 
-   1. Click **Configure Network Profile** to assign the profile to a site.
+5. Once the Guest Portal has been saved, you will be presented with a page allowing access to it in future. Click **Next** to continue.
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-psk-profile-campus-psk-results.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-guest-portal-settings.png)
 
-#### Step 3 - ***Assign Sites to Network Profile***
+4. The Wireless SSID workflow continues with a *Summary* page. On the left the a summary of all the changes will be displayed. Click **Save** to continue
 
-1. On the *Network Profile* page select **Assign** beside the wireless profile **DNAC-WIRELESS**
+   ![json](./images/module2-wlans/dnac-wireless-ssid-guest-profile-campus-guest-summary.png?raw=true "Import JSON")
 
-   ![json](./images/module2-wlans/dnac-wireless-network-profile-assign.png?raw=true "Import JSON")
+5. The Wireless SSID workflow completes with a *Results* page displaying that both the SSID and the Profiles were successfully saved and updated. Click **Wireless Home** to finish the process.
 
-2. On the *Add Sites to Profile* slide out page select **Floor 1** to assign the site to the wireless network profile. 
-3. Click ***Save*** to complete the assignment
+   ![json](./images/module2-wlans/dnac-wireless-ssid-guest-profile-campus-guest-results.png?raw=true "Import JSON")
 
-   ![json](./images/module2-wlans/dnac-wireless-network-profile-add-sites.png?raw=true "Import JSON")
+   > **Note:** If this is a new **Wireless Profile** then select **Configure Network Profile** and complete the optional steps for assigning sites as detailed in Step 3 of creating a PSK WLAN above.
 
-4. On the *Network Profile* page note **1 Site** appears under *Sites* for the wireless profile **DNAC-WIRELESS**
+6. Return to the **Wireless Settings** page and you should see now our new *SSID* **CAMPUS-iPSK**.
 
-   ![json](./images/module2-wlans/dnac-wireless-network-profile-assigned.png?raw=true "Import JSON")
-
-5. Return to the **Wireless Settings** page and you should see now our new *SSID* **CAMPUS-PSK**.
-
-   ![json](./images/module2-wlans/dnac-wireless-ssid-psk-results.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-guest-results.png?raw=true "Import JSON")
 
 </details>
 
