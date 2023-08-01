@@ -498,7 +498,7 @@ In this lab, we need to utilize FlexConnect, and so to allow for CoA of clients 
 
 ## Lab Section 4 - Wireless Controller Provisioning
 
-In this subsection we will provision the Wireless Controller with the settings for network services, credentials, telemetry and the additional wireless settings of WLAN's, RF Profiles, FlexConnect Vlans.
+In this subsection we will provision the Wireless Controller with the settings for network services, credentials, telemetry and the additional wireless settings of WLAN's, RF Profiles, FlexConnect Vlans. Whenever a new WLAN or a configuration change is made, it will need to be provisioned to the controller using this process.
 
 This can be augmented with Model-Based Configurations as well as Templates which we will discuss in future modules.
 
