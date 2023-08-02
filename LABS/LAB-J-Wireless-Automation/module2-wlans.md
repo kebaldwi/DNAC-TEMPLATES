@@ -65,7 +65,7 @@ In this subsection we will build a Wireless LAN for PSK authentication. Click on
    5. **Broadcast SSID** *enables the SSID to be broadcast allowing clients to see it*
    6. Click **Next** to continue
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-psk-basic.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-psk-basic.png?raw=true "Import JSON")
 
 5. The Wireless SSID workflow will continue with *Security Settings*. Complete the following steps:
    1. In the *Level of Security* section select **Personal**
