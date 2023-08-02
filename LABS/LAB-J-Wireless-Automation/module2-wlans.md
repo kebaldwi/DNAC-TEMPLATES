@@ -10,7 +10,7 @@ Within this lab we will concentrate on the following which are typical in most E
 4. FlexConnect 
 5. Controller Provisioning
 
-### Logical Topology
+## Logical Topology
 
 To review the lab envionment that is available is depicted here:
 
@@ -136,7 +136,9 @@ In this subsection we will build a Wireless LAN for PSK authentication. Click on
 
 ### 2. Building a Identity PreShared Key (iPSK) Wireless LAN
 
-In this subsection we will build a Wireless LAN for Identity iPSK authentication. Click on the arrow below to expand and follow to complete the tasks.
+In this subsection we will build a Wireless LAN for Identity iPSK authentication. This lab does have a requirement for ISE configuration. For information on how to prepare ISE for use with this lab please click [ISE Configuration](./module8-iseconfig).
+
+Click on the arrow below to expand and follow to complete the tasks.
 
 <details open>
 <summary> Building a WLAN with a Identity Pre-Shared Key (iPSK)</summary>
@@ -228,7 +230,9 @@ In this subsection we will build a Wireless LAN for Identity iPSK authentication
 
 ### 3. Building a Extensible Authentication Protocol (EAP) Wireless LAN
 
-In this subsection we will build a Wireless LAN for EAP authentication. Click on the arrow below to expand and follow to complete the tasks.
+In this subsection we will build a Wireless LAN for EAP authentication. For information on how to prepare ISE for use with this lab please click [ISE Configuration](./module8-iseconfig).
+
+Click on the arrow below to expand and follow to complete the tasks.
 
 <details open>
 <summary> Building a WLAN with a Extensible Authentication Protocols (EAP) </summary>
