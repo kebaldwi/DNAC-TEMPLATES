@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Lab is designed to be used after first completing labs 1 through 4 and has been created to address how to use some advanced automation concepts not previously touched on in the previous labs. This enablement type lab is designed to help customers reach beyond what they currently understand, try new concepts, and push the boundaries of automation.
+This Lab is designed to be used after first completing labs A through D and has been created to address how to use some advanced automation concepts not previously touched on in the previous labs. This enablement type lab is designed to help customers reach beyond what they currently understand, try new concepts, and push the boundaries of automation.
 
 We will cover various topics about template logic to solve multiple use cases during this lab. Some of these concepts have been previously covered but perhaps not in-depth.
 
