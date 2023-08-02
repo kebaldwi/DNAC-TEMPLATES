@@ -136,7 +136,7 @@ In this subsection we will build a Wireless LAN for PSK authentication. Click on
 
 ### 2. Building a Identity PreShared Key (iPSK) Wireless LAN
 
-In this subsection we will build a Wireless LAN for Identity iPSK authentication. This lab does have a requirement for ISE configuration. For information on how to prepare ISE for use with this lab please click [ISE Configuration](./module8-iseconfig.md).
+In this subsection we will build a Wireless LAN for Identity iPSK authentication. This lab does have a requirement for ISE configuration. For information on how to prepare ISE for use with this lab please click [ISE Configuration](./iseconfiguration.md).
 
 Click on the arrow below to expand and follow to complete the tasks.
 
@@ -230,7 +230,7 @@ Click on the arrow below to expand and follow to complete the tasks.
 
 ### 3. Building a Extensible Authentication Protocol (EAP) Wireless LAN
 
-In this subsection we will build a Wireless LAN for EAP authentication. For information on how to prepare ISE for use with this lab please click [ISE Configuration](./module8-iseconfig.md).
+In this subsection we will build a Wireless LAN for EAP authentication. For information on how to prepare ISE for use with this lab please click [ISE Configuration](./iseconfiguration.md).
 
 Click on the arrow below to expand and follow to complete the tasks.
 
