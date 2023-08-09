@@ -5,6 +5,8 @@ It is no secret that Python programming language has gained tremendous popularit
 As reported by 2021 Stack Overflow Developer Survery, Python was identified as the number one most wanted language among developers who are not currently using it. DNA Center has a large number of very powerful automation workflows already built into the product (ie Plug and Play, SWIM, SDA, Templates etc), which are also exposed to the operator via programmable API interfaces which can be leverged to further integrate DNA Center into more complex or customized automation workflows.
 Given Python popularity, it makes sense to review how you can apply basic programming practices to automate common tasks in your own network with DNA Center APIs.
 
+![json](images/dnac_python_automation.png?raw=true "DNA Center APIs")
+
 When developing with Python for DNA Center, you will find your code operating in one of these categories:
 - DNA Center capability augmentation. In these scenarios, the extensie DNA Center native automation workflows may not be sufficient or customized enough to meet the organizations need. Some examples of these use cases may include things like extensive configuration compliance, long term report retention or integrations with other vendors in the environment requiring functionality in addition to what is already built in DNA Center. This category of use-cases is addressed with [DNA Center Intent Based APIs](https://developer.cisco.com/dnacenter/intentapis/)
 - DNA Center integration with Top Level Orchestrators. In such scenarios you want to take advantage of your organizations established Orchestration strategy with other tools (Terraform, Ansible, NSO, ServiceNow etc) where majority of processes and business logic is already built out. In these scenarios you are no longer expecting Network Operators interfacing with DNA Center GUI, and instead submitting abstracted change requests at the Top Level Orchestrator. This is where custom developed, or 3rd Party maintained Python code can help seamlessly integrate DNA Center into those existing pipelines. This category of use-cases is addressed with both [DNA Center Intent Based APIs](https://developer.cisco.com/dnacenter/intentapis/) and [DNA Center Integration Flows](https://developer.cisco.com/dnacenter/integrationapis/)
@@ -24,8 +26,8 @@ Before diving into developing your own Python automation scripts with DNA Center
 - Cisco DNA Center Python SDK
 
 ## Prerequisites
-> It is assumed that the reader has general level familiarity with Python language before proceeding with examples outlined in this section. 
-> Please ensure that you have Python v3.x installed on your machine 
+* It is assumed that the reader has general level familiarity with Python language before proceeding with examples outlined in this section. 
+* Please ensure that you have Python v3.x installed on your machine 
 
 ### Python installation, MacOS
 
@@ -84,8 +86,8 @@ Simply put, SDK is a set of tools, libraries and documentation to simplify inter
 ### Cisco DNA Center SDK installation
 * To isolate the installation folder structure from other libraries create a virtual environment
 ```
-python -m venv env3
-source env3/bin/activate
+python -m venv dnacentersdk
+source dnacentersdk/bin/activate
 ```
 
 * Install DNA Center SDK in newly created virtual environment
@@ -94,22 +96,68 @@ pip install dnacentersdk
 ```
 The SDK is ready for use!
 
-## Cisco DNA Center Platform Overview
-Cisco DNA Center is at the heart of Cisco's Intent-based network architecture.
-Cisco DNA Center supports the expression of business intent for network use-cases, such as base automation capabilities in the enterprise network. Cisco customers and partners can use the Cisco DNA Center platform to create value-added applications that leverage the native capabilities of Cisco DNA Center
-
-![json](images/dnac_python_automation.png?raw=true "Business and Network Intent APIs")
-
-### Intent API (Northbound)
-The Intent API is a Northbound REST API that exposes specific capabilities of the Cisco DNA Center platform.
-The Intent API provides policy-based abstraction of business intent, allowing focus on an outcome rather than struggling with individual mechanisms steps.
-The RESTful Cisco DNA Center Intent API uses HTTPS verbs (GET, POST, PUT, and DELETE) with JSON structures to discover and control the network. For more information, see [Intent API](https://developer.cisco.com/dnacenter/intentapis/).
-The Intent API is grouped, hierarchically into functional 'domains' and 'subdomains' of service. These are:
-- Authentication Domain
-- Know Your
-
+## Cisco DNA Center - Authentication with Python
 Authentication method obtains a security token that identifies the privileges of an authenticated REST caller.
 Cisco DNA Center authorizes each requested operation according to the access privileges associated with the security token that accompanies the request.
+HTTPS Basic uses Transport Layer Security (TLS) to encrypt the connection and data in an HTTP Basic Authentication transaction.
+
+In this example, we will write a simple Python application which will retrieve the Auth token from DNA Center which can then be used in subsequent REST API calls to DNA Center. We can use Cisco DevNet always on [DNA Center Sandbox](https://devnetsandbox.cisco.com/RM/Diagram/Index/c3c949dc-30af-498b-9d77-4f1c07d835f9?diagramType=Topology)
+
+To obtain the Auth token, we will need the following:
+1. The Request:
+* API Endpoint: https://sandboxdnac.cisco.com/dna/system/api/v1/auth/token
+* Method: POST
+2. The Header:
+* Key: Authorization
+* Value: Basic <token>
+
+Note: the authorization value is a Basic Auth Base64 encoding of [username]:[password]
+
+Let's use the Python requests library to create a function that when called, will return an Authorization Token.
+In the same Terminal App where we have just activated Python virtual environment:
+
+```
+pip install requests
+```
+
+1. Create dnac_config.py file containing DNA Center credentials
+```
+import os
+DNAC=os.environ.get('DNAC','sandboxdnac.cisco.com')
+DNAC_PORT=os.environ.get('DNAC_PORT',443)
+DNAC_USER=os.environ.get('DNAC_USER','devnetuser')
+DNAC_PASSWORD=os.environ.get('DNAC_PASSWORD','Cisco123!')
+```
+1. Create dnacauth.py file:
+* requests is the library of choice to make the api request. Note the 'verify=False' parameter passed, which disables DNA Center self-signed certificate validation. In production, DNA Center appliance will be likely signed by a recognized CA and this parameter will not be required
+* HTTPBasicAuth is part of the requests library and is used to encode the credentials to Cisco DNA Center
+* dnac_config is a python file that contains Cisco DNA Center configuration info
+```
+import requests
+from requests.auth import HTTPBasicAuth
+from dnac_config import DNAC, DNAC_PORT, DNAC_USER, DNAC_PASSWORD
+
+def get_auth_token():
+    """
+    Building out Auth request. Using requests.post to make a call to the Auth Endpoint
+    """
+    url = 'https://sandboxdnac.cisco.com/dna/system/api/v1/auth/token'       # Endpoint URL
+    resp = requests.post(url, auth=HTTPBasicAuth(DNAC_USER, DNAC_PASSWORD), verify=False)  # Make the POST Request
+    token = resp.json()['Token']    # Retrieve the Token from the returned JSON
+    print("Token Retrieved: {}".format(token))  # Print out the Token
+    return token    # Create a return statement to send the token back for later use
+
+if __name__ == "__main__":
+    get_auth_token()
+```
+
+Execute
+
+```
+python3 dnacauth.py
+questWarning: Unverified HTTPS request is being made to host 'sandboxdnac.cisco.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+Token Retrieved: <token>
+```
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
