@@ -29,12 +29,12 @@ Before diving into developing your own Python automation scripts with DNA Center
 
 ### Python installation, MacOS
 
-> Install Homebrew package manager
+* Install Homebrew package manager
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-> Install PyEnv using HomeBrew. PyEnv is a CLI utility that helps you manage Python installations on your computer.
+* Install PyEnv using HomeBrew. PyEnv is a CLI utility that helps you manage Python installations on your computer.
 ```
 brew install pyenv
 pyenv init
@@ -68,7 +68,7 @@ python -m ensurepip --upgrade
 ```
 
 ### Python installation, Windows
-> [Installing Python](https://www.python.org/downloads/) - Python distributions
+* [Installing Python](https://www.python.org/downloads/) - Python distributions
 
 Lets ensure that we have Python module manager PIP installed
 
@@ -82,13 +82,13 @@ As with any other Vendor Automation Controller, DNA Center Rest API capabilities
 Simply put, SDK is a set of tools, libraries and documentation to simplify interacting with a REST API. The Cisco DNA Center SDK is written in Python and provides a Python library in PyPI and associated documentation. PyPI is the official python package index, and simplifies installation of the library.
 
 ### Cisco DNA Center SDK installation
-> To isolate the installation folder structure from other libraries create a virtual environment
+* To isolate the installation folder structure from other libraries create a virtual environment
 ```
 python -m venv env3
 source env3/bin/activate
 ```
 
-> Install DNA Center SDK in newly created virtual environment
+* Install DNA Center SDK in newly created virtual environment
 ```
 pip install dnacentersdk
 ```
