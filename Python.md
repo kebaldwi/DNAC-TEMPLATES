@@ -96,12 +96,16 @@ pip install dnacentersdk
 ```
 The SDK is ready for use!
 
-## Cisco DNA Center - Authentication with Python
+## Cisco DNA Center - Simple Example with Python
+In this example, we are going to demonstrate a simple Python based application that implements two basic functions:
+* Generate DNA Center Authentication Token
+* Retrieve a list of devices from DNA Center
+
 Authentication method obtains a security token that identifies the privileges of an authenticated REST caller.
 Cisco DNA Center authorizes each requested operation according to the access privileges associated with the security token that accompanies the request.
 HTTPS Basic uses Transport Layer Security (TLS) to encrypt the connection and data in an HTTP Basic Authentication transaction.
 
-In this example, we will write a simple Python application which will retrieve the Auth token from DNA Center which can then be used in subsequent REST API calls to DNA Center. We can use Cisco DevNet always on [DNA Center Sandbox](https://devnetsandbox.cisco.com/RM/Diagram/Index/c3c949dc-30af-498b-9d77-4f1c07d835f9?diagramType=Topology)
+ We will use Cisco DevNet always on [DNA Center Sandbox](https://devnetsandbox.cisco.com/RM/Diagram/Index/c3c949dc-30af-498b-9d77-4f1c07d835f9?diagramType=Topology)
 
 To obtain the Auth token, we will need the following:
 1. The Request:
@@ -128,7 +132,7 @@ DNAC_PORT=os.environ.get('DNAC_PORT',443)
 DNAC_USER=os.environ.get('DNAC_USER','devnetuser')
 DNAC_PASSWORD=os.environ.get('DNAC_PASSWORD','Cisco123!')
 ```
-1. Create dnacauth.py file:
+1. Create dnac_python.py file:
 * requests is the library of choice to make the api request. Note the 'verify=False' parameter passed, which disables DNA Center self-signed certificate validation. In production, DNA Center appliance will be likely signed by a recognized CA and this parameter will not be required
 * HTTPBasicAuth is part of the requests library and is used to encode the credentials to Cisco DNA Center
 * dnac_config is a python file that contains Cisco DNA Center configuration info
@@ -151,12 +155,65 @@ if __name__ == "__main__":
     get_auth_token()
 ```
 
-Execute
+Execute to confirm we can succesfully obtain the Authentication Token
 
 ```
-python3 dnacauth.py
+python3 dnac_python.py
 questWarning: Unverified HTTPS request is being made to host 'sandboxdnac.cisco.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
 Token Retrieved: <token>
+```
+
+Let us now extend this example by defining two more functions in the same dnac_python.py file:
+* get_device_list() which will call on DNA Center network device API and retrieve json formatted list of devices
+* print_device_list () which will print the json data structure of devices retrieved. It simply iterates over the json dictionary and prints out the relevant fields to the screen
+```
+def get_device_list():
+    """
+    Building out function to retrieve list of devices. Using requests.get to make a call to the network device Endpoint
+    """
+    token = get_auth_token() # Get Token
+    url = "https://sandboxdnac.cisco.com/api/v1/network-device"
+    hdr = {'x-auth-token': token, 'content-type' : 'application/json'}
+    resp = requests.get(url, headers=hdr, verify=False)  # Make the Get Request
+    device_list = resp.json()
+    print_device_list(device_list)
+```
+```
+def print_device_list(device_json):
+    print("{0:42}{1:17}{2:12}{3:18}{4:12}{5:16}{6:15}".
+          format("hostname", "mgmt IP", "serial","platformId", "SW Version", "role", "Uptime"))
+    for device in device_json['response']:
+        uptime = "N/A" if device['upTime'] is None else device['upTime']
+        if device['serialNumber'] is not None and "," in device['serialNumber']:
+            serialPlatformList = zip(device['serialNumber'].split(","), device['platformId'].split(","))
+        else:
+            serialPlatformList = [(device['serialNumber'], device['platformId'])]
+        for (serialNumber, platformId) in serialPlatformList:
+            print("{0:42}{1:17}{2:12}{3:18}{4:12}{5:16}{6:15}".
+                  format(device['hostname'],
+                         device['managementIpAddress'],
+                         serialNumber,
+                         platformId,
+                         device['softwareVersion'],
+                         device['role'], uptime))
+```
+And finally, instead of calling on the Auth function as we did in previous example, lets call the new get_device_list() function when the python code gets executed
+```
+if __name__ == "__main__":
+    get_device_list()
+```
+
+Execute to confirm we can succesfully authenticate, retrieve list of network devices, and output the list to the screen of the terminal:
+
+```
+python3 dnac_python.py
+Token Retrieved: <token>
+
+hostname                                  mgmt IP          serial      platformId        SW Version  role            Uptime
+sw1                                       10.10.20.175     9SB9FYAFA2O C9KV-UADP-8P      17.9.20220318:182713DISTRIBUTION    19 days, 4:41:37.00
+sw2                                       10.10.20.176     9SB9FYAFA21 C9KV-UADP-8P      17.9.20220318:182713DISTRIBUTION    116 days, 13:02:14.00
+sw3                                       10.10.20.177     9SB9FYAFA22 C9KV-UADP-8P      17.9.20220318:182713ACCESS          3 days, 21:00:59.00
+sw4                                       10.10.20.178     9SB9FYAFA23 C9KV-UADP-8P      17.9.20220318:182713ACCESS          116 days, 13:02:27.00
 ```
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
