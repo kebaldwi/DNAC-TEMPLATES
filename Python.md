@@ -32,12 +32,12 @@ Before diving into developing your own Python automation scripts with DNA Center
 ### Python installation, MacOS
 
 * Install Homebrew package manager
-```
+```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 * Install PyEnv using HomeBrew. PyEnv is a CLI utility that helps you manage Python installations on your computer.
-```
+```shell
 brew install pyenv
 pyenv init
 
@@ -52,20 +52,20 @@ Now that PyEnv is installed and configured, exit and reload the Terminal
 
 With PyEnv is installed and configured, we can install Python. Example below is installing Python version 3.9.1
 
-```
+```shell
 pyenv install 3.9.1
 pyenv global 3.9.1
 ```
 
 And finally, verification of installed Python environment
 
-```
+```shell
 pyenv version
 ```
 
 Lets ensure that we have Python module manager PIP installed
 
-```
+```shell
 python -m ensurepip --upgrade
 ```
 
@@ -74,7 +74,7 @@ python -m ensurepip --upgrade
 
 Lets ensure that we have Python module manager PIP installed
 
-```
+```shell
 python -m ensurepip --upgrade
 ```
 
@@ -85,13 +85,14 @@ Simply put, SDK is a set of tools, libraries and documentation to simplify inter
 
 ### Cisco DNA Center SDK installation
 * To isolate the installation folder structure from other libraries create a virtual environment
-```
+```shell
 python -m venv dnacentersdk
 source dnacentersdk/bin/activate
 ```
 
 * Install DNA Center SDK in newly created virtual environment
-```
+
+```shell
 pip install dnacentersdk
 ```
 
@@ -121,7 +122,7 @@ Note: the authorization value is a Basic Auth Base64 encoding of [username]:[pas
 Let's use the Python requests library to create a function that when called, will return an Authorization Token.
 In the same Terminal App where we have just activated Python virtual environment:
 
-```
+```shell
 pip install requests
 ```
 
@@ -159,7 +160,7 @@ if __name__ == "__main__":
 
 Execute to confirm we can succesfully obtain the Authentication Token
 
-```
+```shell
 python3 dnac_python.py
 questWarning: Unverified HTTPS request is being made to host 'sandboxdnac.cisco.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
 Token Retrieved: <token>
@@ -211,7 +212,7 @@ if __name__ == "__main__":
 
 Execute to confirm we can succesfully authenticate, retrieve list of network devices, and output the list to the screen of the terminal:
 
-```
+```shell
 python3 dnac_python.py
 Token Retrieved: <token>
 
