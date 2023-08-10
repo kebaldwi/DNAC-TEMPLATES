@@ -94,6 +94,7 @@ source dnacentersdk/bin/activate
 ```
 pip install dnacentersdk
 ```
+
 The SDK is ready for use!
 
 ## Cisco DNA Center - Simple Example with Python
@@ -125,7 +126,8 @@ pip install requests
 ```
 
 1. Create dnac_config.py file containing DNA Center credentials
-```
+
+```python
 import os
 DNAC=os.environ.get('DNAC','sandboxdnac.cisco.com')
 DNAC_PORT=os.environ.get('DNAC_PORT',443)
@@ -136,7 +138,7 @@ DNAC_PASSWORD=os.environ.get('DNAC_PASSWORD','Cisco123!')
 * requests is the library of choice to make the api request. Note the 'verify=False' parameter passed, which disables DNA Center self-signed certificate validation. In production, DNA Center appliance will be likely signed by a recognized CA and this parameter will not be required
 * HTTPBasicAuth is part of the requests library and is used to encode the credentials to Cisco DNA Center
 * dnac_config is a python file that contains Cisco DNA Center configuration info
-```
+```python
 import requests
 from requests.auth import HTTPBasicAuth
 from dnac_config import DNAC, DNAC_PORT, DNAC_USER, DNAC_PASSWORD
@@ -166,7 +168,8 @@ Token Retrieved: <token>
 Let us now extend this example by defining two more functions in the same dnac_python.py file:
 * get_device_list() which will call on DNA Center network device API and retrieve json formatted list of devices
 * print_device_list () which will print the json data structure of devices retrieved. It simply iterates over the json dictionary and prints out the relevant fields to the screen
-```
+
+```python
 def get_device_list():
     """
     Building out function to retrieve list of devices. Using requests.get to make a call to the network device Endpoint
@@ -178,7 +181,8 @@ def get_device_list():
     device_list = resp.json()
     print_device_list(device_list)
 ```
-```
+
+```python
 def print_device_list(device_json):
     print("{0:42}{1:17}{2:12}{3:18}{4:12}{5:16}{6:15}".
           format("hostname", "mgmt IP", "serial","platformId", "SW Version", "role", "Uptime"))
@@ -197,8 +201,10 @@ def print_device_list(device_json):
                          device['softwareVersion'],
                          device['role'], uptime))
 ```
+
 And finally, instead of calling on the Auth function as we did in previous example, lets call the new get_device_list() function when the python code gets executed
-```
+
+```python
 if __name__ == "__main__":
     get_device_list()
 ```
