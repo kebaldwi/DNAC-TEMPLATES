@@ -148,4 +148,4 @@ The lab is now prepared for the Wireless Automation modules of the lab. Please n
 
 > [**Continue to Wireless Controller Discovery Module**](../LAB-J-Wireless-Automation/module1-ctrlpnpdiscovery.md)
 
-> [**Return to Lab Menu**](../README.md)
+> [**Return to Lab Menu**](./README.md)

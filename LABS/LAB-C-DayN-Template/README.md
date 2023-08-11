@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Lab is designed to be a part of a series of labs built to address how to use Day N Templates within DNA Center to configure network devices at Day 1 to N. The idea being to allow for ongoing configuration of features on devices beyond those deployed by the normal provisioning process. With DNA Center, if devices are not within a fabric, the host onboarding part of the UI will not be available. To that end, templates are an easy way of deploying those types of configuration and much more. Before starting this Lab, please make sure you have finished all the steps in labs 1 and 2.
+This Lab is designed to be a part of a series of labs built to address how to use Day N Templates within DNA Center to configure network devices at Day 1 to N. This Lab is designed to be used after first completing labs A through B. The idea being to allow for ongoing configuration of features on devices beyond those deployed by the normal provisioning process. With DNA Center, if devices are not within a fabric, the host onboarding part of the UI will not be available. To that end, templates are an easy way of deploying those types of configuration and much more. Before starting this Lab, please make sure you have finished all the steps in labs 1 and 2.
 
 ## General Information
 
