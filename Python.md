@@ -31,7 +31,8 @@ b) retrieve a list of network devices managed by Cisco DNA Center and displaying
 
 ## Prerequisites
 * It is assumed that the reader has general level familiarity with Python language before proceeding with examples outlined in this section. 
-* Please ensure that you have Python v3.x installed on your machine 
+* Please ensure that you have Python v3.x installed on your machine
+* In the next set of steps, we will go through minimal preparation required to have Python environment ready for developing with Cisco DNA Center
 
 ### Python installation, MacOS
 
