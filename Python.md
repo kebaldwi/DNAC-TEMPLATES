@@ -107,7 +107,9 @@ Authentication method obtains a security token that identifies the privileges of
 Cisco DNA Center authorizes each requested operation according to the access privileges associated with the security token that accompanies the request.
 HTTPS Basic uses Transport Layer Security (TLS) to encrypt the connection and data in an HTTP Basic Authentication transaction.
 
- We will use Cisco DevNet always on [DNA Center Sandbox](https://devnetsandbox.cisco.com/RM/Diagram/Index/c3c949dc-30af-498b-9d77-4f1c07d835f9?diagramType=Topology)
+For purposes of this tutorial, we will use Cisco DevNet always on [DNA Center Sandbox](https://devnetsandbox.cisco.com/RM/Diagram/Index/c3c949dc-30af-498b-9d77-4f1c07d835f9?diagramType=Topology) since it has some devices already in the inventory that we can poll.
+
+For the Labs contained in this repository, please use Cisco **DCLOUD** environment (Refer to details in [LABS/README](./LABS/README.md) for details).
 
 To obtain the Auth token, we will need the following:
 1. The Request:
@@ -126,7 +128,8 @@ In the same Terminal App where we have just activated Python virtual environment
 pip install requests
 ```
 
-1. Create dnac_config.py file containing DNA Center credentials
+1. Create dnac_config.py file containing DNA Center credentials. This code will allow us to set the parameters either as environment variables (note env var names in CAPS), or use default values supplied if the corresponding environment variable is not set. 
+**Note: please ensure to update DNAC URL, and credentials to match the DCLOUD assigned ones.
 
 ```python
 import os
@@ -138,7 +141,8 @@ DNAC_PASSWORD=os.environ.get('DNAC_PASSWORD','Cisco123!')
 1. Create dnac_python.py file:
 * requests is the library of choice to make the api request. Note the 'verify=False' parameter passed, which disables DNA Center self-signed certificate validation. In production, DNA Center appliance will be likely signed by a recognized CA and this parameter will not be required
 * HTTPBasicAuth is part of the requests library and is used to encode the credentials to Cisco DNA Center
-* dnac_config is a python file that contains Cisco DNA Center configuration info
+* dnac_config.py is a python file that contains Cisco DNA Center connectivity and authentication info
+
 ```python
 import requests
 from requests.auth import HTTPBasicAuth
@@ -148,13 +152,17 @@ def get_auth_token():
     """
     Building out Auth request. Using requests.post to make a call to the Auth Endpoint
     """
-    url = 'https://sandboxdnac.cisco.com/dna/system/api/v1/auth/token'       # Endpoint URL
+    auth_api_endpoint =  '/dna/system/api/v1/auth/token'    # AUTH API Endpoint 
+    url = 'https://{DNAC}{API}'.format(DNAC=DNAC,API=auth_api_endpoint) # complete API URL
     resp = requests.post(url, auth=HTTPBasicAuth(DNAC_USER, DNAC_PASSWORD), verify=False)  # Make the POST Request
     token = resp.json()['Token']    # Retrieve the Token from the returned JSON
     print("Token Retrieved: {}".format(token))  # Print out the Token
     return token    # Create a return statement to send the token back for later use
 
 if __name__ == "__main__":
+    """
+    Program entry point
+    """
     get_auth_token()
 ```
 
@@ -176,7 +184,8 @@ def get_device_list():
     Building out function to retrieve list of devices. Using requests.get to make a call to the network device Endpoint
     """
     token = get_auth_token() # Get Token
-    url = "https://sandboxdnac.cisco.com/api/v1/network-device"
+    network_devices_api_endpoint = '/api/v1/network-device' # Device list API Endpoint
+    url = 'https://{DNAC}{API}'.format(DNAC=DNAC,API=network_devices_api_endpoint) # complete API URL
     hdr = {'x-auth-token': token, 'content-type' : 'application/json'}
     resp = requests.get(url, headers=hdr, verify=False)  # Make the Get Request
     device_list = resp.json()
@@ -185,6 +194,9 @@ def get_device_list():
 
 ```python
 def print_device_list(device_json):
+    """
+    Custom pretty-print function to display relevant output to the screen
+    """
     print("{0:42}{1:17}{2:12}{3:18}{4:12}{5:16}{6:15}".
           format("hostname", "mgmt IP", "serial","platformId", "SW Version", "role", "Uptime"))
     for device in device_json['response']:
@@ -207,6 +219,9 @@ And finally, instead of calling on the Auth function as we did in previous examp
 
 ```python
 if __name__ == "__main__":
+    """
+    Program entry point
+    """
     get_device_list()
 ```
 
