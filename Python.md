@@ -147,6 +147,8 @@ Under "Authentication" section, Select "Authentication API". We can see the foll
 
 > **Note:** String composed of “Basic”, followed by a space, followed by the Base64 encoding of “username:password”, NOT including the quotes. For example “Basic YWRtaW46TWFnbGV2MTIz”, where YWRtaW46TWFnbGV2MTIz is the Base 64 encoding.
 
+### Building a simple python working example 
+
 Let's use the Python requests library to create a function that when called, will return an Authorization Token following above notation.
 
 In the same Terminal App where we have just activated Python virtual environment:
@@ -168,7 +170,7 @@ DNAC_USER=os.environ.get('DNAC_USER','devnetuser')
 DNAC_PASSWORD=os.environ.get('DNAC_PASSWORD','Cisco123!')
 ```
 
-1. Create dnac_simple_python.py file:
+2. Create dnac_simple_python.py file:
    * requests is the library of choice to make the api request. Note the 'verify=False' parameter passed, which disables DNA Center self-signed certificate validation. In production, DNA Center appliance will be likely signed by a recognized CA and this parameter will not be required
    * HTTPBasicAuth is part of the requests library and is used to encode the credentials to Cisco DNA Center
    * dnac_config.py is a Python file that contains Cisco DNA Center connectivity and authentication info we created in previous step
