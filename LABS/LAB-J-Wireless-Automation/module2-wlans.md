@@ -370,12 +370,12 @@ In this subsection we will build a Wireless LAN for Guest authentication. Click 
 
    5. Click the dropdown arrow on the left to select a value and then select the VIP `198.18.133.27` of the **ISE Cluster**. Click **Configure** to continue.
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-guest-aaa-config.png?raw=true "Import JSON")
-      ![json](./images/module2-wlans/dnac-wireless-ssid-guest-aaa-configured.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-guest-aaa-config.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-guest-aaa-configured.png?raw=true "Import JSON")
 
    6. In the *AAA Configuration section* select **Fast Lane** and then click **Next** to continue
 
-      ![json](./images/module2-wlans/dnac-wireless-ssid-guest-security-complete.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-ssid-guest-security-complete.png?raw=true "Import JSON")
 
 6. The Wireless SSID workflow continues with *Advance Settings*. Complete the following steps:
    1. Select **Radius Client Profiling** and Leave all other sections here as default 
