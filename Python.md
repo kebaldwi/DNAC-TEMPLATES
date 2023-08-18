@@ -490,7 +490,7 @@ Lets hit 'Send' and we should get a Status: **200 OK** with a JSON payload as pa
 JSON responses can be quite lengthy and are difficult for a human eye to enterpret beyond a few lines.
 In our Postman 'network-device' API tab, select 'Visualize' tab to get a pretty tabular view representing data contained in the JSON Payload.
 
-![json](images/dnac_python_visualize.png?raw=true "Postman - JSON payload Visualization")
+![json](images/dnac_python_postman_visualize.png?raw=true "Postman - JSON payload Visualization")
 
 ## Summary
 
