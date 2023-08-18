@@ -443,10 +443,12 @@ Traceback (most recent call last):
 requests.exceptions.SSLError: HTTPSConnectionPool(host='sandboxdnac.cisco.com', port=443): Max retries exceeded with url: /api/system/v1/auth/token (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')))
 ```
 
-We have seen the SSLError above, where DNA Center SSL Certificate validation step fails with self-signed certificate. Lets adjust the code suggested by Postman to address this condition by adding 'verify=False' parameter to **requests** call, and also folding the logic into function definition that would return the Auth Token when called:
+We have seen the SSLError above, where DNA Center SSL Certificate validation step fails with self-signed certificate. Lets adjust the code suggested by Postman to address this condition by adding 'verify=False' parameter to **requests** call, and also folding the logic into function definition that would return the Auth Token when called.
+Let us also import **json** library to help us parse (convert) the API Call response text into a JSON object such that we can access key:value pairs more easily
 
 ```python
 import requests
+import json
 
 def get_auth_dnac():
     url = "https://sandboxdnac.cisco.com/api/system/v1/auth/token"
@@ -456,10 +458,17 @@ def get_auth_dnac():
     'Authorization': 'Basic ZGV2bmV0dXNlcjpDaXNjbzEyMyE='
     }
 
+    # create a **requests** call, disable SSL certificate validation
     response = requests.request("POST", url, headers=headers, data=payload, verify=False)
-    print(response.text)
 
-    return response.text
+    # JSON string is part of the 'text' property of the response
+    # call loads function to parse (ie convert) string to a JSON object
+    # and access the 'Token' key
+    auth_token = json.loads(response.text)['Token']
+    print(auth_token)
+
+    return auth_token
+
 
 if __name__ == "__main__":
     """
@@ -494,12 +503,110 @@ In our Postman 'network-device' API tab, select 'Visualize' tab to get a pretty 
 
 ![json](images/dnac_python_postman_visualize.png?raw=true "Postman - JSON payload Visualization")
 
+Similar to how we used Postman to generate Python code for the Authentication function, let us click on 'Code' button on the vertical menu on the right of the screen, select 'Python - Requests' under 'Code Snippet' section. You should get the following skeleton Python code suggested by Postman
+
+```python
+import requests
+
+url = "https://sandboxdnac.cisco.com/dna/intent/api/v1/network-device"
+
+payload = {}
+headers = {
+  'x-auth-token': 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGVjNGU0ZjRjYTdmOTIyMmM4MmRhNjYiLCJhdXRoU291cmNlIjoiaW50ZXJuYWwiLCJ0ZW5hbnROYW1lIjoiVE5UMCIsInJvbGVzIjpbIjVlOGU4OTZlNGQ0YWRkMDBjYTJiNjQ4ZSJdLCJ0ZW5hbnRJZCI6IjVlOGU4OTZlNGQ0YWRkMDBjYTJiNjQ4NyIsImV4cCI6MTY5MjM5MDg4MSwiaWF0IjoxNjkyMzg3MjgxLCJqdGkiOiJiNTU0YTZiMi1jNGM1LTQ0MGUtOGIwOS02YTYzOTg2NTc1MzYiLCJ1c2VybmFtZSI6ImRldm5ldHVzZXIifQ.a0mKUlW1hemLSTushuhiBaJ6GP17OnHhWQf8e-mko6_ls3UAya7_5u04VKNJHz5uKCgi3ONu4ieRsHa6FylBygazqVimDy5wswdztyDBGeD2fXtf4bTG_764zD2pAh3LP1Q_p42WiXNCZH4yGtWKD-9a5Wxa-57RgTgT_wVhI2_Uj3Td0q1I9yfJbakFmErApBlV17EGZATaXdEM3A2rmzxKN_2wGQsevsxpd1wl9Ehdnr0JiQYq5HFpmlT-OShjSZdSdZ35R1ulUh0QugAzlu22ohGWpTKKEOm-00WiXmCOqVzbkJzbDw9Y28JNPGO5l-lwiS1tzdRrDFKJB08O8g'
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
+```
+
+Lets incorporate the above call into our dnac_postman_python.py application while re-using (this is a good example of code re-use I mentioned earlier in this tutorial) a previously defined function to pretty-print the devices to the screen
+
+```python
+import requests
+import json
+
+def get_auth_dnac():
+    url = "https://sandboxdnac.cisco.com/api/system/v1/auth/token"
+
+    payload = ""
+    headers = {
+    'Authorization': 'Basic ZGV2bmV0dXNlcjpDaXNjbzEyMyE='
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload, verify=False)
+
+    auth_token = json.loads(response.text)['Token']
+    print(auth_token)
+
+    return auth_token
+
+def get_device_list():
+    auth_token = get_auth_dnac()
+
+    url = "https://sandboxdnac.cisco.com/dna/intent/api/v1/network-device"
+
+    payload = {}
+    headers = {
+    'x-auth-token': auth_token
+    }
+
+    response = requests.request("GET", url, headers=headers, data=payload, verify=False)
+
+    devices = json.loads(response.text)
+
+    return devices
+
+def print_device_list(device_json):
+    """
+    Custom pretty-print function to display relevant output to the screen
+    """
+    print("{0:42}{1:17}{2:12}{3:18}{4:12}{5:16}{6:15}".
+          format("hostname", "mgmt IP", "serial","platformId", "SW Version", "role", "Uptime"))
+    for device in device_json['response']:
+        uptime = "N/A" if device['upTime'] is None else device['upTime']
+        if device['serialNumber'] is not None and "," in device['serialNumber']:
+            serialPlatformList = zip(device['serialNumber'].split(","), device['platformId'].split(","))
+        else:
+            serialPlatformList = [(device['serialNumber'], device['platformId'])]
+        for (serialNumber, platformId) in serialPlatformList:
+            print("{0:42}{1:17}{2:12}{3:18}{4:12}{5:16}{6:15}".
+                  format(device['hostname'],
+                         device['managementIpAddress'],
+                         serialNumber,
+                         platformId,
+                         device['softwareVersion'],
+                         device['role'], uptime))
+
+
+if __name__ == "__main__":
+    """
+    Program entry point
+    """
+    devices = get_device_list()
+    print_device_list (devices)
+```
+
+An execution of the above code should yield the predictable output:
+
+```shell
+python dnac_postman_python.py
+...
+hostname                                  mgmt IP          serial      platformId        SW Version  role            Uptime         
+sw1                                       10.10.20.175     9SB9FYAFA2O C9KV-UADP-8P      17.9.20220318:182713DISTRIBUTION    28 days, 4:40:28.00
+sw2                                       10.10.20.176     9SB9FYAFA21 C9KV-UADP-8P      17.9.20220318:182713DISTRIBUTION    125 days, 13:01:05.00
+sw3                                       10.10.20.177     9SB9FYAFA22 C9KV-UADP-8P      17.9.20220318:182713ACCESS          12 days, 20:59:50.00
+sw4                                       10.10.20.178     9SB9FYAFA23 C9KV-UADP-8P      17.9.20220318:182713ACCESS          125 days, 13:01:18.00
+```
+
 ## Summary
 
 In this tutorial we covered the basics of preparing your Python development environment for Cisco DNA Center.
 We also reviewed two approaches to writing Python programs to interface with Cisco DNA Center. We first used Cisco DNA Center REST API URL to construct a **requests** call to obtain a simple Auth Token, which was used to obtain the list of managed devices.
 
 The same approach was further simplified when we instead used Cisco DNA Center Python SDK to achieve the same outcome.
+
+In the last example, we demonstrated how a **rapid-prototyping** approach can be achieved leveraging Postman as the development tool to help us build workflows visually and convert them to Python code which requires minimal modifications to achieve the outcome
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
