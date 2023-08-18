@@ -358,6 +358,8 @@ Once you have logged in, on the same Postman **Cisco DNA Center APIs** collectio
 
 The DNA Center Postman Collection **Cisco DNA Center APIs** will appear in the list of Collections under your Postman Workspace. You will also notice a small fork icon next to it, with the name of the original Collection from which we have forked it.
 
+![json](images/dnac_python_postman_intro.png?raw=true "Postman - Developer view")
+
 The **Cisco DNA Center APIs** Postman Collection of API calls is neatly organized into categories that allows you to quickly drill down and navigate. For the purposes of this excersice, we are going to require two **GET** API calls from this collection:
 * 1. Authentication 
 * 2. Network Devices
