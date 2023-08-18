@@ -441,21 +441,29 @@ Traceback (most recent call last):
 requests.exceptions.SSLError: HTTPSConnectionPool(host='sandboxdnac.cisco.com', port=443): Max retries exceeded with url: /api/system/v1/auth/token (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')))
 ```
 
-We have seen that above, where DNA Center SSL Certificate validation step fails with self-signed certificate. Lets adjust the code suggested by Postman to address this condition by adding 'verify=False' parameter to **requests** call
+We have seen the SSLError above, where DNA Center SSL Certificate validation step fails with self-signed certificate. Lets adjust the code suggested by Postman to address this condition by adding 'verify=False' parameter to **requests** call, and also folding the logic into function definition that would return the Auth Token when called:
 
 ```python
 import requests
 
-url = "https://sandboxdnac.cisco.com/api/system/v1/auth/token"
+def get_auth_dnac():
+    url = "https://sandboxdnac.cisco.com/api/system/v1/auth/token"
 
-payload = ""
-headers = {
-  'Authorization': 'Basic ZGV2bmV0dXNlcjpDaXNjbzEyMyE='
-}
+    payload = ""
+    headers = {
+    'Authorization': 'Basic ZGV2bmV0dXNlcjpDaXNjbzEyMyE='
+    }
 
-response = requests.request("POST", url, headers=headers, data=payload, verify=False)
+    response = requests.request("POST", url, headers=headers, data=payload, verify=False)
+    print(response.text)
 
-print(response.text)
+    return response.text
+
+if __name__ == "__main__":
+    """
+    Program entry point
+    """
+    get_auth_dnac()
 ```
 
 Subsequent execution should yield the Auth Token printed to the screen
@@ -467,6 +475,22 @@ python dnac_postman_python.py
 {"Token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGVjNGU0ZjRjYTdmOTIyMmM4MmRhNjYiLCJhdXRoU291cmNlIjoiaW50ZXJuYWwiLCJ0ZW5hbnROYW1lIjoiVE5UMCIsInJvbGVzIjpbIjVlOGU4OTZlNGQ0YWRkMDBjYTJiNjQ4ZSJdLCJ0ZW5hbnRJZCI6IjVlOGU4OTZlNGQ0YWRkMDBjYTJiNjQ4NyIsImV4cCI6MTY5MjM5MjA2OCwiaWF0IjoxNjkyMzg4NDY4LCJqdGkiOiI4NDEyMmFjYS0wNjE2LTQ0MWQtYjAxNS05MGM2YzQxMjgyYWQiLCJ1c2VybmFtZSI6ImRldm5ldHVzZXIifQ.YpbEAOUrWn11ole57R7yfxCaAgS_6a2zFLQhthRLLhG6WkvVaGSzAPFOdL0-qC1QKrBZgQInSh59mXq0KFH28JuXGT4vbGecqP17QsjLtz5rjyS2gBFhCOSoUMW2krSKdLoI17dzmwO3r7OK0BXlpNUNeFx9DO_1G8Vx3_Rn-RaTJmu_wK6vNn6yMFHaUN8iPdw_kHeWh5lPv58oTu3ImckTp-wU0XfKD4pLF4ojfrbLBzWeU4gudmHci2K8EwYBD0wyFc7kl6ZwjB0xWUB7RO0L2EK0sRfeVWnmMgc3-w9Xue1Wb5Wet7fxYbSj4lG1nK_Y0D4AOS3K324e_ZIEWg"}
 ```
 
+As in the previous excercise, lets now move on to using Postman to generate Python code for obtaining a list of devices managed by Cisco DNA Center.
+In our Postman view, under **Cisco DNA Center APIs** collection, navigate to '2. Network Devices' section, and select the first 'GET' network-device API Call.
+
+Lets examine main elements of this Postman API call definition:
+* Type: GET
+* API Endpoint: https://{{dnac}}/dna/intent/api/v1/network-device (Note: please adjust the URI to match, as you may have additional filters applied after 'network-device' section. For purposes of this excercise we simply want to obtain a complete list of devices with no additional query modifiers)
+* Authorization Tab
+  Type: Inherit Auth from parent
+* Headers Tab:
+  x-auth-token: {{token}} (Note: this is first time we are seeing Variable re-use. This '{{}}' notation indicates that we want to substitue the value of 'token' variable from our Environment set and assign it to 'x-auth-token' key)
+
+Lets hit 'Send' and we should get a Status: **200 OK** with a JSON payload as part of the Body tab.
+JSON responses can be quite lengthy and are difficult for a human eye to enterpret beyond a few lines.
+In our Postman 'network-device' API tab, select 'Visualize' tab to get a pretty tabular view representing data contained in the JSON Payload.
+
+![json](images/dnac_python_visualize.png?raw=true "Postman - JSON payload Visualization")
 
 ## Summary
 
