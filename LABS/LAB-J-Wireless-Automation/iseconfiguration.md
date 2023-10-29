@@ -24,9 +24,9 @@ To test with ISE a general understanding of the differences between authenticati
 
 ### OPEN and PSK Authentication
 
-While **OPEN and PSK** can be tested *without* ISE. 
+While all **SSID** may be built without ISE both the **OPEN and PSK** policies can built via **DNA Center** and tested *without* configuration being created on ISE directly. 
 
-For **OPEN and PSK** you may return to the lab modules and continue configuration as no further additional configuration steps are required.
+Thus for **OPEN and PSK** you may return to the lab modules and continue configuration as no further additional configuration steps are required.
 
 ### iPSK Authentication
 
@@ -68,11 +68,19 @@ For **EAP** you may follow the section below to configure ISE and AD to work wit
 
 ## ISE iPSK Configuration Section
 
-
+profiling
+profiling build logical profile
+authz profiles and policy
+endpoint logical authz profile and policy
+endpoint ipsk authz profile and policy
 
 ## ISE EAP Configuration Section
 
+ISE Certificate Prep
+ISE Join to direct
+ISE CAP profile
 
+authz profiles and policy
 
 ## Summary
 
