@@ -8,6 +8,6 @@ Congratulations you have completed the XXX module of the lab and . Please use th
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-> [**Continue to Wireless Templates Module**](../LAB-J-Wireless-Automation/module6-wirelesstemplates.md)
+> [**Continue to Wireless Templates Module**](../LAB-J-Wireless-Automation/module8-wirelesstemplates.md)
 
 > [**Return to Lab Menu**](./README.md)
