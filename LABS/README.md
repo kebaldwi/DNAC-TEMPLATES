@@ -22,6 +22,8 @@ Please use this menu to navigate the various sections of this Github repository.
 * [Dynamic Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-H-Dynamic-Automation/) - This lab will use many Advanced Automation techniques discussed previously **(allow 2.0 hrs)**
 * [Rest-API Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-I-Rest-API-Orchestration/) - This lab uses Postman Collections to automate DNA Center **(allow 2.0 hrs)**
 * [Wireless Automation - BETA](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-J-Wireless-Automation/) - This lab covers Traditional Wireless Automation  **(allow 4.0 hrs)**
+* [Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-K-Orchestration/) - This lab uses [Postman](https://www.postman.com) Collections and [Ansible](https://www.ansible.com) Playbooks to automate DNA Center **(allow 4.0 hrs)**
+* [CICD Orchestration - In Development](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/images/underconstruction.png) This lab uses [Python](https://www.python.org) and [Ansible](https://www.ansible.com) Playbooks in conjunction with [JENKINS](https://www.jenkins.io) to automate Cisco DNA Center via REST-API **(allow 4.0 hrs)**
 
 ## DCLOUD as a LAB
 
