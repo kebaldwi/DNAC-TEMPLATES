@@ -64,8 +64,9 @@ You will find various examples within the various folders of this repository, wi
 ### Orchestration of Cisco DNA Center
 
 * [REST API Orchestration](./RestAPI.md) - This section is a high level discussion of utlilizing REST API with Cisco DNA Center
-* [Python Orchestration](./Python.md)
-* [Ansible Orchestration](./images/underconstruction.png)
+* [Python Orchestration](./Python.md) - This section is a high level discussion of utilizing Python with Cisco DNA Center
+* [Ansible Orchestration](./images/underconstruction.png) - This section is a high level discussion of Ansible orchestration of Cisco DNA Center
+* [CICD Orchestration](./images/underconstruction.png) - This section is a high level discussion of CICD orchestration of Cisco DNA Center
 
 ### Fault-Finding
 
