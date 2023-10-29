@@ -1,8 +1,8 @@
-# DevNet Cisco DNA Center Advanced REST API with Postman 
+# Cisco DNA Center Advanced REST API with Postman 
 
 ## Overview
 
-This Lab is designed as a standalone lab to help customers with varying challenges in Automating and Orchestrating their network infrastructure. Within the lab, we will use various tools and techniques to Automate various tasks and orchestrate DNA Center.
+This Lab is designed as a standalone lab to help customers with varying challenges in Automating and Orchestrating their network infrastructure. Within the lab, we will use various tools and techniques to Automate various tasks and orchestrate DNA Center. This lab used in DEVWKS-2004 at Cisco Live.
 
 ## General Information
 
