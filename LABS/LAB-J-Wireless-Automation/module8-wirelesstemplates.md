@@ -34,14 +34,16 @@ To refresh on those topics please refer to the following:
 
 While there may be many use cases for templates in wireless, the use of the GUI negates the complexities involved with maintaining lengthy ones. There are however some examples which have used over the past few years when certain features were not available via the GUI in any form:
 
-1. **SSID with mPSK** - *(create mPSK keys in SSID)* - *(available in 2.3.5.x)*
-2. **CCKM SSID** - *(CCKM setting for SSID)* - *(available in 2.3.5.x)*
-3. **Anchor Priority** - *(Enabling)* - *(available in 2.3.3.x)*
-4. **Open Roaming** - *(Set up open roaming)*
-5. **RF** - *(Enabling RF Thresholds)*
-6. **Radius Probes** - *(Enabling Probes for AAA)*
-7. **9800 Hardening** - *(Various Security Settings)*
-8. **Onboarding** - *(Composite Example for PnP)*
+1. [⬇︎**SSID with mPSK**⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-J-Wireless-Automation/templates/wireless/Wifi_SSID_mPSK.json) - *(create mPSK keys in SSID)* - *(available in 2.3.5.x)*
+2. [⬇︎**CCKM SSID**⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-J-Wireless-Automation/templates/Wifi_CCKM_templates.json) - *(CCKM setting for SSID)* - *(available in 2.3.5.x)*
+3. [⬇︎**Anchor Priority**⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-J-Wireless-Automation/templates/Wifi_Anchor_Priority_templates.json) - *(Enabling)* - *(available in 2.3.3.x)*
+4. [⬇︎**Open Roaming**⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-J-Wireless-Automation/templates/Wifi_Open_Roaming_project.json) - *(Set up open roaming from a Project)*
+5. [⬇︎**RF**⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-J-Wireless-Automation/templates/Wifi_RF_templates.json) - *(Enabling RF Thresholds)*
+6. [⬇︎**Radius Probes**⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-J-Wireless-Automation/templates/Wifi_AAA_Probes_templates.json) - *(Enabling Probes for AAA)*
+7. [⬇︎**9800 Hardening**⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-J-Wireless-Automation/templates/Wifi_9800_Harden_templates.json) - *(Various Security Settings)*
+8. [⬇︎**Onboarding**⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-J-Wireless-Automation/templates/Wifi_PnP_Onboarding_project.json) - *(Composite Example for PnP from a Project)*
+
+9. [⬇︎**ALL Wireless Examples**⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-J-Wireless-Automation/templates/Wifi_Templates_project.json) - *(All Wireless Examples in a Project)*
 
 <details open>
 <summary> Click the arrow for details</summary>
