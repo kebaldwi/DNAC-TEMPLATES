@@ -18,7 +18,7 @@ The various use cases for model-based configuration are as follows:
 <details open>
 <summary> Click the arrow for details</summary>
 
-### Step 1 - ***Creating Model-Based Configuration***
+## Step 1 - ***Creating Model-Based Configuration***
 
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Tools>Model Config Editor`.
 
@@ -31,10 +31,12 @@ The various use cases for model-based configuration are as follows:
    4. From the dopdown select the value `ap-macaddress-ssid` for the **Called Station Id**
    5. Click Save
 
-3. Select the hamburger menu icon to open the menu. Select `Design>Network Profiles`.
-4. Select the **edit** button beside the Wireless Network Profile
-5. Scroll down to the **Attach Model Configs** and click the **⨁ Add Model Config** button
-6. In the Window that appears:
+## Step 2 - ***Assigning Model-Based Configuration***
+
+1. Select the hamburger menu icon to open the menu. Select `Design>Network Profiles`.
+2. Select the **edit** button beside the Wireless Network Profile
+3. Scroll down to the **Attach Model Configs** and click the **⨁ Add Model Config** button
+4. In the Window that appears:
    
    1. Device Types seledct Wireless Controller
    2. Select **> Wireless** to display the list 
@@ -42,7 +44,9 @@ The various use cases for model-based configuration are as follows:
    4. Select `DNAC-Templates`
    5. Click **Add**
 
-7. Click Save to add the changes.
+5. Click Save to add the changes.
+
+6. The configuration changes would now need to be provisioned to the Wireless Controller.
 
 ## Summary
 
