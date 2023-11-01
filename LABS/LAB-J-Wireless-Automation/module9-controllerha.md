@@ -23,7 +23,7 @@ Configuring High Availability (HA) on the Cisco Catalyst 9800 Series Wireless Co
 
 ## Procedure:
 
-1. Click the menu icon (**≡**) and choose **Provision>Network Devices>Inventory**.
+1. Click the menu icon (**≡**) and choose `Provision>Network Devices>Inventory`.
    The **Inventory** window is displayed with the discovered devices listed.
 2. To view devices available in a particular site, expand the **Global** site in the left pane, and select the site, building, or floor that you are interested in.
    All the devices available in that selected site are displayed in the **Inventory** window.
@@ -61,7 +61,7 @@ Configuring High Availability (HA) on the Cisco Catalyst 9800 Series Wireless Co
 
     This is triggered by the inventory poller or manual resynchronization. By now, the secondary controller (Catalyst 9800 Series Wireless Controller 2) is deleted from Cisco DNA Center. This flow indicates successful HA configuration in the Catalyst 9800 Series Wireless Controller.
 
-12. To manually resynchronize the controller, on the **Provision>Inventory** window, select the controller that you want to synchronize manually.
+12. To manually resynchronize the controller, on the `Provision>Inventory` window, select the controller that you want to synchronize manually.
 
 13. From the **Actions** drop-down list, choose **Resync**.
 

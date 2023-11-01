@@ -1,6 +1,6 @@
 # Wireless Controller PnP or Discovery
 
-Within this lab module, we will concentrate our efforts on the discovery or PnP of each of the devices by **Cisco DNA Center**, so that we can onboard and gain management of those devices. The lab within DCLOUD does not today have the ability to run PnP of the Controller, but that is possible and we will have a separate section to talk about those aspects. 
+Within this lab module, we will concentrate our efforts on the discovery or PnP of each of the devices by **Cisco DNA Center**, so that we can onboard and gain management of those devices. 
 
 Within this lab we will concentrate on the following which are typical in most Enterprise Networks today:
 
@@ -171,6 +171,14 @@ While we have the ability to PnP a Wireless Controller typically these are estan
    ![json](./images/module1-pnpdiscovery/dnac-inventory-assignment-results.png?raw=true "Import JSON")
 
 </details>
+
+## Lab Section 2 - PnP of Wireless Controller 
+
+The lab within DCLOUD does not today have the ability to run PnP of the Controller, but please check out this video which explains the process. 
+
+<div align="center">
+   <a href="https://www.youtube.com/watch?v=Vl7AfhNaGuc"><img src="https://img.youtube.com/vi/Vl7AfhNaGuc/0.jpg" style="width=560; height=315;"></a>
+</div>
 
 ## Summary
 
