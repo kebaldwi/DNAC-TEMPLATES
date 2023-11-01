@@ -76,11 +76,13 @@ endpoint ipsk authz profile and policy
 
 ## ISE EAP Configuration Section
 
+Prerequisites for EAP
+
 ISE Certificate Prep
 ISE Join to direct
 ISE CAP profile
 
-authz profiles and policy
+profiling, authz profiles and policy w/wo SGT
 
 ## Summary
 

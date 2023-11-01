@@ -22,72 +22,48 @@ The various use cases for model-based configuration are as follows:
 
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Tools>Model Config Editor`.
 
-   ![json](./images/underconstruction.png?raw=true "Import JSON")
+   ![json](./images/module7-modelbasedconfig/dnac-menu-tools-modelbasedconfig.png?raw=true "Import JSON")
 
 2. On the **Model Config Editor** page click the `Design` tab and complete the following:
 
-   ![json](./images/underconstruction.png?raw=true "Import JSON")
-
    1. Select a model-based config as shown (AAA Radius Attributes Configuration)
-
-      ![json](./images/underconstruction.png?raw=true "Import JSON")
-
    2. Click the **⨁ Add** button to create custom config.
 
-      ![json](./images/underconstruction.png?raw=true "Import JSON")
+      ![json](./images/module7-modelbasedconfig/dnac-tools-mbc-add.png?raw=true "Import JSON")
 
    3. Enter a Name for the Design Element, `DNAC-Templates`
+   4. From the dropdown select the value `ap-macaddress-ssid` for the **Called Station Id**
+   5. Click **Save**
 
-      ![json](./images/underconstruction.png?raw=true "Import JSON")
-
-   4. From the dopdown select the value `ap-macaddress-ssid` for the **Called Station Id**
-
-      ![json](./images/underconstruction.png?raw=true "Import JSON")
-
-   5. Click Save
-
-      ![json](./images/underconstruction.png?raw=true "Import JSON")
-
+      ![json](./images/module7-modelbasedconfig/dnac-mbc-aaa-build.png?raw=true "Import JSON")
 
 ## Step 2 - ***Assigning Model-Based Configuration***
 
 1. Select the hamburger menu icon to open the menu. Select `Design>Network Profiles`.
 
-   ![json](./images/underconstruction.png?raw=true "Import JSON")
+   ![json](./images/module7-modelbasedconfig/dnac-menu-profiles.png?raw=true "Import JSON")
 
 2. Select the **edit** button beside the Wireless Network Profile
 
-   ![json](./images/underconstruction.png?raw=true "Import JSON")
+   ![json](./images/module7-modelbasedconfig/dnac-profiles-edit.png?raw=true "Import JSON")
 
 3. Scroll down to the **Attach Model Configs** and click the **⨁ Add Model Config** button
 
-   ![json](./images/underconstruction.png?raw=true "Import JSON")
+   ![json](./images/module7-modelbasedconfig/dnac-profiles-add-mbc.png?raw=true "Import JSON")
 
 4. In the Window that appears:
    
    1. Device Types select Wireless Controller
-
-      ![json](./images/underconstruction.png?raw=true "Import JSON")
-
    2. Select **> Wireless** to display the list
-
-      ![json](./images/underconstruction.png?raw=true "Import JSON")
-
    3. Open **AAA Radius Attributes Configuration**
-
-      ![json](./images/underconstruction.png?raw=true "Import JSON")
-
    4. Select `DNAC-Templates`
-
-      ![json](./images/underconstruction.png?raw=true "Import JSON")
-
    5. Click **Add**
 
-      ![json](./images/underconstruction.png?raw=true "Import JSON")
+      ![json](./images/module7-modelbasedconfig/dnac-profiles-mbc-config.png?raw=true "Import JSON")
 
 5. Click Save to add the changes.
 
-   ![json](./images/underconstruction.png?raw=true "Import JSON")
+   ![json](./images/module7-modelbasedconfig/dnac-profiles-mbc-save.png?raw=true "Import JSON")
 
 6. The configuration changes would now need to be provisioned to the Wireless Controller.
 
