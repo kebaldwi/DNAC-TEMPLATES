@@ -48,13 +48,36 @@ While there may be many use cases for templates in wireless, the use of the GUI 
 <details open>
 <summary> Click the arrow for details</summary>
 
-## Step 1 - ***Creating Wireless Templates***
+## Step 1 - ***Importing Wireless Templates***
 
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Tools>Template Editor`.
 
    ![json](./images/underconstruction.png?raw=true "Import JSON")
 
-   
+2. In the Template Editor **create** a new Jinja2 Regular Template in the DCLOUD PrepEnvironment Project. Customize a name that you will remember and select Wireless Controllers and IOS-XE as both the device type and software.
+
+3. Within the Editor View **paste** the following:
+
+```J2
+{# Option This option allows you to look for a key word in the profile name and apply CCKM 
+   It does not require any bind variables but instead uses System Variables.content-scan
+#}
+
+{% macro def_SSID_CCKM() %}
+  {% for profile in __policyprofile %}
+    {% if "CAMPUS" in profile %}
+      wireless profile policy {{ profile }}
+        shutdown
+        security wpa akm cckm
+        no shutdown
+    {% endif %}
+  {% endfor %}
+{%- endmacro %}  
+
+{{ def_SSID_CCKM() }}
+```
+
+4. **Save** and **Commit** the Template to the project.
 
 ## Step 2 - ***Assigning Wireless Templates***
 
@@ -66,7 +89,7 @@ While there may be many use cases for templates in wireless, the use of the GUI 
 
    ![json](./images/underconstruction.png?raw=true "Import JSON")
 
-3. Scroll down to the **Attach Model Configs** and click the **⨁ Add Model Config** button
+3. Scroll down to the **Attach Templates** and click the **⨁ Add Wireless Template** button
 
    ![json](./images/underconstruction.png?raw=true "Import JSON")
 
@@ -76,19 +99,15 @@ While there may be many use cases for templates in wireless, the use of the GUI 
 
       ![json](./images/underconstruction.png?raw=true "Import JSON")
 
-   2. Select **> Wireless** to display the list
+   2. Select **> Templates** to display the list
 
       ![json](./images/underconstruction.png?raw=true "Import JSON")
 
-   3. Open **AAA Radius Attributes Configuration**
+   3. Select **Wireless CCKM**
 
       ![json](./images/underconstruction.png?raw=true "Import JSON")
 
-   4. Select `DNAC-Templates`
-
-      ![json](./images/underconstruction.png?raw=true "Import JSON")
-
-   5. Click **Add**
+   4. Click **Add**
 
       ![json](./images/underconstruction.png?raw=true "Import JSON")
 
@@ -102,7 +121,7 @@ While there may be many use cases for templates in wireless, the use of the GUI 
 
 ## Summary
 
-Congratulations you have completed the XXX module of the lab and . Please use the navigatation below to continue your learning.
+Congratulations you have completed the Wireless Templating module of the lab and discovered how and when to utilize wireless templates. Please use the navigatation below to continue your learning.
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
