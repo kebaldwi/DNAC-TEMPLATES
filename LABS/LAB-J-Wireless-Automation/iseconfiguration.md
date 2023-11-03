@@ -1,8 +1,4 @@
-# In Development
-
-![json](./images/underconstruction.png?raw=true "Import JSON")
-
-# Identity Services Engine (ISE) Configuration
+# Identity Services Engine (ISE) Configuration - In Development
 
 Within this section, we will configure ISE to work with various sections of the Wireless Lab. This section is not a definitive guide into how to configure ISE, and should not negate the use of the configuration guide.
 
