@@ -134,8 +134,11 @@ At this point you will have successfully configured the **EAP SSID** on the **Wi
 > [**Proceed to Open SSID Sub Module**](./module2d-open.md)
 
 > [**Return to Module 2**](./module2-wlans.md)
+
 > [**Return to PSK SSID Sub Module 2**](./module2a-psk.md)
+
 > [**Return to iPSK SSID Sub Module 2**](./module2b-ipsk.md)
+
 > [**Proceed to OPEN SSID Sub Module 2**](./module2d-open.md)
 
 > [**Return to Lab Menu**](./README.md)

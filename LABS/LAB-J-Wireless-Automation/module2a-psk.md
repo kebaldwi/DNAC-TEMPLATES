@@ -139,8 +139,11 @@ At this point you will have successfully configured the **PSK SSID** on the **Wi
 > [**Proceed to iPSK SSID Sub Module**](./module2b-ipsk.md)
 
 > [**Return to Module 2**](./module2-wlans.md)
+
 > [**Proceed to iPSK SSID Sub Module 2**](./module2b-ipsk.md)
+
 > [**Proceed to EAP SSID Sub Module 2**](./module2c-eap.md)
+
 > [**Proceed to OPEN SSID Sub Module 2**](./module2d-open.md)
 
 > [**Return to Lab Menu**](./README.md)

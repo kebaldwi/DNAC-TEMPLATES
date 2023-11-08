@@ -144,8 +144,11 @@ At this point you will have successfully configured the **OPEN SSID** on the **W
 > [**Continue to RF Profile Provisioning Module**](../LAB-J-Wireless-Automation/module3-rfprofiles.md)
 
 > [**Return to Module 2**](./module2-wlans.md)
+
 > [**Return to PSK SSID Sub Module 2**](./module2a-psk.md)
+
 > [**Return to iPSK SSID Sub Module 2**](./module2b-ipsk.md)
+
 > [**Return to EAP SSID Sub Module 2**](./module2c-eap.md)
 
 > [**Return to Lab Menu**](./README.md)
