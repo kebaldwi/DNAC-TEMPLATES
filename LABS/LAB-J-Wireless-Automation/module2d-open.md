@@ -142,13 +142,8 @@ At this point you will have successfully configured the **OPEN SSID** on the **W
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
 > [**Continue to RF Profile Provisioning Module**](../LAB-J-Wireless-Automation/module3-rfprofiles.md)
-
 > [**Return to Module 2**](./module2-wlans.md)
-
 > [**Return to PSK SSID Sub Module 2**](./module2a-psk.md)
-
 > [**Return to iPSK SSID Sub Module 2**](./module2b-ipsk.md)
-
 > [**Return to EAP SSID Sub Module 2**](./module2c-eap.md)
-
 > [**Return to Lab Menu**](./README.md)
