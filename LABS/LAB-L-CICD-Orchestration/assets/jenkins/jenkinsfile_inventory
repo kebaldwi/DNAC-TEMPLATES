@@ -1,0 +1,82 @@
+
+pipeline {
+
+    agent
+        { docker
+            { image 'python:latest' }
+    }
+
+    environment {
+        JENKINS_REPO_NAME = 'dnacenter_jenkins_automations'
+        GITHUB_USERNAME = 'gzapodea'
+        GITHUB_TOKEN = credentials('GITHUB_TOKEN')
+    }
+
+    options {
+        skipStagesAfterUnstable()
+        timeout(time: 15, unit: 'MINUTES')
+    }
+
+    stages {
+
+        stage ('Build Python Environment') {
+            steps {
+                echo '\n\nJenkins Device Inventory build start..............................'
+                echo('\n\nBuilding the Docker container:..............................')
+            }
+        }
+
+        stage ('Install Python libraries') {
+            steps {
+                echo('\n\nInstalling Python libraries:..............................')
+                sh 'git clone https://' + GITHUB_USERNAME + ':' + GITHUB_TOKEN + '@github.com/zapodeanu/' + JENKINS_REPO_NAME + '.git'
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    sh 'pip install -r ' + JENKINS_REPO_NAME + '/requirements.txt --no-warn-script-location'
+                    echo('\n\nVerify Python version and Libraries:..............................')
+                    sh 'python --version'
+                    sh 'pip3 list'
+                    echo('\n\nVerify Application Files:..............................')
+                    sh 'ls ' + JENKINS_REPO_NAME + '/'
+                }
+            }
+        }
+
+        stage ('Device inventory collection') {
+            steps {
+                echo('\n\nCollect the inventory of devices managed by Cisco DNA Center:..............................')
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    echo('\n\nVerify Working Path:..............................')
+                    sh 'pwd'
+                    dir('dnacenter_jenkins_automations') {
+                        sh 'python3 device_inventory.py'
+                    }
+                }
+            }
+        }
+
+        stage ('List the "inventory" folder content') {
+            steps {
+                echo('\n\nThe inventory files that have been created:..............................')
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    echo('\n\nVerify Working Path:..............................')
+                    sh 'pwd'
+                    dir('dnacenter_jenkins_automations/inventory') {
+                        sh 'ls -l -A'
+                    }
+                }
+            }
+        }
+
+    }
+
+    post {
+
+        cleanup {
+            cleanWs()
+        }
+
+        always {
+            echo '\n\nJenkins Device Inventory build end'
+        }
+    }
+}
