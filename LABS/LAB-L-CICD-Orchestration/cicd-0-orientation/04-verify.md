@@ -45,7 +45,7 @@ ghclone https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-L-CICD-O
 ```SHELL
 chmod -R 777 /root/
 ```
-![json](./images/Postman-Settings-SSL-Validation-On.png?raw=true "Import JSON")
+![json](./images/.png?raw=true "Import JSON")
 
 In the next section we will set up Jenkins
 
