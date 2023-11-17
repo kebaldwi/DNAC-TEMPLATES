@@ -2,7 +2,7 @@
 
 In this lab, our focus changes slightly as we start to automate host onboarding. A large component of host onboarding is the authentication of hosts and assignments within the network. 
 
-In this section, and in preparation for the steps which follow, we will integrate Cisco DNA Center with Identity Services Engine. This integration allows pxGrid communication between the Cisco DNA Center and ISE. For this reason, the **PxGrid** **persona** does need to be enabled on at least 1 ISE Node within an ISE Cluster. This has already been completed in the sandbox. 
+In this section, and in preparation for the steps which follow, we will integrate Cisco DNA Center with Identity Services Engine. This integration allows pxGrid communication between the Cisco DNA Center and ISE. For this reason, the **PxGrid** **persona** does need to be enabled on at least 1 ISE Node within an ISE Cluster. **This has already been completed in the sandbox.** 
 
 PxGrid integration allows configuration automation by Cisco DNA Center within ISE for Network Access Devices, SGT creation, and SGACL builds via Contracts and Policy.
 
@@ -48,4 +48,4 @@ PxGrid integration allows configuration automation by Cisco DNA Center within IS
    ![json](./images/dnac-system-settings-aaa-ise-done.png?raw=true "Import JSON")
    ![json](./images/dnac-system-settings-aaa-ise-complete.png?raw=true "Import JSON")
 
-> [**Next Section**](03-postman.md)
+> [**Next Section**](./03-preparation.md)

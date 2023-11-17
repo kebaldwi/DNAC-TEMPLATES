@@ -1,6 +1,6 @@
 # Building Hierarchy
 
-In this module, we will use *Postman* to build and deploy a hierarchy within Cisco DNA Center. 
+In this module, we will use a **CI/CD Pipeline** to build and deploy a hierarchy within Cisco DNA Center. 
 
 Cisco DNA Center uses hierarchy to logically align intent (code and configuration) against infrastructure. This allows the network administrator to align changes and modifications to the network within maintenance windows.
 
@@ -20,4 +20,4 @@ The network hierarchy has a predetermined hierarchy:
 
 > **Prerequisites**: **Completed** the previous section **Orientation**
 
-> [**Next Section**](02-integration.md)
+> [**Next Section**](./02-integration.md)
