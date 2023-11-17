@@ -6,7 +6,7 @@ This Lab is designed as a standalone lab to help customers with varying challeng
 
 ## General Information
 
-Until this point, we have used Rest-API for some basic setup tasks, but there are so many situations that can be solved or at least eased using Rest-API in conjunction with DNA Center. In this lab, we will use a complete set of REST-API collections which will build upon the foundational knowledge acquired in the previous labs. For this lab, we will concentrate on DNA Center configuration and how DNA Center can be automated to perform various functions which we have already covered utilizing **Python**, inconjunction with **Ansible Playbooks** in conjunction with **Jenkins**
+Until this point, we have used Rest-API for some basic setup tasks, but there are so many situations that can be solved or at least eased using Rest-API in conjunction with DNA Center. In this lab, we will use a complete set of REST-API collections which will build upon the foundational knowledge acquired in the previous labs. For this lab, we will concentrate on DNA Center configuration and how DNA Center can be automated to perform various functions which we have already covered utilizing **Python**, inconjunction with **Jenkins CI/CD Pipelines**
 
 This page will serve as the landing page for this lab section due to the amount of content it will cover and the need to expand on it over time. 
 
@@ -20,20 +20,12 @@ The use cases we will cover are the following which you can access via the links
 
 1. [**The Journey to Orchestration**](./cicd-0-orientation/01-intro.md)
 
-### Python
+### Jenkins Pipelines with Python
 
-2. [**Python Building Hierarchy**](./cicd-1-hierarchy/01-intro.md)
-3. [**Python Assign Settings and Credentials**](./cicd-2-settings/01-intro.md)
-
-### Ansible
-
-4. [**Ansible Device Discovery**](./cicd-3-discovery/01-intro.md)
-5. [**Ansible Template Deployment**](./cicd-4-templates/01-intro.md)
-
-### Jenkins
-
-6. [**Incorporating YAML**](./cicd-6-yaml/01-intro.md)
-7. [**Jenkins Orchestration**](./cicd-7-ansible/01-intro.md)
+2. [**Python Building Hierarchy with Settings**](./cicd-1-hierarchy/01-intro.md)
+3. [**Python Device Discovery**](./cicd-2-discovery/01-intro.md)
+4. [**Python Template Deployment**](./cicd-3-templates/01-intro.md)
+5. [**Python Inventory Collection**](./cicd-4-inventory/01-intro.md)
 
 ## Preparation
 
@@ -63,16 +55,6 @@ This software is required to connect your workstation to Cisco dCloud. For an ex
 > **Documentation**: For AnyConnect Documentation visit: <a href="https://dcloud-cms.cisco.com/help/android_anyconnect" target="_blank">dCloud AnyConnect Documentation</a>
 
 > **Download**: Get AnyConnect here: <a href="https://dcloud-rtp-anyconnect.cisco.com" target="_blank">⬇︎ AnyConnect Download Site ⬇︎</a>
-
-### Postman
-
-Postman is an API platform for building and using APIs. Postman simplifies each step of the API lifecycle and streamlines collaboration so you can create better APIs—faster.
-
-Once Postman has been downloaded to your desktop, it is advisable to set up an account and sign in so that all your changes can be used within any system with the client or a web browser, much in the same way as a chrome or firefox profile work. This additional capability I have found instrumental when working in multiple environments. 
-
-> **Download**: Get Postman here: <a href="https://www.postman.com/downloads/" target="_blank">⬇︎ Postman Download ⬇︎</a>
-
-> **Documentation**: For an understanding of postman, please visit: <a href="https://learning.postman.com/docs/getting-started/introduction/" target="_blank">Postman Documentation</a>
 
 ### Google Chrome
 
