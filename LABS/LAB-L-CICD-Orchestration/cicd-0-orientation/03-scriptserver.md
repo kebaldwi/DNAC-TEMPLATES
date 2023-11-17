@@ -15,10 +15,10 @@ Complete the following:
 
 1. Open the `mRemoteNG application from the desktop using the icons shown.
 
-   ![json](./images/ansible-connect.png?raw=true "Import JSON")
+   ![json](./images/.png?raw=true "Import JSON")
 
 2. Within the mRemoteNG application double click on the Script Server and an SSH connection will open to the Ubuntu Server.
 
-   ![json](./images/ansible-ssh.png?raw=true "Import JSON")
+   ![json](./images/.png?raw=true "Import JSON")
 
 > [**Next Section**](./04-verify.md)
