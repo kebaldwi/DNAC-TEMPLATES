@@ -78,7 +78,7 @@ def github_pull():
 
     os.chdir('templates')
     files_list = os.listdir()
-    permissions = 0o755
+    permissions = 0o777
 
     # authenticate to github
     g = Github(GITHUB_USERNAME, GITHUB_TOKEN)
