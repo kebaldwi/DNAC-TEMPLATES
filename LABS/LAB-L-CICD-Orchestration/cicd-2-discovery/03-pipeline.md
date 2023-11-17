@@ -121,5 +121,5 @@ pipeline {
 
 4. Finally click **Apply** and **Save** to save the new configurated **Pipeline**.
 
-> [**Next Section**](./05-deploy.md)
+> [**Next Section**](./04-deploy.md)
 >

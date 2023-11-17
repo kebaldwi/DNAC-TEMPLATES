@@ -6,6 +6,6 @@ This may assist in brownfield learning so as to ensure the device may be properl
 
 > **Note**: If there is time, look at the results of the Discovery and Inventory within Cisco DNA Center and the various pre and post-scripts within Postman.
 
-> [**NEXT MODULE**](../dnac-4-templates/01-intro.md)
+> [**NEXT MODULE**](../cicd-3-templates/01-intro.md)
 
 > [**HOME**](../README.md)
