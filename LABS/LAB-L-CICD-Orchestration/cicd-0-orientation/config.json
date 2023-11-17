@@ -5,26 +5,30 @@
         "content":"01-intro.md"
      },
      {
-        "title":"Collections",
-        "content":"02-collections.md"
+        "title":"Preparation",
+        "content":"02-preparation.md"
      },
      {
-      "title":"Preparing Postman",
-      "content":"03-postman.md"
+      "title":"Script Server",
+      "content":"03-scriptserver.md"
      },
      {
-      "title":"SSL Validation",
-      "content":"04-ssl.md"
+      "title":"Lab Verification",
+      "content":"04-verify.md"
+     },
+     {
+      "title":"Pod Setup",
+      "content":"05-setuplab.md"
      },
      {
       "title":"Summary",
-      "content":"05-summary.md"
+      "content":"06-summary.md"
      }
   ],
   "meta":{
-     "code_name":"dnac-0-orientation",
-     "repo":"llabsource-ADVANCED-DNAC-LABS",
-     "slug":"Prepare Postman for work with DNA Center Platform.",
+     "code_name":"cicd-0-orientation",
+     "repo":"llabsource-ADVANCED-RESTAPI-CICD-LABS",
+     "slug":"Prepare LAB for CICD work with DNA Center Platform.",
      "time":"0",
      "poweredBy":"sandbox URL",
      "moduleOnly":false,
