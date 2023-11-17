@@ -83,4 +83,4 @@ Follow these steps:
 4. To stop the **Pipeline** click the small red X in the **top right** of either the **Build** or the **Build History Number**
       ![json](./images/.png?raw=true "Import JSON")
 
-> [**Next Section**](06-verify.md)
+> [**Next Section**](./06-verify.md)

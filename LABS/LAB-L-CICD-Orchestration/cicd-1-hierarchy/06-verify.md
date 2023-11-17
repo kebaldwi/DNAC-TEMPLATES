@@ -24,4 +24,4 @@ Follow these steps:
 
    ![json](./images/DNAC-Hierarchy-Verify.png?raw=true "Import JSON")
 
-> [**Next Section**](07-summary.md)
+> [**Next Section**](./07-summary.md)

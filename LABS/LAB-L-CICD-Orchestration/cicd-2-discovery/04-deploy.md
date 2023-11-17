@@ -30,4 +30,4 @@ Follow these steps:
 
    ![json](./images/Postman-Collection-Discovery-Summary.png?raw=true "Import JSON")
 
-> [**Next Section**](04-verify.md)
+> [**Next Section**](./05-verify.md)
