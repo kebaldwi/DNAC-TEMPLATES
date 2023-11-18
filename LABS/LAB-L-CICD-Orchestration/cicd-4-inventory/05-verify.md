@@ -1,6 +1,6 @@
-# Template Deployment Verification
+# Device Inventory Verification
 
-To verify that the template was deployed successfully, we will inspect the template editor within Cisco DNA Center.
+To verify that the inventory was successfully retrieved examine the files within the directory `/root/DEVWKS-2176/inventory` and `/root/DEVWKS-2176/reports` Cisco DNA Center.
 
 Follow these steps:
 
@@ -12,16 +12,18 @@ Follow these steps:
 
    ![json](./images/DNAC-Login.png?raw=true "Import JSON")
 
-3. When the Cisco DNA Center Dashboard is displayed, Click the  icon to display the menu'
+3. When the Cisco DNA Center Dashboard is displayed, Click the icon to display the menu'
 
    ![json](./images/DNAC-Menu.png?raw=true "Import JSON")
 
-4. Select `Tools>Template Editor` from the menu to continue.
+4. Select `Network Device>Inventory` from the menu to continue.
 
-   ![json](./images/DNAC-Menu-TemplateEditor.png?raw=true "Import JSON")
+   ![json](./images/.png?raw=true "Import JSON")
 
-5. Expand the Project with your Area Name on the left to show your specific Project with the template, then select it and view it on the right.
+5. Compare that against the files in the directory `/root/DEVWKS-2176/inventory` by scrolling up and down using the following:
 
-   ![json](./images/DNAC-TemplateEditor-DeployTemplate-Verify.gif?raw=true "Import JSON")
+```SHELL
+   cat /root/DEVWKS-2176/inventory/*
+```
 
-> [**Next Section**](05-summary.md)
+> [**Next Section**](06-summary.md)
