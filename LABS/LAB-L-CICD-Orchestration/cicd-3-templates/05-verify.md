@@ -29,7 +29,6 @@ Follow these steps:
 ```SHELL
    ssh netadmin@198.19.1.2
 ```
-
    - when prompted enter the password: `C1sco12345`
 
 > [**Next Section**](./06-summary.md)

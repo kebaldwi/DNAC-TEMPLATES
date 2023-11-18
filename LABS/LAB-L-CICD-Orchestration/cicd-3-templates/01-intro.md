@@ -8,7 +8,7 @@ Cisco DNA Center uses hierarchy to logically align intent (code and configuratio
 
 Cisco DNA Center has a **Template Editor||Template Hub**, which allows for the import and export of custom templates written in **Jinja2** or **Velocity** scripting languages. The templates are encapsulated within JSON inside Cisco DNA Center.
 
-These templates and associated parameters allow for the **configuration** of devices when associated with sites in the hierarchy through a **Network Profile**`**. 
+These templates and associated parameters allow for the **configuration** of devices when associated with sites in the hierarchy through a **Network Profile**. 
 
 Typically **Templates**, both **Regular** and **Composite**, are grouped logically into **Projects**. When utilizing **REST API** it is possible to deploy **templates** without associating them to **Network Profiles**. This allows for greater flexibility when onboarding devices, or when using Cisco DNA Center as an automation engine during orchestrated processes.
 
