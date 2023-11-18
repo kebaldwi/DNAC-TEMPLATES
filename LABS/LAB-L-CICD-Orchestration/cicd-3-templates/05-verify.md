@@ -24,4 +24,12 @@ Follow these steps:
 
    ![json](./images/DNAC-TemplateEditor-DeployTemplate-Verify.gif?raw=true "Import JSON")
 
-> [**Next Section**](05-summary.md)
+6. Open a ssh connection to the C9300-1 switch from the script server to verify the deployment of the configuration:
+
+```SHELL
+   ssh netadmin@198.19.1.2
+```
+
+   - when prompted enter the password: `C1sco12345`
+
+> [**Next Section**](./06-summary.md)
