@@ -62,9 +62,9 @@ First thing we should note is that the indentation **does** matter with **Groovy
 
 The way this script is generally designed to work is that when initiated it loops until you cancel it. Persistently it checks for new **template files** in the **directory** in the `/root/DEVWKS-2176/templates` and then gathers the **timestamp** from those files and compares it to the previous collected **timestamps**. If the **timestamps** have **changed**, the files have been modified and the **Pipeline** automatically runs the **Python** program to **build templates** on Cisco DNA Center and then **deploy them** to the **devices** in the **YML**.
 
-## Device Discovery Deployment
+## Template Deployment
 
-We will now **discover** the **devices** using the **CSV** variables previously discussed.
+We will now **build** and **deploy** the **templates** to the **devices** using the **templates** in the directory and the **YML** variables previously discussed.
 
 Follow these steps:
 
