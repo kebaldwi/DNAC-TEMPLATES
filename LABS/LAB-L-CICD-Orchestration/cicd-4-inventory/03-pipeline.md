@@ -68,10 +68,9 @@ We now need to build the **Pipeline** which will monitor the files in the direct
 
 ```GROOVY
 pipeline {
-    agent any
 
     stages {
-        stage('Monitor Template Directory') {
+        stage('Retrieve Device Inventory') {
             steps {
                 script {
                     def previousModifiedTime = null
@@ -79,18 +78,18 @@ pipeline {
 
                     while (true) {
                         // Retrieve the previous modified time from a file or environment variable
-                        println 'Monitoring Template Directory for changes'
-                        def storedModifiedTime = readFile('/root/DEVWKS-2176/timestamp/previous_modified_time_templates.txt').trim()
+                        println 'Monitoring Hierarchy Build for changes'
+                        def storedModifiedTime = readFile('/root/DEVWKS-2176/timestamp/previous_modified_time_inventory.txt').trim()
                         if (storedModifiedTime) {
                             previousModifiedTime = storedModifiedTime.toLong()
                         }
 
                         // Check if any files exist in the subdirectory except placeholder.txt
-                        def filesExist = sh(script: 'find /root/DEVWKS-2176/templates -type f ! -name "placeholder.txt" | wc -l', returnStdout: true).trim().toInteger() > 0
+                        def filesExist = sh(script: 'find /root/DEVWKS-2176 -type f -name "DNAC-Design-Settings.csv" | wc -l', returnStdout: true).trim().toInteger() > 0
 
                         if (filesExist) {
                             // Execute a shell command to retrieve the last modified timestamp of any files except placeholder.txt
-                            def lastModifiedOutput = sh(script: 'find /root/DEVWKS-2176/templates -type f ! -name "placeholder.txt" -exec stat -c %Y {} \\; | sort -n | tail -n 1', returnStdout: true).trim()
+                            def lastModifiedOutput = sh(script: 'find /root/DEVWKS-2176 -type f -name "DNAC-Design-Settings.csv" -exec stat -c %Y {} \\; | sort -n | tail -n 1', returnStdout: true).trim()
                             currentModifiedTime = lastModifiedOutput.toLong()
                             println "Current Timestamp: ${currentModifiedTime}"
 
@@ -98,7 +97,7 @@ pipeline {
                                 // Execute your desired steps or stages here
                                 println 'Files changed'
                                 dir('/root/DEVWKS-2176') {
-                                    sh 'python3 /root/DEVWKS-2176/deploy_templates.py'
+                                    sh 'python3 /root/DEVWKS-2176/device_inventory.py'
                                 }
                             } else {
                                 println 'No changes'
@@ -108,11 +107,20 @@ pipeline {
                         }
 
                         // Store the current modified time for future comparisons
-                        writeFile file: '/root/DEVWKS-2176/timestamp/previous_modified_time_templates.txt', text: currentModifiedTime.toString()
+                        writeFile file: '/root/DEVWKS-2176/timestamp/previous_modified_time_inventory.txt', text: currentModifiedTime.toString()
                         sleep 180
                     }
                 }
             }
+        }
+    }
+
+    post {
+        cleanup {
+            cleanWs()
+        }
+        always {
+            echo '\n\nJenkins Device Inventory build end'
         }
     }
 }
