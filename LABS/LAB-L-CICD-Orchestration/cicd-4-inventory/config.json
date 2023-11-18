@@ -5,18 +5,30 @@
          "content":"01-intro.md"
       },
       {
-         "title":"Archiving Configurations",
-         "content":"02-deploy.md"
+       "title":"Python & External Data",
+       "content":"02-preparation.md"
+      },
+      {
+         "title":"Pipeline",
+         "content":"03-pipeline.md"
+      },
+      {
+         "title":"Inventory Retrieval",
+         "content":"04-deploy.md"
+      },
+      {
+         "title":"Inventory Data Verification",
+         "content":"05-verify.md"
       },
       {
        "title":"Summary",
-       "content":"03-summary.md"
+       "content":"06-summary.md"
       }
    ],
    "meta":{
-      "code_name":"dnac-5-archive",
-      "repo":"llabsource-ADVANCED-DNAC-LABS",
-      "slug":"Archiving Device Configurations using API with DNA Center Platform.",
+      "code_name":"cicd-3-inventory",
+      "repo":"llabsource-ADVANCED-RESTAPI-CICD-LABS",
+      "slug":"Retrieving Inventory Data using API with DNA Center Platform.",
       "time":"0",
       "poweredBy":"sandbox URL",
       "moduleOnly":false,

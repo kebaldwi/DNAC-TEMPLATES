@@ -1,12 +1,3 @@
-# Device Discovery Deployment
-
-## Pipeline Overview
-
-In the previous step we pasted a **Groovy Script** into the **Pipeline Configuration**. This script tells Jenkins what to do when the **Pipeline** is initiated.
-
-Let's examine the **Groovy Script** in more detail:
-
-```GROOVY
 pipeline {
     agent any
 
@@ -56,32 +47,3 @@ pipeline {
         }
     }
 }
-```
-
-First thing we should note is that the indentation **does** matter with **Groovy Scripting**. Secondarily, it is important that when using various methods, the correct **Plugins** are installed. 
-
-The way this script is generally designed to work is that when initiated it loops until you cancel it. Persistently it checks for the **CSV** file in the `/root/DEVWKS-2176` directory and then gathers the **timestamp** from that file and compares it to the previous collected **timestamp**. If the **timestamp** has **changed**, the file has been modified and the **Pipeline** automatically runs the two **Python** programs to **discover devices** on Cisco DNA Center and then **assigns them** to the **site** in the **CSV**.
-
-## Device Discovery Deployment
-
-We will now **discover** the **devices** using the **CSV** variables previously discussed.
-
-Follow these steps:
-
-1. Ensure the previous pipeline **DNAC-Hierarchy** is **stopped** and not running, if not **stop** it.
-
-2. Navigate and open the desired **Pipeline** within the **Jenkins Dashboard**:
-
-3. Click **Build** 
-
-   ![json](./images/.png?raw=true "Import JSON")
-
-4. To observe the **Pipeline** run of the programs, do the following:
-
-   1. Click on the most recent small number in the **Build History** 
-   2. Within that window click on **Console Output**
-
-5. To stop the **Pipeline** click the small red X in the **top right** of either the **Build** or the **Build History Number**
-      ![json](./images/.png?raw=true "Import JSON")
-
-> [**Next Section**](./05-verify.md)

@@ -1,8 +1,8 @@
-# Hierarchy Build Python Pipeline
+# Device Discovery Python Pipeline
 
-The **Python** programming language is a powerful tool for building programs related to **REST-API** calls and allows us to utilize several features to accomplish everyday tasks. In this section of the tutorial, we will use a simple REST-API set, which has been grouped into a **Python** program. We will then construct a Jenkins Pipeline to automate the provisioning of the settings that may be modified in the **CSV** on Cisco DNA Center.
+In this section of the tutorial, we will continue using a simple REST-API set, which has been grouped into a **Python** program. We will then construct a Jenkins Pipeline to automate the provisioning of the settings that may be modified in the **CSV** on Cisco DNA Center.
 
-## Python Program `deploy_hierarchy.py`
+## Device Discovery Python Program 
 
 These **Python** program files are groupings of API, which allow us to have workflows defined for specific tasks. Programs also have modules included in them which allows for the reusability of code. 
 
@@ -13,7 +13,7 @@ To investigate this collection, follow these steps:
    1. Open the program using NANO in Read Only
 
 ```SHELL
-      sudo nano -v /root/DEVWKS-2176/deploy_hierarchy.py
+      sudo nano -v /root/DEVWKS-2176/device_discovery.py
 ```
 
    2. As you scroll through the lines of the program take note of the following:
@@ -24,7 +24,7 @@ To investigate this collection, follow these steps:
 
       ![json](./images/.png?raw=true "Import JSON")
    
-   3. This set of **REST-API** are built utilizing the developer site [**developer.cisco.com/docs/dna-center/**](https://developer.cisco.com/docs/dna-center/). This documentation is kept up to date with the latest **REST-API**.
+   3. Unlike the previous section This set of **REST-API** are built utilizing the **[DNA Center SDK](https://dnacentersdk.readthedocs.io/en/latest/)** a python library used to help integrate Cisco DNA Center more easily using **Python**. This may still be augmented with **REST API** built using the developer site [**developer.cisco.com/docs/dna-center/**](https://developer.cisco.com/docs/dna-center/). This documentation is kept up to date with the latest **REST-API**. Take a few momennts to review the similarities and differences between the two approaches.
 
 ## Jenkins Pipeline
 
@@ -43,13 +43,13 @@ Once logged in you should see this **Jenkins dashboard**.
 
 #### Step 1 - *Adding required plugins*
 
-As we will be utilizing file searches within folders and initiating python from within pipelines we need to add the following plugins into Jenkins:
+Previously we added the following plugins which are dependancies into Jenkins:
 
    1. Pipeline
    2. Python
    3. Pipeline Utility Steps
 
-To install the plugins from the Jenkins web interface go to **Manage Jenkins > Manage Plugins > Available** page, and searching for them one by one. Once you find the plugin, **select it** and click on **Install without restart** button.
+> **Note:** To review installing the plugins from the Jenkins web interface go to **Manage Jenkins > Manage Plugins > Available** page, and searching for them one by one. Once you find the plugin, **select it** and click on **Install without restart** button.
 
 #### Step 2 - *Building the Pipeline*
 
@@ -58,7 +58,7 @@ We now need to build the **Pipeline** which will monitor the files in the direct
 1. To create a new **Pipeline** job: 
 
    1. Go to the **Jenkins dashboard** and click on **New Item** 
-   2. Give your job the name `DNAC-Hierarchy`
+   2. Give your job the name `DNAC-Discovery`
    3. Select **Pipeline** as the job type
    4. Click **OK**.
 
@@ -71,7 +71,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Monitor Hierarchy Build') {
+        stage('Device Discovery') {
             steps {
                 script {
                     def previousModifiedTime = null
@@ -80,7 +80,7 @@ pipeline {
                     while (true) {
                         // Retrieve the previous modified time from a file or environment variable
                         println 'Monitoring Hierarchy Build for changes'
-                        def storedModifiedTime = readFile('/root/DEVWKS-2176/timestamp/previous_modified_time_hierarchy.txt').trim()
+                        def storedModifiedTime = readFile('/root/DEVWKS-2176/timestamp/previous_modified_time_discovery.txt').trim()
                         if (storedModifiedTime) {
                             previousModifiedTime = storedModifiedTime.toLong()
                         }
@@ -98,8 +98,7 @@ pipeline {
                                 // Execute your desired steps or stages here
                                 println 'Files changed'
                                 dir('/root/DEVWKS-2176') {
-                                    sh 'python3 /root/DEVWKS-2176/deploy_hierarchy.py'
-                                    sh 'python3 /root/DEVWKS-2176/deploy_settings.py'
+                                    sh 'python3 /root/DEVWKS-2176/device_discovery.py'
                                 }
                             } else {
                                 println 'No changes'
@@ -109,7 +108,7 @@ pipeline {
                         }
 
                         // Store the current modified time for future comparisons
-                        writeFile file: '/root/DEVWKS-2176/timestamp/previous_modified_time_hierarchy.txt', text: currentModifiedTime.toString()
+                        writeFile file: '/root/DEVWKS-2176/timestamp/previous_modified_time_discovery.txt', text: currentModifiedTime.toString()
                         sleep 180
                     }
                 }

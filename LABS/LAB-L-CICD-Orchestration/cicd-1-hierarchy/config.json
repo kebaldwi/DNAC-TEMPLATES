@@ -9,12 +9,12 @@
          "content":"02-integration.md"
       },
       {
-       "title":"Python & External Data",
-       "content":"03-preparation.md"
+         "title":"Python & External Data",
+         "content":"03-preparation.md"
       },
       {
-       "title":"Pipeline",
-       "content":"04-pipeline.md"
+         "title":"Pipeline",
+         "content":"04-pipeline.md"
       },
       {
          "title":"Hierarchy Deployment",
@@ -31,7 +31,7 @@
    ],
    "meta":{
       "code_name":"cicd-1-hierarchy",
-      "repo":"llabsource-ADVANCED-DNAC-LABS",
+      "repo":"llabsource-ADVANCED-RESTAPI-CICD-LABS",
       "slug":"Build Hierarchy using API with DNA Center Platform.",
       "time":"0",
       "poweredBy":"sandbox URL",

@@ -7,6 +7,6 @@ This scenario may be augmented and modified to use imported files within Postman
 
 > **Note**: If there is time, look at the pre and post-scripts within Postman and look at the additionally included Deploy Template API and perhaps run it.
 
-> [**NEXT MODULE**](../dnac-5-archive/01-intro.md)
+> [**NEXT MODULE**](../cicd-4-inventory/01-intro.md)
 
 > [**HOME**](../README.md)

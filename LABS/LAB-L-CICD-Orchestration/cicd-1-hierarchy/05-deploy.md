@@ -65,7 +65,7 @@ The way this script is generally designed to work is that when initiated it loop
 
 ## Hierarchy Deployment
 
-We will now `build` the **Hierarchy** using the **CSV** variables previously discussed.
+We will now **build** the **Hierarchy** using the **CSV** variables previously discussed.
 
 Follow these steps:
 

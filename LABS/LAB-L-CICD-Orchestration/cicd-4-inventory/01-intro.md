@@ -1,15 +1,21 @@
-# Archiving Configurations
+# Template Deployment
 
-In this module, we will use *Postman* to download an archive of the running and startup configurations of a device in the hierarchy within Cisco DNA Center. 
+In this module, we will use *Postman* to **build** and **deploy** `Projects` and a `Regular Templates` for a specific site within the hierarchy within Cisco DNA Center. 
 
 Cisco DNA Center uses hierarchy to logically align intent (code and configuration) against infrastructure. This allows the network administrator to align changes and modifications to the network within maintenance windows.
 
-## Configuration Archive Background
+## Template Background
 
-Cisco DNA Center allows for the Archiving of both the `Running` and `Startup` Configurations for devices within the `inventory` of Cisco DNA Center. In the earlier Cisco DNA Center GUI's, there was no capability to export or archive the configurations apart from this REST-API-based approach. Additional capabilities have been added to the most recent version of Cisco DNA Center, but there remain good use cases for this capability.
+Cisco DNA Center has a `Template Editor`, which allows for the import and export of custom templates written in **Jinja2** or **Velocity** scripting languages. The templates are encapsulated within JSON inside Cisco DNA Center.
 
-One such use case is configuration `compliance`. Suppose we wanted to create a python-based `compliance` tool that utilized the Device Inventory and the configuration files. In that case, we could keep track of devices' **code** and **configurations** to ensure that the code was of a specific version and perhaps certain lines of code were included in the configuration. 
+These templates and associated parameters allow for the `configuration` of devices when associated with the hierarchy through a `Network Profile`. 
 
-> **Prerequisites**: **Completed** the previous section on **Template Deployment**
+`Templates`, both `Regular` and `Composite`, are grouped logically into `Projects`.
 
-> [**Next Section**](02-deploy.md)
+In this lab, we will `deploy` a `regular template` within a project to be ready for deployment later. 
+
+> **Note**: Included in the repository is a Deployment API, which is there for informational purposes and should not be invoked due to the nature of the lab environment.
+
+> **Prerequisites**: **Completed** the previous section **Device Discovery**
+
+> [**Next Section**](02-postman.md)
