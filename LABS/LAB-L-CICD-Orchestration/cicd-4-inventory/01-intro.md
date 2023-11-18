@@ -1,21 +1,13 @@
-# Template Deployment
+# Inventory Retrieval
 
-In this module, we will use *Postman* to **build** and **deploy** `Projects` and a `Regular Templates` for a specific site within the hierarchy within Cisco DNA Center. 
+In this module, we will use a **CI/CD Pipeline** to **retrieve** the Cisco DNA Center **inventory** as well as **compliance** data. 
 
-Cisco DNA Center uses hierarchy to logically align intent (code and configuration) against infrastructure. This allows the network administrator to align changes and modifications to the network within maintenance windows.
+## Inventory Background
 
-## Template Background
+Cisco DNA Center uses hierarchy to logically align intent (code and configuration) against infrastructure. This allows the network administrator to align changes and modifications to the network within maintenance windows. It also keeps track of the configurations, runs compliance checks and maintains a list of software and PSIRT compliance lists against both hardware and software.
 
-Cisco DNA Center has a `Template Editor`, which allows for the import and export of custom templates written in **Jinja2** or **Velocity** scripting languages. The templates are encapsulated within JSON inside Cisco DNA Center.
+In this lab, we will **retrieve** the device **inventory** as well as **compliance** information. 
 
-These templates and associated parameters allow for the `configuration` of devices when associated with the hierarchy through a `Network Profile`. 
+> **Prerequisites**: **Completed** the previous section **Template Deployment**
 
-`Templates`, both `Regular` and `Composite`, are grouped logically into `Projects`.
-
-In this lab, we will `deploy` a `regular template` within a project to be ready for deployment later. 
-
-> **Note**: Included in the repository is a Deployment API, which is there for informational purposes and should not be invoked due to the nature of the lab environment.
-
-> **Prerequisites**: **Completed** the previous section **Device Discovery**
-
-> [**Next Section**](02-postman.md)
+> [**Next Section**](./02-preparation.md)
