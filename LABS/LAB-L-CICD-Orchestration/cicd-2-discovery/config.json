@@ -5,25 +5,29 @@
          "content":"01-intro.md"
       },
       {
-       "title":"Postman & External Data",
-       "content":"02-postman.md"
+         "title":"Python & External Data",
+         "content":"02-preparation.md"
       },
       {
+         "title":"Pipeline",
+         "content":"03-pipeline.md"
+        },
+      {
          "title":"Discovery Task Deployment",
-         "content":"03-deploy.md"
+         "content":"04-deploy.md"
       },
       {
          "title":"Discovery Verification",
-         "content":"04-verify.md"
+         "content":"05-verify.md"
       },
       {
        "title":"Summary",
-       "content":"05-summary.md"
+       "content":"06-summary.md"
       }
    ],
    "meta":{
-      "code_name":"dnac-3-discovery",
-      "repo":"llabsource-ADVANCED-DNAC-LABS",
+      "code_name":"cicd-2-discovery",
+      "repo":"llabsource-ADVANCED-RESTAPI-CICD-LABS",
       "slug":"Discovering and Adding Devices to Hierarchy using API with DNA Center Platform.",
       "time":"0",
       "poweredBy":"sandbox URL",
