@@ -1,10 +1,10 @@
 # Python and External Data Sources
 
-Within Python, we will utilize the Python program `deploy_hierarchy.py` to build out the Hierarchy of Cisco DNA Center into which we later will associate `settings` and `discover devices`. 
+We will utilize the Python program **deploy_hierarchy.py** to build out the Hierarchy of Cisco DNA Center into which we later will associate **settings** and **discover devices**. 
 
-This Collection may be run whenever you wish to create a new section of the Hierarchy to **add** additional `Areas`, `Buildings`, or `floors`. 
+This Collection may be run whenever you wish to create a new section of the Hierarchy to **add** additional **Areas**, **Buildings**, or **floors**. 
 
-Accompanying the Collection is a **required** Comma Separated Value (CSV) file, which is essentially an `answer file` for the values used to build the design. The CSV which was pulled in the **Git Clone** may be found here: 
+Accompanying the **Python Program** is a **required** Comma Separated Value (CSV) file, which is essentially an **answer file** for the values used to build the design. The CSV which was pulled in the **Git Clone** may be found here: 
 
 > **Download:** <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-L-CICD-Orchestration/assets/csv/DNAC-Design-Settings.csv" target="_blank">⬇︎ Cisco DNA Center Design Settings CSV ⬇︎</a>
 

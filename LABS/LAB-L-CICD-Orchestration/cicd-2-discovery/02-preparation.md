@@ -1,10 +1,10 @@
 # Python and External Data Sources
 
-Within Postman, we will utilize the Python program `device_discovery.py` to **discover** the network infrastructure **routers**, **switches** and **wireless** network devices and **add** them in order to manage the devices. 
+We will utilize the Python program **device_discovery.py** to **discover** the network infrastructure **routers**, **switches** and **wireless** network devices and **add** them in order to manage the devices. 
 
-This Python program will be run by the **CI/CD Pipeline** whenever a change is noticed in the **CSV** and may be run whenever you wish to configure or discover a `brownfield` device and add it to the inventory of Cisco DNA Center from the **CSV**. 
+This Python program will be run by the **CI/CD Pipeline** whenever a change is noticed in the **CSV** and may be run whenever you wish to configure or discover a **brownfield** device and add it to the inventory of Cisco DNA Center from the **CSV**. 
 
-Accompanying the Collection is a required Comma Separated Value **CSV** file, which is essentially an answer file for the values used to build the design. The **CSV** was added to the directory in the preceding **Module**. 
+Accompanying the **Python Program** is a required Comma Separated Value **CSV** file, which is essentially an answer file for the values used to build the design. The **CSV** was added to the directory in the preceding **Modules**. 
 
 For reference **ONLY** it is here:
 

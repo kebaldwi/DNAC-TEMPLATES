@@ -4,7 +4,7 @@ The **Python** programming language is a powerful tool for building programs rel
 
 ## Deploy Hierarchy Python Program
 
-These **Python** program files are groupings of API, which allow us to have workflows defined for specific tasks. Programs also have modules included in them which allows for the reusability of code. 
+These **Python** program files are groupings of API, which allow us to have workflows defined for specific tasks. Programs also have modules included in them which allows for the reusability of code. Here we will use the code to construct a Jenkins Pipeline to automate the provisioning of the settings that may be modified in the **CSV** on Cisco DNA Center.
 
 To investigate this collection, follow these steps:
 

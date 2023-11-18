@@ -1,11 +1,9 @@
 
 ## Summary
 
-We have been able to deploy a template within a project inside Cisco DNA Centers template editor. 
+We have been able to build and deploy templates from within a project in Cisco DNA Centers. 
 
-This scenario may be augmented and modified to use imported files within Postman to allow for a more dynamic approach. The flow allows us to rapidly stage Projects and Templates, perhaps importing them from GitHub in the CICD pipeline. 
-
-> **Note**: If there is time, look at the pre and post-scripts within Postman and look at the additionally included Deploy Template API and perhaps run it.
+This scenario may be augmented and modified to use build out a development and production pipeline to allow for a more dynamic approach. The flow allows us to rapidly stage Projects and Templates, perhaps importing them from GitHub in the CICD pipeline to Development and then after successful testing push automatically to production.
 
 > [**NEXT MODULE**](../cicd-4-inventory/01-intro.md)
 
