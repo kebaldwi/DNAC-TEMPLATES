@@ -64,3 +64,7 @@ ghclone https://github.com/kebaldwi/DEVWKS-2176
 # Setting Permissions for Jenkins
 sudo chmod -R 777 /root/
 
+# Install Nano
+sudo apt-get install nano
+
+
