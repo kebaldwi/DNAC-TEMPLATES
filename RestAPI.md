@@ -146,7 +146,7 @@ Cisco provides a **Python SDK library** for use with Cisco DNA Center, which can
 
 The ultimate goal of most organizations considering CICD Pipelines with Cisco DNA Center is to augment the platform to provide a way of continual development, balanced with continual deployment. Sometimes *Orchestration Platforms* like **Ansible**, or **Teraform** are considered to help orchestrate through Cisco DNA Center.  
 
-![json](images/cicd-pipeline.png?raw=true "Import JSON")
+![json](images/cicd-pipeline2.png?raw=true "Import JSON")
 
 In the case above a repository, holds templates in JSON and settings in YAML which are tested for vulnerabilities and syntax and against CML. After successful testing the CICD pipeline builds the configurations and settings on Cisco DNA Center through a Ansible Playbook. Then the pipeline kicks off a deployment playbook which provisions the configurations from Cisco DNA Center toward the network infrastructure.
 
