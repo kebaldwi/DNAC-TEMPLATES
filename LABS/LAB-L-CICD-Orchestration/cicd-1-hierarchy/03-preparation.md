@@ -17,15 +17,15 @@ To view the file on the **script server** do the following:
 cat /root/DEVWKS-2176/DNAC-Design-Settings.csv
 ```
 
-<p align="center"><img src="./images/.png" width="800" height="345"></p>
+<p align="center"><img src="./images/csv2.png" width="800" height="174.55"></p>
 
 The hierarchy the CSV will build will be this:
 
 ```text
-Global > State
-Global > State > California > Building10 > Floor1
-Global > State > California > Building10 > Floor2
-Global > State > California > Building10 > Floor3
+Global > DevNet
+Global > DevNet > California > Building 10 > Floor 1
+Global > DevNet > California > Building 10 > Floor 2
+Global > DevNet > California > Building 10 > Floor 3
 ```
 
 > [**Next Section**](./04-pipeline.md)
