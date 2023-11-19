@@ -22,7 +22,7 @@ To investigate this collection, follow these steps:
       - **YAML** a YAML file is used for environment settings
       - **definitions** functions are defined to build API interactions 
 
-      ![json](./images/.png?raw=true "Import JSON")
+      ![json](./images/hierarchy-python.png?raw=true "Import JSON")
    
    3. This set of **REST-API** are built utilizing the developer site [**developer.cisco.com/docs/dna-center/**](https://developer.cisco.com/docs/dna-center/). This documentation is kept up to date with the latest **REST-API**.
 
@@ -39,7 +39,7 @@ Login to Jenkins but first connecting to the URL **[http://198.18.134.28:8080](h
 
 Once logged in you should see this **Jenkins dashboard**.
 
-![json](./images/.png?raw=true "Import JSON")
+![json](./images/jenkins-login.png?raw=true "Import JSON")
 
 #### Step 1 - *Adding required plugins*
 
