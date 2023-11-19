@@ -164,11 +164,9 @@ def main():
                         logging.info('    Device successfully assigned to ' + site_hierarchy)
                     else:
                         logging.info('    Device failed to assign to ' + site_hierarchy)
-                    
                     time.sleep(15)
     
     #get_device_inventory()
-
     date_time = str(datetime.now().replace(microsecond=0))
     logging.info('  App "device_discovery.py" end, : ' + date_time)
 
