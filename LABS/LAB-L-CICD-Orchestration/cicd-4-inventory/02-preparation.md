@@ -19,7 +19,7 @@ To view the file on the **script server** do the following:
 cat /root/DEVWKS-2176/DNAC-Design-Settings.csv
 ```
 
-<p align="center"><img src="./images/.png" width="800" height="345"></p>
+<p align="center"><img src="./images/csv2.png" width="800" height="174.55"></p>
 
 > **Note**: You can see the devices all the way to the right of the file.
 
