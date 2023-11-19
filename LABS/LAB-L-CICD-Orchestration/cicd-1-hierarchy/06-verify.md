@@ -22,6 +22,18 @@ Follow these steps:
 
 5. Expand the Hierarchy on the left to show your specific `Area`
 
-   ![json](./images/DNAC-Hierarchy-Verify.png?raw=true "Import JSON")
+   ![json](./images/dnac_cicd_hierarchy.png?raw=true "Import JSON")
+
+6. Go to `Design>Network Settings` from the menu and navigate to `Floor 1`
+
+   ![json](./images/dnac_cicd_settings.png?raw=true "Import JSON")
+
+7. Go to `Credentials` tab on the same page
+
+   ![json](./images/dnac_cicd_creds.png?raw=true "Import JSON")
+
+8. Finally go to the `Telemetry` tab 
+
+   ![json](./images/dnac_cicd_telemetry.png?raw=true "Import JSON")
 
 > [**Next Section**](./07-summary.md)
