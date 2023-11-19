@@ -148,16 +148,16 @@ def create_site_settings(dnac_token, TargetSiteId, domainName, dnsServer1, dnsSe
             },
                "syslogServer": {
                 "ipAddresses": [syslogServer],
-                "configureDnacIP": syslogBoolean
+                "configureDnacIP": bool(syslogBoolean)
             },
             "snmpServer": {
                 "ipAddresses": [snmpServer],
-                "configureDnacIP": snmpBoolean
+                "configureDnacIP": bool(snmpBoolean)
             },
             "netflowcollector": {
                 "ipAddress": netflowServer,
-                "port": netflowPort,
-                "configureDnacIP": netflowBoolean
+                "port": int(netflowPort),
+                "configureDnacIP": bool(netflowBoolean)
             },
             "ntpServer": [ntpServer1],
             "timezone": timeZone,
@@ -189,8 +189,8 @@ def create_site_settings(dnac_token, TargetSiteId, domainName, dnsServer1, dnsSe
 		    "network": aaaIpAddress,
 		    "protocol": aaaProtocol,
             "sharedSecret": aaaSecret
-		} 
-    url = DNAC_URL + f'/dna/intent/api/v1/site/{TargetSiteId}'
+		}
+    url = DNAC_URL + f'/dna/intent/api/v1/network/{TargetSiteId}'
     header = {'content-type': 'application/json', 'x-auth-token': dnac_token}
     response = requests.put(url, data=json.dumps(payload), headers=header, verify=False)
     response_json = response.json()
@@ -377,7 +377,7 @@ def main():
 
             # Get the target site id 
             TargetSiteId = get_target_site_id(dnac_auth, parent_name, area_name, building_name, floor_name)
-            
+            #print(f"TargetSiteId: {TargetSiteId}")
             # Create the site settings
             response, status_code = create_site_settings(dnac_auth, TargetSiteId, domain_name, dns_server_primary, dns_server_secondary, dhcp_server_primary, dhcp_server_secondary, snmp_server, snmp_boolean, syslog_server, syslog_boolean, netflow_server, netflow_port, netflow_boolean, ntp_server_primary, ntp_server_secondary, timezone, banner_message, banner_boolean, aaa_server, aaa_address, aaa_protocol, aaa_secret)
             if responsecheck in response['message'] and status_code == 202:
