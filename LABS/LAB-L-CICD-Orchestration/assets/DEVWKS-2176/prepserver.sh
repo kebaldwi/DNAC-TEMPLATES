@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Update Jenkins
+sudo service jenkins stop
 mv jenkins_date.tar.gz $HOME
 cd /usr/share/jenkins
 sudo mv jenkins.war jenkins.war.old
@@ -52,4 +53,14 @@ cd ..
 rm -rf Python-$PYTHON_VERSION Python-$PYTHON_VERSION.tgz
 
 echo "Python $PYTHON_VERSION, pip, and pip3 have been updated successfully and set as default!"
+
+# Install Git Clone
+sudo apt-get install gitclone
+sudo pip install github-clone
+
+# Clone the repo
+ghclone https://github.com/kebaldwi/DEVWKS-2176
+
+# Setting Permissions for Jenkins
+sudo chmod -R 777 /root/
 
