@@ -71,16 +71,22 @@ Follow these steps:
 
 1. Navigate and open the desired **Pipeline** within the **Jenkins Dashboard**:
 
+   ![json](./images/Jenkins_Dashboard_2.png?raw=true "Import JSON")
+
 2. Click **Build**
 
-   ![json](./images/.png?raw=true "Import JSON")
+   ![json](./images/Jenkins_Item_Hierarchy_1.png?raw=true "Import JSON")
 
 3. To observe the **Pipeline** run of the programs, do the following:
 
    1. Click on the most recent small number in the **Build History** 
-   2. Within that window click on **Console Output**
 
-4. To stop the **Pipeline** click the small red X in the **top right** of either the **Build** or the **Build History Number**
-      ![json](./images/.png?raw=true "Import JSON")
+   ![json](./images/Jenkins_Item_Hierarchy_Build.png?raw=true "Import JSON")
+
+4. Click on **Console Output**. Watch the output all the way until all the tasks are complete and you see a sleep timer.
+
+   ![json](./images/Jenkins_Item_Hierarchy_console.png?raw=true "Import JSON")
+
+5. To stop the **Pipeline** click the small red X in the **top right** of either the **Build** or the **Build History Number**
 
 > [**Next Section**](./06-verify.md)
