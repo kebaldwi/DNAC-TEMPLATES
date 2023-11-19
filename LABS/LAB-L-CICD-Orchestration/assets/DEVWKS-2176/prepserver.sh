@@ -67,4 +67,8 @@ sudo chmod -R 777 /root/
 # Install Nano
 sudo apt-get install nano
 
+# Upgrade DNA Center SDK and other Dependencies
+sudo pip install -r requirements.txt
+
+
 

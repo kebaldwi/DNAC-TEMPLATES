@@ -156,8 +156,8 @@ def main():
                         else:
                             logging.info('    Discovery failed to create for ' + str(device_missing))
                         time.sleep(15)
-                    logging.info('    *** Waiting 2 mins for Discovery to finish ***')
-                    time.sleep(120)
+                    logging.info('    *** Waiting 5 mins for Discovery to finish ***')
+                    time.sleep(300)
                     # assign the device to the site
                     response, status_code = assign_device(dnac_auth, TargetSiteId, device_list) 
                     if responsecheck in response['message'] and status_code == 202:

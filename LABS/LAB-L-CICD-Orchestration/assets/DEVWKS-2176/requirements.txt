@@ -1,4 +1,4 @@
-dnacentersdk==2.5.5
+dnacentersdk==2.6.10
 PyGithub==2.1.1
 python-dotenv==1.0.0
 PyYAML==6.0.1
