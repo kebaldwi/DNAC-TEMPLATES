@@ -18,6 +18,10 @@ Once a device has been discovered, the device is synchronized and deposited with
 
 In this lab, we will **discover** all the devices within the dCloud lab as specified in the given **CSV** file. The devices will then be automatically be added to the sites as defined in the **CSV**. 
 
+The lab envionment that is available is depicted here:
+
+<p align="center"><img src="./images/DCLOUD_Topology_Wireless.png" width="800" height="894.45"></p>
+
 > **Note**: If ISE is integrated with DNA Center and settings are applied, then the device is also added as a Network Access Device within ISE during the assignment task via **PxGrid Integration**
 
 > **Prerequisites**: **Completed** the previous section **Assign Settings and Credentials**
