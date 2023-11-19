@@ -13,7 +13,7 @@ pip3 --version
 ```
 We should see this desired output
 
-   ![json](./images/.png?raw=true "Import JSON")
+<p align="center"><img src="./images/versions.png" width="800" height="423.64"></p>
 
 ## Git Pull of Lab Content
 
@@ -25,7 +25,7 @@ We will use a clone of a specific subfolder from `DNAC-Templates` for this secti
 pip install github-clone
 ```
 
-![json](./images/gitclone.png?raw=true "IMPORT JSON")
+<p align="center"><img src="./images/gitclone-install.png" width="800" height="243.79"></p>
 
 2. Once the package has installed issue the following command to clone the specific subfolder to make things easier in the lab:
 
@@ -33,19 +33,15 @@ pip install github-clone
 ghclone https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-L-CICD-Orchestration/assets/DEVWKS-2176
 ```
 
-![json](./images/cloning.png?raw=true "IMPORT JSON")
-
-3. To ensure all the required files are there issue an `ls -lR ./DEVWKS-2176` and confirm:
-
-![json](./images/clone-dir.png?raw=true "IMPORT JSON")
-
-
-4. We will now ensure that Jenkins has full access to this folder
+3. We will now ensure that Jenkins has full access to this folder
 
 ```SHELL
 chmod -R 777 /root/
 ```
-![json](./images/.png?raw=true "Import JSON")
+
+4. To ensure all the required files are there issue an `ls -lR ./DEVWKS-2176` and confirm:
+
+<p align="center"><img src="./images/clone-directory.png" width="800" height="523.36"></p>
 
 In the next section we will set up Jenkins
 
