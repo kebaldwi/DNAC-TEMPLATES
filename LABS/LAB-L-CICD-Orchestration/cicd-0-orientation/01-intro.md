@@ -3,6 +3,8 @@
 This set of Cisco Learning Labs is developed to help illustrate the ability to provide an environment of **Continuous Integration** and **Continuous Delivery**. In an ever changing and demanding world we have constant changes in platforms, software and demands placed on both the network and delivery teams to execute. 
 
 **Continuous Integration/Continuous Delivery,** or **Continuous Deployment**, pipelines have been used in the software development industry for years. For most teams, the days of manually taking source code and manifest files and compiling them to create binaries or executable files and then manually distributing and installing those applications are long gone. In an effort to automate the build process and distribution of software as well as perform automated testing, the industry has continuously evolved towards more comprehensive pipelines.
+
+![json](./images/cicd-advantages.png?raw=true "Import JSON")
  
 Depending on how much of the software development process is automated, pipelines can be categorized into different groups and stages:
 
@@ -17,6 +19,8 @@ Continuous Delivery adds additional testing and has the option to deploy the new
 ### Continuous Deployment
 
 Continuous Deployment stage takes care of deploying the application in the production environment. Several different deployment strategies are available with different risk factors, cost considerations and complexity. 
+
+![json](./images/cicd-pipeline2.png?raw=true "Import JSON")
 
 ### Deployment Models
 
