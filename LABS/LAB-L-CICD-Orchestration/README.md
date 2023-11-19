@@ -8,6 +8,8 @@ This Lab is designed as a standalone lab to help customers with varying challeng
 
 Until this point, we have used Rest-API for some basic setup tasks, but there are so many situations that can be solved or at least eased using Rest-API in conjunction with DNA Center. In this lab, we will use a complete set of REST-API collections which will build upon the foundational knowledge acquired in the previous labs. For this lab, we will concentrate on DNA Center configuration and how DNA Center can be automated to perform various functions which we have already covered utilizing **Python**, inconjunction with **Jenkins CI/CD Pipelines**
 
+![json](./images/cicd-pipeline2.png?raw=true "Import JSON")
+
 This page will serve as the landing page for this lab section due to the amount of content it will cover and the need to expand on it over time. 
 
 The lab will utilize a set of collections publically shared on Postman workspaces, Python and Ansible librarys, and Jenkins.
