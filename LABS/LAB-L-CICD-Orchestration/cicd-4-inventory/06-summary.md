@@ -7,4 +7,6 @@ This scenario may be augmented and modified to be used at any stage after a Proj
 
 Congratulations you have completed all the tasks within the lab.
 
+![json](images/Jenkins_Item_Dashboard_3.png?raw=true "Import JSON")
+
 > [**HOME**](../README.md)

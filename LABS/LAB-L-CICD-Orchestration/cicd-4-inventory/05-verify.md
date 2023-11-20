@@ -20,10 +20,24 @@ Follow these steps:
 
    ![json](./images/.png?raw=true "Import JSON")
 
-5. Compare that against the files in the directory `/root/DEVWKS-2176/inventory` by scrolling up and down using the following:
+5. Compare the various Directories to your machine:
+
+```SHELL
+   ls -la 
+```
+
+   ![json](./images/Jenkins_Item_Inventory_Reports.png?raw=true "Import JSON")
+
+6. Compare that against the files in the directory `/root/DEVWKS-2176/inventory` by scrolling up and down using the following:
 
 ```SHELL
    cat /root/DEVWKS-2176/inventory/*
 ```
+
+   ![json](./images/Jenkins_Item_Inventory_Reports2.png?raw=true "Import JSON")
+
+7. The Inventory files are automatically uploaded to the Git Repository
+
+   ![json](./images/Jenkins_Item_GitPush.png?raw=true "Import JSON")
 
 > [**Next Section**](06-summary.md)
