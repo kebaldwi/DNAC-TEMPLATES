@@ -19,6 +19,7 @@ Follow these steps:
 4. Select `Network Device>Inventory` from the menu to continue.
 
    ![json](./images/dnac-navigation-inventory.png?raw=true "Import JSON")
+   ![json](../cicd-2-discovery/images/dnac-inventory.png?raw=true "Import JSON")
 
 5. Compare the various Directories to your machine:
 
