@@ -7,8 +7,8 @@ In the previous step we pasted a **Groovy Script** into the **Pipeline Configura
 Let's examine the **Groovy Script** in more detail:
 
 ```GROOVY
-
 pipeline {
+    agent any
 
     stages {
         stage('Retrieve Device Inventory') {

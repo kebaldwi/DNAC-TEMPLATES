@@ -68,6 +68,7 @@ We now need to build the **Pipeline** which will monitor the files in the direct
 
 ```GROOVY
 pipeline {
+    agent any
 
     stages {
         stage('Retrieve Device Inventory') {

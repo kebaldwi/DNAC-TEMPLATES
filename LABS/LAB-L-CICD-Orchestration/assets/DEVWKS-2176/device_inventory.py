@@ -31,7 +31,7 @@ import requests
 import datetime
 
 from pprint import pprint
-from github import *
+from github import Github
 from pathlib import Path  # used for relative path to "templates_jenkins" folder
 
 from dnacentersdk import DNACenterAPI
@@ -212,7 +212,6 @@ def main():
     logging.info(f'  Saved the image non-compliant device inventory to file "{DEVNET_POD}-{date_time_str}_non_compliant_devices.yaml" ')
 
     # push all files to GitHub repo
-
     os.chdir('inventory')
     files_list = os.listdir()
 
