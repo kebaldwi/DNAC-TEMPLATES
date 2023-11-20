@@ -1,0 +1,157 @@
+##Build Distribution for pnp
+vlan 5
+name "mgntvlan"
+vlan 10
+name "apvlan"
+vlan 20
+name "datavlan"
+vlan 30
+name "voicevlan"
+vlan 40
+name "guestvlan"
+vlan 999
+name "disabled"
+!
+int vlan 5 
+ ip address 192.168.5.2 255.255.255.0
+ standby 1 ip 192.168.5.1
+ standby 1 priority 255
+ standby 1 preempt
+ ip helper-address 198.18.133.1                  
+ ip ospf 1 area 0
+ no shutdown
+!
+pnp startup-vlan 5
+!
+int vlan 10 
+ ip address 192.168.10.2 255.255.255.0
+ standby 1 ip 192.168.10.1
+ standby 1 priority 255
+ standby 1 preempt
+ ip helper-address 198.18.133.1                  
+ ip ospf 1 area 0
+ no shutdown
+int vlan 20 
+ ip address 192.168.20.2 255.255.255.0
+ standby 1 ip 192.168.20.1
+ standby 1 priority 255
+ standby 1 preempt
+ ip helper-address 198.18.133.1                  
+ ip ospf 1 area 0
+ no shutdown
+int vlan 30 
+ ip address 192.168.30.2 255.255.255.0
+ standby 1 ip 192.168.30.1
+ standby 1 priority 255
+ standby 1 preempt
+ ip helper-address 198.18.133.1                  
+ ip ospf 1 area 0
+ no shutdown
+int vlan 40
+ ip address 192.168.40.2 255.255.255.0
+ standby 1 ip 192.168.40.1
+ standby 1 priority 255
+ standby 1 preempt
+ ip helper-address 198.18.133.1                  
+ ip ospf 1 area 0
+ no shutdown
+int vlan 999
+ ip address 192.168.99.2 255.255.255.0
+ standby 1 ip 192.168.99.1
+ standby 1 priority 255
+ standby 1 preempt
+ ip helper-address 198.18.133.1                  
+ ip ospf 1 area 0
+ no shutdown
+!
+##Router OSPF modifications
+router ospf 1
+ passive-interface default
+ no passive-interface Vlan5
+ no passive-interface GigabitEthernet1/0/48
+!
+#INTERACTIVE
+autoconf enable<IQ>yes<R>y
+#END_INTERACTIVE
+!
+parameter-map type subscriber attribute-to-service BUILTIN_DEVICE_TO_TEMPLATE
+10 map device-type regex "Cisco-IP-Phone"
+ 20 interface-template WORKSTATION
+20 map device-type regex "Cisco-IP-Camera"
+ 20 interface-template WORKSTATION
+30 map device-type regex "Cisco-DMP"
+ 20 interface-template WORKSTATION
+40 map oui eq "00.0f.44"
+ 20 interface-template WORKSTATION
+50 map oui eq "00.23.ac"
+ 20 interface-template WORKSTATION
+60 map device-type regex "Cisco-AIR-AP"
+ 20 interface-template ACCESS_POINT
+70 map device-type regex "Cisco-AIR-LAP"
+ 20 interface-template ACCESS_POINT
+80 map device-type regex "Cisco-TelePresence"
+ 20 interface-template WORKSTATION
+90 map device-type regex "Surveillance-Camera"
+ 10 interface-template WORKSTATION
+100 map device-type regex "Video-Conference"
+ 10 interface-template WORKSTATION
+110 map device-type regex "Cisco-CAT-LAP"
+ 10 interface-template ACCESS_POINT
+!
+##Templates
+template ACCESS_POINT
+ description Access Point Interface
+ switchport trunk native vlan 10
+ switchport trunk allowed vlan 10,20,30,40,999
+ switchport mode trunk
+!
+template WORKSTATION
+ description Workstation
+ switchport access vlan 20
+ switchport mode access
+ switchport voice vlan 30
+!
+template GUEST
+ description Guest Interface
+ switchport access vlan 40
+ switchport mode access
+!
+template BASECONFIG
+ description BASE CONFIG
+ switchport access vlan 10
+ switchport mode access
+!
+##Macros
+## Use Bind to Source variable to select access interfaces 
+#macro( access_interface )
+ description BASE CONFIG
+ switchport access vlan 999
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ source template BASECONFIG
+#end
+!
+interface range gi 1/0/10-11
+ description PnP Test Environment to Catalyst 9300-2
+ switchport mode trunk
+ switchport trunk native vlan 5
+ switchport trunk allowed vlan 5,10,20,30,40,999
+ channel-protocol lacp
+ channel-group 1 mode active
+ access-session inherit disable autoconf
+!
+interface Port-channel1
+ description PnP Test Environment to Catalyst 9300
+ switchport trunk native vlan 5
+ switchport trunk allowed vlan 5,10,20,30,40,999
+ switchport mode trunk
+ ##no port-channel standalone-disable
+!
+interface gi 1/0/48
+ access-session inherit disable autoconf
+!
+##Access Port Configuration
+interface range gi 1/0/1 - 9
+ #access_interface
+!

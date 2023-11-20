@@ -1,0 +1,8 @@
+##Shutdown Other Interface to create distribution from Cat9300-2
+!
+##disable port 0/0/1 for the templating lab
+int gi 0/0/1
+desc Connection to 9300-1 - Modified by Jenkins
+!
+int gi 0/0/2
+desc Connection to 9300-2 - Modified by Jenkins
