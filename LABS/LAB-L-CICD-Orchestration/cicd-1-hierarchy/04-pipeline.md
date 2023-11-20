@@ -76,7 +76,7 @@ We now need to build the **Pipeline** which will monitor the files in the direct
 
 4. Within the **Pipeline** just created and on the left click **Pipeline**. This will scroll to the **Pipeline Script** section. 
 
-      ![json](./images/Jenkins_Item_Hierarchy_Pipeline.png?raw=true "Import JSON")
+   ![json](./images/Jenkins_Item_Hierarchy_Pipeline.png?raw=true "Import JSON")
 
 5. Leave all the defaults as is and paste the following **Groovy Script**:
 
