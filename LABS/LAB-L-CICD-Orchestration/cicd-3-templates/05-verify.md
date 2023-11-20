@@ -20,11 +20,16 @@ Follow these steps:
 
    ![json](./images/DNAC-Menu-TemplateEditor.png?raw=true "Import JSON")
 
-5. Expand the Project with your Area Name on the left to show your specific Project with the template, then select it and view it on the right.
+5. Expand the Project with your Area Name on the left to show your specific Project with the template, then select it and view it on the right. 
 
-   ![json](./images/DNAC-TemplateEditor-DeployTemplate-Verify.gif?raw=true "Import JSON")
+   ![json](./images/Templates_editor.png?raw=true "Import JSON")
 
-6. Open a ssh connection to the C9300-1 switch from the script server to verify the deployment of the configuration:
+6. Within the Inventory select the two switches, then `Actions>Other>Command Runner` and run the two commands shown:
+
+   ![json](./images/command_run1.png?raw=true "Import JSON")
+   ![json](./images/command_run2.png?raw=true "Import JSON")
+
+7. Open a ssh connection to the C9300-1 switch from the script server to verify the deployment of the configuration:
 
 ```SHELL
    ssh netadmin@198.19.1.2

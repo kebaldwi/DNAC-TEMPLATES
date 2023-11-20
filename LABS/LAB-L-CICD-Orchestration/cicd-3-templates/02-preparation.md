@@ -21,7 +21,7 @@ To view the file on the **script server** do the following:
   sudo nano -v /root/DEVWKS-2176/site_operations.yml
 ```
 
-<p align="center"><img src="./images/.png" width="800" height="345"></p>
+<p align="center"><img src="./images/site_operations.png" width="800" height="789.33"></p>
 
 > **Note**: You will notice devices and templates denoting type of template, or device.
 

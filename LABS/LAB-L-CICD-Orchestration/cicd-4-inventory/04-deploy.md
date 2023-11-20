@@ -81,16 +81,23 @@ Follow these steps:
 
 2. Navigate and open the desired **Pipeline** within the **Jenkins Dashboard**:
 
+   ![json](./images/Jenkins_Dashboard_2.png?raw=true "Import JSON")
+
 3. Click **Build** 
 
-   ![json](./images/.png?raw=true "Import JSON")
+   ![json](./images/Jenkins_Item_Inventory_Dashboard.png?raw=true "import JSON")
 
 4. To observe the **Pipeline** run of the programs, do the following:
 
    1. Click on the most recent small number in the **Build History** 
+
+   ![json](./images/Jenkins_Item_Inventory_Build.png?raw=true "Import JSON")
+
    2. Within that window click on **Console Output**
 
 5. To stop the **Pipeline** click the small red X in the **top right** of either the **Build** or the **Build History Number**
-      ![json](./images/.png?raw=true "Import JSON")
 
+      ![json](./images/Jenkins_Item_Inventory_console.png?raw=true "Import JSON")
+      ![json](./images/Jenkins_Item_Inventory_console2.png?raw=true "Import JSON")
+      
 > [**Next Section**](./05-verify.md)

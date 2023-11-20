@@ -87,6 +87,7 @@ Follow these steps:
    2. Within that window click on **Console Output**
 
 5. To stop the **Pipeline** click the small red X in the **top right** of either the **Build** or the **Build History Number**
+
       ![json](./images/Jenkins_Item_Discovery_console.png?raw=true "Import JSON")
 
 > [**Next Section**](./05-verify.md)
