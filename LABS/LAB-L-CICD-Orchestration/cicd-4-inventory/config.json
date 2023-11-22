@@ -26,7 +26,7 @@
       }
    ],
    "meta":{
-      "code_name":"cicd-3-inventory",
+      "code_name":"cicd-4-inventory",
       "repo":"llabsource-ADVANCED-RESTAPI-CICD-LABS",
       "slug":"Retrieving Inventory Data using API with DNA Center Platform.",
       "time":"0",
