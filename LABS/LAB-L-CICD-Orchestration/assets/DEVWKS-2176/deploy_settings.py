@@ -388,18 +388,28 @@ def main():
             # Get the site credentials
             while True:
                 response, status_code = get_credentials(dnac_auth)
-                #print(f"Credentials: {response}")
+                print(f"Credentials: {response}")
                 # Get the site credential cli id
                 flag = False
                 if response['cli'] == []:
                     create_credentials(dnac_auth, dcloud_user, dcloud_password)
                     logging.info('CLI Credentials created for ' + site_hierarchy)
-                    response, status_code = get_credentials(dnac_auth)
                     flag = False
+                if response['snmp_v2_read'] == []:
+                    create_credentials(dnac_auth, '', '', dcloud_snmp_RO_desc, dcloud_snmp_RO)
+                    logging.info('SNMP RO Credentials created for ' + site_hierarchy)
+                    flag = False
+                if response['snmp_v2_write'] == []:
+                    create_credentials(dnac_auth, '', '', '', '', dcloud_snmp_RW_desc, dcloud_snmp_RW)
+                    logging.info('SNMP RW Credentials created for ' + site_hierarchy)
+                    flag = False
+                time.sleep(15)
+                response, status_code = get_credentials(dnac_auth)
+                print(f"Credentials: {response}")
                 for i in range(len(response['cli'])):
                     if response['cli'][i]['description'] == dcloud_user:
                         dcloud_user_id = response['cli'][i]['id']
-                        #print(f"cli id: {dcloud_user_id}")
+                        print(f"cli id: {dcloud_user_id}")
                         logging.info('CLI Credentials exist for ' + site_hierarchy)
                         flag = True
                         break
@@ -409,15 +419,10 @@ def main():
                         flag = False
                 # Get the site credential snmp RO id
                 flag = False
-                if response['snmp_v2_read'] == []:
-                    create_credentials(dnac_auth, '', '', dcloud_snmp_RO_desc, dcloud_snmp_RO)
-                    logging.info('SNMP RO Credentials created for ' + site_hierarchy)
-                    response, status_code = get_credentials(dnac_auth)
-                    flag = False
                 for i in range(len(response['snmp_v2_read'])):
                     if response['snmp_v2_read'][i]['description'] == dcloud_snmp_RO_desc:
                         dcloud_snmp_RO_id = response['snmp_v2_read'][i]['id']
-                        #print(f"snmp RO id: {dcloud_snmp_RO_id}")
+                        print(f"snmp RO id: {dcloud_snmp_RO_id}")
                         logging.info('SNMP RO Credentials exist for ' + site_hierarchy)
                         flag = True
                         break
@@ -427,15 +432,10 @@ def main():
                         flag = False
                 # Get the site credential snmp RW id
                 flag = False
-                if response['snmp_v2_write'] == []:
-                    create_credentials(dnac_auth, '', '', '', '', dcloud_snmp_RW_desc, dcloud_snmp_RW)
-                    logging.info('SNMP RW Credentials created for ' + site_hierarchy)
-                    response, status_code = get_credentials(dnac_auth)
-                    flag = False
                 for i in range(len(response['snmp_v2_write'])):
                     if response['snmp_v2_write'][i]['description'] == dcloud_snmp_RW_desc:
                         dcloud_snmp_RW_id = response['snmp_v2_write'][i]['id']
-                        #print(f"snmp RW id: {dcloud_snmp_RW_id}")
+                        print(f"snmp RW id: {dcloud_snmp_RW_id}")
                         logging.info('SNMP RW Credentials exist for ' + site_hierarchy)
                         flag = True
                         break
