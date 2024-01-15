@@ -382,7 +382,7 @@ device_details:
 ```
 You'll notice that the vars file is in YAML format.  The YAML format is human-readible, plaintext, and white space sensitive.  It uses a *key: "value"* structure and lists are defined with sets of dashes \(\-\).    
 
-### Wrap Up
+### Summary
 
 This was a brief overview of getting started with Ansible & Catalyst Center.  There are many great use cases for using the two together, and please explore the documentation for what's possible.  Watch this space for more on this topic.
 
