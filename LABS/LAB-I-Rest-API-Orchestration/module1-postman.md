@@ -26,9 +26,11 @@ To utilize Postman with DNA Center, we will first import the collection and envi
 
 There is a Public Workspace, which can be easily added to Postman via the following link. This will allow you to start using the REST API suite created for this lab rapidly. Click the following link and log into your Postman account, and the workspace, including the collections and the environment, will be automatically added. (see image below)
 
-[Public DNA Center Use-Case API Collection](https://www.postman.com/dark-capsule-39992/workspace/dna-center-use-case-api-collections)
+[Public DNA Center Use-Case API Collection](https://www.postman.com/dark-capsule-39992/workspace/catalyst-center-use-case-api-collections)
 
 ![json](./images/Postman-Public-Workspace.png?raw=true "Import JSON")
+
+> **Note:** The collection in the Postman Public Workspace has been updated to reflect the new Catalyst Center Name. Additional changes have been made to accomodate version 2.3.5.5.
 
 ## Option 2 - Postman Collection and Environment Import
 
