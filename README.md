@@ -68,7 +68,7 @@ You will find various examples within the various folders of this repository, wi
 
 * [REST API Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/RestAPI.md) - This section is a high level discussion of utlilizing REST API with Cisco DNA Center
 * [Python Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/Python.md) - This section is a high level discussion of utilizing Python with Cisco DNA Center
-* [Ansible Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/images/underconstruction.png) - This section is a high level discussion of Ansible orchestration of Cisco DNA Center
+* [Ansible Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/Ansible.md) - This section is a high level discussion of Ansible orchestration of Cisco DNA Center
 * [CICD Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CICD.md) - This section is a high level discussion of CICD orchestration of Cisco DNA Center
 
 ### Fault-Finding
