@@ -30,7 +30,7 @@ Some key components of Ansible are the configuration file, inventory, and playbo
 
 The Ansible configuration, a file in ini format usually called *ansible.cfg* is where Ansible settings are defined.  The Ansible configuration file allows you to control Ansible's look and feel, the locations where Ansible looks for the inventory, collections and roles, whether you use strict host key checking, default users, and many others.  See the [Ansible Configuration Settings](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#ansible-configuration-settings) gude for the full list of settings that can be configured. 
 
- Ansible will look for a configuration file and select one to use based on a documented order of precedence.  View the [configuration order of precedence](https://docs.ansible.com/ansible/latest/reference_appendices/general_precedence.html#configuration-settings) guide for more information.  You can view which Ansible configuration is being used with the ```ansible --version``` command which we will cover further below.  Ansible assumes the default for any settings not defined in the configuration file, so your *ansible.cfg* can be only a few lines.  Here is an example Ansible configuration with only two settings:
+Ansible will look for a configuration file and select one to use based on a documented order of precedence.  View the [configuration order of precedence](https://docs.ansible.com/ansible/latest/reference_appendices/general_precedence.html#configuration-settings) guide for more information.  You can view which Ansible configuration is being used with the ```ansible --version``` command which we will cover further below.  Ansible assumes the default for any settings not defined in the configuration file, so your *ansible.cfg* can be only a few lines.  Here is an example Ansible configuration with only two settings:
 
 ```ini
 [defaults]
@@ -75,7 +75,7 @@ The notation \[group name**:vars**\] specifies that these variables are applicab
 
 This inventory contains only five devices, but is 21 lines long.  It is easy to see how complex and hard to manage an inventory file could be at scale--especially if you are defining variables within the inventory file.
 
->Before we move on, it is important to note that this inventory file is a __security nightmare__.  It contains plaintext credentials.  It could be read by anyone, or heaven forbid, accidentally committed to a public repository in Github. Putting plaintext credentials into an inventory is bad practice no matter how well protected your control node is.  It is only done here for learning purposes.  There are many straightforward and secure methods for protecting secrets in Ansible, such as using environment variables, [Ansible vault](https://docs.ansible.com/ansible/latest/vault_guide/index.html), or third party secrets management solutions. If you are exploring Ansible for use in your enterprise, never let an inventory like this go further than the lab.  We will explore secrets management in a later tutorial.
+> **Note:** Before we move on, it is important to note that this inventory file is a __security nightmare__.  It contains plaintext credentials.  It could be read by anyone, or heaven forbid, accidentally committed to a public repository in Github. Putting plaintext credentials into an inventory is bad practice no matter how well protected your control node is.  It is only done here for learning purposes.  There are many straightforward and secure methods for protecting secrets in Ansible, such as using environment variables, [Ansible vault](https://docs.ansible.com/ansible/latest/vault_guide/index.html), or third party secrets management solutions. If you are exploring Ansible for use in your enterprise, never let an inventory like this go further than the lab.  We will explore secrets management in a later tutorial.
 
 #### The Basics of Ansible: Ansible Playbooks
 
@@ -107,7 +107,7 @@ The *tasks* section is the list of instructions.  Each instruction in the list b
 
 Tasks trigger one or more modules that are executed. The module specified in our task is *debug*.  The *debug* module simply prints the output specified by the *msg* parameter.  Our task is using the debug module to output information collected by gather_facts.  The line ```- "Hostname: {{ ansible_net_hostname }} , Serial Number: {{ ansible_net_serialnum }}"``` is the format and content of our message.   Variables in Ansible playbooks are denoted by the double curly brace: \{\{\}\}.  
 
->NOTE: It is possible to limit the facts gathered from a Cisco IOS-XE device.  See the documentation on the [gather_network_resources](https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_facts_module.html#parameter-gather_network_resources) and [gather_subset](https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_facts_module.html#parameter-gather_subset) parameters. 
+> **Note:** It is possible to limit the facts gathered from a Cisco IOS-XE device.  See the documentation on the [gather_network_resources](https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_facts_module.html#parameter-gather_network_resources) and [gather_subset](https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_facts_module.html#parameter-gather_subset) parameters. 
 
 See the output of this playbook:
 
@@ -148,7 +148,7 @@ Using Ansbile to manage Cisco Catalyst Center requires the correct version of th
 
 ![json](images/compatibility_matrix.png?raw=true "Compatibility Matrix")
 
->**NOTE**:  This image of the table was current at the time of writing.  The source at the link provided above should be referenced in the future. 
+> **Note:** This image of the table was current at the time of writing.  The source at the link provided above should be referenced in the future. 
 
 You install the [Cisco Catalyst Center Python SDK](https://dnacentersdk.readthedocs.io/en/latest/) using pip or by downloading the source code and running a setup script in a virtual environment \(recommended\) or in the global Python installation on a host. If you are unfamiliar with pip or Python or you would like a deeper look at using the SDK outside of Ansible to write code directly, review the [Python tutorial](./Python.md).
 
@@ -166,7 +166,7 @@ pip3 install dnacentersdk==2.5.5
 
 Next, install the cisco.dnac Ansible collection.  To verify that the cisco.dnac collection is installed and to validate the version, run the command ```ansible-galaxy collection list```.  This will show you a list of all collections installed on your control node.  There will be multiple lists separated by install location.  Possible locations include the global ansible_collections directory and within the .ansible directory of the current user.  You can also use grep to narrow down the output:  ```ansible-galaxy collection list | grep cisco.dnac```
 
->**NOTE**:  If the command ```ansible-galaxy collection list``` is not found on your system, your version of Ansible is too old.  
+> **Note:** If the command ```ansible-galaxy collection list``` is not found on your system, your version of Ansible is too old.  
 
 <img src="images/ansible-galaxy.png" 
      width="600" 
