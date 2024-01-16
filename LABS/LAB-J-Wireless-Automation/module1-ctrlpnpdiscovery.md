@@ -154,7 +154,7 @@ While we have the ability to PnP a Wireless Controller typically these are estan
 
    ![json](./images/module1-pnpdiscovery/dnac-inventory-hierarchy.png?raw=true "Import JSON")
 
-6. Click *Next* to complete the get to the summary.
+6. Click *Next* to complete, the assignment and to get to the summary.
 
    ![json](./images/module1-pnpdiscovery/dnac-inventory-hierarchychosen.png?raw=true "Import JSON")
 

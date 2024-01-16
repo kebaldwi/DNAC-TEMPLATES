@@ -31,7 +31,7 @@ The Application Policy methodology within DNA Center allows for two types of pol
 
 2. In the Application Policy page, click **Add Policy**. 
 
-   ![json](./images/module4-applicationqos/dnac-menu-appqos-addpolicy?raw=true "Import JSON")
+   ![json](./images/module4-applicationqos/dnac-menu-appqos-addpolicy.png?raw=true "Import JSON")
 
 3. Complete the following steps:
    1. Enter `Wireless-CAMPUS-PSK` as the name for the Application Policy Name. 
@@ -47,7 +47,7 @@ The Application Policy methodology within DNA Center allows for two types of pol
 
 5. Click the **Site** and then on the popup on the right click **Edit Scope**
 
-   ![json](./images/module4-applicationqos/dnac-menu-appqos-policy-wifi-sites?raw=true "Import JSON")
+   ![json](./images/module4-applicationqos/dnac-menu-appqos-policy-wifi-sites.png?raw=true "Import JSON")
 
 6. Put a tick next to *Building*. Click **Save**  
 
