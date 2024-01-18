@@ -2,7 +2,7 @@
 
 This section will describe the various tools and techniques used to make a powerful script out of normal CLI statement collections which are used by organizations on IOS devices around the world. This section is an attempt to demystify the hows and to bring clarity on what is truely possible. While it is possible to take a CLI script for one device and create a template for one device at a time, that would leave us with a lot of templates and make it harder to make changes on an ongoing basis. Using the techniques below will allow us to deploy equipment with scripts which can be reused, allowing us to keep configurations similar for conformity reasons but also to reduce the number of places where changes would have to be made. 
 
-To that end it is important to write modular scripts which make use of all the power of programming but allow us to do it within the DNAC platform as templates. 
+To that end it is important to write modular scripts which make use of all the power of programming but allow us to do it within the Cisco Catalyst Center platform as templates. 
 
 The Jinja2 language typically allows for logical constructs, macros and more. Its heredity is from the Python language and so a lot of its form, nomenclature and features will be very familiar to programmers familiar with Python.
 

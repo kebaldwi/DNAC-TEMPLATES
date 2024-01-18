@@ -30,7 +30,7 @@ To help get started with the PnP process and to better understand the process, p
 <summary> Click for Details and Sub Tasks</summary>
 
 1. [PnP Workflow](./PnP-Workflow.md) - This section explains the overall Plug and Play Methodology
-2. [Onboarding](./Onboarding.md) - This section will explain Onboarding Templates in DNAC and their use
+2. [Onboarding](./Onboarding.md) - This section will explain Onboarding Templates in Cisco Catalyst Center and their use
 3. [Building Templates](./Templates.md#building-templates) - This section will explain how to build a template on DNAC
 
 </details>

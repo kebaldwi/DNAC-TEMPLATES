@@ -19,7 +19,7 @@ The repository will include scripts and examples with the following:
 5. Regular Templates
 6. Composite Templates
 
-The goal of this repository is a practical guide to allow engineers to rapidly begin using DNAC automation and begin conversion of IOS CLI Templates. The Templates have been developed over the years and with various use cases in mind, and so the intent of sharing this collection is to reduce the lift to begin automating.
+The goal of this repository is a practical guide to allow engineers to rapidly begin using Cisco Catalyst Center automation and begin conversion of IOS CLI Templates. The Templates have been developed over the years and with various use cases in mind, and so the intent of sharing this collection is to reduce the lift to begin automating.
 
 ## Intent Based Networking
 
@@ -40,12 +40,12 @@ You will find various examples within the various folders of this repository, wi
 ### Workflows
 
 * [PnP Workflow](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/PnP-Workflow.md#pnp-workflow) - This section explains the overall Plug and Play Methodology
-* [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/Onboarding.md#onboarding-templates-and-flows) - This section will explain Onboarding Templates in DNAC and their use in bringing various devices under Cisco Catalyst Center management
+* [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/Onboarding.md#onboarding-templates-and-flows) - This section will explain Onboarding Templates in Cisco Catalyst Center and their use in bringing various devices under Cisco Catalyst Center management
 * [DayN Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/DayN.md#day-n-templates-and-flows) - This section will explain how to use templates for ongoing (Day-N) changes to the network
 
 ### Templating
 
-* [Building Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/Templates.md#building-templates) - This section will explain how to build a template on DNAC from scratch
+* [Building Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/Templates.md#building-templates) - This section will explain how to build a template on Cisco Catalyst Center from scratch
 
 #### Velocity Language
 
@@ -89,7 +89,7 @@ This section built out in a lab format to guide you through the typical steps to
 * [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-B-Onboarding-Template/) - The lab covers in depth topics in deploying Day 0 templates **(allow 1.5 hrs)**
 * [Day N Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-C-DayN-Template/) - The lab covers Day N template constructs and use cases **(allow 0.5 hrs)**
 * [Composite Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-D-Composite-Template/) - This lab covers building a composite template on Cisco Catalyst Center **(allow 0.5 hrs)**
-* [Application Policys](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-E-Application-Policy/) - This lab covers Application Policy & SDAVC in DNAC **(allow 1.0 hrs)**
+* [Application Policys](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-E-Application-Policy/) - This lab covers Application Policy & SDAVC in Cisco Catalyst Center **(allow 1.0 hrs)**
 * [Telemetry](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-F-Telemetry-Enablement/) - This lab explains how to deploy Streaming Telemetry for Cisco Catalyst Center Assurance **(allow 0.5 hrs)**
 * [Advanced Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-G-Advanced-Automation/) - This lab will explore Advanced Automation examples **(allow 1.5 hrs)**
 * [Dynamic Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-H-Dynamic-Automation/) - This lab will explore additional Advanced Automation examples **(allow 2.0 hrs)**
