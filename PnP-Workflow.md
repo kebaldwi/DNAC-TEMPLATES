@@ -82,7 +82,7 @@ If DHCP Option 43 is not configured, the device cannot contact the DHCP server, 
 
 **Option 2:** requires that along with the IP address and gateway the DHCP server offer the domain suffix that the **pnpserver** record will reside in and a name server to resolve the address. Caveats here would be that if not all devices were to be landing on Cisco Catalyst Center then you may need sub domains.
 
-**Option 3:** requires that along with the address and the gateway the DHCP server offer a name server to resolve the address of **device-helper.cisco.com**. Additionally it requires the that Cisco Catalyst Center registers a file with the PnP Connect portal which it will offer via SSL to a device which reaches out. In order to whitelist those devices, the serial number would have to be associated to the DNAC profile within "Software Central" > [Plug and Play Connect](https://software.cisco.com/software/csws/ws/platform/home?locale=en_US#pnp-devices) portal.
+**Option 3:** requires that along with the address and the gateway the DHCP server offer a name server to resolve the address of **device-helper.cisco.com**. Additionally it requires the that Cisco Catalyst Center registers a file with the PnP Connect portal which it will offer via SSL to a device which reaches out. In order to whitelist those devices, the serial number would have to be associated to the Cisco Catalyst Center profile within "Software Central" > [Plug and Play Connect](https://software.cisco.com/software/csws/ws/platform/home?locale=en_US#pnp-devices) portal.
 
 ![json](images/pnp-connect.png?raw=true "Import JSON")
 

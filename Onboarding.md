@@ -1,6 +1,6 @@
 # Onboarding Templates and Flows [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 
-In this section will go through the flow involved in creating a Template from an IOS configuration script for a Catalyst switch and various thoughts around how to link it to a Switch profile and deploy it through DNAC using Plug and Play workflows.
+In this section will go through the flow involved in creating a Template from an IOS configuration script for a Catalyst switch and various thoughts around how to link it to a Switch profile and deploy it through Cisco Catalyst Center using Plug and Play workflows.
 
 Cisco Catalyst Center can be used for not only Plug and Play but also Day N or Ongoing Templates. Typically customers will start by building out an Onboarding Template which might deploy only enough information to bring the device up initially or it might include the entire configuration typical for a traditional networking device.
 
@@ -140,7 +140,7 @@ If the Network Profile is already deployed it can be edited at a later date to a
 
 ## Claiming and Provisioning
 
-At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided Cisco Catalyst Center discovery methods are properly configured (ie DHCP-based, or DNS record-based), the out-of-box device during boot up process discover Cisco Catalyst Center, and register itself in the plug n play section of the provisioning page.
+At this point Cisco Catalyst Center is set up and ready for Plug and Play to onboard the first device. Provided Cisco Catalyst Center discovery methods are properly configured (ie DHCP-based, or DNS record-based), the out-of-box device during boot up process discover Cisco Catalyst Center, and register itself in the plug n play section of the provisioning page.
 
 At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
 

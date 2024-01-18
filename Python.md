@@ -161,7 +161,7 @@ pip install requests
 
 > **Note:** It is considered to be a best practice to not store credentials in plain text, and instead leveraging environment variables. This example is for simplicity and demonstration purposes only.
 
-> **Note:** Please ensure to update DNAC URL, and credentials to match Cisco Catalyst Center environment you are working with (in this case, parameters are for devnet sandbox).
+> **Note:** Please ensure to update Cisco Catalyst Center URL, and credentials to match Cisco Catalyst Center environment you are working with (in this case, parameters are for devnet sandbox).
 
 ```python
 import os
@@ -297,7 +297,7 @@ from dnac_config import DNAC, DNAC_USER, DNAC_PASSWORD
 
 def get_auth_dnac():
     """
-    Leverage SDK to return a DNAC object
+    Leverage SDK to return a Cisco Catalyst Center object
     """
     dnac = api.DNACenterAPI(base_url="https://{DNAC}".format(DNAC=DNAC),
                             username=DNAC_USER,password=DNAC_PASSWORD,verify=False)

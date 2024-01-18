@@ -1,6 +1,6 @@
 ## DAY N Templates and Flows [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 
-In this section we will go through the flow involved in creating a Template from an IOS configuration script for a Catalyst switch and various thoughts around how to link it to a Switch profile and deploy it through DNAC using Plug and Play workflows.
+In this section we will go through the flow involved in creating a Template from an IOS configuration script for a Catalyst switch and various thoughts around how to link it to a Switch profile and deploy it through Cisco Catalyst Center using Plug and Play workflows.
 
 Cisco Catalyst Center can be used for not only Plug and Play but also Day N or Ongoing Templates. Typically customers will start by building out an Onboarding Template which might deploy just enough information to bring the device up initially, or might include the entire configuration for a traditional network. Customers also need to be able to deploy ongoing changes to the network infrastructure.
 
@@ -94,7 +94,7 @@ If the Network Profile is already deployed it can be edited at a later date to a
 
 ## Provisioning
 
-At this point DNAC is set up and ready for DayN templates to be used on the first device. Provided the device has been onboarded or discovered by DNAC and is present in Cisco Catalyst Center Device Inventory. If not, please discover the device through the tools menu or see the onboarding section [Onboarding Templates](./Onboarding.md)
+At this point Cisco Catalyst Center is set up and ready for DayN templates to be used on the first device. Provided the device has been onboarded or discovered by Cisco Catalyst Center and is present in Cisco Catalyst Center Device Inventory. If not, please discover the device through the tools menu or see the onboarding section [Onboarding Templates](./Onboarding.md)
 
 At this point you can select the device putting on the Device Inventory and provision it by do the following:
 
