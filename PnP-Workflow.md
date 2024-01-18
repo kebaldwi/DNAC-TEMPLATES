@@ -1,8 +1,8 @@
 # PnP Workflow [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 
-With the advent of Cisco DNA Center, Cisco has taken a leap forward in applying automation when deploying intended configuration to network devices at scale. Through the use of DNA Center PnP (plug and play) we can drastically simplify out-of-box device initialization and Day-0 configuration as the first step towards automation.
+With the advent of Cisco Catalyst Center, Cisco has taken a leap forward in applying automation when deploying intended configuration to network devices at scale. Through the use of Cisco Catalyst Center PnP (plug and play) we can drastically simplify out-of-box device initialization and Day-0 configuration as the first step towards automation.
 
-For DNA Center to begin the process it must first learn of the device. The device therefore must communicate to DNA Center and this section will explain how this can be achieved.
+For Cisco Catalyst Center to begin the process it must first learn of the device. The device therefore must communicate to Cisco Catalyst Center and this section will explain how this can be achieved.
 
 The first piece to the puzzle is that the device must obtain an IP address to have basic network reachability. It does not have one by default as it has not been primed nor do we want to do that in a fully automated flow.
 
@@ -12,7 +12,7 @@ For PnP processes to work our intention is to have a management interface on the
 
 By default the target switch is using vlan 1 as no other vlan exists, and vlan 1 by default accepts DHCP assigned addresses. We could use vlan 1 for provisioning, but more than likely we would need to use some other vlan for our management vlan. 
 
-If management vlan is going to be different from the default vlan 1 assignment, we will use a command on the upstream switch to communicate that to the downstream target device. To that end we must make use of the *pnp startup-vlan* command which allows the device to use any vlan in pnp. This command introduced on the upstream neighbor enables automatic downstream configuration on the target enabling it for DHCP and making it ready for the pnp process. Refer to [Fundamentals of Cisco Dna Center Plug and Play](https://blogs.cisco.com/developer/dna-center-pnp-day-0)
+If management vlan is going to be different from the default vlan 1 assignment, we will use a command on the upstream switch to communicate that to the downstream target device. To that end we must make use of the *pnp startup-vlan* command which allows the device to use any vlan in pnp. This command introduced on the upstream neighbor enables automatic downstream configuration on the target enabling it for DHCP and making it ready for the pnp process. Refer to [Fundamentals of Cisco Catalyst Center Plug and Play](https://blogs.cisco.com/developer/dna-center-pnp-day-0)
  
 ```vtl
 pnp startup-vlan 100
@@ -55,15 +55,15 @@ The DHCP scope would incorporate the following parameters sufficient to issue an
 
 Obviously a dhcp relay or helper statement is required on the gateway router interface pointing towards the DHCP server.
 
-## DNA Center Discovery
+## Cisco Catalyst Center Discovery
 
-In order to communicate with DNA Center the device going through the PnP process needs additional information while finding it. 
+In order to communicate with Cisco Catalyst Center the device going through the PnP process needs additional information while finding it. 
 
 The PnP components are as follows:
 
 ![json](images/pnp-workflows.png?raw=true "Import JSON")
 
-There are 3 automated methods that can be used to assist with DNA Center discovery process:
+There are 3 automated methods that can be used to assist with Cisco Catalyst Center discovery process:
 
 1. **DHCP with option 43**
 ```shell
@@ -71,30 +71,30 @@ There are 3 automated methods that can be used to assist with DNA Center discove
 ``` 
 2. **DNS lookup**
 ```shell
-   pnpserver.localdomain resolves to DNA Center VIP Address
+   pnpserver.localdomain resolves to Cisco Catalyst Center VIP Address
 ```
 3. **Cloud re-direction https://devicehelper.cisco.com/device-helper**
-   **which, re-directs to on-prem DNA Center IP Address**
+   **which, re-directs to on-prem Cisco Catalyst Center IP Address**
 
 **Option 1:** requires that along with the IP address and gateway the DHCP server must offer a PnP string via option 43. This option is often used with Cisco wireless so you may want to incorporate option 60 and the use of vendor specific information to ensure the correct controller is referenced for the device in question. 
-When the DHCP server receives a DHCP discover message from the device, with Option 60 containing the string “ciscopnp”, it responds to the device by returning a response that contains the Option 43 information. The Cisco Plug and Play IOS Agent in the device extracts the Cisco DNA Center controller IP address from the response and uses this address to communicate with the controller.
+When the DHCP server receives a DHCP discover message from the device, with Option 60 containing the string “ciscopnp”, it responds to the device by returning a response that contains the Option 43 information. The Cisco Plug and Play IOS Agent in the device extracts the Cisco Catalyst Center controller IP address from the response and uses this address to communicate with the controller.
 If DHCP Option 43 is not configured, the device cannot contact the DHCP server, or this method fails for another reason, the network device attempts discovery using DNS
 
-**Option 2:** requires that along with the IP address and gateway the DHCP server offer the domain suffix that the **pnpserver** record will reside in and a name server to resolve the address. Caveats here would be that if not all devices were to be landing on DNA Center then you may need sub domains.
+**Option 2:** requires that along with the IP address and gateway the DHCP server offer the domain suffix that the **pnpserver** record will reside in and a name server to resolve the address. Caveats here would be that if not all devices were to be landing on Cisco Catalyst Center then you may need sub domains.
 
-**Option 3:** requires that along with the address and the gateway the DHCP server offer a name server to resolve the address of **device-helper.cisco.com**. Additionally it requires the that DNA Center registers a file with the PnP Connect portal which it will offer via SSL to a device which reaches out. In order to whitelist those devices, the serial number would have to be associated to the DNAC profile within "Software Central" > [Plug and Play Connect](https://software.cisco.com/software/csws/ws/platform/home?locale=en_US#pnp-devices) portal.
+**Option 3:** requires that along with the address and the gateway the DHCP server offer a name server to resolve the address of **device-helper.cisco.com**. Additionally it requires the that Cisco Catalyst Center registers a file with the PnP Connect portal which it will offer via SSL to a device which reaches out. In order to whitelist those devices, the serial number would have to be associated to the DNAC profile within "Software Central" > [Plug and Play Connect](https://software.cisco.com/software/csws/ws/platform/home?locale=en_US#pnp-devices) portal.
 
 ![json](images/pnp-connect.png?raw=true "Import JSON")
 
-Once the above has been configured, devices undergoing PnP process will discover DNA Center IP address and be redirected to it via "Plug and Play Connect" cloud proxy discovery process.
+Once the above has been configured, devices undergoing PnP process will discover Cisco Catalyst Center IP address and be redirected to it via "Plug and Play Connect" cloud proxy discovery process.
 
 ## Setup Information:
 
 ### Option 43 
 
-Option 43 format follows as documented on the [DNA Center User Guide](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/1-2-8/user_guide/b_dnac_ug_1_2_8/b_dnac_ug_1_2_8_chapter_01100.html#id_90877). It may be offered by any DHCP server including but not limited to IOS, Windows, Infoblox and many more.
+Option 43 format follows as documented on the [Cisco Catalyst Center User Guide](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/1-2-8/user_guide/b_dnac_ug_1_2_8/b_dnac_ug_1_2_8_chapter_01100.html#id_90877). It may be offered by any DHCP server including but not limited to IOS, Windows, Infoblox and many more.
 
-Benefits to this method are that you can contain the connectivity in a finite manner and prescriptively by only allowing equipment on specific subnets to find DNA Center.
+Benefits to this method are that you can contain the connectivity in a finite manner and prescriptively by only allowing equipment on specific subnets to find Cisco Catalyst Center.
 
 ```shell
 Option 43 format 
@@ -127,11 +127,11 @@ K4;               Transport protocol to be used between the device and the contr
                   K4 = HTTP (default)
                   K5 = HTTPS
 
-Ixxx.xxx.xxx.xxx; IP address or hostname of the Cisco DNA Center controller (following a 
+Ixxx.xxx.xxx.xxx; IP address or hostname of the Cisco Catalyst Center controller (following a 
                   capital letter i). In this example, the IP address is 172.19.45.222.
                   
 
-Jxxxx             Port number to use to connect to the Cisco DNA Center controller. 
+Jxxxx             Port number to use to connect to the Cisco Catalyst Center controller. 
                   In this example, the port number is 80. The default is port 80 for HTTP 
                   and port 443 for HTTPS.
 ```
@@ -154,11 +154,11 @@ On MS Windows DHCP Server, you have two options to deploy DHCP scopes the UI or 
 
 ### DNS Setup
 
-DNS may be set up on many types of servers, but for simplification we will speak about the records which can be created. Typically it is a good practice to add DNS entries for all interfaces of DNA Center cluster members, and a DNS entry for the DNA Center **Virtual IP address(VIP)** on the Enterprise Network which may be used for Management and Enterprise Network connectivity.
+DNS may be set up on many types of servers, but for simplification we will speak about the records which can be created. Typically it is a good practice to add DNS entries for all interfaces of Cisco Catalyst Center cluster members, and a DNS entry for the Cisco Catalyst Center **Virtual IP address(VIP)** on the Enterprise Network which may be used for Management and Enterprise Network connectivity.
 
 Benefits to this methodology are that you can cover a large organization rapidly avoiding the need to make changes to multiple DHCP scopes, and can accomplish a regional approach through the use of sub domains within an organization like * *pnpserver.west.us.domain.com* * or * *pnpserver.east.us.domain.com* * which allows for 2 different clusters due to RTT times perhaps.
 
-When using the DNS methodology with the **pnpserver** host entry please be aware that the record should exist in the Subject Alternative Names section within the Certificate on DNA Center.
+When using the DNS methodology with the **pnpserver** host entry please be aware that the record should exist in the Subject Alternative Names section within the Certificate on Cisco Catalyst Center.
 
 **Option 1:** An A record would be created pointing to the VIP address. Another A record may also be added for the pnpserver record to resolve to the same address. In this regard the two entries might look like this:
 
@@ -213,7 +213,7 @@ Address: 10.10.0.20
 
 ### PnP Connect Portal
 
-The PNP connect portal is where a device would land that had internet connectivity which had not been able to contact DNA Center through either * *option 43* * or * *dns resolution* * and for this method to work, the pnp connect portal must be set up accordingly on the customers virtual account. 
+The PNP connect portal is where a device would land that had internet connectivity which had not been able to contact Cisco Catalyst Center through either * *option 43* * or * *dns resolution* * and for this method to work, the pnp connect portal must be set up accordingly on the customers virtual account. 
 
 Benefits to this methodology are that devices can be whitelisted on the pnp-connect portal and specifically redirected to one cluster vs another with the profile file configured for the matching device serial number.
 
@@ -241,7 +241,7 @@ The steps to complete in order to use this method are as follows:
 9. Click Register
 10. Ensure Sync Success is reported
 
-Upon completion, DNA Center Controller Profile will be created in PnP Connect portal
+Upon completion, Cisco Catalyst Center Controller Profile will be created in PnP Connect portal
 
 #### To Stage Devices in PnP Connect Portal on software.cisco.com
 

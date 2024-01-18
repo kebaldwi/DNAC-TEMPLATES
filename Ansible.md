@@ -144,7 +144,7 @@ The output of this command shows the version of ansible currently running along 
 
 ### Ansible & Catalyst Center Dependencies
 
-Using Ansbile to manage Cisco Catalyst Center requires the correct version of the [cisco.dnac] collection for your Catalyst Center version.  The cisco.dnac collection is included in the full Ansible package by default.  However, the collection depends on the [DNA Center SDK](https://dnacentersdk.readthedocs.io/en/latest/index.html).  The SDK must be installed on the control node.  If you have installed the full Ansible package, the cisco.dnac collection is included, but it may not be the correct version for your Catalyst Center deployment.  See the compatibility matrix [table](https://galaxy.ansible.com/ui/repo/published/cisco/dnac/docs/) on Ansible Galaxy for compatibility information:
+Using Ansbile to manage Cisco Catalyst Center requires the correct version of the [cisco.dnac] collection for your Catalyst Center version.  The cisco.dnac collection is included in the full Ansible package by default.  However, the collection depends on the [Cisco Catalyst Center SDK](https://dnacentersdk.readthedocs.io/en/latest/index.html).  The SDK must be installed on the control node.  If you have installed the full Ansible package, the cisco.dnac collection is included, but it may not be the correct version for your Catalyst Center deployment.  See the compatibility matrix [table](https://galaxy.ansible.com/ui/repo/published/cisco/dnac/docs/) on Ansible Galaxy for compatibility information:
 
 ![json](images/compatibility_matrix.png?raw=true "Compatibility Matrix")
 
@@ -152,7 +152,7 @@ Using Ansbile to manage Cisco Catalyst Center requires the correct version of th
 
 You install the [Cisco Catalyst Center Python SDK](https://dnacentersdk.readthedocs.io/en/latest/) using pip or by downloading the source code and running a setup script in a virtual environment \(recommended\) or in the global Python installation on a host. If you are unfamiliar with pip or Python or you would like a deeper look at using the SDK outside of Ansible to write code directly, review the [Python tutorial](./Python.md).
 
-To install the Cisco DNA Center Python SDK using pip, run the following:
+To install the Cisco Catalyst Center Python SDK using pip, run the following:
 
 ```
 pip3 install dnacentersdk==#.#.#

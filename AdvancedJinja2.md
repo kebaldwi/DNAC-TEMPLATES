@@ -6,7 +6,7 @@ Below will be examples of various use cases that could be implemented.
 
 ### Parsing Integers from String Variables
 
-In the following example a variable is bound to DNA Centers database and a value is called for the Native Vlan. As all data within the database is essentially in string format, if we wish to use it with some mathematics to calculate other values, we would first need to change it (ie cast) from a string to a integer.
+In the following example a variable is bound to Cisco Catalyst Centers database and a value is called for the Native Vlan. As all data within the database is essentially in string format, if we wish to use it with some mathematics to calculate other values, we would first need to change it (ie cast) from a string to a integer.
 
 In order to acomplish this we need to use this example. We will use the *int* modifier to parse the bind variable to an integer variable using set notation.
 
@@ -103,7 +103,7 @@ Then perhaps build a logical structure to account for differing Site Objects.
 
 ### Include and Extend with Jinja2
 
-Within Jinja2 templates in DNA Center its possible to both Include and Extend regular templates. Lets discuss first what these are and how they differ from each other, and then how they may be leveraged.
+Within Jinja2 templates in Cisco Catalyst Center its possible to both Include and Extend regular templates. Lets discuss first what these are and how they differ from each other, and then how they may be leveraged.
 
 #### Include
 
