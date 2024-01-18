@@ -120,7 +120,7 @@ With variables there are modifiers that can be used to do specific operations wi
 
 ## Jinja2 Variables
 
-In this section we will go into the various aspects of Jinja2 Variables and nomenclature as they are used on DNA Center for templating.
+In this section we will go into the various aspects of Jinja2 Variables and nomenclature as they are used on Cisco Catalyst Center for templating.
 
 ```j2
     Variable reference:     {% set monkey = bill  %}
@@ -217,9 +217,9 @@ With variables there are modifiers that can be used to do specific operations wi
    {% do PortTotal.append(PortCount) %}
    ```
 
-## DNA Center & Working with Variables
+## Cisco Catalyst Center & Working with Variables
 
-As with anything DNA Center the UI allows for flexibility and the ability to not only further define how the Variables are populated but how they are used during the provisioning workflows. 
+As with anything Cisco Catalyst Center the UI allows for flexibility and the ability to not only further define how the Variables are populated but how they are used during the provisioning workflows. 
 
 ![json](images/TemplateEditor.png?raw=true "Import JSON")
 
@@ -263,7 +263,7 @@ The first line is by default blank at first and as the only line is the *Default
 
 #### Bind Variables
 
-Within DNA Center it is possible to Bind Variables to devices. Within DNA Center versions 1.2 and 1.3 this can only be used and populated by the device for use in **DayN Templates**. When used in **Onboarding Templates** the variable is not populated at this time although we believe that to be a roadmap item. Once the device is in the inventory this data populated by the dvice during onbaording may be used throughout the script to make decisions. For example if it is a 48 port 9300 the product ID would be populated with C9300-48U and so you can make decision trees to program 48 ports based off that value. See DayN Templates for more information.
+Within Cisco Catalyst Center it is possible to Bind Variables to devices. Within Cisco Catalyst Center versions 1.2 and 1.3 this can only be used and populated by the device for use in **DayN Templates**. When used in **Onboarding Templates** the variable is not populated at this time although we believe that to be a roadmap item. Once the device is in the inventory this data populated by the dvice during onbaording may be used throughout the script to make decisions. For example if it is a 48 port 9300 the product ID would be populated with C9300-48U and so you can make decision trees to program 48 ports based off that value. See DayN Templates for more information.
 
 ##### Building a Bind Variable
 
@@ -292,7 +292,7 @@ Within DNA Center it is possible to Bind Variables to devices. Within DNA Center
 
 #### System Variables
 
-Within DNA Center it is possible to utilize Built-in System type variables for a number of values allowing you to address network settings within the design, to other interface information from devices. This example of code utilizes the `$__interface` built in variable to determine the characteristics of a port and then apply a macro to each port for a specific device.
+Within Cisco Catalyst Center it is possible to utilize Built-in System type variables for a number of values allowing you to address network settings within the design, to other interface information from devices. This example of code utilizes the `$__interface` built in variable to determine the characteristics of a port and then apply a macro to each port for a specific device.
 
 ```vtl
 #foreach( $interface in $__interface )

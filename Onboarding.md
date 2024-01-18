@@ -2,19 +2,19 @@
 
 In this section will go through the flow involved in creating a Template from an IOS configuration script for a Catalyst switch and various thoughts around how to link it to a Switch profile and deploy it through DNAC using Plug and Play workflows.
 
-DNA Center can be used for not only Plug and Play but also Day N or Ongoing Templates. Typically customers will start by building out an Onboarding Template which might deploy only enough information to bring the device up initially or it might include the entire configuration typical for a traditional networking device.
+Cisco Catalyst Center can be used for not only Plug and Play but also Day N or Ongoing Templates. Typically customers will start by building out an Onboarding Template which might deploy only enough information to bring the device up initially or it might include the entire configuration typical for a traditional networking device.
 
 Of note is that Onboarding templates are deployed one time only when the device is being brought online. While there is nothing wrong in doing only this, its important to understand that there is a lot more power gained by being able to modify templates and redeploy them or parts of them for ongoing changes and modifications. For ongoing modifications Day N templates should be considered for those parts of device configuration that undergo routine changes. Additionally, keeping your onboarding configuration lightweight means that you gain the maximum flexibility of being able to make ongoing changes later.
 
-Another important consideration is that part of a typical configuration would include some lines of code which will be built out with the *Design >Network Settings >* application within DNA Center. If the Design component of DNA Center is used you should not deploy additional CLI code to the device from that point on to avoid conflicting statements between Design component generated code and manual CLI supplied via a template. Its a decision you have to make upfront and avoids a lot of lines in the templates. 
+Another important consideration is that part of a typical configuration would include some lines of code which will be built out with the *Design >Network Settings >* application within Cisco Catalyst Center. If the Design component of Cisco Catalyst Center is used you should not deploy additional CLI code to the device from that point on to avoid conflicting statements between Design component generated code and manual CLI supplied via a template. Its a decision you have to make upfront and avoids a lot of lines in the templates. 
 
 As a guidance try and use Design settings for as much of the configurations as you can, leaving Templates light and nimble for ongoing changes.
 
-## DNA Center Design Preparation
+## Cisco Catalyst Center Design Preparation
 
-Before DNA Center can automate the deployment we have to complete a few tasks in preparation:
+Before Cisco Catalyst Center can automate the deployment we have to complete a few tasks in preparation:
 
-1. The **Hierarchy** within DNA Center. This will be used to roll out code and configurations continuously, so my guidance around this is to closely align this to the change management process. If you need change management scoped to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. There are plenty of blogs and guides about how to do this. Good place to start is [Design the Network Hieararchy](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/2-3-3/user_guide/b_cisco_dna_center_ug_2_3_3/m_design-the-network-hierarchy.html). **(required)**
+1. The **Hierarchy** within Cisco Catalyst Center. This will be used to roll out code and configurations continuously, so my guidance around this is to closely align this to the change management process. If you need change management scoped to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. There are plenty of blogs and guides about how to do this. Good place to start is [Design the Network Hieararchy](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/2-3-3/user_guide/b_cisco_dna_center_ug_2_3_3/m_design-the-network-hierarchy.html). **(required)**
 2. **Network Settings** can then be added hierarchically - either inherited and/or overidden at each subordinate level throughout the site hierarchy. The following is a description of the Network Settings and configurations that can be applied **(optional)**:
    1. **AAA Servers** - *both Network Administration and Client/Endpoint Authentication*
    2. **DHCP Servers** - *DHCP Server Addresses for Vlan Interfaces for example*
@@ -38,7 +38,7 @@ Before DNA Center can automate the deployment we have to complete a few tasks in
 
 ## Onboarding Templates
 
-Onboarding templates are regular templates which serve the purpose of onboarding the device as mentioned with the minimal amount of code necessary to get connectivity up to the device in a consistent manner and to allow for further configuration via Day N templates, and device provisioning. Typically, there are two types of configurations that are used here: Layer 3 routed, or Layer 2 access. Both have different use cases, and while they are typical, they are by no means the only types of configuration used in this context. To that end, a set of examples has been provided in the [Onboarding folder](./ONBOARDING) within this repository. One of those examples is the one I most typically see used with customer deployments. Included there is a [JSON Import File](./ONBOARDING/Platinum_Onboarding_Template.json) for import into DNA Center 2.1.X and above.
+Onboarding templates are regular templates which serve the purpose of onboarding the device as mentioned with the minimal amount of code necessary to get connectivity up to the device in a consistent manner and to allow for further configuration via Day N templates, and device provisioning. Typically, there are two types of configurations that are used here: Layer 3 routed, or Layer 2 access. Both have different use cases, and while they are typical, they are by no means the only types of configuration used in this context. To that end, a set of examples has been provided in the [Onboarding folder](./ONBOARDING) within this repository. One of those examples is the one I most typically see used with customer deployments. Included there is a [JSON Import File](./ONBOARDING/Platinum_Onboarding_Template.json) for import into Cisco Catalyst Center 2.1.X and above.
 
 ```vtl
 ##<------Onboarding-Template------->
@@ -96,11 +96,11 @@ interface Vlan 1
 !
 ```
 
-This Template has the settings necessary to bring up a Layer 2 access switch with enough configration to be supported by DNA Center for the rest of the provisioning process.
+This Template has the settings necessary to bring up a Layer 2 access switch with enough configration to be supported by Cisco Catalyst Center for the rest of the provisioning process.
 
 ## Onboarding Template Deployment
 
-Once you have built your onboarding template you then have to let **DNA Center** know where you want it to apply it. We will assume at this point you have already created/imported the above template. You would then follow the following steps:
+Once you have built your onboarding template you then have to let **Cisco Catalyst Center** know where you want it to apply it. We will assume at this point you have already created/imported the above template. You would then follow the following steps:
    1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile**
 
       ![json](images/NetworkProfile.png?raw=true "Import JSON")
@@ -136,11 +136,11 @@ If the Network Profile is already deployed it can be edited at a later date to a
    4. Save the network profile
    5. Assign the network profile to the hierarchy
 
-> **Note:** If you populate the DNA Center Design section, those parameters should **not** be in your templates CLI payload as they will conflict and device provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what resultant CLI configuration statements are pushed.
+> **Note:** If you populate the Cisco Catalyst Center Design section, those parameters should **not** be in your templates CLI payload as they will conflict and device provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what resultant CLI configuration statements are pushed.
 
 ## Claiming and Provisioning
 
-At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided DNA Center discovery methods are properly configured (ie DHCP-based, or DNS record-based), the out-of-box device during boot up process discover DNA Center, and register itself in the plug n play section of the provisioning page.
+At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided Cisco Catalyst Center discovery methods are properly configured (ie DHCP-based, or DNS record-based), the out-of-box device during boot up process discover Cisco Catalyst Center, and register itself in the plug n play section of the provisioning page.
 
 At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
 
@@ -152,15 +152,15 @@ At this point you can claim the device putting it in a planned state for onboard
    6. Section 4 review the elements including configuration to be deployed 
    7. Click claim to initiate
    
-At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete. After the device is completed it will appear in the device inventory after being sync'd with DNA Center.
+At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete. After the device is completed it will appear in the device inventory after being sync'd with Cisco Catalyst Center.
 
 ![json](images/pnp-registered.png?raw=true "Import JSON")
 
 ## Automating Claiming and Provisioning
 
-While it is possible to click through the claiming and process, for bulk deployments its important to be able to automate this process as well. With DNA Center after the templates are built and assigned to the network profile and assigned to a site, they may be referenced and used by uploading a csv file to DNA Center via REST API.
+While it is possible to click through the claiming and process, for bulk deployments its important to be able to automate this process as well. With Cisco Catalyst Center after the templates are built and assigned to the network profile and assigned to a site, they may be referenced and used by uploading a csv file to Cisco Catalyst Center via REST API.
 
-This methodology allows for you to specify variables within the csv, serial numbers, and put devices into a planned state waiting for them to land on the Plug and Play page on DNA Center.
+This methodology allows for you to specify variables within the csv, serial numbers, and put devices into a planned state waiting for them to land on the Plug and Play page on Cisco Catalyst Center.
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
