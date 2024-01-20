@@ -2,6 +2,19 @@
 
 > **Notice:** For information specific to IOS-XE HTTP Vulnerability please see this [link](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/Vulnerability.md)
 
+> **Note:** Thank you for continuing your **support** of the **DNAC-Template Repository** by your continued visits to the site. Over the past few years we have developed a lot of content as a result, it is **time to reorganize** it to help be more consise, and to aide users in finding the relevant content easily. Over the next few months you will **notice changes and updates** to the repository, as we **add** additional content, **revise** existing dated content and nomenclature. The **folder structure** and **resources** will be **reorganized** for ease of use, and so that CODE examples and TUTORIALS will be grouped together for ease of use. We hope this will help users to find the content they need in an easier manner.
+
+## Cisco DNA Center
+
+![Cisco DNAC Overview](./images/cisco_dnac.png)
+
+Cisco DNA Center is an intelligent Automation and Assurance platform for the campus. Cisco DNAC enables, simplified Day-0 through Day-N management of switching, routing, and wireless infrastructure. It also improves operations with AI/ML-enhanced analytics to streamline troubleshooting and provide actionable insights into the health of the network and the quality of experience for users and applications. Here are some of the capabilities of Cisco DNAC in their respective domains:
+
+* NetOps: Network Plug and Play for Zero Touch Deployment, Software Image Management, Compliance, Configuration Templates and Network Profiles, Model-Driven Configuration, and RMA Support.
+* AIOps: AI/ML-enhanced monitoring and troubleshooting support. Predictive Insights, Network Baselines, Network Reasoner, Device/Client/Application 360, Intelligent Capture.
+* SecOps: AI Endpoint Analytics, Group-Based Policy and Analytics, Software-Defined Access
+* DevOps: ITSM Integrations, APIs, SDK & Ansible Module 
+
 ## Overview
 
 This Repository will give examples of templates used in Cisco Catalyst Center that can be modified. Additional information will be included to hopefully give a well rounded explanation of Automation methods with Templates using Cisco Catalyst Center and flows with both Onboarding and DayN Templates and concepts.
@@ -75,12 +88,6 @@ You will find various examples within the various folders of this repository, wi
 
 * [Troubleshooting](./TroubleShoot.md#Troubleshooting) - This section will dive into Troubleshooting Velocity based Template Constructs
 
-## [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/ExamplesAndConcepts.md)
-
-In this section I have compiled a number of template examples built with Jinja2 Language. These samples include a wide ranging set of configurations which may be used in your labs to solve specific configuration requirements. This collection summarizes aspects covered previously in this templating repository, and are aimed at providing quick practical references to help engineers solve automation tasks with the help of Cisco Catalyst Center. Additionally these examples may be used in testing in [dCloud](https://dcloud.cisco.com) with any of the labs on this repository.
-
-* [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/ExamplesAndConcepts.md)
-
 ## [DNAC Template LABS](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS#dnac-template-labs-)
 
 This section built out in a lab format to guide you through the typical steps to complete various automation tasks delivered by Cisco Catalyst Center. It allows for customers to practice Cisco Catalyst Center workflows with Onboarding, DayN Templates, and Application Policy automation on both Wired and Wireless Platforms, while reducing the time and effort needed to instantiate the network The lab will also introduce advanced velocity templating topics and troubleshooting tools, which may help determine common failure scenarios in a deployment.
@@ -97,6 +104,12 @@ This section built out in a lab format to guide you through the typical steps to
 * [Wireless Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-J-Wireless-Automation/) - This lab covers Traditional Wireless Automation  **(allow 6.0 hrs)**
 * [Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-K-Orchestration/) - This lab covers [Postman](https://www.postman.com) and [Ansible](https://www.ansible.com) orchestration **(allow 4.0 hrs)**
 * [CICD Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-L-CICD-Orchestration/) This lab covers [Python](https://www.python.org), [Ansible](https://www.ansible.com) and [JENKINS](https://www.jenkins.io) to orchestrate via REST-API **(allow 4.0 hrs)**
+
+## [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/ExamplesAndConcepts.md)
+
+In this section I have compiled a number of template examples built with Jinja2 Language. These samples include a wide ranging set of configurations which may be used in your labs to solve specific configuration requirements. This collection summarizes aspects covered previously in this templating repository, and are aimed at providing quick practical references to help engineers solve automation tasks with the help of Cisco Catalyst Center. Additionally these examples may be used in testing in [dCloud](https://dcloud.cisco.com) with any of the labs on this repository.
+
+* [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/ExamplesAndConcepts.md)
 
 ## [DNAC Templates Store](https://github.com/kebaldwi/DNAC-Templates-Store)
 
