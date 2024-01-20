@@ -6,7 +6,7 @@
 
 ## Cisco DNA Center
 
-![Cisco DNAC Overview](./images/cisco_dnac.png)
+![Cisco DNAC Overview](./ASSETS/cisco_dnac.png)
 
 Cisco DNA Center is an intelligent Automation and Assurance platform for the campus. Cisco DNAC enables, simplified Day-0 through Day-N management of switching, routing, and wireless infrastructure. It also improves operations with AI/ML-enhanced analytics to streamline troubleshooting and provide actionable insights into the health of the network and the quality of experience for users and applications. Here are some of the capabilities of Cisco DNAC in their respective domains:
 
