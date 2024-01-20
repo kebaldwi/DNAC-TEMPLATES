@@ -5,4 +5,3 @@ plugins:
 title: [DNA Center Templates]
 description: [This site is set up to help companies adopt better automation practices with DNA Center and to help them evolve toward an environment that balances business demand with device configuration.]
 show_downloads: ["true"]
-google_analytics: [Your Google Analytics tracking ID]
