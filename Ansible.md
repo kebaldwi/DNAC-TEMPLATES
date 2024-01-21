@@ -111,7 +111,7 @@ Tasks trigger one or more modules that are executed. The module specified in our
 
 See the output of this playbook:
 
-![json](images/display_serial_num.png?raw=true "IOS Facts Output")
+![json](./ASSETS/display_serial_num.png?raw=true "IOS Facts Output")
 
 This playbook is very basic and was just used for a primer on the components of a playbook.  We will now pivot to installing Ansible and using it with Cisco Catalyst Center.
 
@@ -146,7 +146,7 @@ The output of this command shows the version of ansible currently running along 
 
 Using Ansbile to manage Cisco Catalyst Center requires the correct version of the [cisco.dnac] collection for your Catalyst Center version.  The cisco.dnac collection is included in the full Ansible package by default.  However, the collection depends on the [Cisco Catalyst Center SDK](https://dnacentersdk.readthedocs.io/en/latest/index.html).  The SDK must be installed on the control node.  If you have installed the full Ansible package, the cisco.dnac collection is included, but it may not be the correct version for your Catalyst Center deployment.  See the compatibility matrix [table](https://galaxy.ansible.com/ui/repo/published/cisco/dnac/docs/) on Ansible Galaxy for compatibility information:
 
-![json](images/compatibility_matrix.png?raw=true "Compatibility Matrix")
+![json](./ASSETS/compatibility_matrix.png?raw=true "Compatibility Matrix")
 
 > **Note:** This image of the table was current at the time of writing.  The source at the link provided above should be referenced in the future. 
 

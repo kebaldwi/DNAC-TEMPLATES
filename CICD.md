@@ -5,7 +5,9 @@
 In the world of Continuous Integration and Continuous Deployment (CI/CD), orchestration platforms play a crucial role in automating software development processes. These platforms enable teams to streamline their workflows, improve collaboration, and ensure the seamless delivery of software applications. Among the most popular orchestration platforms are Jenkins, GitHub, and GitLab. In this tutorial, we will explore the features, benefits, and differences of these platforms. Additionally, we will delve into the support for REST APIs in Python and Ansible, highlighting their unique advantages. Lastly, we will discuss the concept of pipelines, their functionality, and how they can be triggered.
 
 **Continuous Integration/Continuous Delivery,** or **Continuous Deployment**, pipelines have been used in the software development industry for years. For most teams, the days of manually taking source code and manifest files and compiling them to create binaries or executable files and then manually distributing and installing those applications are long gone. In an effort to automate the build process and distribution of software as well as perform automated testing, the industry has continuously evolved towards more comprehensive pipelines.
- 
+
+![CICD Advantages](./ASSETS/CICD-Advantages.png)
+
 Depending on how much of the software development process is automated, pipelines can be categorized into different groups and stages:
 
 ### Continuous Integration
@@ -29,6 +31,20 @@ Continuous Deployment stage takes care of deploying the application in the produ
 Several other deployment models are available, including Canary, Blue/Green, A/B, etc.
 
 ## Orchestration Platforms in CI/CD
+
+There are various Orchestrators which may be aligned to Orchestrating over Automation Engines otherwise known as Controllers within the Network Management layers. You can see some of them here.
+
+![CICD Service Orchestration](./ASSETS/CICD-Journey1.png)
+
+They are:
+- **Network Service Orchestrator NSO** *- Cisco Systems Inc*
+- **iTenial** *- Cisco Systems*
+- **nAutoBot** *- Network 2 Code*
+- **Gluware** *- Gluware*
+- **GitLab** *- GitLab*
+- **GitHub** *- GitHub a division of Microsoft*
+- **Jenkins** *- Jenkins*
+- **Cisco Catalyst Center** *- Cisco Systems*
 
 ### Jenkins
 
@@ -70,6 +86,8 @@ Key Benefits of GitLab:
 
 REST APIs (Representational State Transfer Application Programming Interfaces) provide a standardized way for different software systems to communicate with each other over the internet. Python and Ansible offer robust support for working with REST APIs, albeit with different approaches.
 
+![REST-APIs](./ASSETS/CICD-RESTAPI.png)
+
 ### Python
 
 Python is a versatile programming language that provides extensive libraries and frameworks for developing REST API clients. The most commonly used library for making API requests in Python is `requests`. It offers a simple yet powerful interface for sending HTTP requests, handling responses, and parsing JSON data.
@@ -93,6 +111,8 @@ Benefits of Ansible for REST API Integration:
 ## Pipelines
 
 Pipelines are a fundamental concept in CI/CD that define the steps required to build, test, and deploy software applications. They provide a visual representation of the entire workflow, enabling teams to automate complex processes and ensure consistent delivery.
+
+![CICD Advantages](./ASSETS/cicd-pipeline2.png)
 
 ### How Pipelines Work
 
