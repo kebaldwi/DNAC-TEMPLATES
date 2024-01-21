@@ -13,7 +13,7 @@ Using this variable allows you to create Templates that are agnostic to the type
 
 The definitive list of available system variables for a particular version of Cisco Catalyst Center is the Cisco Catalyst Center Template Editor UI itself.  Within the template view, you will see a link the UI called "Template System Variables":  
 
-![json](images/button.png?raw=true "Import JSON")  
+![json](./ASSETS/button.png?raw=true "Import JSON")  
 
 Clicking on this link will show you a full listing of the available system variables organized by source.  The sources are:
 
@@ -24,14 +24,14 @@ Clicking on this link will show you a full listing of the available system varia
 
 > **Note:** that when you access the Template System Variables window, all variables are not immediately visibile, click "Show More" at the bottom to access the full list.
 
-![json](images/template_system_main.png?raw=true "Import JSON") 
+![json](./ASSETS/template_system_main.png?raw=true "Import JSON") 
 
 To continue with our example of using the **__interface** system variable, we can expand this variable entry in the Template System Variables window and see all of the data points available for each interface within this object:
 
-![json](images/template_system_interfaces_1.png?raw=true "Import JSON") 
-![json](images/template_system_interfaces_2.png?raw=true "Import JSON") 
-![json](images/template_system_interfaces_3.png?raw=true "Import JSON")
-![json](images/template_system_interfaces_4.png?raw=true "Import JSON")  
+![json](./ASSETS/template_system_interfaces_1.png?raw=true "Import JSON") 
+![json](./ASSETS/template_system_interfaces_2.png?raw=true "Import JSON") 
+![json](./ASSETS/template_system_interfaces_3.png?raw=true "Import JSON")
+![json](./ASSETS/template_system_interfaces_4.png?raw=true "Import JSON")  
 
 
 You can also find high-level details on the available system variables for your version of Cisco Catalyst Center in the **[Cisco Catalyst Center User Guide](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/2-3-4/user_guide/b_cisco_dna_center_ug_2_3_4/b_cisco_dna_center_ug_2_3_4_chapter_01000.html#id_92757)**.  This links to version 2.3.4.x, which was current at the time of writing.
@@ -44,7 +44,7 @@ Now that we have explored what system variables are available, we can look at wa
 
 The first example we can explore is manually calling system variables under the hood in order to perform an action.  See below as a simple example.  We will iterate over all of the interfaces and if they are physical interfaces (eg, excluding the App interface, SVIs, tunnels, etc..) and they are assigned to VLAN 1, we want to change the vlan assignment.
 
-![json](images/set_vlan.png?raw=true "Import JSON") 
+![json](./ASSETS/set_vlan.png?raw=true "Import JSON") 
 
 You might be concerned that we didn't check to make sure that the port mode was set to access.  We could do that, but keep in mind that interfacess in the down state, are considered to be dynamic_auto, not access, so you'll have to check for both of those states, otherwise you'll only match interfaces that are up.
 
@@ -76,7 +76,7 @@ Consider the example that we've been working with so far, but with an alternate 
 Let's make a single modification to our template.  Here we will remove the reference to **__interface** and replace it with a custom variable name called
 **selected_interfaces**.  Our template now looks like this:
 
-![json](images/set_vlan_2.png?raw=true "Import JSON") 
+![json](./ASSETS/set_vlan_2.png?raw=true "Import JSON") 
 
 Here is that template if you wish to copy it:
 
@@ -104,7 +104,7 @@ vlan {{ voice_vlan }}
 
 Next we need to specify that this variable is going to be bound.  If we go to the **Input Form** view by clicking on the calculator icon:
 
-![json](images/calculator_icon.png?raw=true "Import JSON") 
+![json](./ASSETS/calculator_icon.png?raw=true "Import JSON") 
 
 We can select our new variable **selected_interfaces** and apply the settings needed to make this a multi-select field from a list of interfaces on a device.
 1. Select Variable
@@ -112,7 +112,7 @@ We can select our new variable **selected_interfaces** and apply the settings ne
 3. Check Bind to Source
 4. Choose which system variable to bind
 
-![json](images/Input_Form_SystemVariables.png?raw=true "Import JSON") 
+![json](./ASSETS/Input_Form_SystemVariables.png?raw=true "Import JSON") 
 
 These steps will set **selected_interfaces** to be an object that will contain the interfaces of the target switch that are selected by the operator at runtime.  We are giving the operator access to the contents of **__interface[interface]** for each interface and allowing them to select the specific interfaces they want added to the **selected_interfaces** object.  
 
@@ -128,11 +128,11 @@ If you want to verify that the template is going to operate as expected, you can
 
 You can access the Simulator by clicking on the "play" icon in the top left.
 
-![json](images/play_icon.png?raw=true "Import JSON")
+![json](./ASSETS/play_icon.png?raw=true "Import JSON")
 
 Next, click **Create Simulation**.  When you reach the Simulation Input Page, you'll have to give the simulation a name and then supply values for any variables.  For our bound variables to work, we also need to supply a target device to test against.
 
-![json](images/create_simulation.png?raw=true "Import JSON")
+![json](./ASSETS/create_simulation.png?raw=true "Import JSON")
 
 When you reach the Simulation Input Page, you'll have to give the simulation a name and then supply values for any variables.  For our bound variables to work, we also need to supply a target device to test against.
 
@@ -141,17 +141,17 @@ When you reach the Simulation Input Page, you'll have to give the simulation a n
 3. Fill in variable value for access_vlan
 4. Fill in variable value for voice_vlan
 
-![json](images/simulation_input.png?raw=true "Import JSON")
+![json](./ASSETS/simulation_input.png?raw=true "Import JSON")
 
 Once you've selected a device, then you'll see our **selected_interfaces** options and can select the ones you want to test with:
 
-![json](images/interfaces_options.png?raw=true "Import JSON")
+![json](./ASSETS/interfaces_options.png?raw=true "Import JSON")
 
 Once you have completed your selections, click the run button at the bottom right of the screen.
 
 If your Simulation was successful, meaning that there were no syntax errors that caused the simulation to fail to render configuration, the resulting configuration will show in the right-hand side of the window:
 
-![json](images/simulation_output.png?raw=true "Import JSON")
+![json](./ASSETS/simulation_output.png?raw=true "Import JSON")
 
 > **Note:** Due to Jinja2 whitespace handling, the configuration may look messy or misaligned, but these whitespace issues will not affect provisioning.
 
@@ -161,7 +161,7 @@ This output provides highly beneficial detail on what configuration would be pus
 
 Lastly let's take a look at using a different system variable.  This very simple 4-line template will check the snmp location field on a device, and if it is empty, it will fill in the field with the location specified by the subdomain in the device FQDN.  For example, if the hostname is switch1.boston.mycompany.com, it will place "boston" in the snmp location field.  This is a very simple example, but it does show how to pull information from a system variable and manipulate it for your own needs.
 
-![json](images/set_snmp_location.png?raw=true "Import JSON") 
+![json](./ASSETS/set_snmp_location.png?raw=true "Import JSON") 
 
 ```J2
 {% if __device.snmpLocation == ''  %}
