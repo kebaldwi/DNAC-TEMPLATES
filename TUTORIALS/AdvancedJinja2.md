@@ -324,4 +324,4 @@ While this would configure the access ports, and modify the port channel for ups
 
 Special mention to: https://jinja.palletsprojects.com/en/3.0.x/templates as examples and extrapolations were made using this documentation.
 
-> [**Return to Main Menu**](./README.md)
+> [**Return to Main Menu**](../README.md)
