@@ -61,7 +61,7 @@ In order to communicate with Cisco Catalyst Center the device going through the 
 
 The PnP components are as follows:
 
-![json](./ASSETS/pnp-workflows.png?raw=true "Import JSON")
+![json](../ASSETS/pnp-workflows.png?raw=true "Import JSON")
 
 There are 3 automated methods that can be used to assist with Cisco Catalyst Center discovery process:
 
@@ -84,7 +84,7 @@ If DHCP Option 43 is not configured, the device cannot contact the DHCP server, 
 
 **Option 3:** requires that along with the address and the gateway the DHCP server offer a name server to resolve the address of **device-helper.cisco.com**. Additionally it requires the that Cisco Catalyst Center registers a file with the PnP Connect portal which it will offer via SSL to a device which reaches out. In order to whitelist those devices, the serial number would have to be associated to the Cisco Catalyst Center profile within "Software Central" > [Plug and Play Connect](https://software.cisco.com/software/csws/ws/platform/home?locale=en_US#pnp-devices) portal.
 
-![json](./ASSETS/pnp-connect.png?raw=true "Import JSON")
+![json](../ASSETS/pnp-connect.png?raw=true "Import JSON")
 
 Once the above has been configured, devices undergoing PnP process will discover Cisco Catalyst Center IP address and be redirected to it via "Plug and Play Connect" cloud proxy discovery process.
 
@@ -150,7 +150,7 @@ Configured on an IOS device it would look like this example:
 
 On MS Windows DHCP Server, you have two options to deploy DHCP scopes the UI or PowerShell. We will show you Option 43 set up on a specific scope but it can be quickly replicated to other scopes using the binary entry gathered from a dhcp dump via netshell. That said here is what the option looks like as configured as option 43:
 
-![json](./ASSETS/WindowsDHCP.png?raw=true "Import JSON")
+![json](../ASSETS/WindowsDHCP.png?raw=true "Import JSON")
 
 ### DNS Setup
 
@@ -223,12 +223,12 @@ The steps to complete in order to use this method are as follows:
 
 1. Navigate to System Settings>Settings>Cisco Credentials>PnP Connect
 
-   ![json](./ASSETS/dnac-pnp-profile.png?raw=true "Import JSON")
+   ![json](../ASSETS/dnac-pnp-profile.png?raw=true "Import JSON")
 
 2. Click Add
 3. Ensure the Smart Account
 
-   ![json](./ASSETS/dnac-register.png?raw=true "Import JSON")
+   ![json](../ASSETS/dnac-register.png?raw=true "Import JSON")
 
 4. Enter the Virtual Account to be mapped to for the PnP Profile
 5. Select if this is to be the Default Profile for the Virtual Account
@@ -248,20 +248,20 @@ Upon completion, Cisco Catalyst Center Controller Profile will be created in PnP
 1. Navigate to https://Software.cisco.com and log in.
 2. Select PnP Connect
 
-   ![json](./ASSETS/software.png?raw=true "Import JSON")
+   ![json](../ASSETS/software.png?raw=true "Import JSON")
 
 3. Navigate to the Virtual Account and Select the Device to be modified
 4. Click Edit Selected
 
-   ![json](./ASSETS/pnp-connect-device.png?raw=true "Import JSON")
+   ![json](../ASSETS/pnp-connect-device.png?raw=true "Import JSON")
 
 5. From the drop down selections choose Controller Profile
 
-   ![json](./ASSETS/pnp-controller-profile.png?raw=true "Import JSON")
+   ![json](../ASSETS/pnp-controller-profile.png?raw=true "Import JSON")
 
 6. Select the Controller Profile from the list
 
-   ![json](./ASSETS/pnp-connect-profile.png?raw=true "Import JSON")
+   ![json](../ASSETS/pnp-connect-profile.png?raw=true "Import JSON")
 
 7. Submit the settings
 

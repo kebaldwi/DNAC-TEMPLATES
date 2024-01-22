@@ -7,7 +7,7 @@ As reported by 2021 Stack Overflow Developer Survery, Python was identified as t
 
 Given Python popularity, it makes sense to review how you can apply basic programming practices to automate common tasks in your own network with Cisco Catalyst Center APIs.
 
-![json](./ASSETS/dnac_python_automation.png?raw=true "Cisco Catalyst Center APIs")
+![json](../ASSETS/dnac_python_automation.png?raw=true "Cisco Catalyst Center APIs")
 
 When developing with Python for Cisco Catalyst Center, you will find your code operating in one of these categories:
 
@@ -366,7 +366,7 @@ Once you have logged in, on the same Postman **Cisco Catalyst Center APIs** coll
 
 The Cisco Catalyst Center Postman Collection **Cisco Catalyst Center APIs** will appear in the list of Collections under your Postman Workspace. You will also notice a small fork icon next to it, with the name of the original Collection from which we have forked it.
 
-![json](./ASSETS/dnac_python_postman_intro.png?raw=true "Postman - Developer view")
+![json](../ASSETS/dnac_python_postman_intro.png?raw=true "Postman - Developer view")
 
 The **Cisco Catalyst Center APIs** Postman Collection of API calls is neatly organized into categories that allows you to quickly drill down and navigate. For the purposes of this excersice, we are going to require two **GET** API calls from this collection:
 
@@ -522,7 +522,7 @@ JSON responses can be quite lengthy and are difficult for a human eye to enterpr
 
 In our Postman 'network-device' API tab, select 'Visualize' tab to get a pretty tabular view representing data contained in the JSON Payload.
 
-![json](./ASSETS/dnac_python_postman_visualize.png?raw=true "Postman - JSON payload Visualization")
+![json](../ASSETS/dnac_python_postman_visualize.png?raw=true "Postman - JSON payload Visualization")
 
 Similar to how we used Postman to generate Python code for the Authentication function, let us click on 'Code' button on the vertical menu on the right of the screen, select 'Python - Requests' under 'Code Snippet' section. You should get the following skeleton Python code suggested by Postman
 

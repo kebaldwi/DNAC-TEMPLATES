@@ -69,7 +69,7 @@ Within the form you can see many fields which can be populated with a csv file. 
 3. The typical management VLAN and IP address information for management purposes.
 4. The interfaces can be entered comma delimited which allows us to create or not create Etherchannels as necessary. 
 
-![json](./ASSETS/DNAC-SAMPLE-TEMPLATE-PnP-Form.png?raw=true "Import JSON")
+![json](../ASSETS/DNAC-SAMPLE-TEMPLATE-PnP-Form.png?raw=true "Import JSON")
 
 Once you have imported the template you can look at the logic.
 
