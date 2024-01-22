@@ -215,4 +215,4 @@ While this would configure the access ports, and modify the port channel for ups
 
 Special mention to: https://explore.cisco.com/dnac-use-cases/apache-velocity as examples and extrapolations were made using this documentation and Adam Radford and Josh Bronikowski for his help with some of the concepts discussed.
 
-> [**Return to Main Menu**](./README.md)
+> [**Return to Main Menu**](../README.md)
