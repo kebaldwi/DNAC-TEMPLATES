@@ -74,17 +74,34 @@ When creating configuration Templates in Cisco Catalyst Center, you are offered 
 Making a choice between the two would come down mostly to personal preference between Pythonic (Jinja2) and Java (Velocity) statements. 
 Due to Python popularity, we are seeing more customers leveraging Jinja2 as the Template Scripting language but capabilities and outcomes that can be achieved with either of these two are equivalent.
 
-### Velocity Scripting
+### Scripting Laanguages
 
 To further simplify your IOS configuration analyze your IOS template for repeat patterns (ie, 24 port switch as opposed to a 48 port interface CLIs), and then build logical constructs to allow for one template to address multiple platforms.
 
-While it is possible to take a CLI script for each device flavour, and create individual templates for each device type at a time, that would leave us with a lot of templates and make it harder to make changes on an ongoing basis. Using the techniques of Velocity Scripting will allow us to deploy equipment with scripts which can be reused on a broader basis, allowing us to keep configurations similar for conformity reasons but also to reduce the number of places where changes would have to be made. For additional information please see [Velocity Scripting](./Velocity.md).
+While it is possible to take a CLI script for each device flavour, and create individual templates for each device type at a time, that would leave us with a lot of templates and make it harder to make changes on an ongoing basis. 
 
-Within these logical constructs you have many tools, please review each section as needed:
+Using the techniques of Velocity or Jinja2 Scripting will allow us to deploy equipment with scripts which can be reused on a broader basis, allowing us to keep configurations similar for conformity reasons but also to reduce the number of places where changes would have to be made. 
+
+For additional information please see:
+
+* [Velocity Scripting](./Velocity.md)
+* [Jinja2 Scripting](./Jinja2.md)
+
+Within these logical constructs you have many tools and these are an example but not all of them, please review each section as needed:
+
+#### Velocity Scripting Logic
+
 * [If Statements](./Velocity.md#if-statements)
 * [Macros](./Velocity.md#macros)
 * [Loops](./Velocity.md#foreach-loops)
 * [Multiline commands](./Velocity.md#multi-line-commands)
+
+#### Jinja2 Scripting Logic
+
+* [If Statements](./Jinja2.md#conditional-statements)
+* [Macros](./Jinja2.md#macros)
+* [Loops](./Jinja2.md#for-loops)
+* [Multiline commands](./Jinja2.md#multi-line-commands)
 
 ## Template Creation
 
@@ -161,8 +178,10 @@ For more documentation please see: [User Guide](https://www.cisco.com/c/en/us/td
 
 Specific examples of Templates are available in the following folders:
 
-* [PnP Onboarding](./ONBOARDING) - Examples of PnP/ZTP Templates explained in [Onboarding Templates](./Onboarding.md)
-* [DayN](./DAYN) - Examples of DayN Templates explained in [DayN Templates](./DayN.md)
+* [Velocity Template Examples](../CODE/TEMPLATES/VELOCITY/)
+* [Jinja2 Template Examples](../CODE/TEMPLATES/JINJA2) 
+
+Above examples of PnP/ZTP are explained in [Onboarding Templates](./Onboarding.md) and examples of DayN Templates are explained in [DayN Templates](./DayN.md)
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
