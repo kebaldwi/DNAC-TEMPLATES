@@ -15,31 +15,6 @@
     "rollbackTemplateContent": "",
     "templateParams": [
       {
-        "parameterName": "__policyprofile",
-        "dataType": "STRING",
-        "defaultValue": null,
-        "description": null,
-        "required": true,
-        "notParam": false,
-        "paramArray": true,
-        "instructionText": null,
-        "group": null,
-        "order": 2,
-        "customOrder": 0,
-        "selection": {
-          "selectionType": "MULTI_SELECT",
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "displayName": null
-      },
-      {
         "parameterName": "anqp_provision",
         "dataType": "INTEGER",
         "defaultValue": null,
@@ -69,6 +44,31 @@
         "binding": "",
         "sensitiveField": false,
         "displayName": "Provision OpenRoaming ANQP Profile"
+      },
+      {
+        "parameterName": "__policyprofile",
+        "dataType": "STRING",
+        "defaultValue": null,
+        "description": null,
+        "required": true,
+        "notParam": false,
+        "paramArray": true,
+        "instructionText": null,
+        "group": null,
+        "order": 2,
+        "customOrder": 0,
+        "selection": {
+          "selectionType": "MULTI_SELECT",
+          "selectionValues": {},
+          "defaultSelectedValues": [],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "sensitiveField": false,
+        "displayName": null
       }
     ],
     "rollbackTemplateParams": [],

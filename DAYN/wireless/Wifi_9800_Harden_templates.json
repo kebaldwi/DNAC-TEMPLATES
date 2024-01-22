@@ -82,27 +82,6 @@
     "promotedTemplateContent": "{#\n!! 20210615 JOGRIM\n#}\n\n{# SET TIMEZONE & DST -#}\n{% if __timezonesite[0] == \"US/Eastern\" %}\n  clock timezone EST -5\n  clock summer-time EDT recurring\n{% elif __timezonesite[0] == \"US/Central\" %}\n  clock timezone CST -6\n  clock summer-time CDT recurring\n{% elif __timezonesite[0] == \"US/Mountain\" %}\n  clock timezone MST -7\n  clock summer-time MDT recurring\n{% elif __timezonesite[0] == \"US/Pacific\" %}\n  clock timezone PST -8\n  clock summer-time PDT recurring\n{% else %}\n  # TIMEZONE - NO MATCH - DEFAULT TO EASTERN\n  clock timezone EST -5\n  clock summer-time EDT recurring\n{% endif %}\n\n{# SET LOGIN BANNER -#}\n<MLTCMD>banner login @\n{{ __devicebanner[0].bannerMessage }}\n@</MLTCMD>\n\n{# SET COMMON CONFIG -#}\nlogging buffered 409600 debugging\n!\narchive\n  log config\n    logging enable\n    notify syslog contenttype plaintext\n!\nservice tcp-keepalives-in\nservice tcp-keepalives-out\nservice timestamps debug datetime msec\nservice timestamps log datetime msec\nservice password-encryption\n!\nno ip http server\nip http session-idle-timeout 600\n\n{# ASSOCIATE HTTP AUTHENTICATION TO DNAC PROVISIONED LOGIN  #}\nip http authentication aaa login-authentication VTY_authen\nip http authentication aaa exec-authorization VTY_author\n\n{# CONFIGURE ADDITIONAL VTYs FOR PROCESSING WEB GUI REQUESTS #}\nline vty 0 97\n  logging synchronous\n  transport input ssh\n\n{# SET C9800-L WEB GUI TRUSTPOINT -#}\n{% if __device.platformId == \"C9800-L-K9\" %}\n  no ip http secure-server\n  ip http secure-trustpoint CISCO_IDEVID_SUDI\n  ip http secure-server\n{% endif %}",
     "promotedTemplateParams": [
       {
-        "parameterName": "__timezonesite",
-        "dataType": "STRING",
-        "defaultValue": null,
-        "description": null,
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": null,
-        "group": null,
-        "order": 1,
-        "customOrder": 0,
-        "selection": null,
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "id": null,
-        "displayName": null
-      },
-      {
         "parameterName": "__devicebanner",
         "dataType": "STRING",
         "defaultValue": null,
@@ -143,6 +122,27 @@
         "sensitiveField": false,
         "id": null,
         "displayName": null
+      },
+      {
+        "parameterName": "__timezonesite",
+        "dataType": "STRING",
+        "defaultValue": null,
+        "description": null,
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "instructionText": null,
+        "group": null,
+        "order": 1,
+        "customOrder": 0,
+        "selection": null,
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "sensitiveField": false,
+        "id": null,
+        "displayName": null
       }
     ],
     "customParamsOrder": false,
@@ -153,17 +153,17 @@
       "templateErrors": [
         {
           "type": "POTENTIAL_CONFLICT",
+          "lineNumber": 41,
+          "message": "This command is reserved to be used by Cisco DNA Center"
+        },
+        {
+          "type": "POTENTIAL_CONFLICT",
           "lineNumber": 51,
           "message": "This command is reserved to be used by Cisco DNA Center"
         },
         {
           "type": "POTENTIAL_CONFLICT",
           "lineNumber": 43,
-          "message": "This command is reserved to be used by Cisco DNA Center"
-        },
-        {
-          "type": "POTENTIAL_CONFLICT",
-          "lineNumber": 41,
           "message": "This command is reserved to be used by Cisco DNA Center"
         }
       ],
