@@ -122,6 +122,21 @@ Pipelines consist of multiple stages or steps that are executed sequentially or 
 
 Pipelines can be triggered by various events such as code commits, pull requests, or manual triggers. When an event occurs, the pipeline engine executes the defined stages in the specified order. Notifications and status updates are typically sent to relevant stakeholders throughout the pipeline execution.
 
+## Labs Overview
+
+We include in the Repository a full set of Labs designed to help customers with varying challenges in Automating and Orchestrating their network infrastructure with CICD utilizing Jenkins. Within the lab, we will use a complete set of **REST API** collections which will build upon the foundational knowledge. For this lab, we concentrate on Cisco Catalyst Center configuration and how Cisco Catalyst Center can be orchestrated via **REST API** to perform various functions: 
+
+### Overview
+
+1. [**The Journey to Orchestration**](../LABS/LAB-L-CICD-Orchestration/cicd-0-orientation/01-intro.md)
+
+### Jenkins Pipelines with Python
+
+2. [**Python Building Hierarchy with Settings**](../LABS/LAB-L-CICD-Orchestration/cicd-1-hierarchy/01-intro.md)
+3. [**Python Device Discovery**](../LABS/LAB-L-CICD-Orchestration/cicd-2-discovery/01-intro.md)
+4. [**Python Template Deployment**](../LABS/LAB-L-CICD-Orchestration/cicd-3-templates/01-intro.md)
+5. [**Python Inventory Collection**](../LABS/LAB-L-CICD-Orchestration/cicd-4-inventory/01-intro.md)
+
 ## Summary
 
 In conclusion, orchestration platforms like Jenkins, GitHub, and GitLab are essential tools in modern CI/CD workflows. Each platform offers unique features and benefits that cater to different development needs. Additionally, Python and Ansible provide robust support for working with REST APIs, enabling seamless integration with external systems. Lastly, pipelines provide a structured approach to automating software delivery processes by defining clear steps and dependencies. By leveraging these platforms and concepts effectively, development teams can achieve faster time-to-market, improved collaboration, and higher-quality software products.
