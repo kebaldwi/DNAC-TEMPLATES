@@ -38,7 +38,33 @@ Before Cisco Catalyst Center can automate the deployment we have to complete a f
 
 ## Onboarding Templates
 
-Onboarding templates are regular templates which serve the purpose of onboarding the device as mentioned with the minimal amount of code necessary to get connectivity up to the device in a consistent manner and to allow for further configuration via Day N templates, and device provisioning. Typically, there are two types of configurations that are used here: Layer 3 routed, or Layer 2 access. Both have different use cases, and while they are typical, they are by no means the only types of configuration used in this context. To that end, a set of examples has been provided in the [Onboarding folder](./ONBOARDING) within this repository. One of those examples is the one I most typically see used with customer deployments. Included there is a [JSON Import File](./ONBOARDING/Platinum_Onboarding_Template.json) for import into Cisco Catalyst Center 2.1.X and above.
+Onboarding templates are regular templates which serve the purpose of onboarding the device as mentioned with the minimal amount of code necessary to get connectivity up to the device in a consistent manner and to allow for further configuration via DayN templates, and device provisioning. Typically, there are two types of configurations that are used here: Layer3 routed, or Layer2 access. Both have different use cases, and while they are typical, they are by no means the only types of configuration used in this context. Onbaording Templates make use of [**Regular Templates**](#regular-templates) which make use of a specific scripting language.
+
+### Regular Templates 
+
+The use of regular templates allows you to reuse build code in the form of a set of IOS commands listed out very much like a configuration file. Those commands may be nested within logical constructs using either Velocity or Jinja2 scripting language, but the intent is that this regular template is a set of instructions initiated on a target device to create a configuration. Here we may introduce Variables, Conditional Logic and Looping constructs to address the delivery of conficguration. 
+
+#### **Jinja2 Scripting Language** 
+
+Cisco Catalyst Center allows for the use of Jinja2 Scripting Language which bares some resembelance to Python. It uses similar Variable, Conditional Logic and Looping constructs as Python and allows for developers who use Python to make an easy quick transition to utilizing this form of scripting language. Additionally, Jinja2 incorporates **include** and **extend** functionality which Velocity 1.7.5 does not have implemented within Cisco Catalyst Center. This allows for better modularization and reuse of code, in addition to the Composite Template approach.
+
+**Examples:**
+
+   - [Onboarding Template Examples](../CODE/TEMPLATES/JINJA2/ONBOARDING/)
+
+#### **Velocity Scripting Language**
+
+Cisco Catalyst Center allows for the use of Velocity Scripting Language which was previously used in Prime Infrastruture. It uses typical Variable, Conditional Logic and Looping constructs and allows for not only developers but also network engineers who may not have experience with programming languages to make an easy quick transition to utilizing this form of scripting language. Modularization and reuse of code, can be supported with the use of Composite Templates.
+
+**Examples:**
+
+   - [Onboarding Template Examples](../CODE/TEMPLATES/VELOCITY/ONBOARDING/)
+
+### Example Template
+
+To that end, a set of examples has been provided in the [**Jinja2**](#jinja2-scripting-language) and [**Velocity**](#velocity-scripting-language) folders above. One of those examples is the one I most typically see used with customer deployments. Included there is a [⬇︎Full Cisco Catalyst Center PnP Onboarding Template⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/ONBOARDING/DNAC-SAMPLE-TEMPLATES-01302023-PnP-template.json) for import into Cisco Catalyst Center.
+
+#### Example Velocity Template
 
 ```vtl
 ##<------Onboarding-Template------->
@@ -96,7 +122,81 @@ interface Vlan 1
 !
 ```
 
-This Template has the settings necessary to bring up a Layer 2 access switch with enough configration to be supported by Cisco Catalyst Center for the rest of the provisioning process.
+#### Example Jinja2 Template
+
+```J2
+{# <------Onboarding-Template-------> #}
+{# To be used for onboarding when using Day N Templates #}
+{# Define Variables provision with vlan and port channel #}
+!
+{# Set MTU if required #}
+{% if SystemMTU != 1500 %}
+    system mtu {{ SystemMTU }}
+{% endif %}
+!
+{# Set hostname #}
+hostname {{ Hostname }}
+!
+{% set VtpDomain = Hostname %}
+!
+{# Set VTP and VLAN for onboarding #}
+vtp domain {{ VtpDomain }}
+vtp mode transparent
+!
+{# Set Management VLAN #}
+vlan {{ MgmtVlan }}
+!
+{% if MgmtVlan > 1 %}
+  name MgmtVlan
+  {# Disable Vlan 1 (optional) #}
+  interface Vlan 1
+   shutdown
+{% endif %}
+!
+{# Set Interfaces and Build Port Channel #}
+!{{ Portchannel }}
+interface range {{ Interfaces }}
+ shut
+ switchport mode trunk
+ switchport trunk allowed vlan {{ MgmtVlan }}
+ {% if "," in Interfaces %}
+    channel-protocol lacp
+    channel-group {{ Portchannel }} mode active
+ {% endif %}
+ no shut
+!
+{% if "," in Interfaces %}
+  interface Port-channel {{ Portchannel }}
+   switchport trunk native vlan {{ MgmtVlan }}
+   switchport trunk allowed vlan {{ MgmtVlan }}
+   switchport mode trunk
+   no port-channel standalone-disable
+{% endif %}
+!
+{# Set Up Managment Vlan {{ MgmtVlan }} #}
+interface Vlan {{ MgmtVlan }}
+ description MgmtVlan
+ ip address {{ SwitchIP }} {{ SubnetMask }}
+ no ip redirects
+ no ip proxy-arp
+ no shut
+!
+ip default-gateway {{ Gateway }}
+!
+{# Set Source of Management Traffic #}
+ip domain lookup source-interface Vlan {{ MgmtVlan }}
+ip http client source-interface Vlan {{ MgmtVlan }}
+ip ftp source-interface Vlan {{ MgmtVlan }}
+ip tftp source-interface Vlan {{ MgmtVlan }}
+ip ssh source-interface Vlan {{ MgmtVlan }}
+ip radius source-interface Vlan {{ MgmtVlan }}
+logging source-interface Vlan {{ MgmtVlan }}
+snmp-server trap-source Vlan {{ MgmtVlan }}
+ntp source Vlan {{ MgmtVlan }}
+!
+```
+
+Both of these Templates have the settings necessary to bring up a Layer2 access switch with enough configration to be supported by Cisco Catalyst Center for the rest of the provisioning process.
 
 ## Onboarding Template Deployment
 

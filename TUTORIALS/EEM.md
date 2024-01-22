@@ -345,6 +345,7 @@ Here we have two examples that will allow for the automated configuration of the
   action 075  puts "end of config"
   action 080 end
 ```
+
 ```vtl
 event manager applet pnp_checker authorization bypass
  event syslog pattern "%CDP-4-NATIVE_VLAN_MISMATCH:"

@@ -42,10 +42,12 @@ To let you practice and get experience with the PnP process to better understand
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
 
-1. [PnP Preparation](./LABS/LAB1-PNP-PREP/README.md)
-2. [Onboarding Templates](./LABS/LAB2-Onboarding-Template/README.md)
+#### Labs
 
 This material is designed to help you understand the Plug and Play process, templates and deployment of these within a lab setting.
+
+1. [PnP Preparation](../LABS/LAB-A-PNP-PREP/README.md)
+2. [Onboarding Templates](../LABS/LAB-B-Onboarding-Template/README.md)
 
 </details>
 
@@ -53,7 +55,7 @@ This material is designed to help you understand the Plug and Play process, temp
 
 Within the following location is an example template written in ***Jinja2*** in JSON format which can be imported into the **Onboarding Configuration** section in the Template Editor/Hub:
 
-[⬇︎Full Cisco Catalyst Center PnP Onboarding Template⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/ONBOARDING/DNAC-SAMPLE-TEMPLATES-01302023-PnP-template.json)
+[⬇︎Full Cisco Catalyst Center PnP Onboarding Template⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/ONBOARDING/DNAC-SAMPLE-TEMPLATES-01302023-PnP-template.json)
 
 ### Features
 
@@ -190,7 +192,7 @@ Here we concentrate on building **Jinja2** templates, and work with logical conc
 Here we concentrate on advanced uses of templating, and work system variables.
 
 1. [Embedded Event Manager](./EEM.md#EEM) - This section will dive into EEM Scripting and various use cases 
-2. [System Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/SystemVariables.md#dna-center-system-variables) - This section explains Cisco Catalyst Centers System Variables
+2. [System Variables](./SystemVariables.md#cisco-catalyst-center-system-variables-published) - This section explains Cisco Catalyst Centers System Variables
 
 ##### Fault-Finding
 
@@ -205,10 +207,14 @@ To let you practice and get experience with the DayN process to better understan
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
 
-1. [Day N Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-C-DayN-Template/) - The lab covers Day N template constructs and use cases **(allow 0.5 hrs)**
-2. [Composite Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-D-Composite-Template/) - This lab covers building a composite template on Cisco Catalyst Center **(allow 0.5 hrs)**
-3. [Advanced Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-G-Advanced-Automation/) - This lab will explore Advanced Automation examples **(allow 1.5 hrs)**
-4. [Dynamic Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-H-Dynamic-Automation/) - This lab uses Advanced Automation techniques **(allow 2.0 hrs)**
+#### Labs
+
+This material is designed to help you understand the use and processes of utilizing templates and deployment of these within a lab setting.
+
+1. [Day N Templates](../LABS/LAB-C-DayN-Template/README.md) - The lab covers Day N template constructs and use cases **(allow 0.5 hrs)**
+2. [Composite Templates](../LABS/LAB-D-Composite-Template/README.md) - This lab covers building a composite template on Cisco Catalyst Center **(allow 0.5 hrs)**
+3. [Advanced Automation](../LABS/LAB-G-Advanced-Automation/README.md) - This lab will explore Advanced Automation examples **(allow 1.5 hrs)**
+4. [Dynamic Automation](../LABS/LAB-H-Dynamic-Automation/README.md) - This lab uses Advanced Automation techniques **(allow 2.0 hrs)**
 
 </details>
 
@@ -216,7 +222,7 @@ To let you practice and get experience with the DayN process to better understan
 
 This is an example which you may want to test with in the lab in combination with the **PnP Template** offered [here](./ExamplesAndConcepts.md#plug-and-play-pnp-template). Within the following location is an example project written in ***Jinja2*** in JSON format which can be imported into the Template Editor/Hub:
 
-[⬇︎Full Cisco Catalyst Center Sample Project⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/DAYN/DNAC-SAMPLE-TEMPLATES-05312023-project.json)
+[⬇︎Full Cisco Catalyst Center Sample Project⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/DAYN/DNAC-SAMPLE-TEMPLATES-05312023-project.json)
 
 ### Features
 
