@@ -312,7 +312,7 @@ Within Cisco Catalyst Center it is possible to utilize Built-in System type vari
 {% endfor %}
 ```
 
-This will be explained in more depth in the section [System Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/SystemVariables.md#dna-center-system-variables).
+This will be explained in more depth in the section [System Variables](./SystemVariables.md#cisco-catalyst-center-system-variables-published).
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
