@@ -12,19 +12,34 @@ As a guidance try and use Design settings for as much of the configurations as y
 
 ### Regular Templates
 
-The use of regular templates allows you to reuse build code in the form of a set of IOS commands listed out very much like a configuration file. Those commands may be nested within logical constructs using either Velocity or Jinja2 scripting language, but the intent is that this regular template is a set of instructions initiated on a target device to create a configuration.
+The use of regular templates allows you to reuse build code in the form of a set of IOS commands listed out very much like a configuration file. Those commands may be nested within logical constructs using either Velocity or Jinja2 scripting language, but the intent is that this regular template is a set of instructions initiated on a target device to create a configuration. Here we may introduce Variables, Conditional Logic and Looping constructs to address the delivery of conficguration. 
+
+#### **Jinja2 Scripting Language** 
+
+Cisco Catalyst Center allows for the use of Jinja2 Scripting Language which bares some resembelance to Python. It uses similar Variable, Conditional Logic and Looping constructs as Python and allows for developers who use Python to make an easy quick transition to utilizing this form of scripting language. Additionally, Jinja2 incorporates **include** and **extend** functionality which Velocity 1.7.5 does not have implemented within Cisco Catalyst Center. This allows for better modularization and reuse of code, in addition to the Composite Template approach.
+
+**Examples:**
+
+   - [Onboarding Template Examples](../CODE/TEMPLATES/JINJA2/ONBOARDING/)
+   - [DayN Template Examples](../CODE/TEMPLATES/JINJA2/DAYN/)
+   - [Wireless Template Examples](../CODE/TEMPLATES/JINJA2/WIRELESS/)
+
+#### **Velocity Scripting Language**
+
+Cisco Catalyst Center allows for the use of Velocity Scripting Language which was previously used in Prime Infrastruture. It uses typical Variable, Conditional Logic and Looping constructs and allows for not only developers but also network engineers who may not have experience with programming languages to make an easy quick transition to utilizing this form of scripting language. Modularization and reuse of code, can be supported with the use of Composite Templates.
+
+**Examples:**
+
+   - [Onboarding Template Examples](../CODE/TEMPLATES/VELOCITY/ONBOARDING/)
+   - [DayN Template Examples](../CODE/TEMPLATES/VELOCITY/DAYN/)
 
 ### Composite Templates
 
-The use of composite templates allows you to reuse templates and code that you have previously used on other deployments without duplicating it on Cisco Catalyst Center. This allows you to manage those smaller templates or modules allowing for easier management moving forward.
+The use of composite templates allows you to reuse templates and code that you have previously used on other deployments without duplicating it on Cisco Catalyst Center. This allows you to manage those smaller templates or modules allowing for easier management moving forward. Composite templates may incorporate a mix of regular templates written in both Velocity and Jinja2 scripting languages. This allows you to adopt either Scripting Language for a specific use case, and reuse older modules while allowing for newer ones to be written in the most optimal way.
 
 Composite templates may be created in a similar method to regular templates but a project must be specified for the Day N flow. Once the Composite template is built, saved and committed templates within the project may be dragged into the flow and moved up or down to adjust the order they are deployed.
 
-I have given examples of composite templates within the folder [DayN](./DAYN). The order to be used for those is the following:
-
-1. GlobalSwitchServices
-2. SwitchManagement
-3. SwitchInterfaces
+Examples of Composite templates may be found in the [**Jinja2**](#jinja2-scripting-language) and [**Velocity**](#velocity-scripting-language) folders above. 
 
 ## Cisco Catalyst Center Design Preparation
 
@@ -52,7 +67,8 @@ Before Cisco Catalyst Center can automate the deployment we have to perform foll
 
 ## DayN Templates
 
-DayN templates can be regular or composite templates which serve the purpose of providing a method of making ongoing configuration changes to the device as mentioned during provisioning. Typically there are two types of configuration that are used here Layer 3 routed or Layer 2 access. Both have different use cases and while they are typical they are by no means the only types of configuration used. To that end a set of examples has been provided in the [DAYN folder](./DAYN) within this repository. Some of those examples are the ones I most typically use with customers in workshops. Included there are a number of **JSON Import Files** to facilitate import into Cisco Catalyst Center 2.1.X and above.
+DayN templates can be regular or composite templates which serve the purpose of providing a method of making ongoing configuration changes to the device as mentioned during provisioning. Typically there are two types of configuration that are used here Layer3 routed or Layer2 access. Both have different use cases and while they are typical they are by no means the only types of configuration used. To that end a **NEW** set of examples has been provided in the [⬇︎Full Cisco Catalyst Center Sample Project⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/DAYN/DNAC-SAMPLE-TEMPLATES-05312023-project.json)
+ within this repository. Some of those examples are the ones I most typically use with customers in workshops. Included there are a number of **JSON Import Files** to facilitate import into Cisco Catalyst Center.
 
 ## DayN Template Deployment
 

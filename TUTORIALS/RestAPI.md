@@ -170,14 +170,14 @@ Overall, the Cisco Catalyst Center Python SDK can help simplify the process of b
 
 We include in the Repository a full set of Labs designed to help customers with varying challenges in Automating and Orchestrating their network infrastructure. Within the lab, we will use a complete set of **REST API** collections which will build upon the foundational knowledge. For this lab, we concentrate on Cisco Catalyst Center configuration and how Cisco Catalyst Center can be orchestrated via **REST API** to perform various functions: 
 
-1. [**Postman Orientation**](./LABS/LAB-I-Rest-API-Orchestration/module1-postman.md)
-2. [**Building Hierarchy**](./LABS/LAB-I-Rest-API-Orchestration/module2-hierarchy.md)
-3. [**Assign Settings and Credentials**](./LABS/LAB-I-Rest-API-Orchestration/module3-settings.md)
-4. [**Device Discovery**](./LABS/LAB-I-Rest-API-Orchestration/module4-discovery.md)
-5. [**Template Deployment**](./LABS/LAB-I-Rest-API-Orchestration/module5-templates.md)
-6. [**Configuration Archive**](./LABS/LAB-I-Rest-API-Orchestration/module6-archive.md)
-7. [**Retrieving Network Inventory**](./LABS/LAB-I-Rest-API-Orchestration/module7-inventory.md)
-8. [**Running Show Commands**](./LABS/LAB-I-Rest-API-Orchestration/module8-commands.md)
+1. [**Postman Orientation**](../LABS/LAB-I-Rest-API-Orchestration/module1-postman.md)
+2. [**Building Hierarchy**](../LABS/LAB-I-Rest-API-Orchestration/module2-hierarchy.md)
+3. [**Assign Settings and Credentials**](../LABS/LAB-I-Rest-API-Orchestration/module3-settings.md)
+4. [**Device Discovery**](../LABS/LAB-I-Rest-API-Orchestration/module4-discovery.md)
+5. [**Template Deployment**](../LABS/LAB-I-Rest-API-Orchestration/module5-templates.md)
+6. [**Configuration Archive**](../LABS/LAB-I-Rest-API-Orchestration/module6-archive.md)
+7. [**Retrieving Network Inventory**](../LABS/LAB-I-Rest-API-Orchestration/module7-inventory.md)
+8. [**Running Show Commands**](../LABS/LAB-I-Rest-API-Orchestration/module8-commands.md)
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
