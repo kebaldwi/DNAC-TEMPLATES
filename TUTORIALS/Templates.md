@@ -74,7 +74,7 @@ When creating configuration Templates in Cisco Catalyst Center, you are offered 
 Making a choice between the two would come down mostly to personal preference between Pythonic (Jinja2) and Java (Velocity) statements. 
 Due to Python popularity, we are seeing more customers leveraging Jinja2 as the Template Scripting language but capabilities and outcomes that can be achieved with either of these two are equivalent.
 
-### Scripting Laanguages
+### Scripting Languages
 
 To further simplify your IOS configuration analyze your IOS template for repeat patterns (ie, 24 port switch as opposed to a 48 port interface CLIs), and then build logical constructs to allow for one template to address multiple platforms.
 
