@@ -17,7 +17,7 @@ When developing with Python for Cisco Catalyst Center, you will find your code o
 
 ## Cisco Catalyst Center with Python vs other tools
 
-You may find yourself pondering over which tool is best suited for developing automation workflows leveraging extensive Cisco Catalyst Center API capabilities. Based on NetDevOps Survey conducted in 2020, the following is the breakdown of tools used in the field for automating the generation and/or the deployment of configurations at scale, [NetDevops 2020 Config Generation Tools Breakdown](results/2020/netdevops_survey_2020_config-gen-deploy_tool.png). By far, one of the most popular Automation platforms cited is RedHat Ansible. Given its popularity, it may be conducive to consider Ansible and its mature Cisco Catalyst Center Module Galaxy collection as a starting point, [Redhat Ansible Cisco Catalyst Center Galaxy Collection](https://galaxy.ansible.com/cisco/dnac). 
+You may find yourself pondering over which tool is best suited for developing automation workflows leveraging extensive Cisco Catalyst Center API capabilities. Based on NetDevOps Survey conducted in 2020, the following is the breakdown of tools used in the field for automating the generation and/or the deployment of configurations at scale, [NetDevops 2020 Config Generation Tools Breakdown](https://github.com/dgarros/netdevops-survey/blob/master/results/2020/netdevops_survey_2020_operation-automated_tool.png). By far, one of the most popular Automation platforms cited is RedHat Ansible. Given its popularity, it may be conducive to consider Ansible and its mature Cisco Catalyst Center Module Galaxy collection as a starting point, [Redhat Ansible Cisco Catalyst Center Galaxy Collection](https://galaxy.ansible.com/cisco/dnac). 
 
 At its core, Ansible Cisco Catalyst Center module collection is a set of Python directives, abstracting Cisco Catalyst Center native REST API and integrating those into Ansible constructs. As such, one of the biggest benefits of leveraging Ansible Cisco Catalyst Center Galaxy collection is standardization and abstraction from underlying REST API implementation details. This approach works great in organizations that od not have dedicated developer teams who are tasked with maintaining Python code responsible for Cisco Catalyst Center Integrations. 
 
@@ -137,7 +137,7 @@ HTTPS Basic uses Transport Layer Security (TLS) to encrypt the connection and da
 
 For purposes of this tutorial, we will use Cisco DevNet always on [Cisco Catalyst Center Sandbox](https://devnetsandbox.cisco.com/RM/Diagram/Index/c3c949dc-30af-498b-9d77-4f1c07d835f9?diagramType=Topology) since it has some devices already in the inventory that we can poll.
 
-For the Labs contained in this repository, please use Cisco **DCLOUD** environment (Refer to details in [LABS/README](./LABS/README.md) for details).
+For the Labs contained in this repository, please use Cisco **DCLOUD** environment (Refer to details in [LABS/README](../LABS/README.md) for details).
 
 To obtain the Auth token, we will need the details of how Cisco Catalyst Center implements this API Endpoint.
 Open Cisco Catalyst Center GUI console in your browser, authenticate and navigate to Platform > Developer Toolkit > APIs.
