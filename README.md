@@ -1,6 +1,6 @@
 # DNAC-TEMPLATES [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 
-> **Notice:** For information specific to IOS-XE HTTP Vulnerability please see this [link](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/Vulnerability.md)
+> **Notice:** For information specific to IOS-XE HTTP Vulnerability please see this [link](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/TUTORIALS/Vulnerability.md)
 
 > **Note:** Thank you for continuing your **support** of the **DNAC-Template Repository** by your continued visits to the site. Over the past few years we have developed a lot of content as a result, it is **time to reorganize** it to help be more consise, and to aide users in finding the relevant content easily. Over the next few months you will **notice changes and updates** to the repository, as we **add** additional content, **revise** existing dated content and nomenclature. The **folder structure** and **resources** will be **reorganized** for ease of use, and so that CODE examples and TUTORIALS will be grouped together for ease of use. We hope this will help users to find the content they need in an easier manner.
 
@@ -52,41 +52,41 @@ You will find various examples within the various folders of this repository, wi
 
 ### Workflows
 
-* [PnP Workflow](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/PnP-Workflow.md#pnp-workflow) - This section explains the overall Plug and Play Methodology
-* [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/Onboarding.md#onboarding-templates-and-flows) - This section will explain Onboarding Templates in Cisco Catalyst Center and their use in bringing various devices under Cisco Catalyst Center management
-* [DayN Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/DayN.md#day-n-templates-and-flows) - This section will explain how to use templates for ongoing (Day-N) changes to the network
+* [PnP Workflow](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/PnP-Workflow.md#pnp-workflow) - This section explains the overall Plug and Play Methodology
+* [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Onboarding.md#onboarding-templates-and-flows) - This section will explain Onboarding Templates in Cisco Catalyst Center and their use in bringing various devices under Cisco Catalyst Center management
+* [DayN Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/DayN.md#day-n-templates-and-flows) - This section will explain how to use templates for ongoing (Day-N) changes to the network
 
 ### Templating
 
-* [Building Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/Templates.md#building-templates) - This section will explain how to build a template on Cisco Catalyst Center from scratch
+* [Building Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Templates.md#building-templates) - This section will explain how to build a template on Cisco Catalyst Center from scratch
 
 #### Velocity Language
 
-* [Velocity Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/Variables.md#velocity-variables) - This section explains Template Variables in depth, and how and where to use them
-* [Velocity Scripting](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/Velocity.md#velocity-scripting) - This section will dive into Velocity Language Template Scripting constructs and use cases
-* [Advanced Velocity Scripting](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/AdvancedVelocity.md#advanced-velocity) - This section will dive into Advanced Velocity Language Template examples
+* [Velocity Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Variables.md#velocity-variables) - This section explains Template Variables in depth, and how and where to use them
+* [Velocity Scripting](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Velocity.md#velocity-scripting) - This section will dive into Velocity Language Template Scripting constructs and use cases
+* [Advanced Velocity Scripting](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/AdvancedVelocity.md#advanced-velocity) - This section will dive into Advanced Velocity Language Template examples
 
 #### Jinja2 Language
 
-* [Jinja2 Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/Variables.md#jinja2-variables) - This section explains Template Variables in depth, and how and where to use them
-* [Jinja2 Scripting](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/Jinja2.md#jinja2-scripting) - This section will dive into Jinja2 Language Template Scripting constructs and use cases
-* [Advanced Jinja2 Scripting](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/AdvancedJinja2.md#advanced-jinja2) - This section will dive into Advanced Jinja2 Language Template examples
+* [Jinja2 Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Variables.md#jinja2-variables) - This section explains Template Variables in depth, and how and where to use them
+* [Jinja2 Scripting](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Jinja2.md#jinja2-scripting) - This section will dive into Jinja2 Language Template Scripting constructs and use cases
+* [Advanced Jinja2 Scripting](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/AdvancedJinja2.md#advanced-jinja2) - This section will dive into Advanced Jinja2 Language Template examples
 
 ### Advanced Use Cases
 
-* [Embedded Event Manager](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/EEM.md#EEM) - This section will dive into EEM (Embedded Event Manager) Scripting and various use cases 
-* [System Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/SystemVariables.md#dna-center-system-variables) - This section explains Cisco Catalyst Centers System Variables
+* [Embedded Event Manager](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/EEM.md#EEM) - This section will dive into EEM (Embedded Event Manager) Scripting and various use cases 
+* [System Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/SystemVariables.md#dna-center-system-variables) - This section explains Cisco Catalyst Centers System Variables
 
 ### Orchestration of Cisco Catalyst Center
 
-* [REST API Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/RestAPI.md) - This section is a high level discussion of utlilizing REST API with Cisco Catalyst Center
-* [Python Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/Python.md) - This section is a high level discussion of utilizing Python with Cisco Catalyst Center
-* [Ansible Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/Ansible.md) - This section is a high level discussion of Ansible orchestration of Cisco Catalyst Center
-* [CICD Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CICD.md) - This section is a high level discussion of CICD orchestration of Cisco Catalyst Center
+* [REST API Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/RestAPI.md) - This section is a high level discussion of utlilizing REST API with Cisco Catalyst Center
+* [Python Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Python.md) - This section is a high level discussion of utilizing Python with Cisco Catalyst Center
+* [Ansible Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Ansible.md) - This section is a high level discussion of Ansible orchestration of Cisco Catalyst Center
+* [CICD Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/CICD.md) - This section is a high level discussion of CICD orchestration of Cisco Catalyst Center
 
 ### Fault-Finding
 
-* [Troubleshooting](./TroubleShoot.md#Troubleshooting) - This section will dive into Troubleshooting Velocity based Template Constructs
+* [Troubleshooting](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/TroubleShoot.md#Troubleshooting) - This section will dive into Troubleshooting Velocity based Template Constructs
 
 ## [DNAC Template LABS](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS#dnac-template-labs-)
 
@@ -105,11 +105,11 @@ This section built out in a lab format to guide you through the typical steps to
 * [Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-K-Orchestration/) - This lab covers [Postman](https://www.postman.com) and [Ansible](https://www.ansible.com) orchestration **(allow 4.0 hrs)**
 * [CICD Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-L-CICD-Orchestration/) This lab covers [Python](https://www.python.org), [Ansible](https://www.ansible.com) and [JENKINS](https://www.jenkins.io) to orchestrate via REST-API **(allow 4.0 hrs)**
 
-## [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/ExamplesAndConcepts.md)
+## [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/TUTORIALS/ExamplesAndConcepts.md)
 
 In this section I have compiled a number of template examples built with Jinja2 Language. These samples include a wide ranging set of configurations which may be used in your labs to solve specific configuration requirements. This collection summarizes aspects covered previously in this templating repository, and are aimed at providing quick practical references to help engineers solve automation tasks with the help of Cisco Catalyst Center. Additionally these examples may be used in testing in [dCloud](https://dcloud.cisco.com) with any of the labs on this repository.
 
-* [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/ExamplesAndConcepts.md)
+* [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/TUTORIALS/ExamplesAndConcepts.md)
 
 ## [DNAC Templates Store](https://github.com/kebaldwi/DNAC-Templates-Store)
 
@@ -143,12 +143,16 @@ DCLOUD allows for use with a web-based browser client for VPN-less connectivity,
 ## Examples
 
 These examples must be used with two conditions:
-* Deployed a PnP Discovery method and DHCP scope - see [PnP Workflow](./PnP-Workflow.md#pnp-workflow)
-* Build the template with methods detailed - see [Creating Templates](./Templates.md#template-creation)
 
-Specific examples of Templates are available in the following folders:
-* [PnP Onboarding](./ONBOARDING) - Examples of PnP/ZTP Templates explained in [Onboarding Templates](./Onboarding.md#onboarding-templates-and-flows)
-* [DayN](./DAYN) - Examples of DayN Templates explained in [DayN Templates](./DayN.md#day-n-templates-and-flows)
+* Deployed a PnP Discovery method and DHCP scope - see [PnP Workflow](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/PnP-Workflow.md#pnp-workflow)
+* Build the template with methods detailed - see [Creating Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Templates.md#template-creation)
+
+When building the template you will need to select a scripting language. Specific examples of Templates in the two scripting languages supported are available in the following folders:
+
+* [Velocity Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/VELOCITY/)
+* [Jinja2 Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/ODE/TEMPLATES/JINJA2) 
+
+The conditions that they are used are documented and are explained in [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Onboarding.md) and examples of DayN Templates are explained in [DayN Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/DayN.md)
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
