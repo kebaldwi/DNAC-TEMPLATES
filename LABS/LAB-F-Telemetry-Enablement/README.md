@@ -102,4 +102,4 @@ The next step will be to build Advanced Automation Templates in the network infr
 
 > [**Continue to Advanced Automation Lab**](../LAB-G-Advanced-Automation/README.md)
 
-> [**Return to Lab Menu**](../README.md)
+> [**Return to LAB Main Menu**](../README.md)

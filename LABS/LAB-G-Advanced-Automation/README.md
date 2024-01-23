@@ -1202,4 +1202,4 @@ The following **LAB** will tie all this together.
 
 > [**Continue to Dynamic Automation Lab**](../LAB-H-Dynamic-Automation/README.md)
 
-> [**Return to Lab Menu**](../README.md)
+> [**Return to LAB Main Menu**](../README.md)

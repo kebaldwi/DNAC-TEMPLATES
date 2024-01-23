@@ -463,4 +463,4 @@ The next step will be to build the PnP Onboarding settings and template on DNA C
 
 > [**Continue to Onboarding Lab**](../LAB-B-Onboarding-Template/README.md)
 
-> [**Return to Lab Menu**](../README.md)
+> [**Return to LAB Main Menu**](../README.md)

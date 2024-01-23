@@ -341,4 +341,4 @@ The next step will be to build Enable Telemetry in the network infrastructure.
 
 > [**Continue to Telemetry Enablement Lab**](../LAB-F-Telemetry-Enablement/README.md)
 
-> [**Return to Lab Menu**](../README.md)
+> [**Return to LAB Main Menu**](../README.md)

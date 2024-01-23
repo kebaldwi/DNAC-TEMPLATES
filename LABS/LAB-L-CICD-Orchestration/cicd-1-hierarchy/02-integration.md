@@ -2,11 +2,11 @@
 
 In this lab, our focus changes slightly as we start to automate host onboarding. A large component of host onboarding is the authentication of hosts and assignments within the network. 
 
-In this section, and in preparation for the steps which follow, we will integrate Cisco DNA Center with Identity Services Engine. This integration allows pxGrid communication between the Cisco DNA Center and ISE. For this reason, the **PxGrid** **persona** does need to be enabled on at least 1 ISE Node within an ISE Cluster. **This has already been completed in the sandbox.** 
+In this section, and in preparation for the steps which follow, we will integrate Cisco Catalyst Center with Identity Services Engine. This integration allows pxGrid communication between the Cisco Catalyst Center and ISE. For this reason, the **PxGrid** **persona** does need to be enabled on at least 1 ISE Node within an ISE Cluster. **This has already been completed in the sandbox.** 
 
-PxGrid integration allows configuration automation by Cisco DNA Center within ISE for Network Access Devices, SGT creation, and SGACL builds via Contracts and Policy.
+PxGrid integration allows configuration automation by Cisco Catalyst Center within ISE for Network Access Devices, SGT creation, and SGACL builds via Contracts and Policy.
 
-## Step 1: Prepare ISE for Cisco DNA Center Integration
+## Step 1: Prepare ISE for Cisco Catalyst Center Integration
 
 1. Open a web browser connection to Identity Services Engine (ISE) and select the hamburger menu to open the system menu.
 
@@ -16,14 +16,14 @@ PxGrid integration allows configuration automation by Cisco DNA Center within IS
 
    ![json](./images/ise-menu.png?raw=true "Import JSON")
 
-3. On the PxGrid Settings page, select both options and click Save to allow Cisco DNA Center to integrate.
+3. On the PxGrid Settings page, select both options and click Save to allow Cisco Catalyst Center to integrate.
 
    ![json](./images/ise-pxgrid-settings.png?raw=true "Import JSON")
    ![json](./images/ise-pxgrid-setup.png?raw=true "Import JSON")
 
-## Step 2: Cisco DNA Center and ISE Integration
+## Step 2: Cisco Catalyst Center and ISE Integration
 
-1. Open a web browser connection to Cisco DNA Center, select the hamburger menu, and navigate to the System > Settings menu item.
+1. Open a web browser connection to Cisco Catalyst Center, select the hamburger menu, and navigate to the System > Settings menu item.
 
    ![json](./images/dnac-system-settings.png?raw=true "Import JSON")
 

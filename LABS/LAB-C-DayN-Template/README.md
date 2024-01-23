@@ -171,4 +171,4 @@ The next step will be to build Composite Template to include the Day N regular t
 
 > [**Continue to Composite Template Lab**](../LAB-D-Composite-Template/README.md)
 
-> [**Return to Lab Menu**](../README.md)
+> [**Return to LAB Main Menu**](../README.md)
