@@ -1,0 +1,104 @@
+
+pipeline {
+    agent
+        { docker
+            {
+                reuseNode true
+                image 'python:latest'
+                args '--name DEV -v $HOME/DockerFiles:/root/DockerFiles -u root:sudo'
+            }
+    }
+
+    environment {
+        JENKINS_REPO_NAME = 'dnacenter_jenkins_automations'
+        GITHUB_USERNAME = 'gzapodea'
+        GITHUB_TOKEN = credentials('GITHUB_TOKEN')
+        PIPELINE_NAME = 'PoE Sustainability'
+        PYTHON_APP_NAME = 'poe_sustainability.py'
+        HOME = "${WORKSPACE}"
+    }
+
+    options {
+        skipStagesAfterUnstable()
+        timeout(time: 15, unit: 'MINUTES')
+    }
+
+    stages {
+        stage ('Environment variables') {
+            steps {
+                echo('\n\nPipeline name: ' + PIPELINE_NAME + ' ..............................')
+                echo('App name: ' + PYTHON_APP_NAME + ' ..............................')
+                echo('GitHub repo name: ' + JENKINS_REPO_NAME + ' ..............................')
+                echo('Workspace: ' + HOME + ' ..............................')
+            }
+        }
+        stage ('Build Python Environment') {
+            steps {
+                echo('\n\nJenkins ' + PIPELINE_NAME + ' build start..............................')
+                echo('\n\nBuilding the Docker container:..............................')
+            }
+        }
+        stage ('Pull or Clone the source code') {
+            steps {
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    script {
+                        if (fileExists('dnacenter_jenkins_automations')) {
+                            echo('\n\nPull code from GitHub:..............................')
+                            dir(JENKINS_REPO_NAME) {
+                                sh 'git pull --ff-only https://' + GITHUB_USERNAME + ':' + GITHUB_TOKEN + '@github.com/zapodeanu/' + JENKINS_REPO_NAME + '.git'
+                            }
+                        }
+                        if (!fileExists('dnacenter_jenkins_automations')) {
+                            echo('\n\nClone code from GitHub:..............................')
+                            sh 'git clone https://' + GITHUB_USERNAME + ':' + GITHUB_TOKEN + '@github.com/zapodeanu/' + JENKINS_REPO_NAME + '.git'
+                        }
+                    }
+                }
+            }
+        }
+        stage ('Install Python libraries') {
+            steps {
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    sh 'pip install -r ' + JENKINS_REPO_NAME + '/requirements.txt --no-warn-script-location'
+                    echo('\n\nVerify Python version and Libraries:..............................')
+                    sh 'python --version'
+                    sh 'pip3 list'
+                    echo('\n\nVerify Application Files:..............................')
+                    sh 'ls ' + JENKINS_REPO_NAME + '/'
+                }
+            }
+        }
+        stage ('Execute Python application') {
+            steps {
+                echo('\n\nApp ' + PIPELINE_NAME + ' run:..............................')
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    echo('\n\nVerify Working Path:..............................')
+                    sh 'pwd'
+                    dir(JENKINS_REPO_NAME) {
+                        sh 'python3 ' + PYTHON_APP_NAME
+                    }
+                }
+            }
+        }
+        stage ('Output folder content') {
+            steps {
+                echo('\n\nThe ' + PIPELINE_NAME + ' files that have been created:..............................')
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    echo('\n\nVerify Working Path:..............................')
+                    sh 'pwd'
+                    dir(JENKINS_REPO_NAME + '/inventory') {
+                        sh 'ls -l -A'
+                    }
+                }
+            }
+        }
+    }
+    post {
+        always {
+            echo '\n\nJenkins ' + PIPELINE_NAME + ' build end'
+        }
+    }
+}
+
+
+
