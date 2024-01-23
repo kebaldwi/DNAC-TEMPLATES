@@ -138,7 +138,7 @@ This allows you to run these labs and gives not only an environment to try the v
 
 DCLOUD allows for use with a web-based browser client for VPN-less connectivity, as well as AnyConnect VPN client connectivity for those who prefer it. The labs are hosted in Cisco San Jose Facility (Select US East or US West Region when scheduling in DCLOUD). Choose the Cisco Enterprise Network Sandbox version you prefer. 
 
->**Note:** To access this or any other content, including demonstrations, labs, and training in DCLOUD please work with your Cisco Account team or Cisco Partner Account Team directly. Your Account teams will make sure the session is scheduled and shared for you to use. Once booked follow the guide within Github to complete the tasks adhering to the best practices of the dCLOUD environment.
+>**Note:** To access this or any other content, including demonstrations, labs, and training in DCLOUD please work with your Cisco Account team or Cisco Partner Account Team directly. Your Account teams will make sure the session is scheduled and shared for you to use. Once booked follow the guide within Github to complete the tasks adhering to the best practices of the DCLOUD environment.
 
 ## Examples
 
@@ -150,7 +150,7 @@ These examples must be used with two conditions:
 When building the template you will need to select a scripting language. Specific examples of Templates in the two scripting languages supported are available in the following folders:
 
 * [Velocity Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/VELOCITY/)
-* [Jinja2 Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/ODE/TEMPLATES/JINJA2) 
+* [Jinja2 Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2) 
 
 The conditions that they are used are documented and are explained in [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Onboarding.md) and examples of DayN Templates are explained in [DayN Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/DayN.md)
 
