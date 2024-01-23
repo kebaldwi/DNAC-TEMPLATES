@@ -87,4 +87,4 @@ This lab is intended to help drive the adoption of REST API and will be added to
 
 > [**Continue to Wireless Automation Lab**](../LAB-J-Wireless-Automation/README.md)
 
-> [**Return to Lab Menu**](../README.md)
+> [**Return to LAB Main Menu**](../README.md)

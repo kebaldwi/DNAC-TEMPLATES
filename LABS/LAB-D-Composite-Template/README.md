@@ -283,5 +283,4 @@ Thanks to Chanii Haley for taking on the task of creating Jinja 2 templates for 
 
 > [**Continue to Application Policy Lab**](../LAB-E-Application-Policy/README.md)
 
-> [**Return to Lab Menu**](../README.md)
-
+> [**Return to LAB Main Menu**](../README.md)

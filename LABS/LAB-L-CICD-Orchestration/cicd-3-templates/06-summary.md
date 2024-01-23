@@ -7,4 +7,4 @@ This scenario may be augmented and modified to use build out a development and p
 
 > [**NEXT MODULE**](../cicd-4-inventory/01-intro.md)
 
-> [**HOME**](../README.md)
+> [**CICD Lab Main Menu**](../README.md)

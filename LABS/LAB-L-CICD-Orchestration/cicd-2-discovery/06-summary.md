@@ -6,4 +6,4 @@ This may assist in brownfield learning so as to ensure the device may be properl
 
 > [**NEXT MODULE**](../cicd-3-templates/01-intro.md)
 
-> [**HOME**](../README.md)
+> [**CICD Lab Main Menu**](../README.md)

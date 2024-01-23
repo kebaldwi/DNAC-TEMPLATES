@@ -1026,4 +1026,4 @@ During your review of the configurations used in this lab, please review the dis
 
 > [**Continue to Rest-API Orchestration Lab**](../LAB-I-Rest-API-Orchestration/README.md)
 
-> [**Return to Lab Menu**](../README.md)
+> [**Return to LAB Main Menu**](../README.md)

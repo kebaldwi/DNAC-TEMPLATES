@@ -10,4 +10,4 @@ To continue your learning, look at the various REST-API's used to complete this 
 
 > [**NEXT MODULE**](../cicd-2-discovery/01-intro.md)
 
-> [**HOME**](../README.md)
+> [**CICD Lab Main Menu**](../README.md)

@@ -9,4 +9,4 @@ Congratulations you have completed all the tasks within the lab.
 
 ![json](images/Jenkins_Item_Dashboard_3.png?raw=true "Import JSON")
 
-> [**HOME**](../README.md)
+> [**CICD Lab Main Menu**](../README.md)

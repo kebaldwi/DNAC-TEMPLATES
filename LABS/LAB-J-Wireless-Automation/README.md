@@ -137,4 +137,4 @@ This lab is intended to help drive the adoption of Rest-API and will be added to
 
 > [**Continue to Wireless Lab Preparation**](../LAB-J-Wireless-Automation/preparation.md)
 
-> [**Return to Lab Menu**](../README.md)
+> [**Return to LAB Main Menu**](../README.md)
