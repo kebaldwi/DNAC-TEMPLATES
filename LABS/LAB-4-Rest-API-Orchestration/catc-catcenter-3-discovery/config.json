@@ -1,0 +1,39 @@
+{
+   "items":[
+      {
+         "title":"Introduction",
+         "content":"01-intro.md"
+      },
+      {
+         "title":"Discovery Task Deployment",
+         "content":"02-deploy.md"
+      }
+   ],
+	"meta": {
+		"code_name": "dntd-catcenter-3-discovery",
+		"tags": [
+			{
+				"title": "Cisco Catalyst Center"
+			}
+		],
+		"time": "15",
+		"poweredBy": "",
+		"authors": [
+			{
+				"name": "Keith Baldwin",
+				"email": "kebaldwie@cisco.com"
+			}
+		],
+		"slug": "Get Started Cisco Catalyst Center Platform",
+		"moduleOnly": false,
+		"hasResources": false,
+		"byod": true,
+		"access": "public"
+	},
+	"config": {
+		"id": "dntd-catcenter-3-discovery",
+		"devEnv": {},
+		"sandbox": {},
+		"video": {}
+	}
+ }

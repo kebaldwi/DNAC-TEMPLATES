@@ -1,0 +1,1302 @@
+<?xml version="1.0" encoding="UTF-8"?><Root>
+  <policysets>
+    <radiusPolicySets>
+      <radiusPolicySet>
+        <condition/>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <isNot>false</isNot>
+              <children>
+                <lhsAttribute>ExternalGroups</lhsAttribute>
+                <rhsAttribute>dcloud.cisco.com/Users/Domain Admins</rhsAttribute>
+                <rhsDictionary/>
+                <isNot>false</isNot>
+                <lhsDictionary>dcloud.cisco.com</lhsDictionary>
+                <type>SINGLE</type>
+                <operator>EQUALS</operator>
+              </children>
+              <children>
+                <lhsAttribute>ExternalGroups</lhsAttribute>
+                <rhsAttribute>dcloud.cisco.com/Users/Domain Computers</rhsAttribute>
+                <rhsDictionary/>
+                <isNot>false</isNot>
+                <lhsDictionary>dcloud.cisco.com</lhsDictionary>
+                <type>SINGLE</type>
+                <operator>EQUALS</operator>
+              </children>
+              <type>OR_BLOCK</type>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>Administrator</name>
+          <profiles>AdminProfile</profiles>
+          <rank>0</rank>
+          <groups>Administrator</groups>
+          <id>b3520d44-0f29-4315-b0c0-523f4250a0e1</id>
+          <status>ENABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <lhsAttribute>ExternalGroups</lhsAttribute>
+              <rhsAttribute>dcloud.cisco.com/Users/Accounting</rhsAttribute>
+              <rhsDictionary/>
+              <isNot>false</isNot>
+              <lhsDictionary>dcloud.cisco.com</lhsDictionary>
+              <type>SINGLE</type>
+              <operator>EQUALS</operator>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>Accounting</name>
+          <profiles>AccountingProfile</profiles>
+          <rank>1</rank>
+          <groups>Accounting</groups>
+          <id>16640aa0-7ddf-474b-93d8-98c1cd2f5142</id>
+          <status>ENABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <lhsAttribute>ExternalGroups</lhsAttribute>
+              <rhsAttribute>dcloud.cisco.com/Users/Engineering</rhsAttribute>
+              <rhsDictionary/>
+              <isNot>false</isNot>
+              <lhsDictionary>dcloud.cisco.com</lhsDictionary>
+              <type>SINGLE</type>
+              <operator>EQUALS</operator>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>Engineering</name>
+          <profiles>EngineeringProfile</profiles>
+          <rank>2</rank>
+          <groups>Engineering</groups>
+          <id>692947cd-cb51-40eb-a005-806a2730d6e5</id>
+          <status>ENABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <isNot>false</isNot>
+              <refId>Cisco-Access-Points</refId>
+              <type>REFERENCE</type>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>Profiled Cisco FlexConnect Access Points v2</name>
+          <profiles>Cisco_FlexAccessPoints</profiles>
+          <rank>3</rank>
+          <groups>Infra</groups>
+          <id>96e0ed61-0422-4072-b793-164873bfb151</id>
+          <status>ENABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <isNot>false</isNot>
+              <refId>Cisco-Access-Points</refId>
+              <type>REFERENCE</type>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>Profiled Cisco Access Points</name>
+          <profiles>Cisco_AccessPoints</profiles>
+          <rank>4</rank>
+          <groups>Infra</groups>
+          <id>68bbac5a-5bdb-43a7-8bcc-fed8d5dfe954</id>
+          <status>DISABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <lhsAttribute>Name</lhsAttribute>
+              <rhsAttribute>Endpoint Identity Groups:Profiled:Cisco-IP-Phone</rhsAttribute>
+              <rhsDictionary/>
+              <isNot>false</isNot>
+              <lhsDictionary>IdentityGroup</lhsDictionary>
+              <type>SINGLE</type>
+              <operator>EQUALS</operator>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>Profiled Cisco IP Phones</name>
+          <profiles>Cisco_IP_Phones</profiles>
+          <rank>5</rank>
+          <groups>Infra</groups>
+          <id>84fc5996-0701-4a8e-810a-f12e214ab0c6</id>
+          <status>ENABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <isNot>false</isNot>
+              <refId>Non_Cisco_Profiled_Phones</refId>
+              <type>REFERENCE</type>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>Profiled Non Cisco IP Phones</name>
+          <profiles>Non_Cisco_IP_Phones</profiles>
+          <rank>6</rank>
+          <groups>Infra</groups>
+          <id>c4570bcf-43c9-43b5-8f39-ab2bb4f62875</id>
+          <status>ENABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <isNot>false</isNot>
+              <children>
+                <isNot>false</isNot>
+                <refId>Wireless_MAB</refId>
+                <type>REFERENCE</type>
+              </children>
+              <children>
+                <lhsAttribute>Called-Station-ID</lhsAttribute>
+                <rhsAttribute>:TopGunGuest</rhsAttribute>
+                <rhsDictionary/>
+                <isNot>false</isNot>
+                <lhsDictionary>Radius</lhsDictionary>
+                <type>SINGLE</type>
+                <operator>ENDS_WITH</operator>
+              </children>
+              <type>AND_BLOCK</type>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>TopGunGuest_RedirectPolicy</name>
+          <profiles>TopGunGuest_Profile</profiles>
+          <rank>7</rank>
+          <groups>Guests</groups>
+          <id>66b2a01d-a9c4-4c66-b4c5-984bac2b3250</id>
+          <status>ENABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <isNot>false</isNot>
+              <children>
+                <isNot>false</isNot>
+                <refId>Wireless_MAB</refId>
+                <type>REFERENCE</type>
+              </children>
+              <children>
+                <isNot>false</isNot>
+                <refId>Guest_Flow</refId>
+                <type>REFERENCE</type>
+              </children>
+              <children>
+                <lhsAttribute>Called-Station-ID</lhsAttribute>
+                <rhsAttribute>:TopGunGuest</rhsAttribute>
+                <rhsDictionary/>
+                <isNot>false</isNot>
+                <lhsDictionary>Radius</lhsDictionary>
+                <type>SINGLE</type>
+                <operator>ENDS_WITH</operator>
+              </children>
+              <type>AND_BLOCK</type>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>TopGunGuest_GuestAccessPolicy</name>
+          <profiles>PermitAccess</profiles>
+          <rank>8</rank>
+          <groups>Guests</groups>
+          <id>55885cff-6310-4bc5-9996-a0d1b74a1ea0</id>
+          <status>ENABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <isNot>false</isNot>
+              <children>
+                <isNot>false</isNot>
+                <refId>Wireless_Access</refId>
+                <type>REFERENCE</type>
+              </children>
+              <children>
+                <lhsAttribute>Name</lhsAttribute>
+                <rhsAttribute>Endpoint Identity Groups:Blocked List</rhsAttribute>
+                <rhsDictionary/>
+                <isNot>false</isNot>
+                <lhsDictionary>IdentityGroup</lhsDictionary>
+                <type>SINGLE</type>
+                <operator>EQUALS</operator>
+              </children>
+              <type>AND_BLOCK</type>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>Wireless Black List Default</name>
+          <profiles>Blackhole_Wireless_Access</profiles>
+          <rank>9</rank>
+          <id>d9e67664-799d-4ad9-a407-8365117c18e5</id>
+          <status>ENABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <isNot>false</isNot>
+              <refId>Network_Access_Authentication_Passed</refId>
+              <type>REFERENCE</type>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>Basic_Authenticated_Access</name>
+          <profiles>WorkstationProfile</profiles>
+          <rank>10</rank>
+          <id>d8fe5bad-f103-4e3a-90f9-c0c9be489b24</id>
+          <status>ENABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <isNot>false</isNot>
+              <children>
+                <isNot>false</isNot>
+                <refId>Network_Access_Authentication_Passed</refId>
+                <type>REFERENCE</type>
+              </children>
+              <children>
+                <isNot>false</isNot>
+                <refId>Compliance_Unknown_Devices</refId>
+                <type>REFERENCE</type>
+              </children>
+              <type>AND_BLOCK</type>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>Unknown_Compliance_Redirect</name>
+          <profiles>Cisco_Temporal_Onboard</profiles>
+          <rank>11</rank>
+          <id>5b468f1f-e41f-4a17-879b-04b92b202460</id>
+          <status>DISABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <isNot>false</isNot>
+              <children>
+                <isNot>false</isNot>
+                <refId>Network_Access_Authentication_Passed</refId>
+                <type>REFERENCE</type>
+              </children>
+              <children>
+                <isNot>false</isNot>
+                <refId>Non_Compliant_Devices</refId>
+                <type>REFERENCE</type>
+              </children>
+              <type>AND_BLOCK</type>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>NonCompliant_Devices_Redirect</name>
+          <profiles>Cisco_Temporal_Onboard</profiles>
+          <rank>12</rank>
+          <id>4cbf1771-2da9-4945-a641-a3413b45f353</id>
+          <status>DISABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <isNot>false</isNot>
+              <children>
+                <isNot>false</isNot>
+                <refId>Network_Access_Authentication_Passed</refId>
+                <type>REFERENCE</type>
+              </children>
+              <children>
+                <isNot>false</isNot>
+                <refId>Compliant_Devices</refId>
+                <type>REFERENCE</type>
+              </children>
+              <type>AND_BLOCK</type>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>Compliant_Devices_Access</name>
+          <profiles>PermitAccess</profiles>
+          <rank>13</rank>
+          <id>185a6d4f-42fd-46ee-9265-86e27fde563d</id>
+          <status>DISABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <isNot>false</isNot>
+              <children>
+                <isNot>false</isNot>
+                <refId>Wireless_802.1X</refId>
+                <type>REFERENCE</type>
+              </children>
+              <children>
+                <isNot>false</isNot>
+                <refId>BYOD_is_Registered</refId>
+                <type>REFERENCE</type>
+              </children>
+              <children>
+                <isNot>false</isNot>
+                <refId>EAP-TLS</refId>
+                <type>REFERENCE</type>
+              </children>
+              <children>
+                <isNot>false</isNot>
+                <refId>MAC_in_SAN</refId>
+                <type>REFERENCE</type>
+              </children>
+              <type>AND_BLOCK</type>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>Employee_EAP-TLS</name>
+          <profiles>PermitAccess</profiles>
+          <rank>14</rank>
+          <groups>BYOD</groups>
+          <id>05758930-98d9-47ab-9f94-d39f916869d7</id>
+          <status>DISABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <isNot>false</isNot>
+              <children>
+                <isNot>false</isNot>
+                <refId>Wireless_802.1X</refId>
+                <type>REFERENCE</type>
+              </children>
+              <children>
+                <isNot>false</isNot>
+                <refId>EAP-MSCHAPv2</refId>
+                <type>REFERENCE</type>
+              </children>
+              <type>AND_BLOCK</type>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>Employee_Onboarding</name>
+          <profiles>NSP_Onboard</profiles>
+          <rank>15</rank>
+          <groups>BYOD</groups>
+          <id>77217708-bffb-4dc1-a545-5b405924e70d</id>
+          <status>DISABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <isNot>false</isNot>
+              <children>
+                <isNot>false</isNot>
+                <refId>Guest_Flow</refId>
+                <type>REFERENCE</type>
+              </children>
+              <children>
+                <isNot>false</isNot>
+                <refId>Wireless_MAB</refId>
+                <type>REFERENCE</type>
+              </children>
+              <type>AND_BLOCK</type>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>Wi-Fi_Guest_Access</name>
+          <profiles>PermitAccess</profiles>
+          <rank>16</rank>
+          <groups>Guests</groups>
+          <id>7b64fb5e-c0dd-420f-be25-165f4c75d2fc</id>
+          <status>DISABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <isNot>false</isNot>
+              <refId>Wireless_MAB</refId>
+              <type>REFERENCE</type>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <name>Wi-Fi_Redirect_to_Guest_Login</name>
+          <profiles>Cisco_WebAuth</profiles>
+          <rank>17</rank>
+          <id>57c094d6-fa5f-45a9-85c1-4f01643274df</id>
+          <status>DISABLED</status>
+        </authorRules>
+        <authorRules>
+          <condition/>
+          <name>Default</name>
+          <profiles>DenyAccess</profiles>
+          <rank>18</rank>
+          <id>bcb02fc7-2418-4613-b3bf-4ad33a9d0882</id>
+          <status>ENABLED</status>
+        </authorRules>
+        <name>Default</name>
+        <description>Default policy set</description>
+        <rank>0</rank>
+        <id>acd4b55d-dca3-4b93-a160-8a2d01669827</id>
+        <allowedProtocols>Default Network Access</allowedProtocols>
+        <status>ENABLED</status>
+        <authenRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <isNot>false</isNot>
+              <children>
+                <isNot>false</isNot>
+                <refId>Wired_MAB</refId>
+                <type>REFERENCE</type>
+              </children>
+              <children>
+                <isNot>false</isNot>
+                <refId>Wireless_MAB</refId>
+                <type>REFERENCE</type>
+              </children>
+              <type>OR_BLOCK</type>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <storetype>IdentityStore</storetype>
+          <processfailaction>DROP</processfailaction>
+          <usernotfoundaction>CONTINUE</usernotfoundaction>
+          <name>MAB</name>
+          <rank>0</rank>
+          <storename>Internal Endpoints</storename>
+          <id>96132f3d-7be0-42c4-9c8f-ecceb2293485</id>
+          <authenfailaction>REJECT</authenfailaction>
+          <status>ENABLED</status>
+        </authenRules>
+        <authenRules>
+          <condition>
+            <isNot>false</isNot>
+            <children>
+              <isNot>false</isNot>
+              <children>
+                <isNot>false</isNot>
+                <refId>Wired_802.1X</refId>
+                <type>REFERENCE</type>
+              </children>
+              <children>
+                <isNot>false</isNot>
+                <refId>Wireless_802.1X</refId>
+                <type>REFERENCE</type>
+              </children>
+              <type>OR_BLOCK</type>
+            </children>
+            <type>AND_BLOCK</type>
+          </condition>
+          <storetype>IdentityStoreSequence</storetype>
+          <processfailaction>DROP</processfailaction>
+          <usernotfoundaction>REJECT</usernotfoundaction>
+          <name>Dot1X</name>
+          <rank>1</rank>
+          <storename>All_User_ID_Stores</storename>
+          <id>6e06a578-012a-4c0b-b5ca-f39082b6efaa</id>
+          <authenfailaction>REJECT</authenfailaction>
+          <status>ENABLED</status>
+        </authenRules>
+        <authenRules>
+          <condition/>
+          <storetype>IdentityStoreSequence</storetype>
+          <processfailaction>DROP</processfailaction>
+          <usernotfoundaction>REJECT</usernotfoundaction>
+          <name>Default</name>
+          <rank>2</rank>
+          <storename>All_User_ID_Stores</storename>
+          <id>3364406b-ff6b-4a00-bf81-38fab69655f2</id>
+          <authenfailaction>REJECT</authenfailaction>
+          <status>ENABLED</status>
+        </authenRules>
+      </radiusPolicySet>
+    </radiusPolicySets>
+    <tacacsPolicySets>
+      <tacacsPolicySet>
+        <condition/>
+        <authorRules>
+          <condition/>
+          <name>Default</name>
+          <profiles>Deny All Shell Profile</profiles>
+          <rank>0</rank>
+          <commandsets>DenyAllCommands</commandsets>
+          <id>589b3706-3f6f-41d1-98d3-67e6ccc65beb</id>
+          <status>ENABLED</status>
+        </authorRules>
+        <name>Default</name>
+        <description>Tacacs Default policy set</description>
+        <rank>0</rank>
+        <id>cb32c3bc-c720-40c3-83e4-8897f9dd6943</id>
+        <allowedProtocols>Default Device Admin</allowedProtocols>
+        <status>ENABLED</status>
+        <authenRules>
+          <condition/>
+          <storetype>IdentityStoreSequence</storetype>
+          <processfailaction>DROP</processfailaction>
+          <usernotfoundaction>REJECT</usernotfoundaction>
+          <name>Default</name>
+          <rank>0</rank>
+          <storename>All_User_ID_Stores</storename>
+          <id>31f8299a-13af-4836-8179-7f28a4d03e58</id>
+          <authenfailaction>REJECT</authenfailaction>
+          <status>ENABLED</status>
+        </authenRules>
+      </tacacsPolicySet>
+    </tacacsPolicySets>
+  </policysets>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>Service-Type</lhsAttribute>
+          <rhsAttribute>Outbound</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Radius</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <children>
+          <lhsAttribute>NAS-Port-Type</lhsAttribute>
+          <rhsAttribute>Ethernet</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Radius</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>Catalyst_Switch_Local_Web_Authentication</name>
+      <description>Default condition used to match authentication requests for Local Web Authentication from Cisco Catalyst Switches</description>
+      <id>2f1a717d-cc09-41e3-a2ac-ecea19a841f8</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>NAS-Port-Type</lhsAttribute>
+          <rhsAttribute>Wireless - IEEE 802.11</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Radius</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>Wireless_Access</name>
+      <description>Default condition used to match any authentication request from Cisco Wireless LAN Controller.</description>
+      <id>ff6008e0-5c35-48a3-9fab-e0e709983369</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>BYODRegistration</lhsAttribute>
+          <rhsAttribute>Yes</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>EndPoints</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>BYOD_is_Registered</name>
+      <description>Default condition for BYOD flow for any device that has passed the NSP process</description>
+      <id>42b8ee9b-0cb0-421f-a7cb-24b032c61bd3</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>EapAuthentication</lhsAttribute>
+          <rhsAttribute>EAP-MSCHAPv2</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Network Access</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>EAP-MSCHAPv2</name>
+      <description>Default condition for BYOD Onboarding flow</description>
+      <id>c456a490-0429-4fd4-91d7-efd1eb1f855a</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>EapAuthentication</lhsAttribute>
+          <rhsAttribute>EAP-TLS</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Network Access</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>EAP-TLS</name>
+      <description>Default condition for BYOD flow for any device that has passed the NSP process</description>
+      <id>3063e072-f062-4249-bf02-166eb6c12dbf</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>UseCase</lhsAttribute>
+          <rhsAttribute>Guest Flow</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Network Access</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>Guest_Flow</name>
+      <description>Default condition for guest flow</description>
+      <id>cdcb7ea7-edcf-414c-9124-38bc302d84a1</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>Subject Alternative Name</lhsAttribute>
+          <rhsAttribute>Subject Alternative Name</rhsAttribute>
+          <rhsDictionary>CERTIFICATE</rhsDictionary>
+          <isNot>false</isNot>
+          <lhsDictionary>CERTIFICATE</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>MAC_in_SAN</name>
+      <description>Default condition for BYOD flow for any device that has passed the NSP process</description>
+      <id>24af702c-9ac2-4a68-bc06-ec0b8f5d510b</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>AuthenticationStatus</lhsAttribute>
+          <rhsAttribute>AuthenticationPassed</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Network Access</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>Network_Access_Authentication_Passed</name>
+      <description>Default condition used for basic Network Access requiring that authentication was successful.</description>
+      <id>ce06936a-5010-461f-b67b-e41b725c895f</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>RadiusFlowType</lhsAttribute>
+          <rhsAttribute>Wireless802_1x</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Normalised Radius</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>Wireless_802.1X</name>
+      <description>A condition to match 802.1X based authentication requests from wireless LAN controllers, according to the corresponding 802.1x attributes defined in the device profile.</description>
+      <id>b7311b94-ae2e-450c-bf88-3bd472d7c250</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>RadiusFlowType</lhsAttribute>
+          <rhsAttribute>WiredWebAuth</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Normalised Radius</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>Switch_Web_Authentication</name>
+      <description>A condition to match requests for web authentication from switches, according to the corresponding Web Authentication attributes defined in the device profile.</description>
+      <id>5c418998-bde0-4d7b-a4fe-a633007605f8</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>RadiusFlowType</lhsAttribute>
+          <rhsAttribute>WiredMAB</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Normalised Radius</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>Wired_MAB</name>
+      <description>A condition to match MAC Authentication Bypass service based authentication requests from switches, according to the corresponding MAB attributes defined in the device profile.</description>
+      <id>9aab0da7-e3e3-4cd7-81c2-18c3ebbe6a96</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>RadiusFlowType</lhsAttribute>
+          <rhsAttribute>Wired802_1x</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Normalised Radius</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>Wired_802.1X</name>
+      <description>A condition to match 802.1X based authentication requests from switches, according to the corresponding 802.1x attributes defined in the device profile.</description>
+      <id>cc933826-ff9d-4777-b4a2-772962d56f92</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>RadiusFlowType</lhsAttribute>
+          <rhsAttribute>WirelessMAB</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Normalised Radius</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>Wireless_MAB</name>
+      <description>A condition to match MAC Authentication Bypass service based authentication requests from wireless LAN controllers, according to the corresponding MAB attributes defined in the device profile.</description>
+      <id>1e4dc95d-ce2d-4387-b465-af7ff3fda08f</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>RadiusFlowType</lhsAttribute>
+          <rhsAttribute>WirelessWebAuth</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Normalised Radius</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>WLC_Web_Authentication</name>
+      <description>A condition to match requests for web authentication from wireless LAN controllers, according to the corresponding Web Authentication attributes defined in the device profile.</description>
+      <id>4d1d09fd-fa3a-4757-92ed-c952182204e1</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>PostureStatus</lhsAttribute>
+          <rhsAttribute>Unknown</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Session</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>Compliance_Unknown_Devices</name>
+      <description>Default condition for unknown compliance devices</description>
+      <id>bbbaacb7-630d-42ab-9f3d-8137ab1d020a</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>PostureStatus</lhsAttribute>
+          <rhsAttribute>NonCompliant</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Session</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>Non_Compliant_Devices</name>
+      <description>Default condition for non-compliant devices</description>
+      <id>c06f171d-8dce-4cfa-814d-3e8246a76150</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>PostureStatus</lhsAttribute>
+          <rhsAttribute>Compliant</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Session</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>Compliant_Devices</name>
+      <description>Default condition for compliant devices</description>
+      <id>8576b518-b106-4fc8-be21-4a1f5eaf5790</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>LogicalProfile</lhsAttribute>
+          <rhsAttribute>IP-Phones</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>EndPoints</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>Non_Cisco_Profiled_Phones</name>
+      <description>Default condition used to match Non Cisco IP Phones</description>
+      <id>15c562ac-459b-401f-8bf6-28bba3173467</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>Service-Type</lhsAttribute>
+          <rhsAttribute>Outbound</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Radius</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <children>
+          <lhsAttribute>NAS-Port-Type</lhsAttribute>
+          <rhsAttribute>Ethernet</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>Radius</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>Switch_Local_Web_Authentication</name>
+      <description>A condition to match authentication requests for Local Web Authentication from Cisco Catalyst Switches</description>
+      <id>af1a133d-3f18-4a5b-9d6c-3787482d7430</id>
+    </libraryCondition>
+  </libraryConditions>
+  <libraryConditions>
+    <libraryCondition>
+      <condition>
+        <isNot>false</isNot>
+        <children>
+          <lhsAttribute>LogicalProfile</lhsAttribute>
+          <rhsAttribute>CISCO-AP</rhsAttribute>
+          <rhsDictionary/>
+          <isNot>false</isNot>
+          <lhsDictionary>EndPoints</lhsDictionary>
+          <type>SINGLE</type>
+          <operator>EQUALS</operator>
+        </children>
+        <type>AND_BLOCK</type>
+      </condition>
+      <name>Cisco-Access-Points</name>
+      <description>Default condition used to match Non Cisco IP Phones</description>
+      <id>63af77a1-87b1-4cde-b7f7-7033d063f543</id>
+    </libraryCondition>
+  </libraryConditions>
+  <!--This section describes the Allowed Protocols configured in ISE-->
+  <AllowedProtocols>
+    <AllowedProtocol description="Default Allowed Protocol Service Device Admin" name="Default Device Admin">
+      <Option name="Process Host Lookup" value="false"/>
+      <Option name="Allow PAP/ASCII" value="true"/>
+      <Option name="Allow CHAP" value="true"/>
+      <Option name="Allow MS-CHAPv1" value="true"/>
+      <Option name="Allow MS-CHAPv2" value="false"/>
+      <Option name="Allow EAP-MD5" value="false"/>
+      <Option name="Allow EAP-TLS" value="false"/>
+      <Option name="Allow LEAP" value="false"/>
+      <Option name="Allow PEAP" value="false"/>
+      <Option name="Allow EAP-FAST" value="false"/>
+    </AllowedProtocol>
+    <AllowedProtocol description="Default Allowed Protocol Service" name="Default Network Access">
+      <Option name="Process Host Lookup" value="true"/>
+      <Option name="Allow PAP/ASCII" value="true"/>
+      <Option name="Allow CHAP" value="false"/>
+      <Option name="Allow MS-CHAPv1" value="false"/>
+      <Option name="Allow MS-CHAPv2" value="false"/>
+      <Option name="Allow EAP-MD5" value="true"/>
+      <Option name="Allow EAP-TLS" value="true">
+        <Option name="EAP-TLS-Allow Allow Authentication of expired certificates" value="false"/>
+        <Option name="EAP-TLS-Allow Enable Stateless Session Resume" value="false"/>
+      </Option>
+      <Option name="Allow LEAP" value="false"/>
+      <Option name="Allow PEAP" value="true">
+        <Option name="PEAP-Allow EAP-MS-CHAPv2" value="true">
+          <Option name="Allow Password Change" value="true"/>
+          <Option name="Retries" value="1"/>
+        </Option>
+        <Option name="PEAP-Allow EAP-GTC" value="true">
+          <Option name="Allow Password Change" value="true"/>
+          <Option name="Retries" value="1"/>
+        </Option>
+        <Option name="PEAP-Allow EAP-TLS" value="true"/>
+        <Option name="Allow PEAPv0 only for legacy clients" value="false"/>
+      </Option>
+      <Option name="Allow EAP-FAST" value="true">
+        <Option name="EAP-FAST-Allow EAP-MS-CHAPv2" value="true">
+          <Option name="Allow Password Change" value="true"/>
+          <Option name="Retries" value="3"/>
+        </Option>
+        <Option name="EAP-FAST-Allow EAP-GTC" value="true">
+          <Option name="Allow Password Change" value="true"/>
+          <Option name="Retries" value="3"/>
+        </Option>
+        <Option name="EAP-FAST-Allow EAP-TLS" value="true">
+          <Option name="Use PACs" value="true">
+            <Option name="Tunnel PAC Time To Live in Seconds" value="7776000"/>
+            <Option name="Proactive PAC update will occur after" value="90"/>
+            <Option name="Allow Anonymous In-Band PAC Provisioning" value="true"/>
+            <Option name="Allow Authenticated In-Band PAC Provisioning" value="true">
+              <Option name="Server Returns Access Accept After Authenticated Provisioning" value="true"/>
+              <Option name="Accept Client Certificate For Provisioning" value="false"/>
+            </Option>
+            <Option name="Use PACs-Allow Machine Authentication" value="true">
+              <Option name="Machine PAC Time To Live in Seconds" value="604800"/>
+            </Option>
+            <Option name="Enable Stateless Session Resume" value="true">
+              <Option name="Authorization PAC Time To Live in Seconds" value="3600"/>
+            </Option>
+          </Option>
+        </Option>
+        <Option name="Enable EAP Chaining" value="false"/>
+      </Option>
+    </AllowedProtocol>
+  </AllowedProtocols>
+  <!--This section describes the Identity Sequences configured in ISE-->
+  <IdentitySequences>
+    <Sequence cert="SpecialMSADCAP" description="" name="All_NewCAP">
+      <Sources>
+        <Source name="dcloud.cisco.com"/>
+        <Source name="Internal Users"/>
+        <Source name="Guest Users"/>
+      </Sources>
+      <option name="Select Certificate Authentication Profile" value="true"/>
+      <option name="Certificate Authentication Profile" value="SpecialMSADCAP"/>
+      <option name="Do not access other stores in the sequence and set the AuthenticationStatus attribute to ProcessError" value="false"/>
+      <option name="Treat as if the user was not found and proceed to the next store in the sequence" value="true"/>
+    </Sequence>
+    <Sequence cert="Preloaded_Certificate_Profile" description="A built-in Identity Sequence to include all User Identity Stores" name="All_User_ID_Stores">
+      <Sources>
+        <Source name="Internal Users"/>
+        <Source name="dcloud.cisco.com"/>
+        <Source name="All_AD_Join_Points"/>
+        <Source name="Guest Users"/>
+      </Sources>
+      <option name="Select Certificate Authentication Profile" value="true"/>
+      <option name="Certificate Authentication Profile" value="Preloaded_Certificate_Profile"/>
+      <option name="Do not access other stores in the sequence and set the AuthenticationStatus attribute to ProcessError" value="false"/>
+      <option name="Treat as if the user was not found and proceed to the next store in the sequence" value="true"/>
+    </Sequence>
+    <Sequence description="A built-in Identity Sequence for Certificate Request APIs" name="Certificate_Request_Sequence">
+      <Sources>
+        <Source name="Internal Users"/>
+        <Source name="All_AD_Join_Points"/>
+      </Sources>
+      <option name="Select Certificate Authentication Profile" value="false"/>
+      <option name="Do not access other stores in the sequence and set the AuthenticationStatus attribute to ProcessError" value="false"/>
+      <option name="Treat as if the user was not found and proceed to the next store in the sequence" value="true"/>
+    </Sequence>
+    <Sequence description="A built-in Identity Sequence for the Guest Portal" name="Guest_Portal_Sequence">
+      <Sources>
+        <Source name="Internal Users"/>
+        <Source name="Guest Users"/>
+        <Source name="All_AD_Join_Points"/>
+      </Sources>
+      <option name="Select Certificate Authentication Profile" value="false"/>
+      <option name="Do not access other stores in the sequence and set the AuthenticationStatus attribute to ProcessError" value="false"/>
+      <option name="Treat as if the user was not found and proceed to the next store in the sequence" value="true"/>
+    </Sequence>
+    <Sequence description="A built-in Identity Sequence for the My Devices Portal" name="MyDevices_Portal_Sequence">
+      <Sources>
+        <Source name="Internal Users"/>
+        <Source name="All_AD_Join_Points"/>
+      </Sources>
+      <option name="Select Certificate Authentication Profile" value="false"/>
+      <option name="Do not access other stores in the sequence and set the AuthenticationStatus attribute to ProcessError" value="false"/>
+      <option name="Treat as if the user was not found and proceed to the next store in the sequence" value="true"/>
+    </Sequence>
+    <Sequence description="A built-in Identity Sequence for the Sponsor Portal" name="Sponsor_Portal_Sequence">
+      <Sources>
+        <Source name="Internal Users"/>
+        <Source name="All_AD_Join_Points"/>
+      </Sources>
+      <option name="Select Certificate Authentication Profile" value="false"/>
+      <option name="Do not access other stores in the sequence and set the AuthenticationStatus attribute to ProcessError" value="false"/>
+      <option name="Treat as if the user was not found and proceed to the next store in the sequence" value="true"/>
+    </Sequence>
+  </IdentitySequences>
+  <!--This section describes the RADIUS Server Sequences configured in ISE-->
+  <Proxies/>
+  <!--This section describes the Authorization Results configured in ISE-->
+  <AznResults>
+    <StandardResults>
+      <Profile description="" nadProfileName="Cisco" name="AccountingProfile">
+        <option name="Attributes Details">DACL = AccountingACL, 
+cisco-av-pair = set_nadprofile_vlan_by_id=true,vlan=20,tag=1</option>
+        <option name="Access Type" value="ACCESS_ACCEPT"/>
+        <option name="Service Template" value="false"/>
+      </Profile>
+      <Profile description="" nadProfileName="Cisco" name="AdminProfile">
+        <option name="Attributes Details">cisco-av-pair = set_nadprofile_vlan_by_id=true,vlan=20,tag=1</option>
+        <option name="Access Type" value="ACCESS_ACCEPT"/>
+        <option name="Service Template" value="false"/>
+      </Profile>
+      <Profile description="Default profile used to block wireless devices. Ensure that you configure a NULL ROUTE ACL on the Wireless LAN Controller." nadProfileName="Cisco" name="Blackhole_Wireless_Access">
+        <option name="Attributes Details">cisco-av-pair = url-redirect=https://ip:port/blacklistportal/gateway?portal=58a502b1-07d2-4880-9ab7-b940203663f9, 
+cisco-av-pair = url-redirect-acl=BLACKHOLE</option>
+        <option name="Access Type" value="ACCESS_ACCEPT"/>
+        <option name="Service Template" value="false"/>
+      </Profile>
+      <Profile description="Default profile used for Cisco Phones." nadProfileName="Cisco" name="Cisco_AccessPoints">
+        <option name="Attributes Details">Termination-Action = RADIUS-Request, 
+cisco-av-pair = set_nadprofile_vlan_by_id=true,vlan=10,tag=1, 
+Session-Timeout = 3600</option>
+        <option name="Access Type" value="ACCESS_ACCEPT"/>
+        <option name="Service Template" value="false"/>
+      </Profile>
+      <Profile description="Default profile used for Cisco Phones." nadProfileName="Cisco" name="Cisco_FlexAccessPoints">
+        <option name="Attributes Details">Termination-Action = RADIUS-Request, 
+cisco-av-pair = set_nadprofile_vlan_by_id=true,vlan=10,tag=1, 
+cisco-av-pair = interface-template-name=FLEX_ACCESS_POINT, 
+Session-Timeout = 3600</option>
+        <option name="Access Type" value="ACCESS_ACCEPT"/>
+        <option name="Service Template" value="false"/>
+      </Profile>
+      <Profile description="Default profile used for Cisco Phones." nadProfileName="Cisco" name="Cisco_IP_Phones">
+        <option name="Attributes Details">DACL = PERMIT_ALL_IPV4_TRAFFIC, 
+cisco-av-pair = device-traffic-class=voice</option>
+        <option name="Access Type" value="ACCESS_ACCEPT"/>
+        <option name="Service Template" value="false"/>
+      </Profile>
+      <Profile description="Onboard the device with Cisco temporal agent" nadProfileName="Cisco" name="Cisco_Temporal_Onboard">
+        <option name="Attributes Details">DACL = PERMIT_ALL_IPV4_TRAFFIC, 
+cisco-av-pair = url-redirect-acl=ACL_WEBAUTH_REDIRECT, 
+cisco-av-pair = url-redirect=https://ip:port/portal/gateway?sessionId=SessionIdValue&amp;portal=aa72bfd7-24e5-4ba1-84ab-203e03c0bc01&amp;action=cpp</option>
+        <option name="Access Type" value="ACCESS_ACCEPT"/>
+        <option name="Service Template" value="false"/>
+      </Profile>
+      <Profile description="Default Profile used to redirect users to the CWA portal." nadProfileName="Cisco" name="Cisco_WebAuth">
+        <option name="Attributes Details">cisco-av-pair = url-redirect-acl=ACL_WEBAUTH_REDIRECT, 
+cisco-av-pair = url-redirect=https://ip:port/portal/gateway?sessionId=SessionIdValue&amp;portal=71984f36-f55e-4439-ba6e-903d9f77c216&amp;action=cwa</option>
+        <option name="Access Type" value="ACCESS_ACCEPT"/>
+        <option name="Service Template" value="false"/>
+      </Profile>
+      <Profile description="Default Profile with access type as Access-Reject" name="DenyAccess">
+        <option name="Access Type" value="ACCESS_REJECT"/>
+        <option name="Service Template" value="false"/>
+      </Profile>
+      <Profile description="" nadProfileName="Cisco" name="Device_iPSK">
+        <option name="Attributes Details">cisco-av-pair = psk-mode=ascii, 
+cisco-av-pair = psk=ISET0pGun!</option>
+        <option name="Access Type" value="ACCESS_ACCEPT"/>
+        <option name="Service Template" value="false"/>
+      </Profile>
+      <Profile description="" nadProfileName="Cisco" name="EngineeringProfile">
+        <option name="Attributes Details">DACL = EngineeringACL, 
+cisco-av-pair = set_nadprofile_vlan_by_id=true,vlan=20,tag=1</option>
+        <option name="Access Type" value="ACCESS_ACCEPT"/>
+        <option name="Service Template" value="false"/>
+      </Profile>
+      <Profile description="Onboard the device with Native Supplicant Provisioning" nadProfileName="Cisco" name="NSP_Onboard">
+        <option name="Attributes Details">DACL = PERMIT_ALL_IPV4_TRAFFIC, 
+cisco-av-pair = url-redirect-acl=ACL_WEBAUTH_REDIRECT, 
+cisco-av-pair = url-redirect=https://ip:port/portal/gateway?sessionId=SessionIdValue&amp;portal=7f8ac563-3304-4f25-845d-be9faac3c44f&amp;action=nsp</option>
+        <option name="Access Type" value="ACCESS_ACCEPT"/>
+        <option name="Service Template" value="false"/>
+      </Profile>
+      <Profile description="Default Profile used for Non Cisco Phones." nadProfileName="Cisco" name="Non_Cisco_IP_Phones">
+        <option name="Attributes Details">DACL = PERMIT_ALL_IPV4_TRAFFIC, 
+cisco-av-pair = device-traffic-class=voice</option>
+        <option name="Access Type" value="ACCESS_ACCEPT"/>
+        <option name="Service Template" value="false"/>
+      </Profile>
+      <Profile description="Default Profile with access type as Access-Accept" name="PermitAccess">
+        <option name="Access Type" value="ACCESS_ACCEPT"/>
+        <option name="Service Template" value="false"/>
+      </Profile>
+      <Profile description="DNA generated Authorization Profile for portal: TopGunGuest" nadProfileName="Cisco" name="TopGunGuest_Profile">
+        <option name="Attributes Details">cisco-av-pair = url-redirect=https://ip:port/portal/gateway?sessionId=SessionIdValue&amp;portal=f00c731b-2170-4fb6-8572-6cf973edf298&amp;daysToExpiry=value&amp;action=cwa, 
+cisco-av-pair = url-redirect-acl=DNAC_ACL_WEBAUTH_REDIRECT</option>
+        <option name="Access Type" value="ACCESS_ACCEPT"/>
+        <option name="Service Template" value="false"/>
+      </Profile>
+      <Profile description="Default profile used for UDN." nadProfileName="Cisco" name="UDN">
+        <option name="Attributes Details">cisco-av-pair = null, 
+cisco-av-pair = null, 
+cisco-av-pair = null</option>
+        <option name="Access Type" value="ACCESS_ACCEPT"/>
+        <option name="Service Template" value="false"/>
+      </Profile>
+      <Profile description="" nadProfileName="Cisco" name="WorkstationProfile">
+        <option name="Attributes Details">cisco-av-pair = set_nadprofile_vlan_by_id=true,vlan=20,tag=1</option>
+        <option name="Access Type" value="ACCESS_ACCEPT"/>
+        <option name="Service Template" value="false"/>
+      </Profile>
+    </StandardResults>
+    <SecurityGroups>
+      <SecurityGroup name="Accounting">
+        <option name="Security Group Tag" value="16"/>
+      </SecurityGroup>
+      <SecurityGroup name="Administrator">
+        <option name="Security Group Tag" value="18"/>
+      </SecurityGroup>
+      <SecurityGroup description="Auditor Security Group" name="Auditors">
+        <option name="Security Group Tag" value="9"/>
+      </SecurityGroup>
+      <SecurityGroup description="BYOD Security Group" name="BYOD">
+        <option name="Security Group Tag" value="15"/>
+      </SecurityGroup>
+      <SecurityGroup description="Contractor Security Group" name="Contractors">
+        <option name="Security Group Tag" value="5"/>
+      </SecurityGroup>
+      <SecurityGroup description="Developer Security Group" name="Developers">
+        <option name="Security Group Tag" value="8"/>
+      </SecurityGroup>
+      <SecurityGroup description="Development Servers Security Group" name="Development_Servers">
+        <option name="Security Group Tag" value="12"/>
+      </SecurityGroup>
+      <SecurityGroup description="Employee Security Group" name="Employees">
+        <option name="Security Group Tag" value="4"/>
+      </SecurityGroup>
+      <SecurityGroup name="Engineering">
+        <option name="Security Group Tag" value="17"/>
+      </SecurityGroup>
+      <SecurityGroup description="Guest Security Group" name="Guests">
+        <option name="Security Group Tag" value="6"/>
+      </SecurityGroup>
+      <SecurityGroup name="Infra">
+        <option name="Security Group Tag" value="19"/>
+      </SecurityGroup>
+      <SecurityGroup description="Network Services Security Group" name="Network_Services">
+        <option name="Security Group Tag" value="3"/>
+      </SecurityGroup>
+      <SecurityGroup description="PCI Servers Security Group" name="PCI_Servers">
+        <option name="Security Group Tag" value="14"/>
+      </SecurityGroup>
+      <SecurityGroup description="Point of Sale Security Group" name="Point_of_Sale_Systems">
+        <option name="Security Group Tag" value="10"/>
+      </SecurityGroup>
+      <SecurityGroup description="Production Servers Security Group" name="Production_Servers">
+        <option name="Security Group Tag" value="11"/>
+      </SecurityGroup>
+      <SecurityGroup description="Production User Security Group" name="Production_Users">
+        <option name="Security Group Tag" value="7"/>
+      </SecurityGroup>
+      <SecurityGroup description="Quarantine Security Group" name="Quarantined_Systems">
+        <option name="Security Group Tag" value="255"/>
+      </SecurityGroup>
+      <SecurityGroup description="Test Servers Security Group" name="Test_Servers">
+        <option name="Security Group Tag" value="13"/>
+      </SecurityGroup>
+      <SecurityGroup description="TrustSec Devices Security Group" name="TrustSec_Devices">
+        <option name="Security Group Tag" value="2"/>
+      </SecurityGroup>
+      <SecurityGroup description="Unknown Security Group" name="Unknown">
+        <option name="Security Group Tag" value="0"/>
+      </SecurityGroup>
+    </SecurityGroups>
+    <TacacsProfile>
+      <TacacsProfile description="Default Shell Profile" name="Default Shell Profile">
+        <option name="session Attributes" value=""/>
+      </TacacsProfile>
+      <TacacsProfile description="Deny All Shell Profile" name="Deny All Shell Profile">
+        <option name="session Attributes" value=""/>
+      </TacacsProfile>
+      <TacacsProfile description="WLC ALL" name="WLC ALL">
+        <option name="session Attributes" value="role1=ALL"/>
+      </TacacsProfile>
+      <TacacsProfile description="WLC MONITOR" name="WLC MONITOR">
+        <option name="session Attributes" value="role1=MONITOR"/>
+      </TacacsProfile>
+    </TacacsProfile>
+    <TacacsCommandset>
+      <TacacsCommandset description="Default Command Set" name="DenyAllCommands">
+        <option name="Commands" value=""/>
+        <option name="Permit Unmatched" value="false"/>
+      </TacacsCommandset>
+    </TacacsCommandset>
+  </AznResults>
+</Root>
