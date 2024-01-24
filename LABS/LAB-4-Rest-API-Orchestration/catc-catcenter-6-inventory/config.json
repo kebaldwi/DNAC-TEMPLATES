@@ -1,0 +1,39 @@
+{
+   "items":[
+      {
+         "title":"Introduction",
+         "content":"01-intro.md"
+      },
+      {
+         "title":"Retrieving Device Inventory",
+         "content":"02-deploy.md"
+      }
+   ],
+	"meta": {
+		"code_name": "dntd-catcenter-6-inventory",
+		"tags": [
+			{
+				"title": "Cisco Catalyst Center"
+			}
+		],
+		"time": "15",
+		"poweredBy": "",
+		"authors": [
+			{
+				"name": "Keith Baldwin",
+				"email": "kebaldwie@cisco.com"
+			}
+		],
+		"slug": "Get Started Cisco Catalyst Center Platform",
+		"moduleOnly": false,
+		"hasResources": false,
+		"byod": true,
+		"access": "public"
+	},
+	"config": {
+		"id": "dntd-catcenter-6-inventory",
+		"devEnv": {},
+		"sandbox": {},
+		"video": {}
+	}
+ }

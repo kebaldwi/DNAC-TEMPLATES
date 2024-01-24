@@ -1,0 +1,47 @@
+{
+	"items": [
+		{
+			"title": "Introduction",
+			"content": "01-intro.md"
+		},
+		{
+			"title": "Collections",
+			"content": "02-collections.md"
+		},
+		{
+			"title": "Preparing Postman for use with Cisco Catalyst Center",
+			"content": "03-postman.md"
+		},
+		{
+			"title": "Preparing External Data for use with Postman",
+			"content": "04-externaldata.md"
+		}
+	],
+	"meta": {
+		"code_name": "dntd-catcenter-0-orientation",
+		"tags": [
+			{
+				"title": "Cisco Catalyst Center"
+			}
+		],
+		"time": "15",
+		"poweredBy": "",
+		"authors": [
+			{
+				"name": "Keith Baldwin",
+				"email": "kebaldwie@cisco.com"
+			}
+		],
+		"slug": "Get Started Cisco Catalyst Center Platform",
+		"moduleOnly": false,
+		"hasResources": false,
+		"byod": true,
+		"access": "public"
+	},
+	"config": {
+		"id": "dntd-catcenter-0-orientation",
+		"devEnv": {},
+		"sandbox": {},
+		"video": {}
+	}
+}

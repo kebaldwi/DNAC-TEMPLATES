@@ -1,0 +1,39 @@
+{
+   "items":[
+      {
+         "title":"Introduction",
+         "content":"01-intro.md"
+      },
+      {
+         "title":"Template Deployment",
+         "content":"02-deploy.md"
+      }
+   ],
+	"meta": {
+		"code_name": "dntd-catcenter-4-templates",
+		"tags": [
+			{
+				"title": "Cisco Catalyst Center"
+			}
+		],
+		"time": "15",
+		"poweredBy": "",
+		"authors": [
+			{
+				"name": "Keith Baldwin",
+				"email": "kebaldwie@cisco.com"
+			}
+		],
+		"slug": "Get Started Cisco Catalyst Center Platform",
+		"moduleOnly": false,
+		"hasResources": false,
+		"byod": true,
+		"access": "public"
+	},
+	"config": {
+		"id": "dntd-catcenter-4-templates",
+		"devEnv": {},
+		"sandbox": {},
+		"video": {}
+	}
+ }

@@ -1,0 +1,51 @@
+{
+   "items":[
+      {
+         "title":"Introduction",
+         "content":"01-intro.md"
+      },
+      {
+         "title":"ISE Integration",
+         "content":"02-integration.md"
+      },
+      {
+       "title":"Postman & External Data",
+       "content":"03-postman.md"
+      },
+      {
+       "title":"Collection",
+       "content":"04-collection.md"
+      },
+      {
+         "title":"Hierarchy Deployment",
+         "content":"05-deploy.md"
+      }
+   ],
+	"meta": {
+		"code_name": "dntd-catcenter-1-hierarchy",
+		"tags": [
+			{
+				"title": "Cisco Catalyst Center"
+			}
+		],
+		"time": "15",
+		"poweredBy": "",
+		"authors": [
+			{
+				"name": "Keith Baldwin",
+				"email": "kebaldwie@cisco.com"
+			}
+		],
+		"slug": "Get Started Cisco Catalyst Center Platform",
+		"moduleOnly": false,
+		"hasResources": false,
+		"byod": true,
+		"access": "public"
+	},
+	"config": {
+		"id": "dntd-catcenter-1-hierarchy",
+		"devEnv": {},
+		"sandbox": {},
+		"video": {}
+	}
+ }

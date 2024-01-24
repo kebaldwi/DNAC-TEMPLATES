@@ -1,0 +1,179 @@
+[
+  {
+    "name": "DCLOUD PrepEnvironment",
+    "tags": [],
+    "templates": [
+      {
+        "name": "DISTRO-C9300-2",
+        "description": "",
+        "tags": [
+          {
+            "id": "18084028-edc8-4ed4-b3a8-3ff50abe63a7",
+            "name": "Distribution"
+          }
+        ],
+        "deviceTypes": [
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco Catalyst 9300 Series Switches",
+            "productType": "Cisco Catalyst 9300 Switch"
+          }
+        ],
+        "softwareType": "IOS",
+        "softwareVariant": "XE",
+        "templateContent": "",
+        "rollbackTemplateContent": "",
+        "templateParams": [],
+        "rollbackTemplateParams": [],
+        "composite": true,
+        "containingTemplates": [
+          {
+            "name": "C9300-DIST-Prep",
+            "composite": false,
+            "language": "VELOCITY",
+            "description": "",
+            "projectName": "DCLOUD PrepEnvironment"
+          },
+          {
+            "name": "C9300-DIST-Post",
+            "composite": false,
+            "language": "VELOCITY",
+            "description": "",
+            "projectName": "DCLOUD PrepEnvironment"
+          }
+        ],
+        "failurePolicy": "CONTINUE_ON_ERROR",
+        "language": "VELOCITY",
+        "promotedTemplateContent": "[{\"name\":\"C9300-DIST-Prep\",\"id\":\"30a5dea7-ca79-4052-b9a2-12b1df213f96\",\"composite\":false,\"language\":\"VELOCITY\",\"description\":\"\"},{\"name\":\"C9300-DIST-Post\",\"id\":\"3d2203e7-b201-404b-bd82-ef410a090c98\",\"composite\":false,\"language\":\"VELOCITY\",\"description\":\"\"}]",
+        "promotedTemplateParams": [],
+        "customParamsOrder": false,
+        "createTime": 1643232863078,
+        "lastUpdateTime": 1643233194973,
+        "latestVersionTime": 1643233200275,
+        "projectName": "DCLOUD PrepEnvironment",
+        "validationErrors": {
+          "templateErrors": [],
+          "rollbackTemplateErrors": [],
+          "templateId": "147d3f53-b723-4f50-9e27-285603a5a000",
+          "templateVersion": null
+        },
+        "projectAssociated": true,
+        "documentDatabase": false
+      },
+      {
+        "name": "ISR-Prep",
+        "description": "",
+        "tags": [],
+        "deviceTypes": [
+          {
+            "productFamily": "Routers",
+            "productSeries": "Cisco 4000 Series Integrated Services Routers",
+            "productType": "Cisco 4331 Integrated Services Router"
+          }
+        ],
+        "softwareType": "IOS",
+        "softwareVariant": "XE",
+        "templateContent": "##Shutdown Other Interface to create distribution from Cat9300-2\n!\n##disable port 0/0/1 for the templating lab\nint gi 0/0/1\n shutdown\n end\n!\n",
+        "rollbackTemplateContent": "",
+        "templateParams": [],
+        "rollbackTemplateParams": [],
+        "composite": false,
+        "containingTemplates": [],
+        "language": "VELOCITY",
+        "promotedTemplateContent": "##Shutdown Other Interface to create distribution from Cat9300-2\n!\n##disable port 0/0/1 for the templating lab\nint gi 0/0/1\n shutdown\n end\n!\n",
+        "promotedTemplateParams": [],
+        "customParamsOrder": false,
+        "createTime": 1643228756347,
+        "lastUpdateTime": 1643228756347,
+        "latestVersionTime": 1643228756347,
+        "projectName": "DCLOUD PrepEnvironment",
+        "validationErrors": {
+          "templateErrors": [],
+          "rollbackTemplateErrors": [],
+          "templateId": "1e7e1410-7fdb-4fc3-91e7-aadfb64c3f63",
+          "templateVersion": null
+        },
+        "projectAssociated": true,
+        "documentDatabase": false
+      },
+      {
+        "name": "C9300-DIST-Prep",
+        "description": "",
+        "tags": [
+          {
+            "id": "18084028-edc8-4ed4-b3a8-3ff50abe63a7",
+            "name": "Distribution"
+          }
+        ],
+        "deviceTypes": [
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco Catalyst 9300 Series Switches",
+            "productType": "Cisco Catalyst 9300 Switch"
+          }
+        ],
+        "softwareType": "IOS",
+        "softwareVariant": "XE",
+        "templateContent": "##Build Distribution for pnp\nvlan 5\nname \"mgntvlan\"\nvlan 10\nname \"apvlan\"\nvlan 20\nname \"datavlan\"\nvlan 30\nname \"voicevlan\"\nvlan 40\nname \"guestvlan\"\nvlan 999\nname \"disabled\"\n!\nint vlan 5 \n ip address 192.168.5.1 255.255.255.0\n ip helper-address 198.18.133.1                  \n ip ospf 1 area 0\n no shutdown\n!\npnp startup-vlan 5\n!\nint vlan 10 \n ip address 192.168.10.1 255.255.255.0\n ip helper-address 198.18.133.1                  \n ip ospf 1 area 0\n no shutdown\nint vlan 20 \n ip address 192.168.20.1 255.255.255.0\n ip helper-address 198.18.133.1                  \n ip ospf 1 area 0\n no shutdown\nint vlan 30 \n ip address 192.168.30.1 255.255.255.0\n ip helper-address 198.18.133.1                  \n ip ospf 1 area 0\n no shutdown\nint vlan 40\n ip address 192.168.40.1 255.255.255.0\n ip helper-address 198.18.133.1                  \n ip ospf 1 area 0\n no shutdown\nint vlan 999\n ip address 192.168.99.1 255.255.255.0\n ip helper-address 198.18.133.1                  \n ip ospf 1 area 0\n no shutdown\n!\n#INTERACTIVE\nautoconf enable<IQ>yes<R>y\n#END_INTERACTIVE\n!\nparameter-map type subscriber attribute-to-service BUILTIN_DEVICE_TO_TEMPLATE\n10 map device-type regex \"Cisco-IP-Phone\"\n 20 interface-template WORKSTATION\n20 map device-type regex \"Cisco-IP-Camera\"\n 20 interface-template WORKSTATION\n30 map device-type regex \"Cisco-DMP\"\n 20 interface-template WORKSTATION\n40 map oui eq \"00.0f.44\"\n 20 interface-template WORKSTATION\n50 map oui eq \"00.23.ac\"\n 20 interface-template WORKSTATION\n60 map device-type regex \"Cisco-AIR-AP\"\n 20 interface-template ACCESS_POINT\n70 map device-type regex \"Cisco-AIR-LAP\"\n 20 interface-template ACCESS_POINT\n80 map device-type regex \"Cisco-TelePresence\"\n 20 interface-template WORKSTATION\n90 map device-type regex \"Surveillance-Camera\"\n 10 interface-template WORKSTATION\n100 map device-type regex \"Video-Conference\"\n 10 interface-template WORKSTATION\n110 map device-type regex \"Cisco-CAT-LAP\"\n 10 interface-template ACCESS_POINT\n!\n##Templates\ntemplate ACCESS_POINT\n description Access Point Interface\n switchport trunk native vlan 10\n switchport trunk allowed vlan 10,20,30,40,999\n switchport mode trunk\n!\ntemplate WORKSTATION\n description Workstation\n switchport access vlan 20\n switchport mode access\n switchport voice vlan 30\n!\ntemplate GUEST\n description Guest Interface\n switchport access vlan 40\n switchport mode access\n!\ntemplate BASECONFIG\n description BASE CONFIG\n switchport access vlan 999\n switchport mode access\n!\n##Macros\n## Use Bind to Source variable to select access interfaces \n#macro( access_interface )\n description BASE CONFIG\n switchport access vlan 999\n switchport mode access\n switchport port-security maximum 3\n switchport port-security\n snmp trap mac-notification change added\n snmp trap mac-notification change removed\n spanning-tree portfast\n spanning-tree bpduguard enable\n source template BASECONFIG\n#end\n!\ninterface range gi 1/0/10-11\n description PnP Test Environment to Catalyst 9300\n switchport mode trunk\n switchport trunk native vlan 5\n switchport trunk allowed vlan 5,10,20,30,40,999\n channel-protocol lacp\n channel-group 1 mode passive\n access-session inherit disable autoconf\n!\ninterface Port-channel1\n description PnP Test Environment to Catalyst 9300\n switchport trunk native vlan 5\n switchport trunk allowed vlan 5,10,20,30,40,999\n switchport mode trunk\n no port-channel standalone-disable\n!\ninterface gi 1/0/48\n access-session inherit disable autoconf\n!\n##Access Port Configuration\ninterface range gi 1/0/1 - 9\n #access_interface\n!",
+        "rollbackTemplateContent": "",
+        "templateParams": [],
+        "rollbackTemplateParams": [],
+        "composite": false,
+        "containingTemplates": [],
+        "language": "VELOCITY",
+        "promotedTemplateContent": "##Build Distribution for pnp\nvlan 5\nname \"mgntvlan\"\nvlan 10\nname \"apvlan\"\nvlan 20\nname \"datavlan\"\nvlan 30\nname \"voicevlan\"\nvlan 40\nname \"guestvlan\"\nvlan 999\nname \"disabled\"\n!\nint vlan 5 \n ip address 192.168.5.1 255.255.255.0\n ip helper-address 198.18.133.1                  \n ip ospf 1 area 0\n no shutdown\n!\npnp startup-vlan 5\n!\nint vlan 10 \n ip address 192.168.10.1 255.255.255.0\n ip helper-address 198.18.133.1                  \n ip ospf 1 area 0\n no shutdown\nint vlan 20 \n ip address 192.168.20.1 255.255.255.0\n ip helper-address 198.18.133.1                  \n ip ospf 1 area 0\n no shutdown\nint vlan 30 \n ip address 192.168.30.1 255.255.255.0\n ip helper-address 198.18.133.1                  \n ip ospf 1 area 0\n no shutdown\nint vlan 40\n ip address 192.168.40.1 255.255.255.0\n ip helper-address 198.18.133.1                  \n ip ospf 1 area 0\n no shutdown\nint vlan 999\n ip address 192.168.99.1 255.255.255.0\n ip helper-address 198.18.133.1                  \n ip ospf 1 area 0\n no shutdown\n!\n#INTERACTIVE\nautoconf enable<IQ>yes<R>y\n#END_INTERACTIVE\n!\nparameter-map type subscriber attribute-to-service BUILTIN_DEVICE_TO_TEMPLATE\n10 map device-type regex \"Cisco-IP-Phone\"\n 20 interface-template WORKSTATION\n20 map device-type regex \"Cisco-IP-Camera\"\n 20 interface-template WORKSTATION\n30 map device-type regex \"Cisco-DMP\"\n 20 interface-template WORKSTATION\n40 map oui eq \"00.0f.44\"\n 20 interface-template WORKSTATION\n50 map oui eq \"00.23.ac\"\n 20 interface-template WORKSTATION\n60 map device-type regex \"Cisco-AIR-AP\"\n 20 interface-template ACCESS_POINT\n70 map device-type regex \"Cisco-AIR-LAP\"\n 20 interface-template ACCESS_POINT\n80 map device-type regex \"Cisco-TelePresence\"\n 20 interface-template WORKSTATION\n90 map device-type regex \"Surveillance-Camera\"\n 10 interface-template WORKSTATION\n100 map device-type regex \"Video-Conference\"\n 10 interface-template WORKSTATION\n110 map device-type regex \"Cisco-CAT-LAP\"\n 10 interface-template ACCESS_POINT\n!\n##Templates\ntemplate ACCESS_POINT\n description Access Point Interface\n switchport trunk native vlan 10\n switchport trunk allowed vlan 10,20,30,40,999\n switchport mode trunk\n!\ntemplate WORKSTATION\n description Workstation\n switchport access vlan 20\n switchport mode access\n switchport voice vlan 30\n!\ntemplate GUEST\n description Guest Interface\n switchport access vlan 40\n switchport mode access\n!\ntemplate BASECONFIG\n description BASE CONFIG\n switchport access vlan 999\n switchport mode access\n!\n##Macros\n## Use Bind to Source variable to select access interfaces \n#macro( access_interface )\n description BASE CONFIG\n switchport access vlan 999\n switchport mode access\n switchport port-security maximum 3\n switchport port-security\n snmp trap mac-notification change added\n snmp trap mac-notification change removed\n spanning-tree portfast\n spanning-tree bpduguard enable\n source template BASECONFIG\n#end\n!\ninterface range gi 1/0/10-11\n description PnP Test Environment to Catalyst 9300\n switchport mode trunk\n switchport trunk native vlan 5\n switchport trunk allowed vlan 5,10,20,30,40,999\n channel-protocol lacp\n channel-group 1 mode passive\n access-session inherit disable autoconf\n!\ninterface Port-channel1\n description PnP Test Environment to Catalyst 9300\n switchport trunk native vlan 5\n switchport trunk allowed vlan 5,10,20,30,40,999\n switchport mode trunk\n no port-channel standalone-disable\n!\ninterface gi 1/0/48\n access-session inherit disable autoconf\n!\n##Access Port Configuration\ninterface range gi 1/0/1 - 9\n #access_interface\n!",
+        "promotedTemplateParams": [],
+        "customParamsOrder": false,
+        "createTime": 1643228756650,
+        "lastUpdateTime": 1643416126135,
+        "latestVersionTime": 1643228756650,
+        "projectName": "DCLOUD PrepEnvironment",
+        "validationErrors": {
+          "templateErrors": [],
+          "rollbackTemplateErrors": [],
+          "templateId": "30a5dea7-ca79-4052-b9a2-12b1df213f96",
+          "templateVersion": null
+        },
+        "projectAssociated": true,
+        "documentDatabase": false
+      },
+      {
+        "name": "C9300-DIST-Post",
+        "description": "",
+        "tags": [],
+        "deviceTypes": [
+          {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco Catalyst 9300 Series Switches",
+            "productType": "Cisco Catalyst 9300 Switch"
+          }
+        ],
+        "softwareType": "IOS",
+        "softwareVariant": "XE",
+        "templateContent": "##C9300-2 Post pnp\n!\ninterface range gi 1/0/10-11\n   channel-group 1 mode active\n!\ninterface Port-channel1\n   port-channel standalone-disable\n!\n",
+        "rollbackTemplateContent": "",
+        "templateParams": [],
+        "rollbackTemplateParams": [],
+        "composite": false,
+        "containingTemplates": [],
+        "language": "VELOCITY",
+        "promotedTemplateContent": "##C9300-2 Post pnp\n!\ninterface range gi 1/0/10-11\n   channel-group 1 mode active\n!\ninterface Port-channel1\n   port-channel standalone-disable\n!\n",
+        "promotedTemplateParams": [],
+        "customParamsOrder": false,
+        "createTime": 1643228756865,
+        "lastUpdateTime": 1643228756865,
+        "latestVersionTime": 1643228756865,
+        "projectName": "DCLOUD PrepEnvironment",
+        "validationErrors": {
+          "templateErrors": [],
+          "rollbackTemplateErrors": [],
+          "templateId": "3d2203e7-b201-404b-bd82-ef410a090c98",
+          "templateVersion": null
+        },
+        "projectAssociated": true,
+        "documentDatabase": false
+      }
+    ],
+    "isDeletable": true
+  }
+]
