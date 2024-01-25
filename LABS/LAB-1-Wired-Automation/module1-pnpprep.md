@@ -2,7 +2,7 @@
 
 ## Overview
 
-This lab is the first one in a series of labs. You may use the steps in the [Cisco Enterprise Networks Hardware Sandbox](https://dcloud2-sjc.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen) environment, or equally, you might utilize them as part of a Proof of Concept setup at a customer's lab. These procedures may also help form part of a deployment or implementation. Use them to ensure that all the necessary steps are complete before onboarding any devices within DNA Center.
+This lab is the first one in a series of labs. You may use the steps in the [Cisco Enterprise Networks Hardware Sandbox](https://dcloud2-sjc.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen) environment, or equally, you might utilize them as part of a Proof of Concept setup at a customer's lab. These procedures may also help form part of a deployment or implementation. Use them to ensure that all the necessary steps are complete before onboarding any devices within Cisco Catalyst Center.
 
 We will be utilizing the lab in this manner:
 
@@ -10,7 +10,7 @@ We will be utilizing the lab in this manner:
 
 ## General Information
 
-As you may recall, in the informational sections of this repository, we described various methods of discovery for a device and the preliminary things required for proper zero-touch provisioning. This lab will ensure a successful connection to DNA Center by helping to deploy the initial concepts.
+As you may recall, in the informational sections of this repository, we described various methods of discovery for a device and the preliminary things required for proper zero-touch provisioning. This lab will ensure a successful connection to Cisco Catalyst Center by helping to deploy the initial concepts.
 
 ### Lab Preparation
 
@@ -39,7 +39,7 @@ For PnP processes to work, we intend to have a management interface on the devic
 
 As you may recall, a factory default configuration is using VLAN 1 as no other VLAN exists, and by default, it accepts DHCP addresses. We can use this method in the PnP process. However, the management VLAN may be different, and so may the native VLAN structure of our environment. To that end, we must use the *pnp startup-vlan* command, which allows the device to use varying VLANs in PnP and should be set up and configured on the upstream switch.
 
-Of the discovery methods **DHCP** is the easiest to implement as no changes are required with the *Self Signed Certificate (SSC)* on **DNA Center** as it already includes the IP address by default. 
+Of the discovery methods **DHCP** is the easiest to implement as no changes are required with the *Self Signed Certificate (SSC)* on **Cisco Catalyst Center** as it already includes the IP address by default. 
 
 If you are deploying PnP using **DNS** discovery or you are building a cluster then you will need to go through the process of acquiring a certificate with Subject Alternative Names to include the **DNS** and **IP** entries to allow for the following:
 
@@ -52,19 +52,19 @@ If you are deploying PnP using **DNS** discovery or you are building a cluster t
 <details closed>
 <summary>To build a certificate in dCLOUD follow these steps </summary>
 
-To Build a certificate for use in DNA Center for PnP, please follow this outline of steps. Each step can take some time so plan accordingly.
+To Build a certificate for use in Cisco Catalyst Center for PnP, please follow this outline of steps. Each step can take some time so plan accordingly.
 
 1. On the Active Directory Server add the roles for the Certificate Authority to allow WEB enrollment
-2. Add the required DNS entries for DNA Center as per the sections below
-3. On DNA Center in CLI create a CSR using openssl 
-4. Enroll DNA Center via the CSR on the Windows CA
-5. Upload the Certificate to DNA Center
+2. Add the required DNS entries for Cisco Catalyst Center as per the sections below
+3. On Cisco Catalyst Center in CLI create a CSR using openssl 
+4. Enroll Cisco Catalyst Center via the CSR on the Windows CA
+5. Upload the Certificate to Cisco Catalyst Center
 
-To utilize DNS Entry for Discovery purposes Certificates will need to be rebuilt with Subject Alternative Names. Please utilize the process documented in the following [**DNA Center Certificates**](./Certificates.md) for information on that process.
+To utilize DNS Entry for Discovery purposes Certificates will need to be rebuilt with Subject Alternative Names. Please utilize the process documented in the following [**Cisco Catalyst Center Certificates**](./Certificates.md) for information on that process.
 
 Follow this guide for more information on the finer details.
 
-[DNA Center Security Best Practices Guide](./DNACenter_security_best_practices_guide.pdf)
+[Cisco Catalyst Center Security Best Practices Guide](./DNACenter_security_best_practices_guide.pdf)
 
 </details>
 
@@ -180,9 +180,9 @@ wr
 !
 ```
 
-## Lab Section 2 - DNA Center Discovery
+## Lab Section 2 - Cisco Catalyst Center Discovery
 
-As you may recall, for a device to discover DNA Center, the device uses a discovery method to help it find DNA Center. 
+As you may recall, for a device to discover Cisco Catalyst Center, the device uses a discovery method to help it find Cisco Catalyst Center. 
 
 The PnP components are as follows:
 
@@ -196,7 +196,7 @@ There are three automated methods to make that occur:
     - *requires the **pnpserver** entry to appear in the Subject Alternative Name of the GUI Certificate*
 3. **Cloud re-direction** via *https://devicehelper.cisco.com/device-helper* - *requires the DHCP server to offer a name server to make DNS resolutions*
 
-### Step 2.1 - ***DNA Center Discovery***
+### Step 2.1 - ***Cisco Catalyst Center Discovery***
 
 Please choose one of the following subsections as the discovery method.
 
@@ -245,7 +245,7 @@ wr
 !
 ```
 
-Next, add the DNS entries to allow for the DNA Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
+Next, add the DNS entries to allow for the Cisco Catalyst Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
 
 ```ps
 Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.100" -TimeToLive 01:00:00
@@ -268,7 +268,7 @@ The DHCP scope will resemble the following image of the Windows DHCP Administrat
 
 ![json](./images/WindowsDHCPscope.png?raw=true "Import JSON")
 
-Next, add the DNS entries to allow for the DNA Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
+Next, add the DNS entries to allow for the Cisco Catalyst Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
 
 ```ps
 Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.100" -TimeToLive 01:00:00
@@ -352,13 +352,13 @@ First, from a Windows host, use the *nslookup* command to resolve ***pnpserver.d
 nslookup pnpserver.dcloud.cisco.com
 ```
 
-The following output or something similar shows the resolution of the alias to the A host record entry which identifies the VIP address for the DNA Center Cluster will display.
+The following output or something similar shows the resolution of the alias to the A host record entry which identifies the VIP address for the Cisco Catalyst Center Cluster will display.
 
 ![json](./images/DNACenterDNStests.png?raw=true "Import JSON")
 
 ### Step 4.1b - ***DNS Resolution***
 
-Second, we need to ensure the DNA Center responds on the VIP, so use the ping command within the CMD application window previously opened as follows:
+Second, we need to ensure the Cisco Catalyst Center responds on the VIP, so use the ping command within the CMD application window previously opened as follows:
 
 ```bash
 ping pnpserver.dcloud.cisco.com
@@ -447,20 +447,20 @@ prep4dnac
 !
 ```
 
-The Switch should reboot and display this eventually in the console which acknowledges that the 9300 has discovered the DNA Center.
+The Switch should reboot and display this eventually in the console which acknowledges that the 9300 has discovered the Cisco Catalyst Center.
 
 ![json](./images/DNAC-IPV4-DISCOVERY.png?raw=true "Import JSON")
 
-Additionally, within DNA Center on the Plug and Play window, the device should show as unclaimed.
+Additionally, within Cisco Catalyst Center on the Plug and Play window, the device should show as unclaimed.
 
 ![json](./images/DNAC-9300-Discovery.png?raw=true "Import JSON")
 
 ## Summary
 
-The next step will be to build the PnP Onboarding settings and template on DNA Center, which we will cover in the next lab entitled [**Onboarding Templates**](../LAB-B-Onboarding-Template/README.md#Day0) - The next lab explains in-depth and how to deploy Day 0 templates.
+The next step will be to build the PnP Onboarding settings and template on Cisco Catalyst Center, which we will cover in the next lab entitled [**Onboarding Templates**](../LAB-B-Onboarding-Template/README.md#Day0) - The next lab explains in-depth and how to deploy Day 0 templates.
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-> [**Continue to Onboarding Lab**](../LAB-B-Onboarding-Template/README.md)
+> [**Continue to PnP and Discovery Lab**](./module2-pnp.md)
 
-> [**Return to LAB Main Menu**](../README.md)
+> [**Return to LAB Menu**](./README.md)

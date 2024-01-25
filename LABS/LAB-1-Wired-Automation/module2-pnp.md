@@ -1,29 +1,29 @@
-# Onboarding Templates
+# PnP and Discovery
 
 ## Overview
 
-This Lab is designed to be used after first completing lab A and has been created to address how to use Onboarding Templates within DNA Center to onboard network devices at Day Zero which is to say no configuration on the device whatsoever.
+This Lab is designed to be used after first completing lab A and has been created to address how to use Onboarding Templates within Cisco Catalyst  Center to onboard network devices at Day Zero which is to say no configuration on the device whatsoever.
 
 In this section will go through the flow involved in creating a deployable Template from an IOS configuration script for a Catalyst switch linking it to a Switch profile and deploy it through DNAC using Plug and Play workflows.
 
 ## General Information
 
-As DNA Center can be used for not only Plug and Play but also Day N or Ongoing Templates customers will start by building out an Onboarding Template which typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates as they can be used to apply ongoing changes and to allow device modifications after initial deployment.
+As Cisco Catalyst Center can be used for not only Plug and Play but also Day N or Ongoing Templates customers will start by building out an Onboarding Template which typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates as they can be used to apply ongoing changes and to allow device modifications after initial deployment.
 
-Another important consideration is that part of a typical configuration would include some lines of code which will be built out with the *Design >Network Settings >* application within DNA Center. If the Design component is used you should not deploy the cli code in a template to configure the device. Its a decision you have to make upfront and avoids a lot of lines in the templates and allows for a more UI centric configuration which is easier to maintain. 
+Another important consideration is that part of a typical configuration would include some lines of code which will be built out with the *Design >Network Settings >* application within Cisco Catalyst Center. If the Design component is used you should not deploy the cli code in a template to configure the device. Its a decision you have to make upfront and avoids a lot of lines in the templates and allows for a more UI centric configuration which is easier to maintain. 
 
 As a guidance try and use Design settings for as much of the configurations as you can leaving Templates light and nimble for configurations which might change ongoing.
 
-## Lab Section 1 - DNA Center Design Preparation
+## Lab Section 1 - Cisco Catalyst Center Design Preparation
 
 While a more extensive set of settings can be built out for a deployment we will limit the configuration to the minimal necessary to perform this step. We will augment the Design Settings during the **DayN Templating Lab** to include others that may be required.
 
-Before DNA Center can automate the deployment we have to do a couple of tasks to prepare. Please log into the DNA Center using a browser within the Windows **Jump host**. Use the credentials of username: ***admin*** password: ***C1sco12345***. Then browse to [DNA Center](https://198.18.129.100). Use the credentials of username: ***admin*** password: ***C1sco12345*** within the DCLOUD environment.
+Before Cisco Catalyst Center can automate the deployment we have to do a couple of tasks to prepare. Please log into the Cisco Catalyst Center using a browser within the Windows **Jump host**. Use the credentials of username: ***admin*** password: ***C1sco12345***. Then browse to [Cisco Catalyst Center](https://198.18.129.100). Use the credentials of username: ***admin*** password: ***C1sco12345*** within the DCLOUD environment.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
 
-Although you can manually set up the hierarchy we will use automation scripts built to implement the hierarchy via **postman** which will utilize the **DNA Center API's** To do this we will make use of the application `postman` in the Windows workstation and install json files.
+Although you can manually set up the hierarchy we will use automation scripts built to implement the hierarchy via **postman** which will utilize the **Cisco Catalyst Center API's** To do this we will make use of the application `postman` in the Windows workstation and install json files.
 
 1. Download the following two files by right clicking and opening each in a new tab to download them to the downloads folder on the workstation:
 
@@ -67,7 +67,7 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 
 ### Step 1 - ***Hierarchy***
 
-1. The **Hierarchy** within DNA Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step and the process below will explain in detail how to set up for our lab.
+1. The **Hierarchy** within Cisco Catalyst Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step and the process below will explain in detail how to set up for our lab.
 2. Within **postman** click the collections and select the the first entry **DNAC Token API**. Click the **send** button and see that a token appears.
 
    ![json](./images/Postman-Token-API.png?raw=true "Import JSON")
@@ -86,7 +86,7 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 
       ![json](./images/Postman-Site-Floor-API.png?raw=true "Import JSON")
 
-4. Then open a browser and log back into DNA Center and browse to the Network Hierarchy as shown. The network hierarchy will be fully built out.
+4. Then open a browser and log back into Cisco Catalyst Center and browse to the Network Hierarchy as shown. The network hierarchy will be fully built out.
 
 ### Step 2 - ***Network Settings***
 
@@ -103,7 +103,7 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 
    ![json](./images/Postman-Settings-API.png?raw=true "Import JSON")
 
-4. Then open a browser and log back into DNA Center and browse to the Network Settings as shown. The network settings and the telemetry settings will be fully built out.
+4. Then open a browser and log back into Cisco Catalyst Center and browse to the Network Settings as shown. The network settings and the telemetry settings will be fully built out.
 
 ### Step 3 - ***Device Credentials***
 
@@ -114,7 +114,7 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 
    ![json](./images/Postman-Settings-Creds-API.png?raw=true "Import JSON")
 
-4. Then open a browser and log back into DNA Center and browse to the Device Credentials as shown. The Device Credentials will be deslected at this point.
+4. Then open a browser and log back into Cisco Catalyst Center and browse to the Device Credentials as shown. The Device Credentials will be deslected at this point.
 5. Perform the following:
    1. select the Global within the hierarchy
    2. select the dot beside the netadmin cli credential
@@ -128,7 +128,7 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 
 The image used in this lab for the 9300 is downloadable from here [⬇︎Amsterdam-17.06.01 MD⬇︎](https://software.cisco.com/download/home/286315874/type/282046477/release/Bengaluru-17.6.5) **(required)** 
 
-1. Within DNA Center Navigate to *Design>Image Repository*  
+1. Within Cisco Catalyst Center Navigate to *Design>Image Repository*  
 
    ![json](./images/DNAC-NavigateImageRepo.png?raw=true "Import JSON")
 
@@ -137,7 +137,7 @@ The image used in this lab for the 9300 is downloadable from here [⬇︎Amsterd
    ![json](./images/DNAC-ImportImageRepo.png?raw=true "Import JSON")
 
 3. You then indicate whether the file is Cisco or 3rd Party and click import. 
-4. The file will then import into DNA Center.    
+4. The file will then import into Cisco Catalyst Center.    
 
    ![json](./images/DNAC-ImportedImageRepo.png?raw=true "Import JSON")
 
@@ -166,9 +166,9 @@ The image used in this lab for the 9300 is downloadable from here [⬇︎Amsterd
 
 </details>
 
-## Lab Section 2 - DNA Center Onboarding Template Preparation
+## Lab Section 2 - Cisco Catalyst Center Onboarding Template Preparation
 
-You can create onboarding templates within the ***Template Editor*** within **DNA Center**. Go to the ***Template Editor*** to complete the next task.
+You can create onboarding templates within the ***Template Editor*** within **Cisco Catalyst Center**. Go to the ***Template Editor*** to complete the next task.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
@@ -179,7 +179,7 @@ Download and import an Onboarding Template in the **Template Editor** using the 
 
 For Jinja2 download and import an Onboarding Template in the **Template Editor** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-B-Onboarding-Template/templates/Jinja2/Platinum_Onboarding_Template_Jinja2.json">⬇︎Onboarding_Template_Jinja2.json⬇︎</a>
 
-1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor* 
+1. Navigate to the **Template Editor** within Cisco Catalyst Center through the menu *Tools>Template Editor* 
 
    ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
 
@@ -292,7 +292,7 @@ Next we need to assign the Onboarding Template to a site using the Network Profi
 
 ## Lab Section 3 - Claiming and Onboarding
 
-At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find DNA Center and land in the plug n play set of the devices section within the provisioning page.
+At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find Cisco Catalyst Center and land in the plug n play set of the devices section within the provisioning page.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
@@ -301,7 +301,7 @@ At this point DNAC is set up and ready for Plug and Play to onboard the first de
 
 At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
 
-   1. Within DNA Center Navigate to *Provision>Plug and Play*      
+   1. Within Cisco Catalyst Center Navigate to *Provision>Plug and Play*      
 
       ![json](./images/DNAC-NavigatePnP.png?raw=true "Import JSON")
 
@@ -334,7 +334,7 @@ At this point you can claim the device putting it in a planned state for onboard
 
       ![json](./images/DNAC-Claimed.png?raw=true "Import JSON")
 
-   11. After the device is completed it will appear in the device inventory after being sync'd with DNA Center.      
+   11. After the device is completed it will appear in the device inventory after being sync'd with Cisco Catalyst Center.      
 
        ![json](./images/DNAC-Inventory.png?raw=true "Import JSON")
 
@@ -365,7 +365,7 @@ This accomplishes two things, it places the upstream switch negotiating LACP in 
 
 ## Automating Claiming and Provisioning
 
-While it is possible to click through the claiming and process, for bulk deployments its important to be able to address that as well. With DNAC after the templates are built and assigned to the network profile and assigned to a site they may be referenced and used by uploading a csv file to DNA Center via REST API.
+While it is possible to click through the claiming and process, for bulk deployments its important to be able to address that as well. With DNAC after the templates are built and assigned to the network profile and assigned to a site they may be referenced and used by uploading a csv file to Cisco Catalyst Center via REST API.
 
 </details>
 
@@ -379,6 +379,6 @@ Thanks to Chanii Haley for taking on the task of creating Jinja 2 templates for 
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-> [**Continue to Day N Template Lab**](../LAB-C-DayN-Template/README.md)
+> [**Continue to Day N Provisioning Lab**](./module3-dayn.md)
 
-> [**Return to LAB Main Menu**](../README.md)
+> [**Return to LAB Menu**](./README.md)

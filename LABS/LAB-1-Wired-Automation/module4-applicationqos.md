@@ -2,11 +2,11 @@
 
 ## Overview
 
-This Lab is designed to be used after first completing labs A through D and has been created to address how to properly deal with Quality of Service with regard to DNA Center. During the lab we will use Application Policies and apply Quality of Service (QoS) within DNA Center. We will also discuss, set up and use Controller Based Application Recognition. This allows Network Administrators the ability to configure network devices in an ongoing and programmatic manner from within DNA Center to make sure application policies are consistent throughout networks whether using SD-Access or Legacy Network Concepts. This set of concepts requires ***Advantage Licensing***.
+This Lab is designed to be used after first completing labs A through D and has been created to address how to properly deal with Quality of Service with regard to Cisco Catalyst Center. During the lab we will use Application Policies and apply Quality of Service (QoS) within Cisco Catalyst Center. We will also discuss, set up and use Controller Based Application Recognition. This allows Network Administrators the ability to configure network devices in an ongoing and programmatic manner from within Cisco Catalyst Center to make sure application policies are consistent throughout networks whether using SD-Access or Legacy Network Concepts. This set of concepts requires ***Advantage Licensing***.
 
 ## General Information
 
-There are a number of hurdles to applying Quality of Service. If we were to read and study the Quality of Service whitepaper we would still have hours of work to determine the correct MQC policies to be deployed for the various linecards and chassis within our network. DNA Center allows us to do three things:
+There are a number of hurdles to applying Quality of Service. If we were to read and study the Quality of Service whitepaper we would still have hours of work to determine the correct MQC policies to be deployed for the various linecards and chassis within our network. Cisco Catalyst Center allows us to do three things:
 1. Update all protocol packs and dynamic URL's used for Application Discovery.
 2. Deploy a consistent end-to-end QoS policy.
 3. Monitor application usage to assure application and user satisfaction
@@ -14,7 +14,7 @@ In order to accomplish this we will discuss all the relevant aspects of these go
 
 ## Lab Section 1 - Controller Based Application Recognition
 
-The Application Visibility service lets you manage your built-in and custom applications and application sets. The Application Visibility service, hosted as an application stack within Cisco DNA Center, lets you enable the **C**ontroller-**B**ased **A**pplication **R**ecognition (CBAR) function on a specific device to classify thousands of network and home-grown applications and network traffic. This allows us to deal with applications beyond the capabilities of NBAR 2 which is some 1400 applications currently. 
+The Application Visibility service lets you manage your built-in and custom applications and application sets. The Application Visibility service, hosted as an application stack within Cisco Catalyst Center, lets you enable the **C**ontroller-**B**ased **A**pplication **R**ecognition (CBAR) function on a specific device to classify thousands of network and home-grown applications and network traffic. This allows us to deal with applications beyond the capabilities of NBAR 2 which is some 1400 applications currently. 
 
 ![json](./images/CBAR.png?raw=true "Import JSON")
 
@@ -26,7 +26,7 @@ The following packages must be installed and are in the dCLOUD environment:
 
 The Day-N Application Visibility page provides a quick view of application registry, device recognition method, device CBAR readiness, application observed in the network for the past 2, 24, or 48 hours, and CBAR health.
 
-The Application Visibility service lets Cisco DNA Center connect with external authoritative sources like Cisco's NBAR Cloud, Infoblox or the Microsoft Office 365 Cloud Connector to help classify the unclassified traffic or help generate improved signatures. Through CBAR we can discover applications from sources such as Cisco's NBAR Cloud, Infoblox, or Microsofts 0365 and catagorize them for use on our network. Additionally, unclassified traffic can come from any flow that the CBAR-enabled device identifies but that is not recognized by the NBAR engine. In such cases, the applications that have a meaningful bit rate are reported as unclassified and can be imported and used as applications within application sets within Cisco DNA Center.
+The Application Visibility service lets Cisco Catalyst Center connect with external authoritative sources like Cisco's NBAR Cloud, Infoblox or the Microsoft Office 365 Cloud Connector to help classify the unclassified traffic or help generate improved signatures. Through CBAR we can discover applications from sources such as Cisco's NBAR Cloud, Infoblox, or Microsofts 0365 and catagorize them for use on our network. Additionally, unclassified traffic can come from any flow that the CBAR-enabled device identifies but that is not recognized by the NBAR engine. In such cases, the applications that have a meaningful bit rate are reported as unclassified and can be imported and used as applications within application sets within Cisco Catalyst Center.
 
 ![json](./images/CBAR-Sources.png?raw=true "Import JSON")
 
@@ -43,11 +43,11 @@ Lets get started.
 
 The first step will be to enable the CBAR service. During the course of this operation we will enable CBAR on the switch, as well as instantiate feeds and connect with external authoritative sources at Cisco and Microsofts 0365.
 
-1. Navigate to the **Application Visibility** within DNA Center through the menu *Provision>Services>Application Visibility*.
+1. Navigate to the **Application Visibility** within Cisco Catalyst Center through the menu *Provision>Services>Application Visibility*.
 
    ![json](./images/DNAC-CBAR-Navigation.png?raw=true "Import JSON")
 
-2. In the Application Visibility page, click Next. A pop-up window for enabling the Application Visibility service appears. Click Yes in the pop-up window to enable CBAR on Cisco DNA Center.
+2. In the Application Visibility page, click Next. A pop-up window for enabling the Application Visibility service appears. Click Yes in the pop-up window to enable CBAR on Cisco Catalyst Center.
 
    ![json](./images/DNAC-CBAR-Enable.png?raw=true "Import JSON")
 
@@ -122,14 +122,14 @@ Within the CBAR Application, we will now update the protocol pack for the **ACCE
 
 ## Lab Section 2 - Building and Deploying an Application Policy
 
-The Application Policy methodology within DNA Center allows for two types of policies to be constructed, wired and wireless. During this section we will build and deploy an Application Policy for a wired environment.
+The Application Policy methodology within Cisco Catalyst Center allows for two types of policies to be constructed, wired and wireless. During this section we will build and deploy an Application Policy for a wired environment.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
 
 ### Step 1 - ***Build Application Policy Draft***
 
-1. Navigate to **Application Policy** within DNA Center through the menu *Policy>Application*.
+1. Navigate to **Application Policy** within Cisco Catalyst Center through the menu *Policy>Application*.
 
    ![json](./images/DNAC-AppPolicyNavigate.png?raw=true "Import JSON")
 
@@ -171,7 +171,7 @@ The Application Policy methodology within DNA Center allows for two types of pol
 
    #### Host Tracking
 
-10. Click the **Host Tracking Slider** to allow for QoS policy to work with endpoint mobility. When host tracking is turned on, Cisco DNA Center tracks the connectivity of the collaboration endpoints within the site scope and automatically reconfigures the ACL entries when the collaboration endpoints connect to the network or move from one interface to another. 
+10. Click the **Host Tracking Slider** to allow for QoS policy to work with endpoint mobility. When host tracking is turned on, Cisco Catalyst Center tracks the connectivity of the collaboration endpoints within the site scope and automatically reconfigures the ACL entries when the collaboration endpoints connect to the network or move from one interface to another. 
 
     ![json](./images/DNAC-AppPolicy-8-Tracking.png?raw=true "Import JSON")
 
@@ -241,14 +241,14 @@ At this point you have successfully pushed a CVD QoS Policy to the network.
 
 ## Lab Section 3 - Building and Deploying a Custom Application
 
-The Application Policy methodology within DNA Center allows for two types of policies to be constructed, wired and wireless. During this section we will build and deploy an Application Policy for a wired environment.
+The Application Policy methodology within Cisco Catalyst Center allows for two types of policies to be constructed, wired and wireless. During this section we will build and deploy an Application Policy for a wired environment.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
 
 ### Step 1 - ***Building a Custom Application***
 
-1. Navigate to **Application Sets** within DNA Center from the Application Policies tab select **Application Sets** and then the redirect.
+1. Navigate to **Application Sets** within Cisco Catalyst Center from the Application Policies tab select **Application Sets** and then the redirect.
 
    ![json](./images/DNAC-AppPolicy-1-Start.png?raw=true "Import JSON")
 
@@ -289,7 +289,7 @@ The Application Policy methodology within DNA Center allows for two types of pol
 
 ### Step 2 - ***Deploying a Custom Application***
 
-1. Navigate to **Application Policy** within DNA Center through the menu *Policy>Application*.
+1. Navigate to **Application Policy** within Cisco Catalyst Center through the menu *Policy>Application*.
 
    ![json](./images/DNAC-AppPolicyNavigate.png?raw=true "Import JSON")
 
@@ -339,6 +339,6 @@ The next step will be to build Enable Telemetry in the network infrastructure.
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-> [**Continue to Telemetry Enablement Lab**](../LAB-F-Telemetry-Enablement/README.md)
+> [**Continue to Telemetry Lab**](./module5-telemetry.md)
 
-> [**Return to LAB Main Menu**](../README.md)
+> [**Return to LAB Menu**](./README.md)

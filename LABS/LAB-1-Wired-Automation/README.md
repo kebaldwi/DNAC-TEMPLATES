@@ -2,37 +2,24 @@
 
 ## Overview
 
-This Lab is designed as a set of standalone labs to help customers with varying challenges in Automating and Orchestrating their wired network infrastructure. Within the lab, we will use various tools and techniques to Automate various tasks and orchestrate DNA Center.
+This Lab is designed as a set of standalone labs to help customers with varying challenges in Automating and Orchestrating their wired network infrastructure. Within the lab, we will use various tools and techniques to Automate various tasks and orchestrate Cisco Catalyst Center.
 
 ## General Information
 
-Until this point, we have focused our efforts on the wired space and utilized templates, and REST-API to solve some basic to advanced use cases. In this lab, we will change our focus to deal with the wireless environment and utilize methods to deal with common tasks from a wireless automation point of view. This lab will build upon the foundational knowledge acquired in the previous labs. For this lab, we will concentrate on DNA Center configuration specific to Cisco Wireless and how DNA Center can be automated to perform various functions.
+In this lab we will focus our efforts on the wired space and utilized templates, and REST-API to solve some basic to advanced use cases. This lab will build upon the foundational knowledge acquired in each of the previous labs. For this lab, we will concentrate on Cisco Catalyst Center configuration specific to Cisco Wired Networking with Catalyst Switches and how Cisco Catalyst Center can be automated to perform various functions.
 
 This page will serve as the landing page for this lab section due to the amount of content it will cover and the need to expand on it over time. 
-
-## Lab Preparation
-
-Please set up the lab using the following:
-
-1. [**Lab Preparation**](./preparation.md)
 
 ## Lab Modules
 
 The lab will be split into modules to concentrate on specific tasks. Eash is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
 
-1. [**Wireless Controller PnP or Discovery**](./module1-ctrlpnpdiscovery.md)
-2. [**WLAN Creation**](./module2-wlans.md)
-   * [**2a PSK SSID Creation**](./module2a-psk.md)
-   * [**2b iPSK SSID Creation**](./module2b-ipsk.md)
-   * [**2c Enterprise 802.1x (EAP) SSID Creation**](./module2c-eap.md)
-   * [**2d OPEN SSID Creation**](./module2d-open.md)
-3. [**RF Profiles**](./module3-rfprofiles.md)
-4. [**WLC Provisioning**](./module4-wlcprovisioning.md)
-5. [**AP Provisioning**](./module5-approvisioning.md)
-6. [**Application QoS**](./module6-applicationqos.md)
-7. [**Model Based Config**](./module7-modelbasedconfig.md)
-8. [**Wireless Templates**](./module8-wirelesstemplates.md)
-9. [**Controller HA**](./module9-controllerha.md)
+1. [**PnP Preparation**](./module1-pnpprep.md)
+2. [**PnP and Discovery**](./module2-pnp.md)
+3. [**DayN Provisioning**](./module3-dayn.md)
+4. [**Application QoS**](./module4-applicationqos.md)
+5. [**Telemetry**](./module5-telemetry.md)
+6. [**Advanced Automation**](./module6-advanced.md)
 
 ## Preparation
 
@@ -44,7 +31,7 @@ If you would like to connect to the DCLOUD environment, please ensure you instal
 
 ### Lab Requirements
 
-This lab is designed to be run in Cisco dClouds - Enterprise Network Sandbox Lab. It was developed in version 4, including DNA Center 2.2.3.5 and equipment running at least 17.x versions of code. 
+This lab is designed to be run in Cisco dClouds - Enterprise Network Sandbox Lab. It was developed in version 4, including Cisco Catalyst Center 2.2.3.5 and equipment running at least 17.x versions of code. 
 
 > **Note:** While the RTP DC can facilitate the wireless automation, it lacks a wirelessly enabled workstation for testing.
 
@@ -63,7 +50,7 @@ The DCLOUD session includes the following equipment:
 
 Virtual Machines:
 
-    DNA Center 2.2.3.4 or better
+    Cisco Catalyst Center 2.2.3.4 or better
     Identity Services Engine (ISE) 3.0 Patch 4 or better (deployed)
     Identity Services Engine (ISE) 3.0 (Not deployed)
     Stealthwatch 7.4.0 or better
@@ -121,7 +108,7 @@ For an understanding of postman, please visit this site:
 
 #### Google Chrome
 
-Google Chrome is the optimal browser of choice when working in the DNA Center UI. 
+Google Chrome is the optimal browser of choice when working in the Cisco Catalyst Center UI. 
 
 To download Google Chrome, please visit. 
 
@@ -135,6 +122,6 @@ This lab is intended to help drive the adoption of Rest-API and will be added to
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-> [**Continue to Wireless Lab Preparation**](../LAB-J-Wireless-Automation/preparation.md)
+> [**Continue to PnP Preparation**](./module1-pnpprep.md)
 
 > [**Return to LAB Main Menu**](../README.md)
