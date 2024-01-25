@@ -6,7 +6,7 @@ The PnP components are as follows:
 
 ![json](../../ASSETS/pnp-workflows.png?raw=true "Import JSON")
 
-There are three automated methods to make that occur and in this section we will use DHCP Discovery. To aide in that we are goiing to utilize both IOS DHCP services. The Target switch, commonly called Access switch will need to be offered option 43 with a string in order to find Cisco Catalyst Center.
+There are three automated methods to make that occur and in this section we will use DHCP Discovery. To aide in that we are goiing to utilize IOS DHCP services. The Target switch, commonly called Access switch will need to be offered option 43 with a string in order to find Cisco Catalyst Center.
 
 That string is offered as a scope option typically referred to as **Option 43** where the string **`5A1D;B2;K4;I198.18.129.100;J80`** can be explained as follows:
 
@@ -48,7 +48,7 @@ Jxxxx             Port number to use to connect to the Cisco Catalyst Center con
                   and port 443 for HTTPS.
 ```
 
-### Step 3.2a - IOS DHCP and Discovery Configuration
+### Step 3.2a - IOS DHCP and Option 43 Discovery Configuration
 
 We will configure **DHCP Services** to run on the **Catalyst 9300-2** within the Lab. The DHCP pool elements could be configured either on a router or switch in the network. 
 
@@ -94,7 +94,7 @@ ping 192.168.5.1
 
 The test results should look similar to this:
 
-![json](?raw=true "Import JSON")
+![json](blank.png?raw=true "Import JSON")
 
 Second, we need to ensure the Cisco Catalyst Center responds on the VIP, lets test that from the **9300-2**:
 
@@ -102,11 +102,10 @@ Second, we need to ensure the Cisco Catalyst Center responds on the VIP, lets te
 ping 198.18.129.100 repeat 2
 ping 198.18.129.100 source vlan 5 repeat 2
 ```
-
-![json](./images/DNACenterDNStestPing.png?raw=true "Import JSON")
-
 The test results should look similar to this:
 
-At this point, the environment should be set up to onboard devices within VLAN 5 using the network address ***192.168.5.0/24*** utilizing ***DNS discovery ***
+![json](./images/blank.png?raw=true "Import JSON")
+
+At this point, the environment should be set up to onboard devices within VLAN 5 using the network address **192.168.5.0/24** utilizing **DNS discovery**
 
 > [**Return to PnP Preparation Lab**](./module1-pnpprep.md#step-6---reset-eem-script-or-pnp-service-reset)
