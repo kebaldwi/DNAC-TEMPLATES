@@ -186,7 +186,7 @@ As you may recall, for a device to discover Cisco Catalyst Center, the device us
 
 The PnP components are as follows:
 
-![json](../../images/pnp-workflows.png?raw=true "Import JSON")
+![json](../../ASSETS/pnp-workflows.png?raw=true "Import JSON")
 
 There are three automated methods to make that occur:
 
