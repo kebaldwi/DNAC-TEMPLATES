@@ -31,7 +31,7 @@ If you would like to connect to the DCLOUD environment, please ensure you instal
 
 ### Lab Requirements
 
-This lab is designed to be run in Cisco dClouds - Enterprise Network Sandbox Lab. It was developed in version 4, including Cisco Catalyst Center 2.2.3.5 and equipment running at least 17.x versions of code. 
+This lab is designed to be run in Cisco dClouds - Enterprise Network Sandbox Lab. It was developed in version 4, including Cisco Catalyst Center 2.2.3.4 and equipment running at least 17.x versions of code. 
 
 > **Note:** While the RTP DC can facilitate the wireless automation, it lacks a wirelessly enabled workstation for testing.
 
