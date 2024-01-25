@@ -108,4 +108,4 @@ The test results should look similar to this:
 
 At this point, the environment should be set up to onboard devices within VLAN 5 using the network address **192.168.5.0/24** utilizing **DNS discovery**
 
-> [**Return to PnP Preparation Lab**](./module1-pnpprep.md#step-6---reset-eem-script-or-pnp-service-reset)
+> [**Return to PnP Preparation Lab**](./module1e-reset.md#step-6---reset-eem-script-or-pnp-service-reset)
