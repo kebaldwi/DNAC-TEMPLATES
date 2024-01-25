@@ -4,21 +4,88 @@
 
 This lab is the first one in a series of labs. You may use the steps in the [Cisco Enterprise Networks Hardware Sandbox](https://dcloud2-sjc.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen) environment, or equally, you might utilize them as part of a Proof of Concept setup at a customer's lab. These procedures may also help form part of a deployment or implementation. Use them to ensure that all the necessary steps are complete before onboarding any devices within Cisco Catalyst Center.
 
-We will be utilizing the lab in this manner:
+## DNA Center and ISE Integration
 
-![json](./images/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON")
+In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate DNA Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
+
+### Step 1 - ***Prepare ISE for DNA Center Integration***
+
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to Identity Services Engine (ISE) and select the hamburger menu icon to open the system menu.
+
+   ![json](./images/module1-preparation/ise-dashboard.png?raw=true "Import JSON")
+
+2. From the system menu under Administration select PxGrid Settings
+
+   ![json](./images/module1-preparation/ise-menu.png?raw=true "Import JSON")
+
+3. On the PxGrid Settings page select both of the available options and click Save to allow DNA Center to integrate.
+
+   ![json](./images/module1-preparation/ise-pxgrid-settings.png?raw=true "Import JSON")
+   ![json](./images/module1-preparation/ise-pxgrid-setup.png?raw=true "Import JSON")
+
+### Step 2 - ***DNA Center and ISE Integration***
+
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to Dna Center and select the hamburger menu icon and navigate to the System > Settings menu item.
+
+   ![json](./images/module1-preparation/dnac-system-settings.png?raw=true "Import JSON")
+
+2. Within the System Settings page navigate down the list on the left and select the Authentication and Policy Server section.
+
+   ![json](./images/module1-preparation/dnac-system-settings-aaa.png?raw=true "Import JSON")
+
+3. On the page select from the dropdown ISE to configure ISE integration.
+
+   ![json](./images/module1-preparation/dnac-system-settings-aaa-ise.png?raw=true "Import JSON")
+
+4. Enter the information as seen on the page and click save.
+
+   ![json](./images/module1-preparation/dnac-system-settings-aaa-ise-config.png?raw=true "Import JSON")
+
+5. A popup will appear as the ISE node is using an untrusted SelfSigned Certificate. For lab purposes Accept the certificate, this may appear a couple of times as shown.
+
+   ![json](./images/module1-preparation/dnac-system-settings-aaa-ise-trust.png?raw=true "Import JSON")
+
+6. You will see the the various stages of integration proceed and finally a success message as shown below.
+
+   ![json](./images/module1-preparation/dnac-system-settings-aaa-ise-done.png?raw=true "Import JSON")
+   ![json](./images/module1-preparation/dnac-system-settings-aaa-ise-complete.png?raw=true "Import JSON")
 
 ## General Information
 
 As you may recall, in the informational sections of this repository, we described various methods of discovery for a device and the preliminary things required for proper zero-touch provisioning. This lab will ensure a successful connection to Cisco Catalyst Center by helping to deploy the initial concepts.
 
-### Lab Preparation
+We will be utilizing the lab in this manner:
 
-To set up the lab, please log into the console connection of the ***4331*** by clicking on dropdown button under the icon in DCLOUD, and selecting 'Console'. New tab will open, click 'Connect' - you should now be connected to the console of the router. To obtain enable password, navigate back to topology diagram in DCLOUD and click on any of Windows Clients or Devices and copy-paste the password into Hardware Console tab after issuing enable CLI.  Once you are in enable mode on 4331 hardware console, issue commands:
+![json](./images/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON")
 
-***Warning** use commands against the LAB Environment.*
+## Lab Credentials:
 
-SJC
+| Platform:       | IP Address:    | Username | Password   | 
+|-----------------|----------------|----------|------------|
+| Catalyst Center | 198.18.129.100 | admin    | C1sco12345 |
+| ISE             | 198.18.133.27  | admin    | C1sco12345 |
+| Windows AD      | 198.18.133.1   | admin    | C1sco12345 |
+| Script Server   | 198.18.133.28  | root     | C1sco12345 |
+| Router          | 198.18.133.145 | netadmin | C1sco12345 |
+| Switch 1        | 198.18.128.22  | netadmin | C1sco12345 |
+| Switch 2        | 198.18.128.23  | netadmin | C1sco12345 |
+
+## Step 3 - Router Connectivity
+
+Essentially we will be turing the 9300-2 switch into a distribution switch to allow for the access switch to be onboarded over a port channel. Port channels are typically how switches are connected for redundancy and it seems fair to use that as the basis for the lab. 
+
+> **Note:** It is possible to use a routed connection, but then LAN Automation is typically used for routed access as it is in SD-Access. It is possible however to use PnP for routed access without LAN automation but that is outside the scope of todays lab.
+
+### Configuring the 4331 Router 
+
+To set up the lab to allow for the above connectivity we will complete , please log into the console connection of the ***4331*** by clicking on dropdown button under the icon in DCLOUD, and selecting 'Console'. New tab will open, click 'Connect' - you should now be connected to the console of the router. 
+
+The credentials are noted above for reference, copy-paste the password into Hardware Console tab after issuing enable CLI.  Once you are in enable mode on 4331 hardware console, issue commands:
+
+> **Warning:** *use commands against the LAB Environment.*
+
+#### 4331 Router Configuration
+
 ```vtl
 !
 conf t
@@ -32,12 +99,130 @@ wr
 !
 ```
 
+## Step 4 - Distribution Connectivity
 
-## Lab Section 1 - Device Connectivity
+To continue on, as we will be using the 9300-2 as a Distribution switch we will need to set it up appropriately for PnP processes to work. We intend to have a management interface on the device. In this lab, we will set up a VLAN interface for both management and connectivity. 
 
-For PnP processes to work, we intend to have a management interface on the device. In this lab, we will set up a VLAN interface for both management and connectivity. You don't have to do it this way; we are just giving a relatively uncomplicated example, and you can alter this to suit your needs. As the device connects to the front-facing ports, we have to rely on the default configuration. 
+> **Note:** You don't have to do it this way; we are just giving a relatively uncomplicated example, and you can alter this to suit your needs. As the device connects to the front-facing ports, we have to rely on the default configuration. 
 
-As you may recall, a factory default configuration is using VLAN 1 as no other VLAN exists, and by default, it accepts DHCP addresses. We can use this method in the PnP process. However, the management VLAN may be different, and so may the native VLAN structure of our environment. To that end, we must use the *pnp startup-vlan* command, which allows the device to use varying VLANs in PnP and should be set up and configured on the upstream switch.
+As you may recall, a factory default configuration uses VLAN 1 as no other VLAN exists, and by default, it accepts DHCP addresses. We can use this method in the PnP process. However, the management VLAN may be different, and so may the native VLAN structure of our environment. To that end, we must use the **`pnp startup-vlan`** command, which allows the device to use varying VLANs in PnP and should be set up and configured on the upstream switch. 
+
+### Configuring the 9300-2 as a Distribution Switch
+
+As depicted in the following image, the 9300-2 will serve as the upstream neighbor for this exercise and the environment's distribution switch. The Catalyst 9300-1 will act as the target switch, which we will deploy via PnP and DayN templates.
+
+![json](./images/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON")
+
+For the lab, we will utilize **VLAN 5** as the management VLAN. Connect to switch **c9300-2** and paste the following configuration:
+
+#### 9300-2 Distribution VLAN Configuration
+
+```vtl
+config t
+!
+vlan 5
+name "mgntvlan"
+!
+int vlan 5 
+ ip address 192.168.5.1 255.255.255.0
+ ip ospf 1 area 0
+ no shutdown
+!
+pnp startup-vlan 5
+end
+!
+wr
+!
+```
+
+The **`pnp startup-vlan 5`** command will program the target switches port connected with a trunk and automatically add the vlan and SVI to the target switch making that vlan ready to accept a DHCP address. 
+
+> **Note:** The feature is available on switches running IOS-XE 16.6 code or greater as upstream neighbors. Older switches or upstream devices that cannot run the command should utilize VLAN 1 and then set up the correct management VLAN modified as part of the onboarding process.
+
+### Configuring the 9300-2 Distribution Switch Downlink
+
+Typically, the Target switch is connected via a trunk to a single port or a bundle of ports as part of a port channel. 
+
+Building a single port connection to the target switch, requires using a simplified configuration; however, we will **not be utilizing** this method in this lab. 
+
+<details closed>
+<summary> Example of Building a single port connection to the target switch</summary>
+
+```vtl
+!
+conf t
+!
+  interface gi 1/0/10
+     description Single Port PnP Test Environment to Cataylist 9300
+     switchport mode trunk
+     switchport trunk allowed vlan 5
+  interface gi 1/0/11
+     description Shutdown for Single Port PnP Test Environent
+     shutdown
+     end
+!
+wr
+!
+```
+
+</details>
+
+#### 9300-2 Layer 2 Configuration
+
+In this exercise, we will build a layer two trunk as part of a Port Channel. This bundle of ports will connect to the Target switch. The upstream ports on the 9300-1 will automatically be programmed as a result. 
+
+If we are using a port-channel initially, you want to ensure that the port-channel can operate as a single link within the bundle and, for that reason, use passive methods for building the port-channel bundles on both the Target and Upstream Neighbor for maximum flexibility. 
+
+Additionally, add the **no port-channel standalone-disable** command to ensure the switch does not automatically disable the port-channel if it does not come up properly.
+
+```vtl
+!
+conf t
+!
+  interface range gi 1/0/10-11
+     description PnP Test Environment to Catalyst 9300
+     switchport mode trunk
+     switchport trunk native vlan 5
+     switchport trunk allowed vlan 5
+     channel-protocol lacp
+     channel-group 1 mode passive
+!
+  interface Port-channel1
+     description PnP Test Environment to Catalyst 9300
+     switchport trunk native vlan 5
+     switchport trunk allowed vlan 5
+     switchport mode trunk
+     no port-channel standalone-disable
+     end
+!
+wr
+!
+```
+
+## Step 5 - Cisco Catalyst Center Discovery
+
+In order for **Plug and Play (PnP)** to work, we need to the device to communicate with Cisco Catalyst Center. The device must get the address of Cisco Catalyst Center through the PnP process through what is known as discovery. 
+
+The PnP components are as follows:
+
+![json](../../ASSETS/pnp-workflows.png?raw=true "Import JSON")
+
+### Step 5.1 - PnP Requirements
+
+#### Discovery Method
+
+There are **3 automated discovery methods** that can be used to assist with Cisco Catalyst Center discovery process:
+
+1. **DHCP with option 43**
+```shell
+   PnP string: 5A1D;B2;K4;I172.19.45.222;J80 added to DHCP Server 
+``` 
+2. **DNS lookup**
+```shell
+   pnpserver.localdomain resolves to Cisco Catalyst Center VIP Address
+```
+3. **Cloud re-direction https://devicehelper.cisco.com/device-helper**
+   **which, re-directs to on-prem Cisco Catalyst Center IP Address**
 
 Of the discovery methods **DHCP** is the easiest to implement as no changes are required with the *Self Signed Certificate (SSC)* on **Cisco Catalyst Center** as it already includes the IP address by default. 
 
@@ -68,311 +253,52 @@ Follow this guide for more information on the finer details.
 
 </details>
 
-### Step 1.1 - ***Upstream Neighbor Setup***
+#### DHCP Addressing
 
-As depicted in the following image, the 9300 will serve as the upstream neighbor for this exercise and the environment's distribution switch. The Catalyst 9300 will act as the target switch, which we will deploy via PnP and Day 0 and N templates.
+Additionally, as the device will initially have no configuration at all, we will need to supply the Target switch with an IP address within the management network. Thus **DHCP** is a requirement for **PnP Onboarding**. This may be set up on the Distribution or Router but typically it is set up on a Server built for the purpose, like an IP Address Manager (IPAM).
 
-![json](./images/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON")
+We require a DHCP scope to supply the IP address within the management network temporarily in order to complete the device configuration and onboarding. The scope should be carved out from an unused range. It also can be a static reservation, as DHCP servers can reserve addresses for specific MAC addresses. 
 
-For the lab, we will utilize ***VLAN 5*** as the management VLAN. Connect to switch ***c9300-2*** and paste the following configuration:
+The DHCP scope would incorporate the following parameters sufficient to issue an IP address:
 
-```vtl
-config t
-!
-vlan 5
-name "mgntvlan"
-!
-int vlan 5 
- ip address 192.168.5.1 255.255.255.0
- ip ospf 1 area 0
- no shutdown
-!
-pnp startup-vlan 5
-end
-!
-wr
-!
-```
+* **network**
+* **default gateway**
+* **domain**                
+  - *required for DNS PnP discovery*
+* **name-server ip**        
+  - *required for both DNS and CLOUD PnP discovery*
+* **option 43**             
+  - *required for DHCP discovery*
 
-The ***pnp startup-vlan 5*** command will program the target switches port connected with a trunk and automatically add the vlan and SVI to the target switch making that vlan ready to accept a DHCP address. The feature is available on switches running IOS-XE 16.6 code or greater as upstream neighbors. Older switches or upstream devices that cannot run the command should utilize VLAN 1 and then set up the correct management VLAN modified as part of the onboarding process.
+Obviously a dhcp relay or helper statement is required on the gateway router interface pointing towards the DHCP server.
 
-### Step 1.2 - ***DHCP Setup***
+> **Note:** Choose one method of discovery, to avoid frustration.
 
-We need a DHCP scope to temporarily supply the address within the management network to complete the configuration and onboarding. Configure the scope to offer IP addresses from the part of the address's range, leaving the other part of the scope for static addresses. You could also make use of reservations as DHCP servers can reserve addresses for specific MAC addresses. One benefit of this is that DNS host entries are automatically updated depending on the DHCP Server.
-
-The DHCP scope should therefore incorporate the following minimal configuration:
-
-* network
-* default gateway
-* domain - ***required if option 2 is used below***
-* name-server ip - ***required if option 2 or 3 is used below***
-* DHCP relay or helper statement - ***to be added to the gateway interface pointing to the DHCP server***
-
-There are many options for DHCP services. Although you have many options for DHCP, we will cover Windows and IOS configurations in this lab. Configure the DHCP scope to one of the following:
+There are many options for DHCP services. Although you have many options for DHCP, we will utilize either Windows or IOS DHCP configurations in this lab. Configure the DHCP scope to one of the following:
 
 1. Switch or Router
 2. Windows DHCP Server
-3. InfoBlox or other 3rd party server
+3. InfoBlox or other 3rd party server if available
 
 During this lab setup, please choose which option you wish to use for DHCP for PnP services and follow those subsections.
 
-#### Step 1.2a - ***IOS DHCP Configuration***
+### Step 5.2 - PnP Discovery Configuration
 
-Configured on an IOS device, the DHCP pool elements would be configured either on a router or switch in the network. 
+Within the DCLOUD environment we can accomodate the build and testing of the following Discovery methods. Please select the option link in the following list to move to configuration instructions.
 
-If we want to use the IOS DHCP configuration method, connect to switch ***c9300-2*** and paste the following configuration:
+1. **DHCP Discovery**
+   - [**Configure DHCP Discovery using IOS DHCP Service**](./module1a-dhcp-ios.md)
+   - [**Configure DHCP Discovery using Windows DHCP Service**](./module1b-dhcp-svr.md)
+2. **DNS Discovery**
+   - [**Configure DNS Discovery using IOS DHCP and Windows DNS Services**](./module1c-dns-ios.md)
+   - [**Configure DNS Discovery using Windows based DHCP and DNS Services**](./module1d-dns-svr.md)
 
-```vtl
-!
-conf t
-!
-  ip dhcp excluded-address 192.168.5.1 192.168.5.1
-  ip dhcp pool pnp_device_pool                         
-     network 192.168.5.0 255.255.255.0                  
-     default-router 192.168.5.1 
-     end
-!
-wr
-!
-```
 
-Next, we will configure the helper address statement on the management VLAN's SVI to point to the router or switch to the DHCP configuration. Connect to switch ***c9300-2*** and paste the following configuration:
-
-```vtl
-!
-conf t
-!
-  interface Vlan 5                         
-     ip helper-address 192.168.5.1                  
-     end
-!
-wr
-!
-```
-
-For a complete configuration example please see [Configuring the Cisco IOS DHCP Server](https://www.cisco.com/en/US/docs/ios/12_4t/ip_addr/configuration/guide/htdhcpsv.html#wp1046301)
-
-#### Step 1.2b - ***Windows Server Configuration***
-
-If we want to use the Windows DHCP service, connect to the windows ***AD1*** server. On the windows server, you have two options to deploy DHCP scopes the UI or PowerShell. We will deploy the scope via PowerShell. Paste the following into PowerShell to create the required DHCP scope:
-
-```ps
-Add-DhcpServerv4Scope -Name "DNAC-Templates-Lab" -StartRange 192.168.5.1 -EndRange 192.168.5.254 -SubnetMask 255.255.255.0 -LeaseDuration 6.00:00:00 -SuperScope "PnP Onboarding"
-Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -Router 192.168.5.1 
-Add-Dhcpserverv4ExclusionRange -ScopeId 192.168.5.0 -StartRange 192.168.5.1 -EndRange 192.168.5.1
-```
-
-The DHCP scope will look like this in Windows DHCP Administrative tool:
-
-![json](./images/WindowsDHCPscoperouteronly.png?raw=true "Import JSON")
-
-Next, we will introduce the helper address statement on the management VLAN's SVI to point to the Windows DHCP server. Connect to switch ***c9300-2*** and paste the following configuration:
-
-```vtl
-!
-conf t
-!
-  interface Vlan 5                         
-     ip helper-address 198.18.133.1                  
-     end
-!
-wr
-!
-```
-
-## Lab Section 2 - Cisco Catalyst Center Discovery
-
-As you may recall, for a device to discover Cisco Catalyst Center, the device uses a discovery method to help it find Cisco Catalyst Center. 
-
-The PnP components are as follows:
-
-![json](../../ASSETS/pnp-workflows.png?raw=true "Import JSON")
-
-There are three automated methods to make that occur:
-
-1. **DHCP with option 43** - ***requires the DHCP server to offer a PnP string via option 43***
-2. **DNS lookup** 
-    - *requires the DHCP server to offer a domain suffix and a name server to resolve the **pnpserver** address*
-    - *requires the **pnpserver** entry to appear in the Subject Alternative Name of the GUI Certificate*
-3. **Cloud re-direction** via *https://devicehelper.cisco.com/device-helper* - *requires the DHCP server to offer a name server to make DNS resolutions*
-
-### Step 2.1 - ***Cisco Catalyst Center Discovery***
-
-Please choose one of the following subsections as the discovery method.
-
-#### Step 2.1a - ***Option 43 with IOS DHCP Configuration***
-
-If using the IOS DHCP Server and the desire is to use Option 43 discovery method, then paste the following configuration:
-
-```vtl
-!
-conf t
-  !
-  ip dhcp pool pnp_device_pool                    
-     option 43 ascii "5A1N;B2;K4;I198.18.129.100;J80"
-     end
-!
-wr
-!
-```
-
-#### Step 2.1b - ***Option 43 with Windows DHCP Configuration***
-
-If using the Windows DHCP Server and the desire is to use Option 43 discovery method, then paste the following configuration into PowerShell:
-
-```ps
-Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -OptionId 43 -Value ([System.Text.Encoding]::ASCII.GetBytes("5A1N;B2;K4;I198.18.129.100;J80"))
-```
-
-The DHCP scope modification will resemble the following image of the Windows DHCP Administrative tool:
-
-![json](./images/DNACDHCPoption43.png?raw=true "Import JSON")
-
-#### Step 2.1c - ***DNS Lookup with IOS DHCP Configuration***
-
-If using the IOS DHCP Server and the desire is to use the DNS Lookup discovery method, then paste the following configuration:
-
-```vtl
-!
-conf t
-  !
-  ip dhcp pool pnp_device_pool                          
-     dns-server 198.18.133.1                           
-     domain-name dcloud.cisco.com                       
-     end
-!
-wr
-!
-```
-
-Next, add the DNS entries to allow for the Cisco Catalyst Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
-
-```ps
-Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.100" -TimeToLive 01:00:00
-Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
-```
-
-The DNS Zone will look like this in Windows DNS Administrative tool: 
-
-![json](./images/DNACenterDNSentries.png?raw=true "Import JSON")
-
-#### Step 2.1d - ***DNS Lookup with Windows DHCP Configuration***
-
-If using the Windows DHCP Server and the desire is to use the DNS Lookup discovery method, then paste the following configuration into PowerShell:
-
-```ps
-Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -DnsServer 198.18.133.1 -DnsDomain "dcloud.cisco.com"
-```
-
-The DHCP scope will resemble the following image of the Windows DHCP Administrative tool:
-
-![json](./images/WindowsDHCPscope.png?raw=true "Import JSON")
-
-Next, add the DNS entries to allow for the Cisco Catalyst Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
-
-```ps
-Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.100" -TimeToLive 01:00:00
-Add-DnsServerResourceRecordCName -Name "dnac" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
-
-Add-DnsServerPrimaryZone -Name "pnp.dcloud.cisco.com" -ReplicationScope "Forest" -PassThru
-
-#Pause required to allow Zone to be created prior to CNAME Entry
-Start-Sleep -Seconds 60
-
-Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "pnp.dcloud.cisco.com"
-```
-
-The DNS Zone will look like this in Windows DNS Administrative tool: 
-
-![json](./images/DNACenterDNSentries.png?raw=true "Import JSON")
-
-![json](./images/DNACenterDNSentries2.png?raw=true "Import JSON")
-
-> **Note:** To utilize DNS Entry for Discovery purposes Certificates will need to be rebuilt with Subject Alternative Names. Please utilize the process documented in the following [**page**](./Certificates.md) for information on that process.
-
-## Lab Section 3 - Target Connectivity
-
-Typically, the Target switch is connected via a trunk to a single port or a bundle of ports as part of a port channel. 
-
-If it is a single port connection to the target switch, then use a simplified configuration; however, we will not be utilizing this method in this lab. An example provided here:
-
-```vtl
-!
-conf t
-!
-  interface range gi 1/0/10
-     description PnP Test Environment to Cataylist 9300
-     switchport mode trunk
-     switchport trunk allowed vlan 5
-     end
-!
-wr
-!
-```
-
-In this exercise, the port where the Target switch connects is a layer two trunk as part of a Port Channel. 
-
-```vtl
-!
-conf t
-!
-  interface range gi 1/0/10-11
-     description PnP Test Environment to Catalyst 9300
-     switchport mode trunk
-     switchport trunk native vlan 5
-     switchport trunk allowed vlan 5
-     channel-protocol lacp
-     channel-group 1 mode passive
-!
-  interface Port-channel1
-     description PnP Test Environment to Catalyst 9300
-     switchport trunk native vlan 5
-     switchport trunk allowed vlan 5
-     switchport mode trunk
-     no port-channel standalone-disable
-     end
-!
-wr
-!
-```
-
-If we are using a port-channel initially, you want to ensure that the port-channel can operate as a single link within the bundle and, for that reason, use passive methods for building the port-channel bundles on both the Target and Upstream Neighbor for maximum flexibility. Additionally, add the **no port-channel standalone-disable** command to ensure the switch does not automatically disable the port-channel if it does not come up properly.
-
-## Lab Section 4 - Testing
-
-Please use the testing for the DNS Discovery method used above.
-
-### Step 4.1a - ***DNS Resolution Tests***
-
-To test the environment to ensure it's ready, we need to try a few things.
-
-First, from a Windows host, use the *nslookup* command to resolve ***pnpserver.dcloud.cisco.com***. Connect to the Windows workstation, and within the search window, search for CMD. Open the application and type the following command:
-
-```bash
-nslookup pnpserver.dcloud.cisco.com
-```
-
-The following output or something similar shows the resolution of the alias to the A host record entry which identifies the VIP address for the Cisco Catalyst Center Cluster will display.
-
-![json](./images/DNACenterDNStests.png?raw=true "Import JSON")
-
-### Step 4.1b - ***DNS Resolution***
-
-Second, we need to ensure the Cisco Catalyst Center responds on the VIP, so use the ping command within the CMD application window previously opened as follows:
-
-```bash
-ping pnpserver.dcloud.cisco.com
-```
-
-![json](./images/DNACenterDNStestPing.png?raw=true "Import JSON")
-
-At this point, the environment should be set up to onboard devices within VLAN 5 using the network address ***192.168.5.0/24*** utilizing either ***option 43*** or ***DNS discovery ***.
-
-### Step 4.2 - ***Reset EEM Script or PnP Service Reset***
+## Step 6 - Reset EEM Script or PnP Service Reset
 
 When testing, you will frequently need to start again on the switch to test the whole flow. To accomplish this, paste this small script into the 9300 target switch, which will create a file on flash which you may load into the running-configuration at any time to reset the device to factory settings:
 
-There are now two methods for this The first and simplest method is to make use of the `pnp service reset` command as advised by Matthew Bishop. This command was introduced in a recent Train of XE code.
+There are now two methods for this The first and simplest method is to make use of the **`pnp service reset`** command as advised by Matthew Bishop. This command was introduced in a recent Train of XE code. This command may not erase all information on the device. I strongly recommend using the EEM Script.
 
 Failing that we have an EEM script which you may use iterated below.
 
@@ -422,7 +348,9 @@ end
 }
 tclquit
 ```
+
 Additionally, for help with troubleshooting, install this helpful EEM script in the directory in the same manner as above. This will help to see which lines were sent to the switch and helps deduce where a template may be failing.
+
 ```tcl
 tclsh
 puts [open "flash:dnacts" w+] {
@@ -435,7 +363,7 @@ action 1 syslog msg "$_cli_msg"
 tclquit
 ```
 
-### Step 4.3 - ***Reset Switch and Test Discovery***
+#### Step 6.1 - ***Reset Switch and Test Discovery***
 
 Finally, we want to test the routing, connectivity, DHCP, DNS services, and discovery mechanism. Reset the ***c9300-1*** Target switch by pasting the following sequence into the console. We will watch the switch come up but not intercede or type anything into the console after the reboot has started.
 
