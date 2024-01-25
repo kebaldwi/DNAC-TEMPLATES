@@ -10,9 +10,9 @@ The examples shown below can be used in building your versions of the templates.
 
 ## General Information
 
-As previously discussed, DNA Center can be used for Plug-and-Play and Day N or Ongoing Templates. Customers will start by building out an Onboarding Template which typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates and, for more flexibility Composite Templates. They can apply ongoing changes and allow device modifications after initial deployment. 
+As previously discussed, Cisco Catalyst Center can be used for Plug-and-Play and Day N or Ongoing Templates. Customers will start by building out an Onboarding Template which typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates and, for more flexibility Composite Templates. They can apply ongoing changes and allow device modifications after initial deployment. 
 
-Another important consideration is that part of a typical configuration would include some lines of code, which will be automatically built out using the information within the *Design >Network Settings >* application within DNA Center. If the Design component is used, you should **not** deploy the same feature from cli code in a template to configure the device. It's a decision you have to make upfront, avoids a lot of lines in the templates, and allows for a more UI-centric configuration that is easier to maintain. 
+Another important consideration is that part of a typical configuration would include some lines of code, which will be automatically built out using the information within the *Design >Network Settings >* application within Cisco Catalyst Center. If the Design component is used, you should **not** deploy the same feature from cli code in a template to configure the device. It's a decision you have to make upfront, avoids a lot of lines in the templates, and allows for a more UI-centric configuration that is easier to maintain. 
 
 As guidance, try and use **Design Settings** for as many of the configurations as you can, leaving Templates light and nimble for configurations that might change ongoing.
 
@@ -32,7 +32,7 @@ The various topics covered in the lab will be the following:
 
 ## Use Cases
 
-The Topics listed above will be covered in several use cases to show the capability and flexibility of the templating engine within DNA Center. While we will utilize Velocity language, the same can be accomplished in the Jinja2 language.
+The Topics listed above will be covered in several use cases to show the capability and flexibility of the templating engine within Cisco Catalyst Center. While we will utilize Velocity language, the same can be accomplished in the Jinja2 language.
 
 1. [Renaming interfaces](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-G-Advanced-Automation/README.md#step-1---renaming-interfaces---use-case)
 2. [Building Stacks](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-G-Advanced-Automation/README.md#step-2---building-stacks---use-case)
@@ -626,18 +626,18 @@ While we have configured all the various interfaces, this does not consider Auth
 
 ## Step 5 - ***Non SDA IBNS2.0 Port Configuration - Use Case***
 
-The last sections of this lab will walk through the various considerations for **IBNS2.0** and how to deal with host onboarding in a Non **SD-Access** Fabric environment. Once the Identity Services Engine is integrated with DNA Center, then not only do you get the benefit of pxgrid integration allowing for the building of policy, but the AAA Server section within Design will build out the various settings which inturn program the network access devices for AAA Network and Client Dot1x settings.
+The last sections of this lab will walk through the various considerations for **IBNS2.0** and how to deal with host onboarding in a Non **SD-Access** Fabric environment. Once the Identity Services Engine is integrated with Cisco Catalyst Center, then not only do you get the benefit of pxgrid integration allowing for the building of policy, but the AAA Server section within Design will build out the various settings which inturn program the network access devices for AAA Network and Client Dot1x settings.
 
 It is also essential to understand that with **IBNS2.0** and templates or interfaces running in ***closed mode***, the dynamic capability of **Autoconf** is not going to operate because there is a service-policy applied to the interface. While the device classifier will operate, for some devices that require an IP address, they may reboot before the classifier has done its job and so inconsistancies can occur. Remember in closed mode no packets are forwarded including DHCP prior to authentication occurring. If the interface is in ***low impact mode***, then and only then will **Autoconf** operate properly and as a result of the pre-auth acl DHCP may be allowed.
 
-Considering DNA Center will push at that point all the relevant IBNS2.0 settings to the device, this leaves us with the mere setting up of **Host Onboarding**, which we will detail below.
+Considering Cisco Catalyst Center will push at that point all the relevant IBNS2.0 settings to the device, this leaves us with the mere setting up of **Host Onboarding**, which we will detail below.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
 
 #### **Important Note:** 
 
-*We need to remember that for the use of this section, ISE needs first to have been integrated with DNA Center. Additionally, the Design Settings will need to be modified for the sites to include at the very least* **Client AAA**.
+*We need to remember that for the use of this section, ISE needs first to have been integrated with Cisco Catalyst Center. Additionally, the Design Settings will need to be modified for the sites to include at the very least* **Client AAA**.
 
 ### ***Examine Code***
 
@@ -1194,7 +1194,7 @@ This EEM script makes sure the interface is not a portchannel member and then re
 
 Congratulations, at this point, you have successfully reviewed and may have adopted the various use cases or parts of them.
 
-The next set of labs will be to build on these concepts utilizing REST-API to push changes to DNA Center Templates and further automate the configuration in the network infrastructure. 
+The next set of labs will be to build on these concepts utilizing REST-API to push changes to Cisco Catalyst Center Templates and further automate the configuration in the network infrastructure. 
 
 The following **LAB** will tie all this together.
 

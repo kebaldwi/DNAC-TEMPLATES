@@ -2,32 +2,32 @@
 
 ## Overview
 
-This Lab is designed to be used after first completing labs A through D and has been created to address how to properly deal with enabling Telemetry for Assurance with regard to DNA Center. During the lab we will edit the Telemetry settings within DNA Center. This allows DNA Center the ability to configure network devices for the required Telemetry settings required to get the best results when viewing Assurance within DNA Center.
+This Lab is designed to be used after first completing labs A through D and has been created to address how to properly deal with enabling Telemetry for Assurance with regard to Cisco Catalyst Center. During the lab we will edit the Telemetry settings within Cisco Catalyst Center. This allows Cisco Catalyst Center the ability to configure network devices for the required Telemetry settings required to get the best results when viewing Assurance within Cisco Catalyst Center.
 
 ## General Information
 
-Within this lab we will direct Netflow to DNA Center. It is important to understand that some networking devices have minimal allowed Netflow Collectors which can be configured. SHould it be the case that you need addiitional flows to other servers or management devices, then please incorporate a Netflow Redirector in your design. This will allow the same flow to be replicated by the redirector to other management systems which require the feed.
+Within this lab we will direct Netflow to Cisco Catalyst Center. It is important to understand that some networking devices have minimal allowed Netflow Collectors which can be configured. SHould it be the case that you need addiitional flows to other servers or management devices, then please incorporate a Netflow Redirector in your design. This will allow the same flow to be replicated by the redirector to other management systems which require the feed.
 
 ## Lab Section 1 - Enabling Telemetry
 
-In this lab we will enable the Telemetry Settings and Provision the new settings to a device on DNA Center.
+In this lab we will enable the Telemetry Settings and Provision the new settings to a device on Cisco Catalyst Center.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
 
-1. Navigate to the **Network Settings** within DNA Center through the menu *Design>Network Settings>*.
+1. Navigate to the **Network Settings** within Cisco Catalyst Center through the menu *Design>Network Settings>*.
 
    ![json](./images/DNAC-Navigate-Settings.png?raw=true "Import JSON")
 
-2. Navigate to the **Telemetry** tab within the **Network Settings** page within DNA Center through the submenu.
+2. Navigate to the **Telemetry** tab within the **Network Settings** page within Cisco Catalyst Center through the submenu.
 
    ![json](./images/DNAC-Telemetry-Navigation-2.png?raw=true "Import JSON")
 
-3. View the **Telemetry** settings within DNA Center. Until this point we have not provisioned Netflow onto the switch.
+3. View the **Telemetry** settings within Cisco Catalyst Center. Until this point we have not provisioned Netflow onto the switch.
 
    ![json](./images/DNAC-Telemetry-Settings.png?raw=true "Import JSON")
 
-4. Select the checkbox next to **Use DNA Center as a Netflow Collector Server**. Then click **Save**.
+4. Select the checkbox next to **Use Cisco Catalyst Center as a Netflow Collector Server**. Then click **Save**.
 
    ![json](./images/DNAC-Telemetry-Settings-NetFlow.png?raw=true "Import JSON")
 
@@ -35,7 +35,7 @@ In this lab we will enable the Telemetry Settings and Provision the new settings
 
    ![json](./images/DNAC-Telemetry-Settings-Save.png?raw=true "Import JSON")
 
-6. Navigate to the **Inventory** within DNA Center through the menu *Provision>Network Devices>Inventory>*.
+6. Navigate to the **Inventory** within Cisco Catalyst Center through the menu *Provision>Network Devices>Inventory>*.
 
    ![json](./images/DNAC-NavigateInventory.png?raw=true "Import JSON")
 
@@ -88,7 +88,7 @@ Notice the Netflow configuation that has been pushed and additinally scroll thro
 
 </details>
 
-At this point you have successfully built and deployed Telemety to a switch from DNA Center.
+At this point you have successfully built and deployed Telemety to a switch from Cisco Catalyst Center.
 
 ## Automating Telemetry
 
@@ -100,6 +100,6 @@ The next step will be to build Advanced Automation Templates in the network infr
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-> [**Continue to Advanced Automation Lab**](../LAB-G-Advanced-Automation/README.md)
+> [**Continue to Advanced Automation Lab**](./module6-advanced.md)
 
-> [**Return to LAB Main Menu**](../README.md)
+> [**Return to LAB Menu**](./README.md)

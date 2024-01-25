@@ -2,25 +2,25 @@
 
 ## Overview
 
-This Lab is designed to be used after first completing labs A through C and has been created to address how to combine and use multiple Regular Templates within DNA Center to onboard network devices at Day 1 through N. This allows Network Administrators the ability to configure network devices in an ongoing and programmatic manner from within DNA Center without using the SD-Access Fabric methodology. It also allows an Administrator the ability to drag Regular Templates into and out of the flow as needed for ongoing maintenance.
+This Lab is designed to be used after first completing labs A through C and has been created to address how to combine and use multiple Regular Templates within Cisco Catalyst Center to onboard network devices at Day 1 through N. This allows Network Administrators the ability to configure network devices in an ongoing and programmatic manner from within Cisco Catalyst Center without using the SD-Access Fabric methodology. It also allows an Administrator the ability to drag Regular Templates into and out of the flow as needed for ongoing maintenance.
 
 This section will go through the flow involved in creating a deployable Composite Template from an IOS configuration script for a Catalyst switch linking it to a Switch profile and deploy it through DNAC using provisioning workflows.
 
 ## General Information
 
-As previously discussed, DNA Center can be used for not only Plug and Play but also Day N or Ongoing Templates customers will start by building out an Onboarding Template which typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates and for more flexibility Composite Templates. as they can be used to apply ongoing changes and to allow device modifications after initial deployment. This lab section will focus on Day N templates to be built as regular templates within DNA Center.
+As previously discussed, Cisco Catalyst Center can be used for not only Plug and Play but also Day N or Ongoing Templates customers will start by building out an Onboarding Template which typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates and for more flexibility Composite Templates. as they can be used to apply ongoing changes and to allow device modifications after initial deployment. This lab section will focus on Day N templates to be built as regular templates within Cisco Catalyst Center.
 
-Another important consideration is that part of a typical configuration would include some lines of code which will be built out with the *Design >Network Settings >* application within DNA Center. If the Design component is used you should **not** deploy the same feature from cli code in a template to configure the device. Its a decision you have to make upfront and avoids a lot of lines in the templates and allows for a more UI centric configuration which is easier to maintain. 
+Another important consideration is that part of a typical configuration would include some lines of code which will be built out with the *Design >Network Settings >* application within Cisco Catalyst Center. If the Design component is used you should **not** deploy the same feature from cli code in a template to configure the device. Its a decision you have to make upfront and avoids a lot of lines in the templates and allows for a more UI centric configuration which is easier to maintain. 
 
 As a guidance try and use **Design Settings** for as much of the configurations as you can leaving Templates light and nimble for configurations which might change ongoing.
 
-## Lab Section 1 - DNA Center Design Preparation
+## Lab Section 1 - Cisco Catalyst Center Design Preparation
 
 While we could deploy more extensive settings for deployment, we will limit the configuration to the minimum necessary to perform this step, building off the completed tasks in lab 2.
 
-## Lab Section 2 - DNA Center Day N Composite Template Preparation
+## Lab Section 2 - Cisco Catalyst Center Day N Composite Template Preparation
 
-You can create Day N Composite Templates within the ***Template Editor*** within **DNA Center**. Go to the ***Template Editor*** to complete the next task. In this lab, we will deploy a Composite Template and additional Regular Templates within a project.  The import and export function within **DNA Center** allows both the import and export of templates and projects, along with the ability to clone them.
+You can create Day N Composite Templates within the ***Template Editor*** within **Cisco Catalyst Center**. Go to the ***Template Editor*** to complete the next task. In this lab, we will deploy a Composite Template and additional Regular Templates within a project.  The import and export function within **Cisco Catalyst Center** allows both the import and export of templates and projects, along with the ability to clone them.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
@@ -33,7 +33,7 @@ For Jinja2, download and import the project within the ***Template Editor*** usi
 
 Previously in Lab 3, we created a project where we assigned a template to the site and provisioned it. We will now expand on that by importing a project with the same name overtop the current project, thereby importing additional regular templates. Take a few moments and examine the construction of these templates, as each has a specific form and function. Their design is modular to allow reuse of them within other composite templates for other switches or routers.
 
-1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor*.
+1. Navigate to the **Template Editor** within Cisco Catalyst Center through the menu *Tools>Template Editor*.
 
    ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
 
@@ -41,7 +41,7 @@ Previously in Lab 3, we created a project where we assigned a template to the si
 
    ![json](./images/DNAC-ProjectImportBegin.png?raw=true "Import JSON")
 
-3. Download the file above *DNAC_Template_Lab_DayN_project.json* to be imported into the DNA Center. Once downloaded, extract the file.
+3. Download the file above *DNAC_Template_Lab_DayN_project.json* to be imported into the Cisco Catalyst Center. Once downloaded, extract the file.
 4. From the **Import Project(s)** window, click **Select a file from your computer** from the explorer window, select the extracted JSON file and click open. 
 
    ![json](./images/DNAC-ProjectSelect.png?raw=true "Import JSON")
@@ -90,7 +90,7 @@ Additionally, it contains a Composite Template. The composite template will allo
 
 </details>
 
-## Lab Section 3 - DNA Center Composite Template Preparation
+## Lab Section 3 - Cisco Catalyst Center Composite Template Preparation
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
@@ -217,7 +217,7 @@ At this point, DNAC is set up and ready to provision the new composite template 
 
 We will now provision the switch using DayN Composite Templates. To do this, do the following:
 
-   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   1. Within Cisco Catalyst Center Navigate to *Provision>Inventory*.      
 
       ![json](./images/DNAC-NavigateInventory.png?raw=true "Import JSON")
 
@@ -255,7 +255,7 @@ We will now provision the switch using DayN Composite Templates. To do this, do 
          ![json](./images/DNAC-ProvisionDeploy.png?raw=true "Import JSON")
 
    4. The task will be submitted, and the deployment will run.
-   5. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
+   5. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in Cisco Catalyst Center after the resync timer has elapsed.        
    6. To resync the configuration so that it may be viewed before the normal 25 mins, then perform the following task:
       1. Change the focus to **Inventory**
       2. Select the *ACCESS-c9300-1-ASW* switch and select **Actions>Inventory>Resync Device**

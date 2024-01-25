@@ -1,24 +1,24 @@
-# DayN Templates
+# DayN Provisioning
 
 ## Overview
 
-This Lab is designed to be a part of a series of labs built to address how to use Day N Templates within DNA Center to configure network devices at Day 1 to N. This Lab is designed to be used after first completing labs A through B. The idea being to allow for ongoing configuration of features on devices beyond those deployed by the normal provisioning process. With DNA Center, if devices are not within a fabric, the host onboarding part of the UI will not be available. To that end, templates are an easy way of deploying those types of configuration and much more. Before starting this Lab, please make sure you have finished all the steps in labs 1 and 2.
+This Lab is designed to be a part of a series of labs built to address how to use Day N Templates within Cisco Catalyst Center to configure network devices at Day 1 to N. This Lab is designed to be used after first completing labs A through B. The idea being to allow for ongoing configuration of features on devices beyond those deployed by the normal provisioning process. With Cisco Catalyst Center, if devices are not within a fabric, the host onboarding part of the UI will not be available. To that end, templates are an easy way of deploying those types of configuration and much more. Before starting this Lab, please make sure you have finished all the steps in labs 1 and 2.
 
 ## General Information
 
-DNA Center can be used for Plug and Play and Day N or Ongoing Templates; customers will start by building out an Onboarding Template that typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates as they can be used to apply ongoing changes and to allow device modifications after initial deployment. This lab section will focus on Day N templates to be built as regular templates within DNA Center.
+Cisco Catalyst Center can be used for Plug and Play and Day N or Ongoing Templates; customers will start by building out an Onboarding Template that typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates as they can be used to apply ongoing changes and to allow device modifications after initial deployment. This lab section will focus on Day N templates to be built as regular templates within Cisco Catalyst Center.
 
-Another important consideration is that part of a typical configuration would include some lines of code, which are built by the *Design >Network Settings >* application within DNA Center. If the Design component is used, you should **not** deploy the same feature from cli code in a template to configure the device. It's a decision you have to make upfront, avoids many lines in the templates, and allows for a more UI-centric configuration that is easier to maintain. 
+Another important consideration is that part of a typical configuration would include some lines of code, which are built by the *Design >Network Settings >* application within Cisco Catalyst Center. If the Design component is used, you should **not** deploy the same feature from cli code in a template to configure the device. It's a decision you have to make upfront, avoids many lines in the templates, and allows for a more UI-centric configuration that is easier to maintain. 
 
 As guidance, try and use **Design Settings** for as many configurations as you can, leaving Templates light and nimble for configurations that might change ongoing.
 
-## Lab Section 1 - DNA Center Design Preparation
+## Lab Section 1 - Cisco Catalyst Center Design Preparation
 
 While a more extensive set of settings can be built out for deployment, we will limit the configuration to the minimum necessary to perform this step, building off the completed tasks in lab 2.
 
-## Lab Section 2 - DNA Center Day N Template Preparation
+## Lab Section 2 - Cisco Catalyst Center Day N Template Preparation
 
-You can create Day N Templates within the ***Template Editor*** within **DNA Center**. Go to the ***Template Editor*** to complete the next task. Initially, we will keep things pretty simple and deploy one Day N regular template. Once the process has been discussed in detail, we will build on this within the following labs. 
+You can create Day N Templates within the ***Template Editor*** within **Cisco Catalyst Center**. Go to the ***Template Editor*** to complete the next task. Initially, we will keep things pretty simple and deploy one Day N regular template. Once the process has been discussed in detail, we will build on this within the following labs. 
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
@@ -27,7 +27,7 @@ You can create Day N Templates within the ***Template Editor*** within **DNA Cen
 
 Download and import a simple Day N Template in the **Template Editor** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-C-DayN-Template/templates/2125templates/Platinum_AAA_Template.json">⬇︎Platinum_AAA_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-C-DayN-Template/templates/Platinum_AAA_Template.txt">⬇︎Platinum_AAA_Template.txt⬇︎</a> located within this lab. 
 
-1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor*.
+1. Navigate to the **Template Editor** within Cisco Catalyst Center through the menu *Tools>Template Editor*.
 
    ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
 
@@ -39,7 +39,7 @@ Download and import a simple Day N Template in the **Template Editor** using the
 
    ![json](./images/DNAC-ProjectAdd.png?raw=true "Import JSON")
 
-4. Download the file above *Platinum_AAA_Template.json* to be imported into the DNA Center. Once downloaded, extract the file.
+4. Download the file above *Platinum_AAA_Template.json* to be imported into the Cisco Catalyst Center. Once downloaded, extract the file.
 5. Hover over the right side of the new project, and a small ⚙ gear icon will appear. Select **Import Template(s)** from the menu.   
 
    ![json](./images/DNAC-TemplateImportBegin.png?raw=true "Import JSON")
@@ -113,7 +113,7 @@ At this point, DNAC is set up and ready to provision the new regular template AA
 
 We will now provision the switch using DayN Templates. To do this, do the following:
 
-   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   1. Within Cisco Catalyst Center Navigate to *Provision>Inventory*.      
 
       ![json](./images/DNAC-NavigateInventory.png?raw=true "Import JSON")
 
@@ -142,7 +142,7 @@ We will now provision the switch using DayN Templates. To do this, do the follow
 
       ![json](./images/DNAC-ProvisionTasking.png?raw=true "Import JSON")
 
-   5. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
+   5. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in Cisco Catalyst Center after the resync timer has elapsed.        
    6. To resync the configuration so that it may be viewed before the normal 25 mins, then perform the following task:
       1. Change the focus to **Inventory**
       2. Select the *ACCESS-c9300-1-ASW* switch and select **Actions>Inventory>Resync Device**
@@ -161,7 +161,7 @@ At this point, we have onboarded a device and successfully pushed configuration 
 
 ## Automating Claiming and Provisioning
 
-While it is possible to click through the claiming and provisioning processes manually, which can be time-consuming, we can handle bulk deployments differently. For Bulk deployments, after the templates are built and assigned to the network profile and a site, we may automate them further by uploading a CSV file to DNA Center via REST API.
+While it is possible to click through the claiming and provisioning processes manually, which can be time-consuming, we can handle bulk deployments differently. For Bulk deployments, after the templates are built and assigned to the network profile and a site, we may automate them further by uploading a CSV file to Cisco Catalyst Center via REST API.
 
 ## Summary
 
@@ -169,6 +169,6 @@ The next step will be to build Composite Template to include the Day N regular t
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-> [**Continue to Composite Template Lab**](../LAB-D-Composite-Template/README.md)
+> [**Continue to Application QoS Lab**](./module4-applicationqos.md)
 
-> [**Return to LAB Main Menu**](../README.md)
+> [**Return to LAB Menu**](./README.md)
