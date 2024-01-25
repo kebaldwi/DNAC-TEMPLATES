@@ -49,6 +49,6 @@ At this point you will have successfully configured the **SSID's** on the **Wire
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-> [**Continue to RF Profile Provisioning Module**](../LAB-J-Wireless-Automation/module3-rfprofiles.md)
+> [**Continue to RF Profile Provisioning Module**](../LAB-2-Wireless-Automation/module3-rfprofiles.md)
 
 > [**Return to Lab Menu**](./README.md)

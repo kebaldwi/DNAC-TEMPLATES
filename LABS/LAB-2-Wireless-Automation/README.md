@@ -135,6 +135,6 @@ This lab is intended to help drive the adoption of Rest-API and will be added to
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-> [**Continue to Wireless Lab Preparation**](../LAB-J-Wireless-Automation/preparation.md)
+> [**Continue to Wireless Lab Preparation**](../LAB-2-Wireless-Automation/preparation.md)
 
 > [**Return to LAB Main Menu**](../README.md)
