@@ -232,7 +232,7 @@ The steps to complete in order to use this method are as follows:
 
 4. Enter the Virtual Account to be mapped to for the PnP Profile
 5. Select if this is to be the Default Profile for the Virtual Account
-6. Select whether you want the device to use IP or DNS entry to find DNAC.
+6. Select whether you want the device to use IP or DNS entry to find Cisco Catalyst Center.
 
    > **Note:** DNS entry will need Domain Suffix to be provided in DHCP
    
