@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Lab is designed to be used after first completing lab A and has been created to address how to use Onboarding Templates within Cisco Catalyst  Center to onboard network devices at Day Zero which is to say no configuration on the device whatsoever.
+This module is designed to be used after first completing lab A and has been created to address how to use Onboarding Templates within Cisco Catalyst  Center to onboard network devices at Day Zero which is to say no configuration on the device whatsoever.
 
 In this section will go through the flow involved in creating a deployable Template from an IOS configuration script for a Catalyst switch linking it to a Switch profile and deploy it through DNAC using Plug and Play workflows.
 
