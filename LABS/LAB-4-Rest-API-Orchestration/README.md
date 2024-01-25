@@ -8,18 +8,20 @@ The Story we will use will be the following, after orientation, we will first in
 
 | Module ID | PubHub Link |
 |-----------|-------------|
-| dntd-catcenter-postman-lab | https://pubhub.cisco.com/detail/#### |
+| catc-catcenter-postman-lab | https://pubhub.cisco.com/detail/#### |
 
 | Lab ID | PubHub link |
 |--------|-------------|
-| dntd-catcenter-0-orientation | https://pubhub.cisco.com/detail/#### |
-| dntd-catcenter-1-hierarchy | https://pubhub.cisco.com/detail/#### |
-| dntd-catcenter-2-settings | https://pubhub.cisco.com/detail/#### |
-| dntd-catcenter-3-discovery | https://pubhub.cisco.com/detail/#### |
-| dntd-catcenter-4-templates | https://pubhub.cisco.com/detail/#### |
-| dntd-catcenter-5-archive | https://pubhub.cisco.com/detail/#### |
-| dntd-catcenter-6-inventory | https://pubhub.cisco.com/detail/#### |
-| dntd-catcenter-7-cmd-run | https://pubhub.cisco.com/detail/#### |
+| catc-catcenter-0-orientation | https://pubhub.cisco.com/detail/#### |
+| catc-catcenter-1-hierarchy | https://pubhub.cisco.com/detail/#### |
+| catc-catcenter-2-settings | https://pubhub.cisco.com/detail/#### |
+| catc-catcenter-3-discovery | https://pubhub.cisco.com/detail/#### |
+| catc-catcenter-4-templates | https://pubhub.cisco.com/detail/#### |
+| catc-catcenter-5-archive | https://pubhub.cisco.com/detail/#### |
+| catc-catcenter-6-inventory | https://pubhub.cisco.com/detail/#### |
+| catc-catcenter-7-cmd-run | https://pubhub.cisco.com/detail/#### |
+| catc-catcenter-8-inventory | https://pubhub.cisco.com/detail/#### |
+| catc-catcenter-9-cmd-run | https://pubhub.cisco.com/detail/#### |
 
 ## Preparation notes
 
