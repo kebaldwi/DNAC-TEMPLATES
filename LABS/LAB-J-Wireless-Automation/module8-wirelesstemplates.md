@@ -77,7 +77,7 @@ While on Cisco Catalyst (DNA) Center you can import templates, we will build one
         no shutdown
     {% endif %}
   {% endfor %}
-{%- endmacro %}  
+{% endmacro %}  
 
 {{ def_SSID_CCKM() }}
 ```
