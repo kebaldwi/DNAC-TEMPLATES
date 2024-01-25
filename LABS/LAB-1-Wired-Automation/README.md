@@ -1,8 +1,8 @@
-# Wireless Automation
+# Wired Automation
 
 ## Overview
 
-This Lab is designed as a set of standalone labs to help customers with varying challenges in Automating and Orchestrating their wireless network infrastructure. Within the lab, we will use various tools and techniques to Automate various tasks and orchestrate DNA Center.
+This Lab is designed as a set of standalone labs to help customers with varying challenges in Automating and Orchestrating their wired network infrastructure. Within the lab, we will use various tools and techniques to Automate various tasks and orchestrate DNA Center.
 
 ## General Information
 
