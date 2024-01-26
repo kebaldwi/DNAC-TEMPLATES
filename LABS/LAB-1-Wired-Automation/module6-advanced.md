@@ -1194,7 +1194,7 @@ This EEM script makes sure the interface is not a portchannel member and then re
 
 Congratulations, at this point, you have successfully reviewed and may have adopted the various use cases or parts of them.
 
-The next set of labs will be to build on these concepts utilizing REST-API to push changes to Cisco Catalyst Center Templates and further automate the configuration in the network infrastructure. 
+The next set of labs will be to build on these concepts utilizing REST-API to push changes to Cisco Catalyst Center and further automate the configuration in the network infrastructure. 
 
 The following **LAB** will tie all this together.
 

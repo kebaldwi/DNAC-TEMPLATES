@@ -4,7 +4,7 @@
 
 This Lab is designed to be used after first completing labs A through C and has been created to address how to combine and use multiple Regular Templates within Cisco Catalyst Center to onboard network devices at Day 1 through N. This allows Network Administrators the ability to configure network devices in an ongoing and programmatic manner from within Cisco Catalyst Center without using the SD-Access Fabric methodology. It also allows an Administrator the ability to drag Regular Templates into and out of the flow as needed for ongoing maintenance.
 
-This section will go through the flow involved in creating a deployable Composite Template from an IOS configuration script for a Catalyst switch linking it to a Switch profile and deploy it through DNAC using provisioning workflows.
+This section will go through the flow involved in creating a deployable Composite Template from an IOS configuration script for a Catalyst switch linking it to a Switch profile and deploy it through Cisco Catalyst Center using provisioning workflows.
 
 ## General Information
 
@@ -27,7 +27,7 @@ You can create Day N Composite Templates within the ***Template Editor*** within
 
 ### Step 1 - ***Import Project with Templates***
 
-Download and import the project within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-D-Composite-Template/templates/2125templates/DNAC_Template_Lab_DayN_project.json">⬇︎DNAC_Template_Lab_DayN_project.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then use the previously built project within Lab 3 and build the templates located within the following <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-D-Composite-Template/templates/Platinum_Templates.zip">⬇︎Platinum_Templates.zip⬇︎</a> file located within this lab. 
+Download and import the project within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-D-Composite-Template/templates/2125templates/DNAC_Template_Lab_DayN_project.json">⬇︎DNAC_Template_Lab_DayN_project.json⬇︎</a> file. If using Cisco Catalyst Center prior release to 2.1.2.X then use the previously built project within Lab 3 and build the templates located within the following <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-D-Composite-Template/templates/Platinum_Templates.zip">⬇︎Platinum_Templates.zip⬇︎</a> file located within this lab. 
 
 For Jinja2, download and import the project within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-D-Composite-Template/templates/Jinja2/DNAC_Template_Lab_DayN_Jinja2_project.json">⬇︎DNAC_Template_Lab_DayN_Jinja2_project.json⬇︎</a> file. 
 
@@ -194,7 +194,7 @@ Next, we need to assign the DayN Composite Template to a site using the Network 
 
       ![json](./images/DNAC-ProfileDayN.png?raw=true "Import JSON")
 
-      1. Select the Composite Template by either searching or choosing *DNAC Template Lab DayN Composite* from the dropdown as shown.
+      1. Select the Composite Template by either searching or choosing **DNAC Template Lab DayN Composite** from the dropdown as shown.
 
          ![json](./images/DNAC-ProfileSelectComposite.png?raw=true "Import JSON")   
 
@@ -208,7 +208,7 @@ Now the Composite Template has been applied to the Network Profile, any changes 
 
 ## Lab Section 4 - Provisioning
 
-At this point, DNAC is set up and ready to provision the new composite template to the device. This next set of sequences will push the various Network Settings, Services, and DayN Templates as part of the composite sequence to the device.
+At this point, Cisco Catalyst Center is set up and ready to provision the new composite template to the device. This next set of sequences will push the various Network Settings, Services, and DayN Templates as part of the composite sequence to the device.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
