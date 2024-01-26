@@ -25,7 +25,7 @@ You can create Day N Templates within the ***Template Editor*** within **Cisco C
 
 ### Step 1 - ***Create a Day N Template***
 
-Download and import a simple Day N Template in the **Template Editor** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-C-DayN-Template/templates/2125templates/Platinum_AAA_Template.json">⬇︎Platinum_AAA_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-C-DayN-Template/templates/Platinum_AAA_Template.txt">⬇︎Platinum_AAA_Template.txt⬇︎</a> located within this lab. 
+Download and import a simple Day N Template in the **Template Editor** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-C-DayN-Template/templates/2125templates/Platinum_AAA_Template.json">⬇︎Platinum_AAA_Template.json⬇︎</a> file. If using Cisco Catalyst Center prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-C-DayN-Template/templates/Platinum_AAA_Template.txt">⬇︎Platinum_AAA_Template.txt⬇︎</a> located within this lab. 
 
 1. Navigate to the **Template Editor** within Cisco Catalyst Center through the menu *Tools>Template Editor*.
 
@@ -56,7 +56,7 @@ Download and import a simple Day N Template in the **Template Editor** using the
 
    ![json](./images/DNAC-TemplateAAA.png?raw=true "Import JSON")
 
-The DayN regular template has the minimal AAA configuration to configure the device for local AAA connectivity independent of ISE to work with DNAC. Below is for explanation purposes only. (Please Import the Template JSON above)
+The DayN regular template has the minimal AAA configuration to configure the device for local AAA connectivity independent of ISE to work with Cisco Catalyst Center. Below is for explanation purposes only. (Please Import the Template JSON above)
 
 ```vtl
 aaa new-model
@@ -104,7 +104,7 @@ Next, we need to assign the DayN Template to a site using the Network Profile. A
 
 ## Lab Section 3 - Provisioning
 
-At this point, DNAC is set up and ready to provision the new regular template AAA to the device. This next set of sequences will push the various Network Settings, Services, and DayN Templates to the device.
+At this point, Cisco Catalyst Center is set up and ready to provision the new regular template AAA to the device. This next set of sequences will push the various Network Settings, Services, and DayN Templates to the device.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>

@@ -2,9 +2,9 @@
 
 ## Overview
 
-This module is designed to be used after first completing lab A and has been created to address how to use Onboarding Templates within Cisco Catalyst  Center to onboard network devices at Day Zero which is to say no configuration on the device whatsoever.
+This module is designed to be used after first completing lab A and has been created to address how to use Onboarding Templates within Cisco Catalyst Center to onboard network devices at Day Zero which is to say no configuration on the device whatsoever.
 
-In this section will go through the flow involved in creating a deployable Template from an IOS configuration script for a Catalyst switch linking it to a Switch profile and deploy it through DNAC using Plug and Play workflows.
+In this section will go through the flow involved in creating a deployable Template from an IOS configuration script for a Catalyst switch linking it to a Switch profile and deploy it through Cisco Catalyst Center using Plug and Play workflows.
 
 ## General Information
 
@@ -175,7 +175,7 @@ You can create onboarding templates within the ***Template Editor*** within **Ci
 
 ### Step 1 - ***Create an Onboarding Template***
 
-Download and import an Onboarding Template in the **Template Editor** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-B-Onboarding-Template/templates/Platinum_Onboarding_Template_2125.json">⬇︎Onboarding_Template.json⬇︎</a> file. If using DNAC prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-B-Onboarding-Template/templates/Platinum-Onboarding.txt">⬇︎Onboarding.txt⬇︎</a> located within this lab. 
+Download and import an Onboarding Template in the **Template Editor** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-B-Onboarding-Template/templates/Platinum_Onboarding_Template_2125.json">⬇︎Onboarding_Template.json⬇︎</a> file. If using Cisco Catalyst Center prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-B-Onboarding-Template/templates/Platinum-Onboarding.txt">⬇︎Onboarding.txt⬇︎</a> located within this lab. 
 
 For Jinja2 download and import an Onboarding Template in the **Template Editor** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-B-Onboarding-Template/templates/Jinja2/Platinum_Onboarding_Template_Jinja2.json">⬇︎Onboarding_Template_Jinja2.json⬇︎</a>
 
@@ -197,7 +197,7 @@ For Jinja2 download and import an Onboarding Template in the **Template Editor**
 
 5. Click import to install and import the template.
 
-The Onboarding template has the minimal configuration to bring up device connectivity with DNAC. Below is for explanation purposes only. (Please Import the Template JSON above)
+The Onboarding template has the minimal configuration to bring up device connectivity with Cisco Catalyst Center. Below is for explanation purposes only. (Please Import the Template JSON above)
 
 ```vtl
 ##<------Onboarding-Template------->
@@ -292,7 +292,7 @@ Next we need to assign the Onboarding Template to a site using the Network Profi
 
 ## Lab Section 3 - Claiming and Onboarding
 
-At this point DNAC is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find Cisco Catalyst Center and land in the plug n play set of the devices section within the provisioning page.
+At this point Cisco Catalyst Center is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find Cisco Catalyst Center and land in the plug n play set of the devices section within the provisioning page.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
@@ -365,7 +365,7 @@ This accomplishes two things, it places the upstream switch negotiating LACP in 
 
 ## Automating Claiming and Provisioning
 
-While it is possible to click through the claiming and process, for bulk deployments its important to be able to address that as well. With DNAC after the templates are built and assigned to the network profile and assigned to a site they may be referenced and used by uploading a csv file to Cisco Catalyst Center via REST API.
+While it is possible to click through the claiming and process, for bulk deployments its important to be able to address that as well. With Cisco Catalyst Center after the templates are built and assigned to the network profile and assigned to a site they may be referenced and used by uploading a csv file to Cisco Catalyst Center via REST API.
 
 </details>
 
