@@ -8,7 +8,7 @@ This module is the first one in a series of modules within the Wired Automation 
 
 In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate Cisco Catalyst Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
 
-### Step 1 - ***Prepare ISE for Cisco Catalyst Center Integration***
+### Step 1 - Prepare ISE for Cisco Catalyst Center Integration
 
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to Identity Services Engine (ISE) and select the hamburger menu icon to open the system menu.
 
@@ -23,7 +23,7 @@ In this lab our focus changes slightly as we start to automate for host onboardi
    ![json](./images/module1-preparation/ise-pxgrid-settings.png?raw=true "Import JSON")
    ![json](./images/module1-preparation/ise-pxgrid-setup.png?raw=true "Import JSON")
 
-### Step 2 - ***Cisco Catalyst Center and ISE Integration***
+### Step 2 - Cisco Catalyst Center and ISE Integration
 
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to Cisco Catalyst Center and select the hamburger menu icon and navigate to the System > Settings menu item.
 

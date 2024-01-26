@@ -34,11 +34,11 @@ The various topics covered in the lab will be the following:
 
 The Topics listed above will be covered in several use cases to show the capability and flexibility of the templating engine within Cisco Catalyst Center. While we will utilize Velocity language, the same can be accomplished in the Jinja2 language.
 
-1. [Renaming interfaces](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-G-Advanced-Automation/README.md#step-1---renaming-interfaces---use-case)
-2. [Building Stacks](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-G-Advanced-Automation/README.md#step-2---building-stacks---use-case)
-3. [Assigning port configuration](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-G-Advanced-Automation/README.md#step-3---assigning-port-configuration---use-case)
-4. [Autoconf port configuration](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-G-Advanced-Automation/README.md#step-4---autoconf-port-configuration---use-case)
-5. [Non SDA IBNS 2.0 port configuration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-G-Advanced-Automation#step-5---non-sda-ibns20-port-configuration---use-case)
+1. [Renaming interfaces](./module6-advanced.md#step-1---renaming-interfaces---use-case)
+2. [Building Stacks](./module6-advanced.md#step-2---building-stacks---use-case)
+3. [Assigning port configuration](./module6-advanced.md#step-3---assigning-port-configuration---use-case)
+4. [Autoconf port configuration](./module6-advanced.md#step-4---autoconf-port-configuration---use-case)
+5. [Non SDA IBNS 2.0 port configuration](./module6-advanced.md#step-5---non-sda-ibns20-port-configuration---use-case)
 
 ## Step 1 - ***Renaming Interfaces - Use Case***
 
@@ -522,7 +522,7 @@ The next block of code sets up the VLANs, and should the dynamic creation as men
    !
 ```
 
-Next, we need to set up the macros, but we will make use of **Autoconf** and **Templates**. **Autoconf** is a solution that can be used to manage port configurations for data or voice VLAN, quality of service (QoS) parameters, storm control, and MAC-based port security on end devices that are deployed in the access layer of a network. Device classification is enabled when you enable the Autoconf feature using the `autoconf enable` command in global configuration mode. The device detection acts as an event trigger, which applies the appropriate automatic template to the interface. When the Autoconf feature is enabled using the autoconf enable command, the default Autoconf service policy is applied to all the interfaces. For more information about **[Autoconf](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9400/software/release/16-12/configuration_guide/nmgmt/b_1612_nmgmt_9400_cg/configuring_autoconf.pdf)** or alternatively [Autoconf](./configuring_autoconf.pdf)
+Next, we need to set up the macros, but we will make use of **Autoconf** and **Templates**. **Autoconf** is a solution that can be used to manage port configurations for data or voice VLAN, quality of service (QoS) parameters, storm control, and MAC-based port security on end devices that are deployed in the access layer of a network. Device classification is enabled when you enable the Autoconf feature using the `autoconf enable` command in global configuration mode. The device detection acts as an event trigger, which applies the appropriate automatic template to the interface. When the Autoconf feature is enabled using the autoconf enable command, the default Autoconf service policy is applied to all the interfaces. For more information about **[Autoconf](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9400/software/release/16-12/configuration_guide/nmgmt/b_1612_nmgmt_9400_cg/configuring_autoconf.pdf)** or alternatively [Autoconf](../../CODE/DOCS/configuring_autoconf.pdf)
 
 ```vtl
    #INTERACTIVE
@@ -1199,7 +1199,5 @@ The next set of labs will be to build on these concepts utilizing REST-API to pu
 The following **LAB** will tie all this together.
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
-
-> [**Continue to Dynamic Automation Lab**](../LAB-H-Dynamic-Automation/README.md)
 
 > [**Return to LAB Main Menu**](../README.md)
