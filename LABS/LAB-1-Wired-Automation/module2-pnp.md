@@ -2,7 +2,7 @@
 
 ## Overview
 
-This module is designed to be used after first completing the PnP process and has been created to address how to use PnP Onboarding Templates within Cisco Catalyst Center to onboard network devices at Day Zero which is to say no configuration on the device whatsoever.
+This module is designed to be used after first completing the PnP process and has been created to address how to use PnP Onboarding Templates within Cisco Catalyst Center to onboard network devices at Day Zero which is to say no configuration on the device whatsoever. The purpose of PnP Onboarding is to claim a device and automate the deployment of features through configuration. It is important to note that this template is transfered as a flat file and loaded into the configuration by a configure replace. This allows for the manipulation of uplinks and addressing without disconnectivity from the device. Additional source commands can be used to allow the switch to automatically inform Cisco Catalyst Center of a change in address through the PnP profile applied and the source of the HTTP client information.
 
 In this section will go through the flow involved in creating a deployable template from an IOS configuration script for a Catalyst switch linking it to a Switch profile and deploy it through Cisco Catalyst Center using Plug and Play workflows.
 
@@ -39,9 +39,6 @@ As guidance try and use Design settings for as much of the configurations as you
 While a more extensive set of settings can be built out for a deployment we will limit the configuration to the minimal necessary to perform this step. We will augment the Design Settings during the **DayN Provisioning Lab** to include others that may be required.
 
 Before Cisco Catalyst Center can automate the deployment we have to do a couple of tasks to prepare. Please log into the Cisco Catalyst Center using a browser within the Windows **Jump host**. Use the credentials of username: **`admin`** password: **`C1sco12345`**. Then browse to [Cisco Catalyst Center](https://198.18.129.100). Use the credentials of username: **`admin`** password: **`C1sco12345`** within the DCLOUD environment.
-
-<details open>
-<summary> Click for Details and Sub Tasks</summary>
 
 Although you can manually set up the hierarchy we will use automation scripts built to implement the hierarchy via **postman** which will utilize the **Cisco Catalyst Center API's** To do this we will make use of the application `postman` in the Windows workstation and install json files.
 
@@ -150,7 +147,7 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 
 6. Ensure that the Credentials are set for the Global level and that the are inherited all the way to Floor 1. If not select the Credentials and save them as necessary.
 
-### Step 4 - ***Image Repository***
+### Step 4 - Image Repository
 
 The image used in this lab for the 9300 is downloadable from here [⬇︎Amsterdam-17.06.01 MD⬇︎](https://software.cisco.com/download/home/286315874/type/282046477/release/Bengaluru-17.6.5) **(required)** 
 
@@ -190,22 +187,17 @@ The image used in this lab for the 9300 is downloadable from here [⬇︎Amsterd
 6. Select the image and mark it as golden for PnP to use it.   
    ![json](./images/DNAC-GoldenImageRepo.png?raw=true "Import JSON")
 
-</details>
-
 ## Cisco Catalyst Center Onboarding Template 
 
-You can create onboarding templates within the **Template Editor** within **Cisco Catalyst Center**. Go to the **Template Editor** to complete the next task.
-
-<details open>
-<summary> Click for Details and Sub Tasks</summary>
+You can create onboarding templates within the **Template Hub** previously known as **Template Editor** within **Cisco Catalyst Center**. Go to the **Template Hub**  to complete the next task.
 
 ### Step 1 - Create an Onboarding Template
 
-Download and import an Onboarding Template in the **Template Editor** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum_Onboarding_Template_2125.json">⬇︎Onboarding_Template.json⬇︎</a> file. If using Cisco Catalyst Center prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum-Onboarding.txt">⬇︎Onboarding.txt⬇︎</a> located within this lab. 
+Download and import an Onboarding Template in the **Template Hub**  using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum_Onboarding_Template_2125.json">⬇︎Onboarding_Template.json⬇︎</a> file. If using Cisco Catalyst Center prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum-Onboarding.txt">⬇︎Onboarding.txt⬇︎</a> located within this lab. 
 
-For Jinja2 download and import an Onboarding Template in the **Template Editor** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Jinja2/Platinum_Onboarding_Template_Jinja2.json">⬇︎Onboarding_Template_Jinja2.json⬇︎</a>
+For Jinja2 download and import an Onboarding Template in the **Template Hub**  using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Jinja2/Platinum_Onboarding_Template_Jinja2.json">⬇︎Onboarding_Template_Jinja2.json⬇︎</a>
 
-1. Navigate to the **Template Editor** within Cisco Catalyst Center through the menu *Tools>Template Editor* 
+1. Navigate to the **Template Hub**  within Cisco Catalyst Center through the menu *Tools>Template Hub* 
 
    ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
 
@@ -315,14 +307,9 @@ Next we need to assign the Onboarding Template to a site using the Network Profi
 
       ![json](./images/DNAC-ProfileAssigned.png?raw=true "Import JSON")
 
-</details>
-
 ## PnP Claim and Onboarding Device
 
 At this point Cisco Catalyst Center is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find Cisco Catalyst Center and land in the plug n play set of the devices section within the provisioning page.
-
-<details open>
-<summary> Click for Details and Sub Tasks</summary>
 
 ### Step 1 - Claiming the Device
 
@@ -395,7 +382,13 @@ This accomplishes two things, it places the upstream switch negotiating LACP in 
 
 While it is possible to click through the claiming and process, for bulk deployments its important to be able to address that as well. With Cisco Catalyst Center after the templates are built and assigned to the network profile and assigned to a site they may be referenced and used by uploading a csv file to Cisco Catalyst Center via REST API.
 
-</details>
+## Cisco Catalyst Center Device Discovery 
+
+We will now discover the other devices on the network and import them into the Inventory for additional configurations to be applied. 
+
+### Step 1 - Create an Discovery Task
+
+### Step 2 - Verify the Discovery Completed
 
 ## Summary
 

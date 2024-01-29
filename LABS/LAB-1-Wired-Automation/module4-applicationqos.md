@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Lab is designed to be used after first completing labs A through D and has been created to address how to properly deal with Quality of Service with regard to Cisco Catalyst Center. During the lab we will use Application Policies and apply Quality of Service (QoS) within Cisco Catalyst Center. We will also discuss, set up and use Controller Based Application Recognition. This allows Network Administrators the ability to configure network devices in an ongoing and programmatic manner from within Cisco Catalyst Center to make sure application policies are consistent throughout networks whether using SD-Access or Legacy Network Concepts. This set of concepts requires ***Advantage Licensing***.
+This Lab is designed to be used after first completing labs A through D and has been created to address how to properly deal with Quality of Service with regard to Cisco Catalyst Center. During the lab we will use Application Policies and apply Quality of Service (QoS) within Cisco Catalyst Center. We will also discuss, set up and use Controller Based Application Recognition. This allows Network Administrators the ability to configure network devices in an ongoing and programmatic manner from within Cisco Catalyst Center to make sure application policies are consistent throughout networks whether using SD-Access or Legacy Network Concepts. This set of concepts requires **Advantage Licensing**.
 
 ## General Information
 
@@ -12,7 +12,7 @@ There are a number of hurdles to applying Quality of Service. If we were to read
 3. Monitor application usage to assure application and user satisfaction
 In order to accomplish this we will discuss all the relevant aspects of these goals along with how we accomplish them in this lab.
 
-## Lab Section 1 - Controller Based Application Recognition
+## Controller Based Application Recognition
 
 The Application Visibility service lets you manage your built-in and custom applications and application sets. The Application Visibility service, hosted as an application stack within Cisco Catalyst Center, lets you enable the **C**ontroller-**B**ased **A**pplication **R**ecognition (CBAR) function on a specific device to classify thousands of network and home-grown applications and network traffic. This allows us to deal with applications beyond the capabilities of NBAR 2 which is some 1400 applications currently. 
 
@@ -36,10 +36,7 @@ As the number of applications is always changing and protocol packs are always b
 
 Lets get started.
 
-<details open>
-<summary> Click for Details and Sub Tasks</summary>
-
-### Step 1 - ***Enabling Controller Based Application Recognition***
+### Step 1 - Enabling Controller Based Application Recognition
 
 The first step will be to enable the CBAR service. During the course of this operation we will enable CBAR on the switch, as well as instantiate feeds and connect with external authoritative sources at Cisco and Microsofts 0365.
 
@@ -98,7 +95,7 @@ The first step will be to enable the CBAR service. During the course of this ope
 
    ![json](./images/DNAC-CBAR.png?raw=true "Import JSON")
 
-### Step 2 - ***Updating Protocol Packs***
+### Step 2 - Updating Protocol Packs
 
 Within the CBAR Application, we will now update the protocol pack for the **ACCESS-C9300-1-ASW** switch. 
 
@@ -118,16 +115,11 @@ Within the CBAR Application, we will now update the protocol pack for the **ACCE
 
    ![json](./images/DNAC-Protocol-Updating.png?raw=true "Import JSON")
 
-</details>
-
 ## Lab Section 2 - Building and Deploying an Application Policy
 
 The Application Policy methodology within Cisco Catalyst Center allows for two types of policies to be constructed, wired and wireless. During this section we will build and deploy an Application Policy for a wired environment.
 
-<details open>
-<summary> Click for Details and Sub Tasks</summary>
-
-### Step 1 - ***Build Application Policy Draft***
+### Step 1 - Build Application Policy Draft
 
 1. Navigate to **Application Policy** within Cisco Catalyst Center through the menu *Policy>Application*.
 
@@ -185,7 +177,7 @@ The Application Policy methodology within Cisco Catalyst Center allows for two t
 
     ![json](./images/DNAC-AppPolicy-9-SaveDraft.png?raw=true "Import JSON")
 
-### Step 2 - ***Deploying Application Policy***
+### Step 2 - Deploying Application Policy
 
    #### Preview Policy
 
@@ -237,16 +229,11 @@ The Application Policy methodology within Cisco Catalyst Center allows for two t
 
 At this point you have successfully pushed a CVD QoS Policy to the network.
 
-</details>
-
 ## Lab Section 3 - Building and Deploying a Custom Application
 
 The Application Policy methodology within Cisco Catalyst Center allows for two types of policies to be constructed, wired and wireless. During this section we will build and deploy an Application Policy for a wired environment.
 
-<details open>
-<summary> Click for Details and Sub Tasks</summary>
-
-### Step 1 - ***Building a Custom Application***
+### Step 1 - Building a Custom Application
 
 1. Navigate to **Application Sets** within Cisco Catalyst Center from the Application Policies tab select **Application Sets** and then the redirect.
 
@@ -287,7 +274,7 @@ The Application Policy methodology within Cisco Catalyst Center allows for two t
 
    ![json](./images/DNAC-AppPolicy-9-AppSet-Final.png?raw=true "Import JSON")
 
-### Step 2 - ***Deploying a Custom Application***
+### Step 2 - Deploying a Custom Application
 
 1. Navigate to **Application Policy** within Cisco Catalyst Center through the menu *Policy>Application*.
 
@@ -326,8 +313,6 @@ The Application Policy methodology within Cisco Catalyst Center allows for two t
    ![json](./images/DNAC-AppPolicy-17-Final.png?raw=true "Import JSON")
 
 At this point you have successfully built and deployed a custom Application within a QoS Policy.
-
-</details>
 
 ## Automating Application Policies
 
