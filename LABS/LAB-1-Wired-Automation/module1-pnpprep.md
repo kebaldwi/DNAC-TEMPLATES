@@ -78,7 +78,7 @@ Essentially we will be turing the 9300-2 switch into a distribution switch to al
 
 ### Configuring the 4331 Router 
 
-To set up the lab to allow for the above connectivity we will complete , please log into the console connection of the ***4331*** by clicking on dropdown button under the icon in DCLOUD, and selecting 'Console'. New tab will open, click 'Connect' - you should now be connected to the console of the router. 
+To set up the lab to allow for the above connectivity we will complete , please log into the console connection of the **4331** by clicking on dropdown button under the icon in DCLOUD, and selecting 'Console'. New tab will open, click 'Connect' - you should now be connected to the console of the router. 
 
 The credentials are noted above for reference, copy-paste the password into Hardware Console tab after issuing enable CLI.  Once you are in enable mode on 4331 hardware console, issue commands:
 
