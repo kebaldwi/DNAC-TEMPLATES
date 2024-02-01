@@ -100,8 +100,30 @@ The test results should look similar to this:
 Third, we can ping Cisco Catalyst Center from the Distribution Switch utilizing the following:
 
 ```bash
+!
+conf t
+  !
+  ip name-server 198.18.133.1
+  ip domain-name pnp.dcloud.cisco.com
+  !
+  interface Vlan 5                         
+    no autstate                  
+    end
+!
+
 ping 198.18.129.100 source vlan 5 repeat 2
 ping pnpserver.dcloud.cisco.com source vlan 5 repeat 2
+
+!
+conf t
+  !
+  no ip name-server 198.18.133.1
+  no ip domain-name pnp.dcloud.cisco.com
+  !
+  interface Vlan 5                         
+    autstate                  
+    end
+!
 ```
 The test results should look similar to this:
 
