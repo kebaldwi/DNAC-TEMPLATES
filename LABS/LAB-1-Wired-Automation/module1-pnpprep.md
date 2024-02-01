@@ -121,7 +121,7 @@ For the lab, we will utilize **VLAN 5** as the management VLAN. Connect to switc
 config t
 !
 vlan 5
-name "mgntvlan"
+name "mgmtvlan"
 !
 int vlan 5 
  ip address 192.168.5.1 255.255.255.0
