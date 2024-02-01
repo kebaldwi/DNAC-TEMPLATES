@@ -125,7 +125,7 @@ template BASECONFIG
 ## Use Bind to Source variable to select access interfaces 
 #macro( access_interface )
  description BASE CONFIG
- switchport access vlan 999
+ switchport access vlan 10
  switchport mode access
  spanning-tree portfast
  spanning-tree bpduguard enable
