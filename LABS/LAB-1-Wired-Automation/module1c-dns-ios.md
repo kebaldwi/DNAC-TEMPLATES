@@ -9,8 +9,8 @@ The PnP components are as follows:
 There are three automated methods to make that occur and in this section we will use DNS Discovery. To aide in that we are goiing to utilize a combination of IOS DHCP with DNS services. The Target switch, commonly called Access switch will need to do a DNS lookup in order to find Cisco Catalyst Center.
 
 **DNS lookup** 
-    - *requires the DHCP server to offer a domain suffix and a name server to resolve the **pnpserver** address*
-    - *requires the **pnpserver** entry to appear in the Subject Alternative Name of the GUI Certificate*
+  - *requires the DHCP server to offer a domain suffix and a name server to resolve the **pnpserver** address*
+  - *requires the **pnpserver** entry to appear in the Subject Alternative Name of the GUI Certificate*
 
 #### Step 3.2a - IOS DHCP and DNS Discovery Configuration
 
