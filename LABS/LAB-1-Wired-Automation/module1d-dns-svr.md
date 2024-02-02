@@ -80,50 +80,56 @@ To test the environment to ensure it's ready, we need to try a few things.
 First, from a Windows host, use the *nslookup* command to resolve **pnpserver.dcloud.cisco.com**. Connect to the Windows workstation, and within the search window, search for CMD. Open the application and type the following command:
 
 ```bash
-nslookup pnpserver.dcloud.cisco.com
+nslookup pnpserver.pnp.dcloud.cisco.com
 ```
 
 The following output or something similar shows the resolution of the alias to the A host record entry which identifies the VIP address for the Cisco Catalyst Center Cluster will display.
 
-![json](./images/DNACenterDNStests.png?raw=true "Import JSON")
+![json](./images/CC-Discovery-dns-lookup-ipv4.png?raw=true "Import JSON")
 
 Second, we need to ensure the Cisco Catalyst Center responds on the VIP, so use the ping command within the CMD application window previously opened as follows:
 
 ```bash
-ping pnpserver.dcloud.cisco.com
+ping pnpserver.pnp.dcloud.cisco.com
 ```
 
 The test results should look similar to this:
 
-![json](./images/DNACenterDNStestPing.png?raw=true "Import JSON")
+![json](./images/CC-Discovery-dns-ipv4.png?raw=true "Import JSON")
 
-Third, we can ping Cisco Catalyst Center from the Distribution Switch utilizing the following:
+Third, we can ping Cisco Catalyst Center from the Distribution Switch utilizing the following scripts:
 
 ```bash
 !
 conf t
   !
   ip name-server 198.18.133.1
-  ip domain-name pnp.dcloud.cisco.com
   !
   interface Vlan 5                         
-    no autstate                  
+    no autostate                  
     end
 !
 
-ping 198.18.129.100 source vlan 5 repeat 2
-ping pnpserver.dcloud.cisco.com source vlan 5 repeat 2
+```
 
+```bash
+ping 198.18.129.100 source vlan 5 repeat 1
+
+
+ping pnpserver.pnp.dcloud.cisco.com source vlan 5 repeat 1
+```
+
+```bash
 !
 conf t
   !
   no ip name-server 198.18.133.1
-  no ip domain-name pnp.dcloud.cisco.com
   !
   interface Vlan 5                         
-    autstate                  
+    autostate                  
     end
 !
+
 ```
 The test results should look similar to this:
 
