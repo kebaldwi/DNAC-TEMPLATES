@@ -12,30 +12,65 @@ There are three automated methods to make that occur and in this section we will
     - *requires the DHCP server to offer a domain suffix and a name server to resolve the **pnpserver** address*
     - *requires the **pnpserver** entry to appear in the Subject Alternative Name of the GUI Certificate*
 
-#### Step 3.2a - Windows DHCP and DNS Discovery Configuration
+#### Step 3.2a - Windows DHCP with DNS Discovery
 
-If we want to use the Windows DHCP service, connect to the windows **AD1** server. On the windows server, you have two options to deploy DHCP scopes the UI or PowerShell. We will deploy the scope via PowerShell. Paste the following into PowerShell to create the required DHCP scope:
+#### DHCP Overview
 
-```ps
-Add-DhcpServerv4Scope -Name "DNAC-Templates-Lab" -StartRange 192.168.5.1 -EndRange 192.168.5.254 -SubnetMask 255.255.255.0 -LeaseDuration 6.00:00:00 -SuperScope "PnP Onboarding"
-Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -Router 192.168.5.1 
-Add-Dhcpserverv4ExclusionRange -ScopeId 192.168.5.0 -StartRange 192.168.5.1 -EndRange 192.168.5.1
-```
+If we want to use the Windows DHCP service, connect to the windows **AD1** server. On the windows server, you have two options to deploy DHCP scopes the UI or PowerShell. We will deploy the scope via PowerShell. First we will create the required DHCP scope with the following options:
 
-The DHCP scope will look like this in Windows DHCP Administrative tool:
+- Router
+- Domain Suffix
+- Name Server IP
 
-![json](./images/WindowsDHCPscoperouteronly.png?raw=true "Import JSON")
-
-When using the Windows DHCP Server and the DNS Lookup discovery method, we will add the appropriate DNS server IP addresses along with the domain suffix that the switch will use to resolve the **pnpserver** record within DNS. Paste the following configuration into PowerShell:
-
-```ps
-Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -DnsServer 198.18.133.1 -DnsDomain "dcloud.cisco.com"
-```
-
-The DHCP scope will resemble the following image of the Windows DHCP Administrative tool:
+When using the Windows DHCP Server and the DNS Lookup discovery method, we will add the appropriate DNS server IP addresses along with the domain suffix that the switch will use to resolve the **pnpserver** record within DNS. 
 
 ![json](./images/WindowsDHCPscope.png?raw=true "Import JSON")
 
+This is an **example** of how you can build a **scope** below. For the **configuration** please download and use the **script** here: 
+
+```ps
+Add-DhcpServerv4Scope -Name "DNAC-Templates-Lab" -StartRange 192.168.5.1 -EndRange 192.168.5.254 -SubnetMask 255.255.255.0 -LeaseDuration 6.00:00:00 -SuperScope "PnP Onboarding"
+
+Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -Router 192.168.5.1 
+Add-Dhcpserverv4ExclusionRange -ScopeId 192.168.5.0 -StartRange 192.168.5.1 -EndRange 192.168.5.1
+
+Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -DnsServer 198.18.133.1 -DnsDomain "pnp.dcloud.cisco.com"
+
+```
+
+#### DNS Overview
+
+Next, we will add the relevant DNS entries into the Windows DNS service to allow for the Cisco Catalyst Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
+
+The DNS Zone will look like this in Windows DNS Administrative tool: 
+
+![json](./images/DNACenterDNSentries.png?raw=true "Import JSON")
+
+![json](./images/DNACenterDNSentries2.png?raw=true "Import JSON")
+
+> **Note:** To utilize DNS Entry for Discovery purposes Certificates will need to be rebuilt with Subject Alternative Names. Please utilize the process documented in the following page [**Certificate Deployment**](./Certificates.md) for information on that process.
+
+This is an **example** of how you can build a **DNS Records** below. For the configuration please download and use the script here: 
+
+```ps
+Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.100" -TimeToLive 01:00:00
+Add-DnsServerResourceRecordCName -Name "dnac" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
+
+Add-DnsServerPrimaryZone -Name "pnp.dcloud.cisco.com" -ReplicationScope "Forest" -PassThru
+
+#Pause required to allow Zone to be created prior to CNAME Entry
+Start-Sleep -Seconds 60
+
+Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "pnp.dcloud.cisco.com"
+```
+
+#### Step 3.2b - Windows DHCP and DNS Discovery Configuration
+
+To build the DHCP scope we will introduce but we will download an all inclusive powershell script to build the environment correctly
+
+
+
+#### Step 3.2c - Windows DHCP Helper Configuration
 
 Next, we will introduce the helper address statement on the management VLAN's SVI to point to the Windows DHCP server. Connect to switch **c9300-2** and paste the following configuration:
 
@@ -50,28 +85,6 @@ conf t
 wr
 !
 ```
-
-Next, we will add the relevant DNS entries into the Windows DNS service to allow for the Cisco Catalyst Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
-
-```ps
-Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.100" -TimeToLive 01:00:00
-Add-DnsServerResourceRecordCName -Name "dnac" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
-
-Add-DnsServerPrimaryZone -Name "pnp.dcloud.cisco.com" -ReplicationScope "Forest" -PassThru
-
-#Pause required to allow Zone to be created prior to CNAME Entry
-Start-Sleep -Seconds 60
-
-Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "pnp.dcloud.cisco.com"
-```
-
-The DNS Zone will look like this in Windows DNS Administrative tool: 
-
-![json](./images/DNACenterDNSentries.png?raw=true "Import JSON")
-
-![json](./images/DNACenterDNSentries2.png?raw=true "Import JSON")
-
-> **Note:** To utilize DNS Entry for Discovery purposes Certificates will need to be rebuilt with Subject Alternative Names. Please utilize the process documented in the following [**page**](./Certificates.md) for information on that process.
 
 ## Verification and Testing
 
@@ -133,7 +146,7 @@ conf t
 ```
 The test results should look similar to this:
 
-![json](./images/blank.png?raw=true "Import JSON")
+![json](./images/CC-Discovery-DNS-Test-ipv4.png?raw=true "Import JSON")
 
 At this point, the environment should be set up to onboard devices within VLAN 5 using the network address **192.168.5.0/24** utilizing **DNS discovery **
 
