@@ -12,7 +12,7 @@ There are three automated methods to make that occur and in this section we will
     - *requires the DHCP server to offer a domain suffix and a name server to resolve the **pnpserver** address*
     - *requires the **pnpserver** entry to appear in the Subject Alternative Name of the GUI Certificate*
 
-#### Step 3.2a - Windows DHCP with DNS Discovery
+### Step 3.2a - Windows DHCP with DNS Discovery
 
 #### DHCP Overview
 
@@ -64,13 +64,31 @@ Start-Sleep -Seconds 60
 Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "pnp.dcloud.cisco.com"
 ```
 
-#### Step 3.2b - Windows DHCP and DNS Discovery Configuration
+### Step 3.2b - Windows DHCP and DNS Discovery Configuration
 
-To build the DHCP scope we will introduce but we will download an all inclusive powershell script to build the environment correctly
+In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server for the lab environment. 
 
+### Step 1 - ***Configuring DHCP and DNS via Powershell***
 
+1. Download the powershell script to the ***windows server*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-2-Wireless-Automation/scripts/powershell.ps1">⬇︎powershell.ps1⬇︎</a> file.
+2. Once downloaded, extract the file.
 
-#### Step 3.2c - Windows DHCP Helper Configuration
+   ![json](./images/Powershell-Extract.png?raw=true "Import JSON")
+   ![json](./images/Powershell-Extract-Location.png?raw=true "Import JSON")
+
+3. Right click on the file and run with powershell.
+
+   ![json](./images/Powershell-Run.png?raw=true "Import JSON")
+
+4. You may see a security warning. If you do accept it by entering **Y**.
+
+   ![json](./images/Powershell-Security.png?raw=true "Import JSON")
+
+At this point all the DNS and DHCP configuration on the ***windows server*** will be generated.
+
+   ![json](./images/DNS-DHCP.png?raw=true "Import JSON")
+
+### Step 3.2c - Windows DHCP Helper Configuration
 
 Next, we will introduce the helper address statement on the management VLAN's SVI to point to the Windows DHCP server. Connect to switch **c9300-2** and paste the following configuration:
 
