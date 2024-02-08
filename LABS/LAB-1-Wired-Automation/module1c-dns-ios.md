@@ -12,13 +12,72 @@ There are three automated methods to make that occur and in this section we will
   - *requires the DHCP server to offer a domain suffix and a name server to resolve the **pnpserver** address*
   - *requires the **pnpserver** entry to appear in the Subject Alternative Name of the GUI Certificate*
 
-#### Step 3.2a - IOS DHCP and DNS Discovery Configuration
+#### Step 3.2a - IOS DHCP with DNS Discovery 
 
-Configured on an IOS device, the DHCP pool elements would be configured either on a router or switch in the network. We will configure the helper address statement on the management VLAN's SVI to point to the router or switch to the DHCP configuration. 
+### DHCP Overview
 
-When using the IOS DHCP Server and the DNS Lookup discovery method, we will add the appropriate DNS server IP addresses along with the domain suffix that the switch will use to resolve the **pnpserver** record within DNS.
+If we want to use the IOS-XE DHCP service configured on an IOS device, the DHCP pool elements would be configured either on a router or switch in the network. We will configure the DHCP scope, and add DHCP options to the switch or router providing the DHCP services. Additionally we will add the helper address statement on the management VLAN's SVI to point to the router or switch to the DHCP configuration. First we will create the required DHCP scope with the following options:
 
-Connect to switch **c9300-2** and paste the following configuration:
+- Network
+- Router
+- Name Server IP
+- Domain Suffix
+
+When using the IOS-XE DHCP Service with the DNS Lookup discovery method, we will add the appropriate DNS server IP addresses along with the domain suffix that the switch will use to resolve the **pnpserver** record within DNS. 
+
+### DNS Overview
+
+Next, we will add the relevant DNS entries into the Windows DNS service to allow for the Cisco Catalyst Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
+
+The DNS Zone will look like this in Windows DNS Administrative tool: 
+
+![json](./images/DNACenterDNSentries.png?raw=true "Import JSON")
+
+![json](./images/DNACenterDNSentries2.png?raw=true "Import JSON")
+
+> **Note:** To utilize DNS Entry for Discovery purposes Certificates will need to be rebuilt with Subject Alternative Names. Please utilize the process documented in the following page [**Certificate Deployment**](./Certificates.md) for information on that process.
+
+This is an **example** of how you can build a **DNS Records** below. For the configuration please download and use the script here: 
+
+```ps
+Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.100" -TimeToLive 01:00:00
+Add-DnsServerResourceRecordCName -Name "dnac" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
+
+Add-DnsServerPrimaryZone -Name "pnp.dcloud.cisco.com" -ReplicationScope "Forest" -PassThru
+
+#Pause required to allow Zone to be created prior to CNAME Entry
+Start-Sleep -Seconds 60
+
+Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "pnp.dcloud.cisco.com"
+```
+
+## Step 3.2b - IOS DHCP and DNS Discovery Configuration
+
+In this section we will prepare Domain Name System (DNS) on the Windows Server and Dynamic Host Configuration Protocol (DHCP) on the IOS-XE Switch within the lab environment. 
+
+## Step 1 - Configuring DNS via Powershell
+
+1. Download the powershell script to the **windows server** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/scripts/powershell.ps1">⬇︎powershell.ps1⬇︎</a> file.
+2. Once downloaded, extract the file.
+
+   ![json](./images/Powershell-Extract.png?raw=true "Import JSON")
+   ![json](./images/Powershell-Extract-Location.png?raw=true "Import JSON")
+
+3. Right click on the file and run with powershell.
+
+   ![json](./images/Powershell-Run.png?raw=true "Import JSON")
+
+4. You may see a security warning. If you do accept it by entering **Y**.
+
+   ![json](./images/Powershell-Security.png?raw=true "Import JSON")
+
+At this point all the DNS and DHCP configuration on the **windows server** will be generated.
+
+   ![json](./images/DNS-DHCP.png?raw=true "Import JSON")
+
+## Step 3.2c - IOS DHCP Service Configuration
+
+Next, we will introduce the IOS DHCP Service and helper address configurations. This is an **example** of how you can build a **scope** below. Connect to switch **c9300-2** and please copy and paste the **script** to **configure** the **c9300-2** switch:
 
 ```vtl
 !
@@ -38,30 +97,6 @@ conf t
 wr
 !
 ```
-
-For a complete configuration example please see [Configuring the Cisco IOS DHCP Server](https://www.cisco.com/en/US/docs/ios/12_4t/ip_addr/configuration/guide/htdhcpsv.html#wp1046301)
-
-Next, we will add the relevant DNS entries into the Windows DNS service to allow for the Cisco Catalyst Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
-
-```ps
-Add-DnsServerResourceRecordA -Name "dnac-vip" -ZoneName "dcloud.cisco.com" -AllowUpdateAny -IPv4Address "198.18.129.100" -TimeToLive 01:00:00
-Add-DnsServerResourceRecordCName -Name "dnac" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "dcloud.cisco.com"
-
-Add-DnsServerPrimaryZone -Name "pnp.dcloud.cisco.com" -ReplicationScope "Forest" -PassThru
-
-#Pause required to allow Zone to be created prior to CNAME Entry
-Start-Sleep -Seconds 60
-
-Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "pnp.dcloud.cisco.com"
-```
-
-The DNS Zone will look like this in Windows DNS Administrative tool: 
-
-![json](./images/DNACenterDNSentries.png?raw=true "Import JSON")
-
-![json](./images/DNACenterDNSentries2.png?raw=true "Import JSON")
-
-> **Note:** To utilize DNS Entry for Discovery purposes Certificates will need to be rebuilt with Subject Alternative Names. Please utilize the process documented in the following [**page**](./Certificates.md) for information on that process.
 
 ## Verification and Testing
 
