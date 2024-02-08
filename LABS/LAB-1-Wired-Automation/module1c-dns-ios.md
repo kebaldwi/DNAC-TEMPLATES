@@ -124,13 +124,41 @@ The test results should look similar to this:
 
 Third, we can ping Cisco Catalyst Center from the Distribution Switch utilizing the following:
 
+
 ```bash
-ping 198.18.129.100 source vlan 5 repeat 2
-ping pnpserver.dcloud.cisco.com source vlan 5 repeat 2
+!
+conf t
+  !
+  ip name-server 198.18.133.1
+  !
+  interface Vlan 5                         
+    no autostate                  
+    end
+!
+
+```
+
+```bash
+ping 198.18.129.100 source vlan 5 repeat 1
+
+ping pnpserver.pnp.dcloud.cisco.com source vlan 5 repeat 1
+```
+
+```bash
+!
+conf t
+  !
+  no ip name-server 198.18.133.1
+  !
+  interface Vlan 5                         
+    autostate                  
+    end
+!
+
 ```
 The test results should look similar to this:
 
-![json](./images/blank.png?raw=true "Import JSON")
+![json](./images/CC-Discovery-DNS-Test-ipv4.png?raw=true "Import JSON")
 
 At this point, the environment should be set up to onboard devices within VLAN 5 using the network address **192.168.5.0/24** utilizing **DNS discovery**
 
