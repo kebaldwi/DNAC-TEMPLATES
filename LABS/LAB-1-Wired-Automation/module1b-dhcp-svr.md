@@ -107,12 +107,39 @@ The test results should look similar to this:
 Second, we need to ensure the Cisco Catalyst Center responds on the VIP, lets test that from the **9300-2**:
 
 ```bash
-ping 198.18.129.100 repeat 2
-ping 198.18.129.100 source vlan 5 repeat 2
+!
+conf t
+  !
+  ip name-server 198.18.133.1
+  !
+  interface Vlan 5                         
+    no autostate                  
+    end
+!
+
+```
+
+```bash
+ping 198.18.129.100 repeat 1
+
+ping 198.18.129.100 source vlan 5 repeat 1
+```
+
+```bash
+!
+conf t
+  !
+  no ip name-server 198.18.133.1
+  !
+  interface Vlan 5                         
+    autostate                  
+    end
+!
+
 ```
 The test results should look similar to this:
 
-![json](./images/blank.png?raw=true "Import JSON")
+![json](./images/CC-Discovery-IP-Test-ipv4.png?raw=true "Import JSON")
 
 At this point, the environment should be set up to onboard devices within VLAN 5 using the network address **192.168.5.0/24** utilizing **DNS discovery**
 
