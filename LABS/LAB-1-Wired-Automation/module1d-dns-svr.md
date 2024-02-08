@@ -12,17 +12,18 @@ There are three automated methods to make that occur and in this section we will
   - *requires the DHCP server to offer a domain suffix and a name server to resolve the **pnpserver** address*
   - *requires the **pnpserver** entry to appear in the Subject Alternative Name of the GUI Certificate*
 
-### Step 3.2a - Windows DHCP with DNS Discovery
+## Step 3.2a - Windows DHCP with DNS Discovery
 
-#### DHCP Overview
+### DHCP Overview
 
 If we want to use the Windows DHCP service, connect to the windows **AD1** server. On the windows server, you have two options to deploy DHCP scopes the UI or PowerShell. We will deploy the scope via PowerShell. First we will create the required DHCP scope with the following options:
 
+- Network
 - Router
-- Domain Suffix
 - Name Server IP
+- Domain Suffix
 
-When using the Windows DHCP Server and the DNS Lookup discovery method, we will add the appropriate DNS server IP addresses along with the domain suffix that the switch will use to resolve the **pnpserver** record within DNS. 
+When using the Windows DHCP Server with the DNS Lookup discovery method, we will add the appropriate DNS server IP addresses along with the domain suffix that the switch will use to resolve the **pnpserver** record within DNS. 
 
 ![json](./images/WindowsDHCPscope.png?raw=true "Import JSON")
 
@@ -38,7 +39,7 @@ Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -DnsServer 198.18.133.1 -DnsDom
 
 ```
 
-#### DNS Overview
+### DNS Overview
 
 Next, we will add the relevant DNS entries into the Windows DNS service to allow for the Cisco Catalyst Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
 
@@ -64,11 +65,11 @@ Start-Sleep -Seconds 60
 Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "pnp.dcloud.cisco.com"
 ```
 
-### Step 3.2b - Windows DHCP and DNS Discovery Configuration
+## Step 3.2b - Windows DHCP and DNS Discovery Configuration
 
-In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server for the lab environment. 
+In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server within the lab environment. 
 
-### Step 1 - Configuring DHCP and DNS via Powershell
+## Step 1 - Configuring DHCP and DNS via Powershell
 
 1. Download the powershell script to the **windows server** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/scripts/powershell.ps1">⬇︎powershell.ps1⬇︎</a> file.
 2. Once downloaded, extract the file.
@@ -88,7 +89,7 @@ At this point all the DNS and DHCP configuration on the **windows server** will 
 
    ![json](./images/DNS-DHCP.png?raw=true "Import JSON")
 
-### Step 3.2c - Windows DHCP Helper Configuration
+## Step 3.2c - Windows DHCP Helper Configuration
 
 Next, we will introduce the helper address statement on the management VLAN's SVI to point to the Windows DHCP server. Connect to switch **c9300-2** and paste the following configuration:
 
