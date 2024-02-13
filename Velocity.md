@@ -1,5 +1,14 @@
+<html>
+  <head>
+    <meta http-equiv="refresh" content="7; url='https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/TUTORIALS/Velocity.md'" />
+  </head>
+  <body>
+
 # Velocity Scripting [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 
 > **IMPORTANT NOTIFICATION:** **This content has been moved due to a content simplification strategy. Please save the following page to your links</br></br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;[https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/TUTORIALS/Velocity.md](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/TUTORIALS/Velocity.md)</br></br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;This Notification will expire 02/29/2024.**
 
 > [**Return to Main Menu**](./README.md)
+
+  </body>
+</html>
