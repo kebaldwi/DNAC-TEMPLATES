@@ -108,6 +108,9 @@ sh run int vlan 5
 
 ping 192.168.5.1  
 
+```
+
+```bash
 ping 198.18.129.100 repeat 1
 
 ping 198.18.129.100 source vlan 5 repeat 1
