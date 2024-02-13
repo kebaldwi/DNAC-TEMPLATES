@@ -139,10 +139,10 @@
 					"raw": "{\r\n    \"type\": \"area\",\r\n    \"site\": {\r\n        \"area\": {\r\n            \"name\": \"{{HierarchyArea}}\",\r\n            \"parentName\": \"{{HierarchyParent}}\"\r\n        }\r\n    }\r\n}"
 				},
 				"url": {
-					"raw": "https://{{DNACip}}/dna/intent/api/v1/site",
+					"raw": "https://{{CATCip}}/dna/intent/api/v1/site",
 					"protocol": "https",
 					"host": [
-						"{{DNACip}}"
+						"{{CATCip}}"
 					],
 					"path": [
 						"dna",
@@ -213,10 +213,10 @@
 					"raw": "{\r\n    \"type\": \"building\",\r\n    \"site\": {\r\n        \"building\": {\r\n            \"name\": \"{{HierarchyBldg}}\",\r\n            \"address\": \"{{HierarchyBldgAddress}}\",\r\n            \"parentName\": \"{{HierarchyParent}}/{{HierarchyArea}}\"\r\n        }\r\n    }\r\n}"
 				},
 				"url": {
-					"raw": "https://{{DNACip}}/dna/intent/api/v1/site",
+					"raw": "https://{{CATCip}}/dna/intent/api/v1/site",
 					"protocol": "https",
 					"host": [
-						"{{DNACip}}"
+						"{{CATCip}}"
 					],
 					"path": [
 						"dna",
@@ -288,10 +288,10 @@
 					"raw": "{\r\n    \"type\": \"floor\",\r\n    \"site\": {\r\n        \"floor\": {\r\n            \"name\": \"{{HierarchyFloor}}\",\r\n            \"parentName\": \"{{HierarchyParent}}/{{HierarchyArea}}/{{HierarchyBldg}}\",\r\n            \"rfModel\": \"Cubes And Walled Offices\",\r\n            \"width\": \"100\",\r\n            \"length\": \"100\",\r\n            \"height\": \"10\"\r\n        }\r\n    }\r\n}"
 				},
 				"url": {
-					"raw": "https://{{DNACip}}/dna/intent/api/v1/site",
+					"raw": "https://{{CATCip}}/dna/intent/api/v1/site",
 					"protocol": "https",
 					"host": [
-						"{{DNACip}}"
+						"{{CATCip}}"
 					],
 					"path": [
 						"dna",
@@ -339,8 +339,7 @@
 				}
 			],
 			"protocolProfileBehavior": {
-				"disableBodyPruning": true,
-				"strictSSL": false
+				"disableBodyPruning": true
 			},
 			"request": {
 				"method": "GET",
@@ -366,10 +365,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://{{DNACip}}/dna/intent/api/v1/site",
+					"raw": "https://{{CATCip}}/dna/intent/api/v1/site",
 					"protocol": "https",
 					"host": [
-						"{{DNACip}}"
+						"{{CATCip}}"
 					],
 					"path": [
 						"dna",
@@ -455,10 +454,10 @@
 					"raw": "{\r\n    \"settings\": {\r\n        \"dhcpServer\": [\r\n            \"{{dhcpServer}}\"\r\n        ],\r\n        \"dnsServer\": {\r\n            \"domainName\": \"{{domainName}}\",\r\n            \"primaryIpAddress\": \"{{dnsServer1}}\"\r\n        },\r\n           \"syslogServer\": {\r\n            \"ipAddresses\": [\r\n                \"{{syslogServer}}\"\r\n            ],\r\n            \"configureDnacIP\": {{syslogBoolean}}\r\n        },\r\n        \"snmpServer\": {\r\n            \"ipAddresses\": [\r\n                \"{{snmpServer}}\"\r\n            ],\r\n            \"configureDnacIP\": {{snmpBoolean}}\r\n        },\r\n        \"netflowcollector\": {\r\n            \"ipAddress\": \"{{netflowServer}}\",\r\n            \"port\": {{netflowPort}},\r\n            \"configureDnacIP\": {{netflowBoolean}}\r\n        },\r\n        \"ntpServer\": [\r\n            \"{{ntpServer}}\"\r\n        ],\r\n        \"timezone\": \"{{timeZone}}\",\r\n        \"messageOfTheday\": {\r\n            \"bannerMessage\": \"{{bannerMessage}}\",\r\n            \"retainExistingBanner\": \"{{bannerBoolean}}\"\r\n\t\t},\r\n\t\t\"clientAndEndpoint_aaa\": {\r\n\t\t    \"servers\": \"{{aaaEndpointServer}}\",\r\n\t\t    \"ipAddress\": \"{{aaaEndpointIpAddress}}\",\r\n\t\t    \"network\": \"{{aaaEndpointIpAddress}}\",\r\n\t\t    \"protocol\": \"{{aaaEndpointProtocol}}\",\r\n            \"sharedSecret\": \"{{aaaEndpointSharedSecret}}\"\r\n\t\t}    \r\n    }\r\n}"
 				},
 				"url": {
-					"raw": "https://{{DNACip}}/dna/intent/api/v1/network/{{GlobalSiteId}}",
+					"raw": "https://{{CATCip}}/dna/intent/api/v1/network/{{GlobalSiteId}}",
 					"protocol": "https",
 					"host": [
-						"{{DNACip}}"
+						"{{CATCip}}"
 					],
 					"path": [
 						"dna",
@@ -533,10 +532,10 @@
 					"raw": "{\r\n    \"settings\": {\r\n        \"cliCredential\": [\r\n            {\r\n                \"description\": \"{{DcloudUser}}\",\r\n                \"username\": \"{{DcloudUser}}\",\r\n                \"password\": \"{{DcloudPwd}}\",\r\n                \"enablePassword\": \"{{DcloudPwd}}\"\r\n            }\r\n        ],\r\n        \"snmpV2cRead\": [\r\n            {\r\n                \"description\": \"{{DcloudSnmpRO-Desc}}\",\r\n                \"readCommunity\": \"{{DcloudSnmpRO}}\"\r\n            }\r\n        ],\r\n        \"snmpV2cWrite\": [\r\n            {\r\n                \"description\": \"{{DcloudSnmpRW-Desc}}\",\r\n                \"writeCommunity\": \"{{DcloudSnmpRW}}\"\r\n            }\r\n        ]\r\n    }\r\n}"
 				},
 				"url": {
-					"raw": "https://{{DNACip}}/dna/intent/api/v1/device-credential",
+					"raw": "https://{{CATCip}}/dna/intent/api/v1/device-credential",
 					"protocol": "https",
 					"host": [
-						"{{DNACip}}"
+						"{{CATCip}}"
 					],
 					"path": [
 						"dna",
@@ -609,10 +608,10 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://{{DNACip}}/dna/intent/api/v1/device-credential",
+					"raw": "https://{{CATCip}}/dna/intent/api/v1/device-credential",
 					"protocol": "https",
 					"host": [
-						"{{DNACip}}"
+						"{{CATCip}}"
 					],
 					"path": [
 						"dna",
@@ -682,10 +681,10 @@
 					"raw": "{\r\n    \"cliId\": \"{{GlobalCredentialCli}}\",\r\n    \"snmpV2ReadId\": \"{{GlobalCredentialSnmpRO}}\",\r\n    \"snmpV2WriteId\": \"{{GlobalCredentialSnmpRW}}\"\r\n}"
 				},
 				"url": {
-					"raw": "https://{{DNACip}}/dna/intent/api/v1/credential-to-site/{{GlobalSiteId}}",
+					"raw": "https://{{CATCip}}/dna/intent/api/v1/credential-to-site/{{GlobalSiteId}}",
 					"protocol": "https",
 					"host": [
-						"{{DNACip}}"
+						"{{CATCip}}"
 					],
 					"path": [
 						"dna",
