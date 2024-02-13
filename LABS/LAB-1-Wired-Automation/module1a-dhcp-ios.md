@@ -82,21 +82,7 @@ For a complete configuration example please see [Configuring the Cisco IOS DHCP 
 
 To test the environment to ensure it's ready, we need to try a few things.
 
-First, lets check the configuration on the **9300-2**:
-
-```bash
-sh vlan id 5
-
-sh run int vlan 5
-
-ping 192.168.5.1
-```
-
-The test results should look similar to this:
-
-![json](blank.png?raw=true "Import JSON")
-
-Second, we need to ensure the Cisco Catalyst Center responds on the VIP, lets test that from the **9300-2**:
+First, we need to ensure the Cisco Catalyst Center responds on the VIP, lets test that from the **9300-2**:
 
 ```bash
 !
@@ -111,11 +97,28 @@ conf t
 
 ```
 
+![json](./images/CC-Discovery-pretest-dhcp-ipv4.png?raw=true "Import JSON")
+
+Second, lets check the configuration on the **9300-2**:
+
 ```bash
+sh vlan id 5 | i active
+
+sh run int vlan 5
+
+ping 192.168.5.1  
+
 ping 198.18.129.100 repeat 1
 
 ping 198.18.129.100 source vlan 5 repeat 1
+
 ```
+
+The test results should look similar to this:
+
+![json](./images/CC-Discovery-test-dhcp-ipv4.png?raw=true "Import JSON")
+
+Last, we need to ensure the **9300-2** is in the normal state:
 
 ```bash
 !
@@ -129,10 +132,9 @@ conf t
 !
 
 ```
-The test results should look similar to this:
 
-![json](./images/CC-Discovery-IP-Test-ipv4.png?raw=true "Import JSON")
+![json](./images/CC-Discovery-posttest-dhcp-ipv4.png?raw=true "Import JSON")
 
-At this point, the environment should be set up to onboard devices within VLAN 5 using the network address **192.168.5.0/24** utilizing **DNS discovery**
+At this point, the environment should be set up to onboard devices within VLAN 5 using the network address **192.168.5.0/24** utilizing **DHCP discovery**
 
 > [**Return to PnP Preparation Lab**](./module1e-reset.md#step-6---reset-eem-script-or-pnp-service-reset)
