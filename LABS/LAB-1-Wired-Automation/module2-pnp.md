@@ -2,9 +2,23 @@
 
 ## Overview
 
-This module is designed to be used after first completing the PnP process and has been created to address how to use PnP Onboarding Templates within Cisco Catalyst Center to onboard network devices at Day Zero which is to say no configuration on the device whatsoever. The purpose of PnP Onboarding is to claim a device and automate the deployment of features through configuration. It is important to note that this template is transfered as a flat file and loaded into the configuration by a configure replace. This allows for the manipulation of uplinks and addressing without disconnectivity from the device. Additional source commands can be used to allow the switch to automatically inform Cisco Catalyst Center of a change in address through the PnP profile applied and the source of the HTTP client information.
+This module is designed to be used after first completing the PnP preparation and has been created to address how to use both PnP and Discovery to onboard devices into Cisco Catalyst Center. This two fold approach allows us to onboard both Greenfield and Brownfield devices. 
 
-In this section will go through the flow involved in creating a deployable template from an IOS configuration script for a Catalyst switch linking it to a Switch profile and deploy it through Cisco Catalyst Center using Plug and Play workflows.
+### Greenfield
+
+When dealing with net new devices using the PnP process to onboard devices we utilize Onboarding templates within Cisco Catalyst Center to onboard Day Zero network devices with no configuration on the device. 
+
+PnP Onboarding allows for the claim of a device and the ability to automate the deployment of configuration. It is important to note that Onboarding templates are transfered as a flat file and loaded into the configuration by a configure replace. 
+
+This allows for the manipulation of uplinks and addressing without disconnectivity during reconfiguration from the upstream neighboring device. Additional source commands can be used to allow the device to automatically inform Cisco Catalyst Center of a change in address through the PnP profile applied and the source of the HTTP client information.
+
+### Brownfield
+
+When dealing with existing infrastructure, we want to absorb the device and its configuration into Cisco Catalyst Center to allow for monitoring and a gradual shift to automated management, as the device usually is in a running state supporting the network, and the configuration pre-exists.
+
+### Overview Summary
+
+In this section will go through the flows involved with PnP and Discovery to allow for the successful onboarding of network devices into Cisco Catalyst Center in both Brownfield and Greenfield situations.
 
 ## Lab Credentials:
 
@@ -18,21 +32,27 @@ In this section will go through the flow involved in creating a deployable templ
 | Switch 1        | 198.18.128.22  | netadmin | C1sco12345 |
 | Switch 2        | 198.18.128.23  | netadmin | C1sco12345 |
 
-## General Information
+## Greenfield Environments and Plug and Play (PnP)
 
-Cisco Catalyst Center can be used for not only Plug and Play but also Day N or ongoing changes to the network via templates. Customers will start by building out a PnP Onboarding Template which typically deploys only enough information to intially bring the device. 
+Cisco Catalyst Center can be used for not only Plug and Play (PnP) but also Day N or ongoing changes to the network via templates. Customers will start by building out a PnP Onboarding Template which typically deploys only enough information to intially bring the device. 
 
-### Considerations
+### Considerations about Templates
 
-While ia PnP template could include the entire configuration for a traditional network device, it is my strong recommendation to utilize DayN Templates for the bulk of the configuration. 
+While ia PnP template could include the entire configuration for a traditional network device, it is Cisco's strong recommendation to utilize DayN Templates for the bulk of the configuration and to utilize PnP only for bringing up a stable reliable network connection for the network device.
 
-DayN templates can be used to apply ongoing changes and to allow device modifications after initial deployment and allow for the data collected in the inventory database to be used to automate without the need for a lot of input.
+The inventory database is not populated with specific information about a device prior to the completion of the claim process. This presents a challenge to onboarding as system variables, and bind variables cannot be utilized. Additionally, this means that the scripts irrespective of the language used would require a lot of manual inputs to variables, rather than pulling information known about the device post claim.
 
-Another consideration is that part of a typical configuration would include some lines of code which could or should be built out automatically from information entered within the **Network Settings** of Cisco Catalyst Center. If a Design component is used for a specific task you should not deploy the cli code in a template to configure the task on the device or vice versa. Its a decision you have to make upfront and avoids a lot of lines in the templates and allows for a more UI centric configuration which is easier to maintain. 
+Another challenge is ongoing modifications. Templates used after the initial provisioning for DayN operations are within a Project, where as Onboarding templates are in a specific location in Cisco Catalyst Centers Template Hub. Use of an Onboarding Template post PnP is not practical. One because we would want to introduce afformentioned System and Bind Variables to simplify code, and remove repetition. Secondarily because those may change over time.
+
+Remember that DayN templates are primarily used to apply ongoing changes to device configurations and allow ongoing modifications after initial deployment. They allow for the data collected in the inventory database to be used to automate without the need for a lot of input.
+
+Another consideration is that part of a typical configuration would include some lines of code which could or should be built out automatically from information entered within the **Network Settings** of Cisco Catalyst Center. 
+
+If a Design component is used for a specific task you should not deploy the cli code in a template to configure the task on the device or vice versa. Its a decision you have to make upfront and avoids a lot of lines in the templates and allows for a more UI centric configuration which is easier to maintain. 
 
 As guidance try and use Design settings for as much of the configurations as you can leaving templates light and nimble for configurations which might change ongoing. Its both easier to maintain and troubleshoot.
 
-## Cisco Catalyst Center Design Preparation
+## Cisco Catalyst Center PnP Design Preparation
 
 ### Step 1 - Prepare Postman
 
