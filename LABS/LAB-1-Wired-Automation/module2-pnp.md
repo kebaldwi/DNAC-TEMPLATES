@@ -68,31 +68,32 @@ Although you can manually set up the hierarchy we will use automation scripts bu
    <p><a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/postman/DNAC_Template_Labs.postman_environment.json">⬇︎ENVIRONMENT⬇︎</a></p>
 
 2. Extract both files to the desktop using **Winrar** to expand them
-3. Open the **postman** application from the desktop. Once the application is open select *Collections* then click the *Import* link.
+3. Open the **postman** application from the desktop. Once the application is open click the *Import* link.
 
    ![json](./images/Postman-Pre-Collection-Import.png?raw=true "Import JSON")
 
-4. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the file named `DNAC_Templates_Lab.postman_collection.json` and click open.
+4. A popup import window should appear. Ensure File is selected and click the Upload Files button. Select the downloads folder and select both files named:
+
+   - `CATC_Templates_Lab_postman_collection.json`
+   - `CATC_Templates_Lab_postman_environment.json`
+
+   Click open to import them both into Postman
 
    ![json](./images/Postman-Collection-Select.png?raw=true "Import JSON")
 
-5. Then click import and the collection should be loaded into the collections as shown.
+5. When the files are selected and ready for import a window will appear, click Import to complete the import process.
+
+   ![json](./images/Postman-Collection-Selected.png?raw=true "Import JSON")
+
+6. Then click import and the collection should be loaded into the collections as shown.
 
    ![json](./images/Postman-Post-Collection-Import.png?raw=true "Import JSON")
 
-6. Next click on *Environments* and then the *Import* link. 
-
-   ![json](./images/Postman-Pre-Environment-Import.png?raw=true "Import JSON")
-
-7. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the file named `DNAC_Templates_Lab.postman_environment.json` and click open. 
-
-   ![json](./images/Postman-Environment-Select.png?raw=true "Import JSON")
-
-8. Then click import and the environment should be loaded into the environments as shown.
+7. Then click import and the environment should be loaded into the environments as shown.
 
    ![json](./images/Postman-Post-Environment-Import.png?raw=true "Import JSON")
 
-9. Next we will choose the environment by selecting the arrow on the top right of postman and then Selecting `DNAC Templates Lab` from the drop down so that the window looks as shown here. 
+8. We will select the environment by hovering over the environment shown and selecting the three dots which appear and from that clicking **`Set Active`** as shown.
 
    ![json](./images/Postman-Environment-Selection.png?raw=true "Import JSON")
 
