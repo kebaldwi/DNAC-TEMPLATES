@@ -52,9 +52,11 @@ If a Design component is used for a specific task you should not deploy the cli 
 
 As guidance try and use Design settings for as much of the configurations as you can leaving templates light and nimble for configurations which might change ongoing. Its both easier to maintain and troubleshoot.
 
-## Cisco Catalyst Center PnP Design Preparation
+## Prepare Postman 
 
-### Step 1 - Prepare Postman
+We will use Postman to push a collection of REST API which will utlize data within environment variables to prepare the Catalyst Center for use in our lab
+
+### Step 1 - Prepare Postman Collection **(REQUIRED)** 
 
 While a more extensive set of settings can be built out for a deployment we will limit the configuration to the minimal necessary to perform this step. We will augment the Design Settings during the **DayN Provisioning Lab** to include others that may be required.
 
@@ -93,84 +95,77 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 
    ![json](./images/Postman-Post-Environment-Import.png?raw=true "Import JSON")
 
-8. We will select the environment by hovering over the environment shown and selecting the three dots which appear and from that clicking **`Set Active`** as shown.
+### Step 2 - Select Postman Environment **(REQUIRED)** 
+
+1. We will select the environment by hovering over the environment shown and selecting the three dots which appear and from that clicking **`Set Active`** as shown.
 
    ![json](./images/Postman-Environment-Selection.png?raw=true "Import JSON")
 
-10. Click the **Gear** icon to select **settings** and **deselect** `SSL certificate verification` and then close the settings window. 
+### Step 3 - Prepare Postman SSL Settings
+
+1. Click the **Gear** icon to select **settings** 
+
+    ![json](./images/Postman-Settings.png?raw=true "Import JSON")
+
+2. **Deselect** `SSL certificate verification` and then close the settings window. 
 
     ![json](./images/Postman-SSL-Deselect.png?raw=true "Import JSON")
 
-11. With these steps completed we are prepared to start the walk through of the sections below.
+## Cisco Catalyst Center Design Preparation
 
-### Step 2 - Deploy Hierarchy
+The **Hierarchy** within Cisco Catalyst Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. 
 
-1. The **Hierarchy** within Cisco Catalyst Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. This is a **(required)** step and the process below will explain in detail how to set up for our lab.
-2. Within **postman** click the collections and select the the first entry **DNAC Token API**. Click the **send** button and see that a token appears.
+**Network Settings** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings and configurations that we will push as part of this lab **(required)**
 
-   ![json](./images/Postman-Token-API.png?raw=true "Import JSON")
+   1. **DHCP Servers**
+   2. **DNS Servers**
+   3. **SYSLOG Servers**
+   4. **SNMP Servers**
+   5. **Netflow Collector Servers** 
+   6. **NTP Servers**
+   7. **Timezone**
 
-3. Wait a few seconds between each step for best results:
-   
-   1. Next select the Create Area API and click send.
+**Device Credentials** can also be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the credentials and configurations that can be pushed **(required)**:
 
-      ![json](./images/Postman-Site-Area-API.png?raw=true "Import JSON")
+   1. **CLI Credentials** 
+   2. **SNMP Read and Write Credentials**
 
-   2. Next select the Create Building API and click send.    
+The collection previously imported along with the ennvironment variables will push all the required design criteria for the Hierarchy, Settings, and Credentials. For more information regarding REST API, please checkout the other labs on REST API within the lab section.
 
-      ![json](./images/Postman-Site-Bldg-API.png?raw=true "Import JSON")
+### Step 1 - Deploy Design Hierarchy, Settings and Credentials **(REQUIRED)** 
 
-   3. Next select the Create Floor API and click send.    
+1. Within **postman** click **`Collections`** and hover over the right side of the collection **`Catalyst Center - Wired Automation Design`** click the Elipsis **`...`** to display a menu. Select **Run collection**. 
 
-      ![json](./images/Postman-Site-Floor-API.png?raw=true "Import JSON")
+   ![json](./images/Postman-Run-Collection-Begin.png?raw=true "Import JSON")
 
-4. Then open a browser and log back into Cisco Catalyst Center and browse to the Network Hierarchy as shown. The network hierarchy will be fully built out.
+2. Ensure the all the requests are selected and click the blue **`Run Catalyst Center - Wired Automation Design`** button.
 
-### Step 3 - Deploy Network Settings
+   ![json](./images/Postman-Run-Collection-Start.png?raw=true "Import JSON")
 
-1. **Network Settings** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings and configurations that we will push as part of this lab **(required)**:
+3. A summary of all the request steps run will appear and a green pass lamp beside those that were successful as shown.    
 
-   1. ***DHCP Servers***
-   2. ***DNS Servers***
-   3. ***SYSLOG Servers***
-   4. ***SNMP Servers***
-   5. ***Netflow Collector Servers*** 
-   6. ***NTP Servers***
-   7. ***Timezone***
+   ![json](./images/Postman-Run-Collection-Summary.png?raw=true "Import JSON")
 
-2. Within **postman** click the collections and select the the entry **Get Global SiteID API**. Click the **send** button and see that a text appears.
-3. Next select the Create Settings API and click send.  
+### Step 2 - Verify Design Hierarchy, Settings and Credentials **(REQUIRED)** 
 
-   ![json](./images/Postman-Settings-API.png?raw=true "Import JSON")
+1. Then open a browser and log back into Cisco Catalyst Center and navigate the hamburger menu **`Design > Network Hierarchy`** as shown. You will see the hierarchy has been built within Catalyst Center under the Global Site.
 
-4. Then open a browser and log back into Cisco Catalyst Center and browse to the Network Settings as shown. The network settings and the telemetry settings will be fully built out.
+   ![json](./images/Verify_Hierarchy.gif?raw=true "Import JSON")
 
-### Step 4 - Deploy Device Credentials
+2. Then on the side of Global click the Elipsis **`...`** to display a menu. Select **View Settings**. You will be taken to the **`Network`** page where you will see the various settings for the hierarchy. Click **`Device Credentials`** to see the credentials and **`Telemetry`** to view the telemetry settings set.
 
-1. **Device Credentials** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the credentials and configurations that can be pushed **(required)**:
+   ![json](./images/Verify_Settings.gif?raw=true "Import JSON")
 
-   1. ***CLI Credentials*** 
-   2. ***SNMP Read and Write Credentials***
+### Step 3 - Image Repository (DO NOT DO IN DCLOUD)
 
-2. Within **postman** click the collections and select the the entry **Create Credentials API**. Click the **send** button and see that a text appears. 
+If using DCLOUD lab images should not be modified. In that case please ignore this task.
 
-   ![json](./images/Postman-Settings-Creds-API.png?raw=true "Import JSON")
+<details closed>
+<summary> Image Repository Steps for NON DCLOUD ONLY </summary></br>
 
-4. Then open a browser and log back into Cisco Catalyst Center and browse to the Device Credentials as shown. The Device Credentials will be deslected at this point.
-5. Perform the following:
+The image used in this lab for the **9300** is downloadable from here [⬇︎Cupertino-17.9.4a MD⬇︎](https://software.cisco.com/download/home/286315874/type/282046477/release/Cupertino-17.9.4a) 
 
-   1. select the Global within the hierarchy
-   2. select the dot beside the netadmin cli credential
-   3. select the dot beside the RO snmp read credential
-   4. choose the snmp rw tab
-   5. select the dot beside the RW snmp write credential
-   6. click save
-
-6. Ensure that the Credentials are set for the Global level and that the are inherited all the way to Floor 1. If not select the Credentials and save them as necessary.
-
-### Step 4 - Image Repository
-
-The image used in this lab for the 9300 is downloadable from here [⬇︎Amsterdam-17.06.01 MD⬇︎](https://software.cisco.com/download/home/286315874/type/282046477/release/Bengaluru-17.6.5) **(required)** 
+> **Note :** The process outlined in the pictures uses an older image but the steps remain the same. You should use an image that is marked as MD or **Assurwave** for best results.
 
 1. Within Cisco Catalyst Center Navigate to *Design>Image Repository*  
 
@@ -208,35 +203,13 @@ The image used in this lab for the 9300 is downloadable from here [⬇︎Amsterd
 6. Select the image and mark it as golden for PnP to use it.   
    ![json](./images/DNAC-GoldenImageRepo.png?raw=true "Import JSON")
 
+</details>
+
 ## Cisco Catalyst Center Onboarding Template 
 
 You can create onboarding templates within the **Template Hub** previously known as **Template Editor** within **Cisco Catalyst Center**. Go to the **Template Hub**  to complete the next task.
 
-### Step 1 - Create an Onboarding Template
-
-Download and import an Onboarding Template in the **Template Hub**  using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum_Onboarding_Template_2125.json">⬇︎Onboarding_Template.json⬇︎</a> file. If using Cisco Catalyst Center prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum-Onboarding.txt">⬇︎Onboarding.txt⬇︎</a> located within this lab. 
-
-For Jinja2 download and import an Onboarding Template in the **Template Hub**  using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Jinja2/Platinum_Onboarding_Template_Jinja2.json">⬇︎Onboarding_Template_Jinja2.json⬇︎</a>
-
-1. Navigate to the **Template Hub**  within Cisco Catalyst Center through the menu *Tools>Template Hub* 
-
-   ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
-
-2. Hover over the right side of the **onboarding templates**, and a small ⚙ gear icon will appear. Select **Import Template(s)** from the menu.    
-
-   ![json](./images/DNAC-TemplateImport.png?raw=true "Import JSON")
-
-3. Click the link to select files from the local computer    
-
-   ![json](./images/DNAC-TemplateSelection.png?raw=true "Import JSON")
-
-4. In the Windows explorer window search for the extracted json file, select it and open it into the import window    
-
-   ![json](./images/DNAC-TemplatedSelected.png?raw=true "Import JSON")
-
-5. Click import to install and import the template.
-
-The Onboarding template has the minimal configuration to bring up device connectivity with Cisco Catalyst Center. Below is for explanation purposes only. (Please Import the Template JSON above)
+The Onboarding template has the minimal configuration and is designed to bring up device connectivity with Cisco Catalyst Center. Below is a Velocity example for explanation purposes only. 
 
 ```vtl
 ##<------Onboarding-Template------->
@@ -294,11 +267,37 @@ interface Vlan 1
 !
 ```
 
-It will set up static addressing and hostname entries along with updating management source interfaces for management connectivity. This file is transfered to the target device in a single file as opposed to linne by line configuration which accomodates the changes in network connectivity which may be lost when iterating line by line.
+The onboarding template is designed to set up static addressing and a hostname entry along with updating the management source interfaces for management connectivity. This file is transfered to the target device in a single file as opposed to linne by line configuration which accomodates the changes in network connectivity which may be lost when iterating line by line.
 
-### Step 2 - Create a Network Profile
+Please note the modifications to the source addressing for all protocols and specifically the **HTTP Client** source interface. This helps Cisco Catalyst Center to know if or when the IP address changes for a device and update it in the inventory automatically.
 
-Next we need to assign the Onboarding Template to a site using the Network Profile. **(required)**
+### Step 1 - Install an Onboarding Template **(REQUIRED)**
+
+For Velocity download and import an Onboarding Template in the **Template Hub** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum_Onboarding_Template_2125.json">⬇︎Onboarding_Template.json⬇︎</a> file. 
+
+For Jinja2 download and import an Onboarding Template in the **Template Hub** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Jinja2/Platinum_Onboarding_Template_Jinja2.json">⬇︎Onboarding_Template_Jinja2.json⬇︎</a>
+
+1. Navigate to the **Template Hub** formerly known as the **Template Editor** within Cisco Catalyst Center through the menu **`Tools > Template Hub`**.
+
+   ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
+
+2. Hover over the right side of the **onboarding templates**, and a small ⚙ gear icon will appear. Select **Import Template(s)** from the menu.    
+
+   ![json](./images/DNAC-TemplateImport.png?raw=true "Import JSON")
+
+3. Click the link to select files from the local computer    
+
+   ![json](./images/DNAC-TemplateSelection.png?raw=true "Import JSON")
+
+4. In the Windows explorer window search for the extracted json file, select it and open it into the import window    
+
+   ![json](./images/DNAC-TemplatedSelected.png?raw=true "Import JSON")
+
+5. Click import to install and import the template.
+
+### Step 2 - Create a Network Profile **(REQUIRED)**
+
+Next we need to assign the Onboarding Template to a site using the Network Profile. 
 
    1. Navigate to Network Profiles by selecting *Design> Network Profiles* 
 
@@ -332,7 +331,7 @@ Next we need to assign the Onboarding Template to a site using the Network Profi
 
 At this point Cisco Catalyst Center is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find Cisco Catalyst Center and land in the plug n play set of the devices section within the provisioning page.
 
-### Step 1 - Claiming the Device
+### Step 1 - Claiming the Device **(REQUIRED)**
 
 At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
 
@@ -374,7 +373,7 @@ At this point you can claim the device putting it in a planned state for onboard
 
        ![json](./images/DNAC-Inventory.png?raw=true "Import JSON")
 
-### Step 2 - Post PnP Onboarding - *(OPTIONAL)*
+### Step 2 - Post PnP Onboarding - **(OPTIONAL)**
 
 To complete this exercise, the port where the Target switch connects is a layer two trunk as part of a Port Channel needs to have a final tweak. To ensure ongoing connectivity we need to modify the upstream connection to put it in bundled mode. 
 
