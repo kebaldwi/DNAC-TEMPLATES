@@ -209,7 +209,9 @@ The image used in this lab for the **9300** is downloadable from here [⬇︎Cup
 
 You can create onboarding templates within the **Template Hub** previously known as **Template Editor** within **Cisco Catalyst Center**. Go to the **Template Hub**  to complete the next task.
 
-The Onboarding template has the minimal configuration and is designed to bring up device connectivity with Cisco Catalyst Center. Below is a Velocity example for explanation purposes only. 
+The Onboarding template has the minimal configuration and is designed to bring up device connectivity with Cisco Catalyst Center. Below are Velocity and Jinja2 examples for explanation purposes only. 
+
+### Example Velocity Template
 
 ```vtl
 ##<------Onboarding-Template------->
@@ -266,6 +268,82 @@ interface Vlan 1
  shutdown
 !
 ```
+
+#### Example Jinja2 Template
+
+```J2
+{# <------Onboarding-Template-------> #}
+{# To be used for onboarding when using Day N Templates #}
+{# Define Variables provision with vlan and port channel #}
+!
+{# Set MTU if required #}
+{% if SystemMTU != 1500 %}
+    system mtu {{ SystemMTU }}
+{% endif %}
+!
+{# Set hostname #}
+hostname {{ Hostname }}
+!
+{% set VtpDomain = Hostname %}
+!
+{# Set VTP and VLAN for onboarding #}
+vtp domain {{ VtpDomain }}
+vtp mode transparent
+!
+{# Set Management VLAN #}
+vlan {{ MgmtVlan }}
+!
+{% if MgmtVlan > 1 %}
+  name MgmtVlan
+  {# Disable Vlan 1 (optional) #}
+  interface Vlan 1
+   shutdown
+{% endif %}
+!
+{# Set Interfaces and Build Port Channel #}
+!{{ Portchannel }}
+interface range {{ Interfaces }}
+ shut
+ switchport mode trunk
+ switchport trunk allowed vlan {{ MgmtVlan }}
+ {% if "," in Interfaces %}
+    channel-protocol lacp
+    channel-group {{ Portchannel }} mode active
+ {% endif %}
+ no shut
+!
+{% if "," in Interfaces %}
+  interface Port-channel {{ Portchannel }}
+   switchport trunk native vlan {{ MgmtVlan }}
+   switchport trunk allowed vlan {{ MgmtVlan }}
+   switchport mode trunk
+   no port-channel standalone-disable
+{% endif %}
+!
+{# Set Up Managment Vlan {{ MgmtVlan }} #}
+interface Vlan {{ MgmtVlan }}
+ description MgmtVlan
+ ip address {{ SwitchIP }} {{ SubnetMask }}
+ no ip redirects
+ no ip proxy-arp
+ no shut
+!
+ip default-gateway {{ Gateway }}
+!
+{# Set Source of Management Traffic #}
+ip domain lookup source-interface Vlan {{ MgmtVlan }}
+ip http client source-interface Vlan {{ MgmtVlan }}
+ip ftp source-interface Vlan {{ MgmtVlan }}
+ip tftp source-interface Vlan {{ MgmtVlan }}
+ip ssh source-interface Vlan {{ MgmtVlan }}
+ip radius source-interface Vlan {{ MgmtVlan }}
+logging source-interface Vlan {{ MgmtVlan }}
+snmp-server trap-source Vlan {{ MgmtVlan }}
+ntp source Vlan {{ MgmtVlan }}
+!
+```
+
+Both of these Templates have the settings necessary to bring up a Layer2 access switch with enough configration to be supported by Cisco Catalyst Center for the rest of the provisioning process. As guidance it is recommended that you use **Jinja2** moving forward, due to its modularity and capabilities. You can however achieve the same results with **Velocity**, but the scripting language is not as feature rich.
 
 The onboarding template is designed to set up static addressing and a hostname entry along with updating the management source interfaces for management connectivity. This file is transfered to the target device in a single file as opposed to linne by line configuration which accomodates the changes in network connectivity which may be lost when iterating line by line.
 
