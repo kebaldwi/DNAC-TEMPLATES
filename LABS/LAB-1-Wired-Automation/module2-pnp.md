@@ -160,7 +160,7 @@ The collection previously imported along with the ennvironment variables will pu
 
 If using DCLOUD lab images should not be modified. In that case please ignore this task.
 
-<details closed>
+<details open>
 <summary> Image Repository Steps for NON DCLOUD ONLY </summary></br>
 
 The image used in this lab for the **9300** is downloadable from here [⬇︎Cupertino-17.9.4a MD⬇︎](https://software.cisco.com/download/home/286315874/type/282046477/release/Cupertino-17.9.4a) 
@@ -375,7 +375,7 @@ We will now **download** and **import** one of the following PnP Onboarding Temp
 
 #### jinja2:
 
-<a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Jinja2/Titanium_PnP_Jinja2_template.json">⬇︎Titanium_PnP_Jinja2_template.json⬇︎</a>
+<a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_PnP_Jinja2_template.json">⬇︎Titanium_PnP_Jinja2_template.json⬇︎</a>
 
 > **Note:** For older versions of Catalyst Center formerly known as Cisco DNA Center 2.2 and lower use the following for easy import: 
 > &emsp;&emsp;&emsp; <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum_Onboarding_Template_2125.json">⬇︎Legacy_PnP_Template_2125.json⬇︎</a> 
