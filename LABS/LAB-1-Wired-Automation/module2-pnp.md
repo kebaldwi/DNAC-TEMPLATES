@@ -160,7 +160,7 @@ The collection previously imported along with the ennvironment variables will pu
 
 If using DCLOUD lab images should not be modified. In that case please ignore this task.
 
-<details closed>
+<details open>
 <summary> Image Repository Steps for NON DCLOUD ONLY </summary></br>
 
 The image used in this lab for the **9300** is downloadable from here [⬇︎Cupertino-17.9.4a MD⬇︎](https://software.cisco.com/download/home/286315874/type/282046477/release/Cupertino-17.9.4a) 
@@ -214,37 +214,57 @@ The Onboarding template has the minimal configuration and is designed to bring u
 ### Example Velocity Template
 
 ```vtl
-##<------Onboarding-Template------->
-##To be used for onboarding when using Day N Templates
-##Define Variables provision with vlan and port channel
+## <------Onboarding-Template------->
+## To be used for onboarding when using Day N Templates
+## Define Variables provision with vlan and port channel
 !
 ##MTU Adjust (if required)
-##system mtu 9100
+#if(${SystemMTU} != 1500)
+    system mtu ${SystemMTU}
+#end
 !
 ##Set hostname
 hostname ${Hostname}
+!
+#set(${VtpDomain} = ${Hostname})
 !
 ##Set VTP and VLAN for onboarding
 vtp domain ${VtpDomain}
 vtp mode transparent
 !
+##Set Management VLAN
 vlan ${MgmtVlan}
 !
+#if(${MgmtVlan} > 1)
+  name MgmtVlan
+  ## Disable Vlan 1 (optional)
+  interface Vlan 1
+   shutdown
+#end
+
 ##Set Interfaces and Build Port Channel 
-interface range gi 1/0/10-11
- shut 
- switchport trunk allowed vlan add ${MgmtVlan}
- channel-protocol lacp
- channel-group 1 mode passive
+interface range ${Interfaces}
+ shut
+ switchport mode trunk
+ switchport trunk allowed vlan ${MgmtVlan}
+ #set($pc = $Interfaces.split(','))
+ #if($pc.size() > 1)
+   channel-protocol lacp
+   channel-group ${PortChannel} mode active
+ #end
  no shut
 !
-interface Port-channel1
- switchport trunk native vlan ${MgmtVlan}
- switchport mode trunk
- no port-channel standalone-disable
+#if($pc.size() > 1)
+  interface port-channel ${PortChannel}
+   switchport trunk native vlan ${MgmtVlan}
+   switchport trunk allowed vlan add ${MgmtVlan}
+   switchport mode trunk
+   no port-channel standalone-disable
+#end
 !
-##Set Up Managment Vlan ${MgmtVlan}
+##Set up managment vlan ${MgmtVlan}
 interface Vlan ${MgmtVlan}
+ description MgmtVlan
  ip address ${SwitchIP} ${SubnetMask}
  no ip redirects
  no ip proxy-arp
@@ -262,10 +282,6 @@ ip radius source-interface Vlan ${MgmtVlan}
 logging source-interface Vlan ${MgmtVlan}
 snmp-server trap-source Vlan ${MgmtVlan}
 ntp source Vlan ${MgmtVlan}
-!
-##Disable Vlan 1
-interface Vlan 1
- shutdown
 !
 ```
 
@@ -351,9 +367,18 @@ Please note the modifications to the source addressing for all protocols and spe
 
 ### Step 1 - Install an Onboarding Template **(REQUIRED)**
 
-For Velocity download and import an Onboarding Template in the **Template Hub** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum_Onboarding_Template_2125.json">⬇︎Onboarding_Template.json⬇︎</a> file. 
+We will now **download** and **import** one of the following PnP Onboarding Templates and install into the **Template Hub** previously known as the **Template Editor**. Please choose and download one from the following:
 
-For Jinja2 download and import an Onboarding Template in the **Template Hub** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Jinja2/Platinum_Onboarding_Template_Jinja2.json">⬇︎Onboarding_Template_Jinja2.json⬇︎</a>
+#### Velocity:
+
+<a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_PnP_Velocity_template.json">⬇︎Titanium_PnP_Velocity_template.json⬇︎</a> 
+
+#### jinja2:
+
+<a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Jinja2/Titanium_PnP_Jinja2_template.json">⬇︎Titanium_PnP_Jinja2_template.json⬇︎</a>
+
+> **Note:** For older versions of Catalyst Center formerly known as Cisco DNA Center 2.2 and lower use the following for easy import: 
+> &emsp;&emsp;&emsp; <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum_Onboarding_Template_2125.json">⬇︎Legacy_PnP_Template_2125.json⬇︎</a> 
 
 1. Navigate to the **Template Hub** formerly known as the **Template Editor** within Cisco Catalyst Center through the menu **`Tools > Template Hub`**.
 
