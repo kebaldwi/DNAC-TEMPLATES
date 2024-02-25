@@ -373,6 +373,8 @@ We will now **download** and **import** one of the following PnP Onboarding Temp
 
 <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_PnP_Velocity_template.json">⬇︎Titanium_PnP_Velocity_template.json⬇︎</a> 
 
+<a href="https://raw.githubusercontent.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_PnP_Velocity_template.json">⬇︎Titanium_PnP_Velocity_template.json⬇︎</a> - test
+
 #### jinja2:
 
 <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_PnP_Jinja2_template.json">⬇︎Titanium_PnP_Jinja2_template.json⬇︎</a>
