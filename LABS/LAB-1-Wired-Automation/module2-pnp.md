@@ -451,15 +451,23 @@ At this point you can claim the device putting it in a planned state for onboard
 
       ![json](./images/DNAC-BeginClaim.png?raw=true "Import JSON")
 
-   4. Section 1 select the part of the hierarchy *floor1* to which the device will be deployed then click **next**    
+   4. Section 1 click the **Assign** link to select the part of the hierarchy to assign the device
+
+      ![json](./images/DNAC-AssignSite-Start.png?raw=true "Import JSON")
+
+   5. Click the part of the hierarchy to assign the device to and then click **Assign**
+   
+      ![json](./images/DNAC-AssignSite-Save.png?raw=true "Import JSON")
+
+   6. The assigned site will appear on the section page, click **next** to continue
 
       ![json](./images/DNAC-SiteClaim.png?raw=true "Import JSON")
 
-   5. Section 2 you can click the hyperlinks to the right of the workflow page and view or amend the templates and images utilized then click **next**   
+   7. Section 2 you can click the hyperlinks to the right of the workflow page and view or amend the templates and images utilized. We will make no changes so click **next** to continue   
 
       ![json](./images/DNAC-AssignConfig-Claim.png?raw=true "Import JSON")
 
-   6. Section 3 select the device **serial number** on the left and fill in the variables within the template click **next**. Please use the following:
+   8. Section 3 select the device **serial number** on the left and fill in the variables within the template click **next**. Please use the following:
    
       * Hostname type `c9300-1`
       * Management Vlan enter `5`
@@ -473,11 +481,13 @@ At this point you can claim the device putting it in a planned state for onboard
 
         ![json](./images/DNAC-TemplateClaim.png?raw=true "Import JSON")
 
-   7. Section 4 review the elements including configuration to be deployed 
-   8. Click **claim** to initiate
-   9. At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete.       
+   9. Section 4 review the elements including configuration to be deployed. Click **claim** to initiate
 
-      ![json](./images/DNAC-Claimed.png?raw=true "Import JSON")
+      ![json](./images/DNAC-Claim.png?raw=true "Import JSON")
+
+   10. At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete     
+
+       ![json](./images/DNAC-Claimed.png?raw=true "Import JSON")
 
    11. After the device is completed it will appear in the device inventory after being sync'd with Cisco Catalyst Center.      
 
@@ -485,7 +495,7 @@ At this point you can claim the device putting it in a planned state for onboard
 
 ### Step 2 - Post PnP Onboarding - **(OPTIONAL)**
 
-To complete this exercise, the port where the Target switch connects is a layer two trunk as part of a Port Channel needs to have a final tweak. To ensure ongoing connectivity we need to modify the upstream connection to put it in bundled mode. 
+To complete this exercise, the port where the Target switch connects is a layer two trunk as part of a Port Channel needs to have a final tweak. To ensure ongoing connectivity we need to modify the upstream connection to put it in bundled mode. *Only required on some older versions of code.*
 
 ```vtl
 !
