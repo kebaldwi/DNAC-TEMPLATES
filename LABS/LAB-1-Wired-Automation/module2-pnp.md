@@ -413,13 +413,16 @@ Next we need to assign the Onboarding Template to a site using the Network Profi
 
    3. Enter the following: 
 
-      1. Enter the *Profile name* 
-      2. Select the **Onboarding Template** tab and click **Add** to add a template
-      3. Select the device type by typing *9300* in the search window and select it.    
+      1. Enter the **Profile name** 
+      2. Select the **Onboarding Template** tab and click **Add Template** to add a template
 
-         ![json](./images/DNAC-ProfileSet9300.png?raw=true "Import JSON")   
+         ![json](./images/DNAC-Onboard-Add.png?raw=true "Import JSON")
 
-   4. On the Onboarding Template page select the template(s) to be used for onboarding then save the profile
+      3. Select the correct PnP Onboarding template that you imported earlier and click **Add**   
+
+         ![json](./images/DNAC-ChoosePnPTemplate.png?raw=true "Import JSON") 
+
+   4. On the Onboarding Template page confirm the template(s) to be used for onboarding then **Save** the profile
 
       ![json](./images/DNAC-ProfileComplete.png?raw=true "Import JSON")
 
@@ -427,7 +430,7 @@ Next we need to assign the Onboarding Template to a site using the Network Profi
 
       ![json](./images/DNAC-ProfileAssign.png?raw=true "Import JSON")
 
-   6. Select the sites to apply the profile within the hierarchy and click save
+   6. Select the sites to apply the profile within the hierarchy and click **Save**.
 
       ![json](./images/DNAC-ProfileAssigned.png?raw=true "Import JSON")
 
@@ -458,12 +461,15 @@ At this point you can claim the device putting it in a planned state for onboard
 
    6. Section 3 select the device **serial number** on the left and fill in the variables within the template click **next**. Please use the following:
    
-      * Hostname type `ACCESS-9300-ASW`
+      * Hostname type `c9300-1`
       * Management Vlan enter `5`
-      * IP Address `192.168.5.10`
+      * Interfaces `Gi 1/0/10, Gi1/0/11`
+      * IP Address `192.168.5.3`
       * Subnet Mask `255.255.255.0`
       * Gateway `192.168.5.1`
-      * VTP Domain `Cisco`   
+      * VTP Domain `Cisco` ***(if required)***
+
+      > **Note:** Leave the rest of the settings default 
 
         ![json](./images/DNAC-TemplateClaim.png?raw=true "Import JSON")
 
