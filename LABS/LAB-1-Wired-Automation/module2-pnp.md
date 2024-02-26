@@ -16,6 +16,8 @@ This allows for the manipulation of uplinks and addressing without disconnectivi
 
 When dealing with existing infrastructure, we want to absorb the device and its configuration into Cisco Catalyst Center to allow for monitoring and a gradual shift to automated management, as the device usually is in a running state supporting the network, and the configuration pre-exists.
 
+Be aware that with Brownfield device configurations, there is no template learning capability for switching. As such configuration on the device may need modification prior to provisioning in some situations. If this is required you may want to Discover and then push a normalization template via REST API to remove settings that would cause ongoing provisioning errors.
+
 ### Overview Summary
 
 In this section will go through the flows involved with PnP and Discovery to allow for the successful onboarding of network devices into Cisco Catalyst Center in both Brownfield and Greenfield situations.
@@ -442,7 +444,7 @@ At this point Cisco Catalyst Center is set up and ready for Plug and Play to onb
 
 At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
 
-   1. Within Cisco Catalyst Center Navigate to *Provision>Plug and Play*      
+   1. Within Cisco Catalyst Center Navigate to **`Provision > Plug and Play`**      
 
       ![json](./images/DNAC-NavigatePnP.png?raw=true "Import JSON")
 
@@ -524,11 +526,51 @@ While it is possible to click through the claiming and process, for bulk deploym
 
 ## Cisco Catalyst Center Device Discovery 
 
-We will now discover the other devices on the network and import them into the Inventory for additional configurations to be applied. 
+We will now discover the other devices on the network and import them into the Inventory for additional configurations to be applied. We do this with Brownfield equipment to initially put this into Catalyst Center, so that we can begin to automate it over time.
 
 ### Step 1 - Create an Discovery Task
 
+To create a Discovery task complete the following actions:
+
+1. Navigate to the Discovery Tool **`Tools > Discovery`**
+
+   ![json](./images/DNAC-Tools-Discovery.png?raw=true "Import JSON")
+
+2. On the Discovery Portal click **Add Discovery**
+
+   ![json](./images/DNAC-DiscoveryPortal.png?raw=true "Import JSON")
+
+3. On the **New Discovery** page complete the following:
+
+   1. Enter the **Discovery Name** (use hierarchy)
+   2. Select **IP Address/Range** and enter the following ranges:
+      * `192.168.5.1 - 192.168.5.1`
+      * `198.18.133.145 - 198.18.133.145`
+
+      ![json](./images/DNAC-Discovery-1.png?raw=true "Import JSON")
+
+   3. Scroll down, the **Credentials** should already be selected from the **Settings**
+   4. Click **Discover** to begin the discovery.
+
+      ![json](./images/DNAC-Discovery-2.png?raw=true "Import JSON")
+
+4. Click **Start** to initiate the discovery task.
+
+   ![json](./images/DNAC-Discovery-3.png?raw=true "Import JSON")
+
 ### Step 2 - Verify the Discovery Completed
+
+1. Select the Discovery within the Discovery Portal to view the results
+
+   ![json](./images/DNAC-Discovery-Verify.png?raw=true "Import JSON")
+
+2. Navigate to the Inventory to see the discovered devices **`Provision > Inventory`**
+
+   ![json](./images/DNAC-NavigateInventory2.png?raw=true "Import JSON")
+
+3. Notice the additional Brownfield devices learned through the discovery process
+
+   ![json](./images/DNAC-Discovery-Done.png?raw=true "Import JSON")
 
 ## Summary
 
