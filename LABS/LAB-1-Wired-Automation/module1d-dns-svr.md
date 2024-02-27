@@ -69,7 +69,7 @@ Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dclo
 
 In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server within the lab environment. 
 
-## Step 1 - Configuring DHCP and DNS via Powershell
+### Step 1 - Configuring DHCP and DNS via Powershell
 
 1. Download the powershell script to the **windows server** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/scripts/powershell-DNS.ps1">**⬇︎powershell-DNS.ps1⬇︎**</a> file.
 

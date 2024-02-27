@@ -8,7 +8,14 @@ The PnP components are as follows:
 
 There are three automated methods to make that occur and in this section we will use DHCP Discovery. To aide in that we are goiing to utilize IOS DHCP services. The Target switch, commonly called Access switch will need to be offered option 43 with a string in order to find Cisco Catalyst Center.
 
+**DHCP Option 43** 
+  - *requires the DHCP server to offer a Vendor Spcecific Information (VSI) known as ***Option 43*** which serves the **pnp servers IP** address*
+
 That string is offered as a scope option typically referred to as **Option 43** where the string **`5A1D;B2;K4;I198.18.129.100;J80`** can be explained as follows:
+
+## Overview of Option 43 VSI String
+
+The format of the Option 43 as a ascii text string is broken down as follows:
 
 ```shell
 Option 43 format 
@@ -48,7 +55,7 @@ Jxxxx             Port number to use to connect to the Cisco Catalyst Center con
                   and port 443 for HTTPS.
 ```
 
-### Step 3.2a - IOS DHCP and Option 43 Discovery Configuration
+## Step 3.2a - IOS DHCP and Option 43 Discovery Configuration
 
 We will configure **DHCP Services** to run on the **Catalyst 9300-2** within the Lab. The DHCP pool elements could be configured either on a router or switch in the network. 
 
@@ -82,7 +89,7 @@ For a complete configuration example please see [Configuring the Cisco IOS DHCP 
 
 In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server within the lab environment. These services are required for the other VLANs for host onboarding.
 
-## Step 1 - Configuring DHCP and General DNS Services via Powershell
+### Step 1 - Configuring DHCP and General DNS Services via Powershell
 
 1. Download the powershell script to the **windows server** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/scripts/powershell-DHCP.ps1">**⬇︎powershell-DHCP.ps1⬇︎**</a> file.
 
