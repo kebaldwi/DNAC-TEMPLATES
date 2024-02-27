@@ -6,9 +6,16 @@ The PnP components are as follows:
 
 ![json](../../ASSETS/pnp-workflows.png?raw=true "Import JSON")
 
-There are three automated methods to make that occur and in this section we will use DHCP Discovery. To aide in that we are goiing to utilize Windows DHCP services. The Target switch, commonly called Access switch will need to be offered option 43 with a string in order to find Cisco Catalyst Center.
+There are three automated methods to make that occur and in this section we will use DHCP Discovery. To aide in that we are goiing to utilize IOS DHCP services. The Target switch, commonly called Access switch will need to be offered option 43 with a string in order to find Cisco Catalyst Center.
+
+**DHCP Option 43** 
+  - *requires the DHCP server to offer a Vendor Spcecific Information (VSI) known as ***Option 43*** which serves the **pnp servers IP** address*
 
 That string is offered as a scope option typically referred to as **Option 43** where the string **`5A1D;B2;K4;I198.18.129.100;J80`** can be explained as follows:
+
+## Overview of Option 43 VSI String
+
+The format of the Option 43 as a ascii text string is broken down as follows:
 
 ```shell
 Option 43 format 
