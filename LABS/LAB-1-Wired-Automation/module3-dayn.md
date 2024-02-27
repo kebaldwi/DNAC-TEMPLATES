@@ -71,13 +71,11 @@ This section will go through the build and provisioning of a **Regular** templat
 
 ### Preparation
 
-We will download and import a template project to include templates for deployment.
+We will download and import a template project to include templates for deployment of the Wired Lab environment. Contained in the download will be **Regular** and **Composite** template examples which we will use against both the **Greenfield** and **Brownfield** devices.
 
+#### Step 1 - Import the Day N Templates
 
-
-#### Step 1 - Create a Regular Day N Template
-
-Download and import a simple Day N Template in the **Template Hub**  using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/2125templates/Platinum_AAA_Template.json">⬇︎Platinum_AAA_Template.json⬇︎</a> file. If using Cisco Catalyst Center prior release to 2.1.2.X then build the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum_AAA_Template.txt">⬇︎Platinum_AAA_Template.txt⬇︎</a> located within this lab. 
+Download and import a set of Day N Templates in the **Template Hub** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_WiredAutoLab_Jinja2_project.json">⬇︎Titanium_WiredAutoLab_Jinja2_project.json⬇︎</a> file. 
 
 1. Navigate to the **Template Hub**  within Cisco Catalyst Center through the menu *Tools>Template Hub*.
 
