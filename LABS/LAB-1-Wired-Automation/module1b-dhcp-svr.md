@@ -50,7 +50,7 @@ Jxxxx             Port number to use to connect to the Cisco Catalyst Center con
 
 #### Step 3.2a - Windows DHCP and Option 43 Discovery Configuration
 
-If we want to use the Windows DHCP service, connect to the windows **AD1** server. On the windows server, you have two options to deploy DHCP scopes the UI or PowerShell. We will deploy the scope via PowerShell. Paste the following into PowerShell to create the required DHCP scope:
+If we want to use the Windows DHCP service, connect to the windows **AD1** server. On the windows server, you have two options to deploy DHCP scopes the UI or PowerShell. We will deploy the scope via PowerShell. In general this is the script for the required subnet DHCP to create the DHCP scope.
 
 ```ps
 Add-DhcpServerv4Scope -Name "DNAC-Templates-Lab" -StartRange 192.168.5.1 -EndRange 192.168.5.254 -SubnetMask 255.255.255.0 -LeaseDuration 6.00:00:00 -SuperScope "PnP Onboarding"
@@ -62,7 +62,7 @@ The DHCP scope will look like this in Windows DHCP Administrative tool:
 
 ![json](./images/WindowsDHCPscoperouteronly.png?raw=true "Import JSON")
 
-To deploy Option 43 on the Windows DHCP Server Scope, paste the following configuration into PowerShell:
+To deploy Option 43 on the Windows DHCP Server Scope, this additional line is required.
 
 ```ps
 Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -OptionId 43 -Value ([System.Text.Encoding]::ASCII.GetBytes("5A1N;B2;K4;I198.18.129.100;J80"))
@@ -72,7 +72,34 @@ The DHCP scope modification will resemble the following image of the Windows DHC
 
 ![json](./images/DNACDHCPoption43.png?raw=true "Import JSON")
 
-Configure the **helper-address** statement on the management VLAN's SVI to point to the Windows DHCP server. Connect to switch **c9300-2** and paste the following configuration:
+## Step 3.2b - Windows DHCP and DNS Services Configuration
+
+In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server within the lab environment. hese services are required for the other VLANs for host onboarding.
+
+## Step 1 - Configuring DHCP and General DNS Services via Powershell
+
+1. Download the powershell script to the **windows server** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/scripts/powershell-DHCP.ps1">**⬇︎powershell-DHCP.ps1⬇︎**</a> file.
+
+2. Once downloaded, extract the file.
+
+   ![json](./images/Powershell-Extract.png?raw=true "Import JSON")
+   ![json](./images/Powershell-Extract-Location.png?raw=true "Import JSON")
+
+3. Right click on the file and run with powershell.
+
+   ![json](./images/Powershell-Run.png?raw=true "Import JSON")
+
+4. You may see a security warning. If you do accept it by entering **Y**.
+
+   ![json](./images/Powershell-Security.png?raw=true "Import JSON")
+
+At this point all the DNS and DHCP configuration on the **windows server** will be generated.
+
+   ![json](./images/DNS-DHCP.png?raw=true "Import JSON")
+
+## Step 3.2c - Windows DHCP Helper Configuration
+
+Next, we will introduce the helper address statement on the management VLAN's SVI to point to the Windows DHCP server. Connect to switch **c9300-2** and paste the following configuration:
 
 ```vtl
 !
