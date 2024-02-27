@@ -12,6 +12,16 @@ Another important consideration is that part of a typical configuration would in
 
 As guidance, try and use **Design Settings** for as many configurations as you can, leaving Templates light and nimble for configurations that might change ongoing.
 
+### Greenfield
+
+When dealing with net new devices using the Provisioning process we utilize it is better to utilize composite templates with multiple regular templates within. This allows greater flexibility and a method to always add to the structure for compliance reasons. Additionally, Jinja2 and Velocity Scripting languages may be intermingled, allowing for the reuse of existing scripts.
+
+### Brownfield
+
+When dealing with existing infrastructure, initially we want to absorb the device and its configuration into Cisco Catalyst Center to allow for monitoring and a gradual shift to automated management, as the device usually is in a running state supporting the network, and the configuration pre-exists.
+
+As time progresses though, we may want to introduce slowly automation from Catalyst Center utilizing DayN Templates. Be aware that with Brownfield device configurations, there is no template learning capability for switching. As such configuration on the device may need modification prior to provisioning in some situations. Should it be a newer device, you may want to Discover and then push a normalization template via REST API to remove settings that would cause ongoing provisioning errors. Should this be a device already in Catalyst Center, then a normalization strategy may need to be adopted, backing out certain configuration, prior to provisioning. This script will involve perhaps the removal of AAA commands and others which cause issues with provisioning.
+
 ## Cisco Catalyst Center DayN Template Overview
 
 While a more extensive set of settings can be built out for deployment, we will limit the configuration to the minimum necessary to perform this step, building off the completed tasks in module 2.
@@ -32,8 +42,8 @@ There are two basic types of templates we can utilize. **Regular** templates, as
 
 **Jinja2** and **Velocity** both have similar capabilities. For additional information please see these tutorials. You may want to open these in another tab to read the content and to allow you to continue the lab:
 
-* [Velocity Scripting](./Velocity.md)
-* [Jinja2 Scripting](./Jinja2.md)
+* [Velocity Scripting](../../TUTORIALS/Velocity.md)
+* [Jinja2 Scripting](../../TUTORIALSJinja2.md)
 
 Within these logical constructs you have many tools and these are an example but not all of them, please review each section as needed:
 
@@ -41,25 +51,29 @@ Within these logical constructs you have many tools and these are an example but
 
 Velocity's deployment in Cisco Catalyst Center is utilizing 1.75 version, and as such has the typical logical capabilities available within that release. Please see the following:
 
-* [If Statements](./Velocity.md#if-statements)
-* [Macros](./Velocity.md#macros)
-* [Loops](./Velocity.md#foreach-loops)
-* [Multiline commands](./Velocity.md#multi-line-commands)
+* [If Statements](../../TUTORIALSVelocity.md#if-statements)
+* [Macros](../../TUTORIALSVelocity.md#macros)
+* [Loops](../../TUTORIALSVelocity.md#foreach-loops)
+* [Multiline commands](../../TUTORIALSVelocity.md#multi-line-commands)
 
 #### Jinja2 Scripting Logic
 
 Jinja2 as deployed in Cisco Catalyst Center allows for the following capabilities as well as include and extend capabilities. Please see the following:
 
-* [If Statements](./Jinja2.md#conditional-statements)
-* [Macros](./Jinja2.md#macros)
-* [Loops](./Jinja2.md#for-loops)
-* [Multiline commands](./Jinja2.md#multi-line-commands)
+* [If Statements](../../TUTORIALSJinja2.md#conditional-statements)
+* [Macros](../../TUTORIALSJinja2.md#macros)
+* [Loops](../../TUTORIALSJinja2.md#for-loops)
+* [Multiline commands](../../TUTORIALSJinja2.md#multi-line-commands)
 
 ## Cisco Catalyst Center DayN Template Provisioning
 
-### Regular Day N Templates
+This section will go through the build and provisioning of a **Regular** template via Cisco Catalyst Center to a Catalyst 9k switch. We will deal with **Brownfield** and **Greenfield** scenarios during this module.
 
-This section will go through the build and provisioning of a **Regular** template via Cisco Catalyst Center to a Catalyst 9k switch.
+### Preparation
+
+We will download and import a template project to include templates for deployment.
+
+
 
 #### Step 1 - Create a Regular Day N Template
 

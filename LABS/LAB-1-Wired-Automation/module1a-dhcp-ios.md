@@ -78,6 +78,31 @@ wr
 
 For a complete configuration example please see [Configuring the Cisco IOS DHCP Server](https://www.cisco.com/en/US/docs/ios/12_4t/ip_addr/configuration/guide/htdhcpsv.html#wp1046301)
 
+## Step 3.2b - Windows DHCP and DNS Services Configuration
+
+In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server within the lab environment. These services are required for the other VLANs for host onboarding.
+
+## Step 1 - Configuring DHCP and General DNS Services via Powershell
+
+1. Download the powershell script to the **windows server** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/scripts/powershell-DHCP.ps1">**⬇︎powershell-DHCP.ps1⬇︎**</a> file.
+
+2. Once downloaded, extract the file.
+
+   ![json](./images/Powershell-Extract.png?raw=true "Import JSON")
+   ![json](./images/Powershell-Extract-Location.png?raw=true "Import JSON")
+
+3. Right click on the file and run with powershell.
+
+   ![json](./images/Powershell-Run.png?raw=true "Import JSON")
+
+4. You may see a security warning. If you do accept it by entering **Y**.
+
+   ![json](./images/Powershell-Security.png?raw=true "Import JSON")
+
+At this point all the DNS and DHCP configuration on the **windows server** will be generated.
+
+   ![json](./images/DNS-DHCP.png?raw=true "Import JSON")
+
 ## Verification and Testing
 
 To test the environment to ensure it's ready, we need to try a few things.
