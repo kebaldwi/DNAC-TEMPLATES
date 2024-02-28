@@ -75,40 +75,36 @@ We will download and import a template project to include templates for deployme
 
 #### Step 1 - Import the Day N Templates
 
-Download and import a set of Day N Templates in the **Template Hub** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_WiredAutoLab_Jinja2_project.json">⬇︎Titanium_WiredAutoLab_Jinja2_project.json⬇︎</a> file. 
+We will use the **Template Hub** previously known as the **Template Editor** to write, maintain and test template projects. A Project is a logical folder or grouping of templates. Templates can be imported or exported individually or as a collection in a project. We will be importing a Project into the template editor which will have a combination of **Regular** and **Composite** templates.
 
-1. Navigate to the **Template Hub**  within Cisco Catalyst Center through the menu *Tools>Template Hub*.
+Download, Extract and import a set of Day N Templates into the **Template Hub** using the file: <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_WiredAutoLab_Jinja2_project.json">**⬇︎Titanium_WiredAutoLab_Jinja2_project.json⬇︎**</a>
+
+1. Navigate to the **Template Hub**  within Cisco Catalyst Center through the menu **`Tools > Template Hub`**.
 
    ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
 
-2. Within the **Template Hub** , left-click the ⨁ icon to the right of onboarding templates and click **Create Project** within the menu.  
+2. Within the **Template Hub**, left-click the ⨁ icon to the right of onboarding templates and click **Import Project** within the menu.  
 
-   ![json](./images/DNAC-ProjectCreate.png?raw=true "Import JSON")
+   ![json](./images/DNAC-ProjectImportBegins.png?raw=true "Import JSON")
 
-3. Name the new project `DNAC Template Lab DayN`. This project will be the one we will use to keep all our templates.   
+3. Click **Select a file from your computer**, then in the file explorer search for the file as shown in the image `Titanium_WiredAutoLab_Jinja2_project.json`. This project will be the one that has all our templates. Click **Open** to prepare it for uploading.
 
-   ![json](./images/DNAC-ProjectAdd.png?raw=true "Import JSON")
+   ![json](./images/DNAC-ProjectImportSelect.png?raw=true "Import JSON")
 
-4. Download the file above *Platinum_AAA_Template.json* to be imported into the Cisco Catalyst Center. Once downloaded, extract the file.
-5. Hover over the right side of the new project, and a small ⚙ gear icon will appear. Select **Import Template(s)** from the menu.   
+4. Select the **Check Box** to create a new version if one exists, and then click **Import** 
 
-   ![json](./images/DNAC-TemplateImportBegin.png?raw=true "Import JSON")
+   ![json](./images/DNAC-ProjectImportDayN.png?raw=true "Import JSON")
 
-6. From the **Import Templates** window, click **Select a file from your computer** from the explorer window, select the extracted JSON file and click open.   
+5. Within the **Template Hub** you will notice a new Project appear, click on the **Down Arrow** to display the contents. Notice the following:
+   1. Project - **DCLOUD CATC Template Labs DayN Jinja2** 
+   2. Composite Template - **CATC Template Labs DayN Composite Jinja2** 
+   3. Regular Template - **c9300-2-Setup-Configuratioh**
 
-   ![json](./images/DNAC-TemplateSelect.png?raw=true "Import JSON")
+   ![json](./images/DNAC-ProjectImported.png?raw=true "Import JSON")
 
-7. Click **Import**, and the template will be placed in the project.   
+6. Select the **AAA-Configuration** template and notice it has configuration within it. Some templates are just that, others make use of logical statements, conditional statements, looping structures and variables. You will see the following commands in the template selected.
 
-   ![json](./images/DNAC-TemplateImport.png?raw=true "Import JSON")
-
-8. Once the template is in the project, select it to view the configuration.
-
-   ![json](./images/DNAC-TemplateAAA.png?raw=true "Import JSON")
-
-The DayN regular template has the minimal AAA configuration to configure the device for local AAA connectivity independent of ISE to work with Cisco Catalyst Center. Below is for explanation purposes only. (Please Import the Template JSON above)
-
-```vtl
+```J2
 aaa new-model
 !
 aaa authentication username-prompt "Authorized Username:"
@@ -124,9 +120,13 @@ mac-address-table notification change
 !
 ```
 
-#### Step 2 - Modify Network Profile
+### Greenfield DayN Provisioning Sequence
 
-Next, we need to assign the DayN Template to a site using the Network Profile. As there is an existing network profile for the site, we must reuse that one for the same device family.**(required)** 
+In this section we will apply a DayN template to the device c9300-1 which we onboarded through the use of Plug and Play (PnP). This device had no configuration on it and as such we will now expand on the configuration.
+
+#### Step 1 - Modify Network Profile - TBC from here.
+
+Assign the DayN Template to a site using the Network Profile. As there is an existing network profile for the site, we must reuse that one for the same device family.**(required)** 
 
    1. Navigate to Network Profiles by selecting *Design> Network Profiles*.
 
