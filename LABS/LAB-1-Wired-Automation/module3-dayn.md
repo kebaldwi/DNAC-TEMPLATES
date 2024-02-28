@@ -124,44 +124,43 @@ mac-address-table notification change
 
 In this section we will apply a DayN template to the device c9300-1 which we onboarded through the use of Plug and Play (PnP). This device had no configuration on it and as such we will now expand on the configuration.
 
-#### Step 1 - Modify Network Profile - TBC from here.
+#### Step 1 - Modify Network Profile
 
-Assign the DayN Template to a site using the Network Profile. As there is an existing network profile for the site, we must reuse that one for the same device family.**(required)** 
+Assign the DayN Template to a site using the Network Profile. As there is an existing network profile for the site, we **must** reuse that one as you can only have one switching profile associated to a specific site. **(required)** 
 
-   1. Navigate to Network Profiles by selecting *Design> Network Profiles*.
+   1. Navigate to Network Profiles by selecting **`Design > Network Profiles`**.
 
       ![json](./images/DNAC-NavigateProfile.png?raw=true "Import JSON")
 
-   2. Click the **Edit** link next to the **DNAC Template Lab** switching profile created earlier.  
+   2. Click the **Edit** link next to the **CATC Template Lab Floor 1** switching profile created earlier.  
 
       ![json](./images/DNAC-ProfileEdit.png?raw=true "Import JSON")
 
    3. Within the Profile Editor, select the **Day-N Template(s)** tab: 
-      1. Click **⨁Add** 
-      2. Select the device type by typing *9300* in the search window and select it.    
+      1. Click **⨁ Add Template** 
 
-         ![json](./images/DNAC-ProfileDayN9300.png?raw=true "Import JSON")   
+         ![json](./images/DNAC-ProfileDayNAdd.png?raw=true "Import JSON")   
 
-      3. Select the Template by either searching or choosing *AAA* from the dropdown as shown.
+      2. Select the **`CATC Template Labs DayN Composite Jinja2`** Template from the dropdown as shown and click **Add**.
 
-         ![json](./images/DNAC-ProfileDayNAAA.png?raw=true "Import JSON")   
+         ![json](./images/DNAC-ProfileDayNSelect.png?raw=true "Import JSON")   
 
-      4. Click **Save** to save the modifications to the Network Profile.
+      3. Click the **Table** button to view the template in Table form as shown and then click **Save** to save the modifications to the Network Profile.
 
          ![json](./images/DNAC-ProfileSuccess.png?raw=true "Import JSON")   
 
-#### Step 3 - Provisioning the Device
+#### Step 2 - Provisioning the Device
 
-At this point, Cisco Catalyst Center is set up and ready to provision the new regular template AAA to the device. This next set of sequences will push the various Network Settings, Services, and DayN Templates to the device.
+At this point, Cisco Catalyst Center is set up and ready to provision composite template to the device. This next set of sequences will push the various Network Settings, Services, and DayN Template to the **Greenfield** device.
 
 We will now provision the switch using DayN Templates. To do this, do the following:
 
-   1. Within Cisco Catalyst Center Navigate to *Provision>Inventory*.      
+   1. Within Cisco Catalyst Center Navigate to **`Provision > Inventory`**.      
 
       ![json](./images/DNAC-NavigateInventory.png?raw=true "Import JSON")
 
-   2. Put a checkmark next to the device *ACCESS-c9300-1-ASW* to be provisioned.
-   3. Click the **Actions>Provision>Provision Device** link and walk through the workflow    
+   2. Put a checkmark next to the device **c9300-1** to be provisioned.
+   3. Click the **Actions > Provision > Provision Device** link and walk through the workflow presented:    
 
       ![json](./images/DNAC-ProvisionBegin.png?raw=true "Import JSON")
 
@@ -169,223 +168,89 @@ We will now provision the switch using DayN Templates. To do this, do the follow
 
          ![json](./images/DNAC-ProvisionSite.png?raw=true "Import JSON")
 
-      2. Select *ACCESS-c9300-1-ASW* on the left and the two tick boxes at the top of the page, then click **next**. If the template had inputs, they would be entered.  
+      2. Select **c9300-1** on the left and ensure the two tick boxes at the top of the page are ticked, then click the **SystemManagement-Configuration** tab. Enter `Building10` as the location  
 
-         ![json](./images/DNAC-ProvisionAdvConfig.png?raw=true "Import JSON")
+         ![json](./images/DNAC-ProvisionAdvConfig-1.png?raw=true "Import JSON")
+      
+      3. Click the **Interfaces-Configuration** tab. Select the following as shown:
 
-      3. Review the information to be deployed and click **Deploy**.
+         1. Vlan Schema: **`A`**  
+         1. Access Point Interfaces: **`GigabitEnthernet1/0/2`**  
+         1. Then click **Next** to continue
+
+            ![json](./images/DNAC-ProvisionAdvConfig-2.png?raw=true "Import JSON")
+      
+      4. Review the information to be deployed and click **Deploy**.
 
          ![json](./images/DNAC-ProvisionDeploy.png?raw=true "Import JSON")
 
-      4. Click **Apply** on the Provision Device pop-up screen. You can schedule deployments though.
+      5. Select **`Generate Configuration Preview`** and then click **Apply** on the Provision Device pop-up screen.
 
          ![json](./images/DNAC-ProvisionApply.png?raw=true "Import JSON")
 
-   4. The task will be submitted, and the deployment will run.
+   4. The task will be submitted, and the deployment will run. Click on **Work Items** to display the configuration rendered prior to provisioning.
+
+      ![json](./images/DNAC-ProvisionTask.png?raw=true "Import JSON")
+
+   5. The configuration will be rendered, and you can click the preview to show it, and continue the deployment. Within the preview page click **Deploy** and the deployment will run. 
 
       ![json](./images/DNAC-ProvisionTasking.png?raw=true "Import JSON")
 
-   5. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in Cisco Catalyst Center after the resync timer has elapsed.        
-   6. To resync the configuration so that it may be viewed before the normal 25 mins, then perform the following task:
-      1. Change the focus to **Inventory**
-      2. Select the *ACCESS-c9300-1-ASW* switch and select **Actions>Inventory>Resync Device**
+   6. You will be presented with a screen to schedule the deployment, select **Now** and click **Apply**. A screen will pop up after this asking whether you wish to delete the task, click **No** to keep a history.
 
-         ![json](./images/DNAC-InventoryResync.png?raw=true "Import JSON")
+      ![json](./images/DNAC-ProvisionScheduled.png?raw=true "Import JSON")
 
-      3. After the resync has occurred, you may click the device name and then view the configuration by selecting that from the left pane to view the configuration pushed.
+      ![json](./images/DNAC-ProvisionScheduled-2.png?raw=true "Import JSON")
 
-         ![json](./images/DNAC-DeviceConfig.png?raw=true "Import JSON")
+   7. You can monitore the deployment on the Inventory page. Return to the Inventory via the menu, and change to the **Provisioning** Focus as shown.
 
-At this point, we have onboarded a device and successfully pushed configuration via Onboarding and DayN Templates. 
+      ![json](./images/DNAC-InventoryProvision.png?raw=true "Import JSON")
+       
+At this point, we have onboarded a device and successfully pushed configuration via Onboarding and DayN Templates. Our DayN automation used a combination of both a **Composite** and **Regular** templates. Take some time and review the templates and logic used.
 
-> **Note:** If you populate the UI with settings, those parameters should **not** be in your templates as they will conflict, and the deployment through provisioning will fail. While it is easy to populate these settings, it is best to test with a switch to see what configuration is pushed.
+> **Note:** If you populate the UI with settings, those parameters should **NOT** be in your templates as they will **conflict**, and the deployment through provisioning will fail. While it is easy to populate these settings, it is best to test with a switch to see what configuration is pushed.
 
-### Composite Day N Templates
+### Brownfield DayN Provisioning Sequence
 
-This section will go through the build and provisioning of a **Composite** template via Cisco Catalyst Center to a Catalyst 9k switch. You can create Day N Composite Templates within the **Template Hub** previously known as **Template Editor** within **Cisco Catalyst Center**. Go to the **Template Hub**  to complete the next task. In this lab, we will deploy a Composite Template and additional **Regular** Templates within a project.  The import and export function within **Cisco Catalyst Center** allows both the import and export of templates and projects, along with the ability to clone them.
+In this section we will apply a DayN template to the device c9300-2 which we onboarded through the use of the Discovery Tool. This device had configuration on it and as such we will now expand on the configuration and augment the configuration.
 
-#### Step 1 - Import Project with Templates
+#### Step 1 - Modify Network Profile
 
-Download and import the project within the **Template Hub**  using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/2125templates/DNAC_Template_Lab_DayN_project.json">⬇︎DNAC_Template_Lab_DayN_project.json⬇︎</a> file. If using Cisco Catalyst Center prior release to 2.1.2.X then use the previously built project within Lab 3 and build the templates located within the following <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum_Templates.zip">⬇︎Platinum_Templates.zip⬇︎</a> file located within this lab. 
+Assign the DayN Template to a site using the Network Profile. As there is an existing network profile for the site, we **must** reuse that one as you can only have one switching profile associated to a specific site. **(required)** 
 
-For Jinja2, download and import the project within the **Template Hub**  using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Jinja2/DNAC_Template_Lab_DayN_Jinja2_project.json">⬇︎DNAC_Template_Lab_DayN_Jinja2_project.json⬇︎</a> file. 
-
-Previously in Lab 3, we created a project where we assigned a template to the site and provisioned it. We will now expand on that by importing a project with the same name overtop the current project, thereby importing additional regular templates. Take a few moments and examine the construction of these templates, as each has a specific form and function. Their design is modular to allow reuse of them within other composite templates for other switches or routers.
-
-1. Navigate to the **Template Hub**  within Cisco Catalyst Center through the menu *Tools>Template Hub*.
-
-   ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
-
-2. Within the **Template Hub** , left-click the ⨁ icon to the right of find template and click **Import Project(s)** within the menu.  
-
-   ![json](./images/DNAC-ProjectImportBegin.png?raw=true "Import JSON")
-
-3. Download the file above *DNAC_Template_Lab_DayN_project.json* to be imported into the Cisco Catalyst Center. Once downloaded, extract the file.
-4. From the **Import Project(s)** window, click **Select a file from your computer** from the explorer window, select the extracted JSON file and click open. 
-
-   ![json](./images/DNAC-ProjectSelect.png?raw=true "Import JSON")
-
-5. Click **Import**, and the project and all the templates within it will be imported.   
-
-   ![json](./images/DNAC-ProjectImport.png?raw=true "Import JSON")
-
-6. Once the project is imported, select it to view each of the template files within it.
-
-   ![json](./images/DNAC-ProjectFiles.png?raw=true "Import JSON")
- 
-#### Step 2 - Review the Composite Template Project
-
-The project we imported contains the following templates:
-
-1. **AAA** for local AAA services
-
-   ![json](./images/DNAC-Project-AAA-Template.png?raw=true "Import JSON")
-
-2. **System Management** for global system settings
-
-   ![json](./images/DNAC-Project-SysMgmt-Template.png?raw=true "Import JSON")
-
-3. **VLANs Ports per DF** to add VLAN and port configuration
-
-   ![json](./images/DNAC-Project-PortAssign-Template.png?raw=true "Import JSON")
-
-4. **Local User Management** for additional user accounts
-
-   ![json](./images/DNAC-Project-USR-Template.png?raw=true "Import JSON")
-
-5. **Stacking** to set up powerstack and stack priority
-
-   ![json](./images/DNAC-Project-Stacking-Template.png?raw=true "Import JSON")
-
-6. **Access Lists** to restrict management access
-
-   ![json](./images/DNAC-Project-ACL-Template.png?raw=true "Import JSON")
-
-7. **Automatic Uplink Naming** to automatically name uplinks 
-
-   ![json](./images/DNAC-Project-AUN-Template.png?raw=true "Import JSON")
-
-Additionally, it contains a Composite Template. The composite template will allow us to reuse multiple Regular templates, thereby allowing modularity. Thus we can keep our configuration scripts in smaller files allowing reuse across various platforms. Subsequently helps in troubleshooting as the configurations become smaller and less complex as a result.
-
-### Step 3 - Review how to Create Composite Template
-
-Within the project is a Composite Template, but the steps involved to create one are simple. **The next steps are optional**.
-
-1. Within the **Template Hub** , Hover over the right side of the project, and a small ⚙ gear icon will appear. Select **Add Template(s)** from the menu.     
-
-   ![json](./images/DNAC-CompositeCreate.png?raw=true "Import JSON")
-
-2. Notice you have the options on the *Add New Template* sidebar to do the following:
-   1. Select **Composite Sequence**
-   2. Enter a **Name** for the Composite Template
-   3. Click **Edit** beside *Device Types* to select the device families to be used.   
-
-      ![json](./images/DNAC-CompositeDefine.png?raw=true "Import JSON")
-
-3. On the *Select Device Types* sidebar type in `9300`to filter for the switch family and select the entire series then click **Back to Add New Template**.         
-
-   ![json](./images/DNAC-CompositeDevices.png?raw=true "Import JSON")
-
-4. Next Select the **Software Type** *IOS-XE* from the dropdown.    
-
-   ![json](./images/DNAC-CompositeOS.png?raw=true "Import JSON")
-
-5. Lastly to complete the Add New Template sequence you would click **Add**. As one already exists we can close without saving.    
-
-   ![json](./images/DNAC-CompositeAdd.png?raw=true "Import JSON")
-
-### Step 4 - Sequencing the Composite Template
-
-Within the project is a Composite Template **DNAC Template Lab DayN Composite**. This is the template in which we will create a composite sequence or workflow to call modularized regular templates in order to configure the 9300 switch.
-
-Please note the sequence that we want our templates in will be the following:    
-
-![json](./images/DNAC-CompositeSequence.png?raw=true "Import JSON")
-
-1. Within the **Template Hub** , select the template **DNAC Template Lab DayN Composite** from the right pane and it will open.       
-
-   ![json](./images/DNAC-Composite-Begin.png?raw=true "Import JSON")
-
-2. You will notice that beside all the templates which are able to be used within the composite template a small arrow icon is showing. This denotes that those templates are of the same device type and OS and are available to be dragged into the template.   
-
-   ![json](./images/DNAC-Composite-Symbol.png?raw=true "Import JSON")
-
-3. First Drag the **Access Lists** template from the left into the right pane and release it. It should appear in position 1.   
-
-   ![json](./images/DNAC-Composite-ACL-Add.png?raw=true "Import JSON")
-
-4. Next Drag the following into the right pane in this order:
-   1. **AAA**
-   2. **System Management**
-   3. **Local User Management**
-   4. **Stacking**
-   5. **VLANs Ports per DF**
-   6. **Automatic Uplink Naming**    
-
-      ![json](./images/DNAC-Composite-Remain-Add.png?raw=true "Import JSON")
-
-5. Finally we will reorder the sequence by moving the **AAA** template to position one in the sequence. To do this: 
-
-   1. Hover over the left side of the **AAA** template and you will see a green bar. By clicking and grasping this tool you can drag the template to the appropriate spot in the sequence.   
-
-      ![json](./images/DNAC-Composite-MoveBar.png?raw=true "Import JSON")
-
-   2. With this method please move the **AAA** template to position one as shown.    
-
-      ![json](./images/DNAC-Composite-DragAAA.png?raw=true "Import JSON")
-
-   3. After moving the **AAA** template the sequence will look like this. 
-
-      ![json](./images/DNAC-Composite-Sequence-Finish.png?raw=true "Import JSON")
-
-6. Once the Template is properly sequenced save the template.    
-
-   ![json](./images/DNAC-Composite-Save.png?raw=true "Import JSON")
-
-7. Then commit the template for use.   
-
-   ![json](./images/DNAC-Composite-Commit.png?raw=true "Import JSON")   
-
-   ![json](./images/DNAC-Composite-Apply.png?raw=true "Import JSON")
-
-### Step 5 - Modify Network Profile
-
-Next, we need to assign the DayN Composite Template to a site using the Network Profile. As there is an existing network profile for the site, we must reuse that one for the same device family. **(required)** 
-
-   1. Navigate to Network Profiles by selecting *Design> Network Profiles*.
+   1. Navigate to Network Profiles by selecting **`Design > Network Profiles`**.
 
       ![json](./images/DNAC-NavigateProfile.png?raw=true "Import JSON")
 
-   2. Click the **Edit** link next to the **DNAC Template Lab** switching profile created earlier.  
+   2. Click the **Edit** link next to the **CATC Template Lab Floor 1** switching profile created earlier.  
 
       ![json](./images/DNAC-ProfileEdit.png?raw=true "Import JSON")
-   
-   3. Within the Profile Editor, select the **Day-N Template(s)** tab:
 
-      ![json](./images/DNAC-ProfileDayN.png?raw=true "Import JSON")
+   3. Within the Profile Editor, select the **Day-N Template(s)** tab: 
+      1. Click **⨁ Add Template** 
 
-      1. Select the Composite Template by either searching or choosing **DNAC Template Lab DayN Composite** from the dropdown as shown.
+         ![json](./images/DNAC-ProfileDayNAdd.png?raw=true "Import JSON")   
 
-         ![json](./images/DNAC-ProfileSelectComposite.png?raw=true "Import JSON")   
+      2. Select the **`CATC Template Labs DayN Composite Jinja2`** Template from the dropdown as shown and click **Add**.
 
-      4. Click **Save** to save the modifications to the Network Profile.
+         ![json](./images/DNAC-ProfileDayNSelect.png?raw=true "Import JSON")   
 
-         ![json](./images/DNAC-ProfileSave.png?raw=true "Import JSON")   
+      3. Click the **Table** button to view the template in Table form as shown and then click **Save** to save the modifications to the Network Profile.
 
-Now the Composite Template has been applied to the Network Profile, any changes made to the template would immediately be ready for provisioning to the sites aligned to the profile where the template is deployed. This allows for ongoing changes and modifications to the network infrastructure.
+         ![json](./images/DNAC-ProfileSuccess.png?raw=true "Import JSON")   
 
-### Step 6 - Provisioning the Device
+#### Step 2 - Provisioning the Device
 
-At this point, Cisco Catalyst Center is set up and ready to provision the new composite template to the device. This next set of sequences will push the various Network Settings, Services, and DayN Templates as part of the composite sequence to the device.
+At this point, Cisco Catalyst Center is set up and ready to provision composite template to the device. This next set of sequences will push the various Network Settings, Services, and DayN Template to the **Greenfield** device.
 
-We will now provision the switch using DayN Composite Templates. To do this, do the following:
+We will now provision the switch using DayN Templates. To do this, do the following:
 
-   1. Within Cisco Catalyst Center Navigate to *Provision>Inventory*.      
+   1. Within Cisco Catalyst Center Navigate to **`Provision > Inventory`**.      
 
       ![json](./images/DNAC-NavigateInventory.png?raw=true "Import JSON")
 
-   2. Put a checkmark next to the device *ACCESS-c9300-1-ASW* to be provisioned.
-   3. Click the **Actions>Provision>Provision Device** link and walk through the workflow    
+   2. Put a checkmark next to the device **c9300-1** to be provisioned.
+   3. Click the **Actions > Provision > Provision Device** link and walk through the workflow presented:    
 
       ![json](./images/DNAC-ProvisionBegin.png?raw=true "Import JSON")
 
@@ -393,49 +258,47 @@ We will now provision the switch using DayN Composite Templates. To do this, do 
 
          ![json](./images/DNAC-ProvisionSite.png?raw=true "Import JSON")
 
-      2. Select *ACCESS-c9300-1-ASW* on the left and the two tick boxes at the top of the page, then click **next**. If the template had inputs, they would be entered.  
+      2. Select **c9300-1** on the left and ensure the two tick boxes at the top of the page are ticked, then click the **SystemManagement-Configuration** tab. Enter `Building10` as the location  
 
-         ![json](./images/DNAC-ProvisionAdvConfig.png?raw=true "Import JSON")
+         ![json](./images/DNAC-ProvisionAdvConfig-1.png?raw=true "Import JSON")
+      
+      3. Click the **Interfaces-Configuration** tab. Select the following as shown:
 
-      3. Select the auto populated Serial Number using the dropdown under *Stacking*..
+         1. Vlan Schema: **`A`**  
+         1. Access Point Interfaces: **`GigabitEnthernet1/0/2`**  
+         1. Then click **Next** to continue
 
-         ![json](./images/DNAC-ProvisionConfigSerial.png?raw=true "Import JSON")
-
-      4. Select the auto populated Product ID from the dropdown under *VLANs Ports Per DF*.
-
-         ![json](./images/DNAC-ProvisionConfigPID.png?raw=true "Import JSON")
-
-      5. Ensure the MDF number *01* is entered under *VLANs Ports Per DF*.
-
-         ![json](./images/DNAC-ProvisionConfigMDF.png?raw=true "Import JSON")
-
-      6. Click anywhere in the white space of the page to accept these settings so a green tick appears and then click **Next**.
-
-         ![json](./images/DNAC-ProvisionConfigReady.png?raw=true "Import JSON")
-
-      7. Check the settings and if you agree accept these settings by clicking  **Deploy**.
+            ![json](./images/DNAC-ProvisionAdvConfig-2.png?raw=true "Import JSON")
+      
+      4. Review the information to be deployed and click **Deploy**.
 
          ![json](./images/DNAC-ProvisionDeploy.png?raw=true "Import JSON")
 
-   4. The task will be submitted, and the deployment will run.
-   5. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in Cisco Catalyst Center after the resync timer has elapsed.        
-   6. To resync the configuration so that it may be viewed before the normal 25 mins, then perform the following task:
-      1. Change the focus to **Inventory**
-      2. Select the *ACCESS-c9300-1-ASW* switch and select **Actions>Inventory>Resync Device**
+      5. Select **`Generate Configuration Preview`** and then click **Apply** on the Provision Device pop-up screen.
 
-         ![json](./images/DNAC-InventoryResync.png?raw=true "Import JSON")
+         ![json](./images/DNAC-ProvisionApply.png?raw=true "Import JSON")
 
-      3. After the resync has occurred, you may click the device name and then view the configuration by selecting that from the left pane to view the configuration pushed.
+   4. The task will be submitted, and the deployment will run. Click on **Work Items** to display the configuration rendered prior to provisioning.
 
-         ![json](./images/DNAC-DeviceConfig.png?raw=true "Import JSON")
+      ![json](./images/DNAC-ProvisionTask.png?raw=true "Import JSON")
 
-At this point, we have onboarded a device and successfully pushed configuration via Onboarding and DayN Templates as well as Composite Templates. 
+   5. The configuration will be rendered, and you can click the preview to show it, and continue the deployment. Within the preview page click **Deploy** and the deployment will run. 
 
-### Step 7 - Provision Discovered Devices
+      ![json](./images/DNAC-ProvisionTasking.png?raw=true "Import JSON")
 
-We will now utilize some DayN templates written specifically for the disovered devices, to mimic DayN templating being utilized for brownfield or devices with pre-existing configurations.
+   6. You will be presented with a screen to schedule the deployment, select **Now** and click **Apply**. A screen will pop up after this asking whether you wish to delete the task, click **No** to keep a history.
 
-...
+      ![json](./images/DNAC-ProvisionScheduled.png?raw=true "Import JSON")
+
+      ![json](./images/DNAC-ProvisionScheduled-2.png?raw=true "Import JSON")
+
+   7. You can monitore the deployment on the Inventory page. Return to the Inventory via the menu, and change to the **Provisioning** Focus as shown.
+
+      ![json](./images/DNAC-InventoryProvision.png?raw=true "Import JSON")
+       
+At this point, we have onboarded a device and successfully pushed configuration via Onboarding and DayN Templates. Our DayN automation used a combination of both a **Composite** and **Regular** templates. Take some time and review the templates and logic used.
+
+> **Note:** If you populate the UI with settings, those parameters should **NOT** be in your templates as they will **conflict**, and the deployment through provisioning will fail. While it is easy to populate these settings, it is best to test with a switch to see what configuration is pushed.
 
 ## Automating Provisioning
 
