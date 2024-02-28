@@ -226,16 +226,20 @@ Assign the DayN Template to a site using the Network Profile. As there is an exi
 
       ![json](./images/DNAC-ProfileEdit.png?raw=true "Import JSON")
 
-   3. Within the Profile Editor, select the **Day-N Template(s)** tab: 
+   3. Within the Profile Editor we will add a second template specifically written for this bronwfield application. Select the **Day-N Template(s)** tab: 
       1. Click **⨁ Add Template** 
 
-         ![json](./images/DNAC-ProfileDayNAdd.png?raw=true "Import JSON")   
+         ![json](./images/DNAC-ProfileDayNAdd-2.png?raw=true "Import JSON")   
 
-      2. Select the **`CATC Template Labs DayN Composite Jinja2`** Template from the dropdown as shown and click **Add**.
+      2. Select the **Tag** and then **`Distribution`** from the dropdown as shown as we need to differentiate from the two templates now for use cases.
 
-         ![json](./images/DNAC-ProfileDayNSelect.png?raw=true "Import JSON")   
+         ![json](DNAC-ProfileTemplateTag-9300-2.png?raw=true "Import JSON")
 
-      3. Click the **Table** button to view the template in Table form as shown and then click **Save** to save the modifications to the Network Profile.
+      3. Select the **`c9300-2-Setup-Configuration`** Template from the dropdown as shown and click **Add**.
+
+         ![json](./images/DNAC-ProfileDayNSelect-9300-2.png?raw=true "Import JSON")   
+
+      4. Click the **Table** button to view the template in Table form as shown and then click **Save** to save the modifications to the Network Profile.
 
          ![json](./images/DNAC-ProfileSuccess.png?raw=true "Import JSON")   
 
