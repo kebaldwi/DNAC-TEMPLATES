@@ -1,5 +1,7 @@
 # Wireless Lab Preparation
 
+Welcome to this lab. Within this section we will prepare the DCLOUD lab for use with the Wireless tasks contained in this lab. If you have just completed the Wired Automation Lab, you can forgo this section and start with module 1 and start the Controller Onboarding. If not please complete this lab to prepare the environment.
+
 ## Lab Section 1 - DNA Center and ISE Integration
 
 In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate DNA Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
