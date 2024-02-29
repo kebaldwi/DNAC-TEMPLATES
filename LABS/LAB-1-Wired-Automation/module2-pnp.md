@@ -162,7 +162,7 @@ The collection previously imported along with the ennvironment variables will pu
 
 If using DCLOUD lab images should not be modified. In that case please ignore this task.
 
-<details open>
+<details closed>
 <summary> Image Repository Steps for NON DCLOUD ONLY </summary></br>
 
 The image used in this lab for the **9300** is downloadable from here [⬇︎Cupertino-17.9.4a MD⬇︎](https://software.cisco.com/download/home/286315874/type/282046477/release/Cupertino-17.9.4a) 
