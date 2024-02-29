@@ -239,13 +239,37 @@ Assign the DayN Template to a site using the Network Profile. As there is an exi
 
          ![json](./images/DNAC-ProfileDayNSelect-9300-2.png?raw=true "Import JSON")   
 
-      4. Click the **Table** button to view the template in Table form as shown and then click **Save** to save the modifications to the Network Profile.
+      4. Click the **Table** button to view the template in Table form as shown and then click **Save** to save the modifications to the Network Profile. To finish the differentiation of the two templates, we need to apply a tag to the other template **`CATC Template Labs DayN Composite Jinja2`**. Click the **edit** button to apply a **tag**
 
-         ![json](./images/DNAC-ProfileSuccess.png?raw=true "Import JSON")   
+         ![json](./images/DNAC-ProfileSuccess-9300-2.png?raw=true "Import JSON")
 
-#### Step 2 - Provisioning the Device
+      5. To finish the differentiation of the two templates, we need to apply a tag to the other template **`CATC Template Labs DayN Composite Jinja2`**
 
-At this point, Cisco Catalyst Center is set up and ready to provision composite template to the device. This next set of sequences will push the various Network Settings, Services, and DayN Template to the **Greenfield** device.
+         ![json](./images/DNAC-ProfileTagging-9300-1.png?raw=true "Import JSON")
+
+      6. Click the view link to show the **Tag** of **Edge** is correctly applied, and then click **Save**.
+
+         ![json](./images/DNAC-ProfileTag-9300-1.png?raw=true "Import JSON")
+
+#### Step 2 - Tagging the Devices based on Use Case
+
+First we need to **Tag** the two devices.
+
+   1. Within Cisco Catalyst Center Navigate to **`Provision > Inventory`**.      
+
+      ![json](./images/DNAC-NavigateInventory.png?raw=true "Import JSON")
+
+   2. Put a checkmark next to the device **c9300-2** then click the **Tag Device** link and then put a tick beside **Distribution** and click **Apply**
+ 
+      ![json](./images/DNAC-InventoryTag-c9300-2.png?raw=true "Import JSON")
+
+   3. Put a checkmark next to the device **c9300-1** then click the **Tag Device** link and then put a tick beside **Edge** and click **Apply**
+ 
+      ![json](./images/DNAC-InventoryTag-c9300-1.png?raw=true "Import JSON")
+
+#### Step 3 - Provisioning the Device
+
+At this point, Cisco Catalyst Center is set up and ready to provision composite template to the device. This next set of sequences will push the various Network Settings, Services, and DayN Template to the **Brownfield** device.
 
 We will now provision the switch using DayN Templates. To do this, do the following:
 
@@ -253,54 +277,43 @@ We will now provision the switch using DayN Templates. To do this, do the follow
 
       ![json](./images/DNAC-NavigateInventory.png?raw=true "Import JSON")
 
-   2. Put a checkmark next to the device **c9300-1** to be provisioned.
+   2. Put a checkmark next to the device **c9300-2** to be provisioned.
    3. Click the **Actions > Provision > Provision Device** link and walk through the workflow presented:    
 
-      ![json](./images/DNAC-ProvisionBegin.png?raw=true "Import JSON")
+      ![json](./images/DNAC-ProvisionBegin-c9300-2.png?raw=true "Import JSON")
 
       1. The floor was already selected as part of the claim so click **next**    
 
-         ![json](./images/DNAC-ProvisionSite.png?raw=true "Import JSON")
+         ![json](./images/DNAC-ProvisionSite-c9300-2.png?raw=true "Import JSON")
 
-      2. Select **c9300-1** on the left and ensure the two tick boxes at the top of the page are ticked, then click the **SystemManagement-Configuration** tab. Enter `Building10` as the location  
-
-         ![json](./images/DNAC-ProvisionAdvConfig-1.png?raw=true "Import JSON")
+      2. Select **c9300-2** on the left and ensure the two tick boxes at the top of the page are ticked, then complete the following:
       
-      3. Click the **Interfaces-Configuration** tab. Select the following as shown:
+         1. Enter **`Building10`** for the SNMP Location 
+         2. Click the down arrow beside **Routed Interfaces** to allow you to search and select interface **`GigabitEthernet1/0/48`**  
 
-         1. Vlan Schema: **`A`**  
-         1. Access Point Interfaces: **`GigabitEnthernet1/0/2`**  
-         1. Then click **Next** to continue
-
-            ![json](./images/DNAC-ProvisionAdvConfig-2.png?raw=true "Import JSON")
+            ![json](./images/DNAC-ProvisionAdvConfig-1-c9300-2.png?raw=true "Import JSON")
       
-      4. Review the information to be deployed and click **Deploy**.
+      3. Click the **Access Point Interfaces** dropdown and then search and select interface **`GigabitEthernet1/0/2`** which has an Access Point attached to it.
 
-         ![json](./images/DNAC-ProvisionDeploy.png?raw=true "Import JSON")
+         ![json](./images/DNAC-ProvisionAdvConfig-2-c9300-2.png?raw=true "Import JSON")
 
-      5. Select **`Generate Configuration Preview`** and then click **Apply** on the Provision Device pop-up screen.
+      4. Review the information and click **Next**.
 
-         ![json](./images/DNAC-ProvisionApply.png?raw=true "Import JSON")
+         ![json](./images/DNAC-ProvisionAdvConfig-3-c9300-2.png?raw=true "Import JSON")
 
-   4. The task will be submitted, and the deployment will run. Click on **Work Items** to display the configuration rendered prior to provisioning.
+      5. Review the information and click **Deploy**.
 
-      ![json](./images/DNAC-ProvisionTask.png?raw=true "Import JSON")
+         ![json](./images/DNAC-ProvisionSummary-c9300-2.png?raw=true "Import JSON")
 
-   5. The configuration will be rendered, and you can click the preview to show it, and continue the deployment. Within the preview page click **Deploy** and the deployment will run. 
+      6. Select **`Now`** and then click **Apply** on the Provision Device pop-up screen to deploy the template immediately.
 
-      ![json](./images/DNAC-ProvisionTasking.png?raw=true "Import JSON")
+         ![json](./images/DNAC-ProvisionDeploy-c9300-2.png?raw=true "Import JSON")
 
-   6. You will be presented with a screen to schedule the deployment, select **Now** and click **Apply**. A screen will pop up after this asking whether you wish to delete the task, click **No** to keep a history.
-
-      ![json](./images/DNAC-ProvisionScheduled.png?raw=true "Import JSON")
-
-      ![json](./images/DNAC-ProvisionScheduled-2.png?raw=true "Import JSON")
-
-   7. You can monitore the deployment on the Inventory page. Return to the Inventory via the menu, and change to the **Provisioning** Focus as shown.
+   5. The task will be submitted, and the deployment will run. You can monitor the deployment on the Inventory page. Change to the **Provisioning** Focus as shown.
 
       ![json](./images/DNAC-InventoryProvision.png?raw=true "Import JSON")
        
-At this point, we have onboarded a device and successfully pushed configuration via Onboarding and DayN Templates. Our DayN automation used a combination of both a **Composite** and **Regular** templates. Take some time and review the templates and logic used.
+At this point, we have onboarded a device and successfully pushed configuration via Discovery and DayN Templates. Our DayN automation used a combination of both a **Regular** templates. Take some time and review the templates and logic used.
 
 > **Note:** If you populate the UI with settings, those parameters should **NOT** be in your templates as they will **conflict**, and the deployment through provisioning will fail. While it is easy to populate these settings, it is best to test with a switch to see what configuration is pushed.
 
