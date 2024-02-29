@@ -91,7 +91,7 @@ Additionally, within Cisco Catalyst Center on the Plug and Play window, the devi
 
 ## Summary
 
-The next step will be to build the PnP Onboarding settings and template on Cisco Catalyst Center, which we will cover in the next lab entitled [**Onboarding Templates**](../LAB-B-Onboarding-Template/README.md#Day0) - The next lab explains in-depth and how to deploy Day 0 templates.
+The next step will be to build the PnP Onboarding settings and template on Cisco Catalyst Center, which we will cover in the next lab entitled [**PnP and Discovery**](../LAB-1-Wired-Automation/module2-pnp.md) - The next lab explains in-depth and how to deploy Day 0 templates.
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
