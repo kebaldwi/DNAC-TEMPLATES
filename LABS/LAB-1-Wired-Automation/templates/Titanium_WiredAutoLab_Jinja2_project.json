@@ -130,6 +130,30 @@
         "rollbackTemplateContent": "",
         "templateParams": [
           {
+            "parameterName": "vlan_number",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": false,
+            "notParam": true,
+            "paramArray": false,
+            "displayName": null,
+            "instructionText": null,
+            "group": null,
+            "order": 4,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": null,
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": ""
+          },
+          {
             "parameterName": "__interface",
             "dataType": "STRING",
             "defaultValue": null,
@@ -144,6 +168,30 @@
             "customOrder": 0,
             "selection": {
               "selectionType": "MULTI_SELECT",
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": ""
+          },
+          {
+            "parameterName": "guest_number",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": false,
+            "notParam": true,
+            "paramArray": false,
+            "displayName": null,
+            "instructionText": null,
+            "group": null,
+            "order": 7,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": null,
               "selectionValues": {},
               "defaultSelectedValues": [],
               "id": null
@@ -173,20 +221,20 @@
             "binding": ""
           },
           {
-            "parameterName": "accesspoint_interfaces",
+            "parameterName": "voice_number",
             "dataType": "STRING",
             "defaultValue": null,
-            "description": "Select the ports where Access Points will be connected. All other interfaces will be configured with Host facing connectivity for Workstations and Phones",
-            "required": true,
-            "notParam": false,
-            "paramArray": true,
-            "displayName": "Access Point Interfaces",
+            "description": null,
+            "required": false,
+            "notParam": true,
+            "paramArray": false,
+            "displayName": null,
             "instructionText": null,
             "group": null,
-            "order": 9,
+            "order": 6,
             "customOrder": 0,
             "selection": {
-              "selectionType": "MULTI_SELECT",
+              "selectionType": null,
               "selectionValues": {},
               "defaultSelectedValues": [],
               "id": null
@@ -194,20 +242,20 @@
             "range": [],
             "key": null,
             "provider": null,
-            "binding": "{\"provider\":\"Inventory\",\"attributeToDisplay\":\"portName\",\"params\":[{\"type\":\"MANAGED_DEVICE_UUID\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_IP\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_HOSTNAME\",\"scope\":\"RUNTIME\",\"value\":null}],\"value\":null,\"source\":\"Inventory\",\"entity\":\"Interface\",\"attribute\":\"portName\",\"filterType\":\"regex\",\"filterValue\":\"GigabitEthernet[1-9]/0/[0-9]+\",\"filterByAttribute\":\"portName\"}"
+            "binding": ""
           },
           {
-            "parameterName": "snmpLocation",
+            "parameterName": "data_number",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
-            "required": true,
-            "notParam": false,
+            "required": false,
+            "notParam": true,
             "paramArray": false,
             "displayName": null,
             "instructionText": null,
             "group": null,
-            "order": 1,
+            "order": 5,
             "customOrder": 0,
             "selection": {
               "selectionType": null,
@@ -245,20 +293,20 @@
             "binding": "{\"provider\":\"Inventory\",\"attributeToDisplay\":\"portName\",\"params\":[{\"type\":\"MANAGED_DEVICE_UUID\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_IP\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_HOSTNAME\",\"scope\":\"RUNTIME\",\"value\":null}],\"value\":null,\"source\":\"Inventory\",\"entity\":\"Interface\",\"attribute\":\"portName\",\"filterType\":\"regex\",\"filterValue\":\"GigabitEthernet[1-9]/0/[0-9]+\",\"filterByAttribute\":\"portName\"}"
           },
           {
-            "parameterName": "guest_number",
+            "parameterName": "accesspoint_interfaces",
             "dataType": "STRING",
             "defaultValue": null,
-            "description": null,
-            "required": false,
-            "notParam": true,
-            "paramArray": false,
-            "displayName": null,
+            "description": "Select the ports where Access Points will be connected. All other interfaces will be configured with Host facing connectivity for Workstations and Phones",
+            "required": true,
+            "notParam": false,
+            "paramArray": true,
+            "displayName": "Access Point Interfaces",
             "instructionText": null,
             "group": null,
-            "order": 7,
+            "order": 9,
             "customOrder": 0,
             "selection": {
-              "selectionType": null,
+              "selectionType": "MULTI_SELECT",
               "selectionValues": {},
               "defaultSelectedValues": [],
               "id": null
@@ -266,68 +314,20 @@
             "range": [],
             "key": null,
             "provider": null,
-            "binding": ""
+            "binding": "{\"provider\":\"Inventory\",\"attributeToDisplay\":\"portName\",\"params\":[{\"type\":\"MANAGED_DEVICE_UUID\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_IP\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_HOSTNAME\",\"scope\":\"RUNTIME\",\"value\":null}],\"value\":null,\"source\":\"Inventory\",\"entity\":\"Interface\",\"attribute\":\"portName\",\"filterType\":\"regex\",\"filterValue\":\"GigabitEthernet[1-9]/0/[0-9]+\",\"filterByAttribute\":\"portName\"}"
           },
           {
-            "parameterName": "voice_number",
+            "parameterName": "snmpLocation",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
-            "required": false,
-            "notParam": true,
+            "required": true,
+            "notParam": false,
             "paramArray": false,
             "displayName": null,
             "instructionText": null,
             "group": null,
-            "order": 6,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": null,
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": ""
-          },
-          {
-            "parameterName": "vlan_number",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": false,
-            "notParam": true,
-            "paramArray": false,
-            "displayName": null,
-            "instructionText": null,
-            "group": null,
-            "order": 4,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": null,
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": ""
-          },
-          {
-            "parameterName": "data_number",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": false,
-            "notParam": true,
-            "paramArray": false,
-            "displayName": null,
-            "instructionText": null,
-            "group": null,
-            "order": 5,
+            "order": 1,
             "customOrder": 0,
             "selection": {
               "selectionType": null,
@@ -348,20 +348,20 @@
         "promotedTemplateContent": "{# Global Modification #}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/AAA-Configuration\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/SystemManagement-Configuration\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/Security-AAA-Configuration\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/Stacking-Configuration\" %}\n!\n{# Interface Configurations #}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/Interfaces-Macros\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/VLAN-Configuration\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/IBNS2.0-Configuration\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/APP-Hosting-Configuration\" %}\n!\n{% set uplink_portarray = [] %}\n!\n{% set vlanArray = [] %}\n{{ configure_vlans_svi(SiteAvlansLibrary) }}\n{{ search_vlans(SiteAvlansLibrary) }}\n{{ configure_cts(SiteAvlansLibrary) }}\n!\n{# Determine whether target is Dual or Single Uplink Target #}\n{% for interface in __interface %}\n  {% if interface.portMode == \"trunk\" && interface.interfaceType == \"Physical\" %}\n    {% do uplink_portarray.append(interface.portName) %}\n  {% endif %}\n{% endfor %}\n!\n{% if uplink_portarray | length == 2 %}\n  {{ configure_stp_dualuplink(vlanArray) }}\n{% elif uplink_portarray | length == 1 %}\n  {{ configure_stp_singleuplink(vlanArray) }}\n{% endif %}\n!\n{# Interface Templates #}\n{{ ibns_baseconfig(vlanArray[1]) }}\n{{ ibns_accesspoint(vlanArray[1]) }}\n{{ ibns_flexaccesspoint(vlanArray[1], vlanArray[2], vlanArray[3], vlanArray[4]) }} \n{{ ibns_workstation(vlanArray[2], vlanArray[3]) }}\n{{ ibns_guest(vlanArray[4]) }} \n{{ autoconf_accesspoint(vlanArray[1]) }}\n{{ autoconf_flexaccesspoint(vlanArray[1], vlanArray[2], vlanArray[3], vlanArray[4]) }} \n{{ autoconf_workstation(vlanArray[2], vlanArray[3]) }}\n{{ autoconf_baseconfig(vlanArray[1]) }}\n!\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/AutoConf-Configuration\" %}\n!\n{# Interface Interations #}\n!\n{# System Variable example interfaces in one logical code construct #}\n{# Select and Configure Access Point interfaces#}\n{% set apintlog = uplink_portarray %}\n!\n{# Select Routed Interfaces #}\n{% for rtinterface in routed_interfaces %}\n  {% for interface in __interface %}\n    {% if interface.portName in apintlog %}\n    {% elif interface.portName == rtinterface %}\n      interface {{ interface.portName }}\n        #INTERACTIVE\n        access-session inherit disable autoconf<IQ>yes<R>y\n        #END_INTERACTIVE \n      {% do apintlog.append(interface.portName) %}\n    {% endif %}\n  {% endfor %}\n{% endfor %}\n!\n{# Access Point Interfaces #}\n{% for apinterface in accesspoint_interfaces %}\n  {% for interface in __interface %}\n    {% if interface.portName in apintlog %}\n    {% elif interface.portName == apinterface %}\n      default interface {{ interface.portName }}\n      interface {{ interface.portName }}\n       {{ baseconf_interface() }}\n      {% do apintlog.append(interface.portName) %}\n    {% endif %}\n  {% endfor %}\n{% endfor %}\n!\n{# Automatically Configure Workstation Remaining interfaces#}\n{% for interface in __interface %}\n  {% if interface.interfaceType == \"Physical\" && interface.portName.replaceAll(\"(^[a-zA-Z]+).*\",\"$1\") == \"GigabitEthernet\"  %}\n    {% if interface.portName.replaceAll(\"(^[a-zA-Z]+.).*\", \"$1\") != \"GigabitEthernet0\" %}\n      {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$2\") != 1 %}\n        {% if interface.portName in apintlog %}\n        {% else %}\n          default interface {{ interface.portName }}\n          interface {{ interface.portName }}\n            {{ ibns_baseconf_interface() }}\n        {% endif %}\n      {% endif %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n!\ninterface GigabitEthernet0/0\n no ip address\n shutdown\n!\n{% if \"C93\" in __device.platformId %}\n  {{ APP_Hosting(vlanArray[2]) }}\n{% endif %}\n!\n{#- Automated Script for cts manual disruptive config -#}\n{#- This will always ensure the uplink get the cts manual for with  -#}\n{#- timed self deleting EEM script  -#}\nevent manager applet POST_CTS_MANUAL authorization bypass\n event timer countdown time 30\n action 1.0 cli command \"enable\"\n action 1.1 cli command \"config t\"\n action 2.0 cli command \"interface range {{ uplink_portarray|join(',') }}\"\n action 2.1 cli command \"cts manual\"\n action 2.2 cli command \"policy static sgt 2 trusted\"\n action 2.3 cli command \"propagate sgt\"\n action 2.4 cli command \"no event manager applet POST_CTS_MANUAL\"\n action 2.5 cli command \"end\"\n action 2.6 cli command \"wr\"\n action 2.7 cli command \"exit\"\n!\n{# Autonaming Configuration #}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/AutoNaming-EEM-Scripting\" %}\n",
         "promotedTemplateParams": [
           {
-            "parameterName": "snmpLocation",
+            "parameterName": "accesspoint_interfaces",
             "dataType": "STRING",
             "defaultValue": null,
-            "description": null,
+            "description": "Select the ports where Access Points will be connected. All other interfaces will be configured with Host facing connectivity for Workstations and Phones",
             "required": true,
             "notParam": false,
-            "paramArray": false,
-            "displayName": null,
+            "paramArray": true,
+            "displayName": "Access Point Interfaces",
             "instructionText": null,
             "group": null,
-            "order": 1,
+            "order": 9,
             "customOrder": 0,
             "selection": {
-              "selectionType": null,
+              "selectionType": "MULTI_SELECT",
               "selectionValues": {},
               "defaultSelectedValues": [],
               "id": null
@@ -369,7 +369,7 @@
             "range": [],
             "key": null,
             "provider": null,
-            "binding": "",
+            "binding": "{\"provider\":\"Inventory\",\"attributeToDisplay\":\"portName\",\"params\":[{\"type\":\"MANAGED_DEVICE_UUID\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_IP\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_HOSTNAME\",\"scope\":\"RUNTIME\",\"value\":null}],\"value\":null,\"source\":\"Inventory\",\"entity\":\"Interface\",\"attribute\":\"portName\",\"filterType\":\"regex\",\"filterValue\":\"GigabitEthernet[1-9]/0/[0-9]+\",\"filterByAttribute\":\"portName\"}",
             "id": null
           },
           {
@@ -386,6 +386,31 @@
             "order": 2,
             "customOrder": 0,
             "selection": null,
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "id": null
+          },
+          {
+            "parameterName": "guest_number",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": false,
+            "notParam": true,
+            "paramArray": false,
+            "displayName": null,
+            "instructionText": null,
+            "group": null,
+            "order": 7,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": null,
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
             "range": [],
             "key": null,
             "provider": null,
@@ -443,20 +468,20 @@
             "id": null
           },
           {
-            "parameterName": "guest_number",
+            "parameterName": "routed_interfaces",
             "dataType": "STRING",
             "defaultValue": null,
-            "description": null,
-            "required": false,
-            "notParam": true,
-            "paramArray": false,
-            "displayName": null,
+            "description": "Select the ports where Routed Interfaces will be connected. These are existing routed connections that should remain untouched.",
+            "required": true,
+            "notParam": false,
+            "paramArray": true,
+            "displayName": "Routed Interfaces",
             "instructionText": null,
             "group": null,
-            "order": 7,
+            "order": 8,
             "customOrder": 0,
             "selection": {
-              "selectionType": null,
+              "selectionType": "MULTI_SELECT",
               "selectionValues": {},
               "defaultSelectedValues": [],
               "id": null
@@ -464,7 +489,7 @@
             "range": [],
             "key": null,
             "provider": null,
-            "binding": "",
+            "binding": "{\"provider\":\"Inventory\",\"attributeToDisplay\":\"portName\",\"params\":[{\"type\":\"MANAGED_DEVICE_UUID\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_IP\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_HOSTNAME\",\"scope\":\"RUNTIME\",\"value\":null}],\"value\":null,\"source\":\"Inventory\",\"entity\":\"Interface\",\"attribute\":\"portName\",\"filterType\":\"regex\",\"filterValue\":\"GigabitEthernet[1-9]/0/[0-9]+\",\"filterByAttribute\":\"portName\"}",
             "id": null
           },
           {
@@ -493,56 +518,6 @@
             "id": null
           },
           {
-            "parameterName": "accesspoint_interfaces",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": "Select the ports where Access Points will be connected. All other interfaces will be configured with Host facing connectivity for Workstations and Phones",
-            "required": true,
-            "notParam": false,
-            "paramArray": true,
-            "displayName": "Access Point Interfaces",
-            "instructionText": null,
-            "group": null,
-            "order": 9,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "MULTI_SELECT",
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "{\"provider\":\"Inventory\",\"attributeToDisplay\":\"portName\",\"params\":[{\"type\":\"MANAGED_DEVICE_UUID\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_IP\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_HOSTNAME\",\"scope\":\"RUNTIME\",\"value\":null}],\"value\":null,\"source\":\"Inventory\",\"entity\":\"Interface\",\"attribute\":\"portName\",\"filterType\":\"regex\",\"filterValue\":\"GigabitEthernet[1-9]/0/[0-9]+\",\"filterByAttribute\":\"portName\"}",
-            "id": null
-          },
-          {
-            "parameterName": "routed_interfaces",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": "Select the ports where Routed Interfaces will be connected. These are existing routed connections that should remain untouched.",
-            "required": true,
-            "notParam": false,
-            "paramArray": true,
-            "displayName": "Routed Interfaces",
-            "instructionText": null,
-            "group": null,
-            "order": 8,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "MULTI_SELECT",
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "{\"provider\":\"Inventory\",\"attributeToDisplay\":\"portName\",\"params\":[{\"type\":\"MANAGED_DEVICE_UUID\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_IP\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_HOSTNAME\",\"scope\":\"RUNTIME\",\"value\":null}],\"value\":null,\"source\":\"Inventory\",\"entity\":\"Interface\",\"attribute\":\"portName\",\"filterType\":\"regex\",\"filterValue\":\"GigabitEthernet[1-9]/0/[0-9]+\",\"filterByAttribute\":\"portName\"}",
-            "id": null
-          },
-          {
             "parameterName": "voice_number",
             "dataType": "STRING",
             "defaultValue": null,
@@ -554,6 +529,31 @@
             "instructionText": null,
             "group": null,
             "order": 6,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": null,
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "id": null
+          },
+          {
+            "parameterName": "snmpLocation",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "displayName": null,
+            "instructionText": null,
+            "group": null,
+            "order": 1,
             "customOrder": 0,
             "selection": {
               "selectionType": null,
@@ -1038,11 +1038,11 @@
         ],
         "softwareType": "IOS",
         "softwareVariant": "XE",
-        "templateContent": "{# Interface Configurations #}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/Interfaces-Macros\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/VLAN-Configuration\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/IBNS2.0-Configuration\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/APP-Hosting-Configuration\" %}\n!\n{% set vlanArray = [] %}\n{% if Site == \"A\" %}\n  {{ configure_vlans(SiteAvlans) }}\n  {{ search_vlans(SiteAvlans) }}\n  {{ configure_cts(SiteAvlans) }}\n{% elif Site == \"B\" %}\n  {{ configure_vlans(SiteBvlans) }}\n  {{ search_vlans(SiteBvlans) }}\n  {{ configure_cts(SiteBvlans) }}\n{% endif %}\n!\n{# Determine whether target is Dual or Single Uplink Target #}\n{% set uplink_portarray = [] %}\n{% for interface in __interface %}\n  {% if interface.portMode == \"trunk\" && interface.interfaceType == \"Physical\" %}\n    {% do uplink_portarray.append(interface.portName) %}\n  {% endif %}\n{% endfor %}\n!\n{% if uplink_portarray | length == 2 %}\n  {{ configure_stp_dualuplink(vlanArray) }}\n{% elif uplink_portarray | length == 1 %}\n  {{ configure_stp_singleuplink(vlanArray) }}\n{% endif %}\n!\n{# Interface Templates #}\n{{ ibns_baseconfig(vlanArray[0]) }}\n{{ ibns_accesspoint(vlanArray[0]) }}\n{{ ibns_flexaccesspoint(vlanArray[0], vlanArray[1], vlanArray[2], vlanArray[3]) }} \n{{ ibns_workstation(vlanArray[1], vlanArray[2]) }}\n{{ ibns_guest(vlanArray[3]) }} \n{{ autoconf_accesspoint(vlanArray[0]) }}\n{{ autoconf_flexaccesspoint(vlanArray[0], vlanArray[1], vlanArray[2], vlanArray[3]) }} \n{{ autoconf_workstation(vlanArray[1], vlanArray[2]) }}\n{{ autoconf_baseconfig(vlanArray[0]) }}\n!\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/AutoConf-Configuration\" %}\n!\n{# Interface Interations #}\n!\n{# System Variable example interfaces in one logical code construct #}\n{# Select and Configure Access Point interfaces#}\n{% set apintlog = uplink_portarray %}\n!\n{% for apinterface in accesspoint_interfaces %}\n  {% for interface in __interface %}\n    {% if interface.portName in apintlog %}\n    {% elif interface.portName == apinterface %}\n      default interface {{ interface.portName }}\n      interface {{ interface.portName }}\n       {{ baseconf_interface() }}\n      {% do apintlog.append(interface.portName) %}\n    {% endif %}\n  {% endfor %}\n{% endfor %}\n!\n{# Automatically Configure Workstation Remaining interfaces#}\n{% for interface in __interface %}\n  {% if interface.interfaceType == \"Physical\" && interface.portName.replaceAll(\"(^[a-zA-Z]+).*\",\"$1\") == \"GigabitEthernet\"  %}\n    {% if interface.portName.replaceAll(\"(^[a-zA-Z]+.).*\", \"$1\") != \"GigabitEthernet0\" %}\n      {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$2\") != 1 %}\n        {% if interface.portName in apintlog %}\n        {% else %}\n          default interface {{ interface.portName }}\n          interface {{ interface.portName }}\n            {{ ibns_baseconf_interface() }}\n        {% endif %}\n      {% endif %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n!\ninterface GigabitEthernet0/0\n no ip address\n shutdown\n!\n{% if \"C93\" in __device.platformId %}\n  {{ APP_Hosting(vlanArray[1]) }}\n{% endif %}\n!\n{#- Automated Script for cts manual disruptive config -#}\n{#- This will always ensure the uplink get the cts manual for with  -#}\n{#- timed self deleting EEM script  -#}\nevent manager applet POST_CTS_MANUAL authorization bypass\n event timer countdown time 30\n action 1.0 cli command \"enable\"\n action 1.1 cli command \"config t\"\n action 2.0 cli command \"interface range {{ uplink_portarray|join(',') }}\"\n action 2.1 cli command \"cts manual\"\n action 2.2 cli command \"policy static sgt 2 trusted\"\n action 2.3 cli command \"propagate sgt\"\n action 2.4 cli command \"no event manager applet POST_CTS_MANUAL\"\n action 2.5 cli command \"end\"\n action 2.6 cli command \"wr\"\n action 2.7 cli command \"exit\"\n",
+        "templateContent": "{# Interface Configurations #}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/Interfaces-Macros\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/VLAN-Configuration\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/IBNS2.0-Configuration\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/APP-Hosting-Configuration\" %}\n!\n{% set vlanArray = [] %}\n{% if Site == \"A\" %}\n  {{ configure_vlans(SiteAvlans) }}\n  {{ search_vlans(SiteAvlans) }}\n  {{ configure_cts(SiteAvlans) }}\n{% elif Site == \"B\" %}\n  {{ configure_vlans(SiteBvlans) }}\n  {{ search_vlans(SiteBvlans) }}\n  {{ configure_cts(SiteBvlans) }}\n{% endif %}\n!\n{# Determine whether target is Dual or Single Uplink Target #}\n{% set uplink_portarray = [] %}\n{% for interface in __interface %}\n  {% if interface.portMode == \"trunk\" && interface.interfaceType == \"Physical\" %}\n    {% do uplink_portarray.append(interface.portName) %}\n  {% endif %}\n{% endfor %}\n!\n{% if uplink_portarray | length == 2 %}\n  {{ configure_stp_dualuplink(vlanArray) }}\n{% elif uplink_portarray | length == 1 %}\n  {{ configure_stp_singleuplink(vlanArray) }}\n{% endif %}\n!\n{# Interface Templates #}\n{{ ibns_baseconfig(vlanArray[1]) }}\n{{ ibns_accesspoint(vlanArray[1]) }}\n{{ ibns_flexaccesspoint(vlanArray[1], vlanArray[2], vlanArray[3], vlanArray[4]) }} \n{{ ibns_workstation(vlanArray[2], vlanArray[3]) }}\n{{ ibns_guest(vlanArray[4]) }} \n{{ autoconf_accesspoint(vlanArray[1]) }}\n{{ autoconf_flexaccesspoint(vlanArray[1], vlanArray[2], vlanArray[3], vlanArray[4]) }} \n{{ autoconf_workstation(vlanArray[2], vlanArray[3]) }}\n{{ autoconf_baseconfig(vlanArray[1]) }}\n!\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/AutoConf-Configuration\" %}\n!\n{# Interface Interations #}\n!\n{# System Variable example interfaces in one logical code construct #}\n{# Select and Configure Access Point interfaces#}\n{% set apintlog = uplink_portarray %}\n!\n{% for apinterface in accesspoint_interfaces %}\n  {% for interface in __interface %}\n    {% if interface.portName in apintlog %}\n    {% elif interface.portName == apinterface %}\n      default interface {{ interface.portName }}\n      interface {{ interface.portName }}\n       {{ baseconf_interface() }}\n      {% do apintlog.append(interface.portName) %}\n    {% endif %}\n  {% endfor %}\n{% endfor %}\n!\n{# Automatically Configure Workstation Remaining interfaces#}\n{% for interface in __interface %}\n  {% if interface.interfaceType == \"Physical\" && interface.portName.replaceAll(\"(^[a-zA-Z]+).*\",\"$1\") == \"GigabitEthernet\"  %}\n    {% if interface.portName.replaceAll(\"(^[a-zA-Z]+.).*\", \"$1\") != \"GigabitEthernet0\" %}\n      {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$2\") != 1 %}\n        {% if interface.portName in apintlog %}\n        {% else %}\n          default interface {{ interface.portName }}\n          interface {{ interface.portName }}\n            {{ ibns_baseconf_interface() }}\n        {% endif %}\n      {% endif %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n!\ninterface GigabitEthernet0/0\n no ip address\n shutdown\n!\n{% if \"C93\" in __device.platformId %}\n  {{ APP_Hosting(vlanArray[1]) }}\n{% endif %}\n!\n{#- Automated Script for cts manual disruptive config -#}\n{#- This will always ensure the uplink get the cts manual for with  -#}\n{#- timed self deleting EEM script  -#}\nevent manager applet POST_CTS_MANUAL authorization bypass\n event timer countdown time 30\n action 1.0 cli command \"enable\"\n action 1.1 cli command \"config t\"\n action 2.0 cli command \"interface range {{ uplink_portarray|join(',') }}\"\n action 2.1 cli command \"cts manual\"\n action 2.2 cli command \"policy static sgt 2 trusted\"\n action 2.3 cli command \"propagate sgt\"\n action 2.4 cli command \"no event manager applet POST_CTS_MANUAL\"\n action 2.5 cli command \"end\"\n action 2.6 cli command \"wr\"\n action 2.7 cli command \"exit\"\n",
         "rollbackTemplateContent": "",
         "templateParams": [
           {
-            "parameterName": "vlan_number",
+            "parameterName": "voice_number",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
@@ -1052,7 +1052,7 @@
             "displayName": null,
             "instructionText": null,
             "group": null,
-            "order": 3,
+            "order": 5,
             "customOrder": 0,
             "selection": {
               "selectionType": null,
@@ -1087,7 +1087,7 @@
             "range": [],
             "key": null,
             "provider": null,
-            "binding": "{\"provider\":\"Inventory\",\"attributeToDisplay\":\"portName\",\"params\":[{\"type\":\"MANAGED_DEVICE_UUID\",\"scope\":\"RUNTIME\",\"value\":\"edd2b55e-9dca-42b5-be06-6738d1264b4a\"},{\"type\":\"MANAGED_DEVICE_IP\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_HOSTNAME\",\"scope\":\"RUNTIME\",\"value\":null}],\"value\":null,\"source\":\"Inventory\",\"entity\":\"Interface\",\"attribute\":\"portName\",\"filterType\":\"regex\",\"filterValue\":\"GigabitEthernet[1-9]/0/[0-9]+\",\"filterByAttribute\":\"portName\"}"
+            "binding": "{\"provider\":\"Inventory\",\"attributeToDisplay\":\"portName\",\"params\":[{\"type\":\"MANAGED_DEVICE_UUID\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_IP\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_HOSTNAME\",\"scope\":\"RUNTIME\",\"value\":null}],\"value\":null,\"source\":\"Inventory\",\"entity\":\"Interface\",\"attribute\":\"portName\",\"filterType\":\"regex\",\"filterValue\":\"GigabitEthernet[1-9]/0/[0-9]+\",\"filterByAttribute\":\"portName\"}"
           },
           {
             "parameterName": "Site",
@@ -1119,7 +1119,7 @@
             "binding": ""
           },
           {
-            "parameterName": "voice_number",
+            "parameterName": "vlan_number",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
@@ -1129,7 +1129,7 @@
             "displayName": null,
             "instructionText": null,
             "group": null,
-            "order": 5,
+            "order": 3,
             "customOrder": 0,
             "selection": {
               "selectionType": null,
@@ -1167,24 +1167,19 @@
             "binding": ""
           },
           {
-            "parameterName": "guest_number",
+            "parameterName": "__device",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
-            "required": false,
-            "notParam": true,
+            "required": true,
+            "notParam": false,
             "paramArray": false,
             "displayName": null,
             "instructionText": null,
             "group": null,
-            "order": 6,
+            "order": 8,
             "customOrder": 0,
-            "selection": {
-              "selectionType": null,
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
+            "selection": null,
             "range": [],
             "key": null,
             "provider": null,
@@ -1215,19 +1210,24 @@
             "binding": ""
           },
           {
-            "parameterName": "__device",
+            "parameterName": "guest_number",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
-            "required": true,
-            "notParam": false,
+            "required": false,
+            "notParam": true,
             "paramArray": false,
             "displayName": null,
             "instructionText": null,
             "group": null,
-            "order": 8,
+            "order": 6,
             "customOrder": 0,
-            "selection": null,
+            "selection": {
+              "selectionType": null,
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
             "range": [],
             "key": null,
             "provider": null,
@@ -1238,10 +1238,60 @@
         "composite": false,
         "containingTemplates": [],
         "language": "JINJA",
-        "promotedTemplateContent": "{# Interface Configurations #}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/Interfaces-Macros\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/VLAN-Configuration\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/IBNS2.0-Configuration\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/APP-Hosting-Configuration\" %}\n!\n{% set vlanArray = [] %}\n{% if Site == \"A\" %}\n  {{ configure_vlans(SiteAvlans) }}\n  {{ search_vlans(SiteAvlans) }}\n  {{ configure_cts(SiteAvlans) }}\n{% elif Site == \"B\" %}\n  {{ configure_vlans(SiteBvlans) }}\n  {{ search_vlans(SiteBvlans) }}\n  {{ configure_cts(SiteBvlans) }}\n{% endif %}\n!\n{# Determine whether target is Dual or Single Uplink Target #}\n{% set uplink_portarray = [] %}\n{% for interface in __interface %}\n  {% if interface.portMode == \"trunk\" && interface.interfaceType == \"Physical\" %}\n    {% do uplink_portarray.append(interface.portName) %}\n  {% endif %}\n{% endfor %}\n!\n{% if uplink_portarray | length == 2 %}\n  {{ configure_stp_dualuplink(vlanArray) }}\n{% elif uplink_portarray | length == 1 %}\n  {{ configure_stp_singleuplink(vlanArray) }}\n{% endif %}\n!\n{# Interface Templates #}\n{{ ibns_baseconfig(vlanArray[0]) }}\n{{ ibns_accesspoint(vlanArray[0]) }}\n{{ ibns_flexaccesspoint(vlanArray[0], vlanArray[1], vlanArray[2], vlanArray[3]) }} \n{{ ibns_workstation(vlanArray[1], vlanArray[2]) }}\n{{ ibns_guest(vlanArray[3]) }} \n{{ autoconf_accesspoint(vlanArray[0]) }}\n{{ autoconf_flexaccesspoint(vlanArray[0], vlanArray[1], vlanArray[2], vlanArray[3]) }} \n{{ autoconf_workstation(vlanArray[1], vlanArray[2]) }}\n{{ autoconf_baseconfig(vlanArray[0]) }}\n!\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/AutoConf-Configuration\" %}\n!\n{# Interface Interations #}\n!\n{# System Variable example interfaces in one logical code construct #}\n{# Select and Configure Access Point interfaces#}\n{% set apintlog = uplink_portarray %}\n!\n{% for apinterface in accesspoint_interfaces %}\n  {% for interface in __interface %}\n    {% if interface.portName in apintlog %}\n    {% elif interface.portName == apinterface %}\n      default interface {{ interface.portName }}\n      interface {{ interface.portName }}\n       {{ baseconf_interface() }}\n      {% do apintlog.append(interface.portName) %}\n    {% endif %}\n  {% endfor %}\n{% endfor %}\n!\n{# Automatically Configure Workstation Remaining interfaces#}\n{% for interface in __interface %}\n  {% if interface.interfaceType == \"Physical\" && interface.portName.replaceAll(\"(^[a-zA-Z]+).*\",\"$1\") == \"GigabitEthernet\"  %}\n    {% if interface.portName.replaceAll(\"(^[a-zA-Z]+.).*\", \"$1\") != \"GigabitEthernet0\" %}\n      {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$2\") != 1 %}\n        {% if interface.portName in apintlog %}\n        {% else %}\n          default interface {{ interface.portName }}\n          interface {{ interface.portName }}\n            {{ ibns_baseconf_interface() }}\n        {% endif %}\n      {% endif %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n!\ninterface GigabitEthernet0/0\n no ip address\n shutdown\n!\n{% if \"C93\" in __device.platformId %}\n  {{ APP_Hosting(vlanArray[1]) }}\n{% endif %}\n!\n{#- Automated Script for cts manual disruptive config -#}\n{#- This will always ensure the uplink get the cts manual for with  -#}\n{#- timed self deleting EEM script  -#}\nevent manager applet POST_CTS_MANUAL authorization bypass\n event timer countdown time 30\n action 1.0 cli command \"enable\"\n action 1.1 cli command \"config t\"\n action 2.0 cli command \"interface range {{ uplink_portarray|join(',') }}\"\n action 2.1 cli command \"cts manual\"\n action 2.2 cli command \"policy static sgt 2 trusted\"\n action 2.3 cli command \"propagate sgt\"\n action 2.4 cli command \"no event manager applet POST_CTS_MANUAL\"\n action 2.5 cli command \"end\"\n action 2.6 cli command \"wr\"\n action 2.7 cli command \"exit\"\n",
+        "promotedTemplateContent": "{# Interface Configurations #}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/Interfaces-Macros\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/VLAN-Configuration\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/IBNS2.0-Configuration\" %}\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/APP-Hosting-Configuration\" %}\n!\n{% set vlanArray = [] %}\n{% if Site == \"A\" %}\n  {{ configure_vlans(SiteAvlans) }}\n  {{ search_vlans(SiteAvlans) }}\n  {{ configure_cts(SiteAvlans) }}\n{% elif Site == \"B\" %}\n  {{ configure_vlans(SiteBvlans) }}\n  {{ search_vlans(SiteBvlans) }}\n  {{ configure_cts(SiteBvlans) }}\n{% endif %}\n!\n{# Determine whether target is Dual or Single Uplink Target #}\n{% set uplink_portarray = [] %}\n{% for interface in __interface %}\n  {% if interface.portMode == \"trunk\" && interface.interfaceType == \"Physical\" %}\n    {% do uplink_portarray.append(interface.portName) %}\n  {% endif %}\n{% endfor %}\n!\n{% if uplink_portarray | length == 2 %}\n  {{ configure_stp_dualuplink(vlanArray) }}\n{% elif uplink_portarray | length == 1 %}\n  {{ configure_stp_singleuplink(vlanArray) }}\n{% endif %}\n!\n{# Interface Templates #}\n{{ ibns_baseconfig(vlanArray[1]) }}\n{{ ibns_accesspoint(vlanArray[1]) }}\n{{ ibns_flexaccesspoint(vlanArray[1], vlanArray[2], vlanArray[3], vlanArray[4]) }} \n{{ ibns_workstation(vlanArray[2], vlanArray[3]) }}\n{{ ibns_guest(vlanArray[4]) }} \n{{ autoconf_accesspoint(vlanArray[1]) }}\n{{ autoconf_flexaccesspoint(vlanArray[1], vlanArray[2], vlanArray[3], vlanArray[4]) }} \n{{ autoconf_workstation(vlanArray[2], vlanArray[3]) }}\n{{ autoconf_baseconfig(vlanArray[1]) }}\n!\n{% include \"DCLOUD CATC Template Lab DayN Jinja2/AutoConf-Configuration\" %}\n!\n{# Interface Interations #}\n!\n{# System Variable example interfaces in one logical code construct #}\n{# Select and Configure Access Point interfaces#}\n{% set apintlog = uplink_portarray %}\n!\n{% for apinterface in accesspoint_interfaces %}\n  {% for interface in __interface %}\n    {% if interface.portName in apintlog %}\n    {% elif interface.portName == apinterface %}\n      default interface {{ interface.portName }}\n      interface {{ interface.portName }}\n       {{ baseconf_interface() }}\n      {% do apintlog.append(interface.portName) %}\n    {% endif %}\n  {% endfor %}\n{% endfor %}\n!\n{# Automatically Configure Workstation Remaining interfaces#}\n{% for interface in __interface %}\n  {% if interface.interfaceType == \"Physical\" && interface.portName.replaceAll(\"(^[a-zA-Z]+).*\",\"$1\") == \"GigabitEthernet\"  %}\n    {% if interface.portName.replaceAll(\"(^[a-zA-Z]+.).*\", \"$1\") != \"GigabitEthernet0\" %}\n      {% if interface.portName.replaceAll(\"^[a-zA-Z]+(\\\\d+)/(\\\\d+)/(\\\\d+)\", \"$2\") != 1 %}\n        {% if interface.portName in apintlog %}\n        {% else %}\n          default interface {{ interface.portName }}\n          interface {{ interface.portName }}\n            {{ ibns_baseconf_interface() }}\n        {% endif %}\n      {% endif %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n!\ninterface GigabitEthernet0/0\n no ip address\n shutdown\n!\n{% if \"C93\" in __device.platformId %}\n  {{ APP_Hosting(vlanArray[1]) }}\n{% endif %}\n!\n{#- Automated Script for cts manual disruptive config -#}\n{#- This will always ensure the uplink get the cts manual for with  -#}\n{#- timed self deleting EEM script  -#}\nevent manager applet POST_CTS_MANUAL authorization bypass\n event timer countdown time 30\n action 1.0 cli command \"enable\"\n action 1.1 cli command \"config t\"\n action 2.0 cli command \"interface range {{ uplink_portarray|join(',') }}\"\n action 2.1 cli command \"cts manual\"\n action 2.2 cli command \"policy static sgt 2 trusted\"\n action 2.3 cli command \"propagate sgt\"\n action 2.4 cli command \"no event manager applet POST_CTS_MANUAL\"\n action 2.5 cli command \"end\"\n action 2.6 cli command \"wr\"\n action 2.7 cli command \"exit\"\n",
         "promotedTemplateParams": [
           {
-            "parameterName": "voice_number",
+            "parameterName": "Site",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": "The Letter denotes the VLAN Schema\n         AP, Data, Voice, Guest, Disabled\nA = 10,20,30,40,99\nB = 20,30,40,50,99",
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "displayName": "VLAN Schema for Site",
+            "instructionText": null,
+            "group": null,
+            "order": 1,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "SINGLE_SELECT",
+              "selectionValues": {
+                "A": "A",
+                "B": "B"
+              },
+              "defaultSelectedValues": [
+                "A"
+              ],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "id": null
+          },
+          {
+            "parameterName": "__device",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "displayName": null,
+            "instructionText": null,
+            "group": null,
+            "order": 8,
+            "customOrder": 0,
+            "selection": null,
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "id": null
+          },
+          {
+            "parameterName": "vlan_number",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
@@ -1251,7 +1301,7 @@
             "displayName": null,
             "instructionText": null,
             "group": null,
-            "order": 5,
+            "order": 3,
             "customOrder": 0,
             "selection": {
               "selectionType": null,
@@ -1287,7 +1337,32 @@
             "range": [],
             "key": null,
             "provider": null,
-            "binding": "{\"provider\":\"Inventory\",\"attributeToDisplay\":\"portName\",\"params\":[{\"type\":\"MANAGED_DEVICE_UUID\",\"scope\":\"RUNTIME\",\"value\":\"edd2b55e-9dca-42b5-be06-6738d1264b4a\"},{\"type\":\"MANAGED_DEVICE_IP\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_HOSTNAME\",\"scope\":\"RUNTIME\",\"value\":null}],\"value\":null,\"source\":\"Inventory\",\"entity\":\"Interface\",\"attribute\":\"portName\",\"filterType\":\"regex\",\"filterValue\":\"GigabitEthernet[1-9]/0/[0-9]+\",\"filterByAttribute\":\"portName\"}",
+            "binding": "{\"provider\":\"Inventory\",\"attributeToDisplay\":\"portName\",\"params\":[{\"type\":\"MANAGED_DEVICE_UUID\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_IP\",\"scope\":\"RUNTIME\",\"value\":null},{\"type\":\"MANAGED_DEVICE_HOSTNAME\",\"scope\":\"RUNTIME\",\"value\":null}],\"value\":null,\"source\":\"Inventory\",\"entity\":\"Interface\",\"attribute\":\"portName\",\"filterType\":\"regex\",\"filterValue\":\"GigabitEthernet[1-9]/0/[0-9]+\",\"filterByAttribute\":\"portName\"}",
+            "id": null
+          },
+          {
+            "parameterName": "data_number",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": false,
+            "notParam": true,
+            "paramArray": false,
+            "displayName": null,
+            "instructionText": null,
+            "group": null,
+            "order": 4,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": null,
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
             "id": null
           },
           {
@@ -1316,37 +1391,7 @@
             "id": null
           },
           {
-            "parameterName": "Site",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": "The Letter denotes the VLAN Schema\n         AP, Data, Voice, Guest, Disabled\nA = 10,20,30,40,99\nB = 20,30,40,50,99",
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "displayName": "VLAN Schema for Site",
-            "instructionText": null,
-            "group": null,
-            "order": 1,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "SINGLE_SELECT",
-              "selectionValues": {
-                "A": "A",
-                "B": "B"
-              },
-              "defaultSelectedValues": [
-                "A"
-              ],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "id": null
-          },
-          {
-            "parameterName": "data_number",
+            "parameterName": "voice_number",
             "dataType": "STRING",
             "defaultValue": null,
             "description": null,
@@ -1356,7 +1401,7 @@
             "displayName": null,
             "instructionText": null,
             "group": null,
-            "order": 4,
+            "order": 5,
             "customOrder": 0,
             "selection": {
               "selectionType": null,
@@ -1394,56 +1439,11 @@
             "provider": null,
             "binding": "",
             "id": null
-          },
-          {
-            "parameterName": "vlan_number",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": false,
-            "notParam": true,
-            "paramArray": false,
-            "displayName": null,
-            "instructionText": null,
-            "group": null,
-            "order": 3,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": null,
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "id": null
-          },
-          {
-            "parameterName": "__device",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "displayName": null,
-            "instructionText": null,
-            "group": null,
-            "order": 8,
-            "customOrder": 0,
-            "selection": null,
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "id": null
           }
         ],
         "customParamsOrder": false,
         "createTime": 1709066672863,
-        "lastUpdateTime": 1709071133132,
+        "lastUpdateTime": 1709590311319,
         "latestVersionTime": 1709066672863,
         "projectName": "DCLOUD CATC Template Lab DayN Jinja2",
         "validationErrors": {
