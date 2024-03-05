@@ -140,7 +140,9 @@ conf t
 
 ```bash
 ping 198.18.129.100 source vlan 5 repeat 1
+```
 
+```bash
 ping pnpserver.pnp.dcloud.cisco.com source vlan 5 repeat 1
 ```
 

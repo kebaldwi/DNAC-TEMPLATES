@@ -285,6 +285,9 @@ logging source-interface Vlan ${MgmtVlan}
 snmp-server trap-source Vlan ${MgmtVlan}
 ntp source Vlan ${MgmtVlan}
 !
+netconf-yang
+!
+
 ```
 
 #### Example Jinja2 Template
@@ -359,6 +362,9 @@ logging source-interface Vlan {{ MgmtVlan }}
 snmp-server trap-source Vlan {{ MgmtVlan }}
 ntp source Vlan {{ MgmtVlan }}
 !
+netconf-yang
+!
+
 ```
 
 Both of these Templates have the settings necessary to bring up a Layer2 access switch with enough configration to be supported by Cisco Catalyst Center for the rest of the provisioning process. As guidance it is recommended that you use **Jinja2** moving forward, due to its modularity and capabilities. You can however achieve the same results with **Velocity**, but the scripting language is not as feature rich.
@@ -373,15 +379,25 @@ We will now **download** and **import** one of the following PnP Onboarding Temp
 
 #### Velocity:
 
+**Note:** For older versions of Catalyst Center formerly known as Cisco DNA Center 2.2 and lower use the following for easy import:
+
+&emsp;&emsp;&emsp; <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum_PnP_Velocity_template.json">⬇︎Platinum_PnP_Velocity_template.json⬇︎</a></br>
+
+<details closed>
+<summary> New Version for NON DCLOUD ONLY </summary></br>
 <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_PnP_Velocity_template.json">⬇︎Titanium_PnP_Velocity_template.json⬇︎</a> 
+</details>
 
 #### jinja2:
 
-<a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_PnP_Jinja2_template.json">⬇︎Titanium_PnP_Jinja2_template.json⬇︎</a>
+**Note:** For older versions of Catalyst Center formerly known as Cisco DNA Center 2.2 and lower use the following for easy import:
 
-> **Note:** For older versions of Catalyst Center formerly known as Cisco DNA Center 2.2 and lower use the following for easy import: 
-> &emsp;&emsp;&emsp; <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum_PnP_Velocity_template.json">⬇︎Platinum_PnP_Velocity_template.json⬇︎</a></br>
-> &emsp;&emsp;&emsp; <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum_PnP_Jinja2_template.json">⬇︎Platinum_PnP_Jinja2_template.json⬇︎</a> 
+&emsp;&emsp;&emsp; <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum_PnP_Jinja2_template.json">⬇︎Platinum_PnP_Jinja2_template.json⬇︎</a> 
+
+<details closed>
+<summary> New Version for NON DCLOUD ONLY </summary></br>
+<a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_PnP_Jinja2_template.json">⬇︎Titanium_PnP_Jinja2_template.json⬇︎</a>
+</details></br>
 
 1. Navigate to the **Template Hub** formerly known as the **Template Editor** within Cisco Catalyst Center through the menu **`Tools > Template Hub`**.
 
