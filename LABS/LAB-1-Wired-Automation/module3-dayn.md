@@ -79,7 +79,11 @@ We will use the **Template Hub** previously known as the **Template Editor** to 
 
 **Download**, **Extract** and **import** a set of Day N Templates into the **Template Hub** using the file: <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_WiredAutoLab_Jinja2_project.json">**⬇︎Titanium_WiredAutoLab_Jinja2_project.json⬇︎**</a>
 
-</br></br><a href="https://raw.github.com/kebaldwi/DNAC-TEMPLATES/master/LABS/LAB-1-Wired-Automation/templates/Titanium_WiredAutoLab_Jinja2_project.json" target="_blank"/>**⬇︎Titanium_WiredAutoLab_Jinja2_project.json⬇︎**</a></br></br>
+</br></br>
+
+test <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_WiredAutoLab_Jinja2_project.json">**⬇︎Titanium_WiredAutoLab_Jinja2_project.json⬇︎**</a>
+
+</br></br>
 
 1. Navigate to the **Template Hub**  within Cisco Catalyst Center through the menu **`Tools > Template Hub`**.
 
