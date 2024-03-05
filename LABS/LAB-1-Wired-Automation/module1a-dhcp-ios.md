@@ -85,9 +85,9 @@ wr
 
 For a complete configuration example please see [Configuring the Cisco IOS DHCP Server](https://www.cisco.com/en/US/docs/ios/12_4t/ip_addr/configuration/guide/htdhcpsv.html#wp1046301)
 
-## Step 3.2b - Windows DHCP and DNS Services Configuration
+## Step 3.2b - Client Windows DHCP and DNS Services Configuration
 
-In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server within the lab environment. These services are required for the other VLANs for host onboarding.
+In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server within the lab environment for the remaining client onboarding and connectivity. These services are required for the other VLANs for **host onboarding**.
 
 ### Step 1 - Configuring DHCP and General DNS Services via Powershell
 
@@ -144,7 +144,9 @@ ping 192.168.5.1
 
 ```bash
 ping 198.18.129.100 repeat 1
+```
 
+```bash
 ping 198.18.129.100 source vlan 5 repeat 1
 
 ```

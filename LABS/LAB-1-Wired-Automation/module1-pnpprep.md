@@ -72,7 +72,7 @@ We will be utilizing the lab in this manner:
 
 ## Step 3 - Router Connectivity
 
-Essentially we will be turing the 9300-2 switch into a distribution switch to allow for the access switch to be onboarded over a port channel. Port channels are typically how switches are connected for redundancy and it seems fair to use that as the basis for the lab. 
+Essentially we will be turning the 9300-2 switch into a distribution switch to allow for the access switch to be onboarded over a port channel. Port channels are typically how switches are connected for redundancy and it seems fair to use that as the basis for the lab. 
 
 > **Note:** It is possible to use a routed connection, but then LAN Automation is typically used for routed access as it is in SD-Access. It is possible however to use PnP for routed access without LAN automation but that is outside the scope of todays lab.
 
@@ -286,9 +286,9 @@ During this lab setup, please choose which option you wish to use for DHCP for P
 
 Within the DCLOUD environment we can accomodate the build and testing of the following Discovery methods. Please select one option link in the following list to move through the configuration instructions to continue the lab.
 
-1. **DHCP Discovery Option**
+1. **DHCP Discovery Options**
    - [**Configure DHCP Discovery using IOS DHCP Service**](./module1a-dhcp-ios.md)
    - [**Configure DHCP Discovery using Windows DHCP Service**](./module1b-dhcp-svr.md)
-2. **DNS Discovery Option**
+2. **DNS Discovery Options**
    - [**Configure DNS Discovery using IOS DHCP and Windows DNS Services**](./module1c-dns-ios.md)
    - [**Configure DNS Discovery using Windows based DHCP and DNS Services**](./module1d-dns-svr.md)

@@ -77,7 +77,7 @@ We will download and import a template project to include templates for deployme
 
 We will use the **Template Hub** previously known as the **Template Editor** to write, maintain and test template projects. A Project is a logical folder or grouping of templates. Templates can be imported or exported individually or as a collection in a project. We will be importing a Project into the template editor which will have a combination of **Regular** and **Composite** templates.
 
-Download, Extract and import a set of Day N Templates into the **Template Hub** using the file: <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_WiredAutoLab_Jinja2_project.json">**⬇︎Titanium_WiredAutoLab_Jinja2_project.json⬇︎**</a>
+**Download**, **Extract** and **import** a set of Day N Templates into the **Template Hub** using the file: <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_WiredAutoLab_Jinja2_project.json">**⬇︎Titanium_WiredAutoLab_Jinja2_project.json⬇︎**</a>
 
 1. Navigate to the **Template Hub**  within Cisco Catalyst Center through the menu **`Tools > Template Hub`**.
 
