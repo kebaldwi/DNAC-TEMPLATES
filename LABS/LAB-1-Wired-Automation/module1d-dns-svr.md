@@ -71,7 +71,7 @@ In this section we will prepare Domain Name System (DNS) and Dynamic Host Config
 
 ### Step 1 - Configuring DHCP and DNS via Powershell
 
-1. Download the powershell script to the **windows server** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/scripts/powershell-DNS.ps1">**⬇︎powershell-DNS.ps1⬇︎**</a> file.
+1. Download the powershell script to the **windows server** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/scripts/powershell-DNS.ps1">**⬇︎powershell-DNS.ps1⬇︎**</a> file.
 
 2. Once downloaded, extract the file.
 
