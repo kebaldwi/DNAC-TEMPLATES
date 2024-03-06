@@ -101,7 +101,7 @@ Should you desire to deploy rapidly and build the lab faster then use the follow
 
 ### Step 1 - ***Import Postman Collection***
 
-1. Download and import the collection within the ***Postman*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-H-Dynamic-Automation/postman/DCLOUD_DNACTemplatesLab_Workflow.postman_collection.json">⬇︎DCLOUD_DNACTemplateLab_Workflow.postman_collection.json⬇︎</a> file.
+1. Download and import the collection within the ***Postman*** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-H-Dynamic-Automation/postman/DCLOUD_DNACTemplatesLab_Workflow.postman_collection.json">⬇︎DCLOUD_DNACTemplateLab_Workflow.postman_collection.json⬇︎</a> file.
 2. Extract the file to the desktop using **Winrar** to expand them
 3. Open the **postman** application from the desktop. Once the application is open select *Collections* then click the *Import* link. 
 
@@ -117,7 +117,7 @@ Should you desire to deploy rapidly and build the lab faster then use the follow
 
 ### Step 2 - ***Import Postman Environment***
 
-1. Download and import the environment within the ***Postman*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-H-Dynamic-Automation/postman/DCLOUD_DNACTemplateLabs.postman_environment.json">⬇︎DCLOUD_DNACTemplateLabs.postman_environment.json⬇︎</a> file.
+1. Download and import the environment within the ***Postman*** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-H-Dynamic-Automation/postman/DCLOUD_DNACTemplateLabs.postman_environment.json">⬇︎DCLOUD_DNACTemplateLabs.postman_environment.json⬇︎</a> file.
 2. Extract the file to the desktop using **Winrar** to expand them
 3. If not open, open the **postman** application from the desktop. Once the application is open select *Environments* and then the *Import* link. 
 
@@ -181,7 +181,7 @@ We will now import the various templates for use in this lab. Three will be util
 
 The Onboarding Template previously discussed in Lab 2 will be used to Plug and Play a switch within the environment. for more information on this please see [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/)
 
-Download and import the Onboarding Template within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-H-Dynamic-Automation/templates/DCLOUD-DNACTemplates-OnboardingTemplate.json">⬇︎DCLOUD-DNACTemplates-OnboardingTemplate.json⬇︎</a> file.
+Download and import the Onboarding Template within the ***Template Editor*** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-H-Dynamic-Automation/templates/DCLOUD-DNACTemplates-OnboardingTemplate.json">⬇︎DCLOUD-DNACTemplates-OnboardingTemplate.json⬇︎</a> file.
 
 Import the environment into DNA Centers ***Template Editor*** by un-zip the file and import the *json* file which will automatically create a template within the onboarding template project. 
 
@@ -207,7 +207,7 @@ Use the following steps to import the project.
 
 The Lab Preparation Project and Templates will be used to prepare the environment.
 
-Download and import the Onboarding Template within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-H-Dynamic-Automation/templates/DCLOUD-PrepEnvironment-project.json">⬇︎DCLOUD-PrepEnvironment-Project.json⬇︎</a> file.
+Download and import the Onboarding Template within the ***Template Editor*** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-H-Dynamic-Automation/templates/DCLOUD-PrepEnvironment-project.json">⬇︎DCLOUD-PrepEnvironment-Project.json⬇︎</a> file.
 
 Please un-zip the file and import the *json* file which will automatically create a project and included templates within. Use the following steps to import the project.
 
@@ -234,7 +234,7 @@ Please un-zip the file and import the *json* file which will automatically creat
 
 The Dynamic DayN Project contains a composite template and various regular templates used in a workflow to build out the use cases studied in Lab 7. For more information on Lab 7 please see [Advanced Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB7-Advanced-Automation/)
 
-Download and import the Dynamic DayN Project within the ***Template Editor*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-H-Dynamic-Automation/templates/DCLOUD-DNACTemplates-Dynamic-IBN-Autoconf-Project.json">⬇︎DCLOUD-DNACTemplates-Dynamic-IBN-Autoconf-Project.json⬇︎</a> file.
+Download and import the Dynamic DayN Project within the ***Template Editor*** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-H-Dynamic-Automation/templates/DCLOUD-DNACTemplates-Dynamic-IBN-Autoconf-Project.json">⬇︎DCLOUD-DNACTemplates-Dynamic-IBN-Autoconf-Project.json⬇︎</a> file.
 
 Please un-zip the file and import the *json* file which will automatically create a project and included templates within. Use the following steps to import the project.
 
@@ -272,7 +272,7 @@ In this section we will prepare Domain Name System (DNS) and Dynamic Host Config
 
 ### Step 1 - ***Configuring DHCP and DNS via Powershell***
 
-1. Download the powershell script to the ***windows server*** using the <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-H-Dynamic-Automation/scripts/powershell.ps1">⬇︎powershell.ps1⬇︎</a> file.
+1. Download the powershell script to the ***windows server*** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-H-Dynamic-Automation/scripts/powershell.ps1">⬇︎powershell.ps1⬇︎</a> file.
 2. Once downloaded, extract the file.
 
    ![json](./images/Powershell-Extract.png?raw=true "Import JSON")

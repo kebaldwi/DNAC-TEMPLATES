@@ -52,7 +52,7 @@ Add-WindowsFeature Adcs-Online-Cert -IncludeAllSubFeature -IncludeManagementTool
 Install-AdcsOnlineResponder -Force
 ```
 
-<p>Download the full Powershell script here: <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/scripts/powershell-CA.ps1">⬇︎CA Setup Powershell⬇︎</a></p>
+<p>Download the full Powershell script here: <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/scripts/powershell-CA.ps1">⬇︎CA Setup Powershell⬇︎</a></p>
 
 ## PKI Certificate Template Build
 

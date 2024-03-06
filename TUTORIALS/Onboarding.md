@@ -62,7 +62,7 @@ Cisco Catalyst Center allows for the use of Velocity Scripting Language which wa
 
 ### Example Template
 
-To that end, a set of examples has been provided in the [**Jinja2**](#jinja2-scripting-language) and [**Velocity**](#velocity-scripting-language) folders above. One of those examples is the one I most typically see used with customer deployments. Included there is a [⬇︎Full Cisco Catalyst Center PnP Onboarding Template⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/ONBOARDING/DNAC-SAMPLE-TEMPLATES-01302023-PnP-template.json) for import into Cisco Catalyst Center.
+To that end, a set of examples has been provided in the [**Jinja2**](#jinja2-scripting-language) and [**Velocity**](#velocity-scripting-language) folders above. One of those examples is the one I most typically see used with customer deployments. Included there is a [⬇︎Full Cisco Catalyst Center PnP Onboarding Template⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/ONBOARDING/DNAC-SAMPLE-TEMPLATES-01302023-PnP-template.json) for import into Cisco Catalyst Center.
 
 #### Example Velocity Template
 

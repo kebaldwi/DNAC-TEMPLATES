@@ -67,7 +67,7 @@ Before Cisco Catalyst Center can automate the deployment we have to perform foll
 
 ## DayN Templates
 
-DayN templates can be regular or composite templates which serve the purpose of providing a method of making ongoing configuration changes to the device as mentioned during provisioning. Typically there are two types of configuration that are used here Layer3 routed or Layer2 access. Both have different use cases and while they are typical they are by no means the only types of configuration used. To that end a **NEW** set of examples has been provided in the [⬇︎Full Cisco Catalyst Center Sample Project⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/DAYN/DNAC-SAMPLE-TEMPLATES-05312023-project.json)
+DayN templates can be regular or composite templates which serve the purpose of providing a method of making ongoing configuration changes to the device as mentioned during provisioning. Typically there are two types of configuration that are used here Layer3 routed or Layer2 access. Both have different use cases and while they are typical they are by no means the only types of configuration used. To that end a **NEW** set of examples has been provided in the [⬇︎Full Cisco Catalyst Center Sample Project⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/DAYN/DNAC-SAMPLE-TEMPLATES-05312023-project.json)
  within this repository. Some of those examples are the ones I most typically use with customers in workshops. Included there are a number of **JSON Import Files** to facilitate import into Cisco Catalyst Center.
 
 ## DayN Template Deployment
