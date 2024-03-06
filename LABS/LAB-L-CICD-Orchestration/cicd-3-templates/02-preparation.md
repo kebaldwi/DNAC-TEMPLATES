@@ -10,7 +10,7 @@ Accompanying the **Python Program** is a required YAML Ain't Markup Language **Y
 
 For reference **ONLY** it is here:
 
-> **Download:** <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-L-CICD-Orchestration/assets/YAML/site_operations.yml" target="_blank">⬇︎ Site Operations YAML Example ⬇︎</a>
+> **Download:** <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-L-CICD-Orchestration/assets/YAML/site_operations.yml" target="_blank">⬇︎ Site Operations YAML Example ⬇︎</a>
 
 > **IMPORTANT NOTE:** We will **open** but **not save** the YML file to view the hierarchy that will be built during the lab. 
   As you review the YML file, you will see each row has operational information, devices, IP's, and other information. **Be Careful NOT to modify the file**; if you feel you have modified the file, please download it again.

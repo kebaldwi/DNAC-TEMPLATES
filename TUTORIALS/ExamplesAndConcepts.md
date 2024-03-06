@@ -55,7 +55,7 @@ This material is designed to help you understand the Plug and Play process, temp
 
 Within the following location is an example template written in ***Jinja2*** in JSON format which can be imported into the **Onboarding Configuration** section in the Template Editor/Hub:
 
-[⬇︎Full Cisco Catalyst Center PnP Onboarding Template⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/ONBOARDING/DNAC-SAMPLE-TEMPLATES-01302023-PnP-template.json)
+[⬇︎Full Cisco Catalyst Center PnP Onboarding Template⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/ONBOARDING/DNAC-SAMPLE-TEMPLATES-01302023-PnP-template.json)
 
 ### Features
 
@@ -222,7 +222,7 @@ This material is designed to help you understand the use and processes of utiliz
 
 This is an example which you may want to test with in the lab in combination with the **PnP Template** offered [here](./ExamplesAndConcepts.md#plug-and-play-pnp-template). Within the following location is an example project written in ***Jinja2*** in JSON format which can be imported into the Template Editor/Hub:
 
-[⬇︎Full Cisco Catalyst Center Sample Project⬇︎](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/DAYN/DNAC-SAMPLE-TEMPLATES-05312023-project.json)
+[⬇︎Full Cisco Catalyst Center Sample Project⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/DAYN/DNAC-SAMPLE-TEMPLATES-05312023-project.json)
 
 ### Features
 

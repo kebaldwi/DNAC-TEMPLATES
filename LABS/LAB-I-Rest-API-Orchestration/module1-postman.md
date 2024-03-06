@@ -36,7 +36,7 @@ There is a Public Workspace, which can be easily added to Postman via the follow
 
 To prepare Postman for the lab, please download the following collection and environment zip file and upload them into Postman. Download the following Student Collection, which includes seven collections and one environment. To do this right, click and open this link in a new tab to download them:
    
-<a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-I-Rest-API-Orchestration/postman/DNACenter-UseCase-API-Collection.zip" target="_blank">⬇︎DNACenter Use-Case API Collection⬇︎</a>
+<a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-I-Rest-API-Orchestration/postman/DNACenter-UseCase-API-Collection.zip" target="_blank">⬇︎DNACenter Use-Case API Collection⬇︎</a>
 
 Once the file has been downloaded, uncompress/unzip it and import all the files into Postman.
 
