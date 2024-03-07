@@ -76,7 +76,8 @@ Finally, we want to test the routing, connectivity, DHCP, DNS services, and disc
 ```vtl
 !
 copy prep4dnac running-config
-!
+
+
 prep4dnac
 !
 ```
