@@ -36,14 +36,14 @@ While there may be many use cases for templates in wireless, the use of the GUI 
 
 1. [⬇︎**SSID with mPSK**⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-2-Wireless-Automation/templates/wireless/Wifi_SSID_mPSK.json) - *(create mPSK keys in SSID)* - *(available in 2.3.5.x)*
 2. [⬇︎**CCKM SSID**⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-2-Wireless-Automation/templates/wireless/Wifi_CCKM_templates.json) - *(CCKM setting for SSID)* - *(available in 2.3.5.x)*
-3. [⬇︎**Anchor Priority**⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-2-Wireless-Automation/wireless/templates/Wifi_Anchor_Priority_templates.json) - *(Enabling)* - *(available in 2.3.3.x)*
+3. [⬇︎**Anchor Priority**⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-2-Wireless-Automation/templates/wireless/Wifi_Anchor_Priority_templates.json) - *(Enabling)* - *(available in 2.3.3.x)*
 4. [⬇︎**Open Roaming**⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-2-Wireless-Automation/templates/wireless/Wifi_Open_Roaming_project.json) - *(Set up open roaming from a Project)*
 5. [⬇︎**RF**⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-2-Wireless-Automation/templates/wireless/Wifi_RF_templates.json) - *(Enabling RF Thresholds)*
 6. [⬇︎**Radius Probes**⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-2-Wireless-Automation/templates/wireless/Wifi_AAA_Probes_templates.json) - *(Enabling Probes for AAA)*
 7. [⬇︎**9800 Hardening**⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-2-Wireless-Automation/templates/wireless/Wifi_9800_Harden_templates.json) - *(Various Security Settings)*
 8. [⬇︎**Onboarding**⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-2-Wireless-Automation/templates/wireless/Wifi_PnP_Onboarding_project.json) - *(Composite Example for PnP from a Project)*
 
-9. [⬇︎**ALL Wireless Examples**⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-2-Wireless-Automation/templates/wireless/Wifi_Templates_project.json) - *(All Wireless Examples in a Project)*
+9. [⬇︎**ALL Wireless Examples**⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-2-Wireless-Automation/templates/wireless/Wifi_Templates_Project.json) - *(All Wireless Examples in a Project)*
 
 <details open>
 <summary> Click the arrow for details</summary>
