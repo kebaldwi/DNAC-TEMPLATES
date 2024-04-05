@@ -54,7 +54,7 @@ If a Design component is used for a specific task you should not deploy the cli 
 
 As guidance try and use Design settings for as much of the configurations as you can leaving templates light and nimble for configurations which might change ongoing. Its both easier to maintain and troubleshoot.
 
-## Prepare Postman 
+## Section 1 - Prepare Postman 
 
 We will use Postman to push a collection of REST API which will utlize data within environment variables to prepare the Catalyst Center for use in our lab
 
@@ -113,7 +113,7 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 
     ![json](./images/Postman-SSL-Deselect.png?raw=true "Import JSON")
 
-## Cisco Catalyst Center Design Preparation
+## Section 2 - Cisco Catalyst Center Design Preparation
 
 The **Hierarchy** within Cisco Catalyst Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. 
 
@@ -207,7 +207,7 @@ The image used in this lab for the **9300** is downloadable from here [⬇︎Cup
 
 </details>
 
-## Cisco Catalyst Center Onboarding Template 
+## Section 3 - Cisco Catalyst Center Onboarding Template 
 
 You can create onboarding templates within the **Template Hub** previously known as **Template Editor** within **Cisco Catalyst Center**. Go to the **Template Hub**  to complete the next task.
 
@@ -452,7 +452,7 @@ Next we need to assign the Onboarding Template to a site using the Network Profi
 
       ![json](./images/DNAC-ProfileAssigned.png?raw=true "Import JSON")
 
-## PnP Claim and Onboarding Device
+## Section 4 - PnP Claim and Onboarding Device
 
 At this point Cisco Catalyst Center is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find Cisco Catalyst Center and land in the plug n play set of the devices section within the provisioning page.
 
@@ -536,11 +536,11 @@ This accomplishes two things, it places the upstream switch negotiating LACP in 
 
 > **Note:** If you populate the UI with settings those parameters should **not** be in your templates as they will conflict and the deployment through provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what configuration is pushed.
 
-## Automating Claiming and Provisioning
+### Automating Claiming and Provisioning
 
 While it is possible to click through the claiming and process, for bulk deployments its important to be able to address that as well. With Cisco Catalyst Center after the templates are built and assigned to the network profile and assigned to a site they may be referenced and used by uploading a csv file to Cisco Catalyst Center via REST API.
 
-## Cisco Catalyst Center Device Discovery 
+## Section 5 - Cisco Catalyst Center Device Discovery 
 
 We will now discover the other devices on the network and import them into the Inventory for additional configurations to be applied. We do this with Brownfield equipment to initially put this into Catalyst Center, so that we can begin to automate it over time.
 

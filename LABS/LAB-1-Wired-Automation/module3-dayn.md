@@ -69,7 +69,7 @@ Jinja2 as deployed in Cisco Catalyst Center allows for the following capabilitie
 
 This section will go through the build and provisioning of a **Regular** template via Cisco Catalyst Center to a Catalyst 9k switch. We will deal with **Brownfield** and **Greenfield** scenarios during this module.
 
-### Preparation
+### Section 1 - Preparation
 
 We will download and import a template project to include templates for deployment of the Wired Lab environment. Contained in the download will be **Regular** and **Composite** template examples which we will use against both the **Greenfield** and **Brownfield** devices.
 
@@ -120,7 +120,7 @@ mac-address-table notification change
 !
 ```
 
-### Greenfield DayN Provisioning Sequence
+### Section 2 - Greenfield DayN Provisioning Sequence
 
 In this section we will apply a DayN template to the device c9300-1 which we onboarded through the use of Plug and Play (PnP). This device had no configuration on it and as such we will now expand on the configuration.
 
@@ -210,7 +210,7 @@ At this point, we have onboarded a device and successfully pushed configuration 
 
 > **Note:** If you populate the UI with settings, those parameters should **NOT** be in your templates as they will **conflict**, and the deployment through provisioning will fail. While it is easy to populate these settings, it is best to test with a switch to see what configuration is pushed.
 
-### Brownfield DayN Provisioning Sequence
+### Section 3 - Brownfield DayN Provisioning Sequence
 
 In this section we will apply a DayN template to the device c9300-2 which we onboarded through the use of the Discovery Tool. This device had configuration on it and as such we will now expand on the configuration and augment the configuration.
 
@@ -317,11 +317,11 @@ At this point, we have onboarded a device and successfully pushed configuration 
 
 > **Note:** If you populate the UI with settings, those parameters should **NOT** be in your templates as they will **conflict**, and the deployment through provisioning will fail. While it is easy to populate these settings, it is best to test with a switch to see what configuration is pushed.
 
-## Automating Provisioning
+### Automating Provisioning
 
 While it is possible to click through the claiming and provisioning processes manually, which can be time-consuming, we can handle bulk deployments differently. For Bulk deployments, after the templates are built and assigned to the network profile and a site, we may automate them further by uploading a CSV file to Cisco Catalyst Center via REST API.
 
-# Summary
+## Summary
 
 The next step will be to build Composite Template to include the Day N regular templates created in this lab for the switches to be pushed out to the various devices in the network infrastructure. 
 
