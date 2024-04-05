@@ -1,4 +1,4 @@
-# DNS Discovery using IOS DHCP and Windows DNS Services
+## DNS Discovery using IOS DHCP and Windows DNS Services
 
 As you may recall, for a device to discover Cisco Catalyst Center, the device uses a discovery method to help it find Cisco Catalyst Center. 
 
@@ -12,9 +12,9 @@ There are three automated methods to make that occur and in this section we will
   - *requires the DHCP server to offer a domain suffix and a name server to resolve the **pnpserver** address*
   - *requires the **pnpserver** entry to appear in the Subject Alternative Name of the GUI Certificate*
 
-## Step 3.2a - IOS DHCP with DNS Discovery 
+### Step 5.2a - IOS DHCP with DNS Discovery 
 
-### DHCP Overview
+#### DHCP Overview
 
 If we want to use the IOS-XE DHCP service configured on an IOS device, the DHCP pool elements would be configured either on a router or switch in the network. We will configure the DHCP scope, and add DHCP options to the switch or router providing the DHCP services. Additionally we will add the helper address statement on the management VLAN's SVI to point to the router or switch to the DHCP configuration. First we will create the required DHCP scope with the following options:
 
@@ -25,7 +25,7 @@ If we want to use the IOS-XE DHCP service configured on an IOS device, the DHCP 
 
 When using the IOS-XE DHCP Service with the DNS Lookup discovery method, we will add the appropriate DNS server IP addresses along with the domain suffix that the switch will use to resolve the **pnpserver** record within DNS. 
 
-### DNS Overview
+#### DNS Overview
 
 Next, we will add the relevant DNS entries into the Windows DNS service to allow for the Cisco Catalyst Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
 
@@ -51,11 +51,11 @@ Start-Sleep -Seconds 60
 Add-DnsServerResourceRecordCName -Name "pnpserver" -HostNameAlias "dnac-vip.dcloud.cisco.com" -ZoneName "pnp.dcloud.cisco.com"
 ```
 
-## Step 3.2b - IOS DHCP and DNS Discovery Configuration
+### Step 5.2b - IOS DHCP and DNS Discovery Configuration
 
 In this section we will prepare Domain Name System (DNS) on the Windows Server and Dynamic Host Configuration Protocol (DHCP) on the IOS-XE Switch within the lab environment. 
 
-### Step 1 - Configuring DNS via Powershell
+#### Configuring DNS via Powershell
 
 1. Download the powershell script to the **windows server** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/scripts/powershell-DNS.ps1">⬇︎powershell-DNS.ps1⬇︎</a> file.
 2. Once downloaded, extract the file.
@@ -75,7 +75,7 @@ At this point all the DNS and DHCP configuration on the **windows server** will 
 
    ![json](./images/DNS-DHCP.png?raw=true "Import JSON")
 
-## Step 3.2c - IOS DHCP Service Configuration
+### Step 5.2c - IOS DHCP Service Configuration
 
 Next, we will introduce the IOS DHCP Service and helper address configurations. This is an **example** of how you can build a **scope** below. Connect to switch **c9300-2** and please copy and paste the **script** to **configure** the **c9300-2** switch:
 
@@ -98,7 +98,7 @@ wr
 !
 ```
 
-## Verification and Testing
+#### Verification and Testing
 
 To test the environment to ensure it's ready, we need to try a few things.
 

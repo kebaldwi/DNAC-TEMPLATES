@@ -1,4 +1,4 @@
-# DHCP Discovery using IOS DHCP Service
+## DHCP Discovery using IOS DHCP Service
 
 As you may recall, for a device to discover Cisco Catalyst Center, the device uses a discovery method to help it find Cisco Catalyst Center. 
 
@@ -13,7 +13,7 @@ There are three automated methods to make that occur and in this section we will
 
 That string is offered as a scope option typically referred to as **Option 43** where the string **`5A1D;B2;K4;I198.18.129.100;J80`** can be explained as follows:
 
-## Overview of Option 43 VSI String
+### Overview of Option 43 VSI String
 
 The format of the Option 43 as a ascii text string is broken down as follows:
 
@@ -55,7 +55,7 @@ Jxxxx             Port number to use to connect to the Cisco Catalyst Center con
                   and port 443 for HTTPS.
 ```
 
-## Step 3.2a - IOS DHCP and Option 43 Discovery Configuration
+### Step 5.2a - IOS DHCP and Option 43 Discovery Configuration
 
 We will configure **DHCP Services** to run on the **Catalyst 9300-2** within the Lab. The DHCP pool elements could be configured either on a router or switch in the network. 
 
@@ -85,11 +85,11 @@ wr
 
 For a complete configuration example please see [Configuring the Cisco IOS DHCP Server](https://www.cisco.com/en/US/docs/ios/12_4t/ip_addr/configuration/guide/htdhcpsv.html#wp1046301)
 
-## Step 3.2b - Client Windows DHCP and DNS Services Configuration
+### Step 5.2b - Client Windows DHCP and DNS Services Configuration
 
 In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server within the lab environment for the remaining client onboarding and connectivity. These services are required for the other VLANs for **host onboarding**.
 
-### Step 1 - Configuring DHCP and General DNS Services via Powershell
+#### Configuring DHCP and General DNS Services via Powershell
 
 1. Download the powershell script to the **windows server** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/scripts/powershell-DHCP.ps1">**⬇︎powershell-DHCP.ps1⬇︎**</a> file.
 
@@ -110,7 +110,7 @@ At this point all the DNS and DHCP configuration on the **windows server** will 
 
    ![json](./images/DNS-DHCP.png?raw=true "Import JSON")
 
-## Verification and Testing
+#### Verification and Testing
 
 To test the environment to ensure it's ready, we need to try a few things.
 
