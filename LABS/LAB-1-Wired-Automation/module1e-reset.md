@@ -1,6 +1,6 @@
-# PnP Preparation Continued
+## PnP Preparation Continued
 
-## Step 4 - Reset EEM Script or PnP Service Reset
+## Step 6 - Reset EEM Script or PnP Service Reset
 
 When testing, you will frequently need to start again on the switch to test the whole flow. To accomplish this, paste this small script into the 9300 target switch, which will create a file on flash which you may load into the running-configuration at any time to reset the device to factory settings:
 
@@ -55,6 +55,9 @@ end
 tclquit
 ```
 
+<details closed>
+<summary> Troubleshooting Script if Required </summary></br>
+
 Additionally, for help with troubleshooting, install this helpful EEM script in the directory in the same manner as above. This will help to see which lines were sent to the switch and helps deduce where a template may be failing.
 
 ```tcl
@@ -69,7 +72,9 @@ action 1 syslog msg "$_cli_msg"
 tclquit
 ```
 
-### Step 4.1 - Reset Switch and Test Discovery
+</details>
+
+### Step 6.1 - Reset Switch and Test Discovery
 
 Finally, we want to test the routing, connectivity, DHCP, DNS services, and discovery mechanism. Reset the **c9300-1** Target switch by pasting the following sequence into the console. We will watch the switch come up but not intercede or type anything into the console after the reboot has started.
 

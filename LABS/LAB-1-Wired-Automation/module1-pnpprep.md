@@ -4,6 +4,26 @@
 
 This module is the first one in a series of modules within the Wired Automation Lab. You may use the steps in the [Cisco Enterprise Networks Hardware Sandbox](https://dcloud2-sjc.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen) environment, or equally, you might utilize them as part of a Proof of Concept setup at a customer's lab. These procedures may also help form part of a deployment or implementation. Use them to ensure that all the necessary steps are complete before onboarding any devices within Cisco Catalyst Center.
 
+## General Information
+
+As you may recall, in the informational sections of this repository, we described various methods of discovery for a device and the preliminary things required for proper zero-touch provisioning. This lab will ensure a successful connection to Cisco Catalyst Center by helping to deploy the initial concepts.
+
+We will be utilizing the lab in this manner:
+
+![json](./images/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON")
+
+## Lab Credentials:
+
+| Platform:       | IP Address:    | Username | Password   | 
+|-----------------|----------------|----------|------------|
+| Catalyst Center | 198.18.129.100 | admin    | C1sco12345 |
+| ISE             | 198.18.133.27  | admin    | C1sco12345 |
+| Windows AD      | 198.18.133.1   | admin    | C1sco12345 |
+| Script Server   | 198.18.133.28  | root     | C1sco12345 |
+| Router          | 198.18.133.145 | netadmin | C1sco12345 |
+| Switch 1        | 198.18.128.22  | netadmin | C1sco12345 |
+| Switch 2        | 198.18.128.23  | netadmin | C1sco12345 |
+
 ## Cisco Catalyst Center and ISE Integration
 
 In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate Cisco Catalyst Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
@@ -49,26 +69,6 @@ In this lab our focus changes slightly as we start to automate for host onboardi
 
    ![json](./images/module1-preparation/dnac-system-settings-aaa-ise-done.png?raw=true "Import JSON")
    ![json](./images/module1-preparation/dnac-system-settings-aaa-ise-complete.png?raw=true "Import JSON")
-
-## General Information
-
-As you may recall, in the informational sections of this repository, we described various methods of discovery for a device and the preliminary things required for proper zero-touch provisioning. This lab will ensure a successful connection to Cisco Catalyst Center by helping to deploy the initial concepts.
-
-We will be utilizing the lab in this manner:
-
-![json](./images/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON")
-
-## Lab Credentials:
-
-| Platform:       | IP Address:    | Username | Password   | 
-|-----------------|----------------|----------|------------|
-| Catalyst Center | 198.18.129.100 | admin    | C1sco12345 |
-| ISE             | 198.18.133.27  | admin    | C1sco12345 |
-| Windows AD      | 198.18.133.1   | admin    | C1sco12345 |
-| Script Server   | 198.18.133.28  | root     | C1sco12345 |
-| Router          | 198.18.133.145 | netadmin | C1sco12345 |
-| Switch 1        | 198.18.128.22  | netadmin | C1sco12345 |
-| Switch 2        | 198.18.128.23  | netadmin | C1sco12345 |
 
 ## Step 3 - Router Connectivity
 
