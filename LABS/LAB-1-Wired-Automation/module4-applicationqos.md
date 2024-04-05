@@ -12,7 +12,7 @@ There are a number of hurdles to applying Quality of Service. If we were to read
 3. Monitor application usage to assure application and user satisfaction
 In order to accomplish this we will discuss all the relevant aspects of these goals along with how we accomplish them in this lab.
 
-## Controller Based Application Recognition
+## Section 1 - Controller Based Application Recognition
 
 The Application Visibility service lets you manage your built-in and custom applications and application sets. The Application Visibility service, hosted as an application stack within Cisco Catalyst Center, lets you enable the **C**ontroller-**B**ased **A**pplication **R**ecognition (CBAR) function on a specific device to classify thousands of network and home-grown applications and network traffic. This allows us to deal with applications beyond the capabilities of NBAR 2 which is some 1400 applications currently. 
 
@@ -115,7 +115,7 @@ Within the CBAR Application, we will now update the protocol pack for the **ACCE
 
    ![json](./images/DNAC-Protocol-Updating.png?raw=true "Import JSON")
 
-## Lab Section 2 - Building and Deploying an Application Policy
+## Section 2 - Building and Deploying an Application Policy
 
 The Application Policy methodology within Cisco Catalyst Center allows for two types of policies to be constructed, wired and wireless. During this section we will build and deploy an Application Policy for a wired environment.
 
