@@ -233,7 +233,7 @@ Assign the DayN Template to a site using the Network Profile. As there is an exi
 
       2. Select the **Tag** and then **`Distribution`** from the dropdown as shown as we need to differentiate from the two templates now for use cases.
 
-         ![json](DNAC-ProfileTemplateTag-9300-2.png?raw=true "Import JSON")
+         ![json](./images/DNAC-ProfileTemplateTag-9300-2.png?raw=true "Import JSON")
 
       3. Select the **`c9300-2-Setup-Configuration`** Template from the dropdown as shown and click **Add**.
 
