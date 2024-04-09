@@ -12,6 +12,17 @@ As a result, customers will gain experience setting up Plug and Play onboarding 
 
 Please use this menu to navigate the various sections of this Github repository. Within the multiple folders are examples, explanation readme files for reference.
 
+### New Catalyst Center Lab Content
+
+This newer and more modular lab approach is designed to deal with and includes concepts from the legacy labs in a newer more modular format.
+
+1. [Lab 1 Wired Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/Lab-1-Wired-Automation) - Covers green and brown field use cases **(allow 4.0 hrs)**
+2. [Lab 2 Wireless Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/Lab-2-Wireless-Automation) - Covers traditional wireless automation  **(allow 4.0 hrs)**
+
+### Legacy Lab Content
+
+In this section you will continue to find all the existing labs which deal with specifics in separate easy to do labs.
+
 * [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-A-PNP-PREP/) - The lab covers setup for Plug and Play **(allow 1.5 hrs)**
 * [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-B-Onboarding-Template/) - The lab covers in depth how to deploy Day 0 templates **(allow 1.5 hrs)**
 * [Day N Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-C-DayN-Template/) - The lab covers Day N template constructs and use cases **(allow 0.5 hrs)**

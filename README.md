@@ -92,6 +92,17 @@ You will find various examples within the various folders of this repository, wi
 
 This section built out in a lab format to guide you through the typical steps to complete various automation tasks delivered by Cisco Catalyst Center. It allows for customers to practice Cisco Catalyst Center workflows with Onboarding, DayN Templates, and Application Policy automation on both Wired and Wireless Platforms, while reducing the time and effort needed to instantiate the network The lab will also introduce advanced velocity templating topics and troubleshooting tools, which may help determine common failure scenarios in a deployment.
 
+## New Catalyst Center Lab Content
+
+This newer and more modular lab approach is designed to deal with and includes concepts from the legacy labs in a newer more modular format.
+
+1. [Lab 1 Wired Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/Lab-1-Wired-Automation) - Covers green and brown field use cases **(allow 4.0 hrs)**
+2. [Lab 2 Wireless Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/Lab-2-Wireless-Automation) - Covers traditional wireless automation  **(allow 4.0 hrs)**
+
+## Legacy Lab Content
+
+In this section you will continue to find all the existing labs which deal with specifics in separate easy to do labs.
+
 * [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-A-PNP-PREP/) - The lab covers setup for Plug and Play **(allow 1.5 hrs)**
 * [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-B-Onboarding-Template/) - The lab covers in depth topics in deploying Day 0 templates **(allow 1.5 hrs)**
 * [Day N Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-C-DayN-Template/) - The lab covers Day N template constructs and use cases **(allow 0.5 hrs)**
