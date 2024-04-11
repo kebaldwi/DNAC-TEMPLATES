@@ -58,11 +58,11 @@ The first step will be to enable the CBAR service. During the course of this ope
 
       ![json](./images/DNAC-CBAR-NBARCLOUD.png?raw=true "Import JSON")
 
-   2. A new browser tab should open after authenticaiton to the **Cisco API COnsole**. This allows you to configure multiple connections to various API services within Cisco. Click **Register a New App**
+   2. A new browser tab should open after authenticaiton to the **Cisco API Console**. This allows you to configure multiple connections to various API services within Cisco. Click **Register a New App**
 
       ![json](./images/DNAC-NBARCLOUDAPI.png?raw=true "Import JSON")
 
-   3. On the next page name your **Application** which in our case will be `DCLOUD DNAC`
+   3. On the next page name your **Application** which in our case will be `DCLOUD DNAC` and add a description if desired
 
       ![json](./images/DNAC-NBARCLOUD-1.png?raw=true "Import JSON")
 
