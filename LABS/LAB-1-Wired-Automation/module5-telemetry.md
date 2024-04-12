@@ -8,7 +8,11 @@ This Lab is designed to be used after first completing labs A through D and has 
 
 Within this lab we will direct Netflow to Cisco Catalyst Center. It is important to understand that some networking devices have minimal allowed Netflow Collectors which can be configured. SHould it be the case that you need addiitional flows to other servers or management devices, then please incorporate a Netflow Redirector in your design. This will allow the same flow to be replicated by the redirector to other management systems which require the feed.
 
-## Lab Section 1 - Enabling Telemetry
+During the course of the lab, you will have noticed that Telemetry settings were configured in the Design, and perhaps noticed that devices discovered and assigned to a site have had those telemetry settings pushed to them. You also may have noticed that there is a Netconf warning that may have appeared when you click the link it will filter in on the **c9300-1** which was claimed and onboarded and provisioned using the PnP process. 
+
+
+
+## Lab Section 1 - Enabling Telemetry in the Design
 
 In this lab we will enable the Telemetry Settings and Provision the new settings to a device on Cisco Catalyst Center.
 
