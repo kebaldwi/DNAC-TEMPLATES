@@ -8,9 +8,7 @@ This Lab is designed to be used after first completing labs A through D and has 
 
 Within this lab we will direct Netflow to Cisco Catalyst Center. It is important to understand that some networking devices have minimal allowed Netflow Collectors which can be configured. SHould it be the case that you need addiitional flows to other servers or management devices, then please incorporate a Netflow Redirector in your design. This will allow the same flow to be replicated by the redirector to other management systems which require the feed.
 
-During the course of the lab, you will have noticed that Telemetry settings were configured in the Design, and perhaps noticed that devices discovered and assigned to a site have had those telemetry settings pushed to them. You also may have noticed that there is a Netconf warning that may have appeared when you click the link it will filter in on the **c9300-1** which was claimed and onboarded and provisioned using the PnP process. 
-
-
+During the course of the lab, you will have noticed that Telemetry settings were configured in the Design, and perhaps noticed that devices discovered and assigned to a site have had those telemetry settings pushed to them. You also may have noticed that there is a Netconf warning that may have appeared when you click the link it will filter in on the **c9300-1** which was claimed and onboarded and provisioned using the PnP process.
 
 ## Lab Section 1 - Enabling Telemetry in the Design
 
@@ -39,33 +37,42 @@ In this lab we will enable the Telemetry Settings and Provision the new settings
 
    ![json](./images/DNAC-Telemetry-Settings-Save.png?raw=true "Import JSON")
 
-6. Navigate to the **Inventory** within Cisco Catalyst Center through the menu *Provision>Network Devices>Inventory>*.
+</details>
+
+## Lab Section 2 - Provisioning Telemetry Configuration
+
+If a device was onboarded via discovery then provisioning the telemetry settings would be carried out in this manner.
+
+<details open>
+<summary> Click for Details and Sub Tasks</summary>
+
+1. Navigate to the **Inventory** within Cisco Catalyst Center through the menu *Provision>Network Devices>Inventory>*.
 
    ![json](./images/DNAC-NavigateInventory.png?raw=true "Import JSON")
 
-7. From the inventory we will provison the **Telemetry** to the network device.
+2. From the inventory we will provison the **Telemetry** to the network device.
 
    ![json](./images/DNAC-Provision-Telemetry-1.png?raw=true "Import JSON")
 
-8. Select the switch checkbox, then click **Actions > Telemetry > Enable Application Telemetry** from the submenu.
+3. Select the switch checkbox, then click **Actions > Telemetry > Enable Application Telemetry** from the submenu.
 
    ![json](./images/DNAC-Provision-Telemetry-2.png?raw=true "Import JSON")
 
-9. Navigate to the **Provision** focus on the Inventory Page and notice the configuring message.
+4. Navigate to the **Provision** focus on the Inventory Page and notice the configuring message.
 
    ![json](./images/DNAC-Provision-Telemetry-3.png?raw=true "Import JSON")
 
-10. Eventually **Success** will be displayed.
+5. Eventually **Success** will be displayed.
 
     ![json](./images/DNAC-Provision-Telemetry-4.png?raw=true "Import JSON")
 
-11. Click the **Success** message for more information.
+6. Click the **Success** message for more information.
 
     ![json](./images/DNAC-Provision-Telemetry-5.png?raw=true "Import JSON")
 
 </details>
 
-## Lab Section 2 - Reviewing Telemetry Configuration
+## Lab Section 3 - Reviewing Telemetry Configuration
 
 In this section we will review the configuration that has been pushed to the device.
 
