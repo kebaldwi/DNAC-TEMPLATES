@@ -16,8 +16,8 @@ Please use this menu to navigate the various sections of this Github repository.
 
 This newer and more modular lab approach is designed to deal with and includes concepts from the legacy labs in a newer more modular format.
 
-1. [Lab 1 Wired Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/Lab-1-Wired-Automation) - Covers green and brown field use cases **(allow 4.0 hrs)**
-2. [Lab 2 Wireless Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/Lab-2-Wireless-Automation) - Covers traditional wireless automation  **(allow 4.0 hrs)**
+1. [Lab 1 Wired Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-1-Wired-Automation) - Covers green and brown field use cases **(allow 4.0 hrs)**
+2. [Lab 2 Wireless Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/Lab-2-Wireless-Automation) - Covers traditional wireless automation  **(allow 4.0 hrs)**
 
 ### Legacy Lab Content
 
