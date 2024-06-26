@@ -6,7 +6,7 @@ Automation depends on structured data. Data must be stored and transmitted in su
 
 # JSON
 
-JSON is a very popular data structure.  It's human and machine readible and commonly used in many programming languages for passing text data.  If you are familiar with the Python programming language, you'll find JSON syntax looks very familiar. JSON formats data as attribute-value pairs and uses curly braces \{\} as an object delimeter.  Let's explore JSON in more detail.
+JSON is a very popular data structure.  It's human and machine readible and commonly used in many programming languages for passing text data.  JSON is a common encoding format for REST API operations.  If you are familiar with the Python programming language--especially Python dictionaries and lists, you'll find JSON syntax looks very familiar. JSON formats data as attribute-value pairs and uses curly braces \{\} as an object delimeter.  Let's explore JSON in more detail.
 
 
 ```json
@@ -52,9 +52,77 @@ So what does that look like?
 There are many slightly different implementations of JSON, so make sure that you explore the particular implementation you need depending on the programming language you are using. [JSON.org](json.org) is a good place to start.
 
 
+# YAML
+
+YAML is a markup language used for storing data.  Initially the acroynm stood for *Yet Anotther Markup Language* but now it is considered to be a recursive acronym that stands for *YAML Ain't Markup Language* to clarify that YAML should be used for data storage.  YAML is popular due to its easy readability.  It is a widely used data storage format for Ansible, Python, and other automation uses cases. 
+
+YAML is white space sensitive and makes use indentations, the colon and space ```: ``` for attribute value pairs and the dash ```-``` for list (sequence) elements. Each YAML document is started with three dashes ```---```.  YAML data types fall into the scalar (integer, string), sequence (ordered list), and mappings (unordered key,value pairs). YAML can get more in-depth, but for the purposes of storing data for Ansible playbooks or Python programs, this is a good primer. Let's review the same data represented in our JSON block above formatted into YAML:
+
+```yaml
+---
+ietf-interfaces:interface:
+  name: GigabitEthernet0/1
+  description: LAN
+  enabled: true
+  ietf-ip:ipv4:
+    address:
+    - ip: 172.16.0.2
+      netmask: 255.255.255.0
+    - ip: 172.17.0.2
+      netmask: 255.255.255.0
+```
+
+You'll note that the same data takes up less space, requires less punctuation, and is a bit easier for a human to follow than the JSON above, while still being simple for a machine to parse.  Assuming the above YAML was stored in a variable called "data", the method to access the first IP address from our JSON example, would work the same.
+
+> **NOTE** For the full details on YAML and programming languange-specific implementations, view the [specification](https://yaml.org)
+
+# XML
+
+XML, or Extensible Markup Language, is oldest of the three data structures covered here, released in 1998, but it is still relevant today for many use cases.  One key use case for network automation is model-driven automation with NETCONF and model-driven telemetry with gNOI & gRPC.  NETCONF uses YANG Models, which can be expressed in XML format. XML is also an encoding option for REST APIs. 
+
+> **NOTE** To learn more about Model-Driven Telemetry with NETCONF, see (Jeremy Cohoe's Cisco IOS-XE - YANG based Model Driven Telemetry Lab)[https://github.com/jeremycohoe/cisco-ios-xe-mdt]
+
+XML has a number of formatting rules.  Here are some of the most crucial:
+
+- XML is case sensitive
+- All start tags must have end tags
+- Elements must be properly nested
+- XML declaration is the first statement
+- Every document must contain a root element
+- Attribute values must have quotation marks
+
+Here is our data formatted into XML:
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+ <root>
+     <ietf-interfaces:interface>
+         <name>GigabitEthernet0/1</name>
+         <description>LAN</description>
+         <enabled>true</enabled>
+         <ietf-ip:ipv4>
+             <address>
+                 <ip>172.16.0.2</ip>
+                 <netmask>255.255.255.0</netmask>
+             </address>
+             <address>
+                 <ip>172.17.0.2</ip>
+                 <netmask>255.255.255.0</netmask>
+             </address>
+         </ietf-ip:ipv4>
+     </ietf-interfaces:interface>
+ </root>
+
+```
+
+XML has a comparatively high level of overhead, so it is less popular than JSON in modern operations, however there are still many applications for which XML is appropriate or even preferred.  
+
+> **NOTE** To learn more about XML, see the (specification)[https://www.w3.org/TR/xml/]
 
 
+# Choosing a Data Format
 
+The choice of which of these data formats to use is often based on the specific application. If the application supports all of them, consider the project's requirements on speed, readability and structure (e.g. are schemas and namespaces required).    All else being equal, use the structure that you and your team find most natural to work with.
 
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
