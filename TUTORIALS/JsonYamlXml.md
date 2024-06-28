@@ -1,10 +1,10 @@
 # JSON YAML XML Explained  [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 
-# Why you Need Structured Data
+## Why you Need Structured Data
 
 Automation depends on structured data. Data must be stored and transmitted in such a way that a process knows how to read it.  There are many structured data formats, but this tutorial will focus on three common data structures used in network automation: JSON (Javascript Object Notation), YAML (YAML Aint Markup Language), and XML Extensible Markup Language.
 
-# JSON
+## JSON
 
 JSON is a very popular data structure.  It's human and machine readible and commonly used in many programming languages for passing text data.  JSON is a common encoding format for REST API operations.  If you are familiar with the Python programming language--especially Python dictionaries and lists, you'll find JSON syntax looks very familiar. JSON formats data as attribute-value pairs and uses curly braces \{\} as an object delimeter.  Let's explore JSON in more detail.
 
@@ -52,7 +52,7 @@ So what does that look like?
 There are many slightly different implementations of JSON, so make sure that you explore the particular implementation you need depending on the programming language you are using. [JSON.org](json.org) is a good place to start.
 
 
-# YAML
+## YAML
 
 YAML is a markup language used for storing data.  Initially the acroynm stood for *Yet Anotther Markup Language* but now it is considered to be a recursive acronym that stands for *YAML Ain't Markup Language* to clarify that YAML should be used for data storage.  YAML is popular due to its easy readability.  It is a widely used data storage format for Ansible, Python, and other automation uses cases. 
 
@@ -76,7 +76,7 @@ You'll note that the same data takes up less space, requires less punctuation, a
 
 > **NOTE** For the full details on YAML and programming languange-specific implementations, view the [specification](https://yaml.org)
 
-# XML
+## XML
 
 XML, or Extensible Markup Language, is oldest of the three data structures covered here, released in 1998, but it is still relevant today for many use cases.  One key use case for network automation is model-driven automation with NETCONF and model-driven telemetry with gNOI & gRPC.  NETCONF uses YANG Models, which can be expressed in XML format. XML is also an encoding option for REST APIs. 
 
@@ -120,7 +120,7 @@ XML has a comparatively high level of overhead, so it is less popular than JSON 
 > **NOTE** To learn more about XML, see the (specification)[https://www.w3.org/TR/xml/]
 
 
-# Choosing a Data Format
+## Choosing a Data Format
 
 The choice of which of these data formats to use is often based on the specific application. If the application supports all of them, consider the project's requirements on speed, readability and structure (e.g. are schemas and namespaces required).    All else being equal, use the structure that you and your team find most natural to work with.
 
