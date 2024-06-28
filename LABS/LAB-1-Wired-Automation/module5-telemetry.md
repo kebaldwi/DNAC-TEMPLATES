@@ -2,15 +2,15 @@
 
 ## Overview
 
-This Lab is designed to be used after first completing labs A through D and has been created to address how to properly deal with enabling Telemetry for Assurance with regard to Cisco Catalyst Center. During the lab we will edit the Telemetry settings within Cisco Catalyst Center. This allows Cisco Catalyst Center the ability to configure network devices for the required Telemetry settings required to get the best results when viewing Assurance within Cisco Catalyst Center.
+This module was created to review telemetry settings which are deployed to network devices when they are added to a site, either during the PnP process, as part of a Discovery, or by assignment during provisioning. During this section we will review the Telemetry settings within Cisco Catalyst Center. The Telemetry settings are used by Cisco Catalyst Center to configure network devices for the required settings required to enable the streaming telemetry to get the best results when viewing Assurance within Cisco Catalyst Center.
 
 ## General Information
 
-Within this lab we will direct Netflow to Cisco Catalyst Center. It is important to understand that some networking devices have minimal allowed Netflow Collectors which can be configured. SHould it be the case that you need addiitional flows to other servers or management devices, then please incorporate a Netflow Redirector in your design. This will allow the same flow to be replicated by the redirector to other management systems which require the feed.
+Within this lab we will direct Netflow to Cisco Catalyst Center. It is important to understand that some networking devices have minimal allowed Netflow Exporters which can be configured. Should it be the case that you need addiitional flows to other servers or management devices, then please incorporate a UDP Flow Director in your design. This will allow the same flow to be replicated by the director to other management systems which require the feed.
 
 During the course of the lab, you will have noticed that Telemetry settings were configured in the Design, and perhaps noticed that devices discovered and assigned to a site have had those telemetry settings pushed to them. You also may have noticed that there is a Netconf warning that may have appeared when you click the link it will filter in on the **c9300-1** which was claimed and onboarded and provisioned using the PnP process.
 
-## Lab Section 1 - Enabling Telemetry in the Design
+## Lab Section 1 - Reviewing Telemetry in the Design
 
 In this lab we will enable the Telemetry Settings and Provision the new settings to a device on Cisco Catalyst Center.
 
@@ -41,7 +41,7 @@ In this lab we will enable the Telemetry Settings and Provision the new settings
 
 ## Lab Section 2 - Provisioning Telemetry Configuration
 
-If a device was onboarded via discovery then provisioning the telemetry settings would be carried out in this manner.
+If a device was onboarded via discovery and not added to a site then provisioning the telemetry settings might be carried out in this manner.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
