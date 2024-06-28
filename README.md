@@ -76,6 +76,7 @@ You will find various examples within the various folders of this repository, wi
 
 * [Embedded Event Manager](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/EEM.md#EEM) - This section will dive into EEM (Embedded Event Manager) Scripting and various use cases 
 * [System Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/SystemVariables.md#dna-center-system-variables) - This section explains Cisco Catalyst Centers System Variables
+* [JSON YAML XML Explained](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/JsonYamlXml.md#json-yaml-xml-explained) - This section explains various DATA Structures and Formats
 
 ### Orchestration of Cisco Catalyst Center
 
