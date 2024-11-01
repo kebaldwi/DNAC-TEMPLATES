@@ -4,9 +4,14 @@
 
 When testing, you will frequently need to start again on the switch to test the whole flow. To accomplish this, paste this small script into the 9300 target switch, which will create a file on flash which you may load into the running-configuration at any time to reset the device to factory settings:
 
-There are now two methods for this The first and simplest method is to make use of the **`pnp service reset`** command as advised by Matthew Bishop. This command was introduced in a recent Train of XE code. This command may not erase all information on the device. I strongly recommend using the EEM Script.
+There are now two methods for this The first and simplest method is to make use of the **`pnp service reset`** command as advised by Matthew Bishop. This command was introduced in a recent Train of XE code. This command may not erase all information on the device. I strongly recommend using the EEM Script which follows.
 
-Failing that we have an EEM script which you may use iterated below.
+### EEM Script
+
+<details closed>
+<summary> Expand section for EEM Script for switches if required </summary></br>
+
+EEM script which you may use on your switch if the prep4dnac file is not in the directory of the switch.
 
 ```tcl
 tclsh                            
@@ -15,7 +20,6 @@ puts [open "flash:prep4dnac" w+] {
 ! Remove any confirmation dialogs when accessing flash
 file prompt quiet
 !
-no event manager applet prep4dnac
 event manager applet prep4dnac
  event none sync yes
  action a1010 syslog msg "Starting: 'prep4dnac'  EEM applet."
@@ -54,6 +58,10 @@ end
 }
 tclquit
 ```
+
+</details>
+
+### Troubleshooting Script
 
 <details closed>
 <summary> Troubleshooting Script if Required </summary></br>
