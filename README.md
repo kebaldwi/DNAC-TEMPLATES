@@ -2,7 +2,7 @@
 
 > **Notice:** For information specific to IOS-XE HTTP Vulnerability please see this [link](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/TUTORIALS/Vulnerability.md)
 
-> **Note:** Thank you for continuing your **support** of the **DNAC-Template Repository** by your continued visits to the site. Over the past few years we have developed a lot of content as a result, it is **time to reorganize** it to help be more consise, and to aide users in finding the relevant content easily. Over the next few months you will **notice changes and updates** to the repository, as we **add** additional content, **revise** existing dated content and nomenclature. The **folder structure** and **resources** will be **reorganized** for ease of use, and so that CODE examples and TUTORIALS will be grouped together for ease of use. We hope this will help users to find the content they need in an easier manner.
+> **Note:** Thank you for continuing your **support** of the **DNAC-Template Repository** by your continued visits to the site. Over the past few years we have developed a lot of content as a result, it is **time to reorganize** it to help be more consise, and to aide users in finding the relevant content easily. Over the next few months you will **notice changes and updates** to the repository, as we **add** additional content, **revise** existing dated content and nomenclature. The **folder structure** and **resources** will be **reorganized** for ease of use, and so that **CODE** examples and **TUTORIALS** will be grouped together for ease of use. We hope this will help users to find the content they need in an easier manner.
 
 ## Cisco Catalyst Center
 
@@ -21,12 +21,8 @@ This Repository will give examples of templates used in Cisco Catalyst Center th
 
 The repository will include scripts and examples with the following:
 
-1. Template Scripting in both
-   - Velocity Language
-   - Jinja2 Language
-2. Variables in both
-   - Velocity Language
-   - Jinja2 Language
+1. Template Scripting for both Jinja and Velocity
+2. Variable notation and usage
 3. Binding Variables
 4. System Variables
 5. Regular Templates
@@ -40,7 +36,7 @@ Either one or multiple Templates may be used to deploy Intent in combination wit
 
 Additionally:
 
-1.	Intent can be defined as the set of configuration constructs deployed via a template.
+1.	Intent can be defined as the set of code along with the configuration constructs deployed via a template.
 2.	Variables can be used to modify or choose between constructs deployed via decision (‘IF’) statements
 3.	Repetition of any construct may be introduced through the use of Looping structures on any device.
 4.	Variables may be used when the device is being onboarded or provisioned
