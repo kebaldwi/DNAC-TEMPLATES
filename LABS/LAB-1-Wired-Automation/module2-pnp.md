@@ -290,7 +290,7 @@ netconf-yang
 
 ```
 
-#### Example Jinja2 Template
+### Example Jinja2 Template
 
 ```J2
 {# <------Onboarding-Template-------> #}
@@ -388,7 +388,7 @@ We will now **download** and **import** one of the following PnP Onboarding Temp
 <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_PnP_Velocity_template.json">⬇︎Titanium_PnP_Velocity_template.json⬇︎</a> 
 </details>
 
-#### jinja2:
+#### Jinja2:
 
 **Note:** For older versions of Catalyst Center formerly known as Cisco DNA Center 2.2 and lower use the following for easy import:
 
