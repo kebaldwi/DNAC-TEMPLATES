@@ -1,9 +1,8 @@
 [
   {
-    "name": "Titanium-PnP-Velocity-Template",
-    "description": "Network Device Onboarding for L2 Access Switch\n",
+    "name": "Platinum_PnP_Velocity_Template",
+    "description": "",
     "tags": [],
-    "author": "admin",
     "deviceTypes": [
       {
         "productFamily": "Switches and Hubs",
@@ -16,31 +15,6 @@
     "rollbackTemplateContent": "",
     "templateParams": [
       {
-        "parameterName": "Hostname",
-        "dataType": "STRING",
-        "defaultValue": "c9300-1",
-        "description": null,
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": null,
-        "group": null,
-        "order": 2,
-        "customOrder": 1,
-        "selection": {
-          "selectionType": null,
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "displayName": "Hostname"
-      },
-      {
         "parameterName": "SystemMTU",
         "dataType": "INTEGER",
         "defaultValue": "1500",
@@ -48,6 +22,7 @@
         "required": true,
         "notParam": false,
         "paramArray": false,
+        "displayName": "System MTU",
         "instructionText": null,
         "group": null,
         "order": 1,
@@ -67,59 +42,7 @@
         ],
         "key": null,
         "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "displayName": "System MTU"
-      },
-      {
-        "parameterName": "SubnetMask",
-        "dataType": "IPADDRESS",
-        "defaultValue": "255.255.255.0",
-        "description": "Enter the Management Subnet Mask",
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": "255.255.255.0",
-        "group": null,
-        "order": 7,
-        "customOrder": 7,
-        "selection": {
-          "selectionType": null,
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "displayName": "Management Subnet Mask"
-      },
-      {
-        "parameterName": "Interfaces",
-        "dataType": "STRING",
-        "defaultValue": "Gi1/0/10, Gi1/0/11",
-        "description": "Interface or interface range comma delimited",
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": "te 1/1/1 , te 1/1/2",
-        "group": null,
-        "order": 4,
-        "customOrder": 4,
-        "selection": {
-          "selectionType": null,
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "displayName": null
+        "binding": ""
       },
       {
         "parameterName": "PortChannel",
@@ -129,10 +52,11 @@
         "required": true,
         "notParam": false,
         "paramArray": false,
+        "displayName": "PortChannel Number",
         "instructionText": null,
         "group": null,
         "order": 5,
-        "customOrder": 5,
+        "customOrder": 4,
         "selection": {
           "selectionType": null,
           "selectionValues": {},
@@ -148,19 +72,42 @@
         ],
         "key": null,
         "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "displayName": "PortChannel Number"
+        "binding": ""
+      },
+      {
+        "parameterName": "Interfaces",
+        "dataType": "STRING",
+        "defaultValue": null,
+        "description": "Interface or interface range comma delimited",
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "displayName": null,
+        "instructionText": "te 1/1/1 , te 1/1/2 || te 1/1/1-2",
+        "group": null,
+        "order": 4,
+        "customOrder": 5,
+        "selection": {
+          "selectionType": null,
+          "selectionValues": {},
+          "defaultSelectedValues": [],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": ""
       },
       {
         "parameterName": "Gateway",
         "dataType": "IPADDRESS",
-        "defaultValue": "192.168.5.1",
-        "description": "Enter the Management Gateway Address",
+        "defaultValue": null,
+        "description": "Enter the Default Gateway IP Address",
         "required": true,
         "notParam": false,
         "paramArray": false,
-        "instructionText": "10.0.0.254",
+        "displayName": "Default Gateway",
+        "instructionText": "10.0.0.1",
         "group": null,
         "order": 8,
         "customOrder": 8,
@@ -173,19 +120,18 @@
         "range": [],
         "key": null,
         "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "displayName": "Management Gateway"
+        "binding": ""
       },
       {
         "parameterName": "SwitchIP",
         "dataType": "IPADDRESS",
-        "defaultValue": "192.168.5.3",
+        "defaultValue": null,
         "description": "Enter the Management IP Address",
         "required": true,
         "notParam": false,
         "paramArray": false,
-        "instructionText": "10.0.0.1",
+        "displayName": "Management IP Address",
+        "instructionText": "10.0.0.10",
         "group": null,
         "order": 6,
         "customOrder": 6,
@@ -198,19 +144,61 @@
         "range": [],
         "key": null,
         "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "displayName": "Management IP Address"
+        "binding": ""
+      },
+      {
+        "parameterName": "SubnetMask",
+        "dataType": "IPADDRESS",
+        "defaultValue": null,
+        "description": "Enter the Management Subnet Mask",
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "displayName": "Subnet Mask",
+        "instructionText": "255.255.255.0",
+        "group": null,
+        "order": 7,
+        "customOrder": 7,
+        "selection": {
+          "selectionType": null,
+          "selectionValues": {},
+          "defaultSelectedValues": [],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": ""
+      },
+      {
+        "parameterName": "Hostname",
+        "dataType": "STRING",
+        "defaultValue": null,
+        "description": null,
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "displayName": null,
+        "instructionText": null,
+        "group": null,
+        "order": 2,
+        "customOrder": 1,
+        "selection": null,
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": ""
       },
       {
         "parameterName": "MgmtVlan",
         "dataType": "INTEGER",
-        "defaultValue": "5",
-        "description": "Insert the management vlan Id.",
+        "defaultValue": null,
+        "description": "1-4094",
         "required": true,
         "notParam": false,
         "paramArray": false,
-        "instructionText": "1-4094",
+        "displayName": "Management Vlan",
+        "instructionText": "1",
         "group": null,
         "order": 3,
         "customOrder": 3,
@@ -229,9 +217,7 @@
         ],
         "key": null,
         "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "displayName": "Management Vlan"
+        "binding": ""
       }
     ],
     "rollbackTemplateParams": [],
@@ -241,90 +227,6 @@
     "promotedTemplateContent": "## <------Onboarding-Template------->\n## To be used for onboarding when using Day N Templates\n## Define Variables provision with vlan and port channel\n!\n##MTU Adjust (if required)\n#if(${SystemMTU} != 1500)\n    system mtu ${SystemMTU}\n#end\n!\n##Set hostname\nhostname ${Hostname}\n!\n#set(${VtpDomain} = ${Hostname})\n!\n##Set VTP and VLAN for onboarding\nvtp domain ${VtpDomain}\nvtp mode transparent\n!\n##Set Management VLAN\nvlan ${MgmtVlan}\n!\n#if(${MgmtVlan} > 1)\n  name MgmtVlan\n  ## Disable Vlan 1 (optional)\n  interface Vlan 1\n   shutdown\n#end\n\n##Set Interfaces and Build Port Channel \ninterface range ${Interfaces}\n shut\n switchport mode trunk\n switchport trunk allowed vlan ${MgmtVlan}\n #set($pc = $Interfaces.split(','))\n #if($pc.size() > 1)\n   channel-protocol lacp\n   channel-group ${PortChannel} mode active\n #end\n no shut\n!\n#if($pc.size() > 1)\n  interface port-channel ${PortChannel}\n   switchport trunk native vlan ${MgmtVlan}\n   switchport trunk allowed vlan add ${MgmtVlan}\n   switchport mode trunk\n   no port-channel standalone-disable\n#end\n!\n##Set up managment vlan ${MgmtVlan}\ninterface Vlan ${MgmtVlan}\n description MgmtVlan\n ip address ${SwitchIP} ${SubnetMask}\n no ip redirects\n no ip proxy-arp\n no shut\n!\nip default-gateway ${Gateway}\n!\n##Set Source of Management Traffic\nip domain lookup source-interface Vlan ${MgmtVlan}\nip http client source-interface Vlan ${MgmtVlan}\nip ftp source-interface Vlan ${MgmtVlan}\nip tftp source-interface Vlan ${MgmtVlan}\nip ssh source-interface Vlan ${MgmtVlan}\nip radius source-interface Vlan ${MgmtVlan}\nlogging source-interface Vlan ${MgmtVlan}\nsnmp-server trap-source Vlan ${MgmtVlan}\nntp source Vlan ${MgmtVlan}\n!\nnetconf-yang\n!\n",
     "promotedTemplateParams": [
       {
-        "parameterName": "Gateway",
-        "dataType": "IPADDRESS",
-        "defaultValue": "192.168.5.1",
-        "description": "Enter the Management Gateway Address",
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": "10.0.0.254",
-        "group": null,
-        "order": 8,
-        "customOrder": 8,
-        "selection": {
-          "selectionType": null,
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "id": null,
-        "displayName": "Management Gateway"
-      },
-      {
-        "parameterName": "PortChannel",
-        "dataType": "INTEGER",
-        "defaultValue": "1",
-        "description": "Enter number from 1 to 192",
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": null,
-        "group": null,
-        "order": 5,
-        "customOrder": 5,
-        "selection": {
-          "selectionType": null,
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
-        "range": [
-          {
-            "minValue": 1,
-            "maxValue": 192,
-            "id": null
-          }
-        ],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "id": null,
-        "displayName": "PortChannel Number"
-      },
-      {
-        "parameterName": "Hostname",
-        "dataType": "STRING",
-        "defaultValue": "c9300-1",
-        "description": null,
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": null,
-        "group": null,
-        "order": 2,
-        "customOrder": 1,
-        "selection": {
-          "selectionType": null,
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "id": null,
-        "displayName": "Hostname"
-      },
-      {
         "parameterName": "SystemMTU",
         "dataType": "INTEGER",
         "defaultValue": "1500",
@@ -332,6 +234,7 @@
         "required": true,
         "notParam": false,
         "paramArray": false,
+        "displayName": "System MTU",
         "instructionText": null,
         "group": null,
         "order": 1,
@@ -352,22 +255,21 @@
         "key": null,
         "provider": null,
         "binding": "",
-        "sensitiveField": false,
-        "id": null,
-        "displayName": "System MTU"
+        "id": null
       },
       {
-        "parameterName": "SwitchIP",
-        "dataType": "IPADDRESS",
-        "defaultValue": "192.168.5.3",
-        "description": "Enter the Management IP Address",
+        "parameterName": "Interfaces",
+        "dataType": "STRING",
+        "defaultValue": null,
+        "description": "Interface or interface range comma delimited",
         "required": true,
         "notParam": false,
         "paramArray": false,
-        "instructionText": "10.0.0.1",
+        "displayName": null,
+        "instructionText": "te 1/1/1 , te 1/1/2 || te 1/1/1-2",
         "group": null,
-        "order": 6,
-        "customOrder": 6,
+        "order": 4,
+        "customOrder": 5,
         "selection": {
           "selectionType": null,
           "selectionValues": {},
@@ -378,19 +280,38 @@
         "key": null,
         "provider": null,
         "binding": "",
-        "sensitiveField": false,
-        "id": null,
-        "displayName": "Management IP Address"
+        "id": null
+      },
+      {
+        "parameterName": "Hostname",
+        "dataType": "STRING",
+        "defaultValue": null,
+        "description": null,
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "displayName": null,
+        "instructionText": null,
+        "group": null,
+        "order": 2,
+        "customOrder": 1,
+        "selection": null,
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "id": null
       },
       {
         "parameterName": "MgmtVlan",
         "dataType": "INTEGER",
-        "defaultValue": "5",
-        "description": "Insert the management vlan Id.",
+        "defaultValue": null,
+        "description": "1-4094",
         "required": true,
         "notParam": false,
         "paramArray": false,
-        "instructionText": "1-4094",
+        "displayName": "Management Vlan",
+        "instructionText": "1",
         "group": null,
         "order": 3,
         "customOrder": 3,
@@ -410,44 +331,17 @@
         "key": null,
         "provider": null,
         "binding": "",
-        "sensitiveField": false,
-        "id": null,
-        "displayName": "Management Vlan"
-      },
-      {
-        "parameterName": "Interfaces",
-        "dataType": "STRING",
-        "defaultValue": "Gi1/0/10, Gi1/0/11",
-        "description": "Interface or interface range comma delimited",
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": "te 1/1/1 , te 1/1/2",
-        "group": null,
-        "order": 4,
-        "customOrder": 4,
-        "selection": {
-          "selectionType": null,
-          "selectionValues": {},
-          "defaultSelectedValues": [],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "id": null,
-        "displayName": null
+        "id": null
       },
       {
         "parameterName": "SubnetMask",
         "dataType": "IPADDRESS",
-        "defaultValue": "255.255.255.0",
+        "defaultValue": null,
         "description": "Enter the Management Subnet Mask",
         "required": true,
         "notParam": false,
         "paramArray": false,
+        "displayName": "Subnet Mask",
         "instructionText": "255.255.255.0",
         "group": null,
         "order": 7,
@@ -462,59 +356,101 @@
         "key": null,
         "provider": null,
         "binding": "",
-        "sensitiveField": false,
-        "id": null,
-        "displayName": "Management Subnet Mask"
+        "id": null
+      },
+      {
+        "parameterName": "PortChannel",
+        "dataType": "INTEGER",
+        "defaultValue": "1",
+        "description": "Enter number from 1 to 192",
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "displayName": "PortChannel Number",
+        "instructionText": null,
+        "group": null,
+        "order": 5,
+        "customOrder": 4,
+        "selection": {
+          "selectionType": null,
+          "selectionValues": {},
+          "defaultSelectedValues": [],
+          "id": null
+        },
+        "range": [
+          {
+            "minValue": 1,
+            "maxValue": 192,
+            "id": null
+          }
+        ],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "id": null
+      },
+      {
+        "parameterName": "Gateway",
+        "dataType": "IPADDRESS",
+        "defaultValue": null,
+        "description": "Enter the Default Gateway IP Address",
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "displayName": "Default Gateway",
+        "instructionText": "10.0.0.1",
+        "group": null,
+        "order": 8,
+        "customOrder": 8,
+        "selection": {
+          "selectionType": null,
+          "selectionValues": {},
+          "defaultSelectedValues": [],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "id": null
+      },
+      {
+        "parameterName": "SwitchIP",
+        "dataType": "IPADDRESS",
+        "defaultValue": null,
+        "description": "Enter the Management IP Address",
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "displayName": "Management IP Address",
+        "instructionText": "10.0.0.10",
+        "group": null,
+        "order": 6,
+        "customOrder": 6,
+        "selection": {
+          "selectionType": null,
+          "selectionValues": {},
+          "defaultSelectedValues": [],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "id": null
       }
     ],
     "customParamsOrder": true,
-    "createTime": 1730496120607,
-    "lastUpdateTime": 1730496392000,
-    "latestVersionTime": 1730496402323,
+    "createTime": 1708920973634,
+    "lastUpdateTime": 1709590578163,
+    "latestVersionTime": 1709590582809,
     "validationErrors": {
-      "templateErrors": [
-        {
-          "type": "POTENTIAL_CONFLICT",
-          "lineNumber": 33,
-          "message": "This command is reserved to be used by Cisco DNA Center"
-        },
-        {
-          "type": "POTENTIAL_CONFLICT",
-          "lineNumber": 51,
-          "message": "This command is reserved to be used by Cisco DNA Center"
-        },
-        {
-          "type": "POTENTIAL_CONFLICT",
-          "lineNumber": 30,
-          "message": "This command is reserved to be used by Cisco DNA Center"
-        },
-        {
-          "type": "POTENTIAL_CONFLICT",
-          "lineNumber": 52,
-          "message": "This command is reserved to be used by Cisco DNA Center"
-        },
-        {
-          "type": "POTENTIAL_CONFLICT",
-          "lineNumber": 32,
-          "message": "This command is reserved to be used by Cisco DNA Center"
-        },
-        {
-          "type": "POTENTIAL_CONFLICT",
-          "lineNumber": 65,
-          "message": "This command is reserved to be used by Cisco DNA Center"
-        },
-        {
-          "type": "POTENTIAL_CONFLICT",
-          "lineNumber": 50,
-          "message": "This command is reserved to be used by Cisco DNA Center"
-        }
-      ],
+      "templateErrors": [],
       "rollbackTemplateErrors": [],
-      "templateId": "83b736ce-93d3-4d49-9365-3a32eff1fd6c",
+      "templateId": "1015abcf-9562-449d-9869-62a371a84560",
       "templateVersion": null
     },
-    "noOfConflicts": 7,
-    "documentDatabase": false,
-    "projectAssociated": true
+    "projectAssociated": true,
+    "documentDatabase": false
   }
 ]
