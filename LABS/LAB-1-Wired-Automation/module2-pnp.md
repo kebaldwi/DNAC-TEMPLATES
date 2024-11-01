@@ -327,13 +327,13 @@ interface range {{ Interfaces }}
  shut
  switchport mode trunk
  switchport trunk allowed vlan {{ MgmtVlan }}
- {% if "," in Interfaces %}
+ {% if "," in Interfaces || "-" in Interfaces %}
     channel-protocol lacp
     channel-group {{ Portchannel }} mode active
  {% endif %}
  no shut
 !
-{% if "," in Interfaces %}
+{% if "," in Interfaces || "-" in Interfaces %}
   interface Port-channel {{ Portchannel }}
    switchport trunk native vlan {{ MgmtVlan }}
    switchport trunk allowed vlan {{ MgmtVlan }}
@@ -489,7 +489,7 @@ At this point you can claim the device putting it in a planned state for onboard
    
       * Hostname type `c9300-1`
       * Management Vlan enter `5`
-      * Interfaces `Gi 1/0/10, Gi1/0/11`
+      * Interfaces `Gi1/0/10, Gi1/0/11`
       * IP Address `192.168.5.3`
       * Subnet Mask `255.255.255.0`
       * Gateway `192.168.5.1`
