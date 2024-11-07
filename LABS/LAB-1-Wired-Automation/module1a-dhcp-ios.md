@@ -80,7 +80,7 @@ conf t
      end
 !
 wr
-!
+
 ```
 
 For a complete configuration example please see [Configuring the Cisco IOS DHCP Server](https://www.cisco.com/en/US/docs/ios/12_4t/ip_addr/configuration/guide/htdhcpsv.html#wp1046301)
@@ -125,7 +125,6 @@ conf t
   interface Vlan 5                         
     no autostate                  
     end
-!
 
 ```
 
@@ -138,16 +137,17 @@ sh vlan id 5 | i active
 
 sh run int vlan 5
 
-ping 192.168.5.1  
+ping 192.168.5.1 repeat 3
 
 ```
 
 ```bash
-ping 198.18.129.100 repeat 1
+ping 198.18.129.100 repeat 3
+
 ```
 
 ```bash
-ping 198.18.129.100 source vlan 5 repeat 1
+ping 198.18.129.100 source vlan 5 repeat 3
 
 ```
 
@@ -166,7 +166,6 @@ conf t
   interface Vlan 5                         
     autostate                  
     end
-!
 
 ```
 

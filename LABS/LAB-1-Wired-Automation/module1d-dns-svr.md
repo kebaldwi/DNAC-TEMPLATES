@@ -103,7 +103,7 @@ conf t
      end
 !
 wr
-!
+
 ```
 
 #### Verification and Testing
@@ -114,6 +114,7 @@ First, from a Windows host, use the *nslookup* command to resolve **pnpserver.dc
 
 ```bash
 nslookup pnpserver.pnp.dcloud.cisco.com
+
 ```
 
 The following output or something similar shows the resolution of the alias to the A host record entry which identifies the VIP address for the Cisco Catalyst Center Cluster will display.
@@ -124,6 +125,7 @@ Second, we need to ensure the Cisco Catalyst Center responds on the VIP, so use 
 
 ```bash
 ping pnpserver.pnp.dcloud.cisco.com
+
 ```
 
 The test results should look similar to this:
@@ -141,16 +143,17 @@ conf t
   interface Vlan 5                         
     no autostate                  
     end
-!
 
 ```
 
 ```bash
-ping 198.18.129.100 source vlan 5 repeat 1
+ping 198.18.129.100 source vlan 5 repeat 3
+
 ```
 
 ```bash
-ping pnpserver.pnp.dcloud.cisco.com source vlan 5 repeat 1
+ping pnpserver.pnp.dcloud.cisco.com source vlan 5 repeat 3
+
 ```
 
 ```bash
@@ -162,7 +165,6 @@ conf t
   interface Vlan 5                         
     autostate                  
     end
-!
 
 ```
 The test results should look similar to this:

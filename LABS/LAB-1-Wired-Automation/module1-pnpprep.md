@@ -96,7 +96,7 @@ int gi 0/0/1
  end
 !
 wr
-!
+
 ```
 
 ## Step 4 - Distribution Connectivity
@@ -132,7 +132,7 @@ pnp startup-vlan 5
 end
 !
 wr
-!
+
 ```
 
 The **`pnp startup-vlan 5`** command will program the target switches port connected with a trunk and automatically add the vlan and SVI to the target switch making that vlan ready to accept a DHCP address. 
@@ -162,7 +162,7 @@ conf t
      end
 !
 wr
-!
+
 ```
 
 </details>
@@ -196,7 +196,7 @@ conf t
      end
 !
 wr
-!
+
 ```
 
 ## Step 5 - Cisco Catalyst Center Discovery
