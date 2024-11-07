@@ -1,4 +1,4 @@
-# Cisco Catalyst Center and Certificates
+# System Certificates
 
 ## Overview
 
@@ -289,7 +289,7 @@ Cisco Catalyst Center will now log out. After a few minutes refresh the GUI from
 
    ![json](./images/Cert-CSR-30.png?raw=true "Import JSON")
 
-Congratulations you have changed the certificate and are now ready to use DNS for discovery purposes.
+Congratulations you have changed the certificate and are now ready to use DNS for discovery purposes. The Root CA may also be used in this lab for Identity Services Engine, and through a CAP Profile EAP certificates. All that would be needed would be in ISE to import the ROOT CA certificate into the trust store in ISE, and then create a CSR from the UI which includes the SAN IP and DNS names for the ISE environment. Then once binding the certificate ensure the roles for the Certificate are enabled. Once the Certificate is installed and operational for the roles desired, policy may be used. This will be discussed in a future lab in detail.
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
