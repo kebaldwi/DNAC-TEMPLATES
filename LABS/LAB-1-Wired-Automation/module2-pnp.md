@@ -515,28 +515,9 @@ At this point you can claim the device putting it in a planned state for onboard
 
 ### Step 2 - Post PnP Onboarding - **(OPTIONAL)**
 
-To complete this exercise, the port where the Target switch connects is a layer two trunk as part of a Port Channel needs to have a final tweak. To ensure ongoing connectivity we need to modify the upstream connection to put it in bundled mode. *Only required on some older versions of code.*
+To complete this exercise, the port where the Target switch connects is a layer two trunk as part of a Port Channel got a tweak to the configuration lets discuss. The default behaviour which we have built into the scripts allows for Individual mode to be used in case one port in the Port Channel Bundle is down. This ensure the Bundling and unbundling of ports does not entirely take down connectivity. The cli entry ``` no port-channel standalone-disable ``` is a **default** setting on a port channel which can be seen when using the show run all command. 
 
-```vtl
-!
-conf t
-!
-  interface range gi 1/0/10-11
-     channel-group 1 mode active
-!
-  interface Port-channel1
-     port-channel standalone-disable
-     shut
-     no shut
-     end
-!
-wr
-!
-```
-
-This accomplishes two things, it places the upstream switch negotiating LACP in Active mode against a Passive downstream peer allowing for a correct LACP bonded Port-Channel, and removes the standalone command. Both the standalone command and the Pssive mode were required during PnP to make sure both ports were configured correctly on the downstream switch. Any other combination results in one port being in the port-channel and that happens unpredicatbly.
-
-> **Note:** If you populate the UI with settings those parameters should **not** be in your templates as they will conflict and the deployment through provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what configuration is pushed.
+This accomplishes **two** things, it places the **upstream** switch negotiating LACP in **Passive** mode **against** an **Active downstream peer** allowing for a correct LACP bonded Port-Channel when used, and **simultaniously** allows for **Individual mode** and **Passive mode** during **PnP** to make sure both ports are configured correctly on the downstream switch. Any other combination results in one port being in the port-channel and that happens unpredicatbly.
 
 ### Automating Claiming and Provisioning
 

@@ -87,12 +87,12 @@ tclquit
 Finally, we want to test the routing, connectivity, DHCP, DNS services, and discovery mechanism. Reset the **c9300-1** Target switch by pasting the following sequence into the console. We will watch the switch come up but not intercede or type anything into the console after the reboot has started.
 
 ```vtl
-!
+
 copy prep4dnac running-config
 
 
 prep4dnac
-!
+
 ```
 
 The Switch should reboot and display this eventually in the console which acknowledges that the 9300 has discovered the Cisco Catalyst Center.
