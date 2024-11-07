@@ -62,6 +62,8 @@ We will use Postman to push a collection of REST API which will utlize data with
 
 While a more extensive set of settings can be built out for a deployment we will limit the configuration to the minimal necessary to perform this step. We will augment the Design Settings during the **DayN Provisioning Lab** to include others that may be required.
 
+> **Note:** While there are newer versions of Postman out there the DCLOUD environment is using an older version which does not restrict the number of users using the application which was added in later versions. As such nomenclature like Tests and images used are here for the older version. Please check Postman for updated documentation when using on production or your own computer.
+
 Before Cisco Catalyst Center can automate the deployment we have to do a couple of tasks to prepare. Please log into the Cisco Catalyst Center using a browser within the Windows **Jump host**. Use the credentials of username: **`admin`** password: **`C1sco12345`**. Then browse to [Cisco Catalyst Center](https://198.18.129.100). Use the credentials of username: **`admin`** password: **`C1sco12345`** within the DCLOUD environment.
 
 Although you can manually set up the hierarchy we will use automation scripts built to implement the hierarchy via **postman** which will utilize the **Cisco Catalyst Center API's** To do this we will make use of the application `postman` in the Windows workstation and install json files.
@@ -490,7 +492,7 @@ At this point you can claim the device putting it in a planned state for onboard
       * Hostname type `c9300-1`
       * Management Vlan enter `5`
       * Interfaces `Gi1/0/10, Gi1/0/11`
-      * IP Address `192.168.5.3`
+      * IP Management Address `192.168.5.3`
       * Subnet Mask `255.255.255.0`
       * Gateway `192.168.5.1`
       * VTP Domain `Cisco` ***(if required)***
