@@ -202,11 +202,11 @@ We will now provision the switch using DayN Templates. To do this, do the follow
 
       ![json](./images/DNAC-ProvisionScheduled-2.png?raw=true "Import JSON")
 
-   7. You can monitore the deployment on the Inventory page. Return to the Inventory via the menu, and change to the **Provisioning** Focus as shown.
+   7. You can monitor the deployment on the Inventory page. Return to the Inventory via the menu, and change to the **Provisioning** Focus as shown.
 
       ![json](./images/DNAC-InventoryProvision.png?raw=true "Import JSON")
        
-At this point, we have onboarded a device and successfully pushed configuration via Onboarding and DayN Templates. Our DayN automation used a combination of both a **Composite** and **Regular** templates. Take some time and review the templates and logic used.
+At this point, we have onboarded a device and successfully pushed configuration via Onboarding and DayN Templates. Our DayN automation for the Greenfield device used a **Composite** template composed of **Regular** templates. Take some time and review the templates and logic used.
 
 > **Note:** If you populate the UI with settings, those parameters should **NOT** be in your templates as they will **conflict**, and the deployment through provisioning will fail. While it is easy to populate these settings, it is best to test with a switch to see what configuration is pushed.
 
@@ -313,7 +313,7 @@ We will now provision the switch using DayN Templates. To do this, do the follow
 
       ![json](./images/DNAC-InventoryProvision.png?raw=true "Import JSON")
        
-At this point, we have onboarded a device and successfully pushed configuration via Discovery and DayN Templates. Our DayN automation used a combination of both a **Regular** templates. Take some time and review the templates and logic used.
+At this point, we have onboarded a device and successfully pushed configuration via Discovery and DayN Templates. Our DayN automation for the Brownfield Device used a **Regular** template and within it multiple **Included** templates. Take some time and review the templates and logic used.
 
 > **Note:** If you populate the UI with settings, those parameters should **NOT** be in your templates as they will **conflict**, and the deployment through provisioning will fail. While it is easy to populate these settings, it is best to test with a switch to see what configuration is pushed.
 
