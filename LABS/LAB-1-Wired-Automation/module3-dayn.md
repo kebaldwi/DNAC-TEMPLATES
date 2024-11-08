@@ -43,7 +43,7 @@ There are two basic types of templates we can utilize. **Regular** templates, as
 **Jinja2** and **Velocity** both have similar capabilities. For additional information please see these tutorials. You may want to open these in another tab to read the content and to allow you to continue the lab:
 
 * [Velocity Scripting](../../TUTORIALS/Velocity.md)
-* [Jinja2 Scripting](../../TUTORIALSJinja2.md)
+* [Jinja2 Scripting](../../TUTORIALS/Jinja2.md)
 
 Within these logical constructs you have many tools and these are an example but not all of them, please review each section as needed:
 
@@ -51,19 +51,19 @@ Within these logical constructs you have many tools and these are an example but
 
 Velocity's deployment in Cisco Catalyst Center is utilizing 1.75 version, and as such has the typical logical capabilities available within that release. Please see the following:
 
-* [If Statements](../../TUTORIALSVelocity.md#if-statements)
-* [Macros](../../TUTORIALSVelocity.md#macros)
-* [Loops](../../TUTORIALSVelocity.md#foreach-loops)
-* [Multiline commands](../../TUTORIALSVelocity.md#multi-line-commands)
+* [If Statements](../../TUTORIALS/Velocity.md#if-statements)
+* [Macros](../../TUTORIALS/Velocity.md#macros)
+* [Loops](../../TUTORIALS/Velocity.md#foreach-loops)
+* [Multiline commands](../../TUTORIALS/Velocity.md#multi-line-commands)
 
 #### Jinja2 Scripting Logic
 
 Jinja2 as deployed in Cisco Catalyst Center allows for the following capabilities as well as include and extend capabilities. Please see the following:
 
-* [If Statements](../../TUTORIALSJinja2.md#conditional-statements)
-* [Macros](../../TUTORIALSJinja2.md#macros)
-* [Loops](../../TUTORIALSJinja2.md#for-loops)
-* [Multiline commands](../../TUTORIALSJinja2.md#multi-line-commands)
+* [If Statements](../../TUTORIALS/Jinja2.md#conditional-statements)
+* [Macros](../../TUTORIALS/Jinja2.md#macros)
+* [Loops](../../TUTORIALS/Jinja2.md#for-loops)
+* [Multiline commands](../../TUTORIALS/Jinja2.md#multi-line-commands)
 
 ## Cisco Catalyst Center DayN Template Provisioning
 
