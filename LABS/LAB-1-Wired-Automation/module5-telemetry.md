@@ -95,7 +95,7 @@ In this section we will review the configuration that has been pushed to the dev
 
    ![json](./images/DNAC-Provision-Config.png?raw=true "Import JSON")
 
-Notice the Netflow configuation that has been pushed and additinally scroll through the fully configured switch to see all the various telemetry settings whcih have been deployed from Syslog to SNMP.
+Notice the Netflow configuation that has been pushed and additionally review the fully configured switch to see all the various telemetry settings whcih have been deployed from Syslog to SNMP.
 
 </details>
 
