@@ -19,6 +19,31 @@
         "rollbackTemplateContent": "",
         "templateParams": [
           {
+            "parameterName": "__policyprofile",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": true,
+            "instructionText": null,
+            "group": null,
+            "order": 2,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "MULTI_SELECT",
+              "selectionValues": {},
+              "defaultSelectedValues": [],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "sensitiveField": false,
+            "displayName": null
+          },
+          {
             "parameterName": "anqp_provision",
             "dataType": "INTEGER",
             "defaultValue": null,
@@ -48,31 +73,6 @@
             "binding": "",
             "sensitiveField": false,
             "displayName": "Provision OpenRoaming ANQP Profile"
-          },
-          {
-            "parameterName": "__policyprofile",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": true,
-            "instructionText": null,
-            "group": null,
-            "order": 2,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "MULTI_SELECT",
-              "selectionValues": {},
-              "defaultSelectedValues": [],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "sensitiveField": false,
-            "displayName": null
           }
         ],
         "rollbackTemplateParams": [],
@@ -279,46 +279,6 @@
           "templateErrors": [],
           "rollbackTemplateErrors": [],
           "templateId": "d36282be-32e7-4259-bae0-74707a8228f0",
-          "templateVersion": null
-        },
-        "noOfConflicts": 0,
-        "documentDatabase": false,
-        "projectAssociated": true
-      },
-      {
-        "name": "9800 SSID-mPSK",
-        "description": "",
-        "tags": [],
-        "author": "admin",
-        "deviceTypes": [
-          {
-            "productFamily": "Wireless Controller",
-            "productSeries": "Cisco Catalyst 9800 Series Wireless Controllers"
-          },
-          {
-            "productFamily": "Wireless Controller",
-            "productSeries": "Cisco Catalyst 9800 Wireless Controllers for Cloud"
-          }
-        ],
-        "softwareType": "IOS",
-        "softwareVariant": "XE",
-        "templateContent": "{# Option This option allows you to look for a key word in the profile name and apply mPSK \n   It does not require any bind variables but instead uses System Variables.content-scan\n#}\n\n{% macro def_SSID_mPSK() %}\n  {% for profile in __policyprofile %}\n    {% if \"iPSK\" in profile %}\n      wireless profile policy {{ profile }}\n        shutdown\n        security wpa wpa2 mpsk\n         priority 0 set-key ascii 0 C1sco12345C1sco12345\n         priority 1 set-key ascii 0 R@ndomR@ndomR@ndom\n         priority 2 set-key ascii 0 MyV01c315MyP@55w0Rd\n         priority 3 set-key ascii 0 Abracadabra12345\n        no shutdown\n    {% endif %}\n  {% endfor %}\n{%- endmacro %}  \n",
-        "templateParams": [],
-        "rollbackTemplateParams": [],
-        "composite": false,
-        "containingTemplates": [],
-        "language": "JINJA",
-        "promotedTemplateContent": "{# Option This option allows you to look for a key word in the profile name and apply mPSK \n   It does not require any bind variables but instead uses System Variables.content-scan\n#}\n\n{% macro def_SSID_mPSK() %}\n  {% for profile in __policyprofile %}\n    {% if \"iPSK\" in profile %}\n      wireless profile policy {{ profile }}\n        shutdown\n        security wpa wpa2 mpsk\n         priority 0 set-key ascii 0 C1sco12345C1sco12345\n         priority 1 set-key ascii 0 R@ndomR@ndomR@ndom\n         priority 2 set-key ascii 0 MyV01c315MyP@55w0Rd\n         priority 3 set-key ascii 0 Abracadabra12345\n        no shutdown\n    {% endif %}\n  {% endfor %}\n{%- endmacro %}  \n",
-        "promotedTemplateParams": [],
-        "customParamsOrder": false,
-        "createTime": 1698720127254,
-        "lastUpdateTime": 1698720969056,
-        "latestVersionTime": 1698720975617,
-        "projectName": "WIRELESS",
-        "validationErrors": {
-          "templateErrors": [],
-          "rollbackTemplateErrors": [],
-          "templateId": "254fc7b1-a23b-4ca4-9e48-1e6e60a19aa3",
           "templateVersion": null
         },
         "noOfConflicts": 0,
@@ -585,16 +545,16 @@
             "displayName": "Restart RRM "
           },
           {
-            "parameterName": "rrmForeign",
+            "parameterName": "triradio",
             "dataType": "INTEGER",
             "defaultValue": null,
             "description": null,
             "required": true,
             "notParam": false,
             "paramArray": false,
-            "instructionText": null,
+            "instructionText": "Convert C9130 8x8 5-GHz radio to dual 4x4 5-GHz.",
             "group": null,
-            "order": 1,
+            "order": 6,
             "customOrder": 0,
             "selection": {
               "selectionType": "SINGLE_SELECT",
@@ -603,7 +563,7 @@
                 "Yes": "1"
               },
               "defaultSelectedValues": [
-                "Yes"
+                "No"
               ],
               "id": null
             },
@@ -612,37 +572,7 @@
             "provider": null,
             "binding": "",
             "sensitiveField": false,
-            "displayName": "Enable Foreign AP Interference Avoidance"
-          },
-          {
-            "parameterName": "rrmPersistent",
-            "dataType": "INTEGER",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 2,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "SINGLE_SELECT",
-              "selectionValues": {
-                "No": "0",
-                "Yes": "1"
-              },
-              "defaultSelectedValues": [
-                "Yes"
-              ],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "sensitiveField": false,
-            "displayName": "Enable Persistent non-WiFi Device Avoidance "
+            "displayName": "Enable C9130 Tri-Radio"
           },
           {
             "parameterName": "dcaInterval5",
@@ -679,16 +609,16 @@
             "displayName": "5 GHz DCA Interval"
           },
           {
-            "parameterName": "triradio",
+            "parameterName": "rrmPersistent",
             "dataType": "INTEGER",
             "defaultValue": null,
             "description": null,
             "required": true,
             "notParam": false,
             "paramArray": false,
-            "instructionText": "Convert C9130 8x8 5-GHz radio to dual 4x4 5-GHz.",
+            "instructionText": null,
             "group": null,
-            "order": 6,
+            "order": 2,
             "customOrder": 0,
             "selection": {
               "selectionType": "SINGLE_SELECT",
@@ -697,7 +627,7 @@
                 "Yes": "1"
               },
               "defaultSelectedValues": [
-                "No"
+                "Yes"
               ],
               "id": null
             },
@@ -706,7 +636,37 @@
             "provider": null,
             "binding": "",
             "sensitiveField": false,
-            "displayName": "Enable C9130 Tri-Radio"
+            "displayName": "Enable Persistent non-WiFi Device Avoidance "
+          },
+          {
+            "parameterName": "rrmForeign",
+            "dataType": "INTEGER",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 1,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "SINGLE_SELECT",
+              "selectionValues": {
+                "No": "0",
+                "Yes": "1"
+              },
+              "defaultSelectedValues": [
+                "Yes"
+              ],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "sensitiveField": false,
+            "displayName": "Enable Foreign AP Interference Avoidance"
           },
           {
             "parameterName": "fra",
@@ -780,72 +740,6 @@
         "promotedTemplateContent": "{#\n!! 20210615 JOGRIM\n#}\n\n{# Enables foreign AP 802.11 interference avoidance in the channel assignment #}\n{# Normally enabled by default, but re-confirming. #}\n{% if rrmForeign == 0 %}\n  no ap dot11 5ghz rrm channel foreign\n  no ap dot11 24ghz rrm channel foreign\n{% elif rrmForeign == 1 %}\n  ap dot11 5ghz rrm channel foreign\n  ap dot11 24ghz rrm channel foreign\n{% endif %}\n\n{# Enables non-802.11 noise avoidance in the channel assignment #}\n{# Normally enabled by default, but re-confirming. #}\nap dot11 5ghz rrm channel noise\nap dot11 24ghz rrm channel noise\n\n{# Configure persistent non-WiFi device avoidance in the 802.11 channel assignment #}\n{% if rrmPersistent == 0 %}\n  no ap dot11 5ghz rrm channel device\n  no ap dot11 24ghz rrm channel device\n{% elif rrmPersistent == 1 %}\n  ap dot11 5ghz rrm channel device\n  ap dot11 24ghz rrm channel device\n{% endif %}\n\n{# Monitor Country Channel List #}\n{# To monitor all channels, change to \"all\" #}\nap dot11 24ghz rrm monitor channel-list country\nap dot11 5ghz rrm monitor channel-list country\n\n{# Globally Enable CleanAir #}\n{# ap dot11 5ghz cleanair #}\n{# ap dot11 24ghz cleanair #}\n\n{# Enable EDRRM for 5 GHz #}\nap dot11 5ghz rrm channel cleanair-event\n\n{# Enable EDRRM Rogue Contribution for 5 GHz #}\nap dot11 5ghz rrm channel cleanair-event rogue-contribution\n\n{# Configure FRA Interval #}\nap fra interval 24\n\n{# Configure FRA #}\n{% if fra == 0 %}\n  no ap fra\n{% elif fra == 1 %}\n  ap fra\n{% endif %}\n\n{# Configure DCA interval value #}\n{% if dcaInterval5 is number %}\n  ap dot11 5ghz rrm channel dca interval {{ dcaInterval5 }}\n{% endif %}\n\n{% if dcaInterval24 is number %}\n  ap dot11 24ghz rrm channel dca interval {{ dcaInterval24 }}\n{% endif %}\n\n{# Enables Tx Power Control to be channel aware #}\nap dot11 5ghz rrm tpc tpcv1-chan-aware\n\n{# Enable Tri-Radio in C9130 #}\n{% if triradio == 0 %}\n  no ap tri-radio\n{% elif triradio == 1 %}\n  ap tri-radio\n{% endif %}\n\n{# Restart RRM -- Startup mode will run for 100 minutes, #}\n{# reaching a solution generally within 30 to 40 minutes. #}\n{# !! WARNING !! -- This is disruptive to clients. #}\n{% if restartrrm == 1 %}\n  #MODE_ENABLE\n  ap dot11 5ghz rrm dca restart\n  ap dot11 24ghz rrm dca restart\n  #MODE_END_ENABLE\n{% endif %}",
         "promotedTemplateParams": [
           {
-            "parameterName": "dcaInterval5",
-            "dataType": "INTEGER",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 4,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "SINGLE_SELECT",
-              "selectionValues": {
-                "10 minutes": "0",
-                "12 hours": "12",
-                "1 hour": "1",
-                "24 hours": "24",
-                "4 hours": "4",
-                "6 hours": "6"
-              },
-              "defaultSelectedValues": [
-                "6 hours"
-              ],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "sensitiveField": false,
-            "id": null,
-            "displayName": "5 GHz DCA Interval"
-          },
-          {
-            "parameterName": "rrmForeign",
-            "dataType": "INTEGER",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 1,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "SINGLE_SELECT",
-              "selectionValues": {
-                "No": "0",
-                "Yes": "1"
-              },
-              "defaultSelectedValues": [
-                "Yes"
-              ],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "sensitiveField": false,
-            "id": null,
-            "displayName": "Enable Foreign AP Interference Avoidance"
-          },
-          {
             "parameterName": "rrmPersistent",
             "dataType": "INTEGER",
             "defaultValue": null,
@@ -875,68 +769,6 @@
             "sensitiveField": false,
             "id": null,
             "displayName": "Enable Persistent non-WiFi Device Avoidance "
-          },
-          {
-            "parameterName": "restartrrm",
-            "dataType": "INTEGER",
-            "defaultValue": null,
-            "description": "Startup mode will run for 100 minutes, reaching a new channel plan within 30 to 40 minutes.",
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": "WARNING! This is disruptive to clients.",
-            "group": null,
-            "order": 7,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "SINGLE_SELECT",
-              "selectionValues": {
-                "No": "0",
-                "Yes": "1"
-              },
-              "defaultSelectedValues": [
-                "No"
-              ],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "sensitiveField": false,
-            "id": null,
-            "displayName": "Restart RRM "
-          },
-          {
-            "parameterName": "triradio",
-            "dataType": "INTEGER",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": "Convert C9130 8x8 5-GHz radio to dual 4x4 5-GHz.",
-            "group": null,
-            "order": 6,
-            "customOrder": 0,
-            "selection": {
-              "selectionType": "SINGLE_SELECT",
-              "selectionValues": {
-                "No": "0",
-                "Yes": "1"
-              },
-              "defaultSelectedValues": [
-                "No"
-              ],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "sensitiveField": false,
-            "id": null,
-            "displayName": "Enable C9130 Tri-Radio"
           },
           {
             "parameterName": "dcaInterval24",
@@ -974,6 +806,103 @@
             "displayName": "2.4 GHz DCA Interval"
           },
           {
+            "parameterName": "rrmForeign",
+            "dataType": "INTEGER",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 1,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "SINGLE_SELECT",
+              "selectionValues": {
+                "No": "0",
+                "Yes": "1"
+              },
+              "defaultSelectedValues": [
+                "Yes"
+              ],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "sensitiveField": false,
+            "id": null,
+            "displayName": "Enable Foreign AP Interference Avoidance"
+          },
+          {
+            "parameterName": "dcaInterval5",
+            "dataType": "INTEGER",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 4,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "SINGLE_SELECT",
+              "selectionValues": {
+                "10 minutes": "0",
+                "12 hours": "12",
+                "1 hour": "1",
+                "24 hours": "24",
+                "4 hours": "4",
+                "6 hours": "6"
+              },
+              "defaultSelectedValues": [
+                "6 hours"
+              ],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "sensitiveField": false,
+            "id": null,
+            "displayName": "5 GHz DCA Interval"
+          },
+          {
+            "parameterName": "triradio",
+            "dataType": "INTEGER",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "instructionText": "Convert C9130 8x8 5-GHz radio to dual 4x4 5-GHz.",
+            "group": null,
+            "order": 6,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "SINGLE_SELECT",
+              "selectionValues": {
+                "No": "0",
+                "Yes": "1"
+              },
+              "defaultSelectedValues": [
+                "No"
+              ],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "sensitiveField": false,
+            "id": null,
+            "displayName": "Enable C9130 Tri-Radio"
+          },
+          {
             "parameterName": "fra",
             "dataType": "INTEGER",
             "defaultValue": null,
@@ -1003,6 +932,37 @@
             "sensitiveField": false,
             "id": null,
             "displayName": "Enable Flexible Radio Assignment"
+          },
+          {
+            "parameterName": "restartrrm",
+            "dataType": "INTEGER",
+            "defaultValue": null,
+            "description": "Startup mode will run for 100 minutes, reaching a new channel plan within 30 to 40 minutes.",
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "instructionText": "WARNING! This is disruptive to clients.",
+            "group": null,
+            "order": 7,
+            "customOrder": 0,
+            "selection": {
+              "selectionType": "SINGLE_SELECT",
+              "selectionValues": {
+                "No": "0",
+                "Yes": "1"
+              },
+              "defaultSelectedValues": [
+                "No"
+              ],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "sensitiveField": false,
+            "id": null,
+            "displayName": "Restart RRM "
           }
         ],
         "customParamsOrder": false,
@@ -1029,7 +989,6 @@
             "name": "DEMO"
           }
         ],
-        "author": "admin",
         "deviceTypes": [
           {
             "productFamily": "Wireless Controller",
@@ -1038,19 +997,19 @@
         ],
         "softwareType": "IOS",
         "softwareVariant": "XE",
-        "templateContent": "{# Option This option allows you to look for a key word in the profile name and apply CCKM \n   It does not require any bind variables but instead uses System Variables.content-scan\n#}\n\n{% macro def_SSID_CCKMy() %}\n  {% for profile in __policyprofile %}\n    {% if \"CAMPUS\" in profile %}\n      wireless profile policy {{ profile }}\n        shutdown\n        security wpa akm cckm\n        no shutdown\n    {% endif %}\n  {% endfor %}\n{%- endmacro %}  \n",
+        "templateContent": "{# Option This option allows you to look for a key word in the profile name and apply CCKM \n   It does not require any bind variables but instead uses System Variables.content-scan\n#}\n\n{% macro def_anchorPriority(anchor, priority) %}\n  {% for profile in __policyprofile %}\n    {% if \"CAMPUS\" in profile %}\n      wireless profile policy {{ profile }}\n        shutdown\n        security wpa akm cckm\n        no shutdown\n    {% endif %}\n  {% endfor %}\n{%- endmacro %}  \n",
         "rollbackTemplateContent": "",
         "templateParams": [],
         "rollbackTemplateParams": [],
         "composite": false,
         "containingTemplates": [],
         "language": "JINJA",
-        "promotedTemplateContent": "{# Option This option allows you to look for a key word in the profile name and apply CCKM \n   It does not require any bind variables but instead uses System Variables.content-scan\n#}\n\n{% macro def_SSID_CCKMy() %}\n  {% for profile in __policyprofile %}\n    {% if \"CAMPUS\" in profile %}\n      wireless profile policy {{ profile }}\n        shutdown\n        security wpa akm cckm\n        no shutdown\n    {% endif %}\n  {% endfor %}\n{%- endmacro %}  \n",
+        "promotedTemplateContent": "{# Option This option allows you to look for a key word in the profile name and apply CCKM \n   It does not require any bind variables but instead uses System Variables.content-scan\n#}\n\n{% macro def_anchorPriority(anchor, priority) %}\n  {% for profile in __policyprofile %}\n    {% if \"CAMPUS\" in profile %}\n      wireless profile policy {{ profile }}\n        shutdown\n        security wpa akm cckm\n        no shutdown\n    {% endif %}\n  {% endfor %}\n{%- endmacro %}  \n",
         "promotedTemplateParams": [],
         "customParamsOrder": false,
         "createTime": 1663881704807,
-        "lastUpdateTime": 1698720332161,
-        "latestVersionTime": 1698720344655,
+        "lastUpdateTime": 1666356124076,
+        "latestVersionTime": 1666356142240,
         "projectName": "WIRELESS",
         "validationErrors": {
           "templateErrors": [],
@@ -1195,6 +1154,37 @@
         "promotedTemplateContent": "{#\n!! 20210615 JOGRIM\n#}\n\nap profile default-ap-profile\n\n  {# Configure SYSLOG host on AP #}\n  {% if apSyslog != \"\" %}\n    syslog host {{ apSyslog }}\n  {% else %}\n    ## DEFAULT\n    syslog host 172.18.1.10\n  {% endif %}\n\n  {# Configure admin credentials on AP. Enables AP serial console access. -#}\n  {# Only enable for lab use or troubleshooting. #}\n  {% if apCredentials == 0 %}\n    no ssh\n    no telnet\n    no mgmtuser\n  {% elif apCredentials == 1 %}\n    mgmtuser username nettech password 0 C!sco#123 secret 0 C!sco#123\n  {% endif %}\n \n  {# NTP is required for Hyperlocation/FastLocate -#}\n  {% if apNtp != \"\" %}\n    ntp ip {{ apNtp }}\n  {% else %}\n    ## DEFAULT\n    ntp ip 172.18.1.10\n  {% endif %}\n\n  {# Configures Hyperlocation/BLE/FastLocate features on all supported APs -#}\n  {# FastLocate performance impact if not 4800/9120/9130 -#}\n  {% if apFastlocate == 0 %}\n    no hyperlocation\n  {% elif apFastlocate == 1 %}\n    hyperlocation\n  {% endif %}\n \n  {# AP trusts upstream DSCP instead of User Priority -#}\n  {# Required for QOS to work properly -#}\n  qos-map trust-dscp-upstream",
         "promotedTemplateParams": [
           {
+            "parameterName": "apFastlocate",
+            "dataType": "INTEGER",
+            "defaultValue": null,
+            "description": "Configures Hyperlocation/BLE/FastLocate features on all supported APs.\nModest client performance impact if not 4800/9120/9130.",
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 4,
+            "customOrder": 4,
+            "selection": {
+              "selectionType": "SINGLE_SELECT",
+              "selectionValues": {
+                "No": "0",
+                "Yes": "1"
+              },
+              "defaultSelectedValues": [
+                "Yes"
+              ],
+              "id": null
+            },
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "sensitiveField": false,
+            "id": null,
+            "displayName": "Enable AP FastLocate/HyperLocation"
+          },
+          {
             "parameterName": "apSyslog",
             "dataType": "STRING",
             "defaultValue": null,
@@ -1276,37 +1266,6 @@
             "sensitiveField": false,
             "id": null,
             "displayName": "Enable AP Admin Credentials"
-          },
-          {
-            "parameterName": "apFastlocate",
-            "dataType": "INTEGER",
-            "defaultValue": null,
-            "description": "Configures Hyperlocation/BLE/FastLocate features on all supported APs.\nModest client performance impact if not 4800/9120/9130.",
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 4,
-            "customOrder": 4,
-            "selection": {
-              "selectionType": "SINGLE_SELECT",
-              "selectionValues": {
-                "No": "0",
-                "Yes": "1"
-              },
-              "defaultSelectedValues": [
-                "Yes"
-              ],
-              "id": null
-            },
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "sensitiveField": false,
-            "id": null,
-            "displayName": "Enable AP FastLocate/HyperLocation"
           }
         ],
         "customParamsOrder": false,
@@ -1480,6 +1439,26 @@
         "rollbackTemplateContent": "",
         "templateParams": [
           {
+            "parameterName": "__devicebanner",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 2,
+            "customOrder": 0,
+            "selection": null,
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "sensitiveField": false,
+            "displayName": null
+          },
+          {
             "parameterName": "__timezonesite",
             "dataType": "STRING",
             "defaultValue": null,
@@ -1510,26 +1489,6 @@
             "instructionText": null,
             "group": null,
             "order": 3,
-            "customOrder": 0,
-            "selection": null,
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "sensitiveField": false,
-            "displayName": null
-          },
-          {
-            "parameterName": "__devicebanner",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 2,
             "customOrder": 0,
             "selection": null,
             "range": [],
@@ -1547,6 +1506,27 @@
         "promotedTemplateContent": "{#\n!! 20210615 JOGRIM\n#}\n\n{# SET TIMEZONE & DST -#}\n{% if __timezonesite[0] == \"US/Eastern\" %}\n  clock timezone EST -5\n  clock summer-time EDT recurring\n{% elif __timezonesite[0] == \"US/Central\" %}\n  clock timezone CST -6\n  clock summer-time CDT recurring\n{% elif __timezonesite[0] == \"US/Mountain\" %}\n  clock timezone MST -7\n  clock summer-time MDT recurring\n{% elif __timezonesite[0] == \"US/Pacific\" %}\n  clock timezone PST -8\n  clock summer-time PDT recurring\n{% else %}\n  # TIMEZONE - NO MATCH - DEFAULT TO EASTERN\n  clock timezone EST -5\n  clock summer-time EDT recurring\n{% endif %}\n\n{# SET LOGIN BANNER -#}\n<MLTCMD>banner login @\n{{ __devicebanner[0].bannerMessage }}\n@</MLTCMD>\n\n{# SET COMMON CONFIG -#}\nlogging buffered 409600 debugging\n!\narchive\n  log config\n    logging enable\n    notify syslog contenttype plaintext\n!\nservice tcp-keepalives-in\nservice tcp-keepalives-out\nservice timestamps debug datetime msec\nservice timestamps log datetime msec\nservice password-encryption\n!\nno ip http server\nip http session-idle-timeout 600\n\n{# ASSOCIATE HTTP AUTHENTICATION TO DNAC PROVISIONED LOGIN  #}\nip http authentication aaa login-authentication VTY_authen\nip http authentication aaa exec-authorization VTY_author\n\n{# CONFIGURE ADDITIONAL VTYs FOR PROCESSING WEB GUI REQUESTS #}\nline vty 0 97\n  logging synchronous\n  transport input ssh\n\n{# SET C9800-L WEB GUI TRUSTPOINT -#}\n{% if __device.platformId == \"C9800-L-K9\" %}\n  no ip http secure-server\n  ip http secure-trustpoint CISCO_IDEVID_SUDI\n  ip http secure-server\n{% endif %}",
         "promotedTemplateParams": [
           {
+            "parameterName": "__timezonesite",
+            "dataType": "STRING",
+            "defaultValue": null,
+            "description": null,
+            "required": true,
+            "notParam": false,
+            "paramArray": false,
+            "instructionText": null,
+            "group": null,
+            "order": 1,
+            "customOrder": 0,
+            "selection": null,
+            "range": [],
+            "key": null,
+            "provider": null,
+            "binding": "",
+            "sensitiveField": false,
+            "id": null,
+            "displayName": null
+          },
+          {
             "parameterName": "__device",
             "dataType": "STRING",
             "defaultValue": null,
@@ -1578,27 +1558,6 @@
             "instructionText": null,
             "group": null,
             "order": 2,
-            "customOrder": 0,
-            "selection": null,
-            "range": [],
-            "key": null,
-            "provider": null,
-            "binding": "",
-            "sensitiveField": false,
-            "id": null,
-            "displayName": null
-          },
-          {
-            "parameterName": "__timezonesite",
-            "dataType": "STRING",
-            "defaultValue": null,
-            "description": null,
-            "required": true,
-            "notParam": false,
-            "paramArray": false,
-            "instructionText": null,
-            "group": null,
-            "order": 1,
             "customOrder": 0,
             "selection": null,
             "range": [],
@@ -1619,17 +1578,17 @@
           "templateErrors": [
             {
               "type": "POTENTIAL_CONFLICT",
-              "lineNumber": 41,
-              "message": "This command is reserved to be used by Cisco DNA Center"
-            },
-            {
-              "type": "POTENTIAL_CONFLICT",
               "lineNumber": 43,
               "message": "This command is reserved to be used by Cisco DNA Center"
             },
             {
               "type": "POTENTIAL_CONFLICT",
               "lineNumber": 51,
+              "message": "This command is reserved to be used by Cisco DNA Center"
+            },
+            {
+              "type": "POTENTIAL_CONFLICT",
+              "lineNumber": 41,
               "message": "This command is reserved to be used by Cisco DNA Center"
             }
           ],
