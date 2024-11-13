@@ -15,25 +15,29 @@
     "rollbackTemplateContent": "",
     "templateParams": [
       {
-        "parameterName": "triradio",
+        "parameterName": "dcaInterval24",
         "dataType": "INTEGER",
         "defaultValue": null,
         "description": null,
         "required": true,
         "notParam": false,
         "paramArray": false,
-        "instructionText": "Convert C9130 8x8 5-GHz radio to dual 4x4 5-GHz.",
+        "instructionText": null,
         "group": null,
-        "order": 6,
+        "order": 5,
         "customOrder": 0,
         "selection": {
           "selectionType": "SINGLE_SELECT",
           "selectionValues": {
-            "No": "0",
-            "Yes": "1"
+            "10 minutes": "0",
+            "12 hours": "12",
+            "1 hour": "1",
+            "24 hours": "24",
+            "4 hours": "4",
+            "6 hours": "6"
           },
           "defaultSelectedValues": [
-            "No"
+            "6 hours"
           ],
           "id": null
         },
@@ -42,7 +46,7 @@
         "provider": null,
         "binding": "",
         "sensitiveField": false,
-        "displayName": "Enable C9130 Tri-Radio"
+        "displayName": "2.4 GHz DCA Interval"
       },
       {
         "parameterName": "rrmPersistent",
@@ -73,6 +77,36 @@
         "binding": "",
         "sensitiveField": false,
         "displayName": "Enable Persistent non-WiFi Device Avoidance "
+      },
+      {
+        "parameterName": "fra",
+        "dataType": "INTEGER",
+        "defaultValue": null,
+        "description": null,
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "instructionText": "Dual 5 GHz",
+        "group": null,
+        "order": 3,
+        "customOrder": 0,
+        "selection": {
+          "selectionType": "SINGLE_SELECT",
+          "selectionValues": {
+            "No": "0",
+            "Yes": "1"
+          },
+          "defaultSelectedValues": [
+            "No"
+          ],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "sensitiveField": false,
+        "displayName": "Enable Flexible Radio Assignment"
       },
       {
         "parameterName": "rrmForeign",
@@ -135,29 +169,25 @@
         "displayName": "Restart RRM "
       },
       {
-        "parameterName": "dcaInterval24",
+        "parameterName": "triradio",
         "dataType": "INTEGER",
         "defaultValue": null,
         "description": null,
         "required": true,
         "notParam": false,
         "paramArray": false,
-        "instructionText": null,
+        "instructionText": "Convert C9130 8x8 5-GHz radio to dual 4x4 5-GHz.",
         "group": null,
-        "order": 5,
+        "order": 6,
         "customOrder": 0,
         "selection": {
           "selectionType": "SINGLE_SELECT",
           "selectionValues": {
-            "10 minutes": "0",
-            "12 hours": "12",
-            "1 hour": "1",
-            "24 hours": "24",
-            "4 hours": "4",
-            "6 hours": "6"
+            "No": "0",
+            "Yes": "1"
           },
           "defaultSelectedValues": [
-            "6 hours"
+            "No"
           ],
           "id": null
         },
@@ -166,7 +196,7 @@
         "provider": null,
         "binding": "",
         "sensitiveField": false,
-        "displayName": "2.4 GHz DCA Interval"
+        "displayName": "Enable C9130 Tri-Radio"
       },
       {
         "parameterName": "dcaInterval5",
@@ -201,36 +231,6 @@
         "binding": "",
         "sensitiveField": false,
         "displayName": "5 GHz DCA Interval"
-      },
-      {
-        "parameterName": "fra",
-        "dataType": "INTEGER",
-        "defaultValue": null,
-        "description": null,
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": "Dual 5 GHz",
-        "group": null,
-        "order": 3,
-        "customOrder": 0,
-        "selection": {
-          "selectionType": "SINGLE_SELECT",
-          "selectionValues": {
-            "No": "0",
-            "Yes": "1"
-          },
-          "defaultSelectedValues": [
-            "No"
-          ],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "displayName": "Enable Flexible Radio Assignment"
       }
     ],
     "rollbackTemplateParams": [],
@@ -271,6 +271,99 @@
         "displayName": "Enable C9130 Tri-Radio"
       },
       {
+        "parameterName": "rrmPersistent",
+        "dataType": "INTEGER",
+        "defaultValue": null,
+        "description": null,
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "instructionText": null,
+        "group": null,
+        "order": 2,
+        "customOrder": 0,
+        "selection": {
+          "selectionType": "SINGLE_SELECT",
+          "selectionValues": {
+            "No": "0",
+            "Yes": "1"
+          },
+          "defaultSelectedValues": [
+            "Yes"
+          ],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "sensitiveField": false,
+        "id": null,
+        "displayName": "Enable Persistent non-WiFi Device Avoidance "
+      },
+      {
+        "parameterName": "fra",
+        "dataType": "INTEGER",
+        "defaultValue": null,
+        "description": null,
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "instructionText": "Dual 5 GHz",
+        "group": null,
+        "order": 3,
+        "customOrder": 0,
+        "selection": {
+          "selectionType": "SINGLE_SELECT",
+          "selectionValues": {
+            "No": "0",
+            "Yes": "1"
+          },
+          "defaultSelectedValues": [
+            "No"
+          ],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "sensitiveField": false,
+        "id": null,
+        "displayName": "Enable Flexible Radio Assignment"
+      },
+      {
+        "parameterName": "restartrrm",
+        "dataType": "INTEGER",
+        "defaultValue": null,
+        "description": "Startup mode will run for 100 minutes, reaching a new channel plan within 30 to 40 minutes.",
+        "required": true,
+        "notParam": false,
+        "paramArray": false,
+        "instructionText": "WARNING! This is disruptive to clients.",
+        "group": null,
+        "order": 7,
+        "customOrder": 0,
+        "selection": {
+          "selectionType": "SINGLE_SELECT",
+          "selectionValues": {
+            "No": "0",
+            "Yes": "1"
+          },
+          "defaultSelectedValues": [
+            "No"
+          ],
+          "id": null
+        },
+        "range": [],
+        "key": null,
+        "provider": null,
+        "binding": "",
+        "sensitiveField": false,
+        "id": null,
+        "displayName": "Restart RRM "
+      },
+      {
         "parameterName": "dcaInterval24",
         "dataType": "INTEGER",
         "defaultValue": null,
@@ -341,37 +434,6 @@
         "displayName": "5 GHz DCA Interval"
       },
       {
-        "parameterName": "rrmPersistent",
-        "dataType": "INTEGER",
-        "defaultValue": null,
-        "description": null,
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": null,
-        "group": null,
-        "order": 2,
-        "customOrder": 0,
-        "selection": {
-          "selectionType": "SINGLE_SELECT",
-          "selectionValues": {
-            "No": "0",
-            "Yes": "1"
-          },
-          "defaultSelectedValues": [
-            "Yes"
-          ],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "id": null,
-        "displayName": "Enable Persistent non-WiFi Device Avoidance "
-      },
-      {
         "parameterName": "rrmForeign",
         "dataType": "INTEGER",
         "defaultValue": null,
@@ -401,68 +463,6 @@
         "sensitiveField": false,
         "id": null,
         "displayName": "Enable Foreign AP Interference Avoidance"
-      },
-      {
-        "parameterName": "restartrrm",
-        "dataType": "INTEGER",
-        "defaultValue": null,
-        "description": "Startup mode will run for 100 minutes, reaching a new channel plan within 30 to 40 minutes.",
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": "WARNING! This is disruptive to clients.",
-        "group": null,
-        "order": 7,
-        "customOrder": 0,
-        "selection": {
-          "selectionType": "SINGLE_SELECT",
-          "selectionValues": {
-            "No": "0",
-            "Yes": "1"
-          },
-          "defaultSelectedValues": [
-            "No"
-          ],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "id": null,
-        "displayName": "Restart RRM "
-      },
-      {
-        "parameterName": "fra",
-        "dataType": "INTEGER",
-        "defaultValue": null,
-        "description": null,
-        "required": true,
-        "notParam": false,
-        "paramArray": false,
-        "instructionText": "Dual 5 GHz",
-        "group": null,
-        "order": 3,
-        "customOrder": 0,
-        "selection": {
-          "selectionType": "SINGLE_SELECT",
-          "selectionValues": {
-            "No": "0",
-            "Yes": "1"
-          },
-          "defaultSelectedValues": [
-            "No"
-          ],
-          "id": null
-        },
-        "range": [],
-        "key": null,
-        "provider": null,
-        "binding": "",
-        "sensitiveField": false,
-        "id": null,
-        "displayName": "Enable Flexible Radio Assignment"
       }
     ],
     "customParamsOrder": false,
