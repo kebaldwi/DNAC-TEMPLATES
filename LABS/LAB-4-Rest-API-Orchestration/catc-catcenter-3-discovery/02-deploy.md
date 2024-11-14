@@ -77,3 +77,7 @@ We have discovered devices within the network and imported them into Cisco Catal
 This may assist in brownfield learning so as to ensure the device may be properly provisioned with the UI based settings for intent.
 
 > **Note**: If there is time, look at the results of the Discovery and Inventory within Cisco Catalyst Center and the various pre and post-scripts within Postman.
+
+> [**Next Module**](../catc-catcenter-4-templates/01-intro.md)
+
+> [**Return to LAB Menu**](../README.md)
