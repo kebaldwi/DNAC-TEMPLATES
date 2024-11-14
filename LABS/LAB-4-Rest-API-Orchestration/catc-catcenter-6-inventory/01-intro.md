@@ -13,3 +13,7 @@ The inventory could be used in reports to determine compliance or to reference t
 For example we may pull the device inventory to determine what we may need to upgrade for code, or to pull the Unique Identifier for a device that we may want to push a specific configuration to via template. There are many needs for this type of request.
 
 > **Prerequisites**: **Completed** the previous section **Configuration Archiving**
+
+> [**Next Section**](./02-deploy.md)
+
+> [**Return to LAB Menu**](../README.md)
