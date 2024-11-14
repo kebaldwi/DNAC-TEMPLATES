@@ -19,3 +19,7 @@ The network hierarchy has a predetermined hierarchy:
 - **Floors**: Exist within buildings and consist of cubicles, walled offices, wiring closets, and so on. You can add floors only to buildings.
 
 > **Prerequisites**: **Completed** the previous section **Orientation**
+
+> [**Next Section**](./02-integration.md)
+
+> [**Return to LAB Menu**](../README.md)
