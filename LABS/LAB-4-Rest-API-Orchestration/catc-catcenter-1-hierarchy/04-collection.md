@@ -82,3 +82,6 @@ Within the API, we will investigate the `Tests` through the following:
       * Within the `if` condition in line 4, we load the Token from the field within the JSON response into the environmental variable.
       * The end of the code block calls for the next API within the collection.
 
+> [**Next Section**](./05-deploy.md)
+
+> [**Return to LAB Menu**](../README.md)
