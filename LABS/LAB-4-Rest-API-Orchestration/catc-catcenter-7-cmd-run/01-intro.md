@@ -11,3 +11,7 @@ The Command Runner tool allows you to run cli commands from the Inventory window
 The platform commands that you can run are those such as `ping`, `traceroute`, and `snmpget` to troubleshoot device reachability issues. Additionally, `show` commands may also help or aid in troubleshooting.
 
 > **Prerequisites**: **Completed** the previous section **Retrieving Device Inventory**
+
+> [**Next Section**](./02-deploy.md)
+
+> [**Return to LAB Menu**](../README.md)
