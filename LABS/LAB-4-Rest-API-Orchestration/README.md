@@ -1,27 +1,31 @@
-# Catalyst Center REST API with Postman 
+# REST API Orchestration 
 
-This set of Cisco Learning Labs is developed around a set of simple use cases to show both the power of Catalyst Center, the REST APIs, and easy methodologies for execution through Postman.
+## Overview
 
-The Story we will use will be the following, after orientation, we will first integrate ISE with Catalyst Center, and then construct our design. The design comprises of a hierarchy, settings and credentials. With the hierarchy set, we sill discover our pod devices assigned by the instructor and then deploy templates to the pod. After some time we will archive the configurations of the pod, amd then collect the updated inventory. Finally we will send a show CDP neighbor command to the equipment we have been assigned.
+This Lab is designed as a standalone lab to help customers with varying challenges in Automating and Orchestrating their network infrastructure. Within the lab, we will use various tools and techniques to Automate various tasks and orchestrate Catalyst Center.
 
-## Modules and Content
+## General Information
 
-| Module ID | PubHub Link |
-|-----------|-------------|
-| catc-catcenter-postman-lab | https://pubhub.cisco.com/detail/#### |
+Until this point, we have used REST API for some basic setup tasks, but there are so many situations that can be solved or at least eased using REST API in conjunction with Catalyst Center. In this lab, we will use a complete set of REST API collections which will build upon the foundational knowledge acquired in the previous labs. For this lab, we will concentrate on Catalyst Center configuration and how Catalyst Center can be automated to perform various functions which we have already covered. 
 
-| Lab ID | PubHub link |
-|--------|-------------|
-| catc-catcenter-0-orientation | https://pubhub.cisco.com/detail/#### |
-| catc-catcenter-1-hierarchy | https://pubhub.cisco.com/detail/#### |
-| catc-catcenter-2-settings | https://pubhub.cisco.com/detail/#### |
-| catc-catcenter-3-discovery | https://pubhub.cisco.com/detail/#### |
-| catc-catcenter-4-templates | https://pubhub.cisco.com/detail/#### |
-| catc-catcenter-5-archive | https://pubhub.cisco.com/detail/#### |
-| catc-catcenter-6-inventory | https://pubhub.cisco.com/detail/#### |
-| catc-catcenter-7-cmd-run | https://pubhub.cisco.com/detail/#### |
-| catc-catcenter-8-inventory | https://pubhub.cisco.com/detail/#### |
-| catc-catcenter-9-cmd-run | https://pubhub.cisco.com/detail/#### |
+This set of Labs is developed around a set of simple use cases to show both the power of Catalyst Center, the REST APIs, and easy methodologies for execution through Postman. This page will serve as the landing page for this lab section due to the amount of content it will cover and the need to expand on it over time. 
+
+The lab will utilize a set of collections publically shared on postman workspaces and those collections will also be expanded to keep in line with this lab.
+
+## Lab Modules
+
+The Story we will use will be the following, after orientation, we will first integrate ISE with Catalyst Center, and then construct our design. The design comprises of a hierarchy, settings and credentials. With the hierarchy set, we sill discover our pod devices assigned by the instructor and then deploy templates to the pod. After some time we will archive the configurations of the pod, amd then collect the updated inventory. Finally we will send a show CDP neighbor command to the equipment we have been assigned. 
+
+The use cases we will cover are the following which you can access via the links below:
+
+1. [**Postman Orientation**](./catc-catcenter-0-orientation/01-intro.md)
+2. [**Building Hierarchy**](./catc-catcenter-1-hierarchy/01-intro.md)
+3. [**Assign Settings and Credentials**](./catc-catcenter-2-settings/01-intro.md)
+4. [**Device Discovery**](./catc-catcenter-3-discovery/01-intro.md)
+5. [**Template Deployment**](./catc-catcenter-4-templates/01-intro.md)
+6. [**Configuration Archive**](./catc-catcenter-5-archive/01-intro.md)
+7. [**Retrieving Network Inventory**](./catc-catcenter-6-inventory/01-intro.md)
+8. [**Running Show Commands**](./catc-catcenter-7-cmd-run/01-intro.md)
 
 ## Preparation notes
 
@@ -86,10 +90,61 @@ Your instructor will assign you a pod number:
 
 Use AnyConnect VPN to connect to DCLOUD. When connecting, look at the session details and copy the credentials from the session booked into the client to connect.
 
-![DCLOUD VPN CONNECTION](./labs/dntd-catcenter-0-orientation/assets/VPN-to-DCLOUD.png)
+![DCLOUD VPN CONNECTION](./catc-catcenter-0-orientation/assets/VPN-to-DCLOUD.png)
+
+### Tools Required
+
+Please utilize the following tools to run the lab effectively and ensure they are installed on your workstation/laptop before attempting the lab.
+
+1. Cisco AnyConnect VPN Client
+2. Postman
+3. Google Chrome
+
+<details closed>
+<summary> Expand section for Tools Required </summary>
+
+#### Cisco AnyConnect VPN Client
+
+This software is required to connect your workstation to Cisco dCloud. For an explanation of AnyConnect and how to use it with dCloud, please visit the following URL: 
+
+- <a href="https://dcloud-cms.cisco.com/help/android_anyconnect" target="_blank">dCloud AnyConnect Documentation</a>
+
+If you do not have the AnyConnect client, please visit. 
+
+- <a href="https://dcloud-rtp-anyconnect.cisco.com" target="_blank">⬇︎AnyConnect Download Site⬇︎</a>
+
+#### Postman
+
+Postman is an API platform for building and using APIs. Postman simplifies each step of the API lifecycle and streamlines collaboration so you can create better APIs—faster.
+
+Once Postman has been downloaded to your desktop, it is advisable to set up an account and sign in so that all your changes can be used within any system with the client or a web browser, much in the same way as a chrome or firefox profile work. This additional capability I have found instrumental when working in multiple environments. 
+
+- <a href="https://www.postman.com/downloads/" target="_blank">⬇︎Postman Download⬇︎</a>
+
+##### Postman Documentation
+
+For an understanding of postman, please visit this site:
+
+- <a href="https://learning.postman.com/docs/getting-started/introduction/" target="_blank">Postman Documentation</a>
+
+#### Google Chrome
+
+Google Chrome is the optimal browser of choice when working in the DNA Center UI. 
+
+To download Google Chrome, please visit. 
+
+- <a href="https://www.google.com/chrome/downloads/" target="_blank">⬇︎Chrome Download⬇︎</a>
+
+</details>
 
 ## Summary
-Cisco Catalyst Center should be set up and ready for the attendees.
 
-## Disclaimer
-Various labs are designed for use in the **DCLOUD** environment but can be used elsewhere. The environment allows for use with a web-based browser client for VPN-less connectivity, access as well as AnyConnect VPN client connectivity for those who prefer it. The labs are hosted Globally out of **DCLOUD** Facilities so that you can choose the facility closest to your event. Choose the **DNAC pods for DevNet Test Drives** to access this or any other content, including demonstrations, labs, and training in DCLOUD, please work with your Cisco Account team or Cisco Partner Account Team directly. Your Account teams will make sure the session is scheduled and shared for you to use. Once booked, follow the guide within Github to complete the tasks adhering to the best practices of the DCLOUD environment.
+This lab is intended for educational purposes only. Use outside of a lab environment should be done at the operator's risk. Cisco assumes no liability for incorrect usage.
+
+This lab is intended to help drive the adoption of REST API and will be added to over time with various use cases. The Public Workspace will also mirror the changes and be kept up to date. We hope this set of labs helps explain how the REST API may be used and goes a little further in helping define and document them.
+
+> **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+
+> [**Continue to Orientation Lab**](./catc-catcenter-0-orientation/01-intro.md)
+
+> [**Return to LAB Main Menu**](../README.md)
