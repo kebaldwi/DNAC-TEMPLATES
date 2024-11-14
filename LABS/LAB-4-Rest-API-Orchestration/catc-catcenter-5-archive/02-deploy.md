@@ -78,3 +78,7 @@ Cisco Catalyst Center allows for the `archiving` of both the `running` and `star
 In the earlier Cisco Catalyst Center GUI's, there was no capability to archive the configurations apart from this REST-API-based approach. Additional capabilities have been added to the most recent version of Cisco Catalyst Center, but there remain good use cases for this capability.
 
 > **Note**: Additionally, if there is time, look at the pre and post-scripts within Postman.
+
+> [**Next Module**](../catc-catcenter-6-inventory/01-intro.md)
+
+> [**Return to LAB Menu**](../README.md)

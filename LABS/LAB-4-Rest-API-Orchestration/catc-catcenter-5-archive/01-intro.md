@@ -12,3 +12,6 @@ One such use case is configuration `compliance`. Suppose we wanted to create a p
 
 > **Prerequisites**: **Completed** the previous section on **Template Deployment**
 
+> [**Next Section**](./02-deploy.md)
+
+> [**Return to LAB Menu**](../README.md)
