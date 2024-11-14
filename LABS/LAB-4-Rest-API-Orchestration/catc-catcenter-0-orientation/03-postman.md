@@ -71,3 +71,7 @@ For Lab purposes, Cisco Catalyst Center uses a self-signed certificate. This cer
     ![Disabled SSL Validation](./assets/Postman-Settings-SSL-Validation-Off.png)
 
 3. Close the settings window.
+
+> [**Next Section**](./04-externaldata.md)
+
+> [**Return to LAB Menu**](../README.md)

@@ -42,3 +42,7 @@ To effectively run the Labs, install the following tools on your computer:
 Use AnyConnect VPN to connect to DCLOUD. When connecting, look at the session details and copy the credentials given by the **instructor** into the client to connect.
 
 ![DCLOUD VPN CONNECTION](./assets/VPN-to-DCLOUD.png?raw=true)
+
+> [**Next Section**](./02-collections.md)
+
+> [**Return to LAB Menu**](../README.md)
