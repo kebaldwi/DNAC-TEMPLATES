@@ -17,3 +17,7 @@ Cisco Catalyst Center APIs use token-based authentication and HTTPS Basic Authen
 HTTPS Basic uses Transport Layer Security (TLS) to encrypt the connection and data in an HTTP Basic Authentication transaction.
 
 This type of request is built into every collection that we will use with **Cisco Catalyst Center**.
+
+> [**Next Section**](./03-postman.md)
+
+> [**Return to LAB Menu**](../README.md)
