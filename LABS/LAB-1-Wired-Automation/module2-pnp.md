@@ -407,15 +407,15 @@ We will now **download** and **import** one of the following PnP Onboarding Temp
 
 2. Click **Import** then select **Template(s)** from the menu.    
 
-   ![json](./images/DNAC-TemplateImport.png?raw=true "Import JSON")
+   ![json](./images/DNAC-TemplateImport-1.png?raw=true "Import JSON")
 
 3. Click the link to select files from the local computer. In the Windows explorer window search for the extracted json file, select it and open it into the import window.
 
-   ![json](./images/DNAC-TemplateSelection.png?raw=true "Import JSON")
+   ![json](./images/DNAC-TemplateSelection-1.png?raw=true "Import JSON")
 
 4. Click import to install and import the template.
 
-   ![json](./images/DNAC-TemplatedSelected.png?raw=true "Import JSON")
+   ![json](./images/DNAC-TemplatedSelected-1.png?raw=true "Import JSON")
 
 ### Step 2 - Create a Network Profile **(REQUIRED)**
 
