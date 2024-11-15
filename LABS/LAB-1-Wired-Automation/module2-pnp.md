@@ -405,19 +405,17 @@ We will now **download** and **import** one of the following PnP Onboarding Temp
 
    ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
 
-2. Hover over the right side of the **onboarding templates**, and a small ⚙ gear icon will appear. Select **Import Template(s)** from the menu.    
+2. Click **Import** then select **Template(s)** from the menu.    
 
    ![json](./images/DNAC-TemplateImport.png?raw=true "Import JSON")
 
-3. Click the link to select files from the local computer    
+3. Click the link to select files from the local computer. In the Windows explorer window search for the extracted json file, select it and open it into the import window.
 
    ![json](./images/DNAC-TemplateSelection.png?raw=true "Import JSON")
 
-4. In the Windows explorer window search for the extracted json file, select it and open it into the import window    
+4. Click import to install and import the template.
 
    ![json](./images/DNAC-TemplatedSelected.png?raw=true "Import JSON")
-
-5. Click import to install and import the template.
 
 ### Step 2 - Create a Network Profile **(REQUIRED)**
 
@@ -481,11 +479,9 @@ At this point you can claim the device putting it in a planned state for onboard
 
    6. The assigned site will appear on the section page, click **next** to continue
 
-      ![json](./images/DNAC-SiteClaim.png?raw=true "Import JSON")
-
    7. Section 2 you can click the hyperlinks to the right of the workflow page and view or amend the templates and images utilized. We will make no changes so click **next** to continue   
 
-      ![json](./images/DNAC-AssignConfig-Claim.png?raw=true "Import JSON")
+      ![json](./images/DNAC-SiteClaim.png?raw=true "Import JSON")
 
    8. Section 3 select the device **serial number** on the left and fill in the variables within the template click **next**. Please use the following:
    
@@ -545,21 +541,57 @@ To create a Discovery task complete the following actions:
    2. Select **IP Address/Range** and enter the following ranges:
       * `192.168.5.1 - 192.168.5.1`
       * `198.18.133.145 - 198.18.133.145`
+   3. Click **Next**
 
       ![json](./images/DNAC-Discovery-1.png?raw=true "Import JSON")
 
-   3. Scroll down, the **Credentials** should already be selected from the **Settings**
-   4. Click **Discover** to begin the discovery.
+   4. Select the **CLI** and then select the tick box for `netadmin` which should already appear from the **Settings**
 
-      ![json](./images/DNAC-Discovery-2.png?raw=true "Import JSON")
+      ![json](./images/DNAC-Discovery-2a.png?raw=true "Import JSON")
 
-4. Click **Start** to initiate the discovery task.
+   5. Select the **SNMPv2c Read** and then select the tick box for `RO` which should already appear from the **Settings**
+
+      ![json](./images/DNAC-Discovery-2b.png?raw=true "Import JSON")
+
+   6. Select the **SNMPv2c Write** and then select the tick box for `RW` which should already appear from the **Settings**
+
+      ![json](./images/DNAC-Discovery-2c.png?raw=true "Import JSON")
+      
+   7. Select the **NETCONF** then **Add NETCONF Port** and select `Global` from the menu
+
+      ![json](./images/DNAC-Discovery-2d.png?raw=true "Import JSON")
+      
+   8. Enter `NETCONF` as the description and the port as `830` then click **Next**
+
+      ![json](./images/DNAC-Discovery-2e.png?raw=true "Import JSON")
+      
+   9. Click **Next** to accept the given Protocols and Timers
+
+      ![json](./images/DNAC-Discovery-2f.png?raw=true "Import JSON")
+      
+   10. Select **Assign Device to Site** and navigate the hierarchy and select the `Floor 1` then click **Next**
+
+       ![json](./images/DNAC-Discovery-2g.png?raw=true "Import JSON")
+
+   11. Click **Next** to begin the schedule the discovery for **Now**
+
+       ![json](./images/DNAC-Discovery-2h.png?raw=true "Import JSON")
+
+4. Click **Start Discovery and Telemetry** to initiate the discovery task.
 
    ![json](./images/DNAC-Discovery-3.png?raw=true "Import JSON")
 
 ### Step 2 - Verify the Discovery Completed
 
-1. Select the Discovery within the Discovery Portal to view the results
+1. Select **View Discovery** to Exit the Discovery Workflow tool
+
+   ![json](./images/DNAC-Discovery-ExitWorkflow.png?raw=true "Import JSON")
+
+1. Select the `WIRED` discovery within the Discovery Portal to view the results
+
+   ![json](./images/DNAC-DiscoveryPortal-3.png?raw=true "Import JSON")
+
+1. View the results
 
    ![json](./images/DNAC-Discovery-Verify.png?raw=true "Import JSON")
 
