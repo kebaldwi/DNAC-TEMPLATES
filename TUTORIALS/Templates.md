@@ -13,7 +13,7 @@ Either one or multiple Templates may be used to deploy Intent in combination wit
 3.	Repetition of any construct may be introduced through the use of Looping structures on any device.
 4.	Variables may be used when the device is being onboarded or provisioned
 
-## Phylosophies
+## Philosophies
 
 There are a number of coding paradigms which various programmers use when building, maintaining and publishing programming code which are extremely useful when trying to integrate programmability for use in modern day infrastructure use cases. Lets deal with each concept in turn:
 
