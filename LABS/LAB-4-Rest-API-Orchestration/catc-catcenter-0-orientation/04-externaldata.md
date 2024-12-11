@@ -6,7 +6,7 @@ This Collection may be run whenever you wish to create a new section of the Hier
 
 Accompanying the Collection is a **required** Comma Separated Value (CSV) file, which is essentially an `answer file` for the values used to build the design. The CSV may be found here. 
 
-> **Download**: <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-I-Rest-API-Orchestration/postman/devnettestdrive/CCC-Design-Settings-v3.csv" target="_blank">⬇︎ Cisco Catalyst Center Design Settings CSV ⬇︎</a>
+> **Download**: <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/DEVNET-IGNITE/CCC-Design-Settings-v3.csv" target="_blank">⬇︎ Cisco Catalyst Center Design Settings CSV ⬇︎</a>
 
 ## Preparing the External Data File
 
