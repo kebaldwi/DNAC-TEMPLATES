@@ -6,7 +6,7 @@ To use Postman with Cisco Catalyst Center, we import the collection and environm
 
 To prepare Postman for the lab, please download the following collection and environment zip file and upload them into Postman. Download the following Student Collection, which includes seven collections and one environment. To do this right, click and open this link in a new tab to download them:
 
-> **Download**: <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/DEVNET-IGNITE/CatalystCenter-UseCase-API-Collection.zip" target="_blank">⬇︎ Cisco Catalyst Center Use-Case API Collection ⬇︎</a>
+> **Download**: <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/DEVNET-IGNITE/CatalystCenter-UseCase-API-Collection.zip" target="_blank">⬇︎ Cisco Catalyst Center Use-Case API Collection ⬇︎</a>
 
 After you download the file, uncompress the compressed files and import all the files into Postman.
 
