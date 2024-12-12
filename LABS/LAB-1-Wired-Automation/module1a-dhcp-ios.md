@@ -91,7 +91,7 @@ In this section we will prepare Domain Name System (DNS) and Dynamic Host Config
 
 #### Configuring DHCP and General DNS Services via Powershell
 
-1. Download the powershell script to the **windows server** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/scripts/powershell-DHCP.ps1">**⬇︎powershell-DHCP.ps1⬇︎**</a> file.
+1. Download the powershell script to the **windows server** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POWERSHELL/powershell-DHCP.ps1">**⬇︎powershell-DHCP.ps1⬇︎**</a> file.
 
 2. Once downloaded, extract the file.
 
