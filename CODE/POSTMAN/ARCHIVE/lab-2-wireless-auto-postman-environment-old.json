@@ -1,21 +1,21 @@
 {
-	"id": "6a0e3142-7953-487d-a3b4-7c6c2d0ac046",
-	"name": "CATC Automation Lab",
+	"id": "515b6968-76f2-44a3-9cf0-efdf721e97b7",
+	"name": "DNAC Template Labs",
 	"values": [
 		{
-			"key": "CCip",
+			"key": "DNACip",
 			"value": "198.18.129.100",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "CCuser",
+			"key": "DNACuser",
 			"value": "admin",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "CCpwd",
+			"key": "DNACpwd",
 			"value": "C1sco12345",
 			"type": "default",
 			"enabled": true
@@ -51,7 +51,7 @@
 		},
 		{
 			"key": "HierarchyArea",
-			"value": "CATC Template Lab",
+			"value": "DNAC Template Lab",
 			"type": "default",
 			"enabled": true
 		},
@@ -165,7 +165,7 @@
 		},
 		{
 			"key": "bannerMessage",
-			"value": "CATC Template Lab!",
+			"value": "DNAC Template Lab!",
 			"enabled": true
 		},
 		{
@@ -472,33 +472,9 @@
 			"value": "",
 			"type": "any",
 			"enabled": true
-		},
-		{
-			"key": "ASSIGN-API",
-			"value": "intent/api/v1/assign-device-to-site/",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "BldgLongitude",
-			"value": "-121.919510",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "BldgLatitude",
-			"value": "37.419850",
-			"type": "default",
-			"enabled": true
-		},
-		{
-			"key": "BldgAddressCountry",
-			"value": "United States",
-			"type": "default",
-			"enabled": true
 		}
 	],
 	"_postman_variable_scope": "environment",
-	"_postman_exported_at": "2024-12-12T19:49:08.653Z",
-	"_postman_exported_using": "Postman/11.22.1"
+	"_postman_exported_at": "2022-10-05T18:25:37.100Z",
+	"_postman_exported_using": "Postman/9.31.16"
 }
