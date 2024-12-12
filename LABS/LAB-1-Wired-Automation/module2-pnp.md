@@ -80,8 +80,8 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 
 4. A popup import window should appear. Ensure File is selected and click the Upload Files button. Select the downloads folder and select both files named:
 
-   - `CATC_Templates_Lab_postman_collection.json`
-   - `CATC_Templates_Lab_postman_environment.json`
+   - `lab-1-wired-auto-postman-collection.json`
+   - `lab-1-wired-auto-postman-environment.json`
 
    Click open to import them both into Postman
 

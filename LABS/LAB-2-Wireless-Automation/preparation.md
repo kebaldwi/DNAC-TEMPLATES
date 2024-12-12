@@ -78,13 +78,13 @@ We will now prepare DNA Center and onboard the devices in preparation for use in
 
 ### Step 1 - ***Import Postman Collection***
 
-1. Download and import the collection within the ***Postman*** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/lab-2-wireless-auto-postman-collection.json">⬇︎DCLOUD_DNACTemplateLab_Workflow.postman_collection.json⬇︎</a> file.
+1. Download and import the collection within the ***Postman*** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/lab-2-wireless-auto-postman-collection.json">⬇︎lab-2-wireless-auto-postman-collection.json⬇︎</a> file.
 2. Extract the file to the desktop using **Winrar** to expand them
 3. Open the **postman** application from the desktop. Once the application is open select *Collections* then click the *Import* link. 
 
    ![json](./images/module0-preparation/Postman-Pre-Collection-Import.png?raw=true "Import JSON")
 
-4. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the file named `DCLOUD_DNACTemplatesLab_Workflow.postman_collection.json` and click open. 
+4. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the file named `lab-2-wireless-auto-postman-collection.json` and click open. 
 
    ![json](./images/module0-preparation/Postman-Collection-Select.png?raw=true "Import JSON")
 
@@ -94,14 +94,14 @@ We will now prepare DNA Center and onboard the devices in preparation for use in
 
 ### Step 2 - ***Import Postman Environment***
 
-1. Download and import the environment within the ***Postman*** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/lab-2-wireless-auto-postman-environment.json">⬇︎DCLOUD_DNACTemplateLabs.postman_environment.json⬇︎</a> file.
+1. Download and import the environment within the ***Postman*** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/lab-2-wireless-auto-postman-environment.json">⬇︎lab-2-wireless-auto-postman-environment.json⬇︎</a> file.
 2. Extract the file to the desktop using **Winrar** to expand them
 3. If not open, open the **postman** application from the desktop. Once the application is open select *Environments* and then the *Import* link. 
 
    ![json](./images/module0-preparation/Postman-Pre-Environment-Import.png?raw=true "Import JSON")
 
 4. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the file named 
-`DCLOUD_DNACTemplateLabs.postman_environment.json` and click open. 
+`lab-2-wireless-auto-postman-environment.json` and click open. 
 
    ![json](./images/module0-preparation/Postman-Environment-Select.png?raw=true "Import JSON")
 
