@@ -1,12 +1,12 @@
-# Cisco DNA Center and Certificates
+# System Certificates
 
 ## Overview
 
-Cisco DNA Center has a Graphical User Interface (GUI), which is protected by SSL encryption. This GUI utilizes a certificate which is automatically generated when the system is configured for the first time, and automatically incorporates the FQDN at that time. 
+Cisco Catalyst Center has a Graphical User Interface (GUI), which is protected by SSL encryption. This GUI utilizes a certificate which is automatically generated when the system is configured for the first time, and automatically incorporates the FQDN at that time. 
 
-Obviously, most organizations do not want self signed certificates used in their infrastructure, and so want to tie Cisco DNA Centers certificates into their PKI infrastructure. 
+Obviously, most organizations do not want self signed certificates used in their infrastructure, and so want to tie Cisco Catalyst Centers certificates into their PKI infrastructure. 
 
-In this small set of tasks we will accomodate that ask. It is important to note that while this set of tasks will always work, a new GUI tool has been incorporated in the newest version of Cisco DNA Center to facilitate the building of the Certificate Signing Request. For all versions prior to Cisco DNA Center **2.3.5.x** this method is detailed in the following [DNA Center Security Best Practices Guide](./DNACenter_security_best_practices_guide.pdf) guide.
+In this small set of tasks we will accomodate that ask. It is important to note that while this set of tasks will always work, a new GUI tool has been incorporated in the newest version of Cisco Catalyst Center to facilitate the building of the Certificate Signing Request. For all versions prior to Cisco Catalyst Center **2.3.5.x** this method is detailed in the following [Cisco Catalyst Center Security Best Practices Guide](./DNACenter_security_best_practices_guide.pdf) guide.
 
 ## PKI Infrastructure Build
 
@@ -52,9 +52,11 @@ Add-WindowsFeature Adcs-Online-Cert -IncludeAllSubFeature -IncludeManagementTool
 Install-AdcsOnlineResponder -Force
 ```
 
+<p>Download the full Powershell script here: <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POWERSHELL/powershell-CA.ps1">⬇︎CA Setup Powershell⬇︎</a></p>
+
 ## PKI Certificate Template Build
 
-Once the certificate authority service is operational, we will then add a template which we will utilize for Cisco DNA Center.
+Once the certificate authority service is operational, we will then add a template which we will utilize for Cisco Catalyst Center.
 This same template may also be used for ISE. For a Template to function correctly we will need to provision a certificate which includes usage for both Client and Server Authentication roles. As it also needs to appear in the Web UI, we will need to duplicate a certificate template. The Web Server built in template will be used for duplication purposes.
 
 1. Follow the following steps on the AD server:
@@ -128,13 +130,13 @@ This same template may also be used for ISE. For a Template to function correctl
 
       ![json](./images/AD-Cert-Template-12.png?raw=true "Import JSON")
 
-Now that we have successfully enabled the Certificate Authority and templates lets go ahead and build the Cisco DNA Center certificate.
+Now that we have successfully enabled the Certificate Authority and templates lets go ahead and build the Cisco Catalyst Center certificate.
 
-## Cisco DNA Center Certificate Installation
+## Cisco Catalyst Center Certificate Installation
 
 ### Building the Certificate Signing Request 
 
-To build the Certificate Signing Request we will utilize openssl and use a config file. This process can be completed on any platform with openssl installed. It does not necessarily need to be Cisco DNA Center. 
+To build the Certificate Signing Request we will utilize openssl and use a config file. This process can be completed on any platform with openssl installed. It does not necessarily need to be Cisco Catalyst Center. 
 
 Open an RDP session to the `Jump Host` and from within the desktop session open the mRemoteNG application for SSH sessions.
 
@@ -142,13 +144,13 @@ Open an RDP session to the `Jump Host` and from within the desktop session open 
 
 **Complete the following tasks:**
 
-1. Double click on the DNA Center link to open a session
+1. Double click on the Cisco Catalyst Center link to open a session
 
-2. Log in to Cisco DNA Center with the following credentials **username: `maglev`** and **password: `C1sco12345`**
+2. Log in to Cisco Catalyst Center with the following credentials **username: `maglev`** and **password: `C1sco12345`**
 
    ![json](./images/Cert-CSR-2.png?raw=true "Import JSON")
 
-3. Within Cisco DNA Center issue the `pwd` command and ensure we are in the path `/home/maglev`
+3. Within Cisco Catalyst Center issue the `pwd` command and ensure we are in the path `/home/maglev`
 
 4. Create and then change directory to `/home/maglev/certs` by issuing the command `mkdir certs && cd certs`
 
@@ -195,7 +197,7 @@ IP.1 = 198.18.129.100
 
    ![json](./images/Cert-CSR-6.png?raw=true "Import JSON")
 
-10. Using the premade **csr.key** we will now create the **CSR** to be submitted to Cisco DNA Center. Use the command `openssl req -config openssl.cnf -new -key csr.key -out DNAC.csr`
+10. Using the premade **csr.key** we will now create the **CSR** to be submitted to Cisco Catalyst Center. Use the command `openssl req -config openssl.cnf -new -key csr.key -out DNAC.csr`
 
     ![json](./images/Cert-CSR-7.png?raw=true "Import JSON")
 
@@ -236,18 +238,18 @@ IP.1 = 198.18.129.100
    7. Open the windows command prompt `CMD` application and do the following:
       1. Change directory to the Downloads directory `cd Downloads`
       2. Check the directory to ensure the file `dnac-chain.p7b` exists via the command `dir`
-      3. Copy the file to Cisco DNA Center using scp usint the following command `scp -P 2222 ./dnac-chain.p7b maglev@198.18.129.100:/home/maglev/certs` and when prompted the **username: `maglev`** and the **password: `C1sco12345`**
+      3. Copy the file to Cisco Catalyst Center using scp usint the following command `scp -P 2222 ./dnac-chain.p7b maglev@198.18.129.100:/home/maglev/certs` and when prompted the **username: `maglev`** and the **password: `C1sco12345`**
 
          ![json](./images/Cert-CSR-16.png?raw=true "Import JSON")
 
-   8. On Cisco DNA Center via the mRemoteNG SSH session we now will take the certificate chain and create a Privacy Enhanced Mail (PEM) file for import into Cisco DNA Centers GUI. Use the command `openssl pkcs7 -in dnac-chain.p7b -inform DER -out dnac-chain.pem -print_certs`
+   8. On Cisco Catalyst Center via the mRemoteNG SSH session we now will take the certificate chain and create a Privacy Enhanced Mail (PEM) file for import into Cisco Catalyst Centers GUI. Use the command `openssl pkcs7 -in dnac-chain.p7b -inform DER -out dnac-chain.pem -print_certs`
 
       ![json](./images/Cert-CSR-17.png?raw=true "Import JSON")
 
 
-Congratulations the Certificate is prepared, now we will import it into Cisco DNA Center.
+Congratulations the Certificate is prepared, now we will import it into Cisco Catalyst Center.
 
-### Installing Cisco DNA Centers Certificate
+### Installing Cisco Catalyst Centers Certificate
 
 1. First lets download the **Certificate** to our workstation using the scp command `scp -P 2222 maglev@198.18.129.100:/home/maglev/certs/dnac-chain.pem ./` and when prompted the **username: `maglev`** and the **password: `C1sco12345`**
 
@@ -257,7 +259,7 @@ Congratulations the Certificate is prepared, now we will import it into Cisco DN
 
    ![json](./images/Cert-CSR-19.png?raw=true "Import JSON")
 
-3. Log into Cisco DNA Center with the credentials **username: `admin`** and **password: `C1sco12345`**
+3. Log into Cisco Catalyst Center with the credentials **username: `admin`** and **password: `C1sco12345`**
 
 4. Navigate to the Menu and then Select **System > Settings**
 
@@ -283,11 +285,11 @@ Congratulations the Certificate is prepared, now we will import it into Cisco DN
 
    ![json](./images/Cert-CSR-29.png?raw=true "Import JSON")
 
-Cisco DNA Center will now log out. After a few minutes refresh the GUI from the browser then display the certificate within the Browser and it should look like this.
+Cisco Catalyst Center will now log out. After a few minutes refresh the GUI from the browser then display the certificate within the Browser and it should look like this.
 
    ![json](./images/Cert-CSR-30.png?raw=true "Import JSON")
 
-Congratulations you have changed the certificate and are now ready to use DNS for discovery purposes.
+Congratulations you have changed the certificate and are now ready to use DNS for discovery purposes. The Root CA may also be used in this lab for Identity Services Engine, and through a CAP Profile EAP certificates. All that would be needed would be in ISE to import the ROOT CA certificate into the trust store in ISE, and then create a CSR from the UI which includes the SAN IP and DNS names for the ISE environment. Then once binding the certificate ensure the roles for the Certificate are enabled. Once the Certificate is installed and operational for the roles desired, policy may be used. This will be discussed in a future lab in detail.
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
