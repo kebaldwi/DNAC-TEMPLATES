@@ -70,8 +70,8 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 
 1. Download the following two files by right clicking and opening each in a new tab to download them to the downloads folder on the workstation:
 
-   <p><a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/postman/CATC_Template_Labs_WiredAutomationDesign_postman_collection.json">⬇︎COLLECTION⬇︎</a></p>
-   <p><a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/postman/CATC_Template_Labs_postman_environment.json">⬇︎ENVIRONMENT⬇︎</a></p>
+   <p><a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/lab-1-wired-auto-postman-collection.json">⬇︎COLLECTION⬇︎</a></p>
+   <p><a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/lab-1-wired-auto-postman-environment.json">⬇︎ENVIRONMENT⬇︎</a></p>
 
 2. Extract both files to the desktop using **Winrar** to expand them
 3. Open the **postman** application from the desktop. Once the application is open click the *Import* link.
@@ -383,22 +383,22 @@ We will now **download** and **import** one of the following PnP Onboarding Temp
 
 **Note:** For older versions of Catalyst Center formerly known as Cisco DNA Center 2.2 and lower use the following for easy import:
 
-&emsp;&emsp;&emsp; <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum_PnP_Velocity_template.json">⬇︎Platinum_PnP_Velocity_template.json⬇︎</a></br>
+&emsp;&emsp;&emsp; <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/ONBOARDING/JSON/Platinum_PnP_Velocity_template.json">⬇︎Platinum_PnP_Velocity_template.json⬇︎</a></br>
 
 <details closed>
 <summary> New Version for NON DCLOUD ONLY </summary></br>
-<a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_PnP_Velocity_template.json">⬇︎Titanium_PnP_Velocity_template.json⬇︎</a> 
+<a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/ONBOARDING/JSON/Titanium_PnP_Velocity_template.json">⬇︎Titanium_PnP_Velocity_template.json⬇︎</a> 
 </details>
 
 #### Jinja2:
 
 **Note:** For older versions of Catalyst Center formerly known as Cisco DNA Center 2.2 and lower use the following for easy import:
 
-&emsp;&emsp;&emsp; <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Platinum_PnP_Jinja2_template.json">⬇︎Platinum_PnP_Jinja2_template.json⬇︎</a> 
+&emsp;&emsp;&emsp; <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/ONBOARDING/JSON/Platinum_PnP_Jinja2_template.json">⬇︎Platinum_PnP_Jinja2_template.json⬇︎</a> 
 
 <details closed>
 <summary> New Version for NON DCLOUD ONLY </summary></br>
-<a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/templates/Titanium_PnP_Jinja2_template.json">⬇︎Titanium_PnP_Jinja2_template.json⬇︎</a>
+<a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/ONBOARDING/JSON/Titanium_PnP_Jinja2_template.json">⬇︎Titanium_PnP_Jinja2_template.json⬇︎</a>
 </details></br>
 
 1. Navigate to the **Template Hub** formerly known as the **Template Editor** within Cisco Catalyst Center through the menu **`Tools > Template Hub`**.
