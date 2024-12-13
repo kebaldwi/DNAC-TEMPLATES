@@ -61,7 +61,7 @@ Configuring High Availability (HA) on the Cisco Catalyst 9800 Series Wireless Co
 
     This is triggered by the inventory poller or manual resynchronization. By now, the secondary controller (Catalyst 9800 Series Wireless Controller 2) is deleted from Cisco DNA Center. This flow indicates successful HA configuration in the Catalyst 9800 Series Wireless Controller.
 
-12. To manually resynchronize the controller, on the `Provision>Inventory` window, select the controller that you want to synchronize manually.
+12. To manually resynchronize the controller, on the `Provision>Network Devices>Inventory` window, select the controller that you want to synchronize manually.
 
 13. From the **Actions** drop-down list, choose **Resync**.
 
