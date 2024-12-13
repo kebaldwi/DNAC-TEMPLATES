@@ -33,7 +33,7 @@ This can be augmented with Model-Based Configurations as well as Templates which
 
    ![json](./images/module2-wlans/dnac-menu-provision-inventory-stage2-manage.png?raw=true "Import JSON")
 
-6. It is recommended to enable the *AP Reboot Percentage* which aides in upgrades by selecting how many Acee Points are upgraded at any one time. For purposes of the lab we will **Enable** this feature and select **25%** from the dropdown menu. Click **Next** to continue.
+6. It is recommended to enable the *AP Reboot Percentage* which aides in upgrades by selecting how many Access Points are upgraded at any one time. For purposes of the lab we will **Enable** this feature and select **25%** from the dropdown menu. Click **Next** to continue.
 
    ![json](./images/module2-wlans/dnac-menu-provision-inventory-stage2-reboot.png?raw=true "Import JSON")
 

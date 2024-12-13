@@ -140,7 +140,7 @@ At this point of the process the Access Points should appear in the PnP Claim wi
 
 ## Step 4 - ***Access Point Claim***
 
-1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Provision>Network Devices>Plug and Play`.
 
    ![json](./images/module3-approvisioning/dnac-menu-provision-pnp.png?raw=true "Import JSON")
 
