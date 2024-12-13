@@ -88,13 +88,13 @@ To watch the steps they are captured in this recording:
 
 #### Wireless Design and Configuration Guides
 
-1. [Wireless Design Guide](./guide/cisco-dna-center-sd-access-wl-dg.pdf)
-2. [Wireless Controller HA Configuration Guide](./guide/High_Availability_DG.pdf)
+1. <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/DOCS/cisco-dna-center-sd-access-wl-dg.pdf">⬇︎Wireless Design Guide⬇︎</a>
+2. <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/DOCS/High_Availability_DG.pdf">⬇︎Wireless Controller HA Configuration Guide⬇︎</a>
 
 #### Catalyst (DNA) Center Guides
 
-1. [User Guide](./guide/cisco_dna_center_ug_2_3_5.pdf)
-2. [Wireless Device Provisioning Guide](./guide/provision-wireless-devices.pdf)
+1. <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/DOCS/cisco_dna_center_ug_2_3_5.pdf">⬇︎User Guide⬇︎</a>
+2. <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/DOCS/provision-wireless-devices.pdf">⬇︎Wireless Device Provisioning Guide⬇︎</a>
 
 ## Summary
 

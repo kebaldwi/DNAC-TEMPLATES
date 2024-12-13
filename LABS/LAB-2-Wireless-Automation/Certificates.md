@@ -6,7 +6,7 @@ Cisco Catalyst Center has a Graphical User Interface (GUI), which is protected b
 
 Obviously, most organizations do not want self signed certificates used in their infrastructure, and so want to tie Cisco Catalyst Centers certificates into their PKI infrastructure. 
 
-In this small set of tasks we will accomodate that ask. It is important to note that while this set of tasks will always work, a new GUI tool has been incorporated in the newest version of Cisco Catalyst Center to facilitate the building of the Certificate Signing Request. For all versions prior to Cisco Catalyst Center **2.3.5.x** this method is detailed in the following [Cisco Catalyst Center Security Best Practices Guide](./DNACenter_security_best_practices_guide.pdf) guide.
+In this small set of tasks we will accomodate that ask. It is important to note that while this set of tasks will always work, a new GUI tool has been incorporated in the newest version of Cisco Catalyst Center to facilitate the building of the Certificate Signing Request. For all versions prior to Cisco Catalyst Center **2.3.5.x** this method is detailed in the following <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/DOCS/DNACenter_security_best_practices_guide.pdf">⬇︎Cisco Catalyst Center Security Best Practices Guide⬇︎</a>.
 
 ## PKI Infrastructure Build
 
