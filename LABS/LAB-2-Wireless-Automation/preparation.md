@@ -1,10 +1,28 @@
-# Wireless Lab Preparation
+# Wireless Lab Preparation 
 
-Welcome to this lab. Within this section we will prepare the DCLOUD lab for use with the Wireless tasks contained in this lab. If you have just completed the Wired Automation Lab, you can forgo this section and start with module 1 and start the Controller Onboarding. If not please complete this lab to prepare the environment.
+> **Note:** Not required if you completed Lab 1 - Wired Automation
+
+Within this section we will prepare the DCLOUD lab for use with the Wireless tasks contained in this lab. If you have just completed the Wired Automation Lab, **DO NOT USE** this section and proceed with module 1 and start the Controller Onboarding. 
 
 ## Lab Section 1 - DNA Center and ISE Integration
 
 In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate DNA Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
+
+## Lab Credentials:
+
+| Platform:       | IP Address:    | Username | Password   | 
+|-----------------|----------------|----------|------------|
+| Catalyst Center | 198.18.129.100 | admin    | C1sco12345 |
+| ISE             | 198.18.133.27  | admin    | C1sco12345 |
+| Windows AD      | 198.18.133.1   | admin    | C1sco12345 |
+| Script Server   | 198.18.133.28  | root     | C1sco12345 |
+| 9800-1          | 198.19.11.2    | admin    | C1sco12345 |
+| 9800-2          | 198.19.11.3    | admin    | C1sco12345 |
+| Router          | 198.18.133.145 | netadmin | C1sco12345 |
+| Switch 1        | 198.18.128.22  | netadmin | C1sco12345 |
+| Switch 2        | 198.18.128.23  | netadmin | C1sco12345 |
+| AP-1            | DHCP Assigned  | Cisco    | Cisco      |
+| AP-2            | DHCP Assigned  | Cisco    | Cisco      |
 
 ### Step 1 - ***Prepare ISE for DNA Center Integration***
 
