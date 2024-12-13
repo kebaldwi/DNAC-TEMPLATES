@@ -39,6 +39,22 @@ The 9130AX Access Points are connected to both access switches and the ports are
 
 ![json](./images/DCLOUD_Topology_Wireless-v1.png?raw=true "Import JSON")
 
+## Lab Credentials:
+
+| Platform:       | IP Address:    | Username | Password   | 
+|-----------------|----------------|----------|------------|
+| Catalyst Center | 198.18.129.100 | admin    | C1sco12345 |
+| ISE             | 198.18.133.27  | admin    | C1sco12345 |
+| Windows AD      | 198.18.133.1   | admin    | C1sco12345 |
+| Script Server   | 198.18.133.28  | root     | C1sco12345 |
+| 9800-1          | 198.19.11.2    | admin    | C1sco12345 |
+| 9800-2          | 198.19.11.3    | admin    | C1sco12345 |
+| Router          | 198.18.133.145 | netadmin | C1sco12345 |
+| Switch 1        | 198.18.128.22  | netadmin | C1sco12345 |
+| Switch 2        | 198.18.128.23  | netadmin | C1sco12345 |
+| AP-1            | DHCP Assigned  | Cisco    | Cisco      |
+| AP-2            | DHCP Assigned  | Cisco    | Cisco      |
+
 ## Lab Section 1 - Controller Discovery
 
 To get started with Wireless configuration and automation we first need to onboard the Wireless Controller into DNA Center. In the preparation lab we discovered the rest of the topology, set up the required services, and so we will now concentrate her on the controller. 
@@ -61,7 +77,7 @@ While we have the ability to PnP a Wireless Controller typically these are estan
 3. On the **New Discovery** Page enter the following:
    1. *Discovery Name* for the discovery `Wireless Controller`
    2. Select *Discovery Type* of `IP Address/Range`
-   3. Enter *From - To* fields with `198.18.134.100`
+   3. Enter *From - To* fields with `198.19.11.2`
 
       ![json](./images/module1-pnpdiscovery/dnac-discovery-new.png?raw=true "Import JSON")
 
