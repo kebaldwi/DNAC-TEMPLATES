@@ -22,6 +22,8 @@ Be aware that with Brownfield device configurations, there is no template learni
 
 In this section will go through the flows involved with PnP and Discovery to allow for the successful onboarding of network devices into Cisco Catalyst Center in both Brownfield and Greenfield situations.
 
+![json](./images/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON")
+
 ## Lab Credentials:
 
 | Platform:       | IP Address:    | Username | Password   | 
