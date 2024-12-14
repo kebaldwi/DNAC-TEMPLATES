@@ -83,7 +83,7 @@ We will use the **Template Hub** previously known as the **Template Editor** to 
 
    ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
 
-2. Within the **Template Hub**, left-click the ⨁ icon to the right of onboarding templates and click **Import Project** within the menu.  
+2. Within the **Template Hub**, hover over the import link and select **Import Project** within the menu.  
 
    ![json](./images/DNAC-ProjectImportBegins.png?raw=true "Import JSON")
 
@@ -91,16 +91,16 @@ We will use the **Template Hub** previously known as the **Template Editor** to 
 
    ![json](./images/DNAC-ProjectImportSelect.png?raw=true "Import JSON")
 
-4. Select the **Check Box** to create a new version if one exists, and then click **Import** 
+4. Click **Import** 
 
    ![json](./images/DNAC-ProjectImportDayN.png?raw=true "Import JSON")
 
-5. Within the **Template Hub** you will notice a new Project appear, click on the **Down Arrow** to display the contents. Notice the following:
+5. Within the **Template Hub** you will notice a new Project appear, click on the **Project Name** link to display the Projects. Notice the following:
    1. Project - **DCLOUD CATC Template Labs DayN Jinja2** 
    2. Composite Template - **CATC Template Labs DayN Composite Jinja2** 
    3. Regular Template - **c9300-2-Setup-Configuratioh**
 
-   ![json](./images/DNAC-ProjectImported.png?raw=true "Import JSON")
+   ![json](./images/DNAC-ProjectImported.png?raw=true "New IMage Required")
 
 6. Select the **AAA-Configuration** template and notice it has configuration within it. Some templates are just that, others make use of logical statements, conditional statements, looping structures and variables. You will see the following commands in the template selected.
 
