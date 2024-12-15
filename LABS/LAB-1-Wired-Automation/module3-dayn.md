@@ -120,7 +120,88 @@ mac-address-table notification change
 !
 ```
 
-### Section 2 - Greenfield DayN Provisioning Sequence
+### Section 2 - Configuring Network Profile
+
+In this section we will prepare the Network Profile to allow for provisioning of the Greenfield and Brownfield network devices. In order to accomodate the fact that we have two types of templates to use, one for the distribution and one for access, both of which will be used on 9300, we need to be able to effectively choose between the templates for the specific use cases.
+
+In this situation we will inlist the use of **TAGs** to identify the use case for the template and filter accordingly.
+
+#### Step 1 - Create and Apply the Device TAGs
+
+We will Create and Assign **TAGs** to the **ACCESS** switch and the **DISTRO** switch as follows:
+
+   1. Within Cisco Catalyst Center Navigate to **`Provision > Network Devices > Inventory`**      
+
+      ![json](./images/DNAC-NavigateInventory.png?raw=true "Import JSON")
+
+   2. We will **TAG** the device **c9300-1** as **ACCESS**, complete the following:
+
+      1. Select **c9300-1** on the left
+      2. Click the **Tag** link and in the menu provided
+      3. Enter **`ACCESS`** in the search field for the **TAG** 
+      4. Click the option **Create new tag (ACCESS)**   
+
+            ![json](./images/CATC-Inventory-TAG-9300-1-ACCESS.png?raw=true "Import JSON")
+
+   3. We will **TAG** the device **c9300-2** as **DISTRO**, complete the following:
+
+      1. Select **c9300-2** on the left
+      2. Click the **Tag** link and in the menu provided
+      2. Enter **`DISTRO`** in the search field for the **TAG** 
+      3. Click the option **Create new tag (DISTRO)**   
+
+            ![json](./images/CATC-Inventory-TAG-9300-2-DISTRO.png?raw=true "Import JSON")
+
+   4. At this point the two switches **c9300-1** and **c9300-2** should be tagged accordingly as shown:    
+
+      ![json](./images/CATC-Inventory-TAG-9300s-RESULT.png?raw=true "Import JSON")
+
+#### Step 2 - Modify the Network Profile for the DayN Templates
+
+Assign the DayN Templates for both the Greenfield and Brownfield 9300's to a site using the Network Profile. As there is an existing network profile for the site, we **must** reuse that one as you can only have one switching profile associated to a specific site. **(required)** 
+
+We will Modify and Assign **DayN Templates** to the switches using **ACCESS** and **DISTRO** **TAGs** as follows:
+
+   1. Navigate to Network Profiles by selecting **`Design > Network Profiles`**.
+
+      ![json](./images/DNAC-NavigateProfile.png?raw=true "Import JSON")
+
+
+   2. Click the **Edit** link next to the **CATC Template Lab Floor 1** switching profile created earlier.  
+
+      ![json](./images/DNAC-ProfileEdit.png?raw=true "Import JSON")
+
+   3. Within the Profile Editor, select the **Day-N Template(s)** tab click **⨁ Add Template** 
+
+         ![json](./images/DNAC-ProfileDayNAdd.png?raw=true "Import JSON")   
+
+   4. Within the **Add Template** side tile complete the following:
+
+      For the **`CATC Template Labs DayN Composite Jinja2`** Template do the following:
+
+      1. Select the **`CATC Template Labs DayN Composite Jinja2`** Template from the list as shown
+      2. Click the **APPLICABLE DEVICE TAGS** search window 
+      3. Select the **ACCESS** tag
+      4. The **ACCESS** tag should now appear as shown in the **APPLICABLE DEVICE TAGS** section
+      5. Click **Add**
+
+         ![json](./images/DNAC-ProfileDayN-ACCESS.png?raw=true "Import JSON")   
+
+      For the **`c9300-2-Setup-Configuration`** Template do the following:
+
+      1. Select the **`c9300-2-Setup-Configuration`** Template from the list as shown
+      2. Click the **APPLICABLE DEVICE TAGS** search window and type **DISTRO**
+      3. Select the **DISTRO** tag
+      4. The **DISTRO** tag should now appear as shown in the **APPLICABLE DEVICE TAGS** section
+      5. Click **Add**
+
+         ![json](./images/DNAC-ProfileDayN-DISTRO.png?raw=true "Import JSON")   
+
+   5. Click **Save** to save the modifications to the Network Profile.
+
+         ![json](./images/DNAC-ProfileSuccess.png?raw=true "Import JSON")   
+
+### Section 3 - Greenfield DayN Provisioning Sequence
 
 In this section we will apply a DayN template to the device c9300-1 which we onboarded through the use of Plug and Play (PnP). This device had no configuration on it and as such we will now expand on the configuration.
 
@@ -210,7 +291,7 @@ At this point, we have onboarded a device and successfully pushed configuration 
 
 > **Note:** If you populate the UI with settings, those parameters should **NOT** be in your templates as they will **conflict**, and the deployment through provisioning will fail. While it is easy to populate these settings, it is best to test with a switch to see what configuration is pushed.
 
-### Section 3 - Brownfield DayN Provisioning Sequence
+### Section 4 - Brownfield DayN Provisioning Sequence
 
 In this section we will apply a DayN template to the device c9300-2 which we onboarded through the use of the Discovery Tool. This device had configuration on it and as such we will now expand on the configuration and augment the configuration.
 
