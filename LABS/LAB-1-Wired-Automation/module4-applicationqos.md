@@ -40,49 +40,67 @@ Lets get started.
 
 The first step will be to enable the CBAR service. During the course of this operation we will enable CBAR on the switch, as well as instantiate feeds and connect with external authoritative sources at Cisco and Microsofts 0365.
 
-1. Navigate to the **Application Visibility** within Cisco Catalyst Center through the menu *Provision>Services>Application Visibility*.
+1. Navigate to the **Application Visibility** within Cisco Catalyst Center through the menu **`Provision > Services > Application Visibility`**.
 
    ![json](./images/DNAC-CBAR-Navigation.png?raw=true "Import JSON")
 
-2. In the Application Visibility page, click Next. A pop-up window for enabling the Application Visibility service appears. Click Yes in the pop-up window to enable CBAR on Cisco Catalyst Center.
+2. In the Application Visibility page, click **Next**. 
 
    ![json](./images/DNAC-CBAR-Enable.png?raw=true "Import JSON")
 
-3. Check the Enable CBAR on all Ready Devices check box or choose the switch within CBAR Readiness Status in Ready state. Click Next to enable CBAR on the devices.
+3. A pop-up window for enabling the Application Visibility service appears. Click **Yes** in the pop-up window to enable CBAR on Cisco Catalyst Center.
+
+   ![json](./images/DNAC-CBAR-Enable.png?raw=true "Import JSON")
+
+4. Check the Enable CBAR on all Ready Devices check box or choose the switch within CBAR Readiness Status in Ready state. Click Next to enable CBAR on the devices.
 
    ![json](./images/DNAC-CBAR-EnableDevice.png?raw=true "Import JSON")
 
-4. We will now configure the external authoritative sources:
+5. We will now configure the external authoritative sources:
+
    #### NBAR Cloud
-   1. First we will connect to Cisco's NBAR Cloud. First select **Configure** under *NBAR Cloud*. Then click the **Cisco API Console** to configure the connection on the Cisco side.
 
-      ![json](./images/DNAC-CBAR-NBARCLOUD.png?raw=true "Import JSON")
+   1. First we will connect to Cisco's **NBAR Cloud**.
 
-   2. A new browser tab should open after authenticaiton to the **Cisco API Console**. This allows you to configure multiple connections to various API services within Cisco. Click **Register a New App**
+      1. Select **Configure** under **NBAR Cloud**. Then click the **Cisco API Console** to configure the connection on the Cisco side. This is a required step for previous versions of Catalyst Center before **2.3.7.6**
 
-      ![json](./images/DNAC-NBARCLOUDAPI.png?raw=true "Import JSON")
+         ![json](./images/DNAC-CBAR-NBARCLOUD-Enable.png?raw=true "Import JSON")
 
-   3. On the next page name your **Application** which in our case will be `DCLOUD DNAC` and add a description if desired
+      2. Fill in the fields from the API Application created on **Cisco API Console**
 
-      ![json](./images/DNAC-NBARCLOUD-1.png?raw=true "Import JSON")
+          ![json](./images/DNAC-CBAR-NBARCLOUD.png?raw=true "Import JSON")
 
-   4. Scroll down and **select all the checkboxes** including the **acceptance of terms** and click the **Register** button
+      <details open>
+      <summary> Expand section for Cisco API Console Instructions if required </summary></br>
 
-      ![json](./images/DNAC-NBARCLOUD-2.png?raw=true "Import JSON")
+         1. A new browser tab should open after authentication to the **Cisco API Console**. This allows you to configure multiple connections to various API services within Cisco. Click **Register a New App**
 
-   5. A success page should appear. Click the **My Keys & Apps** link within it.
+            ![json](./images/DNAC-NBARCLOUDAPI.png?raw=true "Import JSON")
 
-      ![json](./images/DNAC-NBARCLOUD-SUCCESS.png?raw=true "Import JSON")
+         2. On the next page name your **Application** which in our case will be `DCLOUD DNAC` and add a description if desired
 
-   6. You will then select the *Application* tab and from it the **Application Name**, as well as the **Key** and the **Client Secret** and one by one copy them into the previous window
+            ![json](./images/DNAC-NBARCLOUD-1.png?raw=true "Import JSON")
 
-      ![json](./images/DNAC-NBARCLOUD-SVC.png?raw=true "Import JSON")
+         3. Scroll down and **select all the checkboxes** including the **acceptance of terms** and click the **Register** button
 
-   7. Ensure that the Service is **Enabled** that the **Client ID** AKA **Key** is entered along with the **Client Secret**. Additionally enter the **Organization Name** aka the **Application** and click **Save**.
+            ![json](./images/DNAC-NBARCLOUD-2.png?raw=true "Import JSON")
 
-      ![json](./images/DNAC-CBAR-NBARCLOUD_SETTINGS.png?raw=true "Import JSON")
+         4. A success page should appear. Click the **My Keys & Apps** link within it.
+
+            ![json](./images/DNAC-NBARCLOUD-SUCCESS.png?raw=true "Import JSON")
+
+         5. You will then select the *Application* tab and from it the **Application Name**, as well as the **Key** and the **Client Secret** and one by one copy them into the previous window
+
+            ![json](./images/DNAC-NBARCLOUD-SVC.png?raw=true "Import JSON")
+
+         6. Ensure that the Service is **Enabled** that the **Client ID** AKA **Key** is entered along with the **Client Secret**. Additionally enter the **Organization Name** aka the **Application** and click **Save**.
+
+            ![json](./images/DNAC-CBAR-NBARCLOUD_SETTINGS.png?raw=true "Import JSON")
+
+      </details>
 
    #### MS Office O365 Cloud
+
    1. To Enable the MS Office 365 Cloud connector enable the selector switch
 
       ![json](./images/DNAC-CBAR-0365.png?raw=true "Import JSON")
@@ -97,23 +115,39 @@ The first step will be to enable the CBAR service. During the course of this ope
 
 ### Step 2 - Updating Protocol Packs
 
-Within the CBAR Application, we will now update the protocol pack for the **ACCESS-C9300-1-ASW** switch. 
+Within the CBAR Application, we will now review the way the devices will be updated. **Auto-Updatee** feature was added to Catalyst Center prior to **2.3.5.6** and so this allows for devices to automatically be updated for **NBAR** protocol packs by Catalyst Center. 
 
-1. To initiate the *Protocol Pack Update* select the device to be updated, and then click the *Update Protocol Pack* and then submenu *Selected Devices*
+1. While Devices may be **Auto-Updated** you can see from the picutre below that when **Auto-Update** is disabled you can push Protocol Packs individually.
 
    ![json](./images/DNAC-Device-Update.png?raw=true "Import JSON")
 
-2. In the Pop-up that appears select the **update** link beside the version that you wish to update to, and then click **Yes** to initiate it.
+2. The ISR 4331 Router however is not enabled at the moment for **CBAR**. Lets remedy this now. Click the **WAN Interfaces** link to indicate the **WAN** Interface on the router.
 
-   ![json](./images/DNAC-Device-Select-Pack.png?raw=true "Import JSON")
+   ![json](./images/DNAC-Device-Update.png?raw=true "Import JSON")
 
-3. On the CBAR Application Portal the protocol pack will show as *updating*.
+3. On the WAN Connectivity Settings Page, Select **`GigabitEnternet0/0/0`** as the **WAN** interface as shown and **Save** the settings. Here you can specify a **Service Provider Profile** if set as well as sub rate interfaces. We will not do this in the lab.
 
-   ![json](./images/DNAC-Protocol-Updating.png?raw=true "Import JSON")
+   ![json](./images/DNAC-CBAR-ISR-WAN.png?raw=true "Import JSON")
 
-3. Eventually the protocol pack will show as *updated*.
+4. Select the check box next to eht **isr4331** and click the **Enable CBAR** link to finish the configuration of **CBAR** for the ISR.
 
-   ![json](./images/DNAC-Protocol-Updating.png?raw=true "Import JSON")
+   ![json](./images/DNAC-CBAR-ISR-WAN-Enable-CBAR.png?raw=true "Import JSON")
+
+5. Click **Yes** to continue.
+
+   ![json](./images/DNAC-CBAR-ISR-WAN-Enable-CBAR-1.png?raw=true "Import JSON")
+
+6. Click **Next** to continue.
+
+   ![json](./images/DNAC-CBAR-ISR-WAN-Enable-CBAR-2.png?raw=true "Import JSON")
+
+7. Click **Enable** to continue.
+
+   ![json](./images/DNAC-CBAR-ISR-WAN-Enable-CBAR-3.png?raw=true "Import JSON")
+
+6. Verify **All Devices**.
+
+   ![json](./images/DNAC-CBAR-ISR-WAN-Enable-CBAR-4.png?raw=true "Import JSON")
 
 ## Section 2 - Building and Deploying an Application Policy
 
@@ -129,7 +163,7 @@ The Application Policy methodology within Cisco Catalyst Center allows for two t
 
    ![json](./images/DNAC-AppPolicy-0-Start.png?raw=true "Import JSON")
 
-3. Enter `DNAC-Template-Lab` as the name for the Application Policy Name.
+3. Enter `CATC-Template-Lab` as the name for the Application Policy Name.
 
    ![json](./images/DNAC-AppPolicy-1-Name.png?raw=true "Import JSON")
 
