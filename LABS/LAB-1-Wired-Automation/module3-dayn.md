@@ -197,9 +197,21 @@ We will Modify and Assign **DayN Templates** to the switches using **ACCESS** an
 
          ![json](./images/DNAC-ProfileDayN-DISTRO.png?raw=true "Import JSON")   
 
-   5. Click **Save** to save the modifications to the Network Profile.
+   5. Click **X** to close the **Add Template** window.
 
-         ![json](./images/DNAC-ProfileSuccess.png?raw=true "Import JSON")   
+         ![json](./images/DNAC-ProfileCloseAddTemplate.png?raw=true "Import JSON")   
+
+   6. You will notice both templates as shown click the **view Device Tag** link on the **`c9300-2-Setup-Configuration`** Template and verify the **DISTRO** tag appears as shown.
+
+      ![json](./images/DNAC-ProfileSuccess-1.png?raw=true "Import JSON")   
+
+   7. You will notice both templates as shown click the **view Device Tag** link on the **`c9300-2-Setup-Configuration`** Template and verify the **DISTRO** tag appears as shown.
+
+      ![json](./images/DNAC-ProfileSuccess-2.png?raw=true "Import JSON")   
+
+   8. Click **Save** to save the modifications to the Network Profile.
+
+      ![json](./images/DNAC-ProfileSuccess.png?raw=true "Import JSON")   
 
 ### Section 3 - Greenfield DayN Provisioning Sequence
 
