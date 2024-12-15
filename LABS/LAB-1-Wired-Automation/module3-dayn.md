@@ -215,40 +215,15 @@ We will Modify and Assign **DayN Templates** to the switches using **ACCESS** an
 
 ### Section 3 - Greenfield DayN Provisioning Sequence
 
-In this section we will apply a DayN template to the device c9300-1 which we onboarded through the use of Plug and Play (PnP). This device had no configuration on it and as such we will now expand on the configuration.
+In this section we will apply a DayN template to the device **c9300-1** which we onboarded through the use of Plug and Play (PnP). This device had no configuration on it and as such we will now expand on the configuration.
 
-#### Step 1 - Modify Network Profile
-
-Assign the DayN Template to a site using the Network Profile. As there is an existing network profile for the site, we **must** reuse that one as you can only have one switching profile associated to a specific site. **(required)** 
-
-   1. Navigate to Network Profiles by selecting **`Design > Network Profiles`**.
-
-      ![json](./images/DNAC-NavigateProfile.png?raw=true "Import JSON")
-
-   2. Click the **Edit** link next to the **CATC Template Lab Floor 1** switching profile created earlier.  
-
-      ![json](./images/DNAC-ProfileEdit.png?raw=true "Import JSON")
-
-   3. Within the Profile Editor, select the **Day-N Template(s)** tab: 
-      1. Click **⨁ Add Template** 
-
-         ![json](./images/DNAC-ProfileDayNAdd.png?raw=true "Import JSON")   
-
-      2. Select the **`CATC Template Labs DayN Composite Jinja2`** Template from the dropdown as shown and click **Add**.
-
-         ![json](./images/DNAC-ProfileDayNSelect.png?raw=true "Import JSON")   
-
-      3. Click the **Table** button to view the template in Table form as shown and then click **Save** to save the modifications to the Network Profile.
-
-         ![json](./images/DNAC-ProfileSuccess.png?raw=true "Import JSON")   
-
-#### Step 2 - Provisioning the Device
+#### Step 1 - Provisioning the Device
 
 At this point, Cisco Catalyst Center is set up and ready to provision composite template to the device. This next set of sequences will push the various Network Settings, Services, and DayN Template to the **Greenfield** device.
 
 We will now provision the switch using DayN Templates. To do this, do the following:
 
-   1. Within Cisco Catalyst Center Navigate to **`Provision > Inventory`**.      
+   1. Within Cisco Catalyst Center Navigate to **`Provision > Network Devices > Inventory`**.      
 
       ![json](./images/DNAC-NavigateInventory.png?raw=true "Import JSON")
 
@@ -307,60 +282,7 @@ At this point, we have onboarded a device and successfully pushed configuration 
 
 In this section we will apply a DayN template to the device c9300-2 which we onboarded through the use of the Discovery Tool. This device had configuration on it and as such we will now expand on the configuration and augment the configuration.
 
-#### Step 1 - Modify Network Profile
-
-Assign the DayN Template to a site using the Network Profile. As there is an existing network profile for the site, we **must** reuse that one as you can only have one switching profile associated to a specific site. **(required)** 
-
-   1. Navigate to Network Profiles by selecting **`Design > Network Profiles`**.
-
-      ![json](./images/DNAC-NavigateProfile.png?raw=true "Import JSON")
-
-   2. Click the **Edit** link next to the **CATC Template Lab Floor 1** switching profile created earlier.  
-
-      ![json](./images/DNAC-ProfileEdit.png?raw=true "Import JSON")
-
-   3. Within the Profile Editor we will add a second template specifically written for this bronwfield application. Select the **Day-N Template(s)** tab: 
-      1. Click **⨁ Add Template** 
-
-         ![json](./images/DNAC-ProfileDayNAdd-2.png?raw=true "Import JSON")   
-
-      2. Select the **Tag** and then **`Distribution`** from the dropdown as shown as we need to differentiate from the two templates now for use cases.
-
-         ![json](./images/DNAC-ProfileTemplateTag-9300-2.png?raw=true "Import JSON")
-
-      3. Select the **`c9300-2-Setup-Configuration`** Template from the dropdown as shown and click **Add**.
-
-         ![json](./images/DNAC-ProfileDayNSelect-9300-2.png?raw=true "Import JSON")   
-
-      4. Click the **Table** button to view the template in Table form as shown and then click **Save** to save the modifications to the Network Profile. To finish the differentiation of the two templates, we need to apply a tag to the other template **`CATC Template Labs DayN Composite Jinja2`**. Click the **edit** button to apply a **tag**
-
-         ![json](./images/DNAC-ProfileSuccess-9300-2.png?raw=true "Import JSON")
-
-      5. To finish the differentiation of the two templates, we need to apply a tag to the other template **`CATC Template Labs DayN Composite Jinja2`**
-
-         ![json](./images/DNAC-ProfileTagging-9300-1.png?raw=true "Import JSON")
-
-      6. Click the view link to show the **Tag** of **Edge** is correctly applied, and then click **Save**.
-
-         ![json](./images/DNAC-ProfileTag-9300-1.png?raw=true "Import JSON")
-
-#### Step 2 - Tagging the Devices based on Use Case
-
-First we need to **Tag** the two devices.
-
-   1. Within Cisco Catalyst Center Navigate to **`Provision > Inventory`**.      
-
-      ![json](./images/DNAC-NavigateInventory.png?raw=true "Import JSON")
-
-   2. Put a checkmark next to the device **c9300-2** then click the **Tag Device** link and then put a tick beside **Distribution** and click **Apply**
- 
-      ![json](./images/DNAC-InventoryTag-c9300-2.png?raw=true "Import JSON")
-
-   3. Put a checkmark next to the device **c9300-1** then click the **Tag Device** link and then put a tick beside **Edge** and click **Apply**
- 
-      ![json](./images/DNAC-InventoryTag-c9300-1.png?raw=true "Import JSON")
-
-#### Step 3 - Provisioning the Device
+#### Step 1 - Provisioning the Device
 
 At this point, Cisco Catalyst Center is set up and ready to provision composite template to the device. This next set of sequences will push the various Network Settings, Services, and DayN Template to the **Brownfield** device.
 
