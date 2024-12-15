@@ -70,7 +70,7 @@ The first step will be to enable the CBAR service. During the course of this ope
 
           ![json](./images/DNAC-CBAR-NBARCLOUD.png?raw=true "Import JSON")
 
-      <details open>
+      <details closed>
       <summary> Expand section for Cisco API Console Instructions if required </summary></br>
 
          1. A new browser tab should open after authentication to the **Cisco API Console**. This allows you to configure multiple connections to various API services within Cisco. Click **Register a New App**
