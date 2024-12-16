@@ -548,27 +548,23 @@ Delivering the code to the interfaces becomes simpler now because we utilize a m
 
 We will also ensure we only configure those we selected comparing each interface to the `apinterface` selected to see if the target has been found. If it is found, we default the interface and then place a base configuration on it via a interface macro. We finally append the newly configured interface to the `apintlog` array to ensure it is not modified further.
 
-Once all the Access Points are configured we then target the rest of the ports for 802.1x configuration. 
+Once all the Access Points interfaces are configured we then target the rest of the ports for 802.1x configuration. 
 
 ```J2
-   {# Automatically Configure Workstation Remaining interfaces#}
-   {% for interface in __interface %}
-     {% if interface.interfaceType == "Physical" && interface.portName.replaceAll("(^[a-zA-Z]+).*","$1")    == "GigabitEthernet"  %}
-       {% if interface.portName.replaceAll("(^[a-zA-Z]+.).*", "$1") != "GigabitEthernet0" %}
-         {% if interface.portName.replaceAll("^[a-zA-Z]+(\\d+)/(\\d+)/(\\d+)", "$2") != 1 %}
-           {% if interface.portName in apintlog %}
-           {% else %}
-             default interface {{ interface.portName }}
-             interface {{ interface.portName }}
-               {{ ibns_baseconf_interface() }}
-           {% endif %}
-         {% endif %}
+   {% for apinterface in accesspoint_interfaces %}
+     {% for interface in __interface %}
+       {% if interface.portName in apintlog %}
+       {% elif interface.portName == apinterface %}
+         default interface {{ interface.portName }}
+         interface {{ interface.portName }}
+          {{ baseconf_interface() }}
+         {% do apintlog.append(interface.portName) %}
        {% endif %}
-     {% endif %}
+     {% endfor %}
    {% endfor %}
 ```
 
-We loop through all the interfaces on the switch, ensuring we configuring only those starting with GigabitEthernet and negating the management interface and any that are network modules. We then ensure the interface is not in the `apintlog` array as previously configured, and if all that is true default the interface, and place a 802.1x config on it via an interface macro.
+We loop through all the interfaces on the switch, ensuring we configuring only those starting with GigabitEthernet and negating the management interface and any that are network modules. We then ensure the interface is not in the `apintlog` array as previously configured, and if all that is true default the interface, and place a autoconf config on it via an interface macro.
 
 </details>
 
