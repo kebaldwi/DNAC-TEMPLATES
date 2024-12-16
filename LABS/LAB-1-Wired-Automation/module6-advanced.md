@@ -36,9 +36,10 @@ The Topics listed above will be covered in several use cases to show the capabil
 
 1. [Renaming interfaces](./module6-advanced.md#step-1---renaming-interfaces---use-case)
 2. [Building Stacks](./module6-advanced.md#step-2---building-stacks---use-case)
-3. [Assigning port configuration](./module6-advanced.md#step-3---assigning-port-configuration---use-case)
-4. [Autoconf port configuration](./module6-advanced.md#step-4---autoconf-port-configuration---use-case)
-5. [Non SDA IBNS 2.0 port configuration](./module6-advanced.md#step-5---non-sda-ibns20-port-configuration---use-case)
+3. [Building VLAN configuration](./module6-advanced.md#step-3---building-vlan-databases---use-case)
+4. [Assigning port configuration](./module6-advanced.md#step-4---assigning-port-configuration---use-case)
+5. [Autoconf port configuration](./module6-advanced.md#step-5---autoconf-port-configuration---use-case)
+6. [IBNS 2.0 Port Configuration](./module6-advanced.md#step-6---ibns20-port-configuration---use-case)
 
 ## Step 1 - ***Renaming Interfaces - Use Case***
 
