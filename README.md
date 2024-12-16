@@ -1,7 +1,5 @@
 # DNAC-TEMPLATES [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 
-> **Notice:** For information specific to IOS-XE HTTP Vulnerability please see this [link](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/TUTORIALS/Vulnerability.md)
-
 > **Note:** Thank you for continuing your **support** of the **DNAC-Template Repository** by your continued visits to the site. Over the past few years we have developed a lot of content as a result, it is **time to reorganize** it to help be more consise, and to aide users in finding the relevant content easily. Over the next few months you will **notice changes and updates** to the repository, as we **add** additional content, **revise** existing dated content and nomenclature. The **folder structure** and **resources** will be **reorganized** for ease of use, and so that **CODE** examples and **TUTORIALS** will be grouped together for ease of use. We hope this will help users to find the content they need in an easier manner.
 
 ## Cisco Catalyst Center
