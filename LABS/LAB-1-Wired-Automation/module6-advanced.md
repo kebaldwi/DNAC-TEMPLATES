@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Lab is designed to be used after first completing modules in this lab and has been created to address how to use some advanced automation concepts not previously touched on in the previous labs. This enablement type lab is designed to help customers reach beyond what they currently understand, try new concepts, and push the boundaries of automation.
+This module is designed to be used after first completing modules in this lab and has been created to address how to use some advanced automation concepts not previously touched on in the previous labs. This enablement type lab is designed to help customers reach beyond what they currently understand, try new concepts, and push the boundaries of automation.
 
 We will cover various topics about template logic to solve multiple use cases during this lab. Some of these concepts have been previously covered but perhaps not in-depth.
 
@@ -42,97 +42,69 @@ The Topics listed above will be covered in several use cases to show the capabil
 
 ## Step 1 - ***Renaming Interfaces - Use Case***
 
-Previously within the Composite Templating Lab, we introduced a methodology of automatically naming the interfaces within the switch. When a new device or switch/router/access point connects to a switch, we want to describe those interfaces. Naming the uplinks specifically and the various wireless access points and IP Phones would be an excellent addition. 
+Previously within the DayN Module, we introduced a methodology of automatically naming the interfaces within the switch. When a new device or switch/router/access point connects to a switch, we want to describe those interfaces. Naming the uplinks specifically and the various wireless access points and IP Phones would be an excellent addition. 
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
 
 ### ***Examine Code***
 
-The script we used on the Composite Templates uses an EEM script that runs whenever a CDP event occurs.
-
-```vtl
-   event manager applet update-port
-    event neighbor-discovery interface regexp GigabitEthernet.* cdp add
-    action 101 regexp "(Switch|Router)" "$_nd_cdp_capabilities_string"
-    action 102 if $_regexp_result eq "1"
-    action 103  cli command "enable"
-    action 104  cli command "config t"
-    action 105  cli command "interface $_nd_local_intf_name"
-    action 106  regexp "^([^\.]+)\." "$_nd_cdp_entry_name" match host
-    action 107  regexp "^([^\.]+)" "$_nd_port_id" match connectedport
-    action 108  cli command "no description"
-    action 109  cli command "description Uplink to $host - $connectedport"
-    action 110  cli command "interface port-channel 1"
-    action 111  cli command "no description"
-    action 112  cli command "description Uplink to $host"
-    action 113  cli command "end"
-    action 114  cli command "write"
-    action 115 end
-```
-
-While this script will rename the uplinks connected to a Router or Switch, it is limited in terms of the following:
+This script will rename the uplinks connected to a AP, Phone, Router or Switch , it is limited in terms of the following:
 
 1. Timing, as it's not scheduled, and you cannot clear the CDP table from the template
-2. Naming Access Points or other devices is also not taken into consideration
+2. Naming 3rd party devices is also not taken into consideration via LLDP
 
-### ***Modify Code***
-
-So let's modify the EEM script first to solve the naming aspect concerning connected devices.
-
-```vtl
-   event manager applet update-port
-    event neighbor-discovery interface regexp GigabitEthernet.* cdp add
-    action 101 regexp "(Switch|Router)" "$_nd_cdp_capabilities_string"
-    action 200 if $_regexp_result eq "1"
-    action 201  regexp "(Trans-Bridge)" "$_nd_cdp_capabilities_string"
-    action 210  if $_regexp_result eq "1"
-    action 211   cli command "enable"
-    action 212   cli command "config t"
-    action 213   cli command "interface $_nd_local_intf_name"
-    action 214   regexp "^([^\.]+)" "$_nd_cdp_entry_name" match host
-    action 215   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
-    action 216   cli command "no description"
-    action 217   cli command "description AP - $host - $connectedport"
-    action 220  else
-    action 221   cli command "enable"
-    action 222   cli command "config t"
-    action 223   cli command "interface $_nd_local_intf_name"
-    action 224   regexp "^([^\.]+)\." "$_nd_cdp_entry_name" match host
-    action 225   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
-    action 226   cli command "no description"
-    action 227   cli command "description Link - $host - $connectedport"
-    action 228   cli command "interface port-channel 1"
-    action 229   cli command "no description"
-    action 230   cli command "description Link - $host"
-    action 240  end
-    action 250 else
-    action 251  regexp "(Phone)" "$_nd_cdp_capabilities_string"
-    action 252  if $_regexp_result eq "1"
-    action 253   cli command "enable"
-    action 254   cli command "config t"
-    action 255   cli command "interface $_nd_local_intf_name"
-    action 256   regexp "^([^\.]+)" "$_nd_cdp_entry_name" match host
-    action 257   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
-    action 258   cli command "no description"
-    action 259   cli command "description Phone - $host - $connectedport"
-    action 260  end
-    action 270 end
-    action 280 cli command "write"
+```J2
+   {#- Automated Uplink Description Script -#}
+   {#- This will always ensure the uplink descriptions are correct to upstream -#}
+   {#- Switches within the infrastructure  -#}
+    event manager applet update-port authorization bypass
+     event neighbor-discovery interface regexp GigabitEthernet.* cdp add
+     action 101 regexp "(Switch|Router)" "$_nd_cdp_capabilities_string"
+     action 200 if $_regexp_result eq "1"
+     action 201  regexp "(Trans-Bridge)" "$_nd_cdp_capabilities_string"
+     action 210  if $_regexp_result eq "1"
+     action 211   cli command "enable"
+     action 212   cli command "config t"
+     action 213   cli command "interface $_nd_local_intf_name"
+     action 214   regexp "^([^\.]+)" "$_nd_cdp_entry_name" match host
+     action 215   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
+     action 216   cli command "no description"
+     action 217   cli command "description AP - $host - $connectedport"
+     action 220  else
+     action 221   cli command "enable"
+     action 222   cli command "config t"
+     action 223   cli command "interface $_nd_local_intf_name"
+     action 224   regexp "^([^\.]+)\." "$_nd_cdp_entry_name" match host
+     action 225   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
+     action 226   cli command "no description"
+     action 227   cli command "description Link - $host - $connectedport"
+     action 240  end
+     action 250 else
+     action 251  regexp "(Phone)" "$_nd_cdp_capabilities_string"
+     action 252  if $_regexp_result eq "1"
+     action 253   cli command "enable"
+     action 254   cli command "config t"
+     action 255   cli command "interface $_nd_local_intf_name"
+     action 256   regexp "^([^\.]+)" "$_nd_cdp_entry_name" match host
+     action 257   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
+     action 258   cli command "no description"
+     action 259   cli command "description Phone - $host - $connectedport"
+     action 260  end
+     action 270 end
+     action 280 cli command "write"
 ```
-
-First, let's address the primary problem, the naming of interfaces with descriptions.
 
 You will see that lines *201 to 220* were added to the EEM script. We look for the keyword `Trans-Bridge` within the built-in variable to determine if the port is connected to an Access Point within that section. It results in a True or binary 1 state, and the included code from lines *211 to 220* runs line by line. The configuration adds a description to the interface for the phone of `description AP - KO-AP0C75 - GigabitEthernet0`, for example.
 
 You will see that lines *250 to 260* were added to the EEM script. We look for the keyword `Phone` within the built-in variable to determine if the port is connected to a Phone within that section. It results in a True or binary 1 state, and the included code from lines *253 to 260* runs line by line. For example, the configuration adds a description to the interface for the phone of `description Phone - SEPB07D47D34910 - Port 1`.
 
-The second part of the problem within this use case is solving the issue presented by a lack of functionality when the code is configured on the switch. While we can get the configuration in place, it will only run when the port is cycled or when the CDP information for the port is cleared. Therefore, to solve the problem, we employ a *Self-Destructing EEM script*.
+While we can get the configuration in place, it will only run when the port is cycled or when the CDP information for the port is cleared. Therefore, to solve the problem, we employ a *Self-Destructing EEM script*.
 
 *Self-Destructing EEM scripts* are those that delete themselves on termination. Within the code below, you will notice that line 2.1 removes the EEM applet from the configuration, and then line 2.3 ensures the configuration is written to NVRAM before terminating.
 
-```vtl
-   event manager applet POST_PNP
+```J2
+   event manager applet POST_PNP authorization bypass
     event timer countdown time 30
     action 1.0 cli command "enable"
     action 1.1 cli command "clear cdp table"
@@ -140,16 +112,17 @@ The second part of the problem within this use case is solving the issue present
     action 2.1 cli command "no event manager applet POST_PNP"
     action 2.2 cli command "end"
     action 2.3 cli command "wr"
-    action 2.4 cli command "exit"
 ```
 
 This code allows us to *clear the CDP table* and delete itself but leave the other EEM script on the switch for any moves, adds, and changes to the devices connected to the switch.
+
+The code above could be augmented with logic for LLDP to be added should the need arise.
 
 </details>
 
 ## Step 2 - ***Building Stacks - Use Case***
 
-Previously within the Composite Templating Lab, we introduced a methodology of automatically building a data stack and power stack configuration within the switch. When a new device or switch is built, we may want to control which switch is Active and standby within the stack. 
+Previously within the DayN Module, we introduced a methodology of automatically building a data stack and power stack configuration within the switch. When a new device or switch is built, we may want to control which switch is Active and standby within the stack. 
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
@@ -158,344 +131,222 @@ Previously within the Composite Templating Lab, we introduced a methodology of a
 
 To that end, the following configuration has been built previously:
 
-```vtl
-   ## 9300 Stack Power and Priority
-   ##Variables
-   #set( $StackCount = $Serial.split(",") )
-   #set( $StackMemberCount = $StackCount.size() )
-   !
-   ##Stacking Commands
-   #if( $StackMemberCount > 1 )
-      stack-power stack Powerstack1
-      mode redundant strict
-      #if( $StackMemberCount > 4 )
-         stack-power stack Powerstack2
-         mode redundant strict
-      #end
-      #foreach( $Switch in [1..$StackMemberCount] )
-         #if( $Switch < 5 )
-            stack-power switch ${Switch}
-            stack Powerstack1
-         #elseif( $Switch > 4 )
-            stack-power switch ${Switch}
-            stack Powerstack2
-         #end
-       #end
-       #MODE_ENABLE
-       #MODE_END_ENABLE
-       #MODE_ENABLE
-       #foreach( $Switch in [1..$StackMemberCount] )
-          #if($Switch == 1)
-             switch $Switch priority 10
-          #elseif($Switch == 2)
-             switch $Switch priority 9
-          #else
-             switch $Switch priority 8
-          #end 
-       #end
-       #MODE_END_ENABLE
-   #end
+```J2
+   {#- 9300 Stack Power and 9300, 9200 Priority -#}
+   {% set StackCount = __device.platformId | split(",")  %}
+   {% set StackMemberCount =  StackCount | length  -%}
+   
+   {% if StackMemberCount > 1 && ("C93" in __device.platformId || "C92" in __device.platformId) %}
+     {% if "C93" in __device.platformId %}
+        stack-power stack Powerstack1
+        mode redundant strict
+        {% if StackMemberCount > 4 %}
+           stack-power stack Powerstack2
+           mode redundant strict
+        {% endif %}
+        {% for Switch in range(0,StackMemberCount,1) %}
+           stack-power switch {{ loop.index }}
+           {% if loop.index <= (StackMemberCount/2|round('ceil')) or StackMemberCount < 5 %}
+              stack Powerstack1
+           {% elif loop.index > (StackMemberCount/2|round('ceil')) %}
+              stack Powerstack2
+           {% endif %}
+        {% endfor %}
+     {% endif %}
+     #MODE_ENABLE
+     {% for Switch in range(0,StackMemberCount,1) %}
+       {% if loop.index == 1 %}
+          switch {{ loop.index }} priority 10
+       {% elif loop.index == 2 %}
+          switch {{ loop.index }} priority 9
+       {% else %}
+          switch {{ loop.index }} priority 8
+       {% endif %}
+     {% endfor %}
+     #MODE_END_ENABLE
+   {% endif %}
 ```
 
-Within this script, you can see the Arrays `$Stackcount` formed using the `.split(",")` method, which takes the string returned from the database and splits the list into two elements within the Array `$Stackcount`. You could address each element in the Array, remembering that Arrays always start the numbering of elements at position zero (0). You could call the data with these two options; for the first element in the Array `$Stackcount[0]` or the second element in the Array `$Stackcount[1]`.
+Within this script, you can see the Arrays `Stackcount` formed using the `.split(",")` method, which takes the string returned from the database and splits the list into two elements within the Array `Stackcount`. You could address each element in the Array, remembering that Arrays always start the numbering of elements at position zero (0). You could call the data with these two options; for the first element in the Array `Stackcount[0]` or the second element in the Array `Stackcount[1]`. Here we store the length of the array or the number of switches in a variable `StackMemberCount`.
 
-Within this script, you can see the Conditional Statements `#if #elseif #else #end`. These are used to dynamically build configuration for switch stacks no matter how many switches are within the stack. For example, if the number of switches in the stack exceeds 4, it automatically creates 2 powerstack environments for power redundancy. The script also prioritizes the Active and Standby switch above those of the rest of the switches in the stack.
+Within this script, you can see the Conditional Statements `if elif else endif`. These are used to dynamically build configuration for switch stacks no matter how many switches are within the stack. For example, if the number of switches in the stack exceeds 4, it automatically creates 2 powerstack environments for power redundancy. The script also prioritizes the Active and Standby switch above those of the rest of the switches in the stack. Lets examine in more depth:
 
-Within this script, you can see the use of the Enable Statements `#MODE_ENABLE #MODE_END_ENABLE`. These commands allow for enable level configuration commands to be entered. This script needs to configure the enable level command to set switch priority for individual switches `switch $Switch priority #`. Bracketing this configuration command with the velocity statements `#MODE_ENABLE #MODE_END_ENABLE` allows us to change from configuration mode to enable mode and back again.
+1. The code will run only if the number of switches in the stack is found to be greater than 1. This means that stackpower is only configured on stacks of two or more switches. 
+
+```j2
+   {% if StackMemberCount > 1 %}
+```
+
+2. The next step is to correctly set the number of powerstack required. If the number of switches exceeds 4 then we need two powerstacks set up.
+
+```j2
+   stack-power stack Powerstack1
+   mode redundant strict
+   {% if StackMemberCount > 4 %}
+      stack-power stack Powerstack2
+      mode redundant strict
+   {% endif %}
+```
+
+3. The next step is to iterate through the switches in the stack setting the stackpower appropriately for each switch and adding them to the correct powerstack 
+
+```j2
+   {% for Switch in range(0,StackMemberCount,1) %}
+      {% if loop.index <= (StackMemberCount/2|round('ceil')) %}
+         stack-power switch {{ loop.index }}
+         stack Powerstack1
+      {% elif loop.index > (StackMemberCount/2|round('ceil')) %}
+         stack-power switch {{ loop.index }}
+         stack Powerstack2
+      {% endif %}
+      {{ loop.index }}
+   {% endfor %}
+```
+4. Lastly, we will set the switch priority appropriately on each switch for master and standby, and then for the remaining switches within the stack so that switch numbering matches the priority levels.
+
+```j2
+   {% for Switch in range(0,StackMemberCount,1) %}
+      {% if loop.index == 1 %}
+         switch {{ loop.index }} priority 10
+      {% elif Switch == 2 %}
+         switch {{ loop.index }} priority 9
+      {% else %}
+         switch {{ loop.index }} priority 8
+      {% endif %}
+   {% endfor %}
+```
+
+Within this script, you can see the use of the Enable Statements `#MODE_ENABLE #MODE_END_ENABLE`. These commands allow for enable level configuration commands to be entered. This script needs to configure the enable level command to set switch priority for individual switches `switch {{loop.index}} priority #`. Bracketing this configuration command with the velocity statements `#MODE_ENABLE #MODE_END_ENABLE` allows us to change from configuration mode to enable mode and back again.
 
 </details>
 
 ## Step 3 - ***Assigning Port Configuration - Use Case***
 
-Previously within the Composite Templating Lab, we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relied on a few variables used to extrapolate the settings that were then configured via the template. This allowed a set of macros to be utilized to build out the various settings for VLANs, Ports, and Uplinks. 
+Previously within the DayN Module, we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relied on a few variables used to extrapolate the settings that were then configured via the template. This allowed a set of macros to be utilized to build out the various settings for VLANs, Ports, and Uplinks. 
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
 
 ### ***Examine Code***
 
-We will analyze the configuration in more detail below and modify it for greater capabilities toward the end of this section.
+We will analyze the configuration in more detail below. Lets look at this intimidating block of code and disect it.
 
-```vtl
-   ##Stack information variables
-   #set( $StackPIDs = $ProductID.split(",") )
-   #set( $StackMemberCount = $StackPIDs.size() )
-   #set( $PortTotal = [] )
-   #set( $offset = $StackMemberCount - 1 )
-   #foreach( $Switch in [0..$offset] )
-     #set( $Model = $StackPIDs[$Switch])
-     #set( $PortCount = $Model.replaceAll("C9300L?-([2|4][4|8]).*","$1") )
-     #set( $foo = $PortTotal.add($PortCount) )
-   #end
+```J2
+   {# System Variable example interfaces in one logical code construct #}
+   {# Select and Configure Access Point interfaces#}
+   {% set apintlog = uplink_portarray %}
+   !
+   {% for apinterface in accesspoint_interfaces %}
+     {% for interface in __interface %}
+       {% if interface.portName in apintlog %}
+       {% elif interface.portName == apinterface %}
+         default interface {{ interface.portName }}
+         interface {{ interface.portName }}
+          {{ baseconf_interface() }}
+         {% do apintlog.append(interface.portName) %}
+       {% endif %}
+     {% endfor %}
+   {% endfor %}
+   !
+   {# Automatically Configure Workstation Remaining interfaces#}
+   {% for interface in __interface %}
+     {% if interface.interfaceType == "Physical" && interface.portName.replaceAll("(^[a-zA-Z]+).*","$1")    == "GigabitEthernet"  %}
+       {% if interface.portName.replaceAll("(^[a-zA-Z]+.).*", "$1") != "GigabitEthernet0" %}
+         {% if interface.portName.replaceAll("^[a-zA-Z]+(\\d+)/(\\d+)/(\\d+)", "$2") != 1 %}
+           {% if interface.portName in apintlog %}
+           {% else %}
+             default interface {{ interface.portName }}
+             interface {{ interface.portName }}
+               {{ ibns_baseconf_interface() }}
+           {% endif %}
+         {% endif %}
+       {% endif %}
+     {% endif %}
+   {% endfor %}
 ```
 
-Within the first block of code, some interesting concepts are dealt with. First, we create an *Array* with the various Product IDs for each switch within the stack using the `.split(",")` *method* as we previously discussed in step 2. The `.size()` *method* is then used to determine how many switches are in the stack. A blank *array* is defined for later use. We then create an offset variable to account that *arrays* start at zero (0) to be used throughout the template.
+In the first block of code we see an array being created `{% set apintlog = uplink_portarray %}`. This array is populated earlier in the template from an interrogation of the number of trunk links connected initially to the switch. The assumption is that no other devices are connected at this time. 
 
-Within the loop structure, we iterate through using the variable PortCount to load the regex value grep'd from the Product ID accomplished via the `.replaceAll(""C9300L?-([2|4][4|8]).*","$1"")` *method* which in each case is either 24 or 48 to denote a 24 or 48 port switch. The PortCount variable is then appended to the *array* PortTotal using the add *method*.
-
-We now have the data we need to configure the switch's ports, being the number of switches and the number of ports in each switch.
-
-```vtl
-   !
-   ## VLANs per MDF
-   #set( $data_vlan_number = 200 + ${MDF} )
-   #set( $voice_vlan_number = 300 + ${MDF} )
-   #set( $ap_vlan_number = 400 + ${MDF} )
-   #set( $guest_vlan_number = 500 + ${MDF} )
-   #set( $bh_vlan_number = 999 )
-   !
+```J2
+   {# Determine whether target is Dual or Single Uplink Target #}
+   {% set uplink_portarray = [] %}
+   {% for interface in __interface %}
+     {% if interface.portMode == "trunk" && interface.interfaceType == "Physical" %}
+       {% do uplink_portarray.append(interface.portName) %}
+     {% endif %}
+   {% endfor %}
 ```
 
-In the configuration above, we use simple addition to determine the VLAN ID for each VLAN built from a set of constants and a numeric variable to denote the MDF.
+So this is where we get the value for the `uplink_portarray`. As you can see it is a list of portnames of all the ports which are physical trunks. This value is then stored in the `apintlog` variable for use in the next sections.
 
-```vtl
-   !
-   vlan ${data_vlan_number}
-    name data
-   vlan ${voice_vlan_number}
-    name voice
-   vlan ${ap_vlan_number}
-    name accesspoint
-   vlan ${guest_vlan_number}
-    name guest
-   vlan ${bh_vlan_number}
-    name disabled
-   !
-   device-tracking upgrade-cli force
-   !
-   device-tracking policy IPDT_MAX_10
-    limit address-count 10
-    no protocol udp
-    tracking enable
-   !
-   ##Macros
-   ## Use Bind to Source variable to select access interfaces 
-   #macro( access_interface )
-     description Workstation
-     switchport access vlan ${data_vlan_number}
-     switchport mode access
-     switchport voice vlan ${voice_vlan_number}
-     switchport port-security maximum 3
-     switchport port-security
-     spanning-tree portfast
-     spanning-tree bpduguard enable
-   #end
+Next we want to configure some ports for Access Points. To show the use of Autoconf, we are going to use a specific interface template here. Lets see the code:
+
+```J2
+  {% for apinterface in accesspoint_interfaces %}
+     {% for interface in __interface %}
+       {% if interface.portName in apintlog %}
+       {% elif interface.portName == apinterface %}
+         default interface {{ interface.portName }}
+         interface {{ interface.portName }}
+          {{ baseconf_interface() }}
+         {% do apintlog.append(interface.portName) %}
+       {% endif %}
+     {% endfor %}
+   {% endfor %}
 ```
 
-Here we define a Macro to configure the various ports of the switch with a standard voice and data VLAN.
+The first line references a Bind Variable. A Bind Variable is similar to a system variable, but it can be used to select interfaces so please take a look at the variable in the form tool within the Template Hub. So the loop will loop through all interfaces selected in the `accesspoint_interfaces` variable. 
 
-```vtl
-   !
-   #macro( uplink_interface )
-     switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
-   #end
+For each loop iteration we will store the target `apinterface` and compare it to those using the following logic. Within all the ports of the switch we will loop through each, and ensure that they are not previously configured using the `apintlog` variable for comparison. 
+
+We will also ensure we only configure those we selected comparing each interface to the `apinterface` selected to see if the target has been found. If it is found, we default the interface and then place a base configuration on it via a interface macro. We finally append the newly configured interface to the `apintlog` array to ensure it is not modified further.
+
+Once all the Access Points are configured we then target the rest of the ports for 802.1x configuration. 
+
+```J2
+   {# Automatically Configure Workstation Remaining interfaces#}
+   {% for interface in __interface %}
+     {% if interface.interfaceType == "Physical" && interface.portName.replaceAll("(^[a-zA-Z]+).*","$1")    == "GigabitEthernet"  %}
+       {% if interface.portName.replaceAll("(^[a-zA-Z]+.).*", "$1") != "GigabitEthernet0" %}
+         {% if interface.portName.replaceAll("^[a-zA-Z]+(\\d+)/(\\d+)/(\\d+)", "$2") != 1 %}
+           {% if interface.portName in apintlog %}
+           {% else %}
+             default interface {{ interface.portName }}
+             interface {{ interface.portName }}
+               {{ ibns_baseconf_interface() }}
+           {% endif %}
+         {% endif %}
+       {% endif %}
+     {% endif %}
+   {% endfor %}
 ```
 
-Within the above code, we define a Macro to add the various VLANs to the trunk interface via the Port-Channel.
-
-```vtl
-   !
-   ##Access Port Configuration
-   #foreach( $Switch in [0..$offset] )
-     #set( $SwiNum = $Switch + 1 )
-     interface range gi ${SwiNum}/0/1 - 9, gi ${SwiNum}/0/12 - $PortTotal[$Switch]
-       #access_interface
-   #end
-   !
-   ##Uplink Port Configuration
-   interface portchannel 1
-    #uplink_interface
-   !
-```
-
-We apply the various previously defined Macros in the above code to configure the various access ports via a loop structure. We then apply the VLANs to the port-channel.
-
-### ***Modify Code***
-
-While this is an elegant script, it could be more automated and include ways to deal with Access Points and IoT devices in the same script. Let's look at how we might make these changes in an automated programmatic way.
-
-First, let's deal with VLANs on the Target switch. We use one variable to extrapolate the various VLANs in the example above. Alternatively, that could be accomplished using a built-in variable like the native VLAN and a similar approach.
-
-```vtl
-   #set( $Integer = 0 ) ##defines Integer as numeric variable
-   #set( $native_bind = $native_vlan) ) ##bind variable to native vlan
-   #set( $mgmt_vlan = $Integer.parseInt($native_bind) ) 
-   #set( $data_offset = 100 ) ##to set the voice vlan
-   #set( $voice_offset = 200 ) ##to set the voice vlan
-   #set( $ap_offset = 300 ) ##to set the ap vlan
-   #set( $guest_offset = 400 ) ##to set the voice vlan
-   #set( $data_vlan_number = $data_offset + $mgmt_vlan )
-   #set( $voice_vlan_number = $voice_offset + $mgmt_vlan )
-   #set( $ap_vlan_number = $ap_offset + $mgmt_vlan )
-   #set( $guest_vlan_number = $guest_offset + $mgmt_vlan )
-   #set( $bh_vlan_number = 999 )
-```
-
-In this example, we no longer need to input any information, and as the offsets are used if required, we can use excel instead of setting values for defining those in bulk. The example shown illustrates them explicitly, but entry values could replace those lines in a form or excel.
-
-Secondly, we could allow for various device types of Access Point and IoT devices with the introduction of more Macros. As each device type may each require differing VLANs and port settings: *(note: in the guest example below, the assumption is a layer 2 to a firewall providing a local gateway for guest access DIA to the internet)*
-
-```vtl
-   ##Macros
-   ## Use Bind to Source variable to select access interfaces 
-   #macro( access_interface )
-     description Workstation
-     switchport access vlan ${data_vlan_number}
-     switchport mode access
-     switchport voice vlan ${voice_vlan_number}
-     switchport port-security maximum 3
-     switchport port-security
-     spanning-tree portfast
-     spanning-tree bpduguard enable
-   #end
-   !
-   #macro( access_point )
-     description Access Point 
-     switchport access vlan ${ap_vlan_number}
-     switchport mode access
-     switchport port-security maximum 3
-     switchport port-security
-     spanning-tree portfast
-     spanning-tree bpduguard enable
-   #end
-   !
-   #macro( guest_interface )
-     description Guest Interface
-     switchport access vlan ${guest_vlan_number}
-     switchport mode access
-     switchport port-security maximum 3
-     switchport port-security
-     spanning-tree portfast
-     spanning-tree bpduguard enable
-   #end
-   !
-```
-
-The last puzzle piece would be to programmatically determine where the ports were configured for the various tasks and devices. To accomplish this, we can again resort to logic. First, we need to account for whether a switch is PoE capable or not, so let's add some magic.
-
-```vtl
-   ##Stack information variables
-   #set( $StackPIDs = $ProductID.split(",") )
-   #set( $StackMemberCount = $StackPIDs.size() )
-   #set( $PortTotal = [] )
-   #set( $PoECapable = [] )
-   #set( $Port = [] )
-   #set( $PortsAvailable = [] )
-   #set( $offset = $StackMemberCount - 1 )
-   #foreach( $Switch in [0..$offset] )
-     #set( $Model = $StackPIDs[$Switch])
-     #if( $Model.matches(".*([U|P]).*") )
-        #set( $foo = $PoECapable.add(1) )
-     #else
-        #set( $foo = $PoECapable.add(0) )
-     #end             	
-     #set( $PortCount = $Model.replaceAll("C9300L?-([2|4][4|8]).*","$1") )
-     #set( $foo = $PortTotal.add($PortCount) )
-     #set( $foo = $Port.add(1) )
-     #set( $foo = $PortsAvailable.add($PortCount) )
-   #end
-```
-
-So six lines of logic added, an *array* is created PoECapable to track switches capable of delivering PoE. Next, a loop with conditional logic sets a true or false flag depending if the switch is PoE Capable again using the `.add` *method*. Lastly, a Port pointer is created and set to the first port in each switch. Lastly, an availability counter for the number of available ports is set up.
-
-The next chunk of code first resolves any accidental division by zero anomalies we might encounter by iterating through the two asked for variables for the number of Access Points, determining if they are even or odd, and making them even in the latter case. Additionally, we need to determine how to distribute the Access Points.
-
-```vtl
-   ##Determine how many switches we can support Access Points on
-   #foreach( $PoE in $PoECapable)
-      #if( $PoECapable[$Switch] == 1 )
-         #set( $NoAccessPointCapableSwitch = $NoAccessPointCapableSwitch + 1 )
-      #end
-   #end
-   !
-   #set( $ModulusAccessPoints = $NoAccessPoints % $NoAccessPointCapableSwitch )
-   #if( $ModulusAccessPoints != 0 )
-      #set( $NoAccessPoints = $NoAccessPoints + [$NoAccessPoints % $NoAccessPointCapableSwitch] )
-   #end
-   !
-   #set( $NoAccessPointPerSwitch = $NoAccessPoints / $NoAccessPointCapableSwitch )
-   !
-```
-
-Next, we need to iterate through the switches logically to set the correct macro to the port. The example might look like the following;
-
-```vtl
-   !
-   ##Start with AP distribution evenly across the stack
-   !
-   #foreach( $Switch in [1..$StackMemberCount] )
-      #if( $PoECapable[$Switch] == 1 )
-         #foreach( $AccessPoint in $NoAccessPointPerSwitch )
-            #if( $PortsAvailable[$Switch] != 0 )
-            	interface GigabitEthernet${Switch}/0/$Port[$Switch]
-                 #access_point
-               #set( $PortsAvailable[$Switch] = $PortsAvailable[$Switch] - 1 )
-               #set( $Port[$Switch] = $Port[$Switch] + 1 )
-            #end
-         #end
-      #end
-   #end
-   !
-   ##Next with Guest Interface distribution evenly across stack
-   #foreach( $GuestInterfaces in $NoGuestInterfaces )
-      #foreach( $Switch in [1..${StackMemberCount}] )
-         #if( $PortsAvailable[$Switch] != 0 )
-   		   interface GigabitEthernet${Switch}/0/$Port[$Switch]
-              #guest_interface
-            #set( $PortsAvailable[$Switch] = $PortsAvailable[$Switch] - 1)
-            #set( $Port[$Switch] = $Port[$Switch] + 1)
-   		   #break
-   	   #end
-      #end
-   #end
-   !
-   ##Add Workstation ports to stack
-   #foreach( $Switch in [1..${StackMemberCount}] )
-      #if( $PortsAvailable[${Switch}] != 0 )
-   	   interface range GigabitEthernet${Switch}/0/$Port[$Switch] - $PortTotal[$Switch]
-           #Workstation
-         #set( $PortsAvailable[$Switch] = 0 )
-   	#end
-   #end
-   !
-```
-
-In the first section, we iterate through the stack, and for switches with PoE Capability, we add an Access Point to each switch until they are evenly distributed. Next, we iterate through each switch evenly distributing guest interfaces. Lastly, we iterate through the ports filling the rest with workstation configured interfaces.
-
-While this methodology deals programmatically with port configuration, and while you may adapt it for an environment, it is again lacking because it's still not dynamic enough. First, it's impossible to determine without looking at the configuration where something is plugged in. Secondly, if equipment or users are plugged into the wrong interface, they may get the wrong level of access. 
-
-To deal with all these outstanding issues, we will look at the next lab section to provide the final solution to the problem.
+We aloop through all the interfaces on the switch, ensuring we configuring only those starting with GigabitEthernet and negating the management interface and any that are network modules. We then ensure the interface is not in the `apintlog` array as previously configured, and if all that is true default the interface, and place a 802.1x config on it via an interface macro.
 
 </details>
 
 ## Step 4 - ***Autoconf Port Configuration - Use Case***
 
-Previously within the Composite Templating Lab and in the previous section, we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relies on a few variables used to extrapolate the settings that were then configured via the template. This allowed a set of macros to be utilized to build out the various settings for VLANs, Ports, and Uplinks. 
-
-While these were methodologies that dealt programmatically with port configuration, and while you may adapt them for an environment, they are both lacking in the fact that they are not dynamic enough. Again, it's impossible to determine without looking at the configuration where something is plugged in. Secondly, if equipment or users are plugged into the wrong interface, they may get the wrong level of access. 
+Previously within the DayN Module, we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relies on a few variables used to extrapolate the settings that were then configured via the template. This allowed a set of macros to be utilized to build out the various settings for VLANs, Ports, and Uplinks. 
 
 In previous code revisions, we could deal with some of the problems with Auto Smart Port technology, but that has been deprecated, and its replacement is a lot more dynamic. This section will deal with the first part of the problem concerning assigning ports for hardware like Access Points.
+
+This Autoconf methodology was deployed via template.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
 
-### ***Modify Code***
+### ***Examine Code***
 
-First, let's deal with VLANs on the Target switch. In the example above, we modified the existing code to extrapolate the various device VLANs using a built-in variable like the native VLAN. This is not a bad idea. Then you could define different native VLANs for downstream switches on a distribution, thereby building out the VLANs dynamically. If you prefer, an excel list of numbers could be an alternative. In that case, you would not need this section and rely on the variables being used after this code block.
+First, lets take a look at the code which causes everything to happen for autoconf
 
-```vtl
-   #set( $Integer = 0 ) ##defines Integer as numeric variable
-   #set( $native_bind = $native_vlan) ) ##bind variable to native vlan
-   #set( $mgmt_vlan = $Integer.parseInt($native_bind) ) 
-   #set( $data_offset = 100 ) ##to set the voice vlan
-   #set( $voice_offset = 200 ) ##to set the voice vlan
-   #set( $ap_offset = 300 ) ##to set the ap vlan
-   #set( $guest_offset = 400 ) ##to set the voice vlan
-   #set( $data_vlan_number = $data_offset + $mgmt_vlan )
-   #set( $voice_vlan_number = $voice_offset + $mgmt_vlan )
-   #set( $ap_vlan_number = $ap_offset + $mgmt_vlan )
-   #set( $guest_vlan_number = $guest_offset + $mgmt_vlan )
-   #set( $bh_vlan_number = 999 )
+```J2
+   {{ autoconf_accesspoint(vlanArray[1]) }}
+   {{ autoconf_flexaccesspoint(vlanArray[1], vlanArray[2], vlanArray[3], vlanArray[4]) }} 
+   {{ autoconf_workstation(vlanArray[2], vlanArray[3]) }}
+   {{ autoconf_baseconfig(vlanArray[1]) }}
+   !
+   {% include "DCLOUD CATC Template Lab DayN Jinja2/AutoConf-Configuration" %}
 ```
 
 The next block of code sets up the VLANs, and should the dynamic creation as mentioned not be desired; an excel list could be used to assign them as the template is run through the UI through importing the variable settings.
