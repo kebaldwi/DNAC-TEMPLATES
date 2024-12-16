@@ -1,0 +1,22 @@
+name: Main
+
+on:
+  push:
+    tags:
+      - "v*.*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+            files: |
+              CODE/POSTMAN/*.json
+              CODE/POWERSHELL/*.ps1
+              CODE/TEMPLATES/JINJA2/DAYN/JSON/Titanium_WiredAutoLab_Jinja2_project.json
+              CODE/TEMPLATES/JINJA2/DAYN/JSON/DCLOUD-PrepEnvironment-project.json
+              CODE/TEMPLATES/JINJA2/ONBOARDING/JSON/Platinum_PnP_Jinja2_Template.json
