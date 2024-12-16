@@ -220,7 +220,62 @@ Within this script, you can see the use of the Enable Statements `#MODE_ENABLE #
 
 </details>
 
-## Step 3 - ***Assigning Port Configuration - Use Case***
+## Step 3 - ***Building Vlan Databases - Use Case***
+
+Previously within the DayN Module, we introduced a methodology of automatically building a vlan database within the configuration of the switch. When a new device or switch is built, we may want to control which the vlans within the stack. 
+
+The **macros** that are called to build vlans from included regular templates. Think of these similarly to **Python** functions where we in parenthesis parse a list of variables for use in the function. In this list we see `vlanarray[x]` which is calling elements of a vlan list like `[10,20,30,40]`. This list was populated when we created the vlan database and stored it in this array. 
+
+<details open>
+<summary> Click for Details and Sub Tasks</summary>
+
+### ***Examine Code***
+
+```J2
+   {# Dictionaries of VLANS per Site #}
+   {% set SiteAvlans = [
+     {'vlan':'5','name':'mgmtvlan'},
+     {'vlan':'10','name':'apvlan'},
+     {'vlan':'20','name':'datavlan'},
+     {'vlan':'30','name':'voicevlan'},
+     {'vlan':'40','name':'guestvlan'},
+     {'vlan':'999','name':'disabledvlan'}
+     ]%}
+   !
+   {# MACRO VLAN DB Dependencies #}
+   {% macro configure_vlans(vlanpairs)  %}
+     {% for vlanpair in vlanpairs %}
+       vlan {{ vlanpair['vlan'] }}
+       name {{ vlanpair['name'] }}
+     {% endfor %}
+   {% endmacro %}
+   !
+   {# MACRO Vlan Search Function #}
+   {% macro search_vlans(vlanpairs) %}
+     {#{% set vlanArray = [] %}#}
+     {% for vlanpair in vlanpairs %}
+       {% if vlanpair['name'] == "apvlan" %}
+         {% do vlanArray.append(vlanpair['vlan']) %}
+       {% elif vlanpair['name'] == "datavlan"%}
+         {% do vlanArray.append(vlanpair['vlan']) %}
+       {% elif "voice" in vlanpair['name'] %}
+         {% do vlanArray.append(vlanpair['vlan']) %}
+       {% elif "guest" in vlanpair['name'] %}
+         {% do vlanArray.append(vlanpair['vlan']) %}
+       {% elif "disabled" in vlanpair['name'] %}
+         {% do vlanArray.append(vlanpair['vlan']) %}
+       {% else %}
+         {% do vlanArray.append(vlanpair['vlan']) %}
+       {% endif %}
+     {% endfor %}
+   {% endmacro %}
+```
+
+Here you can see a **dictionary** used to hold **key value pairs** in a list for use. When parsed to the **macro** `configure_vlans(vlanpairs)` they build out the **vlan database**, looping through and for every line adding the vlan and the name entry to the configuration. Below that you will see search **macro**, which creates the vlanarray above.
+
+</details>
+
+## Step 4 - ***Assigning Port Configuration - Use Case***
 
 Previously within the DayN Module, we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relied on a few variables used to extrapolate the settings that were then configured via the template. This allowed a set of macros to be utilized to build out the various settings for VLANs, Ports, and Uplinks. 
 
@@ -321,11 +376,11 @@ Once all the Access Points are configured we then target the rest of the ports f
    {% endfor %}
 ```
 
-We aloop through all the interfaces on the switch, ensuring we configuring only those starting with GigabitEthernet and negating the management interface and any that are network modules. We then ensure the interface is not in the `apintlog` array as previously configured, and if all that is true default the interface, and place a 802.1x config on it via an interface macro.
+We loop through all the interfaces on the switch, ensuring we configuring only those starting with GigabitEthernet and negating the management interface and any that are network modules. We then ensure the interface is not in the `apintlog` array as previously configured, and if all that is true default the interface, and place a 802.1x config on it via an interface macro.
 
 </details>
 
-## Step 4 - ***Autoconf Port Configuration - Use Case***
+## Step 5 - ***Autoconf Port Configuration - Use Case***
 
 Previously within the DayN Module, we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relies on a few variables used to extrapolate the settings that were then configured via the template. This allowed a set of macros to be utilized to build out the various settings for VLANs, Ports, and Uplinks. 
 
@@ -349,37 +404,113 @@ First, lets take a look at the code which causes everything to happen for autoco
    {% include "DCLOUD CATC Template Lab DayN Jinja2/AutoConf-Configuration" %}
 ```
 
-The next block of code sets up the VLANs, and should the dynamic creation as mentioned not be desired; an excel list could be used to assign them as the template is run through the UI through importing the variable settings.
+The **macros** that are called build interface templates. Think of these similarly to **Python** functions where we in parenthesis parse a list of variables for use in the function. In this list we see `vlanarray[x]` which is calling elements of a vlan list like `[10,20,30,40]`. This list was populated when we created the vlan database and stored it in this array. 
 
-```vtl
+```J2
+   {# Dictionaries of VLANS per Site #}
+   {% set SiteAvlans = [
+     {'vlan':'5','name':'mgmtvlan'},
+     {'vlan':'10','name':'apvlan'},
+     {'vlan':'20','name':'datavlan'},
+     {'vlan':'30','name':'voicevlan'},
+     {'vlan':'40','name':'guestvlan'},
+     {'vlan':'999','name':'disabledvlan'}
+     ]%}
    !
-   vlan ${data_vlan_number}
-    name data
-   vlan ${voice_vlan_number}
-    name voice
-   vlan ${ap_vlan_number}
-    name accesspoint
-   vlan ${guest_vlan_number}
-    name guest
-   vlan ${bh_vlan_number}
-    name disabled
-   !
-   device-tracking upgrade-cli force
-   !
-   device-tracking policy IPDT_MAX_10
-    limit address-count 10
-    no protocol udp
-    tracking enable
-   !
+   {# MACRO Vlan Search Function #}
+   {% macro search_vlans(vlanpairs) %}
+     {#{% set vlanArray = [] %}#}
+     {% for vlanpair in vlanpairs %}
+       {% if vlanpair['name'] == "apvlan" %}
+         {% do vlanArray.append(vlanpair['vlan']) %}
+       {% elif vlanpair['name'] == "datavlan"%}
+         {% do vlanArray.append(vlanpair['vlan']) %}
+       {% elif "voice" in vlanpair['name'] %}
+         {% do vlanArray.append(vlanpair['vlan']) %}
+       {% elif "guest" in vlanpair['name'] %}
+         {% do vlanArray.append(vlanpair['vlan']) %}
+       {% elif "disabled" in vlanpair['name'] %}
+         {% do vlanArray.append(vlanpair['vlan']) %}
+       {% else %}
+         {% do vlanArray.append(vlanpair['vlan']) %}
+       {% endif %}
+     {% endfor %}
+   {% endmacro %}
 ```
 
-Next, we need to set up the macros, but we will make use of **Autoconf** and **Templates**. **Autoconf** is a solution that can be used to manage port configurations for data or voice VLAN, quality of service (QoS) parameters, storm control, and MAC-based port security on end devices that are deployed in the access layer of a network. Device classification is enabled when you enable the Autoconf feature using the `autoconf enable` command in global configuration mode. The device detection acts as an event trigger, which applies the appropriate automatic template to the interface. When the Autoconf feature is enabled using the autoconf enable command, the default Autoconf service policy is applied to all the interfaces. For more information about **[Autoconf](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9400/software/release/16-12/configuration_guide/nmgmt/b_1612_nmgmt_9400_cg/configuring_autoconf.pdf)** or alternatively [Autoconf](../../CODE/DOCS/configuring_autoconf.pdf)
+Here you can see a **dictionary** used to hold **key value pairs** in a list for use. When parsed to the **macro** `configure_vlans(vlanpairs)` they build out the **vlan database**, looping through and for every line adding the vlan and the name entry to the configuration. Below that you will see search **macro**, which creates the vlanarray above.
 
-```vtl
+This is utilized in conjunction with the **macros**, which build out the interface templates we will use later.
+
+```J2
+   {{ autoconf_accesspoint(vlanArray[1]) }}
+   {{ autoconf_flexaccesspoint(vlanArray[1], vlanArray[2], vlanArray[3], vlanArray[4]) }} 
+   {{ autoconf_workstation(vlanArray[2], vlanArray[3]) }}
+   {{ autoconf_baseconfig(vlanArray[1]) }}
+```
+
+They **macros** are as follows
+
+```J2
+   {# AutoConf Macro Section #}
+   {# AutoConf Base Configuration Macro #}
+   {% macro baseconf_interface() %}
+        switchport mode access
+        snmp trap mac-notification change added
+        snmp trap mac-notification change removed
+        source template BASE_AUTOCONF
+   {% endmacro %}
+   !
+   {# Interface Access Point Template to be used with Autoconf for AP's #}
+   {% macro autoconf_accesspoint(vlan_number) %} 
+     template ACCESS_POINT
+      description Access Point Interface
+      switchport access vlan {{ vlan_number }}
+      switchport mode access
+      spanning-tree portfast
+   {% endmacro %}
+   !
+   {# Interface FLex-Access Point Template to be used with Autoconf for Flex AP's #}
+   {% macro autoconf_flexaccesspoint(vlan_number, data_number, voice_number, guest_number) %} 
+     template FLEX_ACCESS_POINT
+      description Flex Access Point Interface
+      switchport mode trunk
+      switchport trunk native vlan {{ vlan_number }}
+      switchport trunk allowed vlan {{ vlan_number }},{{ data_number}},{{ voice_number}},{{ guest_number }}
+      spanning-tree portfast trunk
+   {% endmacro %}
+   !
+   {# Interface Workstation Template to be used with Autoconf for AP's #}
+   {% macro autoconf_workstation(vlan_number, voice_number) %} 
+     template WORKSTATION
+      description Workstation Interface
+      switchport access vlan {{ vlan_number }}
+      switchport voice vlan {{ voice_number }}
+      switchport mode access
+      spanning-tree portfast
+   {% endmacro %}
+   !
+   {# Interface Base Configuration Template to be used with Autoconf for baseconfig's #}
+   {% macro autoconf_baseconfig(vlan_number) %} 
+     template BASE_AUTOCONF
+      description Base Config
+      switchport access vlan {{ vlan_number }}
+      switchport mode access
+      spanning-tree portfast
+   {% endmacro %}
+```
+
+Next, we need to set up the macros, but we will make use of **Autoconf** and the **Templates** above. **Autoconf** is a solution that can be used to manage port configurations for data or voice VLAN, quality of service (QoS) parameters, storm control, and MAC-based port security on end devices that are deployed in the access layer of a network. Device classification is enabled when you enable the Autoconf feature using the `autoconf enable` command in global configuration mode. The device detection acts as an event trigger, which applies the appropriate automatic template to the interface. When the Autoconf feature is enabled using the autoconf enable command, the default Autoconf service policy is applied to all the interfaces. For more information about **[Autoconf](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9400/software/release/16-12/configuration_guide/nmgmt/b_1612_nmgmt_9400_cg/configuring_autoconf.pdf)** or alternatively [Autoconf](../../CODE/DOCS/configuring_autoconf.pdf)
+
+```J2
+   {# AutoConf Configurations #}
+   !
+   {# Enabling Autoconf on switch with interactive command #}
    #INTERACTIVE
    autoconf enable<IQ>yes<R>y
-   #END_INTERACTIVE
+   #END_INTERACTIVE 
    !
+   {# Augmenting existing hidden parameter map with modifications #}
    parameter-map type subscriber attribute-to-service BUILTIN_DEVICE_TO_TEMPLATE
     10 map device-type regex "Cisco-IP-Phone"
      20 interface-template WORKSTATION
@@ -392,9 +523,9 @@ Next, we need to set up the macros, but we will make use of **Autoconf** and **T
     50 map oui eq "00.23.ac"
      20 interface-template WORKSTATION
     60 map device-type regex "Cisco-AIR-AP"
-     20 interface-template ACCESS_POINT
+     20 interface-template FLEX_ACCESS_POINT
     70 map device-type regex "Cisco-AIR-LAP"
-     20 interface-template ACCESS_POINT
+     20 interface-template FLEX_ACCESS_POINT
     80 map device-type regex "Cisco-TelePresence"
      20 interface-template WORKSTATION
     90 map device-type regex "Surveillance-Camera"
@@ -402,642 +533,575 @@ Next, we need to set up the macros, but we will make use of **Autoconf** and **T
     100 map device-type regex "Video-Conference"
      10 interface-template WORKSTATION
     110 map device-type regex "Cisco-CAT-LAP"
-     10 interface-template ACCESS_POINT
+     10 interface-template FLEX_ACCESS_POINT
+    120 map oui eq "00.24.9b"
+     10 interface-template WORKSTATION 
    !
-   template ACCESS_POINT
-    description Access Point Interface
-    switchport access vlan ${ap_vlan_number}
-    switchport mode access
-   !
-   template WORKSTATION
-    description Workstation
-    switchport access vlan ${data_vlan_number}
-    switchport mode access
-    switchport voice vlan ${voice_vlan_number}
-   !
-   template GUEST
-     description Guest Interface
-     switchport access vlan ${guest_vlan_number}
-     switchport mode access
-   !
-   ##Macros
-   #macro( access_interface )
-     description BASE CONFIG
-     switchport access vlan ${bh_vlan_number}
-     switchport mode access
-     switchport port-security maximum 3
-     switchport port-security
-     snmp trap mac-notification change added
-     snmp trap mac-notification change removed
-     spanning-tree portfast
-     spanning-tree bpduguard enable
-     source template WORKSTATION
-   #end
 ```
 
-So the command `autoconf` enables the device classifier, which can then be manipulated to stray from the built-in templates through a *parameter-map*. The parameter map command allows for the mapping of defined interface templates. This is what we need to create our template for the Access Point. The rest of the built-in devices will point to the Workstation template. We define a Guest template as well as the macro for the interfaces. The macro will be used to configure the interfaces delivering the source template of WORKSTATION.
+So the command `autoconf` enables the device classifier, which can then be manipulated to stray from the built-in templates through a **parameter-map**. The parameter map command allows for the mapping of defined interface templates. This is what we need to create our template for the Access Point. The **macro** `FLEX_ACCESS_POINT` will be used to configure the interfaces delivering the source template for those selected as Access Point when the onboard device classifier sees a device of the profile `Cisco-CAT-LAP`.
 
-This will configure the interface with the normal VLAN and commands listed, and then when a device is plugged in, the device classifier will run. The interface will by default use the derived configuration of the WORKSTATION interface template, but should an Access Point be plugged in; then the interface would defer to the ACCESS_POINT template. 
+This will configure the interface with the commands listed. When a device is plugged in, the device classifier will run. The interface will by default use the derived configuration of the `BASE_AUTOCONF` interface template, but should an Access Point be plugged in; then the interface would dynammically logically assign the `FLEX_ACCESS_POINT` template. 
 
 Delivering the code to the interfaces becomes simpler now because we utilize a more dynamic device classification approach. 
 
-We can continue to configure the uplink via the following Macro.
+We will also ensure we only configure those we selected comparing each interface to the `apinterface` selected to see if the target has been found. If it is found, we default the interface and then place a base configuration on it via a interface macro. We finally append the newly configured interface to the `apintlog` array to ensure it is not modified further.
 
-```vtl
-   !
-   #macro( uplink_interface )
-     switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
-   #end
+Once all the Access Points are configured we then target the rest of the ports for 802.1x configuration. 
+
+```J2
+   {# Automatically Configure Workstation Remaining interfaces#}
+   {% for interface in __interface %}
+     {% if interface.interfaceType == "Physical" && interface.portName.replaceAll("(^[a-zA-Z]+).*","$1")    == "GigabitEthernet"  %}
+       {% if interface.portName.replaceAll("(^[a-zA-Z]+.).*", "$1") != "GigabitEthernet0" %}
+         {% if interface.portName.replaceAll("^[a-zA-Z]+(\\d+)/(\\d+)/(\\d+)", "$2") != 1 %}
+           {% if interface.portName in apintlog %}
+           {% else %}
+             default interface {{ interface.portName }}
+             interface {{ interface.portName }}
+               {{ ibns_baseconf_interface() }}
+           {% endif %}
+         {% endif %}
+       {% endif %}
+     {% endif %}
+   {% endfor %}
 ```
 
-Within the above code, we define a Macro to add the various VLANs to the trunk interface via the Port-Channel.
-
-As we configure the interfaces, we can continue to use the previously defined method as the templates will be called and assigned more dynamically.
-
-```vtl
-   !
-   ##Access Port Configuration
-   #foreach( $Switch in [0..$offset] )
-     #set( $SwiNum = $Switch + 1 )
-     interface range gi ${SwiNum}/0/1 - 9, gi ${SwiNum}/0/12 - $PortTotal[$Switch]
-       #access_interface
-   #end
-   !
-   ##Uplink Port Configuration
-   interface portchannel 1
-    #uplink_interface
-   !
-```
-
-We apply the various previously defined Macros in the above code to configure the various access ports via a loop structure. We then apply the VLANs to the port-channel.
-
-While we have configured all the various interfaces, this does not consider Authentication and Authorization scenarios. It sets us up nicely to reuse the templates calling them directly from Identity Services Engine in Authorization Policies.
+We loop through all the interfaces on the switch, ensuring we configuring only those starting with GigabitEthernet and negating the management interface and any that are network modules. We then ensure the interface is not in the `apintlog` array as previously configured, and if all that is true default the interface, and place a 802.1x config on it via an interface macro.
 
 </details>
 
-## Step 5 - ***Non SDA IBNS2.0 Port Configuration - Use Case***
+## Step 6 - ***IBNS2.0 Port Configuration - Use Case***
 
-The last sections of this lab will walk through the various considerations for **IBNS2.0** and how to deal with host onboarding in a Non **SD-Access** Fabric environment. Once the Identity Services Engine is integrated with Cisco Catalyst Center, then not only do you get the benefit of pxgrid integration allowing for the building of policy, but the AAA Server section within Design will build out the various settings which inturn program the network access devices for AAA Network and Client Dot1x settings.
+Previously within the DayN Module, we also deployed configuration on the bulk of interfaces using **IBNS2.0** and how to deal with host onboarding in a Non **SDAccess** Fabric environment. Once the Identity Services Engine is integrated with Cisco Catalyst Center, then not only do you get the benefit of **pxgrid** integration allowing for the building of policy, but the AAA Server section within Design will build out the various settings which inturn program the network access devices for AAA Network and Client Dot1x settings.
 
-It is also essential to understand that with **IBNS2.0** and templates or interfaces running in ***closed mode***, the dynamic capability of **Autoconf** is not going to operate because there is a service-policy applied to the interface. While the device classifier will operate, for some devices that require an IP address, they may reboot before the classifier has done its job and so inconsistancies can occur. Remember in closed mode no packets are forwarded including DHCP prior to authentication occurring. If the interface is in ***low impact mode***, then and only then will **Autoconf** operate properly and as a result of the pre-auth acl DHCP may be allowed.
+> **Note:** It is also essential to understand that with **IBNS2.0** and interface templates or statically configured interfaces running in **closed mode**, the dynamic capability of **Autoconf** will **not** operate because there is a service-policy applied to the interface. Additionally, remember in closed mode no packets are forwarded including DHCP prior to authentication occurring.
 
-Considering Cisco Catalyst Center will push at that point all the relevant IBNS2.0 settings to the device, this leaves us with the mere setting up of **Host Onboarding**, which we will detail below.
+Previously we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relies on a few variables used to extrapolate the settings that were then configured via the regular template. This used a set of macros to be utilized to build out the various settings for VLANs, Ports, and Uplinks. 
+
+So lets take a look at the configuration we will deploy:
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
-
-#### **Important Note:** 
-
-*We need to remember that for the use of this section, ISE needs first to have been integrated with Cisco Catalyst Center. Additionally, the Design Settings will need to be modified for the sites to include at the very least* **Client AAA**.
 
 ### ***Examine Code***
 
-We will take the script as amended from above, which should look like this now;
+We will need to build a set of policies for **Open**, **Closed** and **Low-Impact** mode. These are deployed as a static list and can be maintained in a regular template. These policies and classifications are required but not automatically deployed by Catalyst Center's integrated deployment.
 
-```vtl
-   #set( ${Integer} = 0 ) 
-   #set( ${mgmt_vlan} = $Integer.parseInt($native_bind) ) 
-   #set( ${data_offset} = 100 ) 
-   #set( ${voice_offset} = 200 ) 
-   #set( ${ap_offset} = 300 ) 
-   #set( ${guest_offset} = 400 ) 
-   #set( $data_vlan_number = $data_offset + $mgmt_vlan )
-   #set( $voice_vlan_number = $voice_offset + $mgmt_vlan )
-   #set( $ap_vlan_number = $ap_offset + $mgmt_vlan )
-   #set( $guest_vlan_number = $guest_offset + $mgmt_vlan )
-   #set( $bh_vlan_number = 999 )
-   !
-   vlan ${data_vlan_number}
-    name data
-   vlan ${voice_vlan_number}
-    name voice
-   vlan ${ap_vlan_number}
-    name accesspoint
-   vlan ${guest_vlan_number}
-    name guest
-   vlan ${bh_vlan_number}
-    name disabled
-   !
-   device-tracking upgrade-cli force
-   !
-   device-tracking policy IPDT_MAX_10
-    limit address-count 10
-    no protocol udp
-    tracking enable
-   !
-   #INTERACTIVE
-   autoconf enable<IQ>yes<R>y
-   #END_INTERACTIVE
-   !
-   parameter-map type subscriber attribute-to-service BUILTIN_DEVICE_TO_TEMPLATE
-    10 map device-type regex "Cisco-IP-Phone"
-     20 interface-template WORKSTATION
-    20 map device-type regex "Cisco-IP-Camera"
-     20 interface-template WORKSTATION
-    30 map device-type regex "Cisco-DMP"
-     20 interface-template WORKSTATION
-    40 map oui eq "00.0f.44"
-     20 interface-template WORKSTATION
-    50 map oui eq "00.23.ac"
-     20 interface-template WORKSTATION
-    60 map device-type regex "Cisco-AIR-AP"
-     20 interface-template ACCESS_POINT
-    70 map device-type regex "Cisco-AIR-LAP"
-     20 interface-template ACCESS_POINT
-    80 map device-type regex "Cisco-TelePresence"
-     20 interface-template WORKSTATION
-    90 map device-type regex "Surveillance-Camera"
-     10 interface-template WORKSTATION
-    100 map device-type regex "Video-Conference"
-     10 interface-template WORKSTATION
-    110 map device-type regex "Cisco-CAT-LAP"
-     10 interface-template ACCESS_POINT
-   !
-   template ACCESS_POINT
-    description Access Point Interface
-    switchport access vlan ${ap_vlan_number}
+```J2
+  {# IBNS configurations build #}
+  !
+  {# Classifications #}
+  class-map type control subscriber match-all AAA_SVR_DOWN_AUTHD_HOST
+   match authorization-status authorized
+   match result-type aaa-timeout
+  !
+  class-map type control subscriber match-all AAA_SVR_DOWN_UNAUTHD_HOST
+   match authorization-status unauthorized
+   match result-type aaa-timeout
+  !
+  class-map type control subscriber match-all AUTHC_SUCCESS-AUTHZ_FAIL
+   match authorization-status unauthorized
+   match result-type success
+  !
+  class-map type control subscriber match-all DOT1X
+   match method dot1x
+  !
+  class-map type control subscriber match-all DOT1X_FAILED
+   match method dot1x
+   match result-type method dot1x authoritative
+  !
+  class-map type control subscriber match-all DOT1X_MEDIUM_PRIO
+   match authorizing-method-priority gt 20
+  !
+  class-map type control subscriber match-all DOT1X_NO_RESP
+   match method dot1x
+   match result-type method dot1x agent-not-found
+  !
+  class-map type control subscriber match-all DOT1X_TIMEOUT
+   match method dot1x
+   match result-type method dot1x method-timeout
+  !
+  class-map type control subscriber match-any IN_CRITICAL_AUTH
+   match activated-service-template DefaultCriticalVoice_SRV_TEMPLATE
+  !
+  class-map type control subscriber match-any IN_CRITICAL_AUTH_CLOSED_MODE
+   match activated-service-template DefaultCriticalAuthVlan_SRV_TEMPLATE
+   match activated-service-template DefaultCriticalVoice_SRV_TEMPLATE
+  !
+  class-map type control subscriber match-all MAB
+   match method mab
+  !
+  class-map type control subscriber match-all MAB_FAILED
+   match method mab
+   match result-type method mab authoritative
+  !
+  class-map type control subscriber match-none NOT_IN_CRITICAL_AUTH
+   match activated-service-template DefaultCriticalVoice_SRV_TEMPLATE
+  !
+  class-map type control subscriber match-none NOT_IN_CRITICAL_AUTH_CLOSED_MODE
+   match activated-service-template DefaultCriticalAuthVlan_SRV_TEMPLATE
+   match activated-service-template DefaultCriticalVoice_SRV_TEMPLATE
+  !
+  {# Policy Maps #}
+  {# CLOSED 1X then MAB Template #}
+  policy-map type control subscriber PMAP_DefaultWiredDot1xClosedAuth_1X_MAB
+   event session-started match-all
+    10 class always do-until-failure
+     10 authenticate using dot1x retries 2 retry-time 0 priority 10
+   event authentication-failure match-first
+    5 class DOT1X_FAILED do-until-failure
+     10 terminate dot1x
+     20 authenticate using mab priority 20
+    10 class AAA_SVR_DOWN_UNAUTHD_HOST do-until-failure
+     30 authorize
+     40 pause reauthentication
+    20 class AAA_SVR_DOWN_AUTHD_HOST do-until-failure
+     10 pause reauthentication
+     20 authorize
+    30 class DOT1X_NO_RESP do-until-failure
+     10 terminate dot1x
+     20 authenticate using mab priority 20
+    40 class MAB_FAILED do-until-failure
+     10 terminate mab
+     20 authentication-restart 60
+    50 class DOT1X_TIMEOUT do-until-failure
+     10 terminate dot1x
+     20 authenticate using mab priority 20
+    60 class always do-until-failure
+     10 terminate dot1x
+     20 terminate mab
+     30 authentication-restart 60
+   event aaa-available match-all
+    10 class IN_CRITICAL_AUTH_CLOSED_MODE do-until-failure
+     10 clear-session
+    20 class NOT_IN_CRITICAL_AUTH_CLOSED_MODE do-until-failure
+     10 resume reauthentication
+   event agent-found match-all
+    10 class always do-until-failure
+     10 terminate mab
+     20 authenticate using dot1x retries 2 retry-time 0 priority 10
+   event inactivity-timeout match-all
+    10 class always do-until-failure
+     10 clear-session
+   event authentication-success match-all
+   event violation match-all
+    10 class always do-until-failure
+     10 restrict
+   event authorization-failure match-all
+    10 class AUTHC_SUCCESS-AUTHZ_FAIL do-until-failure
+     10 authentication-restart 60
+  !
+  {# CLOSED MAB then 1X Template #}
+  policy-map type control subscriber PMAP_DefaultWiredDot1xClosedAuth_MAB_1X
+   event session-started match-all
+    10 class always do-until-failure
+     10 authenticate using mab priority 20
+   event authentication-failure match-first
+    5 class DOT1X_FAILED do-until-failure
+     10 terminate dot1x
+     20 authentication-restart 60
+    10 class AAA_SVR_DOWN_UNAUTHD_HOST do-until-failure
+     30 authorize
+     40 pause reauthentication
+    20 class AAA_SVR_DOWN_AUTHD_HOST do-until-failure
+     10 pause reauthentication
+     20 authorize
+    30 class MAB_FAILED do-until-failure
+     10 terminate mab
+     20 authenticate using dot1x retries 2 retry-time 0 priority 10
+    40 class DOT1X_NO_RESP do-until-failure
+     10 terminate dot1x
+     20 authentication-restart 60
+    50 class DOT1X_TIMEOUT do-until-failure
+     10 terminate dot1x
+     20 authenticate using mab priority 20
+    60 class always do-until-failure
+     10 terminate mab
+     20 terminate dot1x
+     30 authentication-restart 60
+   event aaa-available match-all
+    10 class IN_CRITICAL_AUTH_CLOSED_MODE do-until-failure
+     10 clear-session
+    20 class NOT_IN_CRITICAL_AUTH_CLOSED_MODE do-until-failure
+     10 resume reauthentication
+   event agent-found match-all
+    10 class always do-until-failure
+     10 terminate mab
+     20 authenticate using dot1x retries 2 retry-time 0 priority 10
+   event inactivity-timeout match-all
+    10 class always do-until-failure
+     10 clear-session
+   event authentication-success match-all
+   event violation match-all
+    10 class always do-until-failure
+     10 restrict
+   event authorization-failure match-all
+    10 class AUTHC_SUCCESS-AUTHZ_FAIL do-until-failure
+     10 authentication-restart 60
+  !
+  {# LOW IMPACT 1X then MAB Template #}
+  policy-map type control subscriber PMAP_DefaultWiredDot1xLowImpactAuth_1X_MAB
+   event session-started match-all
+    10 class always do-until-failure
+     10 authenticate using dot1x retries 2 retry-time 0 priority 10
+   event authentication-failure match-first
+    5 class DOT1X_FAILED do-until-failure
+     10 terminate dot1x
+     20 authenticate using mab priority 20
+    10 class AAA_SVR_DOWN_UNAUTHD_HOST do-until-failure
+     25 activate service-template DefaultCriticalAccess_SRV_TEMPLATE
+     30 authorize
+     40 pause reauthentication
+    20 class AAA_SVR_DOWN_AUTHD_HOST do-until-failure
+     10 pause reauthentication
+     20 authorize
+    30 class DOT1X_NO_RESP do-until-failure
+     10 terminate dot1x
+     20 authenticate using mab priority 20
+    40 class MAB_FAILED do-until-failure
+     10 terminate mab
+     20 authentication-restart 60
+    50 class DOT1X_TIMEOUT do-until-failure
+     10 terminate dot1x
+     20 authenticate using mab priority 20
+    60 class always do-until-failure
+     10 terminate dot1x
+     20 terminate mab
+     30 authentication-restart 60
+   event aaa-available match-all
+    10 class IN_CRITICAL_AUTH do-until-failure
+     10 clear-session
+    20 class NOT_IN_CRITICAL_AUTH do-until-failure
+     10 resume reauthentication
+   event agent-found match-all
+    10 class always do-until-failure
+     10 terminate mab
+     20 authenticate using dot1x retries 2 retry-time 0 priority 10
+   event inactivity-timeout match-all
+    10 class always do-until-failure
+     10 clear-session
+   event authentication-success match-all
+   event violation match-all
+    10 class always do-until-failure
+     10 restrict
+   event authorization-failure match-all
+    10 class AUTHC_SUCCESS-AUTHZ_FAIL do-until-failure
+     10 authentication-restart 60
+  !
+  {# LOW IMPACT MAB then 1X Template #}
+  policy-map type control subscriber PMAP_DefaultWiredDot1xLowImpactAuth_MAB_1X
+   event session-started match-all
+    10 class always do-until-failure
+     10 authenticate using mab priority 20
+   event authentication-failure match-first
+    5 class DOT1X_FAILED do-until-failure
+     10 terminate dot1x
+     20 authentication-restart 60
+    10 class AAA_SVR_DOWN_UNAUTHD_HOST do-until-failure
+     25 activate service-template DefaultCriticalAccess_SRV_TEMPLATE
+     30 authorize
+     40 pause reauthentication
+    20 class AAA_SVR_DOWN_AUTHD_HOST do-until-failure
+     10 pause reauthentication
+     20 authorize
+    30 class MAB_FAILED do-until-failure
+     10 terminate mab
+     20 authenticate using dot1x retries 2 retry-time 0 priority 10
+    40 class DOT1X_NO_RESP do-until-failure
+     10 terminate dot1x
+     20 authentication-restart 60
+    50 class DOT1X_TIMEOUT do-until-failure
+     10 terminate dot1x
+     20 authenticate using mab priority 20
+    60 class always do-until-failure
+     10 terminate mab
+     20 terminate dot1x
+     30 authentication-restart 60
+   event aaa-available match-all
+    10 class IN_CRITICAL_AUTH do-until-failure
+     10 clear-session
+    20 class NOT_IN_CRITICAL_AUTH do-until-failure
+     10 resume reauthentication
+   event agent-found match-all
+    10 class always do-until-failure
+     10 terminate mab
+     20 authenticate using dot1x retries 2 retry-time 0 priority 10
+   event inactivity-timeout match-all
+    10 class always do-until-failure
+     10 clear-session
+   event authentication-success match-all
+   event violation match-all
+    10 class always do-until-failure
+     10 restrict
+   event authorization-failure match-all
+    10 class AUTHC_SUCCESS-AUTHZ_FAIL do-until-failure
+     10 authentication-restart 60
+  !
+  {# Open 1X then MAB Template #}
+  policy-map type control subscriber PMAP_DefaultWiredDot1xOpenAuth_1X_MAB
+   event session-started match-all
+    10 class always do-until-failure
+     10 authenticate using dot1x retries 2 retry-time 0 priority 10
+   event authentication-failure match-first
+    5 class DOT1X_FAILED do-until-failure
+     10 terminate dot1x
+     20 authenticate using mab priority 20
+    10 class AAA_SVR_DOWN_UNAUTHD_HOST do-until-failure
+     30 authorize
+     40 pause reauthentication
+    20 class AAA_SVR_DOWN_AUTHD_HOST do-until-failure
+     10 pause reauthentication
+     20 authorize
+    30 class DOT1X_NO_RESP do-until-failure
+     10 terminate dot1x
+     20 authenticate using mab priority 20
+    40 class MAB_FAILED do-until-failure
+     10 terminate mab
+     20 authentication-restart 60
+    50 class DOT1X_TIMEOUT do-until-failure
+     10 terminate dot1x
+     20 authenticate using mab priority 20
+    60 class always do-until-failure
+     10 terminate dot1x
+     20 terminate mab
+     30 authentication-restart 60
+   event aaa-available match-all
+    10 class IN_CRITICAL_AUTH do-until-failure
+     10 clear-session
+    20 class NOT_IN_CRITICAL_AUTH do-until-failure
+     10 resume reauthentication
+   event agent-found match-all
+    10 class always do-until-failure
+     10 terminate mab
+     20 authenticate using dot1x retries 2 retry-time 0 priority 10
+   event inactivity-timeout match-all
+    10 class always do-until-failure
+     10 clear-session
+   event authentication-success match-all
+   event violation match-all
+    10 class always do-until-failure
+     10 restrict
+   event authorization-failure match-all
+    10 class AUTHC_SUCCESS-AUTHZ_FAIL do-until-failure
+     10 authentication-restart 60
+  !
+  {# Open MAB then 1X Template #}
+  policy-map type control subscriber PMAP_DefaultWiredDot1xOpenAuth_MAB_1X
+   event session-started match-all
+    10 class always do-until-failure
+     10 authenticate using mab priority 20
+   event authentication-failure match-first
+    5 class DOT1X_FAILED do-until-failure
+     10 terminate dot1x
+     20 authentication-restart 60
+    10 class AAA_SVR_DOWN_UNAUTHD_HOST do-until-failure
+     30 authorize
+     40 pause reauthentication
+    20 class AAA_SVR_DOWN_AUTHD_HOST do-until-failure
+     10 pause reauthentication
+     20 authorize
+    30 class MAB_FAILED do-until-failure
+     10 terminate mab
+     20 authenticate using dot1x retries 2 retry-time 0 priority 10
+    40 class DOT1X_NO_RESP do-until-failure
+     10 terminate dot1x
+     20 authentication-restart 60
+    50 class DOT1X_TIMEOUT do-until-failure
+     10 terminate dot1x
+     20 authenticate using mab priority 20
+    60 class always do-until-failure
+     10 terminate mab
+     20 terminate dot1x
+     30 authentication-restart 60
+   event aaa-available match-all
+    10 class IN_CRITICAL_AUTH do-until-failure
+     10 clear-session
+    20 class NOT_IN_CRITICAL_AUTH do-until-failure
+     10 resume reauthentication
+   event agent-found match-all
+    10 class always do-until-failure
+     10 terminate mab
+     20 authenticate using dot1x retries 2 retry-time 0 priority 10
+   event inactivity-timeout match-all
+    10 class always do-until-failure
+     10 clear-session
+   event authentication-success match-all
+   event violation match-all
+    10 class always do-until-failure
+     10 restrict
+   event authorization-failure match-all
+    10 class AUTHC_SUCCESS-AUTHZ_FAIL do-until-failure
+     10 authentication-restart 60
+  !
+  {# CTS SGACL Enforcement #}
+  cts role-based enforcement
+  {% macro configure_cts(vlanpairs) %}
+    cts role-based enforcement vlan-list 1,{{ vlanpairs|join(',', attribute='vlan') }}
+  {% endmacro %} 
+```
+
+The **macro** `configure_cts(vlanpairs)` uses the already mentioned vlan array allows us to enable the r**ole-based enforcment** via a vlan list for SGACL's
+
+We will define a set of **macros** to drive the interface template deployment across the access switch. These templates will be logically assigned to the interfaces using a **Change of Authorization (CoA)** RADIUS message returned to the switch.
+
+```J2
+  {# IBNS2.0 Macro Section #}
+  {# Interface Base Configuration IBNS2.0 Template Macro #}
+  {% macro ibns_baseconf_interface() %}
+    description BASE CONFIG
     switchport mode access
-   !
-   template WORKSTATION
-    description Workstation
-    switchport access vlan ${data_vlan_number}
-    switchport mode access
-    switchport voice vlan ${voice_vlan_number}
-   !
-   template GUEST
+    snmp trap mac-notification change added
+    snmp trap mac-notification change removed
+    spanning-tree portfast
+    spanning-tree bpduguard enable
+    source template BASE_IBNS
+  {% endmacro %}
+  !
+  {# Interface Access Point IBNS2.0 Template Macro #}
+  {% macro ibns_accesspoint(vlan_number) %} 
+    template ACCESS_POINT_IBNS
+     description Access Point Interface
+     switchport access vlan {{ vlan_number }}
+     dot1x pae authenticator
+     dot1x timeout supp-timeout 7
+     dot1x max-req 3
+     mab
+     access-session port-control auto
+     authentication periodic
+     authentication timer reauthenticate server
+     {#ip access-group ACL-DEFAULT in#}
+     service-policy type control subscriber PMAP_DefaultWiredDot1xClosedAuth_MAB_1X
+  {% endmacro %}
+  !
+  {# Interface FLex-Access Point IBNS2.0 Template Macro #}
+  {% macro ibns_flexaccesspoint(vlan_number, data_number, voice_number, guest_number) %} 
+    template FLEX_ACCESS_POINT_IBNS
+     description Flex Access Point Interface
+     switchport mode trunk
+     switchport trunk native vlan {{ vlan_number }}
+     switchport trunk allowed vlan {{ vlan_number }},{{ data_number }},{{ voice_number}},{{ guest_number }}
+     dot1x pae authenticator
+     dot1x timeout supp-timeout 7
+     dot1x max-req 3
+     mab
+     access-session interface-template sticky timer 30
+     access-session port-control auto
+     authentication periodic
+     authentication timer reauthenticate server
+     {#ip access-group ACL-DEFAULT in#}
+     service-policy type control subscriber PMAP_DefaultWiredDot1xClosedAuth_MAB_1X
+  {% endmacro %}
+  !
+  {# Interface Workstation Access IBNS2.0 Template Macro #}
+  {% macro ibns_workstation(vlan_number, voice_number) %} 
+    template WORKSTATION_IBNS
+     description Workstation
+     switchport access vlan {{ vlan_number }}
+     switchport mode access
+     switchport voice vlan {{ voice_number }}
+     dot1x pae authenticator
+     dot1x timeout supp-timeout 7
+     dot1x max-req 3
+     mab
+     access-session closed
+     access-session port-control auto
+     authentication periodic
+     authentication timer reauthenticate server
+     service-policy type control subscriber PMAP_DefaultWiredDot1xClosedAuth_1X_MAB
+  {% endmacro %}
+  !
+  {# Interface Guest Access IBNS2.0 Template Macro #}
+  {% macro ibns_guest(vlan_number) %} 
+    template GUEST_IBNS
      description Guest Interface
-     switchport access vlan ${guest_vlan_number}
+     switchport access vlan {{ vlan_number }}
      switchport mode access
-   !
-   ##Macros
-   #macro( access_interface )
+     dot1x pae authenticator
+     dot1x timeout supp-timeout 7
+     dot1x max-req 3
+     mab
+     access-session closed
+     access-session port-control auto
+     authentication periodic
+     authentication timer reauthenticate server
+     service-policy type control subscriber PMAP_DefaultWiredDot1xClosedAuth_1X_MAB
+  {% endmacro %}
+  !
+  {# Interface Base Configuration IBNS2.0 Template Macro #}
+  {% macro ibns_baseconfig(vlan_number) %} 
+    template BASE_IBNS
      description BASE CONFIG
-     switchport access vlan ${bh_vlan_number}
+     switchport access vlan {{ vlan_number }}
      switchport mode access
-     switchport port-security maximum 3
-     switchport port-security
-     snmp trap mac-notification change added
-     snmp trap mac-notification change removed
-     spanning-tree portfast
-     spanning-tree bpduguard enable
-     source template WORKSTATION
-   #end
-   !
-   #macro( uplink_physical )
-     access-session inherit disable autoconf
-   #end
-   !
-   #macro( uplink_interface )
-     switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
-   #end
-   !
-   ##Access Port Configuration
-   #foreach( $Switch in [0..$offset] )
-     #set( $SwiNum = $Switch + 1 )
-     interface range gi ${SwiNum}/0/1 - 9, gi ${SwiNum}/0/12 - $PortTotal[$Switch]
-       #access_interface
-   #end
-   !
-   ##Uplink Port Configuration
-   interface portchannel 1
-    #uplink_interface
-   !
-   ##Uplink Physical Port Configuration
-   interface range gi 1/0/10 - 11
-    #uplink_physical
+     dot1x pae authenticator
+     dot1x timeout supp-timeout 7
+     dot1x max-req 3
+     mab
+     access-session closed
+     access-session port-control auto
+     authentication periodic
+     authentication timer reauthenticate server
+     service-policy type control subscriber PMAP_DefaultWiredDot1xClosedAuth_1X_MAB
+  {% endmacro %}
 ```
 
-Lastly, you could modify how you address ports using the built-in variable as it removes tthe need for indexing and additionally can be used with logic to address port types.
+These will be deployed via calling each **macro** as follows:
 
-```vtl
-   ##Access Port Configuration
-   #foreach( $interface in $__interface )
-     #if( $interface.portMode == "access" && $interface.interfaceType == "Physical")
-       interface $interface.portName
-        #access_interface
-     #end
-   #end
+```J2
+  {# Interface Templates #}
+  {{ ibns_baseconfig(vlanArray[1]) }}
+  {{ ibns_accesspoint(vlanArray[1]) }}
+  {{ ibns_flexaccesspoint(vlanArray[1], vlanArray[2], vlanArray[3], vlanArray[4]) }} 
+  {{ ibns_workstation(vlanArray[2], vlanArray[3]) }}
+  {{ ibns_guest(vlanArray[4]) }} 
 ```
 
-As it stands, this is not a bad place to start, and only a few additions and modifications are required to allow for IBNS2.0.
+Once deployed the interfaces will be deployed for 802.1x configuration via the interface snippet:
 
-### ***Modify Code***
-
-First, we will ensure that the following lines change device tracking to the modern standard.
-
-```vtl
-   device-tracking upgrade-cli force
-   !
-   device-tracking policy IPDT_MAX_10
-    limit address-count 10
-    no protocol udp
-    tracking enable
+```J2
+   {# Automatically Configure Workstation Remaining interfaces#}
+   {% for interface in __interface %}
+     {% if interface.interfaceType == "Physical" && interface.portName.replaceAll("(^[a-zA-Z]+).*","$1")    == "GigabitEthernet"  %}
+       {% if interface.portName.replaceAll("(^[a-zA-Z]+.).*", "$1") != "GigabitEthernet0" %}
+         {% if interface.portName.replaceAll("^[a-zA-Z]+(\\d+)/(\\d+)/(\\d+)", "$2") != 1 %}
+           {% if interface.portName in apintlog %}
+           {% else %}
+             default interface {{ interface.portName }}
+             interface {{ interface.portName }}
+               {{ ibns_baseconf_interface() }}
+           {% endif %}
+         {% endif %}
+       {% endif %}
+     {% endif %}
+   {% endfor %}
 ```
 
-Then we need to define the class maps utilized in the Dot1x policy. The policy and class maps follow the MQC methods previously used for QoS. These have been exploited for other service policies, and now we build IBNS2.0 using the same schema.
+We loop through all the interfaces on the switch, ensuring we configuring only those starting with GigabitEthernet and negating the management interface and any that are network modules. We then ensure the interface is not in the `apintlog` array as previously configured, and if all that is true default the interface, and place a 802.1x config on it via an interface macro.
 
-```vtl
-   !
-   class-map type control subscriber match-all DOT1X_FAILED
-    match method dot1x
-    match result-type method dot1x authoritative
-   !
-   class-map type control subscriber match-all AAA_SVR_DOWN_UNAUTHD_HOST
-    match authorization-status unauthorized
-    match result-type aaa-timeout
-   !
-   class-map type control subscriber match-all AAA_SVR_DOWN_AUTHD_HOST
-    match authorization-status authorized
-    match result-type aaa-timeout
-   !
-   class-map type control subscriber match-all DOT1X_NO_RESP
-    match method dot1x
-    match result-type method dot1x agent-not-found
-   !
-   class-map type control subscriber match-all MAB_FAILED
-    match method mab
-    match result-type method mab authoritative
-   !
-   class-map type control subscriber match-any IN_CRITICAL_AUTH_CLOSED_MODE
-    match activated-service-template DefaultCriticalAuthVlan_SRV_TEMPLATE
-    match activated-service-template DefaultCriticalVoice_SRV_TEMPLATE
-   !
-   class-map type control subscriber match-none NOT_IN_CRITICAL_AUTH_CLOSED_MODE
-    match activated-service-template DefaultCriticalAuthVlan_SRV_TEMPLATE
-    match activated-service-template DefaultCriticalVoice_SRV_TEMPLATE
-   !
-   class-map type control subscriber match-all AUTHC_SUCCESS-AUTHZ_FAIL
-    match authorization-status unauthorized
-    match result-type success
-   !
+At this point the **AAA configuration** deployed via Catalyst Centers ISE integration, will work with the configuration deployed via the regular templates.
+
+The last piece of the puzzle is being able to deploy upstream Layer 2 CTS marking for Cisco Trustsec without breaking the provisioning automation. In order to do that, we will make use of a **self-deleting EEM** which will fire 30 seconds post deployment. This will ensure provisioning completes, and ensure the SGT are propogated.
+
+```J2
+  {#- Automated Script for cts manual disruptive config -#}
+  {#- This will always ensure the uplink get the cts manual for with  -#}
+  {#- timed self deleting EEM script  -#}
+  event manager applet POST_CTS_MANUAL authorization bypass
+   event timer countdown time 30
+   action 1.0 cli command "enable"
+   action 1.1 cli command "config t"
+   action 2.0 cli command "interface range {{ uplink_portarray|join(',') }}"
+   action 2.1 cli command "cts manual"
+   action 2.2 cli command "policy static sgt 2 trusted"
+   action 2.3 cli command "propagate sgt"
+   action 2.4 cli command "no event manager applet POST_CTS_MANUAL"
+   action 2.5 cli command "end"
+   action 2.6 cli command "wr"
+   action 2.7 cli command "exit"
 ```
 
-As we would with MQC, once we have defined the various class maps, we can then call upon them in a policy-map as follows;
-
-```vtl
-	policy-map type control subscriber PMAP_DefaultWiredDot1xClosedAuth_1X_MAB
-	 event session-started match-all
-	  10 class always do-until-failure
-	   10 authenticate using dot1x retries 2 retry-time 0 priority 10
-	 event authentication-failure match-first
-	  5 class DOT1X_FAILED do-until-failure
-	   10 terminate dot1x
-	   20 authenticate using mab priority 20
-	  10 class AAA_SVR_DOWN_UNAUTHD_HOST do-until-failure
-	   30 authorize
-	   40 pause reauthentication
-	  20 class AAA_SVR_DOWN_AUTHD_HOST do-until-failure
-	   10 pause reauthentication
-	   20 authorize
-	  30 class DOT1X_NO_RESP do-until-failure
-	   10 terminate dot1x
-	   20 authenticate using mab priority 20
-	  40 class MAB_FAILED do-until-failure
-	   10 terminate mab
-	   20 authentication-restart 60
-	  50 class DOT1X_TIMEOUT do-until-failure
-	   10 terminate dot1x
-	   20 authenticate using mab priority 20
-	  60 class always do-until-failure
-	   10 terminate dot1x
-	   20 terminate mab
-	   30 authentication-restart 60
-	 event aaa-available match-all
-	  10 class IN_CRITICAL_AUTH_CLOSED_MODE do-until-failure
-	   10 clear-session
-	  20 class NOT_IN_CRITICAL_AUTH_CLOSED_MODE do-until-failure
-	   10 resume reauthentication
-	 event agent-found match-all
-	  10 class always do-until-failure
-	   10 terminate mab
-	   20 authenticate using dot1x retries 2 retry-time 0 priority 10
-	 event inactivity-timeout match-all
-	  10 class always do-until-failure
-	   10 clear-session
-	 event authentication-success match-all
-	 event violation match-all
-	  10 class always do-until-failure
-	   10 restrict
-	 event authorization-failure match-all
-	  10 class AUTHC_SUCCESS-AUTHZ_FAIL do-until-failure
-	   10 authentication-restart 60
-        !
-        policy-map type control subscriber PMAP_DefaultWiredDot1xClosedAuth_MAB_1X
-	 event session-started match-all
-	  10 class always do-until-failure
-	   10 authenticate using mab priority 20
-	 event authentication-failure match-first
-	  5 class DOT1X_FAILED do-until-failure
-	   10 terminate dot1x
-	   20 authentication-restart 60
-	  10 class AAA_SVR_DOWN_UNAUTHD_HOST do-until-failure
-	   30 authorize
-	   40 pause reauthentication
-	  20 class AAA_SVR_DOWN_AUTHD_HOST do-until-failure
-	   10 pause reauthentication
-	   20 authorize
-	  30 class MAB_FAILED do-until-failure
-	   10 terminate mab
-	   20 authenticate using dot1x retries 2 retry-time 0 priority 10
-	  40 class DOT1X_NO_RESP do-until-failure
-	   10 terminate dot1x
-	   20 authentication-restart 60
-	  50 class DOT1X_TIMEOUT do-until-failure
-	   10 terminate dot1x
-	   20 authenticate using mab priority 20
-	  60 class always do-until-failure
-	   10 terminate mab
-	   20 terminate dot1x
-	   30 authentication-restart 60
-	 event aaa-available match-all
-	  10 class IN_CRITICAL_AUTH_CLOSED_MODE do-until-failure
-	   10 clear-session
-	  20 class NOT_IN_CRITICAL_AUTH_CLOSED_MODE do-until-failure
-	   10 resume reauthentication
-	 event agent-found match-all
-	  10 class always do-until-failure
-	   10 terminate mab
-	   20 authenticate using dot1x retries 2 retry-time 0 priority 10
-	 event inactivity-timeout match-all
-	  10 class always do-until-failure
-	   10 clear-session
-	 event authentication-success match-all
-	 event violation match-all
-	  10 class always do-until-failure
-	   10 restrict
-	 event authorization-failure match-all
-	  10 class AUTHC_SUCCESS-AUTHZ_FAIL do-until-failure
-	   10 authentication-restart 60
-	   !
-```
-
-This policy-map allows for all eventualities and gracefully flows top down in a very simple flow. It deals with all exceptions gracefully and is not as rigid as the interface configuration methodology.
-
-Once the class maps and policies have been defined, we need to utilize them.
-
-```vtl
-   template ACCESS_POINT
-    description Access Point Interface
-    switchport access vlan ${ap_vlan_number}
-    switchport mode access
-    dot1x pae authenticator
-    dot1x timeout supp-timeout 7
-    dot1x max-req 3
-    mab
-    access-session closed
-    access-session port-control auto
-    authentication periodic
-    authentication timer reauthenticate server
-    service-policy type control subscriber PMAP_DefaultWiredDot1xClosedAuth_MAB_1X
-   !
-   template WORKSTATION
-    description Workstation
-    switchport access vlan ${data_vlan_number}
-    switchport mode access
-    switchport voice vlan ${voice_vlan_number}
-    dot1x pae authenticator
-    dot1x timeout supp-timeout 7
-    dot1x max-req 3
-    mab
-    access-session closed
-    access-session port-control auto
-    authentication periodic
-    authentication timer reauthenticate server
-    service-policy type control subscriber PMAP_DefaultWiredDot1xClosedAuth_1X_MAB
-   !
-```
-
-We have defined the various interface templates for use with the MQC DOT1X service policy. You have two options. Some prefer to call out a separate Guest interface template; however, because Dot1x technology automatically deals with that, we will remove that template.
-
-Next, we can then modify the parameter map to suit the policy. Remember that with **IBNS2.0** and templates or interfaces running in ***closed mode***, the dynamic capability of **Autoconf** is not going to operate because only EAP packets are allowed by **Secure Access** on the interface initially until authentication occurs. Alternatively, if the interface is in ***low impact mode***, then and only then will **Autoconf** operate properly. I always leave the config on the switch in case of that eventuality.
-
-
-```vtl
-   #INTERACTIVE
-   autoconf enable<IQ>yes<R>y
-   #END_INTERACTIVE
-   !
-   parameter-map type subscriber attribute-to-service BUILTIN_DEVICE_TO_TEMPLATE
-    10 map device-type regex "Cisco-IP-Phone"
-     20 interface-template WORKSTATION
-    20 map device-type regex "Cisco-IP-Camera"
-     20 interface-template WORKSTATION
-    30 map device-type regex "Cisco-DMP"
-     20 interface-template WORKSTATION
-    40 map oui eq "00.0f.44"
-     20 interface-template WORKSTATION
-    50 map oui eq "00.23.ac"
-     20 interface-template WORKSTATION
-    60 map device-type regex "Cisco-AIR-AP"
-     20 interface-template ACCESS_POINT
-    70 map device-type regex "Cisco-AIR-LAP"
-     20 interface-template ACCESS_POINT
-    80 map device-type regex "Cisco-TelePresence"
-     20 interface-template WORKSTATION
-    90 map device-type regex "Surveillance-Camera"
-     10 interface-template WORKSTATION
-    100 map device-type regex "Video-Conference"
-     10 interface-template WORKSTATION
-    110 map device-type regex "Cisco-CAT-LAP"
-     10 interface-template ACCESS_POINT
-   !
-```
-
-Lastly, we need to build the macros for interface configuration, 
-
-```vtl
-   ##Macros
-   #macro( access_interface )
-     description BASE CONFIG
-     switchport access vlan ${bh_vlan_number}
-     switchport mode access
-     spanning-tree portfast
-     spanning-tree bpduguard enable
-     device-tracking attach-policy IPDT_MAX_10
-     dot1x timeout tx-period 7
-     dot1x max-reauth-req 3
-     source template WORKSTATION
-   #end
-   !
-   #macro( uplink_interface )
-     switchport trunk allowed vlan add $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
-   #end
-   !
-   #macro( #uplink_physical )
-     access-session inherit disable autoconf
-     cts manual
-      policy static sgt 2 trusted     
-   #end
-   !
-```
-
-Then we need to configure the various interfaces with the new interface templates via macro and modify the uplink port-channel. Additionally, we need to add two CTS commands to the physical interfaces within the port-channel bundle that are not available at the logical level and only available at the physical layer.
-
-```vtl
-   !Add SGACL enforcement
-   cts role-based enforcement
-   cts role-based enforcement vlan-list $data_vlan_number,$voice_vlan_number,$ap_vlan_number,$guest_vlan_number,$bh_vlan_number
-   !
-   ##Access Port Configuration
-   #foreach( $Switch in [0..$offset] )
-     #set( $SwiNum = $Switch + 1 )
-     interface range gi ${SwiNum}/0/1 - 9, gi ${SwiNum}/0/12 - $PortTotal[$Switch]
-       #access_interface
-   #end
-   !
-   ##Uplink Port Configuration
-   interface portchannel 1
-    #uplink_interface
-   !
-   ##Uplink Physical Port Configuration
-   interface range gi 1/0/10 - 11
-    #uplink_physical
-   !
-```
-
-Now that we have defined all the various IBNS2.0 configurations on the switch, as a device comes up on an interface, the device classifier will automatically run logically, attaching the interface template configuration of WORKSTATION onto an access port. If an Access Point is classified as being attached to the interface, it will instead logically attach the interface template configuration of ACCESS_POINT. The DOT1X service policy will run within both those interface templates, and the device will be authenticated. Identity Services Engine may, at that point, send a Change of Authorization and put the device in a differing VLAN or more.
-
-Lastly, to create a fully dynamic environment, you might build out the following EEM scripts to entirely give that Dynamic look and feel. Because of the **Autoconf** vs **Closed Mode** limitation, we do not have a **Fully Dynamic environment**. Luckily, we have a way to resolve that issue. 
-
-</details>
-
-## Step 6 - ***Non SDA IBNS2.0 Fully Dynamic Port Configuration - Use Case***
-
-So as explained, we have a chicken and the egg scenario, whereby we can't use **Autoconf** with **Closed Mode** as no packets can pass, which can be used with the parameter map to configure the interface automatically. Additionally, we want to have a **Secure Access** environment with **Zero Trust** using a policy on the interface that initially blocks traffic until authentication occurs. 
-
-<details open>
-<summary> Click for Details and Sub Tasks</summary>
-
-So how do we have our cake and eat it too...
-
-Luckily we can create a fully dynamic environment with a gated procedure. You might build out the following EEM scripts to give that Dynamic look and feel entirely. Typically, the types of devices where we might have issues like this where *MAB* or *EAP* are not going to work maybe those which identify themselves in another way. In the following instance, we can use **PoE** power events to trigger an EEM. See the following code:
-
-```vtl
-event manager applet DETECT_SW_IEEE_POE_UP
- event syslog pattern "%.*POWER.*GRANTED.* Interface.*"
- action 10    regexp "Interface ([^ ]+):" "$_syslog_msg" match intf
- action 20    cli command "enable"
- action 30    cli command "show run interface $intf | inc channel-group mode"
- action 40    regexp "(^channel-group)" "$_cli_result"
- action 50    if $_regexp_result ne "1"
- action 50.10  puts "POE Device Detected. INSTALL LOWIMPACT on Interface $intf"
- action 50.11  cli command "enable"
- action 50.12  cli command "conf t"
- action 50.13  cli command "default interface $intf"
- action 50.14  cli command "interface $intf"
- action 50.15  cli command " description AP CONFIG"
- action 50.16  cli command " switchport access vlan 10"
- action 50.17  cli command " switchport mode access"
- action 50.18  cli command " switchport port-security maximum 3"
- action 50.19  cli command " switchport port-security"
- action 50.20  cli command " device-tracking attach-policy IPDT_POLICY"
- action 50.21  cli command " snmp trap mac-notification change added"
- action 50.22  cli command " snmp trap mac-notification change removed"
- action 50.23  cli command " source template ACCESS_POINT"
- action 50.24  cli command " spanning-tree portfast"
- action 50.25  cli command " spanning-tree bpduguard enable"
- action 80    end
- action 90    cli command "write"
- action 99    cli command "exit"
-``` 
-
-In this section, we bind a new interface template for **ACCESS-POINTS** if a device powers up. This is an example only, and this would also catch IP Phones, so be aware you might deal with that as I will outline later, but let's deal with this use-case from a knowledge point of view.
-
-The template could be designed for either **low-impact mode** or a differing **service policy** allowing *MAB* before *DOT1x*.
-
-Two examples you might use for a differing **ACCESS-POINT** template. The first with *MAB* before *DOT1x*:
-
-```vtl
-template ACCESS_POINT
- dot1x pae authenticator
- dot1x timeout supp-timeout 7
- dot1x max-req 3
- switchport access vlan 10
- mab
- access-session closed
- access-session port-control auto
- authentication periodic
- authentication timer reauthenticate server
- service-policy type control subscriber PMAP_DefaultWiredDot1xClosedAuth_MAB_1X
- ip access-group ACL-DEFAULT in
- description Access Point Interface
-```
-
-The second example is low impact mode, and session-access closed is removed:
-
-```vtl
-template ACCESS_POINT
- dot1x pae authenticator
- dot1x timeout supp-timeout 7
- dot1x max-req 3
- switchport access vlan 10
- mab
- access-session port-control auto
- authentication periodic
- authentication timer reauthenticate server
- service-policy type control subscriber PMAP_DefaultWiredDot1xClosedAuth_MAB_1X
- ip access-group ACL-DEFAULT in
- description Access Point Interface
-```
-
-If you need a trunk interface for this scenario, you might add a **FLEXCONNECT** specific configuration like so:
-
-```vtl
-template FLEX_ACCESS_POINT
- dot1x pae authenticator
- dot1x timeout supp-timeout 7
- dot1x max-req 3
- switchport trunk native vlan 10
- switchport trunk allowed vlan 10,20,30,40,999
- switchport mode trunk
- mab
- access-session port-control auto
- access-session interface-template sticky timer 30
- authentication periodic
- authentication timer reauthenticate server
- service-policy type control subscriber PMAP_DefaultWiredDot1xClosedAuth_MAB_1X
- ip access-group ACL-DEFAULT in
- description Flex Access Point Interface
-```
-
-Alternatively, you might send this as an **AV-PAIR** within the **AUTHZ Profile** as part of the results of an **Authorization Policy**. The `access-session interface-template sticky timer 30` command is required for this type of modification where **AV-PAIR** are sent from **ISE** or other **AAA**. ***Please Note:*** *do not forget the timer option as it's required for dynamic modifications.* If the device was discovered to be an IP Phone, you could also choose to send the workstation template as part of the **AUTHZ Profile**.
-
-But you may say, we have modified the physical interface configuration, well we can reset that too to the **BASE CONFIG** through another EEM script as follows:
-
-```vtl
-event manager applet DETECT_SW_INT_DOWN
- event syslog pattern "%LINK.* Interface.* changed state to .* down"
- action 10    regexp "Interface ([^ ]+)," "$_syslog_msg" match intf
- action 20    cli command "enable"
- action 30    cli command "show run interface $intf | inc channel-group mode"
- action 40    regexp "(^channel-group)" "$_cli_result"
- action 50    if $_regexp_result ne "1"
- action 50.10  puts "AP Trunk Interface DOWN. INSTALL BASECONFIG on Interface $intf"
- action 50.11  cli command "enable"
- action 50.12  cli command "conf t"
- action 50.13  cli command "default interface $intf"
- action 50.14  cli command "interface $intf"
- action 50.15  cli command "access-session inherit disable interface-template-sticky"
- action 50.16  cli command "default interface $intf"
- action 50.17  cli command "interface $intf"
- action 50.18  cli command " description BASE CONFIG"
- action 50.20  cli command " switchport mode access"
- action 50.21  cli command " switchport port-security maximum 3"
- action 50.22  cli command " switchport port-security"
- action 50.23  cli command " device-tracking attach-policy IPDT_POLICY"
- action 50.24  cli command " snmp trap mac-notification change added"
- action 50.25  cli command " snmp trap mac-notification change removed"
- action 50.26  cli command " source template WORKSTATION"
- action 50.27  cli command " spanning-tree portfast"
- action 50.28  cli command " spanning-tree bpduguard enable"
- action 60    else
- action 70     puts "Non-EMM port Interface $intf went down."
- action 80    end
- action 90    cli command "write"
- action 99    cli command "exit"
-```
-
-This EEM script makes sure the interface is not a portchannel member and then reverts the interface to the **BASE CONFIG** automatically.
+Now that we have defined all the various IBNS2.0 configurations on the switch, as a device comes up on an interface, the DOT1X service policy will run and policy from ISE via a **Change of Authorization (CoA)** will drive behaviour on the port for either a vlan change or interface template assignment
 
 </details>
 
