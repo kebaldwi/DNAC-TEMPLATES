@@ -1,5 +1,5 @@
 {
-	"id": "55858244-ce05-4019-a86f-5f477c423633",
+	"id": "dae232a6-0100-4f99-9f0f-89190e2cd22b",
 	"name": "CATC Automation Lab",
 	"values": [
 		{
@@ -160,7 +160,7 @@
 		},
 		{
 			"key": "timeZone",
-			"value": "America/New_York",
+			"value": "EST5EDT",
 			"enabled": true
 		},
 		{
@@ -499,6 +499,6 @@
 		}
 	],
 	"_postman_variable_scope": "environment",
-	"_postman_exported_at": "2024-12-22T21:02:40.265Z",
-	"_postman_exported_using": "Postman/9.9.3"
+	"_postman_exported_at": "2024-12-12T20:43:20.558Z",
+	"_postman_exported_using": "Postman/11.22.1"
 }
