@@ -1,9 +1,11 @@
 {
 	"info": {
-		"_postman_id": "b67c61d0-40fa-49f7-a0fd-635f59221016",
-		"name": "Catalyst Center LAB 1 - Wired Automation Design",
+		"_postman_id": "765ef2a9-6c33-4153-8aab-7a1e7f4bf036",
+		"name": "Catalyst Center - Wired Automation Design",
 		"description": "This is the instructors collection to set up the dCLOUD environment for the DevNet Express Class. This collection will set up the following hierarchy.\n\nGlobal > CATC Template Labs > Building > Floor 1",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13375428",
+		"_collection_link": "https://dark-capsule-39992.postman.co/workspace/test~88bf3684-eb9e-4a6e-b042-e4fa374f5a24/collection/13375428-765ef2a9-6c33-4153-8aab-7a1e7f4bf036?action=share&source=collection_link&creator=13375428"
 	},
 	"item": [
 		{
@@ -20,11 +22,12 @@
 							"}\r",
 							"else {\r",
 							"    pm.test(\"Token not acquired\",() => {pm.expect(pm.response.text()).to.include(\"Token\");});\r",
-							"    postman.setNextRequest(\"null\");\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
 							"postman.setNextRequest(\"Create Area\")"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -33,7 +36,8 @@
 						"exec": [
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -103,20 +107,21 @@
 							"if ((jsonData.executionId) && (jsonData.message == \"The request has been accepted for execution\")) {\r",
 							"    pm.test(\"Area created\",() => {pm.expect(pm.response.text()).to.include(\"The request has been accepted for execution\");});\r",
 							"    if ( !(pm.environment.get(\"HierarchyFloor\")) ){\r",
-							"        postman.setNextRequest(\"null\");\r",
+							"        pm.execution.setNextRequest(\"null\");\r",
 							"    }\r",
 							"    else if ( (pm.environment.get(\"HierarchyFloor\")) ){\r",
-							"        postman.setNextRequest(\"Create Building\");\r",
+							"        pm.execution.setNextRequest(\"Create Building\");\r",
 							"    }\r",
 							"}\r",
 							"else {\r",
 							"    pm.test(\"Area not created\",() => {pm.expect(pm.response.text()).to.include(\"The request has been accepted for execution\");});\r",
-							"    postman.setNextRequest(\"null\");\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
 							"\r",
 							"postman.setNextRequest(\"Create Building\")"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -129,7 +134,8 @@
 							"postman.setEnvironmentVariable(\"FLAG\", Counter);\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -187,12 +193,13 @@
 							"}\r",
 							"else {\r",
 							"  pm.test(\"Building not created\",() => {pm.expect(pm.response.text()).to.include(\"The request has been accepted for execution\");});\r",
-							"  postman.setNextRequest(\"null\");\r",
+							"  pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
-							"postman.setNextRequest(\"Create Floor\")\r",
+							"pm.execution.setNextRequest(\"Create Floor\")\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -207,7 +214,8 @@
 							"let BldgLatitude = pm.environment.get(\"BldgLatitude\");\r",
 							"let BldgAddressCountry = pm.environment.get(\"BldgAddressCountry\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -265,11 +273,12 @@
 							"}\r",
 							"else {\r",
 							"    pm.test(\"Floor not created\",() => {pm.expect(pm.response.text()).to.include(\"The request has been accepted for execution\");});\r",
-							"    postman.setNextRequest(\"null\");\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
-							"postman.setNextRequest(\"Get Global SiteID\")"
+							"pm.execution.setNextRequest(\"Get Global SiteID\")"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -281,7 +290,8 @@
 							"let HierarchyBldg = pm.environment.get(\"HierarchyBldg\");\r",
 							"let HierarchyFloor = pm.environment.get(\"HierarchyFloor\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -352,18 +362,17 @@
 							"}\r",
 							"}\r",
 							"setTimeout(function(){}, [25000]);\r",
-							"postman.setNextRequest(\"Create Settings\")\r",
+							"pm.execution.setNextRequest(\"Create Settings\")\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
-						"exec": [
-							""
-						],
+						"packages": {},
 						"type": "text/javascript"
 					}
 				}
@@ -424,12 +433,13 @@
 							"}\r",
 							"else {\r",
 							"  pm.test(\"Global settings not created\", function () {pm.expect(false).to.be.false;})\r",
-							"  postman.setNextRequest(\"null\");\r",
+							"  pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
 							"setTimeout(function(){}, [15000]);\r",
-							"postman.setNextRequest(\"Create Credentials\")"
+							"pm.execution.setNextRequest(\"Create Credentials\")"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -456,7 +466,8 @@
 							"\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -514,12 +525,13 @@
 							"}\r",
 							"else {\r",
 							"  pm.test(\"Credentials not created\", function () {pm.expect(true).to.be.false;})\r",
-							"  postman.setNextRequest(\"null\");\r",
+							"  pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
 							"setTimeout(function(){}, [25000]);\r",
-							"postman.setNextRequest(\"Create Netconf Credential\")"
+							"pm.execution.setNextRequest(\"Create Netconf Credential\")"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -534,7 +546,8 @@
 							"pm.environment.get(\"DcloudSnmpRW-Desc\");\r",
 							"pm.environment.get(\"DcloudNetconf\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -591,12 +604,13 @@
 							"}\r",
 							"else {\r",
 							"  pm.test(\"NETCONF Credential created\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
-							"  postman.setNextRequest(\"null\");\r",
+							"  pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
 							"setTimeout(function(){}, [25000]);\r",
-							"postman.setNextRequest(\"Get Credentials\")"
+							"pm.execution.setNextRequest(\"Get Credentials\")"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -611,7 +625,8 @@
 							"pm.environment.get(\"DcloudSnmpRW-Desc\");\r",
 							"pm.environment.get(\"DcloudNetconf\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -683,9 +698,10 @@
 							"}\r",
 							"}\r",
 							"setTimeout(function(){}, [15000]);\r",
-							"postman.setNextRequest(\"Assign Credentials\")"
+							"pm.execution.setNextRequest(\"Assign Credentials\")"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -745,12 +761,13 @@
 							"}",
 							"else {",
 							"  pm.test(\"Credentials not assigned\", function () {pm.expect(true).to.be.false;});",
-							"  postman.setNextRequest(\"null\");",
+							"  pm.execution.setNextRequest(\"null\");",
 							"}",
 							"setTimeout(function(){}, [25000]);",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -761,7 +778,8 @@
 							"pm.environment.get(\"GlobalCredentialSnmpRO\");\r",
 							"pm.environment.get(\"GlobalCredentialSnmpRW\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],

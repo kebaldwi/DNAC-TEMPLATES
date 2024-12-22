@@ -1,6 +1,6 @@
 # Wireless Lab Preparation 
 
-> **Note:** Not required if you completed Lab 1 - Wired Automation
+> **Note:** **IF** you **COMPLETED** `Lab 1 - Wired Automation` this task **NOT REQUIRED** 
 
 Within this section we will prepare the DCLOUD lab for use with the Wireless tasks contained in this lab. If you have just completed the Wired Automation Lab, **DO NOT USE** this section and proceed with module 1 and start the Controller Onboarding. 
 

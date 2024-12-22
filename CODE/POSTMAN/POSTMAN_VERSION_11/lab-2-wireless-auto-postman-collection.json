@@ -1,9 +1,11 @@
 {
 	"info": {
-		"_postman_id": "a4ce3388-275f-4ca3-80b3-2fcd9ffb4d78",
+		"_postman_id": "d51ffbaa-2c45-4533-8ce0-ee15538d6d78",
 		"name": "Catalyst Center LAB 2 - Build Wired LAB Environment",
 		"description": "This is the instructors collection to set up the dCLOUD environment for the DevNet Express Class. This collection will set up the following hierarchy.\n\nGlobal > DNAC Template Labs > Building > Floor 1",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13375428",
+		"_collection_link": "https://dark-capsule-39992.postman.co/workspace/CATC-TEMPLATE-LABS---LAB-2~bce84f12-7861-49ab-b648-c660c317dc31/collection/13375428-d51ffbaa-2c45-4533-8ce0-ee15538d6d78?action=share&source=collection_link&creator=13375428"
 	},
 	"item": [
 		{
@@ -20,13 +22,14 @@
 							"}\r",
 							"else {\r",
 							"    pm.test(\"Token not acquired\",() => {pm.expect(pm.response.text()).to.include(\"Token\");});\r",
-							"    postman.setNextRequest(\"null\");\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
-							"postman.setNextRequest(\"Get SiteIDs PreCheck\");\r",
+							"pm.execution.setNextRequest(\"Get SiteIDs PreCheck\");\r",
 							"\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -35,7 +38,8 @@
 						"exec": [
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -141,20 +145,21 @@
 							"}",
 							"",
 							"if (FLAG === 3){",
-							"    postman.setNextRequest(\"Create Floor\");",
+							"    pm.execution.setNextRequest(\"Create Floor\");",
 							"}",
 							"else if (FLAG === 2){",
-							"    postman.setNextRequest(\"Create Building\");",
+							"    pm.execution.setNextRequest(\"Create Building\");",
 							"}",
 							"else if (FLAG === 1){",
-							"    postman.setNextRequest(\"Create Area\");",
+							"    pm.execution.setNextRequest(\"Create Area\");",
 							"}",
 							"else{",
-							"    postman.setNextRequest(\"null\");",
+							"    pm.execution.setNextRequest(\"null\");",
 							"}",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -205,21 +210,22 @@
 							"setTimeout(function(){}, [25000]);\r",
 							"if ((jsonData.executionId) && (jsonData.message == \"The request has been accepted for execution\")) {\r",
 							"    if ( !(pm.environment.get(\"HierarchyFloor\")) ){\r",
-							"        postman.setNextRequest(\"null\");\r",
+							"        pm.execution.setNextRequest(\"null\");\r",
 							"    }\r",
 							"    else if ( (pm.environment.get(\"HierarchyFloor\")) ){\r",
-							"        postman.setNextRequest(\"Create Building\");\r",
+							"        pm.execution.setNextRequest(\"Create Building\");\r",
 							"    }\r",
 							"    pm.test(\"Area created\",() => {pm.expect(pm.response.text()).to.include(\"The request has been accepted for execution\");});\r",
 							"}\r",
 							"else {\r",
 							"    pm.test(\"Area not created\",() => {pm.expect(pm.response.text()).to.include(\"The request has been accepted for execution\");});\r",
-							"    postman.setNextRequest(\"null\");\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
 							"\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -231,7 +237,8 @@
 							"\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -289,12 +296,13 @@
 							"}\r",
 							"else {\r",
 							"  pm.test(\"Building not created\",() => {pm.expect(pm.response.text()).to.include(\"The request has been accepted for execution\");});\r",
-							"  postman.setNextRequest(\"null\");\r",
+							"  pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
-							"postman.setNextRequest(\"Create Floor\")\r",
+							"pm.execution.setNextRequest(\"Create Floor\")\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -309,7 +317,8 @@
 							"let BldgLatitude = pm.environment.get(\"BldgLatitude\");\r",
 							"let BldgAddressCountry = pm.environment.get(\"BldgAddressCountry\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -367,11 +376,12 @@
 							"}\r",
 							"else {\r",
 							"    pm.test(\"Floor not created\",() => {pm.expect(pm.response.text()).to.include(\"The request has been accepted for execution\");});\r",
-							"    postman.setNextRequest(\"null\");\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
-							"postman.setNextRequest(\"Get Global SiteID\")"
+							"pm.execution.setNextRequest(\"Get Global SiteID\")"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -384,7 +394,8 @@
 							"let HierarchyFloor = pm.environment.get(\"HierarchyFloor\");\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -455,10 +466,11 @@
 							"}\r",
 							"}\r",
 							"setTimeout(function(){}, [25000]);\r",
-							"postman.setNextRequest(\"Create Settings\")\r",
+							"pm.execution.setNextRequest(\"Create Settings\")\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -519,12 +531,13 @@
 							"}\r",
 							"else {\r",
 							"  pm.test(\"Global settings not created\", function () {pm.expect(false).to.be.false;})\r",
-							"  postman.setNextRequest(\"null\");\r",
+							"  pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
 							"setTimeout(function(){}, [15000]);\r",
-							"postman.setNextRequest(\"Create Credentials\")"
+							"pm.execution.setNextRequest(\"Create Credentials\")"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -551,7 +564,8 @@
 							"\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -609,12 +623,13 @@
 							"}\r",
 							"else {\r",
 							"  pm.test(\"Credentials not created\", function () {pm.expect(true).to.be.false;})\r",
-							"  postman.setNextRequest(\"null\");\r",
+							"  pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
 							"setTimeout(function(){}, [25000]);\r",
-							"postman.setNextRequest(\"Create Netconf Credential\")"
+							"pm.execution.setNextRequest(\"Create Netconf Credential\")"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -629,7 +644,8 @@
 							"pm.environment.get(\"DcloudSnmpRW-Desc\");\r",
 							"pm.environment.get(\"DcloudNetconf\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -686,12 +702,13 @@
 							"}\r",
 							"else {\r",
 							"  pm.test(\"NETCONF Credential created\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
-							"  postman.setNextRequest(\"null\");\r",
+							"  pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
 							"setTimeout(function(){}, [25000]);\r",
-							"postman.setNextRequest(\"Get Credentials\")"
+							"pm.execution.setNextRequest(\"Get Credentials\")"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -706,7 +723,8 @@
 							"pm.environment.get(\"DcloudSnmpRW-Desc\");\r",
 							"pm.environment.get(\"DcloudNetconf\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -778,9 +796,10 @@
 							"}\r",
 							"}\r",
 							"setTimeout(function(){}, [15000]);\r",
-							"postman.setNextRequest(\"Assign Credentials\")"
+							"pm.execution.setNextRequest(\"Assign Credentials\")"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -840,12 +859,13 @@
 							"}",
 							"else {",
 							"  pm.test(\"Credentials not assigned\", function () {pm.expect(true).to.be.false;});",
-							"  postman.setNextRequest(\"null\");",
+							"  pm.execution.setNextRequest(\"null\");",
 							"}",
 							"setTimeout(function(){}, [25000]);",
-							"postman.setNextRequest(\"Get Global Credentials NETCONF\")"
+							"pm.execution.setNextRequest(\"Get Global Credentials NETCONF\")"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -856,7 +876,8 @@
 							"pm.environment.get(\"GlobalCredentialSnmpRO\");\r",
 							"pm.environment.get(\"GlobalCredentialSnmpRW\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -917,9 +938,10 @@
 							"}\r",
 							"pm.environment.set(\"FLAG\", \"0\");\r",
 							"setTimeout(function(){}, [5000]);\r",
-							"postman.setNextRequest(\"Create Discovery\")"
+							"pm.execution.setNextRequest(\"Create Discovery\")"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -928,7 +950,8 @@
 						"exec": [
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -1026,7 +1049,8 @@
 							"pm.environment.get(\"DiscoveryName\");\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -1041,11 +1065,12 @@
 							"}\r",
 							"else {\r",
 							"    pm.test(\"Discovery created\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
-							"    postman.setNextRequest(\"null\");\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
-							"postman.setNextRequest(\"Get Discovery From Task\")"
+							"pm.execution.setNextRequest(\"Get Discovery From Task\")"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -1103,12 +1128,13 @@
 							"}\r",
 							"else {\r",
 							"    pm.test(\"Discovery Id not acquired\",() => {pm.expect(pm.response.text()).to.include(\"progress\");});\r",
-							"    postman.setNextRequest(\"null\");\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
 							"setTimeout(function(){}, [60000]);\r",
-							"postman.setNextRequest(\"Get Discovery Devices\")"
+							"pm.execution.setNextRequest(\"Get Discovery Devices\")"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -1174,7 +1200,7 @@
 							"        }\r",
 							"        else {\r",
 							"            pm.test(\"Device IP not acquired\",() => {pm.expect(pm.response.text()).to.include(\"managementIpAddress\");});\r",
-							"            postman.setNextRequest(\"null\");\r",
+							"            pm.execution.setNextRequest(\"null\");\r",
 							"            break;\r",
 							"        }\r",
 							"    }\r",
@@ -1185,16 +1211,17 @@
 							"        }\r",
 							"        else {\r",
 							"            pm.test(\"Device IP not acquired\",() => {pm.expect(pm.response.text()).to.include(\"managementIpAddress\");});\r",
-							"            postman.setNextRequest(\"null\");\r",
+							"            pm.execution.setNextRequest(\"null\");\r",
 							"            break;\r",
 							"        }\r",
 							"    }\r",
 							"}\r",
 							"pm.environment.set(\"DeviceIP\", DeviceIP);\r",
 							"setTimeout(function(){}, [1000]);\r",
-							"postman.setNextRequest(\"Get SiteIDs\");"
+							"pm.execution.setNextRequest(\"Get SiteIDs\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -1280,9 +1307,10 @@
 							"  }",
 							"}",
 							"setTimeout(function(){}, [25000]);",
-							"postman.setNextRequest(\"Get CC Version\");"
+							"pm.execution.setNextRequest(\"Get CC Version\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -1346,9 +1374,10 @@
 							"    pm.expect(displayVersion).to.exist;",
 							"});",
 							"setTimeout(function(){}, [1000]);",
-							"postman.setNextRequest(\"Add Discovered Devices to Site\");"
+							"pm.execution.setNextRequest(\"Add Discovered Devices to Site\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -1409,7 +1438,8 @@
 							"pm.environment.get(\"Devices\");\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -1422,12 +1452,13 @@
 							"}\r",
 							"else {\r",
 							"    pm.test(\"Device not assigned\",() => {pm.expect(pm.response.text()).to.include(\"The request has been accepted for execution\");});\r",
-							"    postman.setNextRequest(\"null\");\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
 							"setTimeout(function(){}, [1000]);\r",
-							"postman.setNextRequest(\"Import Project\");"
+							"pm.execution.setNextRequest(\"Import Project\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -1481,15 +1512,16 @@
 							"if (jsonData.response.taskId) {\r",
 							"    pm.test(\"Project created\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
 							"    pm.environment.set(\"ProjectTaskId\", jsonData.response.taskId);\r",
-							"    postman.setNextRequest(\"Get Project Details\");\r",
+							"    pm.execution.setNextRequest(\"Get Project Details\");\r",
 							"}\r",
 							"else {\r",
 							"    pm.test(\"Project not created\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
-							"    postman.setNextRequest(\"null\");\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
 							"}\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -1498,7 +1530,8 @@
 						"exec": [
 							"pm.environment.get(\"SetupProject\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -1560,9 +1593,10 @@
 							"    }",
 							"}",
 							"setTimeout(function(){}, [1000]);",
-							"postman.setNextRequest(\"Get Device Id\")"
+							"pm.execution.setNextRequest(\"Get Device Id\")"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -1571,7 +1605,8 @@
 						"exec": [
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -1676,9 +1711,10 @@
 							"pm.environment.set(\"DeviceId\", DeviceId);",
 							"pm.environment.set(\"DeviceIp\", DeviceIp);",
 							"pm.test(\"Devices acquired\",() => {pm.expect(pm.response.text()).to.include(\"response\");});",
-							"postman.setNextRequest(\"Deploy Templates\");"
+							"pm.execution.setNextRequest(\"Deploy Templates\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -1687,7 +1723,8 @@
 						"exec": [
 							"pm.environment.set(\"FLAG\", 0);"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -1752,7 +1789,8 @@
 							"pm.environment.get(\"TemplateId\");\r",
 							"pm.environment.set(\"FLAG\", FLAG);"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -1763,14 +1801,15 @@
 							"pm.test(\"Template deployed\",() => {pm.expect(pm.response.text()).to.include(\" Id:\");});\r",
 							"var FLAG = pm.environment.get(\"FLAG\");\r",
 							"if (FLAG > 0){\r",
-							"    postman.setNextRequest(\"Deploy Templates\");\r",
+							"    pm.execution.setNextRequest(\"Deploy Templates\");\r",
 							"}\r",
 							"else{\r",
-							"    postman.setNextRequest(\"null\");\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
 							"} \r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
