@@ -8,7 +8,17 @@ Within this section we will prepare the DCLOUD lab for use with the Wireless tas
 
 In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate DNA Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
 
-## Lab Credentials:
+### Lab Topology
+
+The lab envionment that we will be building is depicted here:
+
+For routing in the environment an OSPF IGP process has been created to propogate internal route information. Within the access switches which are connected at Layer 3 to the router, we have estansiated a layer 2 port channel between them and initiated various vlans for Access Point connectivity and for the clients, whose gateway is built on an HSRP instance shared between the two switches.
+
+The 9130AX Access Points are connected to both access switches and the ports are automatically configured via the AUTOCONF feature.
+
+![json](./images/DCLOUD_Topology_Wireless-v1.png?raw=true "Import JSON")
+
+### Lab Credentials:
 
 | Platform:       | IP Address:    | Username | Password   | 
 |-----------------|----------------|----------|------------|
