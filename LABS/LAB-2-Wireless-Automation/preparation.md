@@ -83,11 +83,7 @@ In this section we will prepare Domain Name System (DNS) and Dynamic Host Config
 ### Step 1 - ***Configuring DHCP and DNS via Powershell***
 
 1. Download the powershell script to the ***windows server*** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POWERSHELL/powershell.ps1">⬇︎powershell.ps1⬇︎</a> file.
-2. Once downloaded, extract the file.
-
-   ![json](./images/module0-preparation/Powershell-Extract.png?raw=true "Import JSON")
-   ![json](./images/module0-preparation/Powershell-Extract-Location.png?raw=true "Import JSON")
-
+2. Once downloaded, locate the file in the download folder.
 3. Right click on the file and run with powershell.
 
    ![json](./images/module0-preparation/Powershell-Run.png?raw=true "Import JSON")
@@ -104,44 +100,31 @@ At this point all the DNS and DHCP configuration on the ***windows server*** wil
 
 We will now prepare DNA Center and onboard the devices in preparation for use in the lab. The reasons for the configurations made here are detailed heavily in previous Labs within the series. While we could deploy more extensive settings for deployment, we will limit the configuration to the minimum necessary to create a working lab in which to facilitate wireless automation.
 
-### Step 1 - ***Import Postman Collection***
+### Step 1 - ***Import Postman Collection and Environment***
 
-1. Download and import the collection within the ***Postman*** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/lab-2-wireless-auto-postman-collection.json">⬇︎lab-2-wireless-auto-postman-collection.json⬇︎</a> file.
-2. Extract the file to the desktop using **Winrar** to expand them
+1. Download the **collection** and **environment** from the following links:
+
+   <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/lab-2-wireless-auto-postman-collection.json">⬇︎lab-2-wireless-auto-postman-collection.json⬇︎</a></br>
+   <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/lab-2-wireless-auto-postman-environment.json">⬇︎lab-2-wireless-auto-postman-environment.json⬇︎</a>
+
+2. Locate the file in the download folder.
 3. Open the **postman** application from the desktop. Once the application is open select *Collections* then click the *Import* link. 
 
    ![json](./images/module0-preparation/Postman-Pre-Collection-Import.png?raw=true "Import JSON")
 
-4. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the file named `lab-2-wireless-auto-postman-collection.json` and click open. 
+4. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the files named `lab-2-wireless-auto-postman-collection.json`, and `lab-2-wireless-auto-postman-environment.json` then click open. 
 
    ![json](./images/module0-preparation/Postman-Collection-Select.png?raw=true "Import JSON")
 
-5. Then click import and the collection should be loaded into the collections as shown.
+5. Then click import and the collection and environment should be loaded into the postman as shown.
 
    ![json](./images/module0-preparation/Postman-Post-Collection-Import.png?raw=true "Import JSON")
-
-### Step 2 - ***Import Postman Environment***
-
-1. Download and import the environment within the ***Postman*** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/lab-2-wireless-auto-postman-environment.json">⬇︎lab-2-wireless-auto-postman-environment.json⬇︎</a> file.
-2. Extract the file to the desktop using **Winrar** to expand them
-3. If not open, open the **postman** application from the desktop. Once the application is open select *Environments* and then the *Import* link. 
-
-   ![json](./images/module0-preparation/Postman-Pre-Environment-Import.png?raw=true "Import JSON")
-
-4. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the file named 
-`lab-2-wireless-auto-postman-environment.json` and click open. 
-
-   ![json](./images/module0-preparation/Postman-Environment-Select.png?raw=true "Import JSON")
-
-5. Then click import and the environment should be loaded into the environments as shown. 
-
-   ![json](./images/module0-preparation/Postman-Post-Environment-Import.png?raw=true "Import JSON")
 
 6. Next we will choose the environment by clicking the checkmark on the right of Environment in postman as shown here. 
 
    ![json](./images/module0-preparation/Postman-Environment-Selection.png?raw=true "Import JSON")
 
-### Step 3 - ***Turn off SSL validation for LAB purposes within Postman***
+### Step 2 - ***Turn off SSL validation for LAB purposes within Postman***
 
 1. Turn off SSL verification for lab purposes in the settings of Postman by click the **Gear** icon to select **settings** and **deselect** `SSL certificate verification` and then close the settings window. 
 
@@ -149,7 +132,7 @@ We will now prepare DNA Center and onboard the devices in preparation for use in
 
 2. With these steps completed we are prepared to start the walk through of the sections below.
 
-### Step 4 - ***Run the Collection within Postman***
+### Step 3 - ***Run the Collection within Postman***
 
 This collection is built with a flow and delay timers wait for the collection to finish entirely.
 
