@@ -1,11 +1,11 @@
 # Wireless Access Point Provisioning
 
-Within this lab module, we will concentrate our efforts on the PnP of each of the access points by **Cisco DNA Center**, so that we can onboard and gain management of those devices. 
+Within this lab module, we will concentrate our efforts on the PnP of each of the access points by **Catalyst Center**, so that we can onboard and gain management of those devices. 
 
 Within this lab we will concentrate on the following which are typical in most Enterprise Networks today:
 
 1. DHCP Address Scope
-2. DNA Center Discovery
+2. Catalyst Center Discovery
 3. Access Point switch port configuration
 4. Access Point Onboarding
 
@@ -17,7 +17,7 @@ For these labs we will be focusing on the wireless aspects, and while the switch
 
 Virtual Machines:
 
-    DNA Center 2.2.3.4 or better
+    Catalyst Center 2.2.3.4 or better
     Identity Services Engine (ISE) 3.0 Patch 4 or better (deployed)
     Wireless LAN Controller - C9800 running IOS-XE Bengaluru 17.5.1 code or better
     Windows 10 Jump Host 
@@ -48,7 +48,7 @@ There are a few options for discovery using PnP. These were thoroughly discussed
 
 ## Background 
 
-In order to land on DNA Center though the device needs help in finding it. 
+In order to land on Catalyst Center though the device needs help in finding it. 
 
 The PnP components are as follows:
 
@@ -62,27 +62,27 @@ There are 3 automated methods to make that occur:
 ``` 
 2. **DNS lookup**
 ``` 
-   pnpserver.pnp.dcloud.cisco.com resolves to DNA Center VIP Address
+   pnpserver.pnp.dcloud.cisco.com resolves to Catalyst Center VIP Address
 ```
 3. **Cloud re-direction https://devicehelper.cisco.com/device-helper**
-   **which, re-directs to on-prem DNA Center IP Address**
+   **which, re-directs to on-prem Catalyst Center IP Address**
 
 **Option 1:** requires that along with the IP address and gateway the DHCP server must offer a PnP string via option 43. This option is often used with Cisco wireless so you may want to incorporate option 60 and the use of vendor specific information to ensure the correct controller is referenced for the device in question. 
 
-**Option 2:** requires that along with the IP address and gateway the DHCP server offer the domain suffix that the **pnpserver** record will reside in and a name server to resolve the address. Caveats here would be that if not all devices were to be landing on DNA Center then you may need sub domains.
+**Option 2:** requires that along with the IP address and gateway the DHCP server offer the domain suffix that the **pnpserver** record will reside in and a name server to resolve the address. Caveats here would be that if not all devices were to be landing on Catalyst Center then you may need sub domains.
 
-**Option 3:** requires that along with the address and gateway the DHCP server offer a name server to resolve the address of **device-helper.cisco.com**. Additionally it requires the that DNA Center register a file with the PnP Connect portal which it will offer via SSL to a device which reaches out. In order to whitelist those devices, the serial number would have to be associated to the DNAC profile within software centrals pnp connect portal.
+**Option 3:** requires that along with the address and gateway the DHCP server offer a name server to resolve the address of **device-helper.cisco.com**. Additionally it requires the that Catalyst Center register a file with the PnP Connect portal which it will offer via SSL to a device which reaches out. In order to whitelist those devices, the serial number would have to be associated to the DNAC profile within software centrals pnp connect portal.
 
 ![json](./images/module3-approvisioning/pnp-connect.png?raw=true "Import JSON")
 
-Once one of the options has been built devices will get the address and be pointed to and land on DNA Center within the PnP Device list.
+Once one of the options has been built devices will get the address and be pointed to and land on Catalyst Center within the PnP Device list.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
 
 ## Step 1 - ***DHCP as a Discovery Method***
 
-DHCP services are important to understand primarily because along with the address and the gateway for connectivity is assigned option 43 which primes or directs the Cisco Access Point towards **DNA Center** or typically a **Wireless Controller**.
+DHCP services are important to understand primarily because along with the address and the gateway for connectivity is assigned option 43 which primes or directs the Cisco Access Point towards **Catalyst Center** or typically a **Wireless Controller**.
 
 ![json](./images/module1-pnpdiscovery/dhcp-lab-scope.png?raw=true "Import JSON")
 
@@ -140,11 +140,11 @@ At this point of the process the Access Points should appear in the PnP Claim wi
 
 ## Step 4 - ***Access Point Claim***
 
-1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Provision>Network Devices>Plug and Play`.
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon to open the menu. Select `Provision>Network Devices>Plug and Play`.
 
    ![json](./images/module3-approvisioning/dnac-menu-provision-pnp.png?raw=true "Import JSON")
 
-2. On the *Plug and Play* page the following will appear. Notice the two access points have discovered and landed on DNA Center.
+2. On the *Plug and Play* page the following will appear. Notice the two access points have discovered and landed on Catalyst Center.
 
    ![json](./images/module3-approvisioning/dnac-pnp-ap-unclaimed.png?raw=true "Import JSON")
 

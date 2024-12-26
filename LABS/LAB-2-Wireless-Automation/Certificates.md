@@ -2,11 +2,11 @@
 
 ## Overview
 
-Cisco Catalyst Center has a Graphical User Interface (GUI), which is protected by SSL encryption. This GUI utilizes a certificate which is automatically generated when the system is configured for the first time, and automatically incorporates the FQDN at that time. 
+Catalyst Center has a Graphical User Interface (GUI), which is protected by SSL encryption. This GUI utilizes a certificate which is automatically generated when the system is configured for the first time, and automatically incorporates the FQDN at that time. 
 
-Obviously, most organizations do not want self signed certificates used in their infrastructure, and so want to tie Cisco Catalyst Centers certificates into their PKI infrastructure. 
+Obviously, most organizations do not want self signed certificates used in their infrastructure, and so want to tie Catalyst Centers certificates into their PKI infrastructure. 
 
-In this small set of tasks we will accomodate that ask. It is important to note that while this set of tasks will always work, a new GUI tool has been incorporated in the newest version of Cisco Catalyst Center to facilitate the building of the Certificate Signing Request. For all versions prior to Cisco Catalyst Center **2.3.5.x** this method is detailed in the following <a href="https://git-link.vercel.app/api/download?url=https%3A%2F%2Fgithub.com%2Fkebaldwi%2FDNAC-TEMPLATES%2Fblob%2Fmaster%2FCODE%2FDOCS%2FDNACenter_security_best_practices_guide.pdf">⬇︎Cisco Catalyst Center Security Best Practices Guide⬇︎</a>.
+In this small set of tasks we will accomodate that ask. It is important to note that while this set of tasks will always work, a new GUI tool has been incorporated in the newest version of Catalyst Center to facilitate the building of the Certificate Signing Request. For all versions prior to Catalyst Center **2.3.5.x** this method is detailed in the following <a href="https://git-link.vercel.app/api/download?url=https%3A%2F%2Fgithub.com%2Fkebaldwi%2FDNAC-TEMPLATES%2Fblob%2Fmaster%2FCODE%2FDOCS%2FDNACenter_security_best_practices_guide.pdf">⬇︎Catalyst Center Security Best Practices Guide⬇︎</a>.
 
 ## PKI Infrastructure Build
 
@@ -56,7 +56,7 @@ Install-AdcsOnlineResponder -Force
 
 ## PKI Certificate Template Build
 
-Once the certificate authority service is operational, we will then add a template which we will utilize for Cisco Catalyst Center.
+Once the certificate authority service is operational, we will then add a template which we will utilize for Catalyst Center.
 This same template may also be used for ISE. For a Template to function correctly we will need to provision a certificate which includes usage for both Client and Server Authentication roles. As it also needs to appear in the Web UI, we will need to duplicate a certificate template. The Web Server built in template will be used for duplication purposes.
 
 1. Follow the following steps on the AD server:
@@ -130,13 +130,13 @@ This same template may also be used for ISE. For a Template to function correctl
 
       ![json](./images/AD-Cert-Template-12.png?raw=true "Import JSON")
 
-Now that we have successfully enabled the Certificate Authority and templates lets go ahead and build the Cisco Catalyst Center certificate.
+Now that we have successfully enabled the Certificate Authority and templates lets go ahead and build the Catalyst Center certificate.
 
-## Cisco Catalyst Center Certificate Installation
+## Catalyst Center Certificate Installation
 
 ### Building the Certificate Signing Request 
 
-To build the Certificate Signing Request we will utilize openssl and use a config file. This process can be completed on any platform with openssl installed. It does not necessarily need to be Cisco Catalyst Center. 
+To build the Certificate Signing Request we will utilize openssl and use a config file. This process can be completed on any platform with openssl installed. It does not necessarily need to be Catalyst Center. 
 
 Open an RDP session to the `Jump Host` and from within the desktop session open the mRemoteNG application for SSH sessions.
 
@@ -144,13 +144,13 @@ Open an RDP session to the `Jump Host` and from within the desktop session open 
 
 **Complete the following tasks:**
 
-1. Double click on the Cisco Catalyst Center link to open a session
+1. Double click on the Catalyst Center link to open a session
 
-2. Log in to Cisco Catalyst Center with the following credentials **username: `maglev`** and **password: `C1sco12345`**
+2. Log in to Catalyst Center with the following credentials **username: `maglev`** and **password: `C1sco12345`**
 
    ![json](./images/Cert-CSR-2.png?raw=true "Import JSON")
 
-3. Within Cisco Catalyst Center issue the `pwd` command and ensure we are in the path `/home/maglev`
+3. Within Catalyst Center issue the `pwd` command and ensure we are in the path `/home/maglev`
 
 4. Create and then change directory to `/home/maglev/certs` by issuing the command `mkdir certs && cd certs`
 
@@ -197,7 +197,7 @@ IP.1 = 198.18.129.100
 
    ![json](./images/Cert-CSR-6.png?raw=true "Import JSON")
 
-10. Using the premade **csr.key** we will now create the **CSR** to be submitted to Cisco Catalyst Center. Use the command `openssl req -config openssl.cnf -new -key csr.key -out DNAC.csr`
+10. Using the premade **csr.key** we will now create the **CSR** to be submitted to Catalyst Center. Use the command `openssl req -config openssl.cnf -new -key csr.key -out DNAC.csr`
 
     ![json](./images/Cert-CSR-7.png?raw=true "Import JSON")
 
@@ -238,18 +238,18 @@ IP.1 = 198.18.129.100
    7. Open the windows command prompt `CMD` application and do the following:
       1. Change directory to the Downloads directory `cd Downloads`
       2. Check the directory to ensure the file `dnac-chain.p7b` exists via the command `dir`
-      3. Copy the file to Cisco Catalyst Center using scp usint the following command `scp -P 2222 ./dnac-chain.p7b maglev@198.18.129.100:/home/maglev/certs` and when prompted the **username: `maglev`** and the **password: `C1sco12345`**
+      3. Copy the file to Catalyst Center using scp usint the following command `scp -P 2222 ./dnac-chain.p7b maglev@198.18.129.100:/home/maglev/certs` and when prompted the **username: `maglev`** and the **password: `C1sco12345`**
 
          ![json](./images/Cert-CSR-16.png?raw=true "Import JSON")
 
-   8. On Cisco Catalyst Center via the mRemoteNG SSH session we now will take the certificate chain and create a Privacy Enhanced Mail (PEM) file for import into Cisco Catalyst Centers GUI. Use the command `openssl pkcs7 -in dnac-chain.p7b -inform DER -out dnac-chain.pem -print_certs`
+   8. On Catalyst Center via the mRemoteNG SSH session we now will take the certificate chain and create a Privacy Enhanced Mail (PEM) file for import into Catalyst Centers GUI. Use the command `openssl pkcs7 -in dnac-chain.p7b -inform DER -out dnac-chain.pem -print_certs`
 
       ![json](./images/Cert-CSR-17.png?raw=true "Import JSON")
 
 
-Congratulations the Certificate is prepared, now we will import it into Cisco Catalyst Center.
+Congratulations the Certificate is prepared, now we will import it into Catalyst Center.
 
-### Installing Cisco Catalyst Centers Certificate
+### Installing Catalyst Centers Certificate
 
 1. First lets download the **Certificate** to our workstation using the scp command `scp -P 2222 maglev@198.18.129.100:/home/maglev/certs/dnac-chain.pem ./` and when prompted the **username: `maglev`** and the **password: `C1sco12345`**
 
@@ -259,7 +259,7 @@ Congratulations the Certificate is prepared, now we will import it into Cisco Ca
 
    ![json](./images/Cert-CSR-19.png?raw=true "Import JSON")
 
-3. Log into Cisco Catalyst Center with the credentials **username: `admin`** and **password: `C1sco12345`**
+3. Log into Catalyst Center with the credentials **username: `admin`** and **password: `C1sco12345`**
 
 4. Navigate to the Menu and then Select **System > Settings**
 
@@ -285,7 +285,7 @@ Congratulations the Certificate is prepared, now we will import it into Cisco Ca
 
    ![json](./images/Cert-CSR-29.png?raw=true "Import JSON")
 
-Cisco Catalyst Center will now log out. After a few minutes refresh the GUI from the browser then display the certificate within the Browser and it should look like this.
+Catalyst Center will now log out. After a few minutes refresh the GUI from the browser then display the certificate within the Browser and it should look like this.
 
    ![json](./images/Cert-CSR-30.png?raw=true "Import JSON")
 

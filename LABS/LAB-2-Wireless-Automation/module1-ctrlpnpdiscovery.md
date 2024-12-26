@@ -1,6 +1,6 @@
 # Wireless Controller PnP or Discovery
 
-Within this lab module, we will concentrate our efforts on the discovery or PnP of each of the devices by **Cisco DNA Center**, so that we can onboard and gain management of those devices. 
+Within this lab module, we will concentrate our efforts on the discovery or PnP of each of the devices by **Catalyst Center**, so that we can onboard and gain management of those devices. 
 
 Within this lab we will concentrate on the following which are typical in most Enterprise Networks today:
 
@@ -16,7 +16,7 @@ For these labs we will be focusing on the wireless aspects, and while the switch
 
 Virtual Machines:
 
-    DNA Center 2.2.3.4 or better
+    Catalyst Center 2.3.5.6 or better
     Identity Services Engine (ISE) 3.0 Patch 4 or better (deployed)
     Wireless LAN Controller - C9800 running IOS-XE Bengaluru 17.5.1 code or better
     Windows 10 Jump Host 
@@ -57,7 +57,7 @@ The 9130AX Access Points are connected to both access switches and the ports are
 
 ## Lab Section 1 - Controller Discovery
 
-To get started with Wireless configuration and automation we first need to onboard the Wireless Controller into DNA Center. In the preparation lab we discovered the rest of the topology, set up the required services, and so we will now concentrate her on the controller. 
+To get started with Wireless configuration and automation we first need to onboard the Wireless Controller into Catalyst Center. In the preparation lab we discovered the rest of the topology, set up the required services, and so we will now concentrate her on the controller. 
 
 While we have the ability to PnP a Wireless Controller typically these are estantiated initially with IP information on the physical hardware. As a result, and because of the current liimitations within the DCLOUD lab, we will concentrate on Discovery methods here. We will cover Controller PnP separately in another module (TBD).
 
@@ -66,7 +66,7 @@ While we have the ability to PnP a Wireless Controller typically these are estan
 
 ### Step 1 - ***Setup Discovery Job***
 
-1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Tools>Discovery`.
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon to open the menu. Select `Tools>Discovery`.
 
    ![json](./images/module1-pnpdiscovery/dnac-navigation-discovery.png?raw=true "Import JSON")
 

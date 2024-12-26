@@ -2,11 +2,11 @@
 
 ## Overview
 
-This Lab is designed as a set of standalone labs to help customers with varying challenges in Automating and Orchestrating their wireless network infrastructure. Within the lab, we will use various tools and techniques to Automate various tasks and orchestrate DNA Center.
+This Lab is designed as a set of standalone labs to help customers with varying challenges in Automating and Orchestrating their wireless network infrastructure. Within the lab, we will use various tools and techniques to Automate various tasks and orchestrate Catalyst Center.
 
 ## General Information
 
-Until this point, we have focused our efforts on the wired space and utilized templates, and REST-API to solve some basic to advanced use cases. In this lab, we will change our focus to deal with the wireless environment and utilize methods to deal with common tasks from a wireless automation point of view. This lab will build upon the foundational knowledge acquired in the previous labs. For this lab, we will concentrate on DNA Center configuration specific to Cisco Wireless and how DNA Center can be automated to perform various functions.
+Until this point, we have focused our efforts on the wired space and utilized templates, and REST-API to solve some basic to advanced use cases. In this lab, we will change our focus to deal with the wireless environment and utilize methods to deal with common tasks from a wireless automation point of view. This lab will build upon the foundational knowledge acquired in the previous labs. For this lab, we will concentrate on Catalyst Center configuration specific to Cisco Wireless and how Catalyst Center can be automated to perform various functions.
 
 This page will serve as the landing page for this lab section due to the amount of content it will cover and the need to expand on it over time. 
 
@@ -44,7 +44,7 @@ If you would like to connect to the DCLOUD environment, please ensure you instal
 
 ### Lab Requirements
 
-This lab is designed to be run in Cisco dClouds - Enterprise Network Sandbox Lab. It was developed in version 4, including DNA Center 2.2.3.5 and equipment running at least 17.x versions of code. 
+This lab is designed to be run in Cisco dClouds - Enterprise Network Sandbox Lab. It was developed in version 4, including Catalyst Center 2.2.3.5 and equipment running at least 17.x versions of code. 
 
 > **Note:** While the RTP DC can facilitate the wireless automation, it lacks a wirelessly enabled workstation for testing.
 
@@ -63,7 +63,7 @@ The DCLOUD session includes the following equipment:
 
 Virtual Machines:
 
-    DNA Center 2.2.3.4 or better
+    Catalyst Center 2.3.5.6 or better
     Identity Services Engine (ISE) 3.0 Patch 4 or better (deployed)
     Identity Services Engine (ISE) 3.0 (Not deployed)
     Stealthwatch 7.4.0 or better
@@ -136,7 +136,7 @@ For an understanding of postman, please visit this site:
 
 #### Google Chrome
 
-Google Chrome is the optimal browser of choice when working in the DNA Center UI. 
+Google Chrome is the optimal browser of choice when working in the Catalyst Center UI. 
 
 To download Google Chrome, please visit. 
 

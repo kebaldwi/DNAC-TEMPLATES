@@ -1,6 +1,6 @@
 # Wireless LAN Design
 
-Within this lab module, we will concentrate our efforts on the design aspects of creating Wireless LANs (WLANs) via **DNA Center**. Previously we have discovered the Wireless LAN Controller by **Cisco DNA Center**, and assigned it to a site within the hierarchy. At this point we will configure the various settings for the Wireless Design.
+Within this lab module, we will concentrate our efforts on the design aspects of creating Wireless LANs (WLANs) via **Catalyst Center**. Previously we have discovered the Wireless LAN Controller by **Catalyst Center**, and assigned it to a site within the hierarchy. At this point we will configure the various settings for the Wireless Design.
 
 Within this lab we will concentrate on the following which are typical in most Enterprise Networks today:
 
@@ -32,7 +32,7 @@ For simplicity we may utilize the Vlan 30 as a second Data network when proving 
 
 ## Lab Section 1 - Wireless LAN's
 
-To get started with Wireless Controller configuration and automation we first need to build the settings, Wireless LAN environments and associated profiles for deployment. Each Wireless LAN can be built by DNA Center and all settings may be deployed either through the UI, from Model-Based Config (covered separately), and by Templates (covered separately)for extranious configuration which might be required.
+To get started with Wireless Controller configuration and automation we first need to build the settings, Wireless LAN environments and associated profiles for deployment. Each Wireless LAN can be built by Catalyst Center and all settings may be deployed either through the UI, from Model-Based Config (covered separately), and by Templates (covered separately)for extranious configuration which might be required.
 
 This section will be devoted to building Wireless LAN's. Subsequent sections will cover the profiles and provisioning:
 
@@ -45,7 +45,7 @@ These will be divided into sub-modules.
 
 ## Summary
 
-At this point you will have successfully configured the **SSID's** on the **Wireless Controller** from **DNA Center**. During this lab we configured SSID's, Wireless Network Profiles. The next step is creating an **RF Profiles** followed by provisioning.
+At this point you will have successfully configured the **SSID's** on the **Wireless Controller** from **Catalyst Center**. During this lab we configured SSID's, Wireless Network Profiles. The next step is creating an **RF Profiles** followed by provisioning.
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 

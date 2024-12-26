@@ -11,7 +11,7 @@ Click on the arrow below to expand and follow to complete the tasks.
 
 #### Step 1 - ***Create SSID***
 
-1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
 
    ![json](./images/module2-wlans/dnac-menu-network-settings.png?raw=true "Import JSON")
 
@@ -61,7 +61,7 @@ Click on the arrow below to expand and follow to complete the tasks.
 
    ![json](./images/module2-wlans/dnac-wireless-ssid-eap-profile-begin.png?raw=true "Import JSON")
 
-   > **Note:** If no *Wireless Profile* exists, we must click **Add Profile** to add one to DNA Center.
+   > **Note:** If no *Wireless Profile* exists, we must click **Add Profile** to add one to Catalyst Center.
 
 2. The Wireless SSID workflow continues with *Associate SSID to Profile*. Complete the following steps:
    1. Enter the **Profile Name** as `DNAC-WIRELESS` if blank
@@ -104,7 +104,7 @@ In this lab, we need to utilize FlexConnect, and so to allow for CoA of clients 
 
 ### Step 1 - ***Add FlexConnect VLANs***
 
-1. To create an RF Profile, first open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
+1. To create an RF Profile, first open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
 
    ![json](./images/module2-wlans/dnac-menu-network-settings.png?raw=true "Import JSON")
 
@@ -127,7 +127,7 @@ In this lab, we need to utilize FlexConnect, and so to allow for CoA of clients 
 
 ## Summary
 
-At this point you will have successfully configured the **EAP SSID** on the **Wireless Controller** from **DNA Center**. During this lab we will configure additional SSID's, Wireless Network Profiles, RF Profiles, FlexConnect VLANs and deployed the configuration. The next step is configuring additional **SSID**.
+At this point you will have successfully configured the **EAP SSID** on the **Wireless Controller** from **Catalyst Center**. During this lab we will configure additional SSID's, Wireless Network Profiles, RF Profiles, FlexConnect VLANs and deployed the configuration. The next step is configuring additional **SSID**.
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 

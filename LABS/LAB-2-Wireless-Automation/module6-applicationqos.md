@@ -2,11 +2,11 @@
 
 ## Overview
 
-This Lab is designed to be used after first completing modules 1 through 3 of the Wireless Lab and has been created to address how to properly deal with Wireless Quality of Service with regard to DNA Center. During the lab we will use Application Policies and apply Quality of Service (QoS) within DNA Center. We will also discuss, set up and use Controller Based Application Recognition. This allows Network Administrators the ability to configure network devices in an ongoing and programmatic manner from within DNA Center to make sure application policies are consistent throughout networks whether using SD-Access or Legacy Network Concepts. This set of concepts requires ***Advantage Licensing***.
+This Lab is designed to be used after first completing modules 1 through 3 of the Wireless Lab and has been created to address how to properly deal with Wireless Quality of Service with regard to Catalyst Center. During the lab we will use Application Policies and apply Quality of Service (QoS) within Catalyst Center. We will also discuss, set up and use Controller Based Application Recognition. This allows Network Administrators the ability to configure network devices in an ongoing and programmatic manner from within Catalyst Center to make sure application policies are consistent throughout networks whether using SD-Access or Legacy Network Concepts. This set of concepts requires ***Advantage Licensing***.
 
 ## General Information
 
-There are a number of hurdles to applying Quality of Service. If we were to read and study the Quality of Service whitepaper we would still have hours of work to determine the correct MQC policies to be deployed for the various linecards and chassis within our network. DNA Center allows us to do three things:
+There are a number of hurdles to applying Quality of Service. If we were to read and study the Quality of Service whitepaper we would still have hours of work to determine the correct MQC policies to be deployed for the various linecards and chassis within our network. Catalyst Center allows us to do three things:
 
 1. Update all protocol packs and dynamic URL's used for Application Discovery.
 2. Deploy a consistent end-to-end QoS policy.
@@ -18,14 +18,14 @@ Previously we have built and deployed during [Lab E](https://github.com/kebaldwi
 
 ## Lab Section 1 - Building and Deploying a Wireless Application Policy
 
-The Application Policy methodology within DNA Center allows for two types of policies to be constructed, wired and wireless. During this section we will build and deploy an Application Policy for a wireless environment.
+The Application Policy methodology within Catalyst Center allows for two types of policies to be constructed, wired and wireless. During this section we will build and deploy an Application Policy for a wireless environment.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
 
 ### Step 1 - ***Build Application Policy Draft***
 
-1. Navigate to **Application Policy** within DNA Center through the menu *Policy>Application*.
+1. Navigate to **Application Policy** within Catalyst Center through the menu *Policy>Application*.
 
    ![json](./images/module4-applicationqos/dnac-menu-appqos.png?raw=true "Import JSON")
 
@@ -69,7 +69,7 @@ The Application Policy methodology within DNA Center allows for two types of pol
 
 #### Host Tracking
 
-10. Click the **Host Tracking Slider** to allow for QoS policy to work with endpoint mobility. When host tracking is turned on, Cisco DNA Center tracks the connectivity of the collaboration endpoints within the site scope and automatically reconfigures the ACL entries when the collaboration endpoints connect to the network or move from one interface to another. 
+10. Click the **Host Tracking Slider** to allow for QoS policy to work with endpoint mobility. When host tracking is turned on, Cisco Catalyst Center tracks the connectivity of the collaboration endpoints within the site scope and automatically reconfigures the ACL entries when the collaboration endpoints connect to the network or move from one interface to another. 
 
     ![json](./images/module4-applicationqos/DNAC-AppPolicy-8-Tracking.png?raw=true "Import JSON")
 
