@@ -4,9 +4,9 @@
 
 Within this section we will prepare the DCLOUD lab for use with the Wireless tasks contained in this lab. If you have just completed the Wired Automation Lab, **DO NOT USE** this section and proceed with module 1 and start the Controller Onboarding. 
 
-## Lab Section 1 - DNA Center and ISE Integration
+## Lab Section 1 - Catalyst Center and ISE Integration
 
-In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate DNA Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
+In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate Catalyst Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
 
 ### Lab Topology
 
@@ -34,7 +34,7 @@ The 9130AX Access Points are connected to both access switches and the ports are
 | AP-1            | DHCP Assigned  | Cisco    | Cisco      |
 | AP-2            | DHCP Assigned  | Cisco    | Cisco      |
 
-### Step 1 - ***Prepare ISE for DNA Center Integration***
+### Step 1 - ***Prepare ISE for Catalyst Center Integration***
 
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to Identity Services Engine (ISE) and select the hamburger menu icon to open the system menu.
 
@@ -44,14 +44,14 @@ The 9130AX Access Points are connected to both access switches and the ports are
 
    ![json](./images/module0-preparation/ise-menu.png?raw=true "Import JSON")
 
-3. On the PxGrid Settings page select both of the available options and click Save to allow DNA Center to integrate.
+3. On the PxGrid Settings page select both of the available options and click Save to allow Catalyst Center to integrate.
 
    ![json](./images/module0-preparation/ise-pxgrid-settings.png?raw=true "Import JSON")
    ![json](./images/module0-preparation/ise-pxgrid-setup.png?raw=true "Import JSON")
 
-### Step 2 - ***DNA Center and ISE Integration***
+### Step 2 - ***Catalyst Center and ISE Integration***
 
-1. Open a web browser on the Windows Workstation Jump host. Open a connection to Dna Center and select the hamburger menu icon and navigate to the System > Settings menu item.
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon and navigate to the System > Settings menu item.
 
    ![json](./images/module0-preparation/dnac-system-settings.png?raw=true "Import JSON")
 
@@ -96,9 +96,9 @@ At this point all the DNS and DHCP configuration on the ***windows server*** wil
 
    ![json](./images/module0-preparation/DNS-DHCP.png?raw=true "Import JSON")
 
-## Lab Section 3 - DNA Center Design Preparation
+## Lab Section 3 - Catalyst Center Design Preparation
 
-We will now prepare DNA Center and onboard the devices in preparation for use in the lab. The reasons for the configurations made here are detailed heavily in previous Labs within the series. While we could deploy more extensive settings for deployment, we will limit the configuration to the minimum necessary to create a working lab in which to facilitate wireless automation.
+We will now prepare Catalyst Center and onboard the devices in preparation for use in the lab. The reasons for the configurations made here are detailed heavily in previous Labs within the series. While we could deploy more extensive settings for deployment, we will limit the configuration to the minimum necessary to create a working lab in which to facilitate wireless automation.
 
 ### Step 1 - ***Import Postman Collection and Environment***
 
@@ -148,7 +148,7 @@ This collection is built with a flow and delay timers wait for the collection to
 
    ![json](./images/module0-preparation/Postman-CollectionRunner-Results.png?raw=true "Import JSON")
 
-4. Within DNA Center you should see 3 devices within the inventory and additionally you should observe a complete hierarchy as well as settings and telemetry configured. The Devices will be discovered in the Building level at this stage.
+4. Within Catalyst Center you should see 3 devices within the inventory and additionally you should observe a complete hierarchy as well as settings and telemetry configured. The Devices will be discovered in the Building level at this stage.
 
    ![json](./images/module0-preparation/Postman-Discovery.png?raw=true "Import JSON")
    ![json](./images/module0-preparation/Postman-Settings.png?raw=true "Import JSON")

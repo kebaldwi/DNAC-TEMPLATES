@@ -9,7 +9,7 @@ There are many things that can be accomplished from an RF Profile, to tweek the 
 
 ### Step 1 - ***Create RF Profile***
 
-1. To create an RF Profile, first open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
+1. To create an RF Profile, first open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
 
    ![json](./images/module2-wlans/dnac-menu-network-settings.png?raw=true "Import JSON")
 
@@ -44,7 +44,7 @@ There are many things that can be accomplished from an RF Profile, to tweek the 
 
 ## Summary
 
-At this point you will have successfully configured **RF Profiles** on the **Wireless Controller** from **DNA Center**. During this lab we configured have configured SSID's, Wireless Network Profiles, RF Profiles, FlexConnect VLANs. The next step is **WLC** provisioning.
+At this point you will have successfully configured **RF Profiles** on the **Wireless Controller** from **Catalyst Center**. During this lab we configured have configured SSID's, Wireless Network Profiles, RF Profiles, FlexConnect VLANs. The next step is **WLC** provisioning.
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 

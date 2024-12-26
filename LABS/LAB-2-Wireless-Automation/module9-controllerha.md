@@ -1,6 +1,6 @@
 # Cisco Wireless Controller High Availability
 
-Cisco Wireless Controller High Availability (HA) can be configured through Cisco DNA Center. Currently, both the formation and breaking of wireless controller HA is supported; switchover options are not supported.
+Cisco Wireless Controller High Availability (HA) can be configured through Catalyst Center. Currently, both the formation and breaking of wireless controller HA is supported; switchover options are not supported.
 
 While the DCLOUD Lab we have been using does not currently support this configuration, the steps which have been added below detail how to prepare and how to configure Wireless Controller High Availability. 
 
@@ -17,7 +17,7 @@ Configuring High Availability (HA) on the Cisco Catalyst 9800 Series Wireless Co
 
 * The management interface of Catalyst 9800 Series Wireless Controller 1 and Catalyst 9800 Series Wireless Controller 2 are in the same subnet.
 
-* The discovery and inventory of Catalyst 9800 Series Wireless Controller 1 and Catalyst 9800 Series Wireless Controller 2 devices are successful from Cisco DNA Center.
+* The discovery and inventory of Catalyst 9800 Series Wireless Controller 1 and Catalyst 9800 Series Wireless Controller 2 devices are successful from Catalyst Center.
 
 * The devices are reachable and are in the Managed state.
 
@@ -49,7 +49,7 @@ Configuring High Availability (HA) on the Cisco Catalyst 9800 Series Wireless Co
    
    >**Note:** The IP addresses used for the redundancy management IP and peer redundancy management IP should be configured in the same subnet as the management interface of the Cisco Catalyst 9800 Series Wireless Controller. Ensure that these IP addresses are unused IP addresses within the subnet range.
    >
-   >Cisco DNA Center only pushes the management IP address of the Cisco Catalyst 9800 Series Wireless Controller to the Cisco ISE network access device list. Whereas the standby controller uses the redundancy management IP address to initiate AAA requests. So, you must add the redundancy management IP addresses to the AAA servers for a seamless client authentication and standby monitoring.
+   >Catalyst Center only pushes the management IP address of the Cisco Catalyst 9800 Series Wireless Controller to the Cisco ISE network access device list. Whereas the standby controller uses the redundancy management IP address to initiate AAA requests. So, you must add the redundancy management IP addresses to the AAA servers for a seamless client authentication and standby monitoring.
 
 9. In the **Netmask** field, enter the netmask address.
 
@@ -57,9 +57,9 @@ Configuring High Availability (HA) on the Cisco Catalyst 9800 Series Wireless Co
     
     The HA configuration is initiated at the background using the CLI commands. First, the primary controller is configured. On success, the secondary controller is configured. Both the devices reboot once the HA is enabled. This process may take up to 2.5 minutes to complete.
 
-11. After the HA is initiated, the **Redundancy Summary** under **High Availability** tab displays the **Sync Status** as **HA Pairing is in Progress**. When Cisco DNA Center finds that the HA pairing is successful, the **Sync Status** becomes **Complete**.
+11. After the HA is initiated, the **Redundancy Summary** under **High Availability** tab displays the **Sync Status** as **HA Pairing is in Progress**. When Catalyst Center finds that the HA pairing is successful, the **Sync Status** becomes **Complete**.
 
-    This is triggered by the inventory poller or manual resynchronization. By now, the secondary controller (Catalyst 9800 Series Wireless Controller 2) is deleted from Cisco DNA Center. This flow indicates successful HA configuration in the Catalyst 9800 Series Wireless Controller.
+    This is triggered by the inventory poller or manual resynchronization. By now, the secondary controller (Catalyst 9800 Series Wireless Controller 2) is deleted from Catalyst Center. This flow indicates successful HA configuration in the Catalyst 9800 Series Wireless Controller.
 
 12. To manually resynchronize the controller, on the `Provision>Network Devices>Inventory` window, select the controller that you want to synchronize manually.
 
@@ -69,7 +69,7 @@ Configuring High Availability (HA) on the Cisco Catalyst 9800 Series Wireless Co
 
     * Catalyst 9800 Series Wireless Controller 1 and Catalyst 9800 Series Wireless Controller 2 are configured with redundancy management, redundancy units, and Single sign-on (SSO). The devices reboot in order to negotiate their role as an active controller or a standby controller. The configuration is synchronized from active to standby.
 
-      >**Note:** If you've configured a AAA server or Cisco ISE server for client and endpoint authentication in Cisco DNA Center then in a HA setup, the CTS credentials for active and standby controllers are synchronized and hence, during a HA switchover, Cisco DNA Center does not update the CTS credentials for the wireless controllers on Cisco ISE.
+      >**Note:** If you've configured a AAA server or Cisco ISE server for client and endpoint authentication in Catalyst Center then in a HA setup, the CTS credentials for active and standby controllers are synchronized and hence, during a HA switchover, Catalyst Center does not update the CTS credentials for the wireless controllers on Cisco ISE.
 
     * On the **Show Redundancy Summary** window, you can see these configurations:
       - SSO is enabled.

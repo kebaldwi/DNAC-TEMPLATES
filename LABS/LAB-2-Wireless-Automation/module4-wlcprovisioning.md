@@ -9,7 +9,7 @@ This can be augmented with Model-Based Configurations as well as Templates which
 
 ### Step 1 - ***Provisioning Workflow for the Wireless Controller***
 
-1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Provision>Network Devices>Inventory`.
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon to open the menu. Select `Provision>Network Devices>Inventory`.
 
    ![json](./images/module2-wlans/dnac-menu-provision-inventory.png?raw=true "Import JSON")
 
@@ -25,7 +25,7 @@ This can be augmented with Model-Based Configurations as well as Templates which
 
    ![json](./images/module2-wlans/dnac-menu-provision-inventory-stage1.png?raw=true "Import JSON")
 
-4. On screen 2 of the **Inventory > Provision Devices** workflow select *Managing 1 Primary location(s)* which is where we tell **DNA Center** where the Access Points will be that this Wireless Controller will manage.
+4. On screen 2 of the **Inventory > Provision Devices** workflow select *Managing 1 Primary location(s)* which is where we tell **Catalyst Center** where the Access Points will be that this Wireless Controller will manage.
 
    ![json](./images/module2-wlans/dnac-menu-provision-inventory-stage2.png?raw=true "Import JSON")
 
@@ -59,7 +59,7 @@ This can be augmented with Model-Based Configurations as well as Templates which
 
 ### Step 2 - ***Deploying the Configuration for the Wireless Controller***
 
-1. From **DNA Centers** hamburger menu icon, open the menu and select `Activities`.
+1. From **Catalyst Centers** hamburger menu icon, open the menu and select `Activities`.
 
    ![json](./images/module2-wlans/dnac-navigation-activities.png?raw=true "Import JSON")
 
@@ -101,7 +101,7 @@ This can be augmented with Model-Based Configurations as well as Templates which
 
 ## Summary
 
-At this point you will have successfully provisioned the **Wireless Controller** from **DNA Center**. During this lab we configured SSID's, Wireless Network Profiles, RF Profiles, FlexConnect VLANs and deployed the configuration. The next step is **Access Point** provisioning.
+At this point you will have successfully provisioned the **Wireless Controller** from **Catalyst Center**. During this lab we configured SSID's, Wireless Network Profiles, RF Profiles, FlexConnect VLANs and deployed the configuration. The next step is **Access Point** provisioning.
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 

@@ -8,7 +8,7 @@ To refresh on those topics please refer to the following:
 
 #### Templating
 
-* [Onboarding Templates](../../Onboarding.md#onboarding-templates-and-flows) - This section will explain Onboarding Templates in DNAC and their use in bringing various devices under DNA Center management
+* [Onboarding Templates](../../Onboarding.md#onboarding-templates-and-flows) - This section will explain Onboarding Templates in DNAC and their use in bringing various devices under Catalyst Center management
 * [DayN Templates](../../DayN.md#day-n-templates-and-flows) - This section will explain how to use templates for ongoing (Day-N) changes to the network
 * [Building Templates](../../Templates.md#building-templates) - This section will explain how to build a template on DNAC from scratch
 
@@ -26,7 +26,7 @@ To refresh on those topics please refer to the following:
 
 #### Variables
 
-* [System Variables](../../SystemVariables.md#dna-center-system-variables) - This section explains DNA Centers System Variables
+* [System Variables](../../SystemVariables.md#dna-center-system-variables) - This section explains Catalyst Centers System Variables
 
 #### Fault-Finding
 
@@ -52,7 +52,7 @@ While there may be many use cases for templates in wireless, the use of the GUI 
 
 While on Cisco Catalyst (DNA) Center you can import templates, we will build one specific for defining CCKM below.
 
-1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Tools>Template Editor`.
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon to open the menu. Select `Tools>Template Editor`.
 
    ![json](./images/module8-wirelesstemplates/dnac-menu-tools-templateeditor.png?raw=true "Import JSON")
 

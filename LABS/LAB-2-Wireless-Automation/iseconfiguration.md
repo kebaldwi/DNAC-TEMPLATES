@@ -20,7 +20,7 @@ To test with ISE a general understanding of the differences between authenticati
 
 ### OPEN and PSK Authentication
 
-While all **SSID** may be built without ISE both the **OPEN and PSK** policies can built via **DNA Center** and tested *without* configuration being created on ISE directly. 
+While all **SSID** may be built without ISE both the **OPEN and PSK** policies can built via **Catalyst Center** and tested *without* configuration being created on ISE directly. 
 
 Thus for **OPEN and PSK** you may return to the lab modules and continue configuration as no further additional configuration steps are required.
 

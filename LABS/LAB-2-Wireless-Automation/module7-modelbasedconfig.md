@@ -1,6 +1,6 @@
 # Model-Based Configuration
 
-In this subsection we will design and provision the Wireless Controller with model-based configurations to augment the wireless settings of WLAN's. Whenever a new WLAN or a configuration change is made, the change will need to be provisioned to the controller using this process. The Model-Based Configurations may be added to the wireless profiles to modify settings for the wireless SSID that are provisioned by Cisco DNA Center.
+In this subsection we will design and provision the Wireless Controller with model-based configurations to augment the wireless settings of WLAN's. Whenever a new WLAN or a configuration change is made, the change will need to be provisioned to the controller using this process. The Model-Based Configurations may be added to the wireless profiles to modify settings for the wireless SSID that are provisioned by Catalyst Center.
 
 The various use cases for model-based configuration are as follows:
 
@@ -20,7 +20,7 @@ The various use cases for model-based configuration are as follows:
 
 ## Step 1 - ***Creating Model-Based Configuration***
 
-1. Open a web browser on the Windows Workstation Jump host. Open a connection to DNA Center and select the hamburger menu icon to open the menu. Select `Tools>Model Config Editor`.
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon to open the menu. Select `Tools>Model Config Editor`.
 
    ![json](./images/module7-modelbasedconfig/dnac-menu-tools-modelbasedconfig.png?raw=true "Import JSON")
 
