@@ -2,12 +2,16 @@
 
 In this subsection we will build a Wireless Radio Frequency (RF) Profile. This helpful tool, allows the administrator to tune the RF spectrum for the type of environment, and channels which are needed to support clients within their carpeted and non carpeted spaces. 
 
-There are many things that can be accomplished from an RF Profile, to tweek the environment, from channels used, to data rates, to power settings deployed. Access points when deployed will utilize these RF Profiles to deploy the SSID's and the intention is to have the best wireless experience for the clients served in a specific area.
+There are two types of RF Proile which can be created in **Catalyst Center**. As of **2.3.5.6** AI RF Profiling was introduced to help customers to better tune their wireless environments making use of suggestions made by **Catalyst Center** through interations with the Cisco Cloud infrastructure. 
+
+**AI RF Profiles** can be built at the building level today, and allow for a building of one or more Catalyst 9800 Wireless Controllers to work across multiple floors to synchronize the wireless RF, as we did with Mobility Groups over the years. **AI RF Profiles** may be built through a conversion of an existing **Basic RF Profile**, or from scratch. They are assigned to controllers in the AI RF Profile settings page.
+
+**Basic RF Profiles** as they are now called are the existing set of capabilities that can be used to tune the RF for a specific floor. Much like **AI RF Profiles** though these cannot be used in conjunction with the cloud and do not offer AI suggestions. There are many things that can be accomplished from an RF Profile, to tweek the environment, from channels used, to data rates, to power settings deployed. Access points when deployed will utilize these RF Profiles to deploy the SSID's and the intention is to have the best wireless experience for the clients served in a specific area.
 
 <details open>
 <summary> Click the arrow for details</summary>
 
-### Step 1 - ***Create RF Profile***
+### Step 1 - ***Create Basic RF Profile***
 
 1. To create an RF Profile, first open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
 
