@@ -17,7 +17,7 @@ For these labs we will be focusing on the wireless aspects, and while the switch
 
 Virtual Machines:
 
-    Catalyst Center 2.2.3.4 or better
+    Catalyst Center 2.3.5.6 or better
     Identity Services Engine (ISE) 3.0 Patch 4 or better (deployed)
     Wireless LAN Controller - C9800 running IOS-XE Bengaluru 17.5.1 code or better
     Windows 10 Jump Host 
@@ -36,7 +36,7 @@ The lab envionment that is available is depicted here:
 
 For routing in the environment an OSPF IGP process has been created to propogate internal route information. Within the access switches which are connected at Layer 3 to the router, we have estansiated a layer 2 port channel between them and initiated various vlans for Access Point connectivity and for the clients, whose gateway is built on an HSRP instance shared between the two switches.
 
-The 9130AX Access Points are connected to both access switches and the ports are automatically configured via the AUTOCONF feature.
+The 9130AX and or 4800 Access Points are connected to both access switches and the ports are automatically configured via the AUTOCONF feature.
 
 ![json](./images/DCLOUD_Topology_Wireless-v1.png?raw=true "Import JSON")
 
@@ -94,11 +94,11 @@ Within the Scopes is a scope for the Access Point Vlan, aptly named *APVLAN* and
 
 The second part of the PnP equation is setting the environment up to allow for the device to get the address in question. This was previously accomplished in the setup procedure of the lab utilizing a template which was auto provisioned to the switch after discovery.
 
-The Switch was configured to automatically configure switch ports with connected Access Points with the following configuration. This was accomplished through *AUTOCONF* as explained in previous labs 7 and 8.
+The Switch was configured to automatically configure switch ports with connected Access Points with the following configuration. This was accomplished through **AUTOCONF** as explained in previous labs 7 and 8.
 
 This is only one way of accomplishing this task, many others can be used, as was proven out in lab 8, with zero trust environment, and change of authorization being the catalyst for deploying an `interface template`.
 
-In this lab as we are focusing on Wireless, the port configuration was automatically assigned via *AUTOCONF* for simplicity.
+In this lab as we are focusing on Wireless, the port configuration was automatically assigned via **AUTOCONF** for simplicity.
 
 The switch port configuration used in this lab is:
 
@@ -140,7 +140,7 @@ At this point of the process the Access Points should appear in the PnP Claim wi
 
 ## Step 4 - ***Access Point Claim***
 
-1. Open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon to open the menu. Select `Provision>Network Devices>Plug and Play`.
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon to open the menu. Select **`Provision > Network Devices > Plug and Play`**.
 
    ![json](./images/module3-approvisioning/dnac-menu-provision-pnp.png?raw=true "Import JSON")
 
@@ -152,51 +152,41 @@ At this point of the process the Access Points should appear in the PnP Claim wi
 
    ![json](./images/module3-approvisioning/dnac-pnp-ap-claim.png?raw=true "Import JSON")
 
-4. Within the *Claim* workflow on page *1* you will notice the Access Points may already be within the site `Global/DNAC Template Lab/Building/Floor 1` if not you have an option to select the Floor1 at this time if necessary complete the task. When ready click **Next** to continue the workflow. 
+4. Within the **Claim** workflow on page **1** you will notice the Access Points may already be within the site **`Global/DNAC Template Lab/Building/Floor 1`** if not you have an option to select the Floor1 at this time if necessary complete the task. When ready click **Next** to continue the workflow. 
 
    ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-1.png?raw=true "Import JSON")
 
-5. Within the *Claim* workflow on page *2* we need to assign an *RF Profile*. When ready click **Assign** to continue on this section. 
+5. Within the **Claim** workflow on page **2** we need to assign an *RF Profile*. When ready click **Assign** to continue on this section. 
 
    ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-assign-a.png?raw=true "Import JSON")
 
-6. A slide out *Configuration* window will appear. Please complete the following:
-   1. Click the *Radio Frequency Profile* drop down selection window
-   2. From the list that appears select **DNAC-WIRELESS** which we previously created
+6. A slide out **Configuration** window will appear. Please complete the following:
+   1. Click the **Radio Frequency Profile** drop down selection window
+   2. From the list that appears select **BASIC-RFP** which we previously created and click **Save**
 
-      ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-a.png?raw=true "Import JSON")
-
-7. Within the slide out *Configuration* window click **Save** to continue on this section. 
-
-   ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-save-a.png?raw=true "Import JSON")
-
-8. We will now repeeat the same process with the second access point. Within the *Claim* workflow on page *2* we need to assign an *RF Profile*. When ready click **Assign** beside the second access point to continue on this section. 
-
-   ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-assign-b.png?raw=true "Import JSON")
-
-9. A slide out *Configuration* window will appear. Please complete the following:
-   1. Click the *Radio Frequency Profile* drop down selection window
-   2. From the list that appears select **DNAC-WIRELESS** which we previously created
+      ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-1.png?raw=true "Import JSON")
    
-      ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-b.png?raw=true "Import JSON")
+   3. Then click the **`...`** on the right and a menu will appear. Select the option to duplicate the **BASIC-RFP** Profile to the other Access Point.
 
-10. Within the slide out *Configuration* window click **Save** to continue on this section. 
+      ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-2.png?raw=true "Import JSON")
 
-    ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-save-b.png?raw=true "Import JSON")
+   4. Another window will appear and **select** the Access Point or multiple Access Points to assign. Then click **Assign**
 
-11. Within the *Claim* workflow on page *2* ensure both access points have assigned *RF Profile's*. When ready click **Next** to continue the workflow. 
+      ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-3.png?raw=true "Import JSON")
 
-    ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-finish.png?raw=true "Import JSON")
+7. Within the *Claim* workflow on page *2* ensure both access points have assigned *RF Profile's*. When ready click **Next** to continue the workflow. 
 
-12. Within the *Claim* workflow on page *3* ensure both access points appear as shown. Click the **Preview Day-0 Config** links to discover what will be pushed to the access points.
+   ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-2-rfprofile-4.png?raw=true "Import JSON")
 
-    ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-summary-1.png?raw=true "Import JSON")
+8. Within the *Claim* workflow on page *3* ensure both access points appear as shown. Click the **Preview Day-0 Config** links to discover what will be pushed to the access points.
 
-13. Within the *Claim* workflow on page *3*  a *Summary Page* will slide out. Click on the details to display the relevant information. When ready click **X** at the top right to close the *Summary Page* and to continue the workflow. 
+   ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-summary-1.png?raw=true "Import JSON")
 
-    ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-summary-2.png?raw=true "Import JSON")
+9. Within the *Claim* workflow on page *3*  a *Summary Page* will slide out. Click on the details to display the relevant information. When ready click **X** at the top right to close the *Summary Page* and to continue the workflow. 
 
-14. Within the *Claim* workflow on page *3* when ready click **Claim** to Claim the access points and begin the Day-0 provisioning process. 
+   ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-summary-2.png?raw=true "Import JSON")
+
+10. Within the *Claim* workflow on page *3* when ready click **Claim** to Claim the access points and begin the Day-0 provisioning process. 
 
     ![json](./images/module3-approvisioning/dnac-pnp-ap-claiming.png?raw=true "Import JSON")
 
