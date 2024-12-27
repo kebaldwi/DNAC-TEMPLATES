@@ -113,26 +113,41 @@ We will now assign the **AI Profile** to the **Building**. **AI Profiles** if yo
 <details open>
 <summary> Click the arrow for details</summary>
 
-### Step 1 - ***Assign AI RF Profile***
+### Step 1 - ***AI Analytics***
 
-4. To Create **AI RF Profile** page displays with *Wireless > Create Basic RF Profile*. Complete the following steps:
-   1. Enter the **Profile Name** as `DNAC-WIRELESS`
-   2. Under the 2.4 Ghz Section set the *Supported Data Rates* to start at **12**
-   3. Set the *Mandatory Data Rates* to **12** and **24** as shown
-   4. Scroll down continue
+1. To assign **AI RF Profile** we need to first enable the **AI Analytics** within the **Catalyst Center** system settings. Navigate to **`System > Settings`**. 
 
-      ![json](./images/module2-wlans/dnac-wireless-rfprofile-24ghz.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-navigate-system.png?raw=true "Import JSON")
 
-5. Continue creating the RF Profile by completing the following steps:
-   1. Under the 5 Ghz Section set the *Channel Width* to **20 Mhz**
-   2. Set the *Mandatory Data Rates* to **12** and **24** as shown
-   3. Click **Save** continue
+2. Select **Cisco AI Analytics** to enable the capability.
 
-      ![json](./images/module2-wlans/dnac-wireless-rfprofile-5ghz.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-navigate-system-ai.png?raw=true "Import JSON")
 
-6. The `Wireless` tab will reappear with the new *RF Profile* as displayed.
+3. The **Cisco AI Analytics** page displays. Enable the following:
 
-   ![json](./images/module2-wlans/dnac-wireless-rfprofile-results.png?raw=true "Import JSON")
+   1. Enable AI Network Analytics
+   2. AI-Enhanced RRM
+   3. Enable Endpoint Smart Grouping
+   4. Enable AI Spoofing Detection
+   
+      ![json](./images/module2-wlans/dnac-system-ai-analytics-1.png?raw=true "Import JSON")
+
+   5. Enable log export
+   6. On the dropdown provided choose **US East (N. Virginia)** for the storage of data.
+
+      ![json](./images/module2-wlans/dnac-system-ai-analytics-2.png?raw=true "Import JSON")
+
+   7. Click the **Enable** button to continue.
+
+      ![json](./images/module2-wlans/dnac-system-ai-analytics-3.png?raw=true "Import JSON")  
+
+4. Click the **checkbox** to accept the **EULA** and then click **Submit**
+
+   ![json](./images/module2-wlans/dnac-system-ai-analytics-4.png?raw=true "Import JSON")  
+
+5. Click **OK** on the Success Popup displayed.
+
+   ![json](./images/module2-wlans/dnac-system-ai-analytics-5.png?raw=true "Import JSON")  
 
 </details>
 
