@@ -4,6 +4,8 @@
 
 In this subsection we will build a Wireless LAN for Identity iPSK authentication. This lab does have a requirement for ISE configuration. For information on how to prepare ISE for use with this lab please click [ISE Configuration](./iseconfiguration.md).
 
+For our lab scenario we will assume this is to be used for IOT devices.
+
 Click on the arrow below to expand and follow to complete the tasks.
 
 <details open>
