@@ -21,7 +21,7 @@ During the next few steps we will create a **Basic RF Profile**.
 
    ![json](./images/module2-wlans/dnac-menu-network-settings.png?raw=true "Import JSON")
 
-2. On the Network page click the `Wireless` tab to navigate to the wireless page.
+2. On the Network page click the **`Wireless`** tab to navigate to the wireless page.
 
    ![json](./images/module2-wlans/dnac-navigation-wireless-settings.png?raw=true "Import JSON")
 
@@ -67,26 +67,55 @@ During the next few steps we will create a **Basic RF Profile**.
 
 ## Create AI RF Profile
 
-During the next few steps we will create an **AI RF Profile** by cloning a **Basic RF Profile**
+During the next few steps we will create an **AI RF Profile** by cloning a **Basic RF Profile**. The purpose of which is to facilitate the easy duplication of settings and enable the AI RRM capabilities for **Catalyst Center** to make suggestions about **optimizing** wireless settings. 
 
 <details open>
 <summary> Click the arrow for details</summary>
 
-### Step 1 - ***Create Basic RF Profile***
+### Step 1 - ***Create AI RF Profile***
 
-1. To create an Basic RF Profile, first open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon to open the menu. Select `Design>Network Settings`.
+During this section we will duplicate the previously created **Basic RF Profile**. If you have not done so please complete the previous section.
+
+1. To create our **AI RF Profile**, first open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon to open the menu. Select **`Design > Network Settings`**.
 
    ![json](./images/module2-wlans/dnac-menu-network-settings.png?raw=true "Import JSON")
 
-2. On the Network page click the `Wireless` tab to navigate to the wireless page.
+2. On the Network page click the **`Wireless`** tab to navigate to the wireless page.
 
    ![json](./images/module2-wlans/dnac-navigation-wireless-settings.png?raw=true "Import JSON")
 
-3. On the **Wireless** page click `Add` above the *RF Profile* section to create a new Wireless RF Profile
+3. On the **Wireless** page select the **checkbox**  beside the **Basic RF Profile** named **BASIC-RF**
 
-   ![json](./images/module2-wlans/dnac-wireless-rfprofile-begin.png?raw=true "Import JSON")
+   ![json](./images/module2-wlans/dnac-wireless-rfprofile-results.png?raw=true "Import JSON")
 
-4. The Create Basic RF Profile page displays with *Wireless > Create Basic RF Profile*. Complete the following steps:
+4. To Create **AI RF Profile** from the Actions menu select **Upgrade to AI**. This will **duplicate** the wireless settings and open up an **AI profile** to be edited.
+
+   ![json](./images/module2-wlans/dnac-wireless-airfprofile.png?raw=true "Import JSON")
+
+5. Select **Yes** to the **Upgrade to AI** popup
+
+   ![json](./images/module2-wlans/dnac-wireless-airfprofile-1.png?raw=true "Import JSON")
+
+6. An editable version of the new **AI RF Profile** will appear. Complete the following steps: 
+
+   1. Rename the profile to **`AI-RFP`**
+   2. Set the **Busy Hours** to **low** as shown
+   3. Click **Save** continue
+
+   ![json](./images/module2-wlans/dnac-wireless-airfprofile-2.png?raw=true "Import JSON")
+
+</details>
+
+## Assign the AI RF Profile
+
+We will now assign the **AI Profile** to the **Building**. **AI Profiles** if you remember are to be **assigned** at the **Building level**, and cannot be assigned at a floor level. This is because they are defined to allow **Catalyst Center** to **coordinate** the **wireless settings** for an entire building of which **multiple controllers** may be used on differing floors.
+
+<details open>
+<summary> Click the arrow for details</summary>
+
+### Step 1 - ***Assign AI RF Profile***
+
+4. To Create **AI RF Profile** page displays with *Wireless > Create Basic RF Profile*. Complete the following steps:
    1. Enter the **Profile Name** as `DNAC-WIRELESS`
    2. Under the 2.4 Ghz Section set the *Supported Data Rates* to start at **12**
    3. Set the *Mandatory Data Rates* to **12** and **24** as shown
