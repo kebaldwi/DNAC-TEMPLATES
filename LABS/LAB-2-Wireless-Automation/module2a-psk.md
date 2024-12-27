@@ -4,6 +4,8 @@
 
 In this subsection we will build a Wireless LAN for PSK authentication. Click on the arrow below to expand and follow to complete the tasks.
 
+For our lab scenario we will assume this is to be used for Cisco 8821 IP Phones.
+
 <details open>
 <summary> Building a WLAN with a Pre-Shared Key (PSK) </summary>
 

@@ -4,6 +4,8 @@
 
 In this subsection we will build a Wireless LAN for Guest authentication. Click on the arrow below to expand and follow to complete the tasks.
 
+For our lab scenario we will assume this is to be used for Guest access only.
+
 <details open>
 <summary> Building a Guest WLAN </summary>
 
