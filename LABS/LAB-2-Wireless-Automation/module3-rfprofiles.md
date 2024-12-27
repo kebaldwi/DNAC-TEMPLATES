@@ -149,6 +149,42 @@ We will now assign the **AI Profile** to the **Building**. **AI Profiles** if yo
 
    ![json](./images/module2-wlans/dnac-system-ai-analytics-5.png?raw=true "Import JSON")  
 
+### Step 2 - ***Assign AI RF Profile***
+
+During this section we will assign the previously created **AI RF Profile**. If you have not done so please complete the previous sections.
+
+1. To assign our **AI RF Profile**, first open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon to open the menu. Select **`Design > Network Settings`**.
+
+   ![json](./images/module2-wlans/dnac-menu-network-settings.png?raw=true "Import JSON")
+
+2. On the Network page click the **`Wireless`** tab to navigate to the wireless page.
+
+   ![json](./images/module2-wlans/dnac-navigation-wireless-settings.png?raw=true "Import JSON")
+
+3. On the **Wireless** page select the **AI RF Profile**  beside the **Basic RF Profile** 
+
+   ![json](./images/module2-wlans/dnac-wireless-airfprofile-assign-1.png?raw=true "Import JSON")
+
+4. In the **AI RF Profile** section locate the profile **AI-RFP** and on the right click the **`...`** symbol and then from the menu **Assign Locations** 
+
+   ![json](./images/module2-wlans/dnac-wireless-airfprofile-assign-2.png?raw=true "Import JSON")
+
+5. On the **Assign Locations to AI RF-Profile** popout page use the hierarchy to navigate and select the **Building** as shown. Then click **Assign**
+
+   ![json](./images/module2-wlans/dnac-wireless-airfprofile-assign-3.png?raw=true "Import JSON")
+
+6. Click **Confirm** to continue  
+
+   ![json](./images/module2-wlans/dnac-wireless-airfprofile-assign-4.png?raw=true "Import JSON")
+
+7. Click **Continue** to continue 
+
+   ![json](./images/module2-wlans/dnac-wireless-airfprofile-assign-5.png?raw=true "Import JSON")
+
+8. On the **AI RF Profile** section click the **1**  beside the **AI-RFP Profile** to see where its assigned.
+
+   ![json](./images/module2-wlans/dnac-wireless-airfprofile-assign-6.png?raw=true "Import JSON")
+
 </details>
 
 ## Summary
