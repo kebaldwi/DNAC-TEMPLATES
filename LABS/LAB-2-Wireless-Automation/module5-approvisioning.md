@@ -190,15 +190,15 @@ At this point of the process the Access Points should appear in the PnP Claim wi
 
     ![json](./images/module3-approvisioning/dnac-pnp-ap-claiming.png?raw=true "Import JSON")
 
-15. A verification popup will appear, when ready click **Yes** to continue the Claim of the access points and begin the Day-0 provisioning process. 
+11. A verification popup will appear, when ready click **Yes** to continue the Claim of the access points and begin the Day-0 provisioning process. 
 
     ![json](./images/module3-approvisioning/dnac-pnp-ap-claiming-verify.png?raw=true "Import JSON")
 
-16. The access points will be displayed within the *Plug and Play* *Unclaimed* window as shown here initally as **Planned**. They will over time show **Onboarding**. 
+12. The access points will be displayed within the *Plug and Play* *Unclaimed* window as shown here initally as **Planned**. They will over time show **Onboarding**. 
 
     ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-planned.png?raw=true "Import JSON")
 
-17. Eventually will show as **Provisoned** under the *Provisioned* section
+13. Eventually will show as **Provisoned** under the *Provisioned* section
 
     ![json](./images/module3-approvisioning/dnac-pnp-ap-claim-provisioned.png?raw=true "Import JSON")
 
