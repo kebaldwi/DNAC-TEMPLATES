@@ -25,7 +25,7 @@ This newer and more modular lab approach is designed to deal with and includes c
 
 In this legacy lab section you will continue to find all the existing labs which deal with specifics in separate easy to do labs. This set of labs is being depricated due to new content above.
 
-<<details closed>
+<details closed>
 <summary> Expand section for Legacy Lab Content if required </summary></br>
 
 * [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/module1-pnpprep.md) - The lab covers setup for Plug and Play **(allow 1.5 hrs)**
