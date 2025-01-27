@@ -1,0 +1,30 @@
+name: Record Traffic Insights
+
+on:
+  schedule:
+    - cron: '0 0 */14 * *'  # Runs every 14 days at midnight UTC
+
+jobs:
+  log-traffic-insights:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # Specify the Python version you need
+
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4 pdfkit
+
+      - name: Run traffic insights script
+        env:
+          ACCESS_TOKEN: ${{ secrets.ANDREW }}  # Use GitHub token or set your own secret
+          OWNER: kebaldwi  # Replace with your GitHub username
+          REPO: DNAC-TEMPLATES  # Replace with your repository name
+        run: |
+          python CODE/SCRIPTS/logging.py
