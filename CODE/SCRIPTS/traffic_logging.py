@@ -32,7 +32,7 @@ def log_traffic_insights(traffic_insights):
     log_entry = [timestamp, views, unique_visitors]
 
     # Append the log entry to CSV file
-    csv_file_path = "/CODE/TRAFFIC/traffic_log.csv"
+    csv_file_path = "CODE/TRAFFIC/traffic_log.csv"
     file_exists = os.path.isfile(csv_file_path)
 
     with open(csv_file_path, "a", newline='') as csv_file:
