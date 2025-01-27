@@ -31,10 +31,10 @@ jobs:
           OWNER: ${{ secrets.USERNAME }}  # Replace with your GitHub username
           REPO: ${{ secrets.REPO }}  # Replace with your repository name
         run: |
-          python /CODE/SCRIPTS/logging.py
+          python CODE/SCRIPTS/logging.py
       
       - name: Upload CSV Log
         uses: actions/upload-artifact@v3
         with:
           name: traffic_log
-          path: /CODE/TRAFFIC/traffic_log.csv   # Adjust path if necessary
+          path: CODE/TRAFFIC/traffic_log.csv   # Adjust path if necessary
