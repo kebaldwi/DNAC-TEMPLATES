@@ -1,6 +1,9 @@
 name: Record Traffic Insights
 
 on:
+  push:
+    branches:
+      - main 
   schedule:
     - cron: '0 0 */14 * *'  # Runs every 14 days at midnight UTC
 
@@ -20,11 +23,19 @@ jobs:
       - name: Install dependencies
         run: |
           pip install requests beautifulsoup4 pdfkit
+          sudo apt-get install -y wkhtmltopdf  # Install wkhtmltopdf
 
       - name: Run traffic insights script
         env:
-          ACCESS_TOKEN: ${{ secrets.ANDREW }}  # Use GitHub token or set your own secret
-          OWNER: kebaldwi  # Replace with your GitHub username
-          REPO: DNAC-TEMPLATES  # Replace with your repository name
+          ACCESS_TOKEN: ${{ secrets.KEY }}  # Use GitHub token or set your own secret
+          OWNER: ${{ secrets.USERNAME }}  # Replace with your GitHub username
+          REPO: ${{ secrets.REPO }}  # Replace with your repository name
         run: |
-          python CODE/SCRIPTS/logging.py
+          mkdir -p /CODE/TRAFFIC  # Create the directory if it doesn't exist
+          python /CODE/SCRIPTS/logging.py
+      
+      - name: Upload CSV Log
+        uses: actions/upload-artifact@v2
+        with:
+          name: traffic_log
+          path: /CODE/TRAFFIC/traffic_log.csv   # Adjust path if necessary
