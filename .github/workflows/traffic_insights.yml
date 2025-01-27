@@ -31,7 +31,7 @@ jobs:
           OWNER: ${{ secrets.USERNAME }}  # Replace with your GitHub username
           REPO: ${{ secrets.REPO }}  # Replace with your repository name
         run: |
-          python CODE/SCRIPTS/logging.py
+          python CODE/SCRIPTS/traffic_logging.py
       
       - name: Upload CSV Log
         uses: actions/upload-artifact@v3
