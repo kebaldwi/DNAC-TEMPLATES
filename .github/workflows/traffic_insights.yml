@@ -39,6 +39,7 @@ jobs:
           git config --local user.email "action@github.com"
           git fetch origin  # Fetch all branches
           git checkout TRAFFIC || git checkout -b TRAFFIC  # Create and switch to TRAFFIC branch if it doesn't exist
+          git pull origin TRAFFIC --rebase  # Use rebase to keep history clean
           git merge origin/master --no-edit  # Merge master into TRAFFIC
           git add CODE/TRAFFIC/traffic_log.csv
           git commit -m "Update traffic log with new insights" || echo "No changes to commit"
