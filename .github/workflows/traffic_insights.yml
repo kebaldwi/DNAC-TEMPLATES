@@ -36,5 +36,5 @@ jobs:
       - name: Upload CSV Log
         uses: actions/upload-artifact@v3
         with:
-          name: traffic_log
+          name: traffic_log.csv
           path: CODE/TRAFFIC/traffic_log.csv   # Adjust path if necessary
