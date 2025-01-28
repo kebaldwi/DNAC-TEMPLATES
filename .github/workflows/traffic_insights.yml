@@ -39,7 +39,7 @@ jobs:
           git config --local user.email "action@github.com"
           git add CODE/TRAFFIC/traffic_log.csv
           git commit -m "Update traffic log with new insights"
-          git push
+          git push origin TRAFFIC  # Push changes to the TRAFFIC branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided token for authentication
 
