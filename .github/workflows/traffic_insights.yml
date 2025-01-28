@@ -32,7 +32,17 @@ jobs:
           REPO: ${{ secrets.REPO }}  # Replace with your repository name
         run: |
           python CODE/SCRIPTS/traffic_logging.py
-      
+          
+      - name: Commit changes to CSV
+        run: |
+          git config --local user.name "github-actions"
+          git config --local user.email "action@github.com"
+          git add CODE/TRAFFIC/traffic_log.csv
+          git commit -m "Update traffic log with new insights"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided token for authentication
+
       - name: Upload CSV Log
         uses: actions/upload-artifact@v3
         with:
