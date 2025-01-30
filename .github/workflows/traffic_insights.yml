@@ -2,10 +2,12 @@ name: Record Traffic Insights
 
 on:
   push:
+    tags:
+      - "stats"
     branches:
       - master 
   schedule:
-    - cron: '0 0 */14 * *'  # Runs every 14 days at midnight UTC
+    - cron: '0 0 1,14 * *'  # Runs every 1st and 16th days of the month at midnight UTC
 
 jobs:
   log-traffic-insights:
