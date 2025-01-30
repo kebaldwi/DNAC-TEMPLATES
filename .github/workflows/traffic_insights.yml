@@ -50,7 +50,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided token for authentication
           
       - name: Upload CSV Log
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: traffic_log.csv
           path: CODE/TRAFFIC/traffic_log.csv   # Adjust path if necessary
