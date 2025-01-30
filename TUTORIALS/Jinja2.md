@@ -10,6 +10,7 @@ The Jinja2 language typically allows for logical constructs, macros and more. It
 
 Comment statements are a useful tool for scripting and allow for descriptive text to be used to explain the design or functionality of code. In simple IOS configurations anything after a '!' is not implemented but this is not true in Jinja2. To that end anything with a '!' is rendered as actual code so if something is desired not to be processed within this templating language please use `{#...#}` encapsulation. This makes sure the included text is not evaluated nor rendered.
 
+[//]: # ({% raw %})
 ```j2
 {# Comments can be placed here #}
 ```
@@ -26,7 +27,7 @@ There are occassions where those variables will need to be used in descriptions 
 
 Take this example of a macro with an interface description, pay attention to the macro command:
 
-[//]: # ({% raw %})
+
 ```j2
 {% macro (uplink_interface(site_code, closet) %}
  description {{ site_code }} - {{ closet }}
@@ -52,7 +53,7 @@ You can also extrapolate variables from known values once the device has been on
 
 IF statements are a useful tool for scripting and allow for a decision tree in which under certain circumstances various commands can be used alone or in combination. To create an IF statement examples have been provided below. That said it is important to understand that the IF statement may be used alone or in combination with the following;
 
-[//]: # ({% raw %})
+
 ```j2
 {% if %}
 {% endif %}
@@ -129,7 +130,6 @@ When combined with the IF statements below, the above Macro allows for various I
    {{ Interfaces() }}
 {% endif %}
 ```
-[//]: # ({% endraw %})
 
 ## For Loops
 
@@ -170,7 +170,7 @@ An example of a For Loop
        interface vlan {{ Vlanid }} 
     {% endfor %}
 ```
-[//]: # ({% endraw %})
+
 
 Inside of a for-loop block, you can access some special variables: Try these instead of modifying counters within looping blocks.
 
@@ -211,6 +211,8 @@ These can be used for building entries for multiple lines which need to be used 
   ****************************LEGAL WARNING*************************************
 ^</MLTCMD>
 ```
+[//]: # ({% endraw %})
+
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
 Special mention to: https://jinja.palletsprojects.com/en/3.0.x/templates as examples and extrapolations were made using this documentation.
