@@ -131,7 +131,7 @@ Previously within the DayN Module, we introduced a methodology of automatically 
 ### ***Examine Code***
 
 To that end, the following configuration has been built previously:
-
+[//]: # ({% raw %})
 ```J2
    {#- 9300 Stack Power and 9300, 9200 Priority -#}
    {% set StackCount = __device.platformId | split(",")  %}
@@ -167,6 +167,7 @@ To that end, the following configuration has been built previously:
      #MODE_END_ENABLE
    {% endif %}
 ```
+[//]: # ({% endraw %})
 
 Within this script, you can see the Arrays `Stackcount` formed using the `.split(",")` method, which takes the string returned from the database and splits the list into two elements within the Array `Stackcount`. You could address each element in the Array, remembering that Arrays always start the numbering of elements at position zero (0). You could call the data with these two options; for the first element in the Array `Stackcount[0]` or the second element in the Array `Stackcount[1]`. Here we store the length of the array or the number of switches in a variable `StackMemberCount`.
 
@@ -232,6 +233,7 @@ The **macros** that are called to build vlans from included regular templates. T
 
 ### ***Examine Code***
 
+[//]: # ({% raw %})
 ```J2
    {# Dictionaries of VLANS per Site #}
    {% set SiteAvlans = [
@@ -271,6 +273,7 @@ The **macros** that are called to build vlans from included regular templates. T
      {% endfor %}
    {% endmacro %}
 ```
+[//]: # ({% endraw %})
 
 Here you can see a **dictionary** used to hold **key value pairs** in a list for use. When parsed to the **macro** `configure_vlans(vlanpairs)` they build out the **vlan database**, looping through and for every line adding the vlan and the name entry to the configuration. Below that you will see search **macro**, which creates the vlanarray above.
 
@@ -286,7 +289,7 @@ Previously within the DayN Module, we introduced a methodology of automatically 
 ### ***Examine Code***
 
 We will analyze the configuration in more detail below. Lets look at this intimidating block of code and disect it.
-
+[//]: # ({% raw %})
 ```J2
    {# System Variable example interfaces in one logical code construct #}
    {# Select and Configure Access Point interfaces#}
@@ -321,7 +324,9 @@ We will analyze the configuration in more detail below. Lets look at this intimi
    {% endfor %}
 ```
 
+
 In the first block of code we see an array being created `{% set apintlog = uplink_portarray %}`. This array is populated earlier in the template from an interrogation of the number of trunk links connected initially to the switch. The assumption is that no other devices are connected at this time. 
+
 
 ```J2
    {# Determine whether target is Dual or Single Uplink Target #}
@@ -332,6 +337,7 @@ In the first block of code we see an array being created `{% set apintlog = upli
      {% endif %}
    {% endfor %}
 ```
+[//]: # ({% endraw %})
 
 So this is where we get the value for the `uplink_portarray`. As you can see it is a list of portnames of all the ports which are physical trunks. This value is then stored in the `apintlog` variable for use in the next sections.
 
@@ -407,6 +413,7 @@ First, lets take a look at the code which causes everything to happen for autoco
 
 The **macros** that are called build interface templates. Think of these similarly to **Python** functions where we in parenthesis parse a list of variables for use in the function. In this list we see `vlanarray[x]` which is calling elements of a vlan list like `[10,20,30,40]`. This list was populated when we created the vlan database and stored it in this array. 
 
+[//]: # ({% raw %})
 ```J2
    {# Dictionaries of VLANS per Site #}
    {% set SiteAvlans = [
@@ -438,6 +445,7 @@ The **macros** that are called build interface templates. Think of these similar
      {% endfor %}
    {% endmacro %}
 ```
+[//]: # ({% endraw %})
 
 Here you can see a **dictionary** used to hold **key value pairs** in a list for use. When parsed to the **macro** `configure_vlans(vlanpairs)` they build out the **vlan database**, looping through and for every line adding the vlan and the name entry to the configuration. Below that you will see search **macro**, which creates the vlanarray above.
 

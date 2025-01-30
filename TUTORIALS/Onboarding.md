@@ -123,7 +123,7 @@ interface Vlan 1
 ```
 
 #### Example Jinja2 Template
-
+[//]: # ({% raw %})
 ```J2
 {# <------Onboarding-Template-------> #}
 {# To be used for onboarding when using Day N Templates #}
@@ -195,6 +195,7 @@ snmp-server trap-source Vlan {{ MgmtVlan }}
 ntp source Vlan {{ MgmtVlan }}
 !
 ```
+[//]: # ({% endraw %})
 
 Both of these Templates have the settings necessary to bring up a Layer2 access switch with enough configration to be supported by Cisco Catalyst Center for the rest of the provisioning process.
 

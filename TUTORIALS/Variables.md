@@ -122,6 +122,7 @@ With variables there are modifiers that can be used to do specific operations wi
 
 In this section we will go into the various aspects of Jinja2 Variables and nomenclature as they are used on Cisco Catalyst Center for templating.
 
+[//]: # ({% raw %})
 ```j2
     Variable reference:     {% set monkey = bill  %}
     String literal:         {% set monkey = 'monica'  %}
@@ -216,7 +217,7 @@ With variables there are modifiers that can be used to do specific operations wi
    ```j2
    {% do PortTotal.append(PortCount) %}
    ```
-
+[//]: # ({% endraw %})
 ## Cisco Catalyst Center & Working with Variables
 
 As with anything Cisco Catalyst Center the UI allows for flexibility and the ability to not only further define how the Variables are populated but how they are used during the provisioning workflows. 
