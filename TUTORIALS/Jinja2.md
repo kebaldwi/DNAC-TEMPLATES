@@ -26,6 +26,7 @@ There are occassions where those variables will need to be used in descriptions 
 
 Take this example of a macro with an interface description, pay attention to the macro command:
 
+[//]: # ({% raw %})
 ```j2
 {% macro (uplink_interface(site_code, closet) %}
  description {{ site_code }} - {{ closet }}
@@ -36,7 +37,7 @@ Take this example of a macro with an interface description, pay attention to the
 
 You can also extrapolate variables from known values once the device has been onboarded into the inventory. If the device was populated with the pnp startup-vlan command value then then the native vlan would be set to follow that automatically on the target switch. You could bind a variable and then use that to determine many other values for the device automatically.
 
-[//]: # ({% raw %})
+
 ```j2
 {% set voice_offset = 4000 %}
 {% set data_offset = 100 %}

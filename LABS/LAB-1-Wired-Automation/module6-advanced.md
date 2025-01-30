@@ -406,6 +406,7 @@ This Autoconf methodology was deployed via template.
 
 First, lets take a look at the code which causes everything to happen for autoconf
 
+[//]: # ({% raw %})
 ```J2
    {{ autoconf_accesspoint(vlanArray[1]) }}
    {{ autoconf_flexaccesspoint(vlanArray[1], vlanArray[2], vlanArray[3], vlanArray[4]) }} 
@@ -417,7 +418,6 @@ First, lets take a look at the code which causes everything to happen for autoco
 
 The **macros** that are called build interface templates. Think of these similarly to **Python** functions where we in parenthesis parse a list of variables for use in the function. In this list we see `vlanarray[x]` which is calling elements of a vlan list like `[10,20,30,40]`. This list was populated when we created the vlan database and stored it in this array. 
 
-[//]: # ({% raw %})
 ```J2
    {# Dictionaries of VLANS per Site #}
    {% set SiteAvlans = [
@@ -464,6 +464,7 @@ This is utilized in conjunction with the **macros**, which build out the interfa
 
 They **macros** are as follows
 
+[//]: # ({% raw %})
 ```J2
    {# AutoConf Macro Section #}
    {# AutoConf Base Configuration Macro #}
@@ -512,6 +513,7 @@ They **macros** are as follows
       spanning-tree portfast
    {% endmacro %}
 ```
+[//]: # ({% endraw %})
 
 Next, we need to set up the macros, but we will make use of **Autoconf** and the **Templates** above. **Autoconf** is a solution that can be used to manage port configurations for data or voice VLAN, quality of service (QoS) parameters, storm control, and MAC-based port security on end devices that are deployed in the access layer of a network. Device classification is enabled when you enable the Autoconf feature using the `autoconf enable` command in global configuration mode. The device detection acts as an event trigger, which applies the appropriate automatic template to the interface. When the Autoconf feature is enabled using the autoconf enable command, the default Autoconf service policy is applied to all the interfaces. For more information about **[Autoconf](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9400/software/release/16-12/configuration_guide/nmgmt/b_1612_nmgmt_9400_cg/configuring_autoconf.pdf)** or alternatively [Autoconf](../../CODE/DOCS/configuring_autoconf.pdf)
 
@@ -599,6 +601,7 @@ So lets take a look at the configuration we will deploy:
 
 We will need to build a set of policies for **Open**, **Closed** and **Low-Impact** mode. These are deployed as a static list and can be maintained in a regular template. These policies and classifications are required but not automatically deployed by Catalyst Center's integrated deployment.
 
+[//]: # ({% raw %})
 ```J2
   {# IBNS configurations build #}
   !
@@ -1056,6 +1059,7 @@ We will define a set of **macros** to drive the interface template deployment ac
      service-policy type control subscriber PMAP_DefaultWiredDot1xClosedAuth_1X_MAB
   {% endmacro %}
 ```
+[//]: # ({% endraw %})
 
 These will be deployed via calling each **macro** as follows:
 

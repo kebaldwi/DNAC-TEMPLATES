@@ -83,6 +83,7 @@ It is also possible to create objects which can then be referenced through simil
 
 We then build a loop stucture to deploy the Vlans and perhaps build that into a macro for deployment.
 
+[//]: # ({% raw %})
 ```j2
 {% macro configure_vlans(vlanpairs)  %}
   {% for vlanpair in vlanpairs %}
@@ -94,7 +95,6 @@ We then build a loop stucture to deploy the Vlans and perhaps build that into a 
 
 Then perhaps build a logical structure to account for differing Site Objects.
 
-[//]: # ({% raw %})
 ```j2
 {% if Site == "SiteA" %}
   {{ configure_vlans(SiteAvlans) }}
@@ -284,7 +284,6 @@ We set up variables to track in Array format the number of ports per switch.
         {% do PortTotal.append(PortCount) %}
    {% endfor %}
 ```
-[//]: # ({% endraw %})
 
 The next step would be to build macros and vlans to configure the various ports.
 
@@ -321,6 +320,7 @@ The next step would be to build macros and vlans to configure the various ports.
    interface portchannel 1
     {{ uplink_interface() }}
 ```
+[//]: # ({% endraw %})
 
 While this would configure the access ports, and modify the port channel for upstream connectivity we could do more to automate we will look at that next.
 
