@@ -76,7 +76,7 @@ Within the form you can see many fields which can be populated with a csv file. 
 Once you have imported the template you can look at the logic.
 
 #### Key Features
-
+[//]: # ({% raw %})
 1. System MTU set by default, but modifiable via the form
 2. VTP Domain set to Hostname, you can change to variable by removing `{% set VtpDomain = Hostname %}`
 3. Shuts downn Vlan 1 if not in use
@@ -153,6 +153,7 @@ snmp-server trap-source Vlan {{ MgmtVlan }}
 ntp source Vlan {{ MgmtVlan }}
 !
 ```
+[//]: # ({% endraw %})
 
 </details>
 

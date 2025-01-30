@@ -10,6 +10,7 @@ In the following example a variable is bound to Cisco Catalyst Centers database 
 
 In order to acomplish this we need to use this example. We will use the *int* modifier to parse the bind variable to an integer variable using set notation.
 
+[//]: # ({% raw %})
 ```j2
    {% set native_vlan = native_vlan_bind | integer %}
    {% set data_vlan = native_vlan + 10 %}
@@ -281,6 +282,7 @@ We set up variables to track in Array format the number of ports per switch.
         {% do PortTotal.append(PortCount) %}
    {% endfor %}
 ```
+[//]: # ({% endraw %})
 
 The next step would be to build macros and vlans to configure the various ports.
 

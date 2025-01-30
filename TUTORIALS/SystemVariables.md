@@ -163,12 +163,14 @@ Lastly let's take a look at using a different system variable.  This very simple
 
 ![json](../ASSETS/set_snmp_location.png?raw=true "Import JSON") 
 
+[//]: # ({% raw %})
 ```J2
 {% if __device.snmpLocation == ''  %}
     {% set snmp_location  = __device.hostname | split(".") %}
     snmp-server location {{ snmp_location[1] }}
 {% endif %}
 ```
+[//]: # ({% endraw %})
 
 ### Summary
 
