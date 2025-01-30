@@ -175,9 +175,11 @@ Within this script, you can see the Conditional Statements `if elif else endif`.
 
 1. The code will run only if the number of switches in the stack is found to be greater than 1. This means that stackpower is only configured on stacks of two or more switches. 
 
+[//]: # ({% raw %})
 ```j2
    {% if StackMemberCount > 1 %}
 ```
+[//]: # ({% endraw %})
 
 2. The next step is to correctly set the number of powerstack required. If the number of switches exceeds 4 then we need two powerstacks set up.
 
