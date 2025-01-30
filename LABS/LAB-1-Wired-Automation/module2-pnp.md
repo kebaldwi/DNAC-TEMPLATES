@@ -291,11 +291,11 @@ ntp source Vlan ${MgmtVlan}
 !
 netconf-yang
 !
-
 ```
 
 ### Example Jinja2 Template
 
+{% raw %}
 ```J2
 {# <------Onboarding-Template-------> #}
 {# To be used for onboarding when using Day N Templates #}
@@ -368,8 +368,8 @@ ntp source Vlan {{ MgmtVlan }}
 !
 netconf-yang
 !
-
 ```
+{% endraw %}
 
 Both of these Templates have the settings necessary to bring up a Layer2 access switch with enough configration to be supported by Cisco Catalyst Center for the rest of the provisioning process. As guidance it is recommended that you use **Jinja2** moving forward, due to its modularity and capabilities. You can however achieve the same results with **Velocity**, but the scripting language is not as feature rich.
 
