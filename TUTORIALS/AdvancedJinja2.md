@@ -83,7 +83,7 @@ It is also possible to create objects which can then be referenced through simil
 
 We then build a loop stucture to deploy the Vlans and perhaps build that into a macro for deployment.
 
-[//]: # ({% raw %})
+
 ```j2
 {% macro configure_vlans(vlanpairs)  %}
   {% for vlanpair in vlanpairs %}
@@ -266,7 +266,7 @@ Explained here...
       {% endif %}
    {% endfor %}
 ```
-[//]: # ({% endraw %})
+
 
 ### Working with port counts within Catalyst 9k
 
