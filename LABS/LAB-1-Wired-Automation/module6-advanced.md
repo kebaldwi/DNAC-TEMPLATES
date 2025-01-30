@@ -192,6 +192,7 @@ Within this script, you can see the Conditional Statements `if elif else endif`.
 
 3. The next step is to iterate through the switches in the stack setting the stackpower appropriately for each switch and adding them to the correct powerstack 
 
+[//]: # ({% raw %})
 ```j2
    {% for Switch in range(0,StackMemberCount,1) %}
       {% if loop.index <= (StackMemberCount/2|round('ceil')) %}
@@ -204,6 +205,7 @@ Within this script, you can see the Conditional Statements `if elif else endif`.
       {{ loop.index }}
    {% endfor %}
 ```
+
 4. Lastly, we will set the switch priority appropriately on each switch for master and standby, and then for the remaining switches within the stack so that switch numbering matches the priority levels.
 
 ```j2
@@ -217,6 +219,7 @@ Within this script, you can see the Conditional Statements `if elif else endif`.
       {% endif %}
    {% endfor %}
 ```
+[//]: # ({% endraw %})
 
 Within this script, you can see the use of the Enable Statements `#MODE_ENABLE #MODE_END_ENABLE`. These commands allow for enable level configuration commands to be entered. This script needs to configure the enable level command to set switch priority for individual switches `switch {{loop.index}} priority #`. Bracketing this configuration command with the velocity statements `#MODE_ENABLE #MODE_END_ENABLE` allows us to change from configuration mode to enable mode and back again.
 
@@ -337,7 +340,7 @@ In the first block of code we see an array being created `{% set apintlog = upli
      {% endif %}
    {% endfor %}
 ```
-[//]: # ({% endraw %})
+
 
 So this is where we get the value for the `uplink_portarray`. As you can see it is a list of portnames of all the ports which are physical trunks. This value is then stored in the `apintlog` variable for use in the next sections.
 
@@ -356,6 +359,7 @@ Next we want to configure some ports for Access Points. To show the use of Autoc
      {% endfor %}
    {% endfor %}
 ```
+[//]: # ({% endraw %})
 
 The first line references a Bind Variable. A Bind Variable is similar to a system variable, but it can be used to select interfaces so please take a look at the variable in the form tool within the Template Hub. So the loop will loop through all interfaces selected in the `accesspoint_interfaces` variable. 
 
@@ -558,6 +562,7 @@ We will also ensure we only configure those we selected comparing each interface
 
 Once all the Access Points interfaces are configured we then target the rest of the ports for 802.1x configuration. 
 
+[//]: # ({% raw %})
 ```J2
    {% for apinterface in accesspoint_interfaces %}
      {% for interface in __interface %}
@@ -571,6 +576,7 @@ Once all the Access Points interfaces are configured we then target the rest of 
      {% endfor %}
    {% endfor %}
 ```
+[//]: # ({% endraw %})
 
 We loop through all the interfaces on the switch, ensuring we configuring only those starting with GigabitEthernet and negating the management interface and any that are network modules. We then ensure the interface is not in the `apintlog` array as previously configured, and if all that is true default the interface, and place a autoconf config on it via an interface macro.
 

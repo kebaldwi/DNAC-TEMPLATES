@@ -51,6 +51,7 @@ You can also extrapolate variables from known values once the device has been on
 
 IF statements are a useful tool for scripting and allow for a decision tree in which under certain circumstances various commands can be used alone or in combination. To create an IF statement examples have been provided below. That said it is important to understand that the IF statement may be used alone or in combination with the following;
 
+[//]: # ({% raw %})
 ```j2
 {% if %}
 {% endif %}
@@ -127,6 +128,7 @@ When combined with the IF statements below, the above Macro allows for various I
    {{ Interfaces() }}
 {% endif %}
 ```
+[//]: # ({% endraw %})
 
 ## For Loops
 

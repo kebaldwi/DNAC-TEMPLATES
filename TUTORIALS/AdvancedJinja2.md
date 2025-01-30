@@ -94,6 +94,7 @@ We then build a loop stucture to deploy the Vlans and perhaps build that into a 
 
 Then perhaps build a logical structure to account for differing Site Objects.
 
+[//]: # ({% raw %})
 ```j2
 {% if Site == "SiteA" %}
   {{ configure_vlans(SiteAvlans) }}
@@ -265,6 +266,7 @@ Explained here...
       {% endif %}
    {% endfor %}
 ```
+[//]: # ({% endraw %})
 
 ### Working with port counts within Catalyst 9k
 
