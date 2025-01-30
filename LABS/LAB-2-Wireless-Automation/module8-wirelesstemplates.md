@@ -63,6 +63,7 @@ While on Cisco Catalyst (DNA) Center you can import templates, we will build one
 
 3. Within the Editor View **paste** the following:
 
+[//]: # ({% raw %})
 ```J2
 {# Option This option allows you to look for a key word in the profile name and apply CCKM 
    It does not require any bind variables but instead uses System Variables.content-scan
@@ -81,7 +82,7 @@ While on Cisco Catalyst (DNA) Center you can import templates, we will build one
 
 {{ def_SSID_CCKM() }}
 ```
-
+[//]: # ({% endraw %})
 4. **Save** and **Commit** the Template to the project.
 
    ![json](./images/module8-wirelesstemplates/dnac-templateeditor-save-commit.png?raw=true "Import JSON")
