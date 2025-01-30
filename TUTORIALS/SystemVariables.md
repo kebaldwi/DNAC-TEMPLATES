@@ -50,6 +50,7 @@ You might be concerned that we didn't check to make sure that the port mode was 
 
 Here is that template if you wish to copy it:
 
+[//]: # ({% raw %})
 ```J2
 {%- macro access_interface()  %}
   switchport access vlan {{ access_vlan }}
@@ -163,7 +164,7 @@ Lastly let's take a look at using a different system variable.  This very simple
 
 ![json](../ASSETS/set_snmp_location.png?raw=true "Import JSON") 
 
-[//]: # ({% raw %})
+
 ```J2
 {% if __device.snmpLocation == ''  %}
     {% set snmp_location  = __device.hostname | split(".") %}
