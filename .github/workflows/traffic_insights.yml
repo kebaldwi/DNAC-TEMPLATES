@@ -3,6 +3,10 @@ name: Record Traffic Insights
 on:
   schedule:
     - cron: '0 0 1,14 * *'  # Runs every 1st and 16th days of the month at midnight UTC
+  workflow_dispatch:  # Allows manual triggering
+
+permissions:
+  contents: write
 
 jobs:
   log-traffic-insights:
@@ -10,16 +14,18 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/checkout@v4
         with:
-          python-version: '3.8'  # Specify the Python version you need
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
+          
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'  # Specify the Python version you need
 
       - name: Install dependencies
         run: |
-          pip install requests beautifulsoup4 pdfkit
+          pip install requests beautifulsoup4 pdfkit Jinja2==3.1.5 MarkupSafe==3.0.2
           sudo apt-get install -y wkhtmltopdf  # Install wkhtmltopdf
 
       - name: Run traffic insights script
@@ -30,19 +36,13 @@ jobs:
         run: |
           python CODE/SCRIPTS/traffic_logging.py
 
+      - name: run python script to update mermaid markdown
+        run: python TRAFFIC/chart_gen.py
+        
       - name: Commit changes to CSV
         run: |
           git config --local user.name "github-actions"
           git config --local user.email "action@github.com"
-          git checkout TRAFFIC || git checkout -b TRAFFIC  # Create and switch to TRAFFIC branch if it doesn't exist
           git add CODE/TRAFFIC/traffic_log.csv
           git commit -m "Update traffic log with new insights" || echo "No changes to commit"
-          git push origin TRAFFIC  # Push changes to the TRAFFIC branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided token for authentication
-          
-      - name: Upload CSV Log
-        uses: actions/upload-artifact@v4
-        with:
-          name: traffic_log.csv
-          path: CODE/TRAFFIC/traffic_log.csv   # Adjust path if necessary
+          git push
