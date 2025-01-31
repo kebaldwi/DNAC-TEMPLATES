@@ -25,7 +25,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests beautifulsoup4 pdfkit Jinja2==3.1.5 MarkupSafe==3.0.2
+          pip install requests beautifulsoup4 pdfkit Jinja2 MarkupSafe
           sudo apt-get install -y wkhtmltopdf  # Install wkhtmltopdf
 
       - name: Run traffic insights script
