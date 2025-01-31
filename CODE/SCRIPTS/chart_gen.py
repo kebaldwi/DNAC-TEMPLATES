@@ -1,7 +1,7 @@
 import csv
 from jinja2 import Environment, FileSystemLoader
 
-with open("TRAFFIC/traffic_log.csv", mode='r') as file:
+with open("CODE/TRAFFIC/traffic_log.csv", mode='r') as file:
     traffic_file = csv.reader(file)
     traffic = [line for line in traffic_file]
 
@@ -18,9 +18,9 @@ for line in traffic:
 env = Environment(loader=FileSystemLoader('.'))
 
 # Load the template
-template = env.get_template('TRAFFIC/mermaid.j2')
+template = env.get_template('CODE/SCRIPTS/mermaid.j2')
 
 rendered_template = template.render(xaxis=xaxis, views=views, unique=unique)
 
-with open('TRAFFIC/readme.md', 'w') as f:
+with open('CODE/TRAFFIC/README.md', 'w') as f:
     f.write(rendered_template)
