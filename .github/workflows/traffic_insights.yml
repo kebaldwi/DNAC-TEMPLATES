@@ -37,7 +37,7 @@ jobs:
           python CODE/SCRIPTS/traffic_logging.py
 
       - name: run python script to update mermaid markdown
-        run: python TRAFFIC/chart_gen.py
+        run: python CODE/SCRIPTS/chart_gen.py
         
       - name: Commit changes to CSV
         run: |
