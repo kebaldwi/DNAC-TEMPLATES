@@ -259,6 +259,6 @@ Congratulations you have completed the Access Point Plug and Play, and Provision
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-> [**Continue to Application QoS Module**](../LAB-2-Wireless-Automation/module6-applicationqos.md)
+> [**Continue to AI RF Profiling Module**](../LAB-2-Wireless-Automation/module6-airfprofiles.md)
 
 > [**Return to Lab Menu**](./README.md)

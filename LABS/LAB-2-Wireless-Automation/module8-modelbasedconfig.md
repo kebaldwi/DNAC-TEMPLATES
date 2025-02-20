@@ -75,6 +75,6 @@ Congratulations you have completed the Model-Based Config module of the lab and 
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-> [**Continue to Wireless Templates Module**](../LAB-2-Wireless-Automation/module8-wirelesstemplates.md)
+> [**Continue to Wireless Templates Module**](../LAB-2-Wireless-Automation/module9-wirelesstemplates.md)
 
 > [**Return to Lab Menu**](./README.md)

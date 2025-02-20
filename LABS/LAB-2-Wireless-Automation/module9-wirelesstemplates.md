@@ -124,6 +124,6 @@ Congratulations you have completed the Wireless Templating module of the lab and
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-> [**Continue to Wireless Controller High Availability Module**](../LAB-2-Wireless-Automation/module9-controllerha.md)
+> [**Continue to Wireless Controller High Availability Module**](../LAB-2-Wireless-Automation/module10-controllerha.md)
 
 > [**Return to Lab Menu**](./README.md)

@@ -147,6 +147,7 @@ Congratulations you have completed building Application Policies and deploying Q
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
-> [**Continue to Model Based Config Module**](../LAB-2-Wireless-Automation/module7-modelbasedconfig.md)
+> [**Continue to Model Based Config Module**](../LAB-2-Wireless-Automation/module8
+-modelbasedconfig.md)
 
 > [**Return to Lab Menu**](./README.md)
