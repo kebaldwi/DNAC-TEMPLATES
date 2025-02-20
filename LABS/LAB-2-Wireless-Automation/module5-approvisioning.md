@@ -38,7 +38,7 @@ For routing in the environment an OSPF IGP process has been created to propogate
 
 The 9130AX and or 4800 Access Points are connected to both access switches and the ports are automatically configured via the AUTOCONF feature.
 
-![json](./images/DCLOUD_Topology_Wireless-v1.png?raw=true "Import JSON")
+![json](./images/DCLOUD_Topology_Wireless-v2.png?raw=true "Import JSON")
 
 # Lab Section 1 - Access Point PnP
 
