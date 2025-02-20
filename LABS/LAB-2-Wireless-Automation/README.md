@@ -20,7 +20,7 @@ Please set up the lab using the following:
 
 The lab will be split into modules to concentrate on specific tasks. Eash is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
 
-1. [**Wireless Controller PnP or Discovery**](./module1-ctrlpnpdiscovery.md)
+1. [**Wireless Controller Discovery or PnP**](./module1-ctrlpnpdiscovery.md)
 2. [**WLAN Creation**](./module2-wlans.md)
    * [**2a PSK SSID Creation**](./module2a-psk.md)
    * [**2b iPSK SSID Creation**](./module2b-ipsk.md)
@@ -29,10 +29,11 @@ The lab will be split into modules to concentrate on specific tasks. Eash is des
 3. [**RF Profiles**](./module3-rfprofiles.md)
 4. [**WLC Provisioning**](./module4-wlcprovisioning.md)
 5. [**AP Provisioning**](./module5-approvisioning.md)
-6. [**Application QoS**](./module6-applicationqos.md)
-7. [**Model Based Config**](./module7-modelbasedconfig.md)
-8. [**Wireless Templates**](./module8-wirelesstemplates.md)
-9. [**Controller HA**](./module9-controllerha.md)
+6. [**AI RF Profiles**](./module6-airfprofiles.md)
+7. [**Application QoS**](./module7-applicationqos.md)
+8. [**Model Based Config**](./module8-modelbasedconfig.md)
+9. [**Wireless Templates**](./module9-wirelesstemplates.md)
+10. [**Controller HA**](./module10-controllerha.md)
 
 ## Preparation
 

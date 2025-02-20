@@ -1,4 +1,4 @@
-# Wireless Controller PnP or Discovery
+# Wireless Controller Discovery or PnP
 
 Within this lab module, we will concentrate our efforts on the discovery or PnP of each of the devices by **Catalyst Center**, so that we can onboard and gain management of those devices. 
 
@@ -37,7 +37,7 @@ For routing in the environment an OSPF IGP process has been created to propogate
 
 The 9130AX Access Points are connected to both access switches and the ports are automatically configured via the AUTOCONF feature.
 
-![json](./images/DCLOUD_Topology_Wireless-v1.png?raw=true "Import JSON")
+![json](./images/DCLOUD_Topology_Wireless-v2.png?raw=true "Import JSON")
 
 ## Lab Credentials:
 
