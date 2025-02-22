@@ -1,4 +1,6 @@
-# REST API Orchestration with Python 
+# REST API Orchestration with Python - IN DEVELOPMENT
+
+![json](../../ASSETS/underconstruction.png?raw=true "Import JSON")
 
 ## Overview
 
@@ -8,6 +10,10 @@ This Lab is designed as a standalone lab to help customers with varying challeng
 
 Until this point, we have used Rest-API for some basic setup tasks in labs 1 and 2, but there are so many situations that can be solved or at least eased using Rest-API in conjunction with Catalyst Center. In this lab, we will use a complete set of REST-API collections which will build upon the foundational knowledge acquired in the previous labs. For this lab, we will concentrate on Catalyst Center configuration and how Catalyst Center can be automated to perform various functions which we have already covered. 
 
+Ultimately we are all striving to completely automate the network infrastructure. The closer we get to full service automation the closer we get to business process orchestration. Continual Implementation Continual Deployment is a goal that some companies aspire to and one which the concepts here can stive towards. 
+
+![json](./images/cicd-pipeline2.png?raw=true "Import JSON")
+
 This lab is meant to mirror the concepts of **[LAB 4 REST-API Orchestration with Postman](../LAB-4-Rest-API-Orchestration/README.md)** so as to build on the existing foundation of knowledge. If you have not done so already please do go through lab four to acquaint yourself with the general concepts.
 
 The lab will utilize a set of python programs shared in the code section of the repository. These programs will also be expanded to keep in line with this lab.
@@ -16,16 +22,15 @@ The lab will utilize a set of python programs shared in the code section of the 
 
 The use cases we will cover are the following which you can access via the links below:
 
-1. [**Python Orientation**]()
-2. [**Building Hierarchy**]()
-3. [**Assign Settings and Credentials**]()
-4. [**Device Discovery**]()
-5. [**Template Deployment**]()
-6. [**Configuration Archive**]()
-7. [**Retrieving Network Inventory**]()
-8. [**Running Show Commands**]()
+1. [**Python Orientation**](./python-0-orientation/01-intro.md)
+2. [**Building Hierarchy**](./python-1-hierarchy/01-intro.md)
+3. [**Assign Settings and Credentials**](./python-2-settings/01-intro.md)
+4. [**Device Discovery**](./python-3-discovery/01-intro.md)
+5. [**Template Deployment**](./python-4-templates/01-intro.md)
+6. [**Configuration Archive**](./python-5-archive/01-intro.md)
+7. [**Retrieving Network Inventory**](./python-6-inventory/01-intro.md)
+8. [**Running Show Commands**](./python-7-cmd-run/01-intro.md)
 9. [**Python REST API Application**]()
-10. [**Ansible Orchestration**]()
 
 ## Preparation
 
