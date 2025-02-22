@@ -1,0 +1,49 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Device Discovery') {
+            steps {
+                script {
+                    def previousModifiedTime = null
+                    def currentModifiedTime = null
+
+                    while (true) {
+                        // Retrieve the previous modified time from a file or environment variable
+                        println 'Monitoring Hierarchy Build for changes'
+                        def storedModifiedTime = readFile('/root/DEVWKS-2176/timestamp/previous_modified_time_discovery.txt').trim()
+                        if (storedModifiedTime) {
+                            previousModifiedTime = storedModifiedTime.toLong()
+                        }
+
+                        // Check if any files exist in the subdirectory except placeholder.txt
+                        def filesExist = sh(script: 'find /root/DEVWKS-2176 -type f -name "DNAC-Design-Settings.csv" | wc -l', returnStdout: true).trim().toInteger() > 0
+
+                        if (filesExist) {
+                            // Execute a shell command to retrieve the last modified timestamp of any files except placeholder.txt
+                            def lastModifiedOutput = sh(script: 'find /root/DEVWKS-2176 -type f -name "DNAC-Design-Settings.csv" -exec stat -c %Y {} \\; | sort -n | tail -n 1', returnStdout: true).trim()
+                            currentModifiedTime = lastModifiedOutput.toLong()
+                            println "Current Timestamp: ${currentModifiedTime}"
+
+                            if (previousModifiedTime == null || currentModifiedTime != previousModifiedTime) {
+                                // Execute your desired steps or stages here
+                                println 'Files changed'
+                                dir('/root/DEVWKS-2176') {
+                                    sh 'python3 /root/DEVWKS-2176/device_discovery.py'
+                                }
+                            } else {
+                                println 'No changes'
+                            }
+                        } else {
+                            println 'No files found in the subdirectory'
+                        }
+
+                        // Store the current modified time for future comparisons
+                        writeFile file: '/root/DEVWKS-2176/timestamp/previous_modified_time_discovery.txt', text: currentModifiedTime.toString()
+                        sleep 180
+                    }
+                }
+            }
+        }
+    }
+}
