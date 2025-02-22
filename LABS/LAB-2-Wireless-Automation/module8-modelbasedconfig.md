@@ -24,7 +24,6 @@ As we have 4 SSID's our scenario will be as such:
 | SSID:           | USE CASE:      | Description of Requirements                  | 
 |-----------------|----------------|----------------------------------------------|
 | CAMPUS-PSK      | PHONES         | P2P, Voice, Video, DHCP Req'd                |
-| CAMPUS-IPSK     | IOT            | P2P, VMware Fusion, Voice, Video, DHCP Req'd |
 | CAMPUS-EAP      | DATA & VOICE   | P2P, VMware Fusion, Voice, Video, DHCP Req'd |
 | GUESTNET        | GUEST TRAFFIC  | No P2P, VMware Fusion, DHCP Req'd            |
 
@@ -61,7 +60,6 @@ In this section we have three scenarios we will deal with from above, as detaile
 | SSID:           | USE CASE:      | Description of Requirements                  | 
 |-----------------|----------------|----------------------------------------------|
 | CAMPUS-PSK      | PHONES         | P2P, Voice, Video, DHCP Req'd                |
-| CAMPUS-IPSK     | IOT            | P2P, VMware Fusion, Voice, Video, DHCP Req'd |
 | CAMPUS-EAP      | DATA & VOICE   | P2P, VMware Fusion, Voice, Video, DHCP Req'd |
 | GUESTNET        | GUEST TRAFFIC  | No P2P, VMware Fusion, DHCP Req'd            |
 
@@ -242,31 +240,138 @@ For times when we have overlapping IP with wireless or when using VN's or VRF we
 
    ![json](./images/module7-modelbasedconfig/dnac-profiles-edit.png?raw=true "Import JSON")
 
-3. Scroll down to the **Attach Model Configs** and click the **⨁ Add Model Config** button
+3. Select the **Model Configs** Tab 
 
-   ![json](./images/module7-modelbasedconfig/dnac-profiles-add-mbc.png?raw=true "Import JSON")
+   ![json](./images/module7-modelbasedconfig/dnac-design-ftmbc-deploy-1.png?raw=true "Import JSON")
 
-4. In the Window that appears:
+### Global Parameters in Model Based-Configs
+
+We now will add Model configs for the various global configurations all at once. Global configuration parameters may be added together like the following:
+
+* AAA Radius Atributes Configuration
+* CleanAir Configurations
+* Event Driven RRM Configurations
+* Flex Configuration
+
+1. Click the **⨁ Add Model Config** button
+
+   ![json](./images/module7-modelbasedconfig/dnac-design-ftmbc-deploy-2.png?raw=true "Import JSON")
+
+2. In the Window that appears select the following:
    
-   1. Device Types select Wireless Controller
-   2. Select **> Wireless** to display the list
-   3. Open **AAA Radius Attributes Configuration**
-   4. Select `DNAC-Templates`
+   1. Within Event Driven RRM Configuration select:
+      * **EDRRM-24**
+      * **EDRRM-5**
+   2. Within AAA Radius Atributes Configuration select:
+      * **AAA**
+   3. Within Flex Configuration select:
+      * **FLEX**
+   4. Within CleanAir Configuration select:
+      * **CA-24**
+      * **CA-5**
    5. Click **Add**
 
-      ![json](./images/module7-modelbasedconfig/dnac-profiles-mbc-config.png?raw=true "Import JSON")
+   ![json](./images/module7-modelbasedconfig/dnac-design-ftmbc-deploy-3.png?raw=true "Import JSON")
 
-5. Click Save to add the changes.
+### Voice Phone Parameters for 8821 IP Phones on the CAMPUS-PSK SSID
 
-   ![json](./images/module7-modelbasedconfig/dnac-profiles-mbc-save.png?raw=true "Import JSON")
+We now will add the Voice Model config for 8821 IP Phones attached to the CAMPUS-PSK SSID. 
 
-6. The configuration changes would now need to be provisioned to the Wireless Controller.
+Remember the following settings are attached to the VOICE Model-Based Config:
+
+| SSID:           | USE CASE:      | Description of Requirements                  | 
+|-----------------|----------------|----------------------------------------------|
+| CAMPUS-PSK      | PHONES         | P2P, Voice, Video, DHCP Req'd                |
+
+Complete the following:
+
+1. Click the **⨁ Add Model Config** button
+
+   ![json](./images/module7-modelbasedconfig/dnac-design-ftmbc-deploy-4.png?raw=true "Import JSON")
+
+2. In the Window that appears select the following:
+   
+   1. Within Advanced SSID Configuration select **VOICE**:
+   2. Within **Applicability** select **CAMPUS-PSK**:
+   3. Click **Add**
+
+   ![json](./images/module7-modelbasedconfig/dnac-design-ftmbc-deploy-5.png?raw=true "Import JSON")
+
+### Guest Parameters for Guest Traffic on the GUESTNET SSID
+
+We now will add the Guest Parameters for the GUESTNET SSID. 
+
+Remember the following settings are attached to the GUEST Model-Based Config:
+
+| SSID:           | USE CASE:      | Description of Requirements                  | 
+|-----------------|----------------|----------------------------------------------|
+| GUESTNET        | GUEST TRAFFIC  | No P2P, VMware Fusion, DHCP Req'd            |
+
+Complete the following:
+
+1. Click the **⨁ Add Model Config** button
+
+   ![json](./images/module7-modelbasedconfig/dnac-design-ftmbc-deploy-6.png?raw=true "Import JSON")
+
+2. In the Window that appears select the following:
+   
+   1. Within Advanced SSID Configuration select **GUEST**:
+   2. Within **Applicability** select **GUESTNET**:
+   3. Click **Add**
+
+   ![json](./images/module7-modelbasedconfig/dnac-design-ftmbc-deploy-7.png?raw=true "Import JSON")
+
+### Employee and IOT Parameters for Internal Traffic on the CAMPUS-EAP SSID
+
+We now will add the Employee Parameters for the CAMPUS-EAP SSID. 
+
+Remember the following settings are attached to the EMPLOYEE Model-Based Config:
+
+| SSID:           | USE CASE:      | Description of Requirements                  | 
+|-----------------|----------------|----------------------------------------------|
+| CAMPUS-EAP      | DATA & VOICE   | P2P, VMware Fusion, Voice, Video, DHCP Req'd |
+
+Complete the following:
+
+1. Click the **⨁ Add Model Config** button
+
+   ![json](./images/module7-modelbasedconfig/dnac-design-ftmbc-deploy-8.png?raw=true "Import JSON")
+
+2. In the Window that appears select the following:
+   
+   1. Within Advanced SSID Configuration select **EMPLOYEE**:
+   2. Within **Applicability** select **CAMPUS-EAP**:
+   3. Click **Add**
+
+   ![json](./images/module7-modelbasedconfig/dnac-design-ftmbc-deploy-9.png?raw=true "Import JSON")
+
+### To complete the selections SAVE
+
+1. Click Save to add the changes.
+
+   ![json](./images/module7-modelbasedconfig/dnac-design-ftmbc-deploy-save.png?raw=true "Import JSON")
+
+2. The configuration changes would now need to be provisioned to the Wireless Controller.
 
 </details>
 
 ## Summary
 
-Congratulations you have completed the Model-Based Config module of the lab and added AAA configuration to add `Called Station Id` information for AAA purposes. Additional Model-Based Configuration may also be added in a simlar fashion. Please consult the Cisco Unified Wireless Design Guide for further details. Please use the navigatation below to continue your learning.
+Congratulations you have completed the Model-Based Config module of the lab and added configurations to add the following configurations.
+
+| SSID:           | USE CASE:      | Description of Requirements                  | 
+|-----------------|----------------|----------------------------------------------|
+| CAMPUS-PSK      | PHONES         | P2P, Voice, Video, DHCP Req'd                |
+| CAMPUS-EAP      | DATA & VOICE   | P2P, VMware Fusion, Voice, Video, DHCP Req'd |
+| GUESTNET        | GUEST TRAFFIC  | No P2P, VMware Fusion, DHCP Req'd            |
+
+For bonus points go and add another Model-Based config for the final SSID:
+
+| SSID:           | USE CASE:      | Description of Requirements                  | 
+|-----------------|----------------|----------------------------------------------|
+| CAMPUS-IPSK     | IOT            | P2P, Silent Hosts, DHCP Req'd                |
+
+Additional Model-Based Configuration may also be added in a simlar fashion. Please consult the Cisco Unified Wireless Design Guide for further details. Please use the navigatation below to continue your learning.
 
 > **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
 
