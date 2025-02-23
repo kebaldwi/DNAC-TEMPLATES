@@ -31,7 +31,7 @@ The use cases we will cover are the following which you can access via the links
 
 ## Preparation
 
-To complete this module, it's best to connect to the dCloud lab environment using your laptop so that you can get accustomed to and begin using the tools. If you cannot install postman, completing all tasks via the workstation in the dCloud environment is possible.
+To complete this module, it's best to connect to the dCloud lab environment using your laptop so that you can get accustomed to and begin using the tools. If you cannot install python and jenkins, completing all tasks via the workstation in the dCloud environment is possible via the script server.
 
 Our screenshots will all be from the jump host but remember you can use your laptop.
 
@@ -46,7 +46,7 @@ This lab is designed to be run in Cisco dClouds - Enterprise Network Sandbox Lab
 Please utilize the following tools to run the lab effectively and ensure they are installed on your workstation/laptop before attempting the lab.
 
 1. Cisco AnyConnect VPN Client
-2. Postman
+2. Python and Jenkins installation
 3. Visual Studio Code
 4. Google Chrome
 
