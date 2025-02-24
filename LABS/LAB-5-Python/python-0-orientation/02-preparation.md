@@ -8,7 +8,7 @@ The DCLOUD session includes the following equipment which we will be using:
 
 Virtual Machines:
 
-    Cisco Catalyst Center 2.2.3.4 or better
+    Cisco Catalyst Center 2.3.5.7 or better
     Identity Services Engine (ISE) 3.0 Patch 4 or better (deployed)
     Script Server - Ubuntu 20.04  or better
     Wireless LAN Controller - C9800 running IOS-XE Bengaluru 17.5.1 code or better
@@ -25,7 +25,7 @@ Hardware Devices:
 
 The lab envionment that is available is depicted here:
 
-![json](./images/DCLOUD_Topology_Wireless.png?raw=true "Import JSON")
+![json](./assets/DCLOUD_Topology_Wireless.png?raw=true "Import JSON")
 
 Next we will setup the environment to orchestrate Cisco Catalyst Center. Please ensure you are connected via VPN to the DCLOUD Lab.
 

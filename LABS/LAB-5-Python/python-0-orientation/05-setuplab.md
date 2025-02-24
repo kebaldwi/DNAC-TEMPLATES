@@ -24,14 +24,14 @@ github:
     templates: kebaldwi/devnet_test/templates
 
 project:
-  name: DEVWKS-2176
+  name: PYTHON-LAB
   pod: POD-10
 ```
 
 We will use NANO to make the required changes. Open the following file using NANO with the command shown:
 
 ```SHELL
-sudo nano /root/DEVWKS-2176/project_details.yml
+sudo nano /root/PYTHON-LAB/project_details.yml
 ```
 
 Scroll down to the line `pod: POD-10` and change the number to whatever number you are assigned in the session.
@@ -44,7 +44,7 @@ This file has the following information stored in it.
 
 ```YAML
 project:
-  name: DEVWKS-2176
+  name: PYTHON-LAB
   pod: POD-10
 
 template_info:
@@ -85,7 +85,7 @@ edge_devices:
 We will use NANO to make the required changes. Open the following file using NANO with the command shown:
 
 ```SHELL
-sudo nano /root/DEVWKS-2176/site_operations.yml
+sudo nano /root/PYTHON-LAB/site_operations.yml
 ```
 
 Scroll down to the line `pod: POD-10` and change the number to whatever number you are assigned in the session.
