@@ -22,7 +22,7 @@ To investigate this collection, follow these steps:
       - **YAML** a YAML file is used for environment settings
       - **definitions** functions are defined to build API interactions 
 
-      ![json](./images/hierarchy-python.png?raw=true "Import JSON")
+      ![json](./assets/hierarchy-python.png?raw=true "Import JSON")
    
    3. This set of **REST-API** are built utilizing the developer site [**developer.cisco.com/docs/dna-center/**](https://developer.cisco.com/docs/dna-center/). This documentation is kept up to date with the latest **REST-API**.
 
@@ -39,7 +39,7 @@ Login to Jenkins but first connecting to the URL **[http://198.18.134.28:8080](h
 
 Once logged in you should see this **Jenkins dashboard**.
 
-![json](./images/jenkins-login.png?raw=true "Import JSON")
+![json](./assets/jenkins-login.png?raw=true "Import JSON")
 
 #### Step 1 - *Adding required plugins*
 
@@ -59,24 +59,24 @@ We now need to build the **Pipeline** which will monitor the files in the direct
 
    1. Go to the **Jenkins dashboard** and click on **New Item** 
 
-      ![json](./images/Jenkins_Dashboard.png?raw=true "Import JSON")
+      ![json](./assets/Jenkins_Dashboard.png?raw=true "Import JSON")
 
    2. Give your job the name `DNAC-Hierarchy`
    3. Select **Pipeline** as the job type
    4. Click **OK**.
 
-      ![json](./images/Jenkins_Item_Hierarchy.png?raw=true "Import JSON")
+      ![json](./assets/Jenkins_Item_Hierarchy.png?raw=true "Import JSON")
 
 
 2. In the pipeline job configuration, you can define the pipeline script that will monitor a local directory and run a local Python program. You can use the `dir` command to change to the desired directory and use shell commands to execute the Python program.
 
 3. To configure the **pipeline script** click **configure** 
 
-   ![json](./images/Jenkins_Item_Hierarchy_1.png?raw=true "Import JSON")
+   ![json](./assets/Jenkins_Item_Hierarchy_1.png?raw=true "Import JSON")
 
 4. Within the **Pipeline** just created and on the left click **Pipeline**. This will scroll to the **Pipeline Script** section. 
 
-   ![json](./images/Jenkins_Item_Hierarchy_Pipeline.png?raw=true "Import JSON")
+   ![json](./assets/Jenkins_Item_Hierarchy_Pipeline.png?raw=true "Import JSON")
 
 5. Leave all the defaults as is and paste the following **Groovy Script**:
 
