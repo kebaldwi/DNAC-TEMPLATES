@@ -34,7 +34,7 @@ The use cases we will cover are the following which you can access via the links
 
 ## Preparation
 
-To complete this module, it's best to connect to the DCLOUD lab environment using your laptop so that you can get accustomed to and begin using the tools. If you cannot install postman, completing all tasks via the workstation in the DCLOUD environment is possible.
+To complete this module, it's best to connect to the dCloud lab environment using your laptop so that you can get accustomed to and begin using the tools. If you cannot install python, completing all tasks via the workstation in the dCloud environment is possible via the script server.
 
 Our screenshots will all be from the jump host but remember you can use your laptop.
 
@@ -60,15 +60,82 @@ This software is required to connect your workstation to Cisco DCLOUD. For an ex
 
 > **Download**: Get AnyConnect here: <a href="https://DCLOUD-rtp-anyconnect.cisco.com" target="_blank">⬇︎ AnyConnect Download Site ⬇︎</a>
 
-### Postman
+### Python and Catalyst Center SDK
 
-Postman is an API platform for building and using APIs. Postman simplifies each step of the API lifecycle and streamlines collaboration so you can create better APIs—faster.
+Python will be used in this Lab to interact with Catalyst Center using REST API through use of the Catalyst Center Python SDK and normal HTTP Requests. As previously stated, the combination of Python programming language with the rich Cisco Catalyst Center API collection offers the utmost flexibility and power in developing custom applications or workflows.
 
-Once Postman has been downloaded to your desktop, it is advisable to set up an account and sign in so that all your changes can be used within any system with the client or a web browser, much in the same way as a chrome or firefox profile work. This additional capability I have found instrumental when working in multiple environments. 
+As with any other Vendor Automation Controller, Cisco Catalyst Center Rest API capabilities get extended and maintained with each new release of Cisco Catalyst Center software. This presents a challenge to a Python developer, as code REST API syntax and parameters may change over time requiring the developer to revisit earlier developed code. To help developers abstract from Cisco Catalyst Center specific version implementation, [Cisco Catalyst Center SDK](https://dnacentersdk.readthedocs.io/en/latest/api/api.html) toolkit was introduced.
 
-> **Download**: Get Postman here: <a href="https://www.postman.com/downloads/" target="_blank">⬇︎ Postman Download ⬇︎</a>
+Simply put, SDK is a set of tools, libraries and documentation to simplify interacting with a REST API. The Cisco Catalyst Center SDK is written in Python and provides a Python library in PyPI and associated documentation. PyPI is the official python package index, and simplifies installation of the library. 
 
-> **Documentation**: For an understanding of postman, please visit: <a href="https://learning.postman.com/docs/getting-started/introduction/" target="_blank">Postman Documentation</a>
+#### Python installation, Linux based OS like MAC
+
+* Install Homebrew package manager
+
+```shell
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+* Install PyEnv using HomeBrew. PyEnv is a CLI utility that helps you manage Python installations on your computer.
+
+```shell
+brew install pyenv
+pyenv init
+
+nano ~/.zshrc
+Paste the eval line at the end of the file
+eval "$(pyenv init -)"
+
+press Control + X, type Y and press Enter when prompted for the file name
+
+Now that PyEnv is installed and configured, exit and reload the Terminal
+```
+
+With PyEnv is installed and configured, we can install Python. Example below is installing Python version 3.9.1
+
+```shell
+pyenv install 3.9.1
+pyenv global 3.9.1
+```
+
+And finally, verification of installed Python environment
+
+```shell
+pyenv version
+```
+
+Lets ensure that we have Python module manager PIP installed
+
+```shell
+python -m ensurepip --upgrade
+```
+
+#### Python installation, Windows
+
+* [Installing Python](https://www.python.org/downloads/) - Python distributions
+
+Lets ensure that we have Python module manager PIP installed
+
+```shell
+python -m ensurepip --upgrade
+```
+
+#### Cisco Catalyst Center SDK installation
+
+* To isolate the installation folder structure from other libraries create a virtual environment, and activate it. Each time you want to come back and make changes to your code please remember to activate the virtual environment in your terminal (see below)
+
+```shell
+python -m venv dnacentersdk
+source dnacentersdk/bin/activate
+```
+
+* Install Cisco Catalyst Center SDK in newly created virtual environment
+
+```shell
+pip install dnacentersdk
+```
+
+The SDK is ready for use!
 
 ### Google Chrome
 
