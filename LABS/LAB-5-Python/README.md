@@ -12,7 +12,7 @@ Until this point, we have used Rest-API for some basic setup tasks in labs 1 and
 
 Ultimately we are all striving to completely automate the network infrastructure. The closer we get to full service automation the closer we get to business process orchestration. Continual Implementation Continual Deployment is a goal that some companies aspire to and one which the concepts here can stive towards. 
 
-![json](./images/cicd-pipeline2.png?raw=true "Import JSON")
+![json](./assets/cicd-pipeline2.png?raw=true "Import JSON")
 
 This lab is meant to mirror the concepts of **[LAB 4 REST-API Orchestration with Postman](../LAB-4-Rest-API-Orchestration/README.md)** so as to build on the existing foundation of knowledge. If you have not done so already please do go through lab four to acquaint yourself with the general concepts.
 
