@@ -1,6 +1,6 @@
-# Building Hierarchy with Settings
+# Building Hierarchy
 
-In this module, we will use a **CI/CD Pipeline** to build and deploy a hierarchy and settings within Cisco Catalyst Center. 
+In this module, we will use a **Python** to build and deploy a hierarchy and settings within Cisco Catalyst Center. 
 
 Cisco Catalyst Center uses hierarchy to logically align intent (code and configuration) against infrastructure. This allows the network administrator to align changes and modifications to the network within maintenance windows.
 

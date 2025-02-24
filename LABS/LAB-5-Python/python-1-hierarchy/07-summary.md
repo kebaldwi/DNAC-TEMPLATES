@@ -8,6 +8,6 @@ Wait till you see whats next...
 
 To continue your learning, look at the various REST-API's used to complete this task. 
 
-> [**NEXT MODULE**](../cicd-2-discovery/01-intro.md)
+> [**NEXT MODULE**](../python-2-settings/01-intro.md)
 
-> [**CICD Lab Main Menu**](../README.md)
+> [**Python Lab Main Menu**](../README.md)

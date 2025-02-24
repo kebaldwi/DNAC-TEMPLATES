@@ -6,7 +6,7 @@ This Collection may be run whenever you wish to create a new section of the Hier
 
 Accompanying the **Python Program** is a **required** Comma Separated Value (CSV) file, which is essentially an **answer file** for the values used to build the design. The CSV which was pulled in the **Git Clone** may be found here: 
 
-> **Download:** <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-L-CICD-Orchestration/assets/csv/DNAC-Design-Settings.csv" target="_blank">⬇︎ Cisco Catalyst Center Design Settings CSV ⬇︎</a>
+> **Download:** <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/DATA/CSV/DNAC-Design-Settings.csv" target="_blank">⬇︎ Cisco Catalyst Center Design Settings CSV ⬇︎</a>
 
 > **IMPORTANT NOTE:** We will **open** but **not save** the CSV file to view the hierarchy that will be built during the lab. 
   As you review the CSV file, you will see each row has hierarchal information, settings, credentials, and other information. **Be Careful NOT to modify the file**; if you feel you have modified the file, please download it again.
@@ -14,10 +14,10 @@ Accompanying the **Python Program** is a **required** Comma Separated Value (CSV
 To view the file on the **script server** do the following:
 
 ```SHELL
-cat /root/DEVWKS-2176/DNAC-Design-Settings.csv
+cat /root/PYTHON-LAB/DNAC-Design-Settings.csv
 ```
 
-<p align="center"><img src="./images/csv2.png" width="800" height="174.55"></p>
+<p align="center"><img src="./assets/csv2.png" width="800" height="174.55"></p>
 
 The hierarchy the CSV will build will be this:
 
