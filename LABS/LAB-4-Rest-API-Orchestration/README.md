@@ -27,18 +27,18 @@ The use cases we will cover are the following which you can access via the links
 7. [**Retrieving Network Inventory**](./catc-catcenter-6-inventory/01-intro.md)
 8. [**Running Show Commands**](./catc-catcenter-7-cmd-run/01-intro.md)
 
-## Preparation notes
+## Preparation Notes
 
 The following section of the README contains information for DevNet Test Drive instructors.
 
-### The DCLOUD environment
+### The DCLOUD Environment
 
 For DevNet Test Drive events, use this environment: [DNAC pods for DevNet Test Drives](https://tbv3-ui.ciscodcloud.com/edit/9uxy98sb1wresh3vrw60lfsa7)
 
 The DCLOUD session includes the following equipment.
 
 * Virtual Machines:
-  * Cisco Catalyst Center 2.3.5.4 or better
+  * Cisco Catalyst Center 2.3.5.6 or better
   * Identity Services Engine (ISE) 3.0 Patch 4 or better (deployed)
   * Script Server - Ubuntu 20.04  or better
   * Windows 10 Jump Host 
