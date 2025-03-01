@@ -1,5 +1,5 @@
 project:
-  name: DEVWKS-2176
+  name: PYTHON-LAB
   pod: POD-10
 
 template_info:
@@ -9,14 +9,14 @@ template_info:
     templates: templates/9000v_1.txt,templates/9000v_2.txt
 
 area_info:
-  name: DevNet
+  name: California
   hierarchy: Global
 
 building_info:
-  name: DevNet-Building
+  name: Building
 
 floor_info:
-  name: Floor-1-DevNet
+  name: Floor-1
 
 devices_info_wired:
   managementIP: [198.18.133.145,198.19.1.2,198.19.2.2]
