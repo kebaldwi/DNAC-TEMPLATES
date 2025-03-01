@@ -13,5 +13,5 @@ github:
     templates: kebaldwi/devnet_test/templates
 
 project:
-  name: DEVWKS-2176
+  name: PYTHON-LAB
   pod: POD-10
