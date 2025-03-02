@@ -51,7 +51,7 @@ date_time_str = str(datetime.now().strftime('%m-%d-%Y_%H-%M-%S'))
 logging.info('App "deploy_hierarchy.py" Start, ' + current_time)
 
 # project path
-project_details_path = Path(__file__).parent/'../DEVWKS-2176/project_details.yml'
+project_details_path = Path(__file__).parent/'/root/PYTHON-LAB/project_details.yml'
 with open(project_details_path, 'r') as file:
     project_data = yaml.safe_load(file)
 DNAC_URL = 'https://' + project_data['dna_center']['ip_address']
@@ -147,7 +147,7 @@ def main():
     logging.info('App "deploy_hierarchy.py" Start, ' + current_time)
 
     # parse the input data
-    with open('DNAC-Design-Settings.csv', 'r') as file:
+    with open('/root/PYTHON-LAB/DNAC-Design-Settings.csv', 'r') as file:
         reader = csv.DictReader(file)
         
         #iniialize variables
