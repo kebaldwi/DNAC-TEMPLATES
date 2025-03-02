@@ -8,6 +8,8 @@ PxGrid integration allows configuration automation by Cisco Catalyst Center with
 
 ## Step 1: Prepare ISE for Cisco Catalyst Center Integration
 
+> **Note:** The following two tasks have been completed for you.
+
 1. Open a web browser connection to Identity Services Engine (ISE) and select the hamburger menu to open the system menu.
 
    ![json](./assets/ise-dashboard.png?raw=true "Import JSON")

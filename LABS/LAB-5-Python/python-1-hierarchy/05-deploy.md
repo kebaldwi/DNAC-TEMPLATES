@@ -69,6 +69,8 @@ We will now **build** the **Hierarchy** using the **CSV** variables previously d
 
 Follow these steps:
 
+`python3 /root/PYTHON-LAB/deploy_hierarchy.py`
+
 1. Navigate and open the desired **Pipeline** within the **Jenkins Dashboard**:
 
    ![json](./assets/Jenkins_Dashboard_2.png?raw=true "Import JSON")
