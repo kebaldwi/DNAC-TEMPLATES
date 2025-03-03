@@ -19,6 +19,8 @@ nano /root/PYTHON-LAB/DNAC-Design-Settings.csv
 
 <p align="center"><img src="./assets/csv2.png" width="800" height="174.55"></p>
 
+Should you need to modify for your POD make the changes necessary to the **CSV** and write the file changes by using **^o**.
+
 Exit the file by using **^x**.
 
 The hierarchy the CSV will build will be this:

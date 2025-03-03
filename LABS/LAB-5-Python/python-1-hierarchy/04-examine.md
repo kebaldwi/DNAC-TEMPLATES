@@ -96,7 +96,6 @@ To investigate this collection, follow these steps:
       Then Progammatically below we determine if the elements in the CSV file are reflected in the hierarchy. If they are we explain they are and move to the next line. If an element is not there we pragmatically add it.
 
       ```py           
-      
                   if area_name:
                       type = 'area'
                       parentHierarchy = parent_name

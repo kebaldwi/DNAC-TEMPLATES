@@ -79,7 +79,7 @@ def main():
     logging.info('App "deploy_templates.py" Start, ' + current_time)
 
     # project path
-    project_details_path = Path(__file__).parent/'../DEVWKS-2176/project_details.yml'
+    project_details_path = Path(__file__).parent/'/root/PYTHON-LAB/project_details.yml'
     with open(project_details_path, 'r') as file:
         project_data = yaml.safe_load(file)
     DNAC_URL = 'https://' + project_data['dna_center']['ip_address']
@@ -90,7 +90,7 @@ def main():
     GITHUB_REPO = project_data['github']['repository']
 
     # operational information path
-    project_details_path = Path(__file__).parent/'../DEVWKS-2176/site_operations.yml'
+    project_details_path = Path(__file__).parent/'/root/PYTHON-LAB/site_operations.yml'
     with open(project_details_path, 'r') as file:
         project_data = yaml.safe_load(file)
     PROJECT_NAME = project_data['project']['name']
@@ -186,7 +186,7 @@ def main():
     deployment_cli_config_commands = []
 
     for template_name in template_name_list:
-        template_file_path = Path(__file__).parent/f'../DEVWKS-2176/templates/{template_name}'
+        template_file_path = Path(__file__).parent/f'/root/PYTHON-LAB/templates/{template_name}'
         cli_file = open(template_file_path, 'r') # open the file
         cli_config_commands = cli_file.read()  # read the file
         deployment_cli_config_commands.append(cli_config_commands)
@@ -310,7 +310,7 @@ def main():
             'timestamp': current_time,
             'template_content': deployment_cli_config_commands[i],
             'report': deployment_status}
-        report_file_path = Path(__file__).parent/f'../DEVWKS-2176/reports/{device_ip[i]}_{date_time_str}_deployment_report.json'
+        report_file_path = Path(__file__).parent/f'/root/PYTHON-LAB/reports/{device_ip[i]}_{date_time_str}_deployment_report.json'
         with open(report_file_path, 'w', encoding='utf-8') as f:
             f.write(json.dumps(deployment_report))
         
