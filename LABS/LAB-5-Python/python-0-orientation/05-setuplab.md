@@ -34,7 +34,7 @@ We will use NANO to make the required changes. Open the following file using NAN
 sudo nano /root/PYTHON-LAB/project_details.yml
 ```
 
-Scroll down to the line `pod: POD-10` and change the number to whatever number you are assigned in the session.
+Scroll down to the line `pod: POD-10` and change the number to whatever number you are using in the session.
 
 Save the file by using **^o** then exit with **^x**.
 
