@@ -63,4 +63,4 @@ Your instructor will assign you a pod number:
 
 Next we will setup the environment to orchestrate Cisco Catalyst Center. Please ensure you are connected via VPN to the DCLOUD Lab.
 
-> [**Next Section**](./03-scriptserver.md)
+> [**Next Section**](./03-integration.md)
