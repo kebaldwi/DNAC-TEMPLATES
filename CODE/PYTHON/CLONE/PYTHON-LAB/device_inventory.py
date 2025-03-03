@@ -42,7 +42,7 @@ from requests.auth import HTTPBasicAuth  # for Basic Auth
 #load_dotenv('environment.env')
 
 # project path
-project_details_path = Path(__file__).parent/'../DEVWKS-2176/project_details.yml'
+project_details_path = Path(__file__).parent/'/root/PYTHON-LAB/project_details.yml'
 with open(project_details_path, 'r') as file:
     project_data = yaml.safe_load(file)
 DNAC_URL = 'https://' + project_data['dna_center']['ip_address']
@@ -171,20 +171,20 @@ def main():
     logging.info('  Collected the device inventory from Cisco DNA Center')
 
     # save device inventory to json and yaml formatted files
-    with open(f'inventory/{DEVNET_POD}-{date_time_str}_device_inventory.json', 'w') as f:
+    with open(f'/root/PYTHON-LAB/inventory/{DEVNET_POD}-{date_time_str}_device_inventory.json', 'w') as f:
         f.write(json.dumps(device_inventory))
     logging.info(f'  Saved the device inventory to file "{DEVNET_POD}-{date_time_str}_device_inventory.json"')
 
-    with open(f'inventory/{DEVNET_POD}-{date_time_str}_device_inventory.yaml', 'w') as f:
+    with open(f'/root/PYTHON-LAB/inventory/{DEVNET_POD}-{date_time_str}_device_inventory.yaml', 'w') as f:
         f.write(f'{DEVNET_POD}-device_inventory:\n' + yaml.dump(device_inventory, sort_keys=False))
     logging.info(f'  Saved the device inventory to file "{DEVNET_POD}-{date_time_str}_device_inventory.yaml"')
 
     # save ap inventory to json and yaml formatted files
-    with open(f'inventory/{DEVNET_POD}-{date_time_str}_ap_inventory.json', 'w') as f:
+    with open(f'/root/PYTHON-LAB/inventory/{DEVNET_POD}-{date_time_str}_ap_inventory.json', 'w') as f:
         f.write(json.dumps(ap_inventory))
     logging.info(f'  Saved the device inventory to file "{DEVNET_POD}-{date_time_str}_ap_inventory.json"')
 
-    with open(f'inventory/{DEVNET_POD}-{date_time_str}_ap_inventory.yaml', 'w') as f:
+    with open(f'/root/PYTHON-LAB/inventory/{DEVNET_POD}-{date_time_str}_ap_inventory.yaml', 'w') as f:
         f.write(f'{DEVNET_POD}-ap_inventory:\n' + yaml.dump(ap_inventory, sort_keys=False))
     logging.info(f'  Saved the device inventory to file "{DEVNET_POD}-{date_time_str}_ap_inventory.yaml"')
 
@@ -203,11 +203,11 @@ def main():
         logging.info('      ' + device['hostname'] + ', Site Hierarchy: ' + device['site'])
 
     # save non compliant devices to json and yaml formatted files
-    with open(f'inventory/{DEVNET_POD}-{date_time_str}_non_compliant_devices.json', 'w') as f:
+    with open(f'/root/PYTHON-LAB/inventory/{DEVNET_POD}-{date_time_str}_non_compliant_devices.json', 'w') as f:
         f.write(json.dumps(image_non_compliant_devices))
     logging.info(f'  Saved the image non-compliant device inventory to file "{DEVNET_POD}-{date_time_str}_non_compliant_devices.json"')
 
-    with open(f'inventory/{DEVNET_POD}-{date_time_str}_non_compliant_devices.yaml', 'w') as f:
+    with open(f'/root/PYTHON-LAB/inventory/{DEVNET_POD}-{date_time_str}_non_compliant_devices.yaml', 'w') as f:
         f.write(f'{DEVNET_POD}-non_compliant:\n' + yaml.dump(image_non_compliant_devices, sort_keys=False))
     logging.info(f'  Saved the image non-compliant device inventory to file "{DEVNET_POD}-{date_time_str}_non_compliant_devices.yaml" ')
 

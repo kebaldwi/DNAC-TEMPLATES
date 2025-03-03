@@ -51,7 +51,7 @@ os.environ['TZ'] = 'America/Los_Angeles'  # define the timezone for PST
 time.tzset()  # adjust the timezone, more info https://help.pythonanywhere.com/pages/SettingTheTimezone/
 
 # project path
-project_details_path = Path(__file__).parent/'../DEVWKS-2176/project_details.yml'
+project_details_path = Path(__file__).parent/'/root/PYTHON-LAB/project_details.yml'
 with open(project_details_path, 'r') as file:
     project_data = yaml.safe_load(file)
 DNAC_URL = 'https://' + project_data['dna_center']['ip_address']
