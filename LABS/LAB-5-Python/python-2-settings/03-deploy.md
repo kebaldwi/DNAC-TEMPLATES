@@ -17,23 +17,13 @@ Complete the following:
 2. In the script server shell type the following:
 
    ```sh
-   python3 /root/PYTHON-LAB/deploy_hierarchy.py
+   python3 /root/PYTHON-LAB/deploy_settings.py
    ```
 
 3. The following should be displayed:
 
    ![json](../assets/hierarchy-build.png?raw=true "Import JSON")
 
-4. Try running the script again and see what happens:
-
-   ```sh
-   python3 /root/PYTHON-LAB/deploy_settings.py
-   ```
-
-5. The following should be displayed:
-
-   ![json](../assets/hierarchy-rebuild.png?raw=true "Import JSON")
-
-6. Because the script is developed to determine always push the configuration in the **CSV** it applies the settings and credentials to the hierarchy.
+4. Because the script is developed to determine always push the configuration in the **CSV** it applies the settings and credentials to the hierarchy.
 
 > [**Next Section**](./04-verify.md)

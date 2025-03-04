@@ -445,11 +445,16 @@ def main():
                         flag = False
                 break
             # Set the site credentials
-            response, status_code = assign_site_credentials(dnac_auth, TargetSiteId, dcloud_user_id, dcloud_snmp_RO_id, dcloud_snmp_RW_id)
-            if responsecheck in response['message'] and status_code == 202:
-                logging.info('Credentials successfully set for ' + site_hierarchy)
-            else:
-                logging.info('Credentials failed to set for ' + site_hierarchy)
+            try:
+                logging.info(f"Attempting to assign site credentials for site ID: {TargetSiteId}")
+                response, status_code = assign_site_credentials(dnac_auth, TargetSiteId, dcloud_user_id, dcloud_snmp_RO_id, dcloud_snmp_RW_id)
+                logging.info(f"Assign Site Credentials Response: {response}, Status Code: {status_code}")
+                if responsecheck in response['message'] and status_code == 202:
+                    logging.info('Credentials successfully set for ' + site_hierarchy)
+                else:
+                    logging.info('Credentials failed to set for ' + site_hierarchy)
+            except Exception as e:
+                logging.error(f"Error assigning site credentials: {str(e)}")
             time.sleep(15)
             address = ''      
      
