@@ -18,22 +18,18 @@ Follow these steps:
 
 4. Select `Design>Network Hierarchy` from the menu to continue.
 
-   ![json](../assets/DNAC-Menu-Hierarchy.png?raw=true "Import JSON")
-
-5. Expand the Hierarchy on the left to show your specific `Area`
-
-   ![json](../assets/dnac_cicd_hierarchy.png?raw=true "Import JSON")
+   ![json](../assets/DNAC-Menu-Settings.png?raw=true "Import JSON")
 
 6. Go to `Design>Network Settings` from the menu and navigate to `Floor 1`
 
-   ![json](../assets/dnac_cicd_settings.png?raw=true "Import JSON")
+   ![json](../assets/catc-python-settings.png?raw=true "Import JSON")
 
 7. Go to `Credentials` tab on the same page
 
-   ![json](../assets/dnac_cicd_creds.png?raw=true "Import JSON")
+   ![json](../assets/catc-python-creds.png?raw=true "Import JSON")
 
 8. Finally go to the `Telemetry` tab 
 
-   ![json](../assets/dnac_cicd_telemetry.png?raw=true "Import JSON")
+   ![json](../assets/catc-python-telemetry.png?raw=true "Import JSON")
 
 > [**Next Section**](./05-summary.md)

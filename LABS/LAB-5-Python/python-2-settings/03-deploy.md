@@ -22,7 +22,7 @@ Complete the following:
 
 3. The following should be displayed:
 
-   ![json](../assets/hierarchy-build.png?raw=true "Import JSON")
+   ![json](../assets/settings-build.png?raw=true "Import JSON")
 
 4. Because the script is developed to determine always push the configuration in the **CSV** it applies the settings and credentials to the hierarchy.
 
