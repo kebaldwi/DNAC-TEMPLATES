@@ -5,10 +5,25 @@ is_installed() {
     dpkg -l | grep -q "$1"
 }
 
-# Update system packages
+# Function to remove a package if installed
+remove_package() {
+    if is_installed "$1"; then
+        echo "Removing $1..."
+        sudo apt-get remove --purge "$1" -y
+    fi
+}
+
+# Function to check installed Python package version
+check_python_package_version() {
+    installed_version=$(python3.9 -m pip show "$1" | grep Version | awk '{print $2}')
+    echo "$installed_version"
+}
+
+# Update the package list
+echo "Updating package list..."
 sudo apt update
 
-# Install required dependencies if not already installed
+# List of required system packages
 dependencies=(
     build-essential
     zlib1g-dev
@@ -21,90 +36,77 @@ dependencies=(
     libffi-dev
     curl
     libbz2-dev
+    python3-apt
 )
 
+# Remove and install required system packages
 for package in "${dependencies[@]}"; do
-    if ! is_installed "$package"; then
-        echo "Installing $package..."
-        sudo apt install "$package" -y
-    else
-        echo "$package is already installed."
+    remove_package "$package"
+    echo "Installing $package..."
+    sudo apt install "$package" -y
+done
+
+# Check if Python 3.9 is installed
+if ! command -v python3.9 &> /dev/null; then
+    echo "Python 3.9 is not installed. Please install it manually."
+    exit 1
+fi
+
+# Remove existing pip installations
+remove_package "python3-pip"
+
+# Install pip using get-pip.py
+echo "Installing pip..."
+curl -s https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+sudo python3.9 get-pip.py
+
+# Upgrade pip and setuptools
+echo "Upgrading pip and setuptools..."
+sudo python3.9 -m pip install --upgrade pip setuptools --no-cache-dir
+
+# List of required Python packages
+required_packages=(
+    dnacentersdk==2.6.10
+    PyGithub==2.1.1
+    python-dotenv==1.0.0
+    PyYAML==6.0.1
+    requests==2.28.2
+    urllib3==1.26.14
+)
+
+# Check the installed version of dnacentersdk
+dnacentersdk_version=$(check_python_package_version "dnacentersdk")
+
+if [[ "$dnacentersdk_version" != "2.6.10" ]]; then
+    # Remove dnacentersdk if the version is not 2.6.10
+    echo "Removing dnacentersdk version $dnacentersdk_version..."
+    sudo python3.9 -m pip uninstall dnacentersdk -y
+    echo "Installing dnacentersdk version 2.6.10..."
+    sudo python3.9 -m pip install dnacentersdk==2.6.10 --no-cache-dir
+else
+    echo "dnacentersdk version 2.6.10 is already installed."
+fi
+
+# Remove and install other required Python packages
+for pkg in "${required_packages[@]}"; do
+    package_name=$(echo "$pkg" | cut -d'=' -f1)
+    if [[ "$package_name" != "dnacentersdk" ]]; then
+        remove_package "$package_name"
+        echo "Installing $pkg..."
+        sudo python3.9 -m pip install "$pkg" --no-cache-dir
     fi
 done
 
-# Get the latest version of Python 3.9
-PYTHON_VERSION=$(curl -s https://www.python.org/downloads/ | grep -o 'Python 3.9.[0-9]*' | head -n 1 | awk '{print $2}')
-
-# Check if Python 3.9 is already installed
-if ! command -v python3.9 &> /dev/null; then
-    # Download Python 3.9 source code
-    echo "Downloading Python $PYTHON_VERSION..."
-    curl -O https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
-
-    # Extract the source code
-    tar -xf Python-$PYTHON_VERSION.tgz
-
-    # Navigate to the extracted directory
-    cd Python-$PYTHON_VERSION || exit
-
-    # Configure and build Python
-    ./configure --enable-optimizations
-    make -j "$(nproc)"
-
-    # Install Python
-    sudo make altinstall
-
-    # Set Python 3.9 as the default version for python and python3 commands
-    sudo update-alternatives --install /usr/bin/python python /usr/local/bin/python$PYTHON_VERSION 1
-    sudo update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python$PYTHON_VERSION 1
-
-    # Update pip and pip3
-    sudo python$PYTHON_VERSION -m ensurepip --upgrade
-    sudo python$PYTHON_VERSION -m pip install --upgrade pip
-    sudo python$PYTHON_VERSION -m pip install --upgrade setuptools wheel
-    sudo update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip$PYTHON_VERSION 1
-    sudo update-alternatives --install /usr/bin/pip3 pip3 /usr/local/bin/pip$PYTHON_VERSION 1
-
-    # Cleanup
-    cd .. || exit
-    rm -rf Python-$PYTHON_VERSION Python-$PYTHON_VERSION.tgz
-
-    echo "Python $PYTHON_VERSION, pip, and pip3 have been updated successfully and set as default!"
-else
-    echo "Python 3.9 is already installed."
-fi
-
-# Install Git Clone if not already installed
-if ! is_installed "git"; then
-    echo "Installing Git..."
-    sudo apt-get install git -y
-else
-    echo "Git is already installed."
-fi
-
-# Install GitHub Clone if not already installed
-if ! pip show github-clone &> /dev/null; then
-    echo "Installing GitHub Clone..."
-    sudo pip install github-clone
-else
-    echo "GitHub Clone is already installed."
-fi
-
-# Setting Permissions
-sudo chmod -R 777 /root/
-
-# Install Nano if not already installed
-if ! is_installed "nano"; then
-    echo "Installing Nano..."
-    sudo apt-get install nano -y
-else
-    echo "Nano is already installed."
-fi
-
-# Upgrade DNA Center SDK and other Dependencies
+# Check for requirements.txt and install if it exists
 if [ -f requirements.txt ]; then
-    echo "Upgrading dependencies from requirements.txt..."
-    sudo pip install -r requirements.txt
+    echo "Installing dependencies from requirements.txt..."
+    sudo python3.9 -m pip install -r requirements.txt --no-cache-dir
 else
     echo "requirements.txt not found. Skipping dependency installation."
 fi
+
+# Check for any pip conflicts
+echo "Checking for pip conflicts..."
+pip check
+
+echo "Setup complete. All packages have been installed globally."
