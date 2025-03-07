@@ -20,6 +20,7 @@ We will use a clone of a specific subfolder from `DNAC-Templates` for this secti
 1. In preparation from the working home directory folder `cd ~` issue the following command:
 
 ```SHELL
+pip install PyGithub
 pip install github-clone
 ```
 
