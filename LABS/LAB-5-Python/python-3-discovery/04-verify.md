@@ -22,14 +22,14 @@ Follow these steps:
 
 6. Go to `Design>Network Settings` from the menu and navigate to `Floor 1`
 
-   ![json](../assets/catc-python-settings.png?raw=true "Import JSON")
+   ![json](../assets/hold.png?raw=true "Import JSON")
 
 7. Go to `Credentials` tab on the same page
 
-   ![json](../assets/catc-python-creds.png?raw=true "Import JSON")
+   ![json](../assets/hold.png?raw=true "Import JSON")
 
 8. Finally go to the `Telemetry` tab 
 
-   ![json](../assets/catc-python-telemetry.png?raw=true "Import JSON")
+   ![json](../assets/hold.png?raw=true "Import JSON")
 
 > [**Next Section**](./05-summary.md)
