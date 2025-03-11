@@ -18,7 +18,7 @@ Follow these steps:
 
 4. Select `Design>Network Hierarchy` from the menu to continue.
 
-   ![json](../assets/DNAC-Menu-discovery.png?raw=true "Import JSON")
+   ![json](../assets/DNAC-Menu-Discovery.png?raw=true "Import JSON")
 
 6. Go to `Design>Network Settings` from the menu and navigate to `Floor 1`
 
