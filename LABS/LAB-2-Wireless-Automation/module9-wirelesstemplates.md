@@ -48,7 +48,7 @@ While there may be many use cases for templates in wireless, the use of the GUI 
 <details open>
 <summary> Click the arrow for details</summary>
 
-## Step 1 - ***Importing or Creating Wireless Templates***
+## Step 1 - ***Creating Wireless Templates***
 
 While on Cisco Catalyst (DNA) Center you can import templates, we will build one specific for defining CCKM below.
 
@@ -65,22 +65,12 @@ While on Cisco Catalyst (DNA) Center you can import templates, we will build one
 
 [//]: # ({% raw %})
 ```J2
-{# Option This option allows you to look for a key word in the profile name and apply CCKM 
-   It does not require any bind variables but instead uses System Variables.content-scan
+{# This changes the delimiter from hyphen to colon for RADIUS communications to ISE.
 #}
 
-{% macro def_SSID_CCKM() %}
-  {% for profile in __policyprofile %}
-    {% if "CAMPUS" in profile %}
-      wireless profile policy {{ profile }}
-        shutdown
-        security wpa akm cckm
-        no shutdown
-    {% endif %}
-  {% endfor %}
-{%- endmacro %}  
+radius-server attribute wireless authentication mac-delimiter colon
+radius-server attribute wireless accounting mac-delimiter colon
 
-{{ def_SSID_CCKM() }}
 ```
 [//]: # ({% endraw %})
 4. **Save** and **Commit** the Template to the project.
