@@ -590,7 +590,8 @@ We loop through all the interfaces on the switch, ensuring we configuring only t
 
 Previously within the DayN Module, we also deployed configuration on the bulk of interfaces using **IBNS2.0** and how to deal with host onboarding in a Non **SDAccess** Fabric environment. Once the Identity Services Engine is integrated with Cisco Catalyst Center, then not only do you get the benefit of **pxgrid** integration allowing for the building of policy, but the AAA Server section within Design will build out the various settings which inturn program the network access devices for AAA Network and Client Dot1x settings.
 
-> **Note:** It is also essential to understand that with **IBNS2.0** and interface templates or statically configured interfaces running in **closed mode**, the dynamic capability of **Autoconf** will **not** operate because there is a service-policy applied to the interface. Additionally, remember in closed mode no packets are forwarded including DHCP prior to authentication occurring.
+> [!IMPORTANT] 
+> It is also essential to understand that with **IBNS2.0** and interface templates or statically configured interfaces running in **closed mode**, the dynamic capability of **Autoconf** will **not** operate because there is a service-policy applied to the interface. Additionally, remember in closed mode no packets are forwarded including DHCP prior to authentication occurring.
 
 Previously we introduced a methodology of automatically configuring the interfaces within the switch. This configuration relies on a few variables used to extrapolate the settings that were then configured via the regular template. This used a set of macros to be utilized to build out the various settings for VLANs, Ports, and Uplinks. 
 
@@ -1130,6 +1131,7 @@ The next set of labs will be to build on these concepts utilizing REST-API to pu
 
 The following **LAB** will tie all this together.
 
+> [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 

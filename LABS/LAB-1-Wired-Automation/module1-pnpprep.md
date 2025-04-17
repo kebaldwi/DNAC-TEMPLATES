@@ -74,7 +74,8 @@ In this lab our focus changes slightly as we start to automate for host onboardi
 
 Essentially we will be turning the 9300-2 switch into a distribution switch to allow for the access switch to be onboarded over a port channel. Port channels are typically how switches are connected for redundancy and it seems fair to use that as the basis for the lab. 
 
-> **Note:** It is possible to use a routed connection, but then LAN Automation is typically used for routed access as it is in SD-Access. It is possible however to use PnP for routed access without LAN automation but that is outside the scope of todays lab.
+> [!NOTE]
+> It is possible to use a routed connection, but then LAN Automation is typically used for routed access as it is in SD-Access. It is possible however to use PnP for routed access without LAN automation but that is outside the scope of todays lab.
 
 ### Configuring the 4331 Router 
 
@@ -103,7 +104,8 @@ wr
 
 To continue on, as we will be using the 9300-2 as a Distribution switch we will need to set it up appropriately for PnP processes to work. We intend to have a management interface on the device. In this lab, we will set up a VLAN interface for both management and connectivity. 
 
-> **Note:** You don't have to do it this way; we are just giving a relatively uncomplicated example, and you can alter this to suit your needs. As the device connects to the front-facing ports, we have to rely on the default configuration. 
+> [!NOTE]
+> You don't have to do it this way; we are just giving a relatively uncomplicated example, and you can alter this to suit your needs. As the device connects to the front-facing ports, we have to rely on the default configuration. 
 
 As you may recall, a factory default configuration uses VLAN 1 as no other VLAN exists, and by default, it accepts DHCP addresses. We can use this method in the PnP process. However, the management VLAN may be different, and so may the native VLAN structure of our environment. To that end, we must use the **`pnp startup-vlan`** command, which allows the device to use varying VLANs in PnP and should be set up and configured on the upstream switch. 
 
@@ -137,7 +139,8 @@ wr
 
 The **`pnp startup-vlan 5`** command will program the target switches port connected with a trunk and automatically add the vlan and SVI to the target switch making that vlan ready to accept a DHCP address. 
 
-> **Note:** The feature is available on switches running IOS-XE 16.6 code or greater as upstream neighbors. Older switches or upstream devices that cannot run the command should utilize VLAN 1 and then set up the correct management VLAN modified as part of the onboarding process.
+> [!NOTE]
+> The feature is available on switches running IOS-XE 16.6 code or greater as upstream neighbors. Older switches or upstream devices that cannot run the command should utilize VLAN 1 and then set up the correct management VLAN modified as part of the onboarding process.
 
 ### Configuring the 9300-2 Distribution Switch Downlink
 
@@ -272,7 +275,8 @@ The DHCP scope would incorporate the following parameters sufficient to issue an
 
 Obviously a dhcp relay or helper statement is required on the gateway router interface pointing towards the DHCP server.
 
-> **Note:** Choose one method of discovery, to avoid frustration.
+> [!NOTE]
+> Choose one method of discovery, to avoid frustration.
 
 There are many options for DHCP services. Although you have many options for DHCP, we will utilize either Windows or IOS DHCP configurations in this lab. Configure the DHCP scope to one of the following:
 
