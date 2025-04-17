@@ -123,8 +123,10 @@ At this point you can select the device putting on the Device Inventory and prov
    
 At this stage the device will be placed in **configuring** state, and will cycle to **Managed** when complete. After the device is completed you may need to either wait for the next resync interval or you can resync the device for the changes in the configuration to appear within Cisco Catalyst Center.
    
-> **Note:** If you populate the UI with settings those parameters should **not** be in your templates as they will conflict and the deployment through provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what configuration is pushed.
+> [!CAUTION]
+> If you populate the UI with settings those parameters should **not** be in your templates as they will conflict and the deployment through provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what configuration is pushed.
 
+> [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
