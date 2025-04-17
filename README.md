@@ -4,7 +4,7 @@
 > Thank you for continuing your **support** of the **DNAC-Template Repository** by your continued visits to the site. Over the past few months we have updated and redeveloped a lot of content and it is **reorganized** to be more consise, and to aide users in finding the relevant content easily. Over the next few months you will **notice more lab updates** to the repository, as we **add** additional content. The **folder structure** and **resources** have been **reorganized** for ease of use, and so that **[CODE](./CODE/README.md)** examples and **[TUTORIALS](TUTORIALS.md)** will be grouped together for ease of use. We hope this will help users to find the content they need in an easier manner.
 
 > [!IMPORTANT]
->**[Discussions](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions):** is now now open, so please do use that for feedback suggestions on improvements or other ideas, please use this link: **[Discussions](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions)**</br></br>**[Issues](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new):** will now be used to track problems with documentation or the labs and code, please use this link: **[Issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new)**
+> :mega: **[Discussions](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions):** is now now open, so please do use that for feedback suggestions on improvements or other ideas, please use this link: **[Discussions](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions)**</br></br>**[Issues](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new):** will now be used to track problems with documentation or the labs and code, please use this link: **[Issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new)**
 
 ## Cisco Catalyst Center
 
@@ -175,6 +175,7 @@ When building the template you will need to select a scripting language. Specifi
 
 The conditions that they are used are documented and are explained in [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Onboarding.md) and examples of DayN Templates are explained in [DayN Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/DayN.md)
 
+> [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
