@@ -386,7 +386,7 @@ You'll notice that the vars file is in YAML format.  The YAML format is human-re
 
 This was a brief overview of getting started with Ansible & Catalyst Center.  There are many great use cases for using the two together, and please explore the documentation for what's possible.  Watch this space for more on this topic.
 
-
-> **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe).</br></br>
+**Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
 > [**Return to Main Menu**](../README.md)
