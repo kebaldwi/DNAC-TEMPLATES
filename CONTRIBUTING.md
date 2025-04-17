@@ -10,13 +10,11 @@ There are two primary ways to contribute:
 1. Using the issue tracker
 2. Changing the codebase
 
-
 ## Using the issue tracker
 
 Use the issue tracker to suggest feature requests, report bugs, and ask questions. This is also a great way to connect with the developers of the project as well as others who are interested in this solution.
 
 Use the issue tracker to find ways to contribute. Find a bug or a feature, mention in the issue that you will take on that effort, then follow the _[Changing the codebase](./CONTRIBUTING.md#changing-the-codebase)_ guidance below.
-
 
 ## Changing the codebase
 
@@ -30,6 +28,7 @@ If you are interested in contributing to help put with examples, there is a way 
 
 The repository [DNAC Templates Store](https://github.com/kebaldwi/DNAC-Templates-Store#dnac-templates-store) is the repository where you can submit your template examples to help out as part of the broader community.
 
+> [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
