@@ -87,6 +87,8 @@ You will find various examples within the various folders of this repository, wi
 
 This section built out in a lab format to guide you through the typical steps to complete various automation tasks delivered by Cisco Catalyst Center. It allows for customers to practice Cisco Catalyst Center workflows with Onboarding, DayN Templates, and Application Policy automation on both Wired and Wireless Platforms, while reducing the time and effort needed to instantiate the network The lab will also introduce advanced velocity templating topics and troubleshooting tools, which may help determine common failure scenarios in a deployment.
 
+**IMPORTANT:** Please note that LAB content in this Repository is aligned with specific DCLOUD Demonstrations that have to be set up by either a **Cisco Employee** or a **Cisco Parter**. If you are having trouble accessing the DCLOUD content please get in touch with your **Local Cisco Account Team**.
+
 ## New Catalyst Center Lab Content
 
 This newer and more modular lab approach is designed to deal with and includes concepts from the legacy labs in a newer more modular format.
