@@ -64,7 +64,8 @@ We will use Postman to push a collection of REST API which will utlize data with
 
 While a more extensive set of settings can be built out for a deployment we will limit the configuration to the minimal necessary to perform this step. We will augment the Design Settings during the **DayN Provisioning Lab** to include others that may be required.
 
-> **Note:** While there are newer versions of Postman out there the DCLOUD environment is using an older version which does not restrict the number of users using the application which was added in later versions. As such nomenclature like Tests and images used are here for the older version. Please check Postman for updated documentation when using on production or your own computer.
+> [!NOTE]
+> While there are newer versions of Postman out there the DCLOUD environment is using an older version which does not restrict the number of users using the application which was added in later versions. As such nomenclature like Tests and images used are here for the older version. Please check Postman for updated documentation when using on production or your own computer.
 
 Before Cisco Catalyst Center can automate the deployment we have to do a couple of tasks to prepare. Please log into the Cisco Catalyst Center using a browser within the Windows **Jump host**. Use the credentials of username: **`admin`** password: **`C1sco12345`**. Then browse to [Cisco Catalyst Center](https://198.18.129.100). Use the credentials of username: **`admin`** password: **`C1sco12345`** within the DCLOUD environment.
 
@@ -171,7 +172,8 @@ If using DCLOUD lab images should not be modified. In that case please ignore th
 
 The image used in this lab for the **9300** is downloadable from here [⬇︎Cupertino-17.9.4a MD⬇︎](https://software.cisco.com/download/home/286315874/type/282046477/release/Cupertino-17.9.4a) 
 
-> **Note :** The process outlined in the pictures uses an older image but the steps remain the same. You should use an image that is marked as MD or **Assurwave** for best results.
+> [!NOTE]
+> The process outlined in the pictures uses an older image but the steps remain the same. You should use an image that is marked as MD or **Assurwave** for best results.
 
 1. Within Cisco Catalyst Center Navigate to *Design>Image Repository*  
 
@@ -383,7 +385,8 @@ We will now **download** and **import** one of the following PnP Onboarding Temp
 
 #### Velocity:
 
-**Note:** For older versions of Catalyst Center formerly known as Cisco DNA Center 2.2 and lower use the following for easy import:
+> [!NOTE]
+> For older versions of Catalyst Center formerly known as Cisco DNA Center 2.2 and lower use the following for easy import:
 
 &emsp;&emsp;&emsp; <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/VELOCITY/ONBOARDING/JSON/Platinum_PnP_Velocity_Template.json">⬇︎Platinum_PnP_Velocity_template.json⬇︎</a></br>
 
@@ -394,7 +397,8 @@ We will now **download** and **import** one of the following PnP Onboarding Temp
 
 #### Jinja2:
 
-**Note:** For older versions of Catalyst Center formerly known as Cisco DNA Center 2.2 and lower use the following for easy import:
+> [!NOTE]
+> For older versions of Catalyst Center formerly known as Cisco DNA Center 2.2 and lower use the following for easy import:
 
 &emsp;&emsp;&emsp; <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/ONBOARDING/JSON/Platinum_PnP_Jinja2_Template.json">⬇︎Platinum_PnP_Jinja2_template.json⬇︎</a> 
 
@@ -495,7 +499,8 @@ At this point you can claim the device putting it in a planned state for onboard
       * Gateway `192.168.5.1`
       * VTP Domain `Cisco` ***(if required)***
 
-      > **Note:** Leave the rest of the settings default 
+      > [!NOTE] 
+      > Leave the rest of the settings default 
 
         ![json](./images/DNAC-TemplateClaim.png?raw=true "Import JSON")
 
@@ -613,6 +618,7 @@ The next step will be to build DayN Templates for the switches to be pushed out 
 
 Thanks to Chanii Haley for taking on the task of creating Jinja 2 templates for use as an option in this lab. If there is any feedback or you as a reader wish to contribute in any way to help this community please reach out on the feedback form. 
 
+> [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 

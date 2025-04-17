@@ -276,7 +276,8 @@ We will now provision the switch using DayN Templates. To do this, do the follow
        
 At this point, we have onboarded a device and successfully pushed configuration via Onboarding and DayN Templates. Our DayN automation for the Greenfield device used a **Composite** template composed of **Regular** templates. Take some time and review the templates and logic used.
 
-> **Note:** If you populate the UI with settings, those parameters should **NOT** be in your templates as they will **conflict**, and the deployment through provisioning will fail. While it is easy to populate these settings, it is best to test with a switch to see what configuration is pushed.
+> [!CAUTION]
+> If you populate the UI with settings, those parameters should **NOT** be in your templates as they will **conflict**, and the deployment through provisioning will fail. While it is easy to populate these settings, it is best to test with a switch to see what configuration is pushed.
 
 ### Section 4 - Brownfield DayN Provisioning Sequence
 
@@ -330,7 +331,8 @@ We will now provision the switch using DayN Templates. To do this, do the follow
        
 At this point, we have onboarded a device and successfully pushed configuration via Discovery and DayN Templates. Our DayN automation for the Brownfield Device used a **Regular** template and within it multiple **Included** templates. Take some time and review the templates and logic used.
 
-> **Note:** If you populate the UI with settings, those parameters should **NOT** be in your templates as they will **conflict**, and the deployment through provisioning will fail. While it is easy to populate these settings, it is best to test with a switch to see what configuration is pushed.
+> [!CAUTION]
+> If you populate the UI with settings, those parameters should **NOT** be in your templates as they will **conflict**, and the deployment through provisioning will fail. While it is easy to populate these settings, it is best to test with a switch to see what configuration is pushed.
 
 ### Automating Provisioning
 
@@ -340,6 +342,7 @@ While it is possible to click through the claiming and provisioning processes ma
 
 The next step will be to build Composite Template to include the Day N regular templates created in this lab for the switches to be pushed out to the various devices in the network infrastructure. 
 
+> [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 

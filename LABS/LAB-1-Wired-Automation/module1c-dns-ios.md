@@ -35,7 +35,8 @@ The DNS Zone will look like this in Windows DNS Administrative tool:
 
 ![json](./images/DNACenterDNSentries2.png?raw=true "Import JSON")
 
-> **Note:** To utilize DNS Entry for Discovery purposes Certificates will need to be rebuilt with Subject Alternative Names. Please utilize the process documented in the following page [**Certificate Deployment**](./Certificates.md) for information on that process.
+> [!NOTE] 
+> To utilize DNS Entry for Discovery purposes Certificates will need to be rebuilt with Subject Alternative Names. Please utilize the process documented in the following page [**Certificate Deployment**](./Certificates.md) for information on that process.
 
 This is an **example** of how you can build a **DNS Records** below. For the configuration please download and use the script here: 
 
