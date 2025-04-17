@@ -33,7 +33,8 @@ data = {
 
 View the JSON block above.  The ```data``` is a JSON Object as noted by the opening and closing curly braces.  Within that object is a name-value pair with the name ```"ietf-interfaces:interface"```.  The value is another object which contains name-value pairs separated by commas.  The names are ```"name"```, ```"description"```, ```"enabled"```, and ```"ietf-ip:ipv4"```.  ```"ietf-ip:ipv4"``` contains and object ```"address"```, which is a list of objects, as denoted by the braces \[\].  
 
-> **NOTE:** I am very recklessly interchanging the terms "array" and "list".  For introductory purposes, this is fine, but they are not always interchangeable terms.
+> [!NOTE] 
+> I am very recklessly interchanging the terms "array" and "list".  For introductory purposes, this is fine, but they are not always interchangeable terms.
 
 JSON data types include numbers, strings, Booleans, arrays, objects and null.  Let's take a look at how some of these data types are represented above.
 
@@ -74,13 +75,15 @@ ietf-interfaces:interface:
 
 You'll note that the same data takes up less space, requires less punctuation, and is a bit easier for a human to follow than the JSON above, while still being simple for a machine to parse.  Assuming the above YAML was stored in a variable called "data", the method to access the first IP address from our JSON example, would work the same.
 
-> **NOTE** For the full details on YAML and programming languange-specific implementations, view the [specification](https://yaml.org)
+> [!TIP] 
+> For the full details on YAML and programming languange-specific implementations, view the [specification](https://yaml.org)
 
 ## XML
 
 XML, or Extensible Markup Language, is oldest of the three data structures covered here, released in 1998, but it is still relevant today for many use cases.  One key use case for network automation is model-driven automation with NETCONF and model-driven telemetry with gNOI & gRPC.  NETCONF uses YANG Models, which can be expressed in XML format. XML is also an encoding option for REST APIs. 
 
-> **NOTE** To learn more about Model-Driven Telemetry with NETCONF, see (Jeremy Cohoe's Cisco IOS-XE - YANG based Model Driven Telemetry Lab)[https://github.com/jeremycohoe/cisco-ios-xe-mdt]
+> [!TIP] 
+> To learn more about Model-Driven Telemetry with NETCONF, see (Jeremy Cohoe's Cisco IOS-XE - YANG based Model Driven Telemetry Lab)[https://github.com/jeremycohoe/cisco-ios-xe-mdt]
 
 XML has a number of formatting rules.  Here are some of the most crucial:
 
@@ -117,13 +120,15 @@ Here is our data formatted into XML:
 
 XML has a comparatively high level of overhead, so it is less popular than JSON in modern operations, however there are still many applications for which XML is appropriate or even preferred.  
 
-> **NOTE** To learn more about XML, see the (specification)[https://www.w3.org/TR/xml/]
+> [!TIP] 
+> To learn more about XML, see the (specification)[https://www.w3.org/TR/xml/]
 
 
 ## Choosing a Data Format
 
 The choice of which of these data formats to use is often based on the specific application. If the application supports all of them, consider the project's requirements on speed, readability and structure (e.g. are schemas and namespaces required).    All else being equal, use the structure that you and your team find most natural to work with.
 
+> [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 

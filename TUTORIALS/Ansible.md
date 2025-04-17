@@ -75,7 +75,8 @@ The notation \[group name**:vars**\] specifies that these variables are applicab
 
 This inventory contains only five devices, but is 21 lines long.  It is easy to see how complex and hard to manage an inventory file could be at scale--especially if you are defining variables within the inventory file.
 
-> **Note:** Before we move on, it is important to note that this inventory file is a __security nightmare__.  It contains plaintext credentials.  It could be read by anyone, or heaven forbid, accidentally committed to a public repository in Github. Putting plaintext credentials into an inventory is bad practice no matter how well protected your control node is.  It is only done here for learning purposes.  There are many straightforward and secure methods for protecting secrets in Ansible, such as using environment variables, [Ansible vault](https://docs.ansible.com/ansible/latest/vault_guide/index.html), or third party secrets management solutions. If you are exploring Ansible for use in your enterprise, never let an inventory like this go further than the lab.  We will explore secrets management in a later tutorial.
+> [!CAUTION]
+> Before we move on, it is important to note that this inventory file is a __security nightmare__.  It contains plaintext credentials.  It could be read by anyone, or heaven forbid, accidentally committed to a public repository in Github. Putting plaintext credentials into an inventory is bad practice no matter how well protected your control node is.  It is only done here for learning purposes.  There are many straightforward and secure methods for protecting secrets in Ansible, such as using environment variables, [Ansible vault](https://docs.ansible.com/ansible/latest/vault_guide/index.html), or third party secrets management solutions. If you are exploring Ansible for use in your enterprise, never let an inventory like this go further than the lab.  We will explore secrets management in a later tutorial.
 
 #### The Basics of Ansible: Ansible Playbooks
 
@@ -107,7 +108,8 @@ The *tasks* section is the list of instructions.  Each instruction in the list b
 
 Tasks trigger one or more modules that are executed. The module specified in our task is *debug*.  The *debug* module simply prints the output specified by the *msg* parameter.  Our task is using the debug module to output information collected by gather_facts.  The line ```- "Hostname: {{ ansible_net_hostname }} , Serial Number: {{ ansible_net_serialnum }}"``` is the format and content of our message.   Variables in Ansible playbooks are denoted by the double curly brace: \{\{\}\}.  
 
-> **Note:** It is possible to limit the facts gathered from a Cisco IOS-XE device.  See the documentation on the [gather_network_resources](https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_facts_module.html#parameter-gather_network_resources) and [gather_subset](https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_facts_module.html#parameter-gather_subset) parameters. 
+> [!TIP] 
+> It is possible to limit the facts gathered from a Cisco IOS-XE device.  See the documentation on the [gather_network_resources](https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_facts_module.html#parameter-gather_network_resources) and [gather_subset](https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_facts_module.html#parameter-gather_subset) parameters. 
 
 See the output of this playbook:
 
@@ -148,7 +150,8 @@ Using Ansbile to manage Cisco Catalyst Center requires the correct version of th
 
 ![json](../ASSETS/compatibility_matrix.png?raw=true "Compatibility Matrix")
 
-> **Note:** This image of the table was current at the time of writing.  The source at the link provided above should be referenced in the future. 
+> [!NOTE] 
+> This image of the table was current at the time of writing.  The source at the link provided above should be referenced in the future. 
 
 You install the [Cisco Catalyst Center Python SDK](https://dnacentersdk.readthedocs.io/en/latest/) using pip or by downloading the source code and running a setup script in a virtual environment \(recommended\) or in the global Python installation on a host. If you are unfamiliar with pip or Python or you would like a deeper look at using the SDK outside of Ansible to write code directly, review the [Python tutorial](./Python.md).
 
@@ -386,6 +389,7 @@ You'll notice that the vars file is in YAML format.  The YAML format is human-re
 
 This was a brief overview of getting started with Ansible & Catalyst Center.  There are many great use cases for using the two together, and please explore the documentation for what's possible.  Watch this space for more on this topic.
 
+> [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
