@@ -100,7 +100,8 @@ Use Developer Mode on Chrome to see a **REST API** from Cisco Catalyst Center, f
 
 Overall, using Developer Mode on Chrome can be a helpful tool for troubleshooting **REST API** issues and gaining a better understanding of how Cisco Catalyst Center's APIs work.
 
-> **Note:** it's important to note that unpublished APIs are typically not supported by the vendor and are not recommended for use in production environments. Using unpublished APIs can pose a security risk and may result in unexpected behavior or system instability. It's always best to stick to the published APIs and follow best practices for API usage to ensure the stability and security of your network infrastructure.
+> [!CAUTION] 
+> it's important to note that unpublished APIs are typically not supported by the vendor and are not recommended for use in production environments. Using unpublished APIs can pose a security risk and may result in unexpected behavior or system instability. It's always best to stick to the published APIs and follow best practices for API usage to ensure the stability and security of your network infrastructure.
 
 ## How to get Started?
 
@@ -179,6 +180,7 @@ We include in the Repository a full set of Labs designed to help customers with 
 7. [**Retrieving Network Inventory**](../LABS/LAB-I-Rest-API-Orchestration/module7-inventory.md)
 8. [**Running Show Commands**](../LABS/LAB-I-Rest-API-Orchestration/module8-commands.md)
 
+> [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
