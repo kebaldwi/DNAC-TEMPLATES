@@ -103,7 +103,7 @@ This can be augmented with Model-Based Configurations as well as Templates which
 
 At this point you will have successfully provisioned the **Wireless Controller** from **Catalyst Center**. During this lab we configured SSID's, Wireless Network Profiles, RF Profiles, FlexConnect VLANs and deployed the configuration. The next step is **Access Point** provisioning.
 
-> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe).</br></br>
+> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
 > [**Continue to AP Provisioning Module**](../LAB-2-Wireless-Automation/module5-approvisioning.md)

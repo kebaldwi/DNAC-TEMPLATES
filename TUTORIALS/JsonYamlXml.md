@@ -124,7 +124,7 @@ XML has a comparatively high level of overhead, so it is less popular than JSON 
 
 The choice of which of these data formats to use is often based on the specific application. If the application supports all of them, consider the project's requirements on speed, readability and structure (e.g. are schemas and namespaces required).    All else being equal, use the structure that you and your team find most natural to work with.
 
-> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe).</br></br>
+> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
 > [**Return to Main Menu**](../README.md)

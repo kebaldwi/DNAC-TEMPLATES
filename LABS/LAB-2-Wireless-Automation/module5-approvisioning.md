@@ -257,7 +257,7 @@ With the access points now onboarded through the claim process, they are now in 
 
 Congratulations you have completed the Access Point Plug and Play, and Provisioning and now have two correctly configured access points with SSID that can be used for testing. Please use the navigation below to continue your learning.
 
-> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe).</br></br>
+> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
 > [**Continue to AI RF Profiling Module**](../LAB-2-Wireless-Automation/module6-airfprofiles.md)

@@ -145,7 +145,7 @@ While it is possible to click through these processes manually, which can be tim
 
 Congratulations you have completed building Application Policies and deploying QoS on both wired and wireless networks. It is important that both the wired and wireless network are set up correctly for QoS, and that protocol packs are maintained across the network infrastructure. CBAR helps facilitate that and closes with application discovery rounding out the story.
 
-> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe).</br></br>
+> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
 > [**Continue to Model Based Config Module**](../LAB-2-Wireless-Automation/module8
