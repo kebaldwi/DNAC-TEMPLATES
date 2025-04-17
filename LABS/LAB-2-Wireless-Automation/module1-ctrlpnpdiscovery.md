@@ -121,7 +121,8 @@ While we have the ability to PnP a Wireless Controller typically these are estan
 
       ![json](./images/module1-pnpdiscovery/dnac-discovery-new-snmp-ro-add.png?raw=true "Import JSON")
 
-      > **Note:** a Warning will appear after the Save. Click `Ok` this is expected.
+      > [!NOTE] 
+      > a Warning will appear after the Save. Click `Ok` this is expected.
 
    5. To add **SNMPv2c Write** Credentials do the following;
 
@@ -139,7 +140,8 @@ While we have the ability to PnP a Wireless Controller typically these are estan
 
       ![json](./images/module1-pnpdiscovery/dnac-discovery-new-snmp-rw-add.png?raw=true "Import JSON")
 
-      > **Note:** a Warning will appear after the Save. Click `Ok` this is expected.
+      > [!NOTE] 
+      > a Warning will appear after the Save. Click `Ok` this is expected.
 
    7. To add **NETCONF** Credentials do the following;
 
@@ -205,6 +207,7 @@ The lab within DCLOUD does not today have the ability to run PnP of the Controll
 
 Congratulations you have completed the Controller Discovery module of the lab and the Wireless LAN Controller is ready for configuration and provisioning. Please use the navigatation below to continue your learning.
 
+> [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 

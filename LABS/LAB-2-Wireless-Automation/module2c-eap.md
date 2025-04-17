@@ -63,7 +63,8 @@ Click on the arrow below to expand and follow to complete the tasks.
 
    ![json](./images/module2-wlans/dnac-wireless-ssid-eap-profile-begin.png?raw=true "Import JSON")
 
-   > **Note:** If no *Wireless Profile* exists, we must click **Add Profile** to add one to Catalyst Center.
+   > [!NOTE] 
+   > If no *Wireless Profile* exists, we must click **Add Profile** to add one to Catalyst Center.
 
 2. The Wireless SSID workflow continues with *Associate SSID to Profile*. Complete the following steps:
    1. Enter the **Profile Name** as `DNAC-WIRELESS` if blank
@@ -87,7 +88,8 @@ Click on the arrow below to expand and follow to complete the tasks.
 
    ![json](./images/module2-wlans/dnac-wireless-ssid-eap-profile-campus-eap-results.png?raw=true "Import JSON")
 
-   > **Note:** If this is a new **Wireless Profile** then select **Configure Network Profile** and complete the optional steps for assigning sites as detailed in Step 3 of creating a PSK WLAN above.
+   > [!NOTE] 
+   > If this is a new **Wireless Profile** then select **Configure Network Profile** and complete the optional steps for assigning sites as detailed in Step 3 of creating a PSK WLAN above.
 
 6. Return to the **Wireless Settings** page and you should see now our new *SSID* **CAMPUS-EAP**.
 
@@ -131,6 +133,7 @@ In this lab, we need to utilize FlexConnect, and so to allow for CoA of clients 
 
 At this point you will have successfully configured the **EAP SSID** on the **Wireless Controller** from **Catalyst Center**. During this lab we will configure additional SSID's, Wireless Network Profiles, RF Profiles, FlexConnect VLANs and deployed the configuration. The next step is configuring additional **SSID**.
 
+> [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
