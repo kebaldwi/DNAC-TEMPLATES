@@ -131,7 +131,8 @@ In this lab, we need to utilize FlexConnect, and so to allow for CoA of clients 
 
 At this point you will have successfully configured the **EAP SSID** on the **Wireless Controller** from **Catalyst Center**. During this lab we will configure additional SSID's, Wireless Network Profiles, RF Profiles, FlexConnect VLANs and deployed the configuration. The next step is configuring additional **SSID**.
 
-> **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe).</br></br>
+**Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
 > [**Proceed to Open SSID Sub Module**](./module2d-open.md)
 

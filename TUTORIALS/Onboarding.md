@@ -263,6 +263,7 @@ While it is possible to click through the claiming and process, for bulk deploym
 
 This methodology allows for you to specify variables within the csv, serial numbers, and put devices into a planned state waiting for them to land on the Plug and Play page on Cisco Catalyst Center.
 
-> **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe).</br></br>
+**Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
 > [**Return to Main Menu**](../README.md)

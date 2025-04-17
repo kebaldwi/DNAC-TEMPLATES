@@ -69,7 +69,8 @@ During the next few steps we will create a **Basic RF Profile**.
 
 At this point you will have successfully configured **RF Profiles** on the **Wireless Controller** from **Catalyst Center**. During this lab we configured have configured SSID's, Wireless Network Profiles, RF Profiles, FlexConnect VLANs. The next step is **WLC** provisioning.
 
-> **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe).</br></br>
+**Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
 > [**Continue to WLC Provisioning Module**](../LAB-2-Wireless-Automation/module4-wlcprovisioning.md)
 

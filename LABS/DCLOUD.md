@@ -4,13 +4,13 @@
 
 Use AnyConnect VPN to connect to DCLOUD. When connecting, look at the session details and copy the credentials from the session booked into the client to connect.
 
-![json](./LAB-I-Rest-API-Orchestration/images/VPN-to-dCLOUD.png?raw=true "Import JSON")
+![json](./LAB-7-CICD-Orchestration/images/VPN-to-dCLOUD.png?raw=true "Import JSON")
 
 ## DCLOUD Service Optimization
 
 The DCLOUD environment used in the lab need to be optimized prior to the session, and to do this we need to disable the following:
 
-<p align="center"><img src="./LAB-I-Rest-API-Orchestration/images/ShutdownUnused.png" width="500" height="690"></p>
+<p align="center"><img src="./LAB-7-CICD-Orchestration/images/ShutdownUnused.png" width="500" height="690"></p>
 
 In order to accomplish this, use the drop down menu item by each that is shutdown in the image and click the shutdown link.
 
@@ -26,7 +26,7 @@ This topology is the same topology we have always used in the lab and requires n
 
 [Cisco Enterprise Networks Hardware Sandbox East DC](https://dcloud2-rtp.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen)
 
-![json](./LAB-A-PNP-PREP/images/DCLOUD_Topology2.png?raw=true "Import JSON")
+![json](./LAB-1-Wired-Automation/images/DCLOUD_Topology2.png?raw=true "Import JSON")
 
 When using the **RTP - EAST DC** you are ready to proceed without the mitigating steps which we will mention below.
 
@@ -36,7 +36,7 @@ This topology has been altered from the original topology we have always used in
 
 [Cisco Enterprise Networks Hardware Sandbox West DC](https://dcloud2-sjc.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen)
 
-![json](./LAB-A-PNP-PREP/images/DCLOUD_Topology3.png?raw=true "Import JSON")
+![json](./LAB-1-Wired-Automation/images/DCLOUD_Topology3.png?raw=true "Import JSON")
 
 When using the **SJC - WEST DC** you need to proceed with the following mitigating steps which we will detail below:
 
@@ -135,8 +135,9 @@ copy base9300-3.cfg run
 
 5. After 5 minutes check the CDP relationship on all devices except the C9300-3 to verify that the lab is set up logically like this:
 
-![json](./LAB-A-PNP-PREP/images/DCLOUD_Topology2.png?raw=true "Import JSON")
+![json](./LAB-1-Wired-Automation/images/DCLOUD_Topology2.png?raw=true "Import JSON")
 
-> **Feedback:** If you found this repository please fill in comments and [**give feedback**](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe) on how it could be improved.
+> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe).</br></br>
+**Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
 > [**Return to Lab Menu**](./README.md)
