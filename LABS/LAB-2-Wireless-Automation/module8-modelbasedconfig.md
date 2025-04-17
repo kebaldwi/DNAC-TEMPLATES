@@ -373,7 +373,7 @@ For bonus points go and add another Model-Based config for the final SSID:
 
 Additional Model-Based Configuration may also be added in a simlar fashion. Please consult the Cisco Unified Wireless Design Guide for further details. Please use the navigatation below to continue your learning.
 
-> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe).</br></br>
+> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
 > [**Continue to Wireless Templates Module**](../LAB-2-Wireless-Automation/module9-wirelesstemplates.md)

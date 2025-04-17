@@ -141,7 +141,7 @@ We include in the Repository a full set of Labs designed to help customers with 
 
 In conclusion, orchestration platforms like Jenkins, GitHub, and GitLab are essential tools in modern CI/CD workflows. Each platform offers unique features and benefits that cater to different development needs. Additionally, Python and Ansible provide robust support for working with REST APIs, enabling seamless integration with external systems. Lastly, pipelines provide a structured approach to automating software delivery processes by defining clear steps and dependencies. By leveraging these platforms and concepts effectively, development teams can achieve faster time-to-market, improved collaboration, and higher-quality software products.
 
-> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://app.smartsheet.com/b/form/f75ce15c2053435283a025b1872257fe).</br></br>
+> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
 > [**Return to Main Menu**](../README.md)
