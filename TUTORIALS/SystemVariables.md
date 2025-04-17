@@ -101,7 +101,8 @@ vlan {{ voice_vlan }}
 
 ```
 
-> **Note:** If you are following along, don't forget to save your template before moving on.  We could remove the if statement if we're confident our operators will only choose unconfigured physical interfaces, but we'll leave it in for this example.
+> [!TIP]
+> If you are following along, don't forget to save your template before moving on.  We could remove the if statement if we're confident our operators will only choose unconfigured physical interfaces, but we'll leave it in for this example.
 
 Next we need to specify that this variable is going to be bound.  If we go to the **Input Form** view by clicking on the calculator icon:
 
@@ -117,9 +118,11 @@ We can select our new variable **selected_interfaces** and apply the settings ne
 
 These steps will set **selected_interfaces** to be an object that will contain the interfaces of the target switch that are selected by the operator at runtime.  We are giving the operator access to the contents of **__interface[interface]** for each interface and allowing them to select the specific interfaces they want added to the **selected_interfaces** object.  
 
-> **Note:** that you can also use this UI to filter on an attribute, so if the if statement only had a single option, you could apply it here as a filter.
+> [!TIP] 
+> That you can also use this UI to filter on an attribute, so if the if statement only had a single option, you could apply it here as a filter.
 
-> **Note:** If you are following along, don't forget to save your template before moving on.
+> [!TIP]
+> If you are following along, don't forget to save your template before moving on.
 
 Now would be a good time to use the **Simulation** feature of the Cisco Catalyst Center Template Editor to check our work.  
 
@@ -154,7 +157,8 @@ If your Simulation was successful, meaning that there were no syntax errors that
 
 ![json](../ASSETS/simulation_output.png?raw=true "Import JSON")
 
-> **Note:** Due to Jinja2 whitespace handling, the configuration may look messy or misaligned, but these whitespace issues will not affect provisioning.
+> [!NOTE] 
+> Due to Jinja2 whitespace handling, the configuration may look messy or misaligned, but these whitespace issues will not affect provisioning.
 
 This output provides highly beneficial detail on what configuration would be pushed to a target device based on our template logic and allows the architect to ensure that the template will render as expected when it is time to provision.
 
@@ -177,6 +181,7 @@ Lastly let's take a look at using a different system variable.  This very simple
 
 Hopefully, this document helped you to get an idea of what system variables are and how they can be used with the Cisco Catalyst Center Template Editor. System Variables help to reduce manual entry and errors, make your templates more flexible so you need less of them and ease provisioning. Thanks for reading!
 
+> [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 

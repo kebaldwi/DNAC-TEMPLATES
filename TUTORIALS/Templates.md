@@ -120,7 +120,8 @@ Cisco Catalyst Center provides regular and composite configuration templates. CL
 
 2. In the tree pane, select the project under which you are creating templates, and click the gear icon > Add Templates. Alternately, click > Add Templates.
 
-   > **Note:** The template that you create for day 0 can also be applied for day N.
+   > [!TIP] 
+   > The template that you create for day 0 can also be applied for day N.
 
    ![json](../ASSETS/CreateTemplate.png?raw=true "Import JSON")
 
@@ -141,13 +142,15 @@ Cisco Catalyst Center provides regular and composite configuration templates. CL
    - Search a template using the tag name in the search field.
    - Use the tagged template as a reference to configure more devices.
 
-     > **Note:** If you use tags to filter the templates, you must apply the same tags to the device to which you want to apply the templates. Otherwise, you get the following error during provisioning: Cannot select the device. Not compatible with template.
+     > [!TIP] 
+     > If you use tags to filter the templates, you must apply the same tags to the device to which you want to apply the templates. Otherwise, you get the following error during provisioning: Cannot select the device. Not compatible with template.
 
 8. Click Edit to view the selected device types and choose the device types that you want to apply to the template.
    - To view the selected devices, choose Selected from the Show drop-down list. By default, all device types are displayed.
    - There are different granularity levels for choosing the device type from the hierarchical structure. The device type is used during deployment to ensure that templates deploy devices that match the specified device type criteria. This lets you create specialized templates for specific device models.
 
-      > **Note:** Template Editor does not show device product IDs (PIDs); instead, it shows the device series and model description. You can use cisco.com to look up the device data sheet based on the PID, find the device series and model description, and choose the device type appropriately.
+      > [!TIP] 
+      > Template Editor does not show device product IDs (PIDs); instead, it shows the device series and model description. You can use cisco.com to look up the device data sheet based on the PID, find the device series and model description, and choose the device type appropriately.
 
    ![json](../ASSETS/SelectDeviceTemplate.png?raw=true "Import JSON")
 
@@ -171,7 +174,8 @@ Cisco Catalyst Center provides regular and composite configuration templates. CL
 15. To save the template content, from the Actions drop-down list, choose Save.
 16. To commit the template, from the Actions drop-down list, choose Commit. You can see only the committed templates in the network profile section.
 
-    > **Note:** You can associate only a committed template to a network profile.
+    > [!TIP] 
+    >You can associate only a committed template to a network profile.
 
 For more documentation please see: [User Guide](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/1-3-3-0/user_guide/b_cisco_dna_center_ug_1_3_3_0/b_cisco_dna_center_ug_1_3_2_0_chapter_01000.html#create_regular_templates)
 
@@ -184,6 +188,7 @@ Specific examples of Templates are available in the following folders:
 
 Above examples of PnP/ZTP are explained in [Onboarding Templates](./Onboarding.md) and examples of DayN Templates are explained in [DayN Templates](./DayN.md)
 
+> [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 

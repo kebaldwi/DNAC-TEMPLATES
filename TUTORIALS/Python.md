@@ -149,7 +149,8 @@ Under "Authentication" section, Select "Authentication API". We can see the foll
    * Content-Type: 'application/json'
    * Authorization: 'Basic BASE64(username:password)
 
-> **Note:** String composed of “Basic”, followed by a space, followed by the Base64 encoding of “username:password”, NOT including the quotes. For example “Basic YWRtaW46TWFnbGV2MTIz”, where YWRtaW46TWFnbGV2MTIz is the Base 64 encoding.
+> [!TIP] 
+> String composed of “Basic”, followed by a space, followed by the Base64 encoding of “username:password”, NOT including the quotes. For example “Basic YWRtaW46TWFnbGV2MTIz”, where YWRtaW46TWFnbGV2MTIz is the Base 64 encoding.
 
 ### Cisco Catalyst Center - simple example with Python and requests library
 
@@ -163,9 +164,11 @@ pip install requests
 
 1. Create dnac_config.py file containing Cisco Catalyst Center credentials. This code will allow us to set the parameters either as environment variables (note env var names in CAPS), or use default values supplied if the corresponding environment variable is not set.
 
-> **Note:** It is considered to be a best practice to not store credentials in plain text, and instead leveraging environment variables. This example is for simplicity and demonstration purposes only.
+> [!CAUTION] 
+> It is considered to be a best practice to not store credentials in plain text, and instead leveraging environment variables. This example is for simplicity and demonstration purposes only.
 
-> **Note:** Please ensure to update Cisco Catalyst Center URL, and credentials to match Cisco Catalyst Center environment you are working with (in this case, parameters are for devnet sandbox).
+> [!TIP] 
+> Please ensure to update Cisco Catalyst Center URL, and credentials to match Cisco Catalyst Center environment you are working with (in this case, parameters are for devnet sandbox).
 
 ```python
 import os
@@ -630,6 +633,7 @@ The same approach was further simplified when we instead used Cisco Catalyst Cen
 
 In the last example, we demonstrated how a **rapid-prototyping** approach can be achieved leveraging Postman as the development tool to help us build workflows visually and convert them to Python code which requires minimal modifications to achieve the outcome
 
+> [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 

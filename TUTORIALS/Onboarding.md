@@ -237,7 +237,8 @@ If the Network Profile is already deployed it can be edited at a later date to a
    4. Save the network profile
    5. Assign the network profile to the hierarchy
 
-> **Note:** If you populate the Cisco Catalyst Center Design section, those parameters should **not** be in your templates CLI payload as they will conflict and device provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what resultant CLI configuration statements are pushed.
+> [!CAUTION] 
+> If you populate the Cisco Catalyst Center Design section, those parameters should **not** be in your templates CLI payload as they will conflict and device provisioning will fail. While it is easy to populate these settings it is best to test with a switch to see what resultant CLI configuration statements are pushed.
 
 ## Claiming and Provisioning
 
@@ -263,6 +264,7 @@ While it is possible to click through the claiming and process, for bulk deploym
 
 This methodology allows for you to specify variables within the csv, serial numbers, and put devices into a planned state waiting for them to land on the Plug and Play page on Cisco Catalyst Center.
 
+> [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
