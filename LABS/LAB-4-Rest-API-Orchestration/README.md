@@ -12,6 +12,8 @@ This set of Labs is developed around a set of simple use cases to show both the 
 
 The lab will utilize a set of collections publically shared on postman workspaces and those collections will also be expanded to keep in line with this lab.
 
+**IMPORTANT:** Please note that LAB content in this Repository is aligned with specific DCLOUD Demonstrations that have to be set up by either a **Cisco Employee** or a **Cisco Parter**. If you are having trouble accessing the DCLOUD content please get in touch with your **Local Cisco Account Team**.
+
 ## Lab Modules
 
 The Story we will use will be the following, after orientation, we will first integrate ISE with Catalyst Center, and then construct our design. The design comprises of a hierarchy, settings and credentials. With the hierarchy set, we sill discover our pod devices assigned by the instructor and then deploy templates to the pod. After some time we will archive the configurations of the pod, amd then collect the updated inventory. Finally we will send a show CDP neighbor command to the equipment we have been assigned. 

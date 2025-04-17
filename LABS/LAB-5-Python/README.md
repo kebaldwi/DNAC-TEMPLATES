@@ -18,6 +18,8 @@ This lab is meant to mirror the concepts of **[LAB 4 REST-API Orchestration with
 
 The lab will utilize a set of python programs shared in the code section of the repository. These programs will also be expanded to keep in line with this lab.
 
+**IMPORTANT:** Please note that LAB content in this Repository is aligned with specific DCLOUD Demonstrations that have to be set up by either a **Cisco Employee** or a **Cisco Parter**. If you are having trouble accessing the DCLOUD content please get in touch with your **Local Cisco Account Team**.
+
 ## Lab Modules
 
 The use cases we will cover are the following which you can access via the links below:

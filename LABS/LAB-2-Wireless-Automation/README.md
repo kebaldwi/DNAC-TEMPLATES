@@ -47,6 +47,8 @@ If you would like to connect to the DCLOUD environment, please ensure you instal
 
 This lab is designed to be run in Cisco dClouds - Enterprise Network Sandbox Lab. It was developed in version 4, including Catalyst Center 2.2.3.5 and equipment running at least 17.x versions of code. 
 
+**IMPORTANT:** Please note that LAB content in this Repository is aligned with specific DCLOUD Demonstrations that have to be set up by either a **Cisco Employee** or a **Cisco Parter**. If you are having trouble accessing the DCLOUD content please get in touch with your **Local Cisco Account Team**.
+
 > **Note:** While the RTP DC can facilitate the wireless automation, it lacks a wirelessly enabled workstation for testing.
 
 1. [Cisco Enterprise Networks Hardware Sandbox West DC](https://dcloud2-sjc.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen)

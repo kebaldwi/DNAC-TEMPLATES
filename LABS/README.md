@@ -12,6 +12,8 @@ As a result, customers will gain experience setting up Plug and Play onboarding 
 
 Please use this menu to navigate the various sections of this Github repository. Within the multiple folders are examples, explanation readme files for reference.
 
+**IMPORTANT:** Please note that LAB content in this Repository is aligned with specific DCLOUD Demonstrations that have to be set up by either a **Cisco Employee** or a **Cisco Parter**. If you are having trouble accessing the DCLOUD content please get in touch with your **Local Cisco Account Team**.
+
 ### New Catalyst Center Lab Content
 
 This newer and more modular lab approach is designed to deal with and includes concepts from the legacy labs in a newer more modular format.

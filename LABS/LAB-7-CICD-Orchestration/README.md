@@ -14,6 +14,8 @@ This page will serve as the landing page for this lab section due to the amount 
 
 The lab will utilize a set of collections publically shared on Postman workspaces, Python and Ansible librarys, and Jenkins.
 
+**IMPORTANT:** Please note that LAB content in this Repository is aligned with specific DCLOUD Demonstrations that have to be set up by either a **Cisco Employee** or a **Cisco Parter**. If you are having trouble accessing the DCLOUD content please get in touch with your **Local Cisco Account Team**.
+
 ## Lab Modules
 
 The use cases we will cover are the following which you can access via the links below:
