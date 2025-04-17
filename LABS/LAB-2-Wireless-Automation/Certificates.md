@@ -291,6 +291,7 @@ Catalyst Center will now log out. After a few minutes refresh the GUI from the b
 
 Congratulations you have changed the certificate and are now ready to use DNS for discovery purposes. The Root CA may also be used in this lab for Identity Services Engine, and through a CAP Profile EAP certificates. All that would be needed would be in ISE to import the ROOT CA certificate into the trust store in ISE, and then create a CSR from the UI which includes the SAN IP and DNS names for the ISE environment. Then once binding the certificate ensure the roles for the Certificate are enabled. Once the Certificate is installed and operational for the roles desired, policy may be used. This will be discussed in a future lab in detail.
 
+> [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 

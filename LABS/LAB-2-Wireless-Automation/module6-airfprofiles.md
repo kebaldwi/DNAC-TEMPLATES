@@ -53,7 +53,8 @@ During this section we will duplicate the previously created **Basic RF Profile*
 
 To assign the **AI Profile** to the **Building**. **AI Profiles** if you remember are to be **assigned** at the **Building level**, and cannot be assigned at a floor level. This is because they are defined to allow **Catalyst Center** to **coordinate** the **wireless settings** for an entire building of which **multiple controllers** may be used on differing floors. 
 
-> **Note:** This section will need to be completed **after** the initial provisioning of the **Wireless LAN Controller**.
+> [!NOTE]
+> This section will need to be completed **after** the initial provisioning of the **Wireless LAN Controller**.
 
 <details open>
 <summary> Click the arrow for details</summary>
@@ -136,6 +137,7 @@ During this section we will assign the previously created **AI RF Profile**. If 
 
 At this point you will have successfully configured **AI RF Profiles** on the **Wireless Controller** from **Catalyst Center**. During this lab we configured have configured SSID's, Wireless Network Profiles, RF Profiles, FlexConnect VLANs. The next step is applying **QoS**.
 
+> [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
