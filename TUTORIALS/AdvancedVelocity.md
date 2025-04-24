@@ -211,6 +211,54 @@ The next step would be to build macros and vlans to configure the various ports.
 
 While this would configure the access ports, and modify the port channel for upstream connectivity we could do more to automate we will look at that next.
 
+## Network Profile Compliance 
+
+To exclude specific commands from compliance checks in Cisco Catalyst Center, you can use the **ignore-compliance** flags. These flags, added to your templates, tell Catalyst Center to bypass compliance checks for commands within those boundaries. Specifically, you can enclose the commands you want to omit with:
+
+```J2
+ ! @ start-ignore-compliance 
+ 
+ ! @ end-ignore-compliance
+```
+
+Here's a breakdown:
+
+### What is Compliance?
+
+Catalyst Center uses templates to define the desired configuration for your network devices. It then compares the device's running configuration against these templates to ensure they are compliant. 
+
+### Why Omit?
+There might be situations where you need to make changes to a device's configuration that don't align with the template, but you still want to keep the overall compliance status in check. For example, you might need to temporarily disable a feature for testing or make a specific change that deviates from the standard configuration. 
+
+#### How to Omit Commands
+
+**! @ start-ignore-compliance**: This flag indicates the start of a section in the template that should be excluded from compliance checks.
+
+**! @ end-ignore-compliance**: This flag indicates the end of the section that should be excluded from compliance checks.
+
+Example: 
+
+```sh
+    interface GigabitEthernet1/0/1
+     ! @ start-ignore-compliance
+     no switchport
+     ! @ end-ignore-compliance
+     switchport mode trunk
+     switchport trunk allowed vlan 100,200
+```
+
+In this example, Catalyst Center will ignore the **no switchport** command for compliance checks. 
+
+### Important Considerations
+
+#### When to use:
+
+Use ignore-compliance only for specific scenarios where a deviation from the template is necessary, but you want to maintain overall compliance. 
+
+#### Documentation:
+
+Refer to the official Cisco Catalyst Center documentation for the most up-to-date information on compliance features and how to use them. 
+
 > [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
