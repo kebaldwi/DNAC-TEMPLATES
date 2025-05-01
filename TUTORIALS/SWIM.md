@@ -104,6 +104,8 @@ This approach involves two distinct workflows: one for staging the image and ano
 
 This method provides greater control and flexibility, allowing administrators to ensure that the images are functioning correctly before activation.
 
+---
+
 ### Image Distribution Server
 
 An **Image Distribution Server** plays a crucial role in the deployment of software images. This server acts as a centralized repository where golden images are stored and managed. This is assigned in the **Network Settings** within the Design.
@@ -113,6 +115,8 @@ An **Image Distribution Server** plays a crucial role in the deployment of softw
 - **Centralized Management**: Administrators can manage all software images from a single location, making it easier to track versions and updates.
 - **Efficient Distribution**: The server facilitates the distribution of images to multiple devices simultaneously, reducing the time required for deployment.
 - **Version Control**: By maintaining a repository of images, organizations can easily roll back to previous versions if necessary, ensuring stability in the network.
+
+---
 
 ### Monitoring and Control via ServiceNow
 
