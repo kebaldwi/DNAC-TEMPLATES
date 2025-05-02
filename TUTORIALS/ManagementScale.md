@@ -64,6 +64,8 @@ In brownfield environments, achieving compliance may require extensive auditing 
 
 - **Benefits**: The primary advantage is improved network performance and reliability, as each device operates on its dedicated path, reducing the risk of bottlenecks and ensuring consistent throughput.
 
+> [!CAUTION]
+> Per Device Configuration **cannot be used with** Network Profiles its one or the other
 ---
 
 ## Intent Based Configuration Path
@@ -83,6 +85,9 @@ In brownfield environments, achieving compliance may require extensive auditing 
 ## Conclusion
 
 The Cisco Catalyst Center provides a comprehensive solution for managing complex network environments. By understanding the implications of brownfield and greenfield scenarios, organizations can better align their objectives with their network management strategies. Key objectives such as policy, compliance, consistency, reusability, and scalability can be effectively addressed, leading to a more efficient and reliable network infrastructure.
+
+> [!TIP]
+> Carefully weigh the **Caveats**, **Challenges**, and Benefits before you go down a path. Remember a wise person once said ***"Once you start down the path forever will it dominate your destiny"***
 
 ---
 
