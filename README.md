@@ -53,6 +53,7 @@ You will find various examples within the various folders of this repository, wi
 * [PnP Workflow](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/PnP-Workflow.md#pnp-workflow) - This section explains the overall Plug and Play Methodology
 * [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Onboarding.md#onboarding-templates-and-flows) - This section will explain Onboarding Templates in Cisco Catalyst Center and their use in bringing various devices under Cisco Catalyst Center management
 * [DayN Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/DayN.md#day-n-templates-and-flows) - This section will explain how to use templates for ongoing (Day-N) changes to the network
+* [Software Image Management (SWIM)](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/SWIM.md#software-image-management-swim-and-cisco-catalyst-center-)
 
 ### Templating
 
