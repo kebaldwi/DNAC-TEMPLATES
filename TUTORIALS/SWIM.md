@@ -8,8 +8,6 @@
 
 **Software Image Management** is integrated into the Cisco Catalyst Center to provide a centralized platform for managing software images across network devices. This functionality allows network administrators to automate the deployment of software updates, monitor image compliance, and ensure that all devices are running the correct versions of software. By leveraging software image management capabilities, organizations can enhance their network reliability and security while minimizing manual intervention.
 
-![Software Image Management](../ASSETS/image-management.png?raw=true "Software Image Management")
-
 ## What can Software Image Management do for Cisco Catalyst Center?
 
 **Software Image Management** with Cisco Catalyst Center can be utilized for a range of tasks, including:
@@ -24,7 +22,9 @@
 
 5. **Image Validation**: Validate software images before deployment to ensure compatibility and prevent issues in the network.
 
-6. **Integration with CI/CD Pipelines**: Integrate software image management with Continuous Integration and Continuous Deployment (CI/CD) practices, enabling rapid and reliable software updates.
+6. **Validation Checks**: Pre, Post checks cand be completed on Distribution and Activation to include custom checks added by the administrator.
+
+7. **Integration with CI/CD Pipelines**: Integrate software image management with Continuous Integration and Continuous Deployment (CI/CD) practices, enabling rapid and reliable software updates.
 
 Overall, **Software Image Management** with Cisco Catalyst Center simplifies the process of maintaining software across devices, reduces operational risks, and enhances overall network performance and security.
 
@@ -66,11 +66,15 @@ Overall, the combination of REST APIs and orchestration through ITSM platforms a
 
 #### TAG's Hierarchy and Roles
 
-The **TAG's Hierarchy** and **Roles** in Cisco Catalyst Center play a critical role in aligning the right golden images for deployment. 
+The **Hierarchy, Roles** and **TAG's** in Cisco Catalyst Center play a critical role in aligning the right golden images for deployment:
 
-- **TAG's Hierarchy**: This structure allows administrators to categorize devices based on their specific requirements and characteristics. Each tag can represent different factors such as device type, location, or function, enabling targeted deployments of golden images.
+![Software Image Management](../ASSETS/SWIM-image-management.png?raw=true "Software Image Management")
+
+- **Hierarchy**: This structure allows administrators to categorize devices based on their specific requirements and characteristics. Each part of the hierarchy can include different factors such as device type, and location, or function, enabling targeted deployments of golden images. In the image above you will notice hte Golden Image for the DEMO site. 
   
-- **Roles**: By assigning roles to devices, administrators can ensure that only the appropriate golden images are deployed to specific groups. For example, a role assigned to access switches may require a different golden image than that of core routers.
+- **Roles**: By assigning roles to devices, administrators can ensure that only the appropriate golden images are deployed to specific groups. For example, a role assigned to access switches may require a different golden image than that of border routers.
+
+- **TAG's** This structure allows administrators to categorize devices based on their use case specific requirements and characteristics. Each tag can represent different factors such as device type, feature, or function, enabling targeted deployments of golden images. These TAGs may mirror those used in Templates.
 
 By leveraging TAG's Hierarchy and Roles, organizations can effectively manage which golden images are deployed to which devices, ensuring compliance and optimizing network performance.
 
@@ -80,7 +84,34 @@ In the context of **Plug and Play (PnP)**, golden images are utilized to simplif
 
 ---
 
+### Readiness, Pre and Post Checks
+
+There are essentially three separate checks which can be completed when automating through Software Image Management. Seen in the image below they are the following: 
+
+- **Image Readiness Check** which checks the target system readiness
+
+  ![Software Image Management](../ASSETS/SWIM-ReadinessCheck.png?raw=true "Software Image Management")
+
+- **Software Distribution** which carries out pre and post checks for distribution of the target system
+
+  ![Software Image Management](../ASSETS/SWIM-Distribution-Checks.png?raw=true "Software Image Management")
+
+- **Software Activation** which carries out pre and post checks for activation of the target system.
+
+  ![Software Image Management](../ASSETS/SWIM-Activation-Checks.png?raw=true "Software Image Management")
+
+- **Custom Checks** which allow additional checks of the target system.
+
+  ![Software Image Management](../ASSETS/SWIM-Custom-Checks.png?raw=true "Software Image Management")
+
+---
+
 ### Image Deployment Options
+
+There are essentially two separate actions automated through Software Image Management. Seen in the image below they are the following: 
+
+- **Software Distribution** which is transfering the image to the target system
+- **Software Activation** which is activating (using) the image on the target system.
 
 #### 1. Deploying and Activating the Image in the Same Workflow
 
@@ -90,19 +121,27 @@ In this method, the deployment and activation of the software image occur within
 
 During the Deployment of Software use Deploy and Activate the image after deployment. This includes:
 
-- **Deploy the Image**: Push the image to the target devices.
-- **Activate the Image**: Automatically activate the image once deployment is complete.
+- **Distribute the Image**: Push the image to the target devices.
+- **Activate the Image**: Automatically activate the image once deployment is complete
 
-This method is ideal for environments where downtime is minimal, and quick updates are necessary.
+This method is ideal for environments where downtime is minimal, and quick updates are necessary. During this type of upgrade both the **Distribution** and **Activation** would be completed in a **single workflow** as seen here.
+
+![Software Image Management](../ASSETS/SWIM-Distribution-Activation.png?raw=true "Software Image Management")
 
 #### 2. Deploying (Staging) and Activating the Image in Separate Workflows
 
 This approach involves two distinct workflows: one for staging the image and another for activation. The steps include:
 
-- **Staging the Image**: Deploy the golden image to the target devices without activating it immediately. This allows for testing and validation.
+- **Staging the Image**: Distribute the golden image to the target devices without activating it immediately. This allows for testing and validation.
 - **Activating the Image**: Once the image has been verified, a separate workflow is initiated to activate the image on the devices.
 
-This method provides greater control and flexibility, allowing administrators to ensure that the images are functioning correctly before activation.
+This method provides greater control and flexibility, allowing administrators to ensure that the images are functioning correctly before activation. During this type of upgrade both the **Distribution** and **Activation** would be completed in a **separate workflows** as seen here. In the first workflow you can see we have **SKIPPED** **Activation** and thus the image is only **Distributed**.
+
+![Software Image Management](../ASSETS/SWIM-Distribution-Skip-Activation.png?raw=true "Software Image Management")
+
+In the second workflow you can see we complete the **Activation** of the image.
+
+![Software Image Management](../ASSETS/SWIM-Distribution-Activation.png?raw=true "Software Image Management")
 
 ---
 
