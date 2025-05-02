@@ -52,7 +52,7 @@ In brownfield environments, achieving compliance may require extensive auditing 
 
 ---
 
-## Per Device Path
+## Per Device Configuration Path
 
 ### Challenges, Caveats, and Benefits
 
@@ -66,7 +66,7 @@ In brownfield environments, achieving compliance may require extensive auditing 
 
 ---
 
-## Intent Path
+## Intent Based Configuration Path
 
 ### Challenges, Caveats, and Benefits
 
@@ -74,7 +74,7 @@ In brownfield environments, achieving compliance may require extensive auditing 
 
 - **Challenges**: Establishing a clear intent can be difficult in complex environments, especially when multiple stakeholders are involved. Additionally, ensuring that all devices adhere to this intent requires robust policy enforcement mechanisms.
 
-- **Caveats**: While this approach simplifies network management, it may limit flexibility in adapting to changing business needs or unexpected network conditions.
+- **Caveats**: While this approach simplifies network management, it may limit flexibility in adapting to changing business needs or unexpected network conditions. Additionally, **Brownfield** devices sometimes has pre-existing configurations which may need to be modified and in some instances removed. This sometimes requires either a **Normalization** script **or** alternatively the device being **erased** and **reloaded**.
 
 - **Benefits**: The primary benefit is enhanced clarity and efficiency in network operations. By having a single intent, organizations can streamline decision-making and reduce the risk of misconfigurations.
 
