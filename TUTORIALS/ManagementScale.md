@@ -6,6 +6,8 @@ The **Cisco Catalyst Center** is a powerful platform designed to manage and opti
 
 A complex environment refers to a network infrastructure that involves multiple devices, configurations, and policies. These environments often include legacy systems, various hardware types, and differing compliance requirements, making management challenging. The Cisco Catalyst Center aims to simplify this complexity through centralized management and automation.
 
+![Managing Complex Environments](../ASSETS/COMPLEX.png?raw=true "Complex Environment")
+
 ### Brownfield vs Greenfield
 
 - **Brownfield**: This term describes environments where existing infrastructure and systems are already in place. In brownfield scenarios, organizations must integrate new technologies with legacy systems, often leading to compatibility issues and increased complexity. A perfect example of which is Authentication, Authorization and Accounting (AAA) as well as DOT1X configurations.
