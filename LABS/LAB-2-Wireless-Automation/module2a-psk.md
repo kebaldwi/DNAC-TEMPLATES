@@ -24,7 +24,7 @@ For our lab scenario we will assume this is to be used for Cisco 8821 IP Phones.
    ![json](./images/module2-wlans/dnac-wireless-ssid-psk-begin.png?raw=true "Import JSON")
 
 4. A Wireless SSID workflow will begin with *BASIC Settings* which will guide you through the build process of the WLAN. Complete the following steps:
-   1. Enter the **Wireless Network Name (SSID)** as `CAMPUS-PSK`
+   1. Enter the **Wireless Network Name (SSID)** as `CAMPUS-PSK-<POD#>`
    2. **Dual Band Operation (2.4 Ghz and 5 Ghz)** *enables the SSID for dual band operation*
    3. **Voice and Data** *configuring best practices for Both Voice and Data*
    4. **Admin Status** *enables the SSID*
@@ -94,7 +94,7 @@ For our lab scenario we will assume this is to be used for Cisco 8821 IP Phones.
 
    ![json](./images/module2-wlans/dnac-wireless-network-profile-assigned.png?raw=true "Import JSON")
 
-5. Return to the **Wireless Settings** page and you should see now our new *SSID* **CAMPUS-PSK**.
+5. Return to the **Wireless Settings** page and you should see now our new *SSID* **CAMPUS-PSK-<POD#>**.
 
    ![json](./images/module2-wlans/dnac-wireless-ssid-psk-results.png?raw=true "Import JSON")
 
