@@ -26,7 +26,7 @@ Click on the arrow below to expand and follow to complete the tasks.
    ![json](./images/module2-wlans/dnac-wireless-ssid-eap-begin.png?raw=true "Import JSON")
 
 4. A Wireless SSID workflow will begin with *BASIC Settings* which will guide you through the build process of the WLAN. Complete the following steps:
-   1. Enter the **Wireless Network Name (SSID)** as `CAMPUS-EAP`
+   1. Enter the **Wireless Network Name (SSID)** as `CAMPUS-EAP-<POD#>`
    2. **Dual Band Operation (2.4 Ghz and 5 Ghz)** *enables the SSID for dual band operation*
    3. **Voice and Data** *configuring best practices for Both Voice and Data*
    4. **Admin Status** *enables the SSID*
@@ -91,7 +91,7 @@ Click on the arrow below to expand and follow to complete the tasks.
    > [!NOTE] 
    > If this is a new **Wireless Profile** then select **Configure Network Profile** and complete the optional steps for assigning sites as detailed in Step 3 of creating a PSK WLAN above.
 
-6. Return to the **Wireless Settings** page and you should see now our new *SSID* **CAMPUS-EAP**.
+6. Return to the **Wireless Settings** page and you should see now our new *SSID* **CAMPUS-EAP-<POD#>**.
 
    ![json](./images/module2-wlans/dnac-wireless-ssid-eap-results.png?raw=true "Import JSON")
 
