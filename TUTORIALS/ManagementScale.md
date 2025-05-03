@@ -84,6 +84,11 @@ In brownfield environments, achieving compliance may require extensive auditing 
 
 ---
 
+> [!TIP]
+> For many reasons and specifically with Wireless the Wireless Settings, and Feature Templates in the UI are the best way I can recommend for managing Wireless controllers at scale, with or without Fabric. The reason, is that Per Device Configuration is just as it sounds iterating through settings on multiple controllers, whicch will never be as quick or nimble at scale as the UI. I also do not advocate for building templates for controllers as often the radio resets become painful at scale. This is elegantly solved by Wireless Intent.
+
+---
+
 ## Conclusion
 
 The Cisco Catalyst Center provides a comprehensive solution for managing complex network environments. By understanding the implications of brownfield and greenfield scenarios, organizations can better align their objectives with their network management strategies. Key objectives such as policy, compliance, consistency, reusability, and scalability can be effectively addressed, leading to a more efficient and reliable network infrastructure.

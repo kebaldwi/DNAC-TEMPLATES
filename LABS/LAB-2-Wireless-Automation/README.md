@@ -10,6 +10,9 @@ Until this point, we have focused our efforts on the wired space and utilized te
 
 This page will serve as the landing page for this lab section due to the amount of content it will cover and the need to expand on it over time. 
 
+> [!TIP]
+> For many reasons and specifically with Wireless the **Wireless Settings**, and **Feature Templates** in the UI are the best way I can recommend for managing Wireless controllers at scale, **with** or **without** **Fabric**. </br></br>The reason, is that Per Device Configuration is just as it sounds iterating through settings on multiple controllers, whicch will never be as quick or nimble at scale as the UI. </br></br>We also **do not advocate** for building **templates** for **controllers** due to required radio resets that become painful at scale. This is elegantly solved by Wireless Intent.
+
 ## Lab Preparation
 
 Please set up the lab using the following:

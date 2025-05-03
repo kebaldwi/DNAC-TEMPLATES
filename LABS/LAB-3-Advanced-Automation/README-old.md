@@ -1,18 +1,5 @@
 # Advanced Automation
 
-## Overview
-
-This Lab is designed to be used as a stand alone lab due. It has been created to address how to combine and use **IBNS 2.0** using **closed mode** and multiple Regular Templates within DNA Center to onboard network devices at Day 1 through N. This allows Network Administrators the ability to configure network devices in an ongoing and programmatic manner from within DNA Center without using the SD-Access Fabric methodology. It also enables an administrator to drag Regular Templates into and out of the flow as needed for ongoing maintenance.
-
-This section will go through the flow involved in creating a deployable Composite Template from an IOS configuration script for a Catalyst switch linking it to a Switch profile, and deploying it through DNAC using provisioning workflows.
-
-## General Information
-
-As previously discussed, DNA Center can be used for Plug-and-Play and Day N or Ongoing Templates. Customers will start by building out an Onboarding Template which typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates and, for more flexibility Composite Templates. They can apply ongoing changes and allow device modifications after initial deployment. This lab section will focus on Day N templates built as regular templates within the DNA Center.
-
-Another important consideration is that part of a typical configuration would include some lines of code, which will be built out with the *Design >Network Settings >* application within DNA Center. If the Design component is used, you should **not** deploy the same feature from cli code in a template to configure the device. It's a decision you have to make upfront, avoids a lot of lines in the templates, and allows for a more UI-centric configuration that is easier to maintain. 
-
-As guidance, try and use **Design Settings** for as many of the configurations as you can, leaving Templates light and nimble for configurations that might change ongoing.
 
 ## Autoconf & IBNS 2.0 Secure Access
 
@@ -39,14 +26,14 @@ Luckily we can create a fully dynamic environment with a gated procedure. We inc
 
 # Lab Preparation
 
-## Lab Section 1 - DNA Center and ISE Integration
+## Lab Section 1 - Catalyst Center and ISE Integration
 
-In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate DNA Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
+In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate Catalyst Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
 
-### Step 1 - ***Prepare ISE for DNA Center Integration***
+### Step 1 - ***Prepare ISE for Catalyst Center Integration***
 
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to Identity Services Engine (ISE) and select the hamburger menu icon to open the system menu.
 
@@ -56,14 +43,14 @@ In this lab our focus changes slightly as we start to automate for host onboardi
 
    ![json](./images/ise-menu.png?raw=true "Import JSON")
 
-3. On the PxGrid Settings page select both of the available options and click Save to allow DNA Center to integrate.
+3. On the PxGrid Settings page select both of the available options and click Save to allow Catalyst Center to integrate.
 
    ![json](./images/ise-pxgrid-settings.png?raw=true "Import JSON")
    ![json](./images/ise-pxgrid-setup.png?raw=true "Import JSON")
 
-### Step 2 - ***DNA Center and ISE Integration***
+### Step 2 - ***Catalyst Center and ISE Integration***
 
-1. Open a web browser on the Windows Workstation Jump host. Open a connection to Dna Center and select the hamburger menu icon and navigate to the System > Settings menu item.
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon and navigate to the System > Settings menu item.
 
    ![json](./images/dnac-system-settings.png?raw=true "Import JSON")
 
@@ -90,7 +77,7 @@ In this lab our focus changes slightly as we start to automate for host onboardi
 
 </details>
 
-## Lab Section 2 - DNA Center Design Preparation
+## Lab Section 2 - Catalyst Center Design Preparation
 
 While we could deploy more extensive settings for deployment, we will limit the configuration to the minimum necessary to perform this step, building off the completed tasks in labs one, [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB1-PNP-PREP/) and two, [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB2-Onboarding-Template/).
 
@@ -159,14 +146,14 @@ This collection is built with a flow and delay timers wait for the collection to
 
    ![json](./images/Postman-CollectionRunner-Results.png?raw=true "Import JSON")
 
-4. Within DNA Center you should see 3 devices within the inventory and additionally you should observe a complete hierarchy as well as settings and telemetry configured. The Devices will be discovered in the Building level at this stage.
+4. Within Catalyst Center you should see 3 devices within the inventory and additionally you should observe a complete hierarchy as well as settings and telemetry configured. The Devices will be discovered in the Building level at this stage.
 
    ![json](./images/Postman-Discovery.png?raw=true "Import JSON")
    ![json](./images/Postman-Settings.png?raw=true "Import JSON")
 
 </details>
 
-## Lab Section 3 - DNA Center Template Preparation
+## Lab Section 3 - Catalyst Center Template Preparation
 
 We will now import the various templates for use in this lab. Three will be utilized:
 
@@ -183,11 +170,11 @@ The Onboarding Template previously discussed in Lab 2 will be used to Plug and P
 
 Download and import the Onboarding Template within the ***Template Editor*** using the <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-H-Dynamic-Automation/templates/DCLOUD-DNACTemplates-OnboardingTemplate.json">⬇︎DCLOUD-DNACTemplates-OnboardingTemplate.json⬇︎</a> file.
 
-Import the environment into DNA Centers ***Template Editor*** by un-zip the file and import the *json* file which will automatically create a template within the onboarding template project. 
+Import the environment into Catalyst Centers ***Template Editor*** by un-zip the file and import the *json* file which will automatically create a template within the onboarding template project. 
 
 Use the following steps to import the project.
 
-1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor* 
+1. Navigate to the **Template Editor** within Catalyst Center through the menu *Tools>Template Editor* 
 
    ![json](./images/DNAC-Template-menu.png?raw=true "Import JSON")
 
@@ -211,7 +198,7 @@ Download and import the Onboarding Template within the ***Template Editor*** usi
 
 Please un-zip the file and import the *json* file which will automatically create a project and included templates within. Use the following steps to import the project.
 
-1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor*.
+1. Navigate to the **Template Editor** within Catalyst Center through the menu *Tools>Template Editor*.
 
    ![json](./images/DNAC-Template-menu.png?raw=true "Import JSON")
 
@@ -219,7 +206,7 @@ Please un-zip the file and import the *json* file which will automatically creat
 
    ![json](./images/DNAC-Template-menu-import.png?raw=true "Import JSON")
 
-3. Download the file above *DNAC_Template_Lab_DayN_project.json* to be imported into the DNA Center. Once downloaded, extract the file.
+3. Download the file above *DNAC_Template_Lab_DayN_project.json* to be imported into the Catalyst Center. Once downloaded, extract the file.
 4. From the **Import Project(s)** window, click **Select a file from your computer** from the explorer window, select the extracted JSON file and click open. 
 
    ![json](./images/DNAC-Template-Prep-select.png?raw=true "Import JSON")
@@ -238,7 +225,7 @@ Download and import the Dynamic DayN Project within the ***Template Editor*** us
 
 Please un-zip the file and import the *json* file which will automatically create a project and included templates within. Use the following steps to import the project.
 
-1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor*.
+1. Navigate to the **Template Editor** within Catalyst Center through the menu *Tools>Template Editor*.
 
    ![json](./images/DNAC-Template-menu.png?raw=true "Import JSON")
 
@@ -246,7 +233,7 @@ Please un-zip the file and import the *json* file which will automatically creat
 
    ![json](./images/DNAC-Template-menu-import.png?raw=true "Import JSON")
 
-3. Download the file above *DNAC_Template_Lab_DayN_project.json* to be imported into the DNA Center. Once downloaded, extract the file.
+3. Download the file above *DNAC_Template_Lab_DayN_project.json* to be imported into the Catalyst Center. Once downloaded, extract the file.
 4. From the **Import Project(s)** window, click **Select a file from your computer** from the explorer window, select the extracted JSON file and click open. 
 
    ![json](./images/DNAC-Template-Dynamic-select.png?raw=true "Import JSON")
@@ -294,7 +281,7 @@ At this point all the DNS and DHCP configuration on the ***windows server*** wil
 
 ## Lab Section 5 - Image Repository
 
-As we have discovered the devices, from the network, DNA Center has the capability to pull those images deployed from the network devices in bundle mode. If the device is in install mode then you would manually have to add the images. We can then mark them as **Golden** for *Plug and Play* and *image upgrade* purposes. 
+As we have discovered the devices, from the network, Catalyst Center has the capability to pull those images deployed from the network devices in bundle mode. If the device is in install mode then you would manually have to add the images. We can then mark them as **Golden** for *Plug and Play* and *image upgrade* purposes. 
 
 For our purposes as we will be focusing on only the **9300-2** switch we will complete the following steps.
 
@@ -303,7 +290,7 @@ The image used in this lab for the 9300-2 is downloadable from here [⬇︎Benga
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
 
-1. Within DNA Center Navigate to *Design>Image Repository*  
+1. Within Catalyst Center Navigate to *Design>Image Repository*  
 
    ![json](./images/DNAC-Design-ImageRepo-menu.png?raw=true "Import JSON")
 
@@ -315,7 +302,7 @@ The image used in this lab for the 9300-2 is downloadable from here [⬇︎Benga
 
    ![json](./images/DNAC-Design-ImageRepo-select.png?raw=true "Import JSON")
 
-3. The file will then import into DNA Center.    
+3. The file will then import into Catalyst Center.    
 
    ![json](./images/DNAC-Design-ImageRepo-imageimport.png?raw=true "Import JSON")
 
@@ -327,7 +314,7 @@ The image used in this lab for the 9300-2 is downloadable from here [⬇︎Benga
 
 ## Lab Section 6 - Setup of Discovered Devices
 
-At this point in the lab the setup steps for the lab environment are done, DNS and DHCP are set up, ISE is integrated and DNA Center is ready for deploying configurations. In this section we will deploy the templates to configure the discovered devices. Note we could have automated this process too but wanted to separate this out so you can make modifications as you might need to for testing purposes.
+At this point in the lab the setup steps for the lab environment are done, DNS and DHCP are set up, ISE is integrated and Catalyst Center is ready for deploying configurations. In this section we will deploy the templates to configure the discovered devices. Note we could have automated this process too but wanted to separate this out so you can make modifications as you might need to for testing purposes.
 
 ### Lab SubSection 6.1 - 9300 Target Preparation
 
@@ -338,7 +325,7 @@ In this subsection we will prepare the **Target** using the *c9300-2.dcloud.cisc
 
 #### Step 1 - ***Building Switching Network Profiles***
 
-1. Navigate to the **Design** within DNA Center through the menu *Design>Network Profile*.
+1. Navigate to the **Design** within Catalyst Center through the menu *Design>Network Profile*.
 
    ![json](./images/DNAC-NetworkProfile-menu.png?raw=true "Import JSON")
 
@@ -383,7 +370,7 @@ We will now provision the **Target** switch using the *C9300-TARGET-Prep* DayN T
 
 ##### Tag Switch
 
-   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   1. Within Catalyst Center Navigate to *Provision>Inventory*.      
 
       ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
 
@@ -396,7 +383,7 @@ We will now provision the **Target** switch using the *C9300-TARGET-Prep* DayN T
 
 ##### Provision Switch
 
-   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   1. Within Catalyst Center Navigate to *Provision>Inventory*.      
 
       ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
 
@@ -422,7 +409,7 @@ We will now provision the **Target** switch using the *C9300-TARGET-Prep* DayN T
       ![json](./images/DNAC-Provision-Target-flow-4.png?raw=true "Import JSON")
 
    8. The task will be submitted, and the deployment will run.
-   9. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
+   9. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in Catalyst Center after the resync timer has elapsed.        
 
       ![json](./images/DNAC-Provision-Target-success.png?raw=true "Import JSON")
 
@@ -430,7 +417,7 @@ We will now provision the **Target** switch using the *C9300-TARGET-Prep* DayN T
 
 We will now delete the **Target** switch to allow for the switch to be discovered automatically during the **Plug and Play (PnP)** process. In order to accomplish this complete the following tasks:
 
-   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   1. Within Catalyst Center Navigate to *Provision>Inventory*.      
 
       ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
 
@@ -443,7 +430,7 @@ We will now delete the **Target** switch to allow for the switch to be discovere
 
       ![json](./images/DNAC-Provision-Target-delete-2.png?raw=true "Import JSON")
 
-   5. DNA Center will then delete the switch from the Database.  
+   5. Catalyst Center will then delete the switch from the Database.  
       
       ![json](./images/DNAC-Provision-Target-delete-3.png?raw=true "Import JSON")
 
@@ -458,7 +445,7 @@ In this subsection we will apply a small template to the ISR 4331. This is to pr
 
 #### Step 1 - ***Building Routing Network Profiles***
 
-1. Navigate to the **Design** within DNA Center through the menu *Design>Network Profile*.
+1. Navigate to the **Design** within Catalyst Center through the menu *Design>Network Profile*.
 
    ![json](./images/DNAC-NetworkProfile-menu.png?raw=true "Import JSON")
 
@@ -504,7 +491,7 @@ In this subsection we will apply a small template to the ISR 4331. This is to pr
 
 #### Step 3 - ***Provisioning Router***
 
-   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   1. Within Catalyst Center Navigate to *Provision>Inventory*.      
 
       ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
 
@@ -538,7 +525,7 @@ In this subsection we will apply a small template to the ISR 4331. This is to pr
       ![json](./images/DNAC-Provision-ISR-flow-5.png?raw=true "Import JSON")
 
    9. The task will be submitted, and the deployment will run.
-   10. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
+   10. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in Catalyst Center after the resync timer has elapsed.        
 
       ![json](./images/DNAC-Provision-ISR-success.png?raw=true "Import JSON")
 
@@ -553,7 +540,7 @@ In this subsection we will apply a small templates to the Cat 9300-2 which is us
 
 #### Step 1 - ***Building Switching Network Profiles***
 
-1. Navigate to the **Design** within DNA Center through the menu *Design>Network Profile*.
+1. Navigate to the **Design** within Catalyst Center through the menu *Design>Network Profile*.
 
    ![json](./images/DNAC-NetworkProfile-menu.png?raw=true "Import JSON")
 
@@ -600,7 +587,7 @@ We will now provision the distribution switch using the *DISTRO-C9300-2* DayN Co
 
 ##### Tag Switch
 
-   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   1. Within Catalyst Center Navigate to *Provision>Inventory*.      
 
       ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
 
@@ -613,7 +600,7 @@ We will now provision the distribution switch using the *DISTRO-C9300-2* DayN Co
 
 ##### Provision Switch
 
-   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   1. Within Catalyst Center Navigate to *Provision>Inventory*.      
 
       ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
 
@@ -639,7 +626,7 @@ We will now provision the distribution switch using the *DISTRO-C9300-2* DayN Co
       ![json](./images/DNAC-Provision-Distro-flow-4.png?raw=true "Import JSON")
 
    8. The task will be submitted, and the deployment will run.
-   9. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
+   9. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in Catalyst Center after the resync timer has elapsed.        
 
       ![json](./images/DNAC-Provision-Distro-flow-success.png?raw=true "Import JSON")
 
@@ -647,12 +634,12 @@ We will now provision the distribution switch using the *DISTRO-C9300-2* DayN Co
 
 ### Lab SubSection 6.4 - Preparation Confirmation
 
-Once all the steps have been completed, the *c9300-1.dcloud.cisco.com* **Target** will have rebooted in a default state, acquired an IP address, discovered DNA Center and will appear in the **Plug and Play** tab in the **Provisioning** application. Confirm this by 
+Once all the steps have been completed, the *c9300-1.dcloud.cisco.com* **Target** will have rebooted in a default state, acquired an IP address, discovered Catalyst Center and will appear in the **Plug and Play** tab in the **Provisioning** application. Confirm this by 
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
 
-   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   1. Within Catalyst Center Navigate to *Provision>Inventory*.      
 
       ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
 
@@ -672,14 +659,14 @@ At this point in the lab the setup steps for the lab environment are done,the sw
 
 ### Lab SubSection 7.1 - 9300 Templates
 
-In this subsection we will begin preparation of this **Target** device by adding the templates previously uploaded to the network profile associated with the hierarchy. Please note that in DNA Center a single network profile of a given type may be used on a site within the hierarchy. In order to accomplish multiple use cases we use **Tags** and associate them to both the device and the template in question. In order to accomplish this we will need to complete the following stages.
+In this subsection we will begin preparation of this **Target** device by adding the templates previously uploaded to the network profile associated with the hierarchy. Please note that in Catalyst Center a single network profile of a given type may be used on a site within the hierarchy. In order to accomplish multiple use cases we use **Tags** and associate them to both the device and the template in question. In order to accomplish this we will need to complete the following stages.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
 
 #### Step 1 - ***Check for Access Tag on Templates***
 
-1. Navigate to the **Template Editor** within DNA Center through the menu *Tools>Template Editor*.
+1. Navigate to the **Template Editor** within Catalyst Center through the menu *Tools>Template Editor*.
 
    ![json](./images/DNAC-Template-menu.png?raw=true "Import JSON")
 
@@ -694,7 +681,7 @@ In this subsection we will begin preparation of this **Target** device by adding
 
 #### Step 2 - ***Modifying the Building Switching Network Profiles***
 
-1. Navigate to the **Design** within DNA Center through the menu *Design>Network Profile*.
+1. Navigate to the **Design** within Catalyst Center through the menu *Design>Network Profile*.
 
    ![json](./images/DNAC-NetworkProfile-menu.png?raw=true "Import JSON")
 
@@ -761,11 +748,11 @@ The network profile is **already assigned** to the site, so this step is not req
 
 #### Step 4 - ***Claiming and Onboarding*** 
 
-At this point DNAC is set up and ready for the Plug and Play process to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in discover DNA Center and land in the plug n play set of the devices section within the Provisioning Application. 
+At this point DNAC is set up and ready for the Plug and Play process to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in discover Catalyst Center and land in the plug n play set of the devices section within the Provisioning Application. 
 
 We will manually do these steps to allow for modifications but again all of these steps could be automated through REST-API. Please claim the device by completing the following:
 
-   1. Within DNA Center Navigate to *Provision>Plug and Play*      
+   1. Within Catalyst Center Navigate to *Provision>Plug and Play*      
 
       ![json](./images/DNAC-NavigatePnP.png?raw=true "Import JSON")
 
@@ -774,7 +761,7 @@ We will manually do these steps to allow for modifications but again all of thes
 
       ![json](./images/DNAC-BeginClaim.png?raw=true "Import JSON")
 
-   4. If this is the first time you have worked with images, you may see an EULA window if that has not been accepted under the settings of DNA Center. Simply click the **accept checkbox** and click **save**.
+   4. If this is the first time you have worked with images, you may see an EULA window if that has not been accepted under the settings of Catalyst Center. Simply click the **accept checkbox** and click **save**.
 
       ![json](./images/DNAC-EULA.png?raw=true "Import JSON")
 
@@ -816,7 +803,7 @@ We will manually do these steps to allow for modifications but again all of thes
       ![json](./images/DNAC-Claimed-2.png?raw=true "Import JSON")
       ![json](./images/DNAC-Claimed-3.png?raw=true "Import JSON")
    
-   10. After the device is completed it will appear in the device inventory after being sync'd with DNA Center.      
+   10. After the device is completed it will appear in the device inventory after being sync'd with Catalyst Center.      
    
        ![json](./images/DNAC-Claimed-to-Inventory.png?raw=true "Import JSON")
 
@@ -826,7 +813,7 @@ We will now provision the target *ACCESS-c9300-ASW* access switch using the Comp
 
 ##### Tag Switch
 
-   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   1. Within Catalyst Center Navigate to *Provision>Inventory*.      
 
       ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
 
@@ -839,7 +826,7 @@ We will now provision the target *ACCESS-c9300-ASW* access switch using the Comp
 
 ##### Provision Switch
 
-   1. Within DNA Center Navigate to *Provision>Inventory*.      
+   1. Within Catalyst Center Navigate to *Provision>Inventory*.      
 
       ![json](./images/DNAC-InventoryProvision-menu.png?raw=true "Import JSON")
 
@@ -865,7 +852,7 @@ We will now provision the target *ACCESS-c9300-ASW* access switch using the Comp
       ![json](./images/DNAC-Provision-Access-flow-4.png?raw=true "Import JSON")
 
    8. The task will be submitted, and the deployment will run.
-   9. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in DNA Center after the resync timer has elapsed.        
+   9. After a small amount of time, you will see a success notification. What is essential to understand is that the configuration, while pushed to the device, will resync in Catalyst Center after the resync timer has elapsed.        
 
       ![json](./images/DNAC-Provision-Access-flow-success.png?raw=true "Import JSON")
 
