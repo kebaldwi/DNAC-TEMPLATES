@@ -95,13 +95,13 @@ Hardware Devices:
 
 The lab envionment that is available is depicted here:
 
-![json](./LAB-1-Wired-Automation/images/DCLOUD_Topology2.png?raw=true "Import JSON")
+![json](../ASSETS/COMMON/DCLOUD/DCLOUD_Topology2.png?raw=true "Import JSON")
 
 #### DCLOUD VPN Connection
 
 Use AnyConnect VPN to connect to DCLOUD. When connecting, look at the session details and copy the credentials from the session booked into the client to connect.
 
-![json](./LAB-1-Wired-Automation/images/VPN-to-dCLOUD.png?raw=true "Import JSON")
+![json](../ASSETS/COMMON/DCLOUD/VPN-to-dCLOUD.png?raw=true "Import JSON")
 
 #### DCLOUD LAB Preparation
 
