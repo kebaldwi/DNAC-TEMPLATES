@@ -1,6 +1,6 @@
 # Advanced Automation - In Development
 
-![json](../../ASSETS/underconstruction.png?raw=true "Import JSON")
+![json](../../ASSETS/COMMON/BUILD/underconstruction.png?raw=true "Import JSON")
 
 > [!WARNING]
 > The contents of this lab are not ready for public use. Do not use this lab or attempt to use it until this header is removed entirely from the lab.
@@ -101,7 +101,7 @@ Hardware Devices:
 
 The lab envionment that is available is depicted here:
 
-![json](./images/DCLOUD_Topology3.png?raw=true "Import JSON")
+![json](../../ASSETS/COMMON/DCLOUD/DCLOUD_Topology3.png?raw=true "Import JSON")
 
 ## Lab Credentials:
 

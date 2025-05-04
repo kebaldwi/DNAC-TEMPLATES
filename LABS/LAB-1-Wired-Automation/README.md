@@ -76,7 +76,7 @@ Hardware Devices:
 
 The lab envionment that is available is depicted here:
 
-![json](./images/DCLOUD_Topology3.png?raw=true "Import JSON")
+![json](../../ASSETS/COMMON/DCLOUD/DCLOUD_Topology3.png?raw=true "Import JSON")
 
 ## Lab Credentials:
 

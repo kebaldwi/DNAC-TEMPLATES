@@ -53,11 +53,11 @@ The DCLOUD session includes the following equipment.
 
 The following diagram shows the DCLOUD topology.
 
-![DCLOUD LAB TOPOLOGY](./assets/DCLOUD_Topology_A.png?raw=true)
+![DCLOUD LAB TOPOLOGY](../../ASSETS/COMMON/DCLOUD/DCLOUD_Topology_A.png?raw=true)
 
 The following diagram shows one of the CML pods topology.
 
-![DCLOUD CML POD TOPOLOGY](./assets/DCLOUD_Topology_B.png?raw=true)
+![DCLOUD CML POD TOPOLOGY](../../ASSETS/COMMON/DCLOUD/DCLOUD_Topology_B.png?raw=true)
 
 ### Management IPs:
 
@@ -93,7 +93,7 @@ Your instructor will assign you a pod number:
 
 Use AnyConnect VPN to connect to DCLOUD. When connecting, look at the session details and copy the credentials from the session booked into the client to connect.
 
-![DCLOUD VPN CONNECTION](./catc-catcenter-0-orientation/assets/VPN-to-DCLOUD.png)
+![DCLOUD VPN CONNECTION](../../ASSETS/COMMON/DCLOUD/VPN-to-DCLOUD.png)
 
 ### Tools Required
 
