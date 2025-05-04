@@ -95,7 +95,7 @@ Hardware Devices:
 
 The lab envionment that is available is depicted here:
 
-![json](../ASSETS/COMMON/DCLOUD/DCLOUD_Topology2.png?raw=true "Import JSON")
+![json](../ASSETS/COMMON/DCLOUD/DCLOUD_Topology3.png?raw=true "Import JSON")
 
 #### DCLOUD VPN Connection
 
