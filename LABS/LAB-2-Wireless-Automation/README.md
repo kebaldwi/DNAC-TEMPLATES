@@ -21,7 +21,7 @@ Please set up the lab using the following:
 
 ## Lab Modules
 
-The lab will be split into modules to concentrate on specific tasks. Eash is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
+The lab will be split into modules to concentrate on specific tasks. Each is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
 
 1. [**Wireless Controller Discovery or PnP**](./module1-ctrlpnpdiscovery.md)
 2. [**WLAN Creation**](./module2-wlans.md)
@@ -72,7 +72,7 @@ The DCLOUD session includes the following equipment:
 
 Virtual Machines:
 
-    Catalyst Center 2.3.5.6 or better
+    Catalyst Center 2.3.5.5 or better
     Identity Services Engine (ISE) 3.0 Patch 4 or better (deployed)
     Identity Services Engine (ISE) 3.0 (Not deployed)
     Stealthwatch 7.4.0 or better
@@ -93,7 +93,7 @@ Hardware Devices:
 
 The lab envionment that is available is depicted here:
 
-![json](./images/DCLOUD_Topology_Wireless.png?raw=true "Import JSON")
+![json](./images/DCLOUD_Topology3.png?raw=true "Import JSON")
 
 ## Lab Credentials:
 
