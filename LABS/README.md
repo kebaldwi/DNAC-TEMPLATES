@@ -101,7 +101,7 @@ The lab envionment that is available is depicted here:
 
 Use AnyConnect VPN to connect to DCLOUD. When connecting, look at the session details and copy the credentials from the session booked into the client to connect.
 
-![json](../ASSETS/COMMON/DCLOUD/VPN-to-dCLOUD.png?raw=true "Import JSON")
+![json](../ASSETS/COMMON/DCLOUD/VPN-to-DCLOUD.png?raw=true "Import JSON")
 
 #### DCLOUD LAB Preparation
 
