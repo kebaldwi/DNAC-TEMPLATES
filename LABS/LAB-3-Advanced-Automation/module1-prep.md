@@ -1,9 +1,13 @@
-# Lab Preparation 
+# Lab Preparation - In Development
 
-> [!IMPORTANT]
-> **IF** you **COMPLETED** `Lab 1 - Wired Automation` this task **NOT REQUIRED** 
+![json](../../ASSETS/COMMON/BUILD/underconstruction.png?raw=true "Import JSON")
 
-Within this section we will prepare the DCLOUD lab for use with the Wireless tasks contained in this lab. If you have just completed the Wired Automation Lab, **DO NOT USE** this section and proceed with module 1 and start the Controller Onboarding. 
+> [!WARNING]
+> The contents of this lab are not ready for public use. Do not use this lab or attempt to use it until this header is removed entirely from the lab.
+
+Within this section we will prepare the DCLOUD lab for use with the tasks contained in this lab. 
+
+Prior to starting the work in this lab please ensure you have checked the [LAB Readiness](../DCLOUD.md#dcloud-lab-readiness-checks-and-troubleshooting) to ensure that the LAB automation has stood it up properly for you.
 
 ## Lab Section 1 - Catalyst Center and ISE Integration
 
@@ -17,7 +21,7 @@ For routing in the environment an OSPF IGP process has been created to propogate
 
 The 9130AX Access Points are connected to both access switches and the ports are automatically configured via the AUTOCONF feature.
 
-![json](./images/DCLOUD_Topology_Wireless-v1.png?raw=true "Import JSON")
+![json](../../ASSETS/COMMON/DCLOUD/DCLOUD_Topology3.png?raw=true "Import JSON")
 
 ### Lab Credentials:
 
@@ -30,8 +34,8 @@ The 9130AX Access Points are connected to both access switches and the ports are
 | 9800-1          | 198.19.11.2    | admin    | C1sco12345 |
 | 9800-2          | 198.19.11.3    | admin    | C1sco12345 |
 | Router          | 198.18.133.145 | netadmin | C1sco12345 |
-| Switch 1        | 198.18.128.22  | netadmin | C1sco12345 |
-| Switch 2        | 198.18.128.23  | netadmin | C1sco12345 |
+| C 9300 1        | 198.18.128.22  | netadmin | C1sco12345 |
+| C 9300 2        | 198.18.128.23  | netadmin | C1sco12345 |
 | AP-1            | DHCP Assigned  | Cisco    | Cisco      |
 | AP-2            | DHCP Assigned  | Cisco    | Cisco      |
 
