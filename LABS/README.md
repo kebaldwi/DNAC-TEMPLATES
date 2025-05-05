@@ -107,6 +107,9 @@ Use AnyConnect VPN to connect to DCLOUD. When connecting, look at the session de
 
 In order to prepare the lab for use with this section of the repository please ensure that you prepare the lab according to the information detailed in the [DCLOUD LAB PREPARATION](./DCLOUD.md) section.
 
+> [!TIP]
+> If this is the first time you have used these labs it is worth going through the LAB preparation documentation to ensure that the lab is functioning correctly. Please consider checking the readiness of the lab in this [DCLOUD LAB PREPARATION](./DCLOUD.md) section.
+
 ## Disclaimer
 
 Various labs are designed for use in the **DCLOUD** environment but can but are for use elsewhere. What is important to realize is the impact of each type of test. For instance, in the ***PnP Preparation*** lab, we go through discovery methods such as ***option 43*** and ***DNS Discovery***. If we were to use the DHCP option 43 and place that in the server options on the DHCP server, it would affect multiple scopes. **Care** is required, therefore, to ensure you do not get unexpected results. Similarly with ***DNS Discovery***, if the sub domain used was available to all devices, more than one device would discover Cisco Catalyst Center. Changes like this may be suitable for production in the future but detrimental during testing.
