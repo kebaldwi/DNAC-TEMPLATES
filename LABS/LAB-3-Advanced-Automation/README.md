@@ -45,6 +45,7 @@ The lab will be split into modules to concentrate on specific tasks. Each is des
 3. [**PnP and Discovery**](./module3-pnp.md)
 4. [**DayN Templates**](./module4-dayn-template.md)
 5. [**DayN Provisioning**](./module5-dayn.md)
+6. [**REST API Onboarding and Provisioning**](./module6-restapi.md)
 
 ## Preparation
 
