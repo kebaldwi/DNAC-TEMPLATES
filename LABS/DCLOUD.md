@@ -34,7 +34,7 @@ This is the **old** Topology:
 
 When using both the **RTP - EAST DC** and **SJC - WEST DC** you will need to ensure the topology is logically aligned to the **old** Topology above. To do that we will utilize **802.1q Tunneling** to essentially hide the **Catalyst 9300 - 3** in the **new** Topology diagram below.  
 
-![json](../ASSETS/COMMON/DCLOUD/DCLOUD_Topology3.png?raw=true "Import JSON")
+![json](../ASSETS/COMMON/DCLOUD/DCLOUD_Topology3_QnQ.png?raw=true "Import JSON")
 
 #### DC LAB Links
 
