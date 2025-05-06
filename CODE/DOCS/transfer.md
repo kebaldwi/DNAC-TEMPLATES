@@ -1,30 +1,52 @@
-var jsonData = JSON.parse(responseBody);
-setTimeout(function(){}, 15000);
+var jsonData = JSON.parse(pm.response.text());
+var taskId = jsonData.response.taskId;
 
-function setCredential(descriptionKey, globalKey, siteKey, dataArray, type) {
-    const description = pm.iterationData.get(descriptionKey);
-    if (description) {
-        const credential = dataArray.find(item => item.description === description);
-        if (credential) {
-            pm.environment.set(globalKey, credential.id);
-            pm.environment.set(siteKey, credential.id);
-            pm.test(`${type} credentials acquired`, () => {
-                pm.expect(pm.response.text()).to.include(type.toLowerCase());
+// Function to check the status of the NETCONF credential creation
+function checkCredentialStatus(taskId) {
+    const url = `https://${pm.environment.get("CCip")}${taskId}`;
+    const token = pm.environment.get("TOKEN");
+
+    pm.sendRequest({
+        url: url,
+        method: 'GET',
+        header: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    }, function (err, res) {
+        if (err) {
+            console.error(err);
+            pm.test("Error in API call", () => { pm.expect.fail("API call failed"); });
+            return;
+        }
+
+        const responseData = JSON.parse(res.text());
+        if (responseData.response.isError) {
+            pm.test("NETCONF Credential creation failed", () => {
+                pm.expect(responseData.response.progress).to.include("failed");
+                pm.expect(responseData.response.failureReason).to.include("Duplicate credential");
+            });
+        } else {
+            pm.test("NETCONF Credential created successfully", () => {
+                pm.expect(responseData.response.progress).to.not.include("failed");
             });
         }
-    } else {
-        pm.environment.set(siteKey, pm.environment.get(globalKey));
-    }
+    });
 }
 
-if (pm.iterationData.get("HierarchyParent") === "Global") {
-    setCredential("DcloudSnmpRO-Desc", "GlobalCredentialSnmpRO", "SiteCredentialSnmpRO", jsonData.snmp_v2_read, "SNMP RO");
-    setCredential("DcloudSnmpRW-Desc", "GlobalCredentialSnmpRW", "SiteCredentialSnmpRW", jsonData.snmp_v2_write, "SNMP RW");
-    setCredential("DcloudUser", "GlobalCredentialCli", "SiteCredentialCli", jsonData.cli, "CLI");
+// Check if the executionId and taskId are present
+if (jsonData.executionId && taskId) {
+    pm.test("NETCONF Credential creation initiated", () => {
+        pm.expect(pm.response.text()).to.include("taskId");
+    });
+    // Call the function to check the status of the credential creation
+    checkCredentialStatus(taskId);
 } else {
-    setCredential("DcloudSnmpRO-Desc", "GlobalCredentialSnmpRO", "SiteCredentialSnmpRO", jsonData.snmp_v2_read, "SNMP RO");
-    setCredential("DcloudSnmpRW-Desc", "GlobalCredentialSnmpRW", "SiteCredentialSnmpRW", jsonData.snmp_v2_write, "SNMP RW");
-    setCredential("DcloudUser", "GlobalCredentialCli", "SiteCredentialCli", jsonData.cli, "CLI");
+    pm.test("NETCONF Credential already created", () => {
+        pm.expect(pm.response.text()).to.include("taskId");
+    });
+    postman.setNextRequest("Get CredentialIDs");
 }
 
-postman.setNextRequest("Assign Credentials");
+setTimeout(function() {}, 25000);
+postman.setNextRequest("Get CredentialIDs");
