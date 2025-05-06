@@ -389,9 +389,16 @@
 							"  postman.setNextRequest(\"null\");\r",
 							"}\r",
 							"setTimeout(function(){}, [25000]);\r",
-							"postman.setNextRequest(\"Get CredentialIDs\")"
+							"if (!pm.iterationData.get(\"DcloudNetconf\")){\r",
+							"    postman.setNextRequest(\"Get CredentialIDs\");\r",
+							"}\r",
+							"else {\r",
+							"    postman.setNextRequest(\"Create Netconf Credential\");\r",
+							"}\r",
+							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -439,7 +446,8 @@
 							"    pm.environment.get(\"GlobalDcloudNetconf\");\r",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -491,15 +499,58 @@
 					"script": {
 						"exec": [
 							"var jsonData = JSON.parse(pm.response.text());\r",
-							"if ((jsonData.executionId) && (jsonData.response.include(\"taskId\"))) {\r",
-							"  pm.test(\"NETCONF Credential created\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
+							"var taskurl = jsonData.response.url;\r",
+							"\r",
+							"// Function to check the status of the NETCONF credential creation\r",
+							"function checkCredentialStatus(taskurl) {\r",
+							"    const url = `https://${pm.environment.get(\"CCip\")}${taskurl}`;\r",
+							"    const token = pm.environment.get(\"TOKEN\");\r",
+							"\r",
+							"    pm.sendRequest({\r",
+							"        url: url,\r",
+							"        method: 'GET',\r",
+							"        header: {\r",
+							"            'X-Auth-Token': `${token}`,\r",
+							"            'Content-Type': 'application/json'\r",
+							"        }\r",
+							"    }, function (err, res) {\r",
+							"        if (err) {\r",
+							"            console.error(err);\r",
+							"            pm.test(\"Error in API call\", () => { pm.expect.fail(\"API call failed\"); });\r",
+							"            return;\r",
+							"        }\r",
+							"\r",
+							"        const responseData = JSON.parse(res.text());\r",
+							"        if (responseData.response.isError == true) {\r",
+							"            pm.test(\"NETCONF Credential already created\", () => {\r",
+							"                pm.expect(responseData.response.progress).to.include(\"failed\");\r",
+							"                pm.expect(responseData.response.failureReason).to.include(\"Duplicate credential\");\r",
+							"            });\r",
+							"        } else {\r",
+							"            pm.test(\"NETCONF Credential created successfully\", () => {\r",
+							"                pm.expect(responseData.response.progress).to.not.include(\"failed\");\r",
+							"            });\r",
+							"        }\r",
+							"    });\r",
 							"}\r",
-							"else {\r",
-							"  pm.test(\"NETCONF Credential created\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
-							"  pm.execution.setNextRequest(\"null\");\r",
+							"\r",
+							"// Check if the executionId and taskId are present\r",
+							"if (jsonData.response.taskId) {\r",
+							"    pm.test(\"NETCONF Credential creation initiated\", () => {\r",
+							"        pm.expect(pm.response.text()).to.include(\"taskId\");\r",
+							"    });\r",
+							"    // Call the function to check the status of the credential creation\r",
+							"    checkCredentialStatus(taskurl);\r",
+							"} else {\r",
+							"    pm.test(\"NETCONF Credential already created\", () => {\r",
+							"        pm.expect(pm.response.text()).to.include(\"taskId\");\r",
+							"    });\r",
+							"    postman.setNextRequest(\"Get CredentialIDs\");\r",
 							"}\r",
-							"setTimeout(function(){}, [25000]);\r",
-							"pm.execution.setNextRequest(\"Get Credentials\")"
+							"\r",
+							"setTimeout(function() {}, 25000);\r",
+							"postman.setNextRequest(\"Get CredentialIDs\");\r",
+							""
 						],
 						"type": "text/javascript",
 						"packages": {}
