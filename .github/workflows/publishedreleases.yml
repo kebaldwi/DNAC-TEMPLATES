@@ -16,14 +16,9 @@ jobs:
         with:
             files: |
               CODE/POSTMAN/*.json
+              CODE/POSTMAN/*.zip
               CODE/POWERSHELL/*.ps1
               CODE/TEMPLATES/JINJA2/DAYN/JSON/Titanium_WiredAutoLab_Jinja2_project.json
               CODE/TEMPLATES/JINJA2/DAYN/JSON/DCLOUD-PrepEnvironment-project.json
               CODE/TEMPLATES/JINJA2/ONBOARDING/JSON/Platinum_PnP_Jinja2_Template.json
-              CODE/TEMPLATES/POSTMAN/DEVNET-IGNITE/CatalystCenter-UseCase-API-Collection.zip
-              CODE/TEMPLATES/POSTMAN/lab-1-wired-auto-postman-collection.json
-              CODE/TEMPLATES/POSTMAN/lab-1-wired-auto-postman-environment.json
-              CODE/TEMPLATES/POSTMAN/lab-1-wired-auto-postman-files.zip
-              CODE/TEMPLATES/POSTMAN/lab-2-wireless-auto-postman-collection.json
-              CODE/TEMPLATES/POSTMAN/lab-2-wireless-auto-postman-environment.json
-              CODE/TEMPLATES/POSTMAN/lab-2-wireless-auto-postman-files.zip
+
