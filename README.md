@@ -135,19 +135,42 @@ In this section I have compiled a number of template examples built with Jinja2 
 
 * [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/TUTORIALS/ExamplesAndConcepts.md)
 
-## [DNAC Templates Store](https://github.com/kebaldwi/DNAC-Templates-Store)
+## [DNAC Templates Store](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE#code-)
 
-This repository is built out to share Cisco Catalyst Center Templates and allow for ongoing submissions from those inclined to share their work with the community. Initially the repository includes all the examples that we have used in this repository in RAW TEXT and JSON format. After your first submission you will be able to continually add your templates as you develop new and interesting approaches to device management. 
+This **CODE** repository is built out to share Cisco Catalyst Center Automations and Templates and allow for ongoing submissions from those inclined to share their work with the community. Initially the repository includes all the examples that we have used in this repository in RAW TEXT and JSON format. 
 
-Please maintain the directory structure with submissions. If you have a suggestion please reach out and contact me.
+The **CODE** is also offered in **[Latest Release Candidates](https://github.com/kebaldwi/DNAC-TEMPLATES/releases/latest)** automatically
 
 Please use this menu to navigate the various sections of this separate [DNAC Templates Store](https://github.com/kebaldwi/DNAC-Templates-Store) Github repository. Within the multiple folders are examples, explanation readme files for reference.
 
-* [RAW TEXT Examples](https://github.com/kebaldwi/DNAC-Templates-Store/tree/main/RAW-TEXT-EXAMPLES) - Templates in raw text for editing
-* [DAY ZERO JSON](https://github.com/kebaldwi/DNAC-Templates-Store/tree/main/DAY-ZERO-JSON) - JSON files for easy import to Cisco Catalyst Center for Day Zero
-* [DAY N JSON](https://github.com/kebaldwi/DNAC-Templates-Store/tree/main/DAY-N-JSON) - JSON files for easy import to Cisco Catalyst Center for Day N
-* [REGULAR JSON](https://github.com/kebaldwi/DNAC-Templates-Store/tree/main/DAY-N-JSON/REGULAR-JSON) - JSON files for easy import to Cisco Catalyst Center for Day N
-* [COMPOSITE JSON](https://github.com/kebaldwi/DNAC-Templates-Store/tree/main/DAY-N-JSON/COMPOSITE-JSON) - JSON files for easy import to Cisco Catalyst Center for Day N
+### [Velocity Scripting Language](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/VELOCITY/)
+
+  * [DayN Velocity Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/VELOCITY/DAYN/JSON) - JSON files for easy import to Cisco Catalyst Center for Day N
+  * [Onboarding Velocity Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/VELOCITY/ONBOARDING/JSON) - JSON files for easy import to Cisco Catalyst Center for Day Zero
+
+### [Jinja2 Scripting Language](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/)
+
+  * [DayN Jinja2 Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/DAYN/JSON) - JSON files for easy import to Cisco Catalyst Center for Day N
+  * [Onboarding Jinja2 Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/ONBOARDING/JSON) - JSON files for easy import to Cisco Catalyst Center for Day Zero
+  * [Wireless Jinja2 Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/WIRELESS/JSON) - JSON files for easy import to Cisco Catalyst Center for Wireless
+  
+  * [RAW TEXT Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/DAYN/J2) - Templates in raw text for editing
+
+### [Data Set Examples](./DATA/)
+
+Other Automation Scripts and Documentation used in these labs or elsewhere.
+
+|Descriptions         |Folders                           |
+|---------------------|----------------------------------|
+|Cisco Documentation  |[Docs Folder](./DOCS/)            |     
+|Jenkins Scripts      |[Jenkins Examples](./JENKINS/)    | 
+|Postman Collections  |[Postman Collections](./POSTMAN/) |
+|Python Code Examples |[Python Code](./PYTHON/)          | 
+|Useful Shell Scripts |[Shell Scripts](./SHELL/)         | 
+|Template Folder      |[Template Folder](./TEMPLATES/)   |
+|CSV Data Examples    |[CSV Examples](./DATA/CSV/)       |
+|JSON Data Examples   |[JSON Examples](./DATA/JSON/)     |
+|YAML Data Examples   |[YAML Examples](./DATA/YAML/)     |
 
 ## DCLOUD as a LAB
 
