@@ -17,6 +17,7 @@ jobs:
             files: |
               CODE/POSTMAN/*.json
               CODE/POSTMAN/*.zip
+              CODE/POSTMAN/DEVNET-IGNITE/*.zip
               CODE/POWERSHELL/*.ps1
               CODE/TEMPLATES/JINJA2/DAYN/JSON/Titanium_WiredAutoLab_Jinja2_project.json
               CODE/TEMPLATES/JINJA2/DAYN/JSON/DCLOUD-PrepEnvironment-project.json
