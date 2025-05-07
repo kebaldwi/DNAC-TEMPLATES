@@ -141,7 +141,9 @@ This **CODE** repository is built out to share Cisco Catalyst Center Automations
 
 The **CODE** is also offered in **[Latest Release Candidates](https://github.com/kebaldwi/DNAC-TEMPLATES/releases/latest)** automatically
 
-Please use this menu to navigate the various sections of this separate [DNAC Templates Store](https://github.com/kebaldwi/DNAC-Templates-Store) Github repository. Within the multiple folders are examples, explanation readme files for reference.
+> [!IMPORTANT]
+> The locations for examples have been consolidated here. If you have a template your proud of and you want your name in lights please submit them and we will include them in the repository giving you an honourable mention.</br></br>
+> If you wish to contribute to the templates please **[submit here](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/categories/feedback-and-ideas)**
 
 ### [Velocity Scripting Language](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/VELOCITY/)
 
@@ -156,21 +158,21 @@ Please use this menu to navigate the various sections of this separate [DNAC Tem
   
   * [RAW TEXT Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/DAYN/J2) - Templates in raw text for editing
 
-### [Data Set Examples](./DATA/)
+### **Other Examples**
 
 Other Automation Scripts and Documentation used in these labs or elsewhere.
 
-|Descriptions         |Folders                           |
-|---------------------|----------------------------------|
-|Cisco Documentation  |[Docs Folder](./DOCS/)            |     
-|Jenkins Scripts      |[Jenkins Examples](./JENKINS/)    | 
-|Postman Collections  |[Postman Collections](./POSTMAN/) |
-|Python Code Examples |[Python Code](./PYTHON/)          | 
-|Useful Shell Scripts |[Shell Scripts](./SHELL/)         | 
-|Template Folder      |[Template Folder](./TEMPLATES/)   |
-|CSV Data Examples    |[CSV Examples](./DATA/CSV/)       |
-|JSON Data Examples   |[JSON Examples](./DATA/JSON/)     |
-|YAML Data Examples   |[YAML Examples](./DATA/YAML/)     |
+|Descriptions         |Folders                                                                                     |
+|---------------------|--------------------------------------------------------------------------------------------|
+|Cisco Documentation  |[Docs Folder](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/DOCS/)            |     
+|Jenkins Scripts      |[Jenkins Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/JENKINS/)    | 
+|Postman Collections  |[Postman Collections](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/POSTMAN/) |
+|Python Code Examples |[Python Code](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/PYTHON/)          | 
+|Useful Shell Scripts |[Shell Scripts](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/SHELL/)         | 
+|Template Folder      |[Template Folder](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/)   |
+|CSV Data Examples    |[CSV Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/DATA/CSV/)       |
+|JSON Data Examples   |[JSON Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/DATA/JSON/)     |
+|YAML Data Examples   |[YAML Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/DATA/YAML/)     |
 
 ## DCLOUD as a LAB
 
