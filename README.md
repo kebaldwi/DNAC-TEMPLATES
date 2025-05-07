@@ -43,7 +43,7 @@ Additionally:
 3.	Repetition of any construct may be introduced through the use of Looping structures on any device.
 4.	Variables may be used when the device is being onboarded or provisioned
 
-## Tutorial Sections
+## Tutorials
 
 Various sections will be covered within this github repository. Please use this menu as the main index for navigating content. 
 You will find various examples within the various folders of this repository, with supplied explanation readme files for reference.
@@ -91,7 +91,7 @@ You will find various examples within the various folders of this repository, wi
 ## Miscellaneous
 * [Certificates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Certificates.md) - This section will dive into creating a Certificate for Catalyst Center using OPENSSL.
 
-## [DNAC Template LABS](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS#dnac-template-labs-)
+## [LABS](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS#dnac-template-labs-)
 
 This section built out in a lab format to guide you through the typical steps to complete various automation tasks delivered by Cisco Catalyst Center. It allows for customers to practice Cisco Catalyst Center workflows with Onboarding, DayN Templates, and Application Policy automation on both Wired and Wireless Platforms, while reducing the time and effort needed to instantiate the network The lab will also introduce advanced velocity templating topics and troubleshooting tools, which may help determine common failure scenarios in a deployment.
 
@@ -107,12 +107,12 @@ This newer and more modular lab approach is designed to deal with and includes c
 4. [Lab 4 Rest-API Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-4-Rest-API-Orchestration/) - Covers [Postman](https://www.postman.com) automation of Cisco Catalyst Center **(allow 2.0 hrs)**
 7. [Lab 7 CICD Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-7-CICD-Orchestration/) - Covers [Python](https://www.python.org) with [JENKINS](https://www.jenkins.io) orchestration via REST-API **(allow 4.0 hrs)**
 
-## Legacy Lab Content
+## Specific Lab Content
 
 In this legacy lab section you will continue to find all the existing labs which deal with specifics in separate easy to do labs. This set of labs is being depricated due to new content above.
 
 <details closed>
-<summary> Expand section for Legacy Lab Content if required </summary></br>
+<summary> Expand section for Specific Lab Content if required </summary></br>
 
 * [PnP Preparation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/module1-pnpprep.md) - The lab covers setup for Plug and Play **(allow 1.5 hrs)**
 * [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/module2-pnp.md) - The lab covers in depth topics in deploying Day 0 templates **(allow 1.5 hrs)**
@@ -129,13 +129,7 @@ In this legacy lab section you will continue to find all the existing labs which
 
 </details>
 
-## [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/TUTORIALS/ExamplesAndConcepts.md)
-
-In this section I have compiled a number of template examples built with Jinja2 Language. These samples include a wide ranging set of configurations which may be used in your labs to solve specific configuration requirements. This collection summarizes aspects covered previously in this templating repository, and are aimed at providing quick practical references to help engineers solve automation tasks with the help of Cisco Catalyst Center. Additionally these examples may be used in testing in [dCloud](https://dcloud.cisco.com) with any of the labs on this repository.
-
-* [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/TUTORIALS/ExamplesAndConcepts.md)
-
-## [DNAC Templates Store](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE#code-)
+## [Templates Store](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE#code-)
 
 This **CODE** repository is built out to share Cisco Catalyst Center Automations and Templates and allow for ongoing submissions from those inclined to share their work with the community. Initially the repository includes all the examples that we have used in this repository in RAW TEXT and JSON format. 
 
@@ -145,12 +139,12 @@ The **CODE** is also offered in **[Latest Release Candidates](https://github.com
 > The locations for examples have been consolidated here. If you have a template your proud of and you want your name in lights please submit them and we will include them in the repository giving you an honourable mention.</br></br>
 > If you wish to contribute to the templates please **[submit here](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/categories/feedback-and-ideas)**
 
-### [Velocity Scripting Language](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/VELOCITY/)
+#### Velocity Scripting Language
 
   * [DayN Velocity Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/VELOCITY/DAYN/JSON) - JSON files for easy import to Cisco Catalyst Center for Day N
   * [Onboarding Velocity Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/VELOCITY/ONBOARDING/JSON) - JSON files for easy import to Cisco Catalyst Center for Day Zero
 
-### [Jinja2 Scripting Language](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/)
+#### Jinja2 Scripting Language
 
   * [DayN Jinja2 Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/DAYN/JSON) - JSON files for easy import to Cisco Catalyst Center for Day N
   * [Onboarding Jinja2 Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/ONBOARDING/JSON) - JSON files for easy import to Cisco Catalyst Center for Day Zero
@@ -158,7 +152,7 @@ The **CODE** is also offered in **[Latest Release Candidates](https://github.com
   
   * [RAW TEXT Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/DAYN/J2) - Templates in raw text for editing
 
-### **Other Examples**
+#### Other Examples
 
 Other Automation Scripts and Documentation used in these labs or elsewhere.
 
@@ -190,19 +184,11 @@ DCLOUD allows for use with a web-based browser client for VPN-less connectivity,
 > [!IMPORTANT]
 > To access this or any other content, including demonstrations, labs, and training in DCLOUD please **work with** your **Cisco Account team** or **Cisco Partner Account Team** directly. Your Account teams will make sure the session is scheduled and shared for you to use. Once booked follow the guide within Github to complete the tasks adhering to the best practices of the DCLOUD environment.
 
-## Examples
+## [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/TUTORIALS/ExamplesAndConcepts.md)
 
-These examples must be used with two conditions:
+In this section I have compiled a number of template examples built with Jinja2 Language. These samples include a wide ranging set of configurations which may be used in your labs to solve specific configuration requirements. This collection summarizes aspects covered previously in this templating repository, and are aimed at providing quick practical references to help engineers solve automation tasks with the help of Cisco Catalyst Center. Additionally these examples may be used in testing in [dCloud](https://dcloud.cisco.com) with any of the labs on this repository.
 
-* Deployed a PnP Discovery method and DHCP scope - see [PnP Workflow](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/PnP-Workflow.md#pnp-workflow)
-* Build the template with methods detailed - see [Creating Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Templates.md#template-creation)
-
-When building the template you will need to select a scripting language. Specific examples of Templates in the two scripting languages supported are available in the following folders:
-
-* [Velocity Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/VELOCITY/)
-* [Jinja2 Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2) 
-
-The conditions that they are used are documented and are explained in [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Onboarding.md) and examples of DayN Templates are explained in [DayN Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/DayN.md)
+&ensp;&ensp;&ensp;&ensp;Practical examples can be located here: [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/TUTORIALS/ExamplesAndConcepts.md)
 
 > [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
