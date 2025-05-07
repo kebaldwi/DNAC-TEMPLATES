@@ -1,4 +1,4 @@
-# Tutorial Sections
+# Tutorials
 
 Various sections will be covered within this github repository. Please use this menu as the main index for navigating content. 
 You will find various examples within the various folders of this repository, with supplied explanation readme files for reference.
