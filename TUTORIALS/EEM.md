@@ -54,7 +54,7 @@ While this script will rename the uplinks connected to a Router or Switch, it is
 
 ### ***Modify Code***
 
-So let's modify the EEM script first to solve the naming aspect concerning connected devices.
+So let's modify the EEM script first to solve the naming aspect concerning connected devices with **CDP**.
 
 ```vtl
    event manager applet update-port
@@ -102,6 +102,52 @@ First, let's address the primary problem, the naming of interfaces with descript
 You will see that lines *201 to 220* were added to the EEM script. We look for the keyword `Trans-Bridge` within the built-in variable to determine if the port is connected to an Access Point within that section. It results in a True or binary 1 state, and the included code from lines *211 to 220* runs line by line. The configuration adds a description to the interface for the phone of `description AP - KO-AP0C75 - GigabitEthernet0`, for example.
 
 You will see that lines *250 to 260* were added to the EEM script. We look for the keyword `Phone` within the built-in variable to determine if the port is connected to a Phone within that section. It results in a True or binary 1 state, and the included code from lines *253 to 260* runs line by line. For example, the configuration adds a description to the interface for the phone of `description Phone - SEPB07D47D34910 - Port 1`.
+
+In case you are interested in **LLDP** take a look at this.
+
+```vtl
+event manager applet update-port authorization bypass
+ event neighbor-discovery interface regexp GigabitEthernet.* lldp add
+ action 401 regexp "(B|R|W)" "$_nd_lldp_system_capabilities_string"
+ action 410 if $_regexp_result eq "1"
+ action 411  regexp "(W)" "$_nd_lldp_system_capabilities_string" match wireless
+ action 412  regexp "(T)" "$_nd_lldp_system_capabilities_string" match phone
+ action 420  if $wireless ne ""
+ action 421   cli command "enable"
+ action 422   cli command "config t"
+ action 423   cli command "interface $_nd_local_intf_name"
+ action 424   regexp "^([^\.]+)" "$_nd_lldp_system_name" match host
+ action 425   regexp "^([^\.]+)" "$_nd_lldp_port_description" match connectedport
+ action 426   cli command "no description"
+ action 427   cli command "description AP - $host - $connectedport"
+ action 430  elseif $phone ne ""
+ action 431   cli command "enable"
+ action 432   cli command "config t"
+ action 433   cli command "interface $_nd_local_intf_name"
+ action 434   regexp "^([^\.]+)" "$_nd_lldp_system_name" match host
+ action 435   regexp ":\s*P([0-9]+)" "$_nd_port_id" match connectedport
+ action 436   cli command "no description"
+ action 437   cli command "description Phone - $host - Port $connectedport"
+ action 440  else
+ action 441   cli command "enable"
+ action 442   cli command "config t"
+ action 443   cli command "interface $_nd_local_intf_name"
+ action 444   regexp "^([^\.]+)\." "$_nd_lldp_system_name" match host
+ action 445   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
+ action 446   cli command "no description"
+ action 447   cli command "description Link - $host - $connectedport"
+ action 450  end
+ action 460 else
+ action 461  cli command "enable"
+ action 462  cli command "config t"
+ action 463  cli command "interface $_nd_local_intf_name"
+ action 464  regexp "^([^\.]+)\." "$_nd_lldp_system_name" match host
+ action 465  regexp "^([^\.]+)" "$_nd_port_id" match connectedport
+ action 466  cli command "no description"
+ action 467  cli command "description Link - $host - $connectedport"
+ action 470 end
+ action 471 cli command "write"
+```
 
 ## Case 2 - ***Sending a IOS-XE command to clear a table - Use Case***
 
