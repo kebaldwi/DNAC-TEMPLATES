@@ -88,7 +88,6 @@ event manager applet update-port-cdp authorization bypass
   action 145   regexp "^(..).*([0-9]\/[0-9]\/[0-9]+)" "$_nd_port_id" match Type Port
   action 146   cli command "no description"
   action 147   cli command "description Link - $host - $Type$Port"
-  action 148   end
   action 150  else
   action 151   cli command "enable"
   action 152   cli command "config t"
