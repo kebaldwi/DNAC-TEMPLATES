@@ -173,7 +173,9 @@ Open a connection to the console for the following:
 2. Paste the following into the terminals for the router and switches:
 
    ```
-   
+   en
+   C1sco12345
+
    sh cdp neigh
    sh ip ospf ne
    sh run | s username|snmp|netconf
@@ -182,7 +184,7 @@ Open a connection to the console for the following:
 
 3. You should see on the **ISR 4331** the following:
 
-   ![json](../ASSETS/COMMON/BUILD/underconstruction.png?raw=true "Import JSON")
+   ![json](../ASSETS/COMMON/DCLOUD/ISR4331-Prep.png?raw=true "Import JSON")
 
    If successful then you can skip step 4 and go to **[here](#catalyst-9300---1-readiness)**
 
@@ -306,6 +308,8 @@ Open a connection to the console for the following:
 2. Paste the following into the terminals for the router and switches:
 
    ```
+   en
+   C1sco12345
    
    sh cdp neigh
    sh ip ospf ne
@@ -315,7 +319,7 @@ Open a connection to the console for the following:
 
 3. You should see on the **Catalyst 9300 - 1** the following:
 
-   ![json](../ASSETS/COMMON/BUILD/underconstruction.png?raw=true "Import JSON")
+   ![json](../ASSETS/COMMON/DCLOUD/C9300-1-Prep.png?raw=true "Import JSON")
    
    If successful then you can skip step 4 and go to **[here](#catalyst-9300---2-readiness)**
 
@@ -440,6 +444,8 @@ Open a connection to the console for the following:
 2. Paste the following into the terminals for the router and switches:
 
    ```
+   en
+   C1sco12345
    
    sh cdp neigh
    sh ip ospf ne
@@ -449,7 +455,7 @@ Open a connection to the console for the following:
 
 3. You should see on the **Catalyst 9300 - 2** the following:
    
-   ![json](../ASSETS/COMMON/BUILD/underconstruction.png?raw=true "Import JSON")
+   ![json](../ASSETS/COMMON/DCLOUD/C9300-2-Prep.png?raw=true "Import JSON")
 
    If successful then you can skip step 4 and go to **[here](#ap-1-and-ap-2-readiness)**
 
