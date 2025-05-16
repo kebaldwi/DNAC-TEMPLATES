@@ -2,11 +2,11 @@
 
 Embedded Event Manager is a Flexible and Powerful tool in Cisco IOS & IOS-XE Software which allows a switch to automate actions based on user enabled system events. Events trigger the execution of user defined set of actions. Triggers can come in many forms from Syslog through to Timers as depicted in the following slide. 
 
-![json](../ASSETS/EEMDetectors.png?raw=true "Import JSON")
+![json](../ASSETS/TUTORIALS/EEM/EEMDetectors.png?raw=true "Import JSON")
 
 Actions can be then taken by the device utilizing cli commands through to TCL or Python Scripts. This section will start to dive into various capabilities and use cases for EEM scripts which can be deployed on Cisco Catalyst Products.
 
-![json](../ASSETS/EEMOperation.png?raw=true "Import JSON")
+![json](../ASSETS/TUTORIALS/EEM/EEMOperation.png?raw=true "Import JSON")
 
 ## Capabilities and Uses
 
