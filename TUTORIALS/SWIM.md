@@ -141,7 +141,7 @@ This method provides greater control and flexibility, allowing administrators to
 
 In the second workflow you can see we complete the **Activation** of the image.
 
-![Software Image Management](../ASSETS/SWIM-Distribution-Activation.png?raw=true "Software Image Management")
+![Software Image Management](../ASSETS/SWIM-Activation.png?raw=true "Software Image Management")
 
 ---
 
