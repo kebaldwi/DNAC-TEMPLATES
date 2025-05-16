@@ -113,7 +113,7 @@ There are essentially two separate actions automated through Software Image Mana
 - **Software Distribution** which is transfering the image to the target system
 - **Software Activation** which is activating (using) the image on the target system.
 
-#### 1. Deploying and Activating the Image in the Same Workflow
+### 1. Deploying and Activating the Image in the Same Workflow
 
 In this method, the deployment and activation of the software image occur within a single workflow. This approach is efficient for scenarios where immediate activation is required. The steps typically include:
 
@@ -128,7 +128,7 @@ This method is ideal for environments where downtime is minimal, and quick updat
 
 ![Software Image Management](../ASSETS/SWIM-Distribution-Activation.png?raw=true "Software Image Management")
 
-#### 2. Deploying (Staging) and Activating the Image in Separate Workflows
+### 2. Deploying (Staging) and Activating the Image in Separate Workflows
 
 This approach involves two distinct workflows: one for staging the image and another for activation. The steps include:
 
