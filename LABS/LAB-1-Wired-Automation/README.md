@@ -1,5 +1,8 @@
 # Wired Automation
 
+> [!WARNING]
+> For best results and if you have not ensured that the lab is functioning correctly. Please consider checking the readiness of the lab in this [DCLOUD LAB PREPARATION](./DCLOUD.md) section.
+
 ## Overview
 
 This Lab is designed as a set of standalone labs to help customers with varying challenges in Automating and Orchestrating their wired network infrastructure. Within the lab, we will use various tools and techniques to Automate various tasks and orchestrate Cisco Catalyst Center.
