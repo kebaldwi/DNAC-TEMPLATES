@@ -108,16 +108,18 @@ There are essentially three separate checks which can be completed when automati
 
 ### Image Deployment Options
 
-There are essentially two separate actions automated through Software Image Management. Seen in the image below they are the following: 
+There are essentially three separate actions to automate through Software Image Management. The steps typically include:
+
+- **Select the Golden Image**: Choose the appropriate golden image based on TAGs and Roles. and assign to the devices via Hierarchy, Role and TAG.
+
+Then to deploy the images we use the following:
 
 - **Software Distribution** which is transfering the image to the target system
 - **Software Activation** which is activating (using) the image on the target system.
 
 ### 1. Deploying and Activating the Image in the Same Workflow
 
-In this method, the deployment and activation of the software image occur within a single workflow. This approach is efficient for scenarios where immediate activation is required. The steps typically include:
-
-- **Select the Golden Image**: Choose the appropriate golden image based on TAGs and Roles. and assign to the devices via Hierarchy, Role and TAG.
+In this method, the deployment and activation of the software image occur within a single workflow. This approach is efficient for scenarios where immediate activation is required. 
 
 During the Deployment of Software use Deploy and Activate the image after deployment. This includes:
 
@@ -130,7 +132,7 @@ This method is ideal for environments where downtime is minimal, and quick updat
 
 ### 2. Deploying (Staging) and Activating the Image in Separate Workflows
 
-This approach involves two distinct workflows: one for staging the image and another for activation. The steps include:
+This approach involves two distinct workflows: one for staging the image and another for activation. This includes:
 
 - **Staging the Image**: Distribute the golden image to the target devices without activating it immediately. This allows for testing and validation.
 - **Activating the Image**: Once the image has been verified, a separate workflow is initiated to activate the image on the devices.
