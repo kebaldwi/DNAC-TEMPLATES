@@ -113,7 +113,7 @@ Tasks trigger one or more modules that are executed. The module specified in our
 
 See the output of this playbook:
 
-![json](../ASSETS/display_serial_num.png?raw=true "IOS Facts Output")
+![json](../ASSETS/TUTORIALS/ANSIBLE/display_serial_num.png?raw=true "IOS Facts Output")
 
 This playbook is very basic and was just used for a primer on the components of a playbook.  We will now pivot to installing Ansible and using it with Cisco Catalyst Center.
 
@@ -137,7 +137,7 @@ To verify the version of Ansible you have installed and see other information ru
 ansible --version
 ``` 
 
-<img src="../ASSETS/ansible_version.png" 
+<img src="../ASSETS/TUTORIALS/ANSIBLE/ansible_version.png" 
      width="850" 
      height="200"
      alt="Ansible Version Command Output" />
@@ -148,7 +148,7 @@ The output of this command shows the version of ansible currently running along 
 
 Using Ansbile to manage Cisco Catalyst Center requires the correct version of the [cisco.dnac] collection for your Catalyst Center version.  The cisco.dnac collection is included in the full Ansible package by default.  However, the collection depends on the [Cisco Catalyst Center SDK](https://dnacentersdk.readthedocs.io/en/latest/index.html).  The SDK must be installed on the control node.  If you have installed the full Ansible package, the cisco.dnac collection is included, but it may not be the correct version for your Catalyst Center deployment.  See the compatibility matrix [table](https://galaxy.ansible.com/ui/repo/published/cisco/dnac/docs/) on Ansible Galaxy for compatibility information:
 
-![json](../ASSETS/compatibility_matrix.png?raw=true "Compatibility Matrix")
+![json](../ASSETS/TUTORIALS/ANSIBLE/compatibility_matrix.png?raw=true "Compatibility Matrix")
 
 > [!NOTE] 
 > This image of the table was current at the time of writing.  The source at the link provided above should be referenced in the future. 
@@ -171,7 +171,7 @@ Next, install the cisco.dnac Ansible collection.  To verify that the cisco.dnac 
 
 > **Note:** If the command ```ansible-galaxy collection list``` is not found on your system, your version of Ansible is too old.  
 
-<img src="../ASSETS/ansible-galaxy.png" 
+<img src="../ASSETS/TUTORIALS/ANSIBLE/ansible-galaxy.png" 
      width="600" 
      height="60"
      alt="Ansible Galaxy Collection List Command Output" />
