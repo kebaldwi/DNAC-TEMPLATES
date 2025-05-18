@@ -57,49 +57,63 @@ While this script will rename the uplinks connected to a Router or Switch, it is
 So let's modify the EEM script first to solve the naming aspect concerning connected devices with **CDP**.
 
 ```vtl
-event manager applet update-port-cdp authorization bypass
- event neighbor-discovery interface regexp GigabitEthernet.* cdp add
-  action 100 regexp "(Switch|Router|Trans-Bridge|Phone)" "$_nd_cdp_capabilities_string"
+event manager applet update-port-lldp authorization bypass
+ event neighbor-discovery interface regexp GigabitEthernet.* lldp add
+  action 101 regexp "(B|R|W|T)" "$_nd_lldp_system_capabilities_string"
   action 110 if $_regexp_result eq "1"
-  action 111  regexp "(Switch|Router)" "$_nd_cdp_capabilities_string"
-  action 112  regexp "(Trans-Bridge)" "$_nd_cdp_capabilities_string" match cdp_wireless
-  action 113  regexp "(Phone)" "$_nd_cdp_capabilities_string" match cdp_phone
-  action 120  if $cdp_wireless ne ""
+  action 111  regexp "(B|R)" "$_nd_lldp_system_capabilities_string"
+  action 112  set lldp_switch $_regexp_result
+  action 113  regexp "(W)" "$_nd_lldp_system_capabilities_string"
+  action 114  set lldp_wireless $_regexp_result
+  action 115  regexp "(T)" "$_nd_lldp_system_capabilities_string"
+  action 116  set lldp_phone $_regexp_result
+  action 120  if $lldp_wireless eq "1"
   action 121   cli command "enable"
   action 122   cli command "config t"
   action 123   cli command "interface $_nd_local_intf_name"
-  action 124   regexp "^([^\.]+)" "$_nd_cdp_entry_name" match host
-  action 125   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
+  action 124   regexp "^([^\.]+)" "$_nd_lldp_system_name" match host
+  action 125   regexp "^([^\.]+)" "$_nd_lldp_port_description" match connectedport
   action 126   cli command "no description"
   action 127   cli command "description AP - $host - $connectedport"
-  action 130  elseif $cdp_phone ne ""
+  action 128   cli command "end"
+  action 130  elseif $lldp_phone eq "1"
   action 131   cli command "enable"
   action 132   cli command "config t"
   action 133   cli command "interface $_nd_local_intf_name"
-  action 134   regexp "^([^\.]+)" "$_nd_cdp_entry_name" match host
-  action 135   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
+  action 134   regexp "^([^\.]+)" "$_nd_lldp_system_name" match host
+  action 135   regexp ":\s*P([0-9]+)" "$_nd_port_id" match connectedport
   action 136   cli command "no description"
-  action 137   cli command "description Phone - $host - $connectedport"
-  action 140  elseif $cdp_switch ne ""
+  action 137   cli command "description Phone - $host - Port $connectedport"
+  action 138   cli command "end"
+  action 140  elseif $lldp_switch eq "1"
   action 141   cli command "enable"
   action 142   cli command "config t"
   action 143   cli command "interface $_nd_local_intf_name"
-  action 144   regexp "^([^\.]+)\." "$_nd_cdp_entry_name" match host
-  action 145   regexp "^(..).*([0-9]\/[0-9]\/[0-9]+)" "$_nd_port_id" match Type Port
+  action 144   regexp "^([^\.]+)\." "$_nd_lldp_system_name" match host
+  action 145   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
   action 146   cli command "no description"
-  action 147   cli command "description Link - $host - $Type$Port"
-  action 150  else
-  action 151   cli command "enable"
-  action 152   cli command "config t"
-  action 153   cli command "interface $_nd_local_intf_name"
-  action 154   regexp "^([^\.]+)\." "$_nd_cdp_entry_name" match host
-  action 155   regexp "^(..).*([0-9]\/[0-9]\/[0-9]+)" "$_nd_port_id" match Type Port
-  action 156   cli command "no description"
-  action 157   cli command "description Link - $host - $Type$Port"
-  action 160  end
-  action 170 end
-  action 200 cli command "do write"
-```
+  action 147   cli command "description Link - $host - $connectedport"
+  action 148   cli command "do show running-config interface $_nd_lldp_system_name |  include channel-group"
+  action 149   regexp "channel-group ([0-9]+)" "$_cli_result" match portchannel
+  action 150   if $_regexp_result eq "1"
+  action 151    cli command "interface port-channel $portchannel"
+  action 152    cli command "no description"
+  action 153    cli command "description Link - $host"
+  action 154   end
+  action 155   cli command "end"
+  action 160  else
+  action 161   cli command "enable"
+  action 162   cli command "config t"
+  action 163   cli command "interface $_nd_local_intf_name"
+  action 164   regexp "^([^\.]+)\." "$_nd_lldp_system_name" match host
+  action 165   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
+  action 166   cli command "no description"
+  action 167   cli command "description Link - $host - $connectedport"
+  action 168   cli command "end"
+  action 170  end
+  action 180 end
+  action 200 cli command "write mem" 
+ ```
 
 First, let's address the primary problem, the naming of interfaces with descriptions.
 
@@ -112,46 +126,60 @@ In case you are interested in **LLDP** take a look at this.
 ```vtl
 event manager applet update-port-lldp authorization bypass
  event neighbor-discovery interface regexp GigabitEthernet.* lldp add
- action 101 regexp "(B|R|W|T)" "$_nd_lldp_system_capabilities_string"
- action 110 if $_regexp_result eq "1"
- action 111  regexp "(B|R)" "$_nd_lldp_system_capabilities_string" match switchrouter
- action 112  regexp "(W)" "$_nd_lldp_system_capabilities_string" match wireless
- action 113  regexp "(T)" "$_nd_lldp_system_capabilities_string" match phone
- action 120  if $wireless ne ""
- action 121   cli command "enable"
- action 122   cli command "config t"
- action 123   cli command "interface $_nd_local_intf_name"
- action 124   regexp "^([^\.]+)" "$_nd_lldp_system_name" match host
- action 125   regexp "^([^\.]+)" "$_nd_lldp_port_description" match connectedport
- action 126   cli command "no description"
- action 127   cli command "description AP - $host - $connectedport"
- action 130  elseif $phone ne ""
- action 131   cli command "enable"
- action 132   cli command "config t"
- action 133   cli command "interface $_nd_local_intf_name"
- action 134   regexp "^([^\.]+)" "$_nd_lldp_system_name" match host
- action 135   regexp ":\s*P([0-9]+)" "$_nd_port_id" match connectedport
- action 136   cli command "no description"
- action 137   cli command "description Phone - $host - Port $connectedport"
- action 140  elseif $switchrouter ne ""
- action 141   cli command "enable"
- action 142   cli command "config t"
- action 143   cli command "interface $_nd_local_intf_name"
- action 144   regexp "^([^\.]+)\." "$_nd_lldp_system_name" match host
- action 145   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
- action 146   cli command "no description"
- action 147   cli command "description Link - $host - $connectedport"
- action 150  else
- action 151   cli command "enable"
- action 152   cli command "config t"
- action 153   cli command "interface $_nd_local_intf_name"
- action 154   regexp "^([^\.]+)\." "$_nd_lldp_system_name" match host
- action 155   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
- action 156   cli command "no description"
- action 157   cli command "description Link - $host - $connectedport"
- action 160  end
- action 170 end
- action 200 cli command "do write"
+  action 101 regexp "(B|R|W|T)" "$_nd_lldp_system_capabilities_string"
+  action 110 if $_regexp_result eq "1"
+  action 111  regexp "(B|R)" "$_nd_lldp_system_capabilities_string"
+  action 112  set lldp_switch $_regexp_result
+  action 113  regexp "(W)" "$_nd_lldp_system_capabilities_string"
+  action 114  set lldp_wireless $_regexp_result
+  action 115  regexp "(T)" "$_nd_lldp_system_capabilities_string"
+  action 116  set lldp_phone $_regexp_result
+  action 120  if $lldp_wireless eq "1"
+  action 121   cli command "enable"
+  action 122   cli command "config t"
+  action 123   cli command "interface $_nd_local_intf_name"
+  action 124   regexp "^([^\.]+)" "$_nd_lldp_system_name" match host
+  action 125   regexp "^([^\.]+)" "$_nd_lldp_port_description" match connectedport
+  action 126   cli command "no description"
+  action 127   cli command "description AP - $host - $connectedport"
+  action 128   cli command "end"
+  action 130  elseif $lldp_phone eq "1"
+  action 131   cli command "enable"
+  action 132   cli command "config t"
+  action 133   cli command "interface $_nd_local_intf_name"
+  action 134   regexp "^([^\.]+)" "$_nd_lldp_system_name" match host
+  action 135   regexp ":\s*P([0-9]+)" "$_nd_port_id" match connectedport
+  action 136   cli command "no description"
+  action 137   cli command "description Phone - $host - Port $connectedport"
+  action 138   cli command "end"
+  action 140  elseif $lldp_switch eq "1"
+  action 141   cli command "enable"
+  action 142   cli command "config t"
+  action 143   cli command "interface $_nd_local_intf_name"
+  action 144   regexp "^([^\.]+)\." "$_nd_lldp_system_name" match host
+  action 145   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
+  action 146   cli command "no description"
+  action 147   cli command "description Link - $host - $connectedport"
+  action 148   cli command "do show running-config interface $_nd_lldp_system_name | include channel-group"
+  action 149   regexp "channel-group ([0-9]+)" "$_cli_result" match portchannel
+  action 150   if $_regexp_result eq "1"
+  action 151    cli command "interface port-channel $portchannel"
+  action 152    cli command "no description"
+  action 153    cli command "description Link - $host"
+  action 154   end
+  action 155   cli command "end"
+  action 160  else
+  action 161   cli command "enable"
+  action 162   cli command "config t"
+  action 163   cli command "interface $_nd_local_intf_name"
+  action 164   regexp "^([^\.]+)\." "$_nd_lldp_system_name" match host
+  action 165   regexp "^([^\.]+)" "$_nd_port_id" match connectedport
+  action 166   cli command "no description"
+  action 167   cli command "description Link - $host - $connectedport"
+  action 168   cli command "end"
+  action 170  end
+  action 180 end
+  action 200 cli command "write mem" 
 ```
 
 ## Case 2 - ***Sending a IOS-XE command to clear a table - Use Case***
