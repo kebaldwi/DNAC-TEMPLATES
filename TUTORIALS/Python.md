@@ -7,7 +7,7 @@ As reported by 2021 Stack Overflow Developer Survery, Python was identified as t
 
 Given Python popularity, it makes sense to review how you can apply basic programming practices to automate common tasks in your own network with Cisco Catalyst Center APIs.
 
-![json](../ASSETS/dnac_python_automation.png?raw=true "Cisco Catalyst Center APIs")
+![json](../ASSETS/TUTORIALS/PYTHON/dnac_python_automation.png?raw=true "Cisco Catalyst Center APIs")
 
 When developing with Python for Cisco Catalyst Center, you will find your code operating in one of these categories:
 
@@ -362,14 +362,14 @@ In the above two examples, we spent some time understanding how one would develo
 
 For someone who is new to development and or to Cisco Catalyst Center, there is also a **rapid prototyping** approach leveraging a very well known developer tool called Postman to quickly stitch together a workflow in a graphical fashion, and have Postman automatically generate Python skeleton code that will help you overcome the initial challenge of starting with a blank sheet of paper. Postman is an API platform for building and using APIs. Postman simplifies each step of the API lifecycle and streamlines collaboration so you can create better APIs faster.
 
-A more indepth introduction to Postman with Cisco Catalyst Center is covered in [Rest-API Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-I-Rest-API-Orchestration/)
+A more indepth introduction to Postman with Cisco Catalyst Center is covered in [Rest-API Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS/LAB-4-Rest-API-Orchestration)
 
 In your browser, navigate to [Cisco Catalyst Center - Postman collection](https://developer.cisco.com/docs/dna-center/#!postman-collections), you should see a section called 'Postman Collections' under 'Developer Resources'. Under 'Postman Collections', click 'Run in Postman' navigation button which will take to you the repository portal. Before proceeding to next step, ensure that you Login on this page (top right corner, you can setup a free Postman account if you dont have one). 
 Once you have logged in, on the same Postman **Cisco Catalyst Center APIs** collection click 'Fork' in the top right corner, and select the name of the Workspace to which you want to clone it to. As next step, in the same page - click 'Workspaces' dropdown menu in top left corner and select the Workspace to which we have just cloned the Collection.
 
 The Cisco Catalyst Center Postman Collection **Cisco Catalyst Center APIs** will appear in the list of Collections under your Postman Workspace. You will also notice a small fork icon next to it, with the name of the original Collection from which we have forked it.
 
-![json](../ASSETS/dnac_python_postman_intro.png?raw=true "Postman - Developer view")
+![json](../ASSETS/TUTORIALS/PYTHON/dnac_python_postman_intro.png?raw=true "Postman - Developer view")
 
 The **Cisco Catalyst Center APIs** Postman Collection of API calls is neatly organized into categories that allows you to quickly drill down and navigate. For the purposes of this excersice, we are going to require two **GET** API calls from this collection:
 
@@ -525,7 +525,7 @@ JSON responses can be quite lengthy and are difficult for a human eye to enterpr
 
 In our Postman 'network-device' API tab, select 'Visualize' tab to get a pretty tabular view representing data contained in the JSON Payload.
 
-![json](../ASSETS/dnac_python_postman_visualize.png?raw=true "Postman - JSON payload Visualization")
+![json](../ASSETS/TUTORIALS/PYTHON/dnac_python_postman_visualize.png?raw=true "Postman - JSON payload Visualization")
 
 Similar to how we used Postman to generate Python code for the Authentication function, let us click on 'Code' button on the vertical menu on the right of the screen, select 'Python - Requests' under 'Code Snippet' section. You should get the following skeleton Python code suggested by Postman
 
