@@ -8,7 +8,7 @@
 
 **REST APIs** are used with Cisco Catalyst Center to programmatically interact with the Cisco Catalyst Center platform. This allows you to automate tasks, retrieve data, and integrate Cisco Catalyst Center with other systems. With **REST APIs**, you can perform tasks like provisioning network devices, configuring network policies, and retrieving network analytics data. This can help simplify network management and reduce the time and effort required for network operations. Additionally, **REST APIs** allow you to build custom applications and integrations that leverage the capabilities of Cisco Catalyst Center.
 
-![json](../ASSETS/dnac-api.png?raw=true "Import JSON")
+![json](../ASSETS/TUTORIALS/RESTAPI/dnac-api.png?raw=true "Import JSON")
 
 ## What can REST API do for Cisco Catalyst Center?
 
@@ -44,7 +44,7 @@ Cisco Catalyst Center has several built-in integrations that use REST APIs, incl
 
 5. **Cisco SDWAN**: Cisco SD-WAN Viptela can also be integrated with Cisco Catalyst Center using REST APIs. This integration allows you to manage and monitor both your SD-WAN and SD-Access network devices from a single platform and Fabric.
 
-![json](../ASSETS/crossdomain-integrations.png?raw=true "Import JSON")
+![json](../ASSETS/TUTORIALS/RESTAPI/crossdomain-integrations.png?raw=true "Import JSON")
 
 6. **ServiceNow**: ServiceNow is an IT service management (ITSM) platform that can be integrated with Cisco Catalyst Center to automate incident management and change management processes. The integration uses **REST APIs** to exchange information about network devices, users, and incidents.
 
@@ -52,7 +52,7 @@ Cisco Catalyst Center has several built-in integrations that use REST APIs, incl
 
 8. **Liveaction and Tableaux**: can integrate with Cisco Catalyst Center to visualize the events and telemetry gathered from the network infrastructure to help facilitate notifications and awareness.
 
-![json](../ASSETS/partner-integrations.png?raw=true "Import JSON")
+![json](../ASSETS/TUTORIALS/RESTAPI/partner-integrations.png?raw=true "Import JSON")
 
 Overall, these built-in integrations can help streamline network management and improve security and performance by leveraging the capabilities of Cisco Catalyst Center and other Cisco platforms.
 
@@ -74,7 +74,7 @@ Cisco Catalyst Center has a comprehensive set of published **REST APIs** that al
 
 7. **Command Runner APIs**: These APIs allow you to execute CLI commands on network devices and retrieve the output.
 
-![json](../ASSETS/dnac-api.png?raw=true "Import JSON")
+![json](../ASSETS/TUTORIALS/RESTAPI/dnac-api.png?raw=true "Import JSON")
 
 Overall, the published **REST APIs** for Cisco Catalyst Center provide a wide range of capabilities for managing and monitoring your network infrastructure programmatically.
 
@@ -147,7 +147,7 @@ Cisco provides a **Python SDK library** for use with Cisco Catalyst Center, whic
 
 The ultimate goal of most organizations considering CICD Pipelines with Cisco Catalyst Center is to augment the platform to provide a way of continual development, balanced with continual deployment. Sometimes *Orchestration Platforms* like **Ansible**, or **Teraform** are considered to help orchestrate through Cisco Catalyst Center.  
 
-![json](../ASSETS/cicd-pipeline2.png?raw=true "Import JSON")
+![json](../ASSETS/TUTORIALS/RESTAPI/cicd-pipeline2.png?raw=true "Import JSON")
 
 In the case above a repository, holds templates in JSON and settings in YAML which are tested for vulnerabilities and syntax and against CML. After successful testing the CICD pipeline builds the configurations and settings on Cisco Catalyst Center through a Ansible Playbook. Then the pipeline kicks off a deployment playbook which provisions the configurations from Cisco Catalyst Center toward the network infrastructure.
 

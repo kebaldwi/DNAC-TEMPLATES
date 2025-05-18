@@ -6,7 +6,7 @@ In the world of Continuous Integration and Continuous Deployment (CI/CD), orches
 
 **Continuous Integration/Continuous Delivery,** or **Continuous Deployment**, pipelines have been used in the software development industry for years. For most teams, the days of manually taking source code and manifest files and compiling them to create binaries or executable files and then manually distributing and installing those applications are long gone. In an effort to automate the build process and distribution of software as well as perform automated testing, the industry has continuously evolved towards more comprehensive pipelines.
 
-![CICD Advantages](../ASSETS/TUTORIALS/CICD/CICD-Advantages.png)
+![CICD Advantages](../ASSETS/TUTORIALS/RESTAPI/CICD-Advantages.png)
 
 Depending on how much of the software development process is automated, pipelines can be categorized into different groups and stages:
 
@@ -34,7 +34,7 @@ Several other deployment models are available, including Canary, Blue/Green, A/B
 
 There are various Orchestrators which may be aligned to Orchestrating over Automation Engines otherwise known as Controllers within the Network Management layers. You can see some of them here.
 
-![CICD Service Orchestration](../ASSETS/TUTORIALS/CICD/CICD-Journey1.png)
+![CICD Service Orchestration](../ASSETS/TUTORIALS/RESTAPI/CICD-Journey1.png)
 
 They are:
 - **Network Service Orchestrator NSO** *- Cisco Systems Inc*
@@ -86,7 +86,7 @@ Key Benefits of GitLab:
 
 REST APIs (Representational State Transfer Application Programming Interfaces) provide a standardized way for different software systems to communicate with each other over the internet. Python and Ansible offer robust support for working with REST APIs, albeit with different approaches.
 
-![REST-APIs](../ASSETS/TUTORIALS/CICD/CICD-RESTAPI.png)
+![REST-APIs](../ASSETS/TUTORIALS/RESTAPI/CICD-RESTAPI.png)
 
 ### Python
 
@@ -112,7 +112,7 @@ Benefits of Ansible for REST API Integration:
 
 Pipelines are a fundamental concept in CI/CD that define the steps required to build, test, and deploy software applications. They provide a visual representation of the entire workflow, enabling teams to automate complex processes and ensure consistent delivery.
 
-![CICD Advantages](../ASSETS/TUTORIALS/CICD/cicd-pipeline2.png)
+![CICD Advantages](../ASSETS/TUTORIALS/RESTAPI/cicd-pipeline2.png)
 
 ### How Pipelines Work
 
