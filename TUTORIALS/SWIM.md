@@ -68,7 +68,7 @@ Overall, the combination of REST APIs and orchestration through ITSM platforms a
 
 The **Hierarchy, Roles** and **TAG's** in Cisco Catalyst Center play a critical role in aligning the right golden images for deployment:
 
-![Software Image Management](../ASSETS/SWIM-image-management.png?raw=true "Software Image Management")
+![Software Image Management](../ASSETS/TUTORIALS/SWIM/SWIM-image-management.png?raw=true "Software Image Management")
 
 - **Hierarchy**: This structure allows administrators to categorize devices based on their specific requirements and characteristics. Each part of the hierarchy can include different factors such as device type, and location, or function, enabling targeted deployments of golden images. In the image above you will notice hte Golden Image for the DEMO site. 
   
@@ -90,19 +90,19 @@ There are essentially three separate checks which can be completed when automati
 
 - **Image Readiness Check** which checks the target system readiness
 
-  ![Software Image Management](../ASSETS/SWIM-ReadinessCheck.png?raw=true "Software Image Management")
+  ![Software Image Management](../ASSETS/TUTORIALS/SWIM/SWIM-ReadinessCheck.png?raw=true "Software Image Management")
 
 - **Software Distribution** which carries out pre and post checks for distribution of the target system
 
-  ![Software Image Management](../ASSETS/SWIM-Distribution-Checks.png?raw=true "Software Image Management")
+  ![Software Image Management](../ASSETS/TUTORIALS/SWIM/SWIM-Distribution-Checks.png?raw=true "Software Image Management")
 
 - **Software Activation** which carries out pre and post checks for activation of the target system.
 
-  ![Software Image Management](../ASSETS/SWIM-Activation-Checks.png?raw=true "Software Image Management")
+  ![Software Image Management](../ASSETS/TUTORIALS/SWIM/SWIM-Activation-Checks.png?raw=true "Software Image Management")
 
 - **Custom Checks** which allow additional checks of the target system.
 
-  ![Software Image Management](../ASSETS/SWIM-Custom-Checks.png?raw=true "Software Image Management")
+  ![Software Image Management](../ASSETS/TUTORIALS/SWIM/SWIM-Custom-Checks.png?raw=true "Software Image Management")
 
 ---
 
@@ -128,7 +128,7 @@ During the Deployment of Software use Deploy and Activate the image after deploy
 
 This method is ideal for environments where downtime is minimal, and quick updates are necessary. During this type of upgrade both the **Distribution** and **Activation** would be completed in a **single workflow** as seen here.
 
-![Software Image Management](../ASSETS/SWIM-Distribution-Activation.png?raw=true "Software Image Management")
+![Software Image Management](../ASSETS/TUTORIALS/SWIM/SWIM-Distribution-Activation.png?raw=true "Software Image Management")
 
 ### 2. Deploying (Staging) and Activating the Image in Separate Workflows
 
@@ -139,11 +139,11 @@ This approach involves two distinct workflows: one for staging the image and ano
 
 This method provides greater control and flexibility, allowing administrators to ensure that the images are functioning correctly before activation. During this type of upgrade both the **Distribution** and **Activation** would be completed in a **separate workflows** as seen here. In the first workflow you can see we have **SKIPPED** **Activation** and thus the image is only **Distributed**.
 
-![Software Image Management](../ASSETS/SWIM-Distribution-Skip-Activation.png?raw=true "Software Image Management")
+![Software Image Management](../ASSETS/TUTORIALS/SWIM/SWIM-Distribution-Skip-Activation.png?raw=true "Software Image Management")
 
 In the second workflow you can see we complete the **Activation** of the image.
 
-![Software Image Management](../ASSETS/SWIM-Activation.png?raw=true "Software Image Management")
+![Software Image Management](../ASSETS/TUTORIALS/SWIM/SWIM-Activation.png?raw=true "Software Image Management")
 
 ---
 
