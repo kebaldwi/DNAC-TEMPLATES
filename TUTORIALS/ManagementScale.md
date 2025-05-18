@@ -133,13 +133,26 @@ When deciding to build a Disaster recovery site, remember that the DR site of Ca
 
 As depicted below:
 
-![DR 1:1](../ASSETS/TUTORIALS/MANAGEMENT/DR1-1.png?raw=true "Catalyst 1:1 DR")
-![DR 3:3](../ASSETS/TUTORIALS/MANAGEMENT/DR3-3.png?raw=true "Catalyst 3:3 DR")
+![DR 1:1](../ASSETS/TUTORIALS/MANAGEMENT/1-1DR.png?raw=true "Catalyst 1:1 DR")
+![DR 3:3](../ASSETS/TUTORIALS/MANAGEMENT/3-3DR.png?raw=true "Catalyst 3:3 DR")
 
 Deciding on whether to forgoe HA for DR, please refer to this chart to understand the Recovery Time Objectives to understand whether this will meet your needs, and consider the scale of the appliances. 
 
 ![DR HA Recovery Chart](../ASSETS/TUTORIALS/MANAGEMENT/HAvsDR.png?raw=true "Catalyst HA vs DR Comparison")
 
+### Geographic Deployments and Constraints
+
+Catalyst Center must be deployed within the following Latency Specifications. Exceeding these Specifications can result in abnormal management behaviour and customer frustration.
+
+![DR HA Recovery Chart](../ASSETS/TUTORIALS/MANAGEMENT/LATENCY.png?raw=true "Catalyst HA vs DR Comparison")
+
+When considering Geographic coverage sizing may be taken into account as in this deployment for example:
+
+![DR HA Recovery Chart](../ASSETS/TUTORIALS/MANAGEMENT/NATIONAL.png?raw=true "Catalyst HA vs DR Comparison")
+
+Or Globally:
+
+![DR HA Recovery Chart](../ASSETS/TUTORIALS/MANAGEMENT/GLOBAL.png?raw=true "Catalyst HA vs DR Comparison")
 
 ## Conclusion
 
