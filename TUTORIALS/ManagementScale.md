@@ -6,7 +6,7 @@ The **Cisco Catalyst Center** is a powerful platform designed to manage and opti
 
 A complex environment refers to a network infrastructure that involves multiple devices, configurations, and policies. These environments often include legacy systems, various hardware types, and differing compliance requirements, making management challenging. The Cisco Catalyst Center aims to simplify this complexity through centralized management and automation.
 
-![Managing Complex Environments](../ASSETS/COMPLEX.png?raw=true "Complex Environment")
+![Managing Complex Environments](../ASSETS/TUTORIALS/MANAGEMENT/COMPLEX.png?raw=true "Complex Environment")
 
 ### Brownfield vs Greenfield
 

@@ -57,7 +57,7 @@ Before Cisco Catalyst Center can automate the deployment we have to perform foll
    8. **Timezone** - *Timezone to be used in logging*
    9. **Message of Day** - *Banner displayed when you log into a device*
 
-      ![json](../ASSETS/TUTORIALS/DAYN/DesignSettings.png?raw=true "Import JSON")
+      ![json](../ASSETS/TUTORIALS/DAY0DAYN/DesignSettings.png?raw=true "Import JSON")
 
 3. **Device Credentials** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the credentials and configurations that can be pushed **(required)**:
    1. **CLI Credentials** - *Usernames, Passwords and Enable Passwords*
@@ -75,24 +75,24 @@ DayN templates can be regular or composite templates which serve the purpose of 
 Once you have built your onboarding template you then have to let **Cisco Catalyst Center** know where you want to use the template. We will assume at this point you have already built out the template for use. You would then follow the following steps:
    1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile**
 
-      ![json](../ASSETS/TUTORIALS/DAYN/NetworkProfile.png?raw=true "Import JSON")
+      ![json](../ASSETS/TUTORIALS/DAY0DAYN/NetworkProfile.png?raw=true "Import JSON")
    
    2. Select the type of device (ie Switching)
    3. Profile name 
    
-      ![json](../ASSETS/TUTORIALS/DAYN/NetworkProfileTabs.png?raw=true "Import JSON")
+      ![json](../ASSETS/TUTORIALS/DAY0DAYN/NetworkProfileTabs.png?raw=true "Import JSON")
    
    4. On the Onboarding Template page select device type **(optional)**
    
-      ![json](../ASSETS/TUTORIALS/DAYN/OnboardingDevice.png?raw=true "Import JSON")
+      ![json](../ASSETS/TUTORIALS/DAY0DAYN/OnboardingDevice.png?raw=true "Import JSON")
    
    5. On the Onboarding Template page select the template(s) to be used for onboarding **(optional)**
    
-      ![json](../ASSETS/TUTORIALS/DAYN/OnboardingTemplate.png?raw=true "Import JSON")
+      ![json](../ASSETS/TUTORIALS/DAY0DAYN/OnboardingTemplate.png?raw=true "Import JSON")
    
    6. On the DayN Template page select device type **(required)**
    
-      ![json](../ASSETS/TUTORIALS/DAYN/DayNtemplates.png?raw=true "Import JSON")
+      ![json](../ASSETS/TUTORIALS/DAY0DAYN/DayNtemplates.png?raw=true "Import JSON")
    
    7. On the DayN Template page select the template(s) to be used for Day N provisioning **(required)**
    8. Save the network profile
@@ -102,7 +102,7 @@ If the Network Profile is already deployed it can be edited at a later date to a
    1. Click edit next to the network profile Under *Design> Network Profiles*  
    2. On the DayN Template page select device type **(required)**
 
-      ![json](../ASSETS/TUTORIALS/DAYN/DayNtemplates.png?raw=true "Import JSON")
+      ![json](../ASSETS/TUTORIALS/DAY0DAYN/DayNtemplates.png?raw=true "Import JSON")
       
    3. On the DayN Template page select the template(s) to be used for Day N provisioning **(required)**
    4. Save the network profile
