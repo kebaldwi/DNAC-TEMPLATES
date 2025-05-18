@@ -8,7 +8,7 @@
 
 ## Cisco Catalyst Center
 
-![Cisco Catalyst Center Overview](./ASSETS/cisco_dnac.png)
+![Cisco Catalyst Center Overview](./ASSETS/COMMON/ROOT/cisco_catc.png)
 
 Cisco Catalyst Center is an intelligent Automation and Assurance platform for the campus. Cisco Catalyst Center enables, simplified Day-0 through Day-N management of switching, routing, and wireless infrastructure. It also improves operations with AI/ML-enhanced analytics to streamline troubleshooting and provide actionable insights into the health of the network and the quality of experience for users and applications. Here are some of the capabilities of Cisco Catalyst Center in their respective domains:
 
