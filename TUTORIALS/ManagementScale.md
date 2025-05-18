@@ -89,6 +89,58 @@ In brownfield environments, achieving compliance may require extensive auditing 
 
 ---
 
+## Catalyst Center Scaleability and Deployment
+
+### Form Factors 
+
+Catalyst Center is today offered in the following environments:
+
+* **Amazon Web Services (AWS)** - as a virtual appliance (sized to Medium HW Appliance Specifications)
+* **Virtual Appliance** - as a virtual appliance for VMware ESXi (sized to Medium HW Appliance Specifications)
+* **Hardware Appliances** - as dedicated Hardware Appliances (Medium, Large and Extra Large Sized Appliances)
+
+> [!WARNING]
+> Virtual Appliances cannot be joined to a cluster for HA nor can they be used in a DR scenario as they were designed to use VMwares software redundancy mechanisms.
+
+### Sizing of Appliances
+
+In this chart below you will see all the form factors that Catalyst Center is offered in along with the scale of those appliances in numerical form. Consider each of these numberss carefully and try not to build catalyst center to close to the numbers and allow for growth. Issues can occur when the appliance is overloaded.
+
+![SIZING Chart](../ASSETS/TUTORIALS/MANAGEMENT/SIZING.png?raw=true "Catalyst Center Sizing")
+
+> [!TIP]
+> In this chart please be aware that only in an Extra Large Appliance Cluster can we increase scalability to the numbers of devices and Endpoints. Issues can occur when the appliance is overloaded.
+
+### High Availability (HA) & Disaster Recovery (DR)
+
+If when building Catalyst Center **High Availability** is desired, then we should build the following:
+
+* For a Hardware Appliance Deployment, we should build a **3-Node Cluster**
+* For a Virtual Appliance, we will rely on VMwares Software Redundancy techniques.
+
+#### 3-Node Cluster
+
+When building a 3-node Cluster be aware that **10 ms** of latency is the requirement between nodes with Layer 2 adjacency. Building a 3-node Cluster which extends across between two DC's is not supported by TAC and not recommended by Cisco. 
+
+Extra Large Appliance 3-node Clusters can increase scalability to the numbers of devices and Endpoints that can be managed and so well placed Geo located Catalyst Centers can reduce the number of Catalyst Centers Deployed.
+
+### High Availability (HA) vs Disaster Recovery (DR)
+
+When deciding to build a Disaster recovery site, remember that the DR site of Catalyst Centers is not managing devices when in standby. The Deployment can be made in the following ways:
+
+* 1:1 DR
+* 3:3 DR
+
+As depicted below:
+
+![DR 1:1](../ASSETS/TUTORIALS/MANAGEMENT/DR1-1.png?raw=true "Catalyst 1:1 DR")
+![DR 3:3](../ASSETS/TUTORIALS/MANAGEMENT/DR3-3.png?raw=true "Catalyst 3:3 DR")
+
+Deciding on whether to forgoe HA for DR, please refer to this chart to understand the Recovery Time Objectives to understand whether this will meet your needs, and consider the scale of the appliances. 
+
+![DR HA Recovery Chart](../ASSETS/TUTORIALS/MANAGEMENT/HAvsDR.png?raw=true "Catalyst HA vs DR Comparison")
+
+
 ## Conclusion
 
 The Cisco Catalyst Center provides a comprehensive solution for managing complex network environments. By understanding the implications of brownfield and greenfield scenarios, organizations can better align their objectives with their network management strategies. Key objectives such as policy, compliance, consistency, reusability, and scalability can be effectively addressed, leading to a more efficient and reliable network infrastructure.
