@@ -116,25 +116,25 @@ Cisco Catalyst Center provides regular and composite configuration templates. CL
 
 1. From the Cisco Catalyst Center home page, choose Tools > Template Editor. By default, the Onboarding Configuration project is available for creating PnP templates. You can create your own custom projects. Templates created in custom projects are categorized as day-N templates.
 
-   ![json](../ASSETS/GoToTemplateEditor.png?raw=true "Import JSON")
+   ![json](../ASSETS/TUTORIALS/TEMPLATEEDITOR/GoToTemplateEditor.png?raw=true "Import JSON")
 
 2. In the tree pane, select the project under which you are creating templates, and click the gear icon > Add Templates. Alternately, click > Add Templates.
 
    > [!TIP] 
    > The template that you create for day 0 can also be applied for day N.
 
-   ![json](../ASSETS/CreateTemplate.png?raw=true "Import JSON")
+   ![json](../ASSETS/TUTORIALS/TEMPLATEEDITOR/CreateTemplate.png?raw=true "Import JSON")
 
 3. In the Add New Template window, click Regular Template.
 
-   ![json](../ASSETS/AddNewTemplate.png?raw=true "Import JSON")
+   ![json](../ASSETS/TUTORIALS/TEMPLATEEDITOR/AddNewTemplate.png?raw=true "Import JSON")
 
 4. In the Name text box, enter a unique name for the template.
 5. In the Project Name drop-down list, select the project. 
    - The drop-down list is enabled if you are navigating from the > Add Templates path. 
    - The drop-down list is disabled if you select a project and click the gear icon > Add Templates in the tree pane.
 
-   ![json](../ASSETS/SelectTemplateProject.png?raw=true "Import JSON")
+   ![json](../ASSETS/TUTORIALS/TEMPLATEEDITOR/SelectTemplateProject.png?raw=true "Import JSON")
 
 6. In the Description text box, enter a description for the template. **optional**
 7. In the Tags text box, enter an intuitive name to tag the templates. **optional** 
@@ -152,24 +152,24 @@ Cisco Catalyst Center provides regular and composite configuration templates. CL
       > [!TIP] 
       > Template Editor does not show device product IDs (PIDs); instead, it shows the device series and model description. You can use cisco.com to look up the device data sheet based on the PID, find the device series and model description, and choose the device type appropriately.
 
-   ![json](../ASSETS/SelectDeviceTemplate.png?raw=true "Import JSON")
+   ![json](../ASSETS/TUTORIALS/TEMPLATEEDITOR/SelectDeviceTemplate.png?raw=true "Import JSON")
 
 9. After choosing the device types, click Back to Add New Template.
 10. From the Software Type drop-down list, choose the software type: IOS, IOS-XE, IOS-XR, NX-OS, Cisco Controller, Wide Area Application Services, Adaptive Security Appliance, NFV- OS, and Others.
     - For more information on the Cisco Wireless Controller supported software versions and the minimum supported version, see Cisco Catalyst Center Supported Devices document.
     - For example, if you select IOS as the software type, the commands apply to all software types, including IOS-XE and IOS-XR. This value is used during provisioning to check whether the selected device conforms to the selection in the template.
 
-   ![json](../ASSETS/SelectOSTemplate.png?raw=true "Import JSON")
+   ![json](../ASSETS/TUTORIALS/TEMPLATEEDITOR/SelectOSTemplate.png?raw=true "Import JSON")
 
 11. In the Software Version text box, enter the software version. During provisioning, Cisco Catalyst Center checks to see if the selected device has the software version listed in the template. If there is a mismatch, the provision skips the template. **optional**
 12. Click Add. The template is created and shown in the tree view under the project you selected.
 
-   ![json](../ASSETS/AddTemplate.png?raw=true "Import JSON")
+   ![json](../ASSETS/TUTORIALS/TEMPLATEEDITOR/AddTemplate.png?raw=true "Import JSON")
 
 13. You can edit the template content by selecting the template that you created in the left menu. To edit the template content, see Edit Templates.
 14. In the Template Editor window, enter content for the template. You can use the Velocity Template Language (VTL) to write the content in the template.
 
-   ![json](../ASSETS/EditTemplateWindow.png?raw=true "Import JSON")
+   ![json](../ASSETS/TUTORIALS/TEMPLATEEDITOR/EditTemplateWindow.png?raw=true "Import JSON")
 
 15. To save the template content, from the Actions drop-down list, choose Save.
 16. To commit the template, from the Actions drop-down list, choose Commit. You can see only the committed templates in the network profile section.
