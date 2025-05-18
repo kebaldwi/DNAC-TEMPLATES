@@ -26,7 +26,7 @@ Before Cisco Catalyst Center can automate the deployment we have to complete a f
    8. **Timezone** - *Timezone to be used in logging*
    9. **Message of Day** - *Banner displayed when you log into a device*
 
-      ![json](../ASSETS/DesignSettings.png?raw=true "Import JSON")
+      ![json](../ASSETS/TUTORIALS/DAY0DAYN/DesignSettings.png?raw=true "Import JSON")
 
 3. **Device Credentials** can then be added hierarchically being either inherited and or overidden at each subordinate level throughout the site hierarchy. The following is a description of the credentials and configurations that can be applied **(required)**:
    1. **CLI Credentials** - *Usernames, Passwords and Enable Passwords*
@@ -34,7 +34,7 @@ Before Cisco Catalyst Center can automate the deployment we have to complete a f
    3. **HTTP(S) Credentials** - *HTTP(S) usernames and passwords for both Read and Write Access*
 4. **Image Repository** should be populated with the image of the network device you wish to deploy. You can import the image using the **+Import** link which will open a popup allowing you to choose a file from the local file system, or allow you to reference a URL for either HTTP or FTP transfer. You then indicate whether the file is Cisco or 3rd Party image and click import. Once the file is imported, you can go into the imported images section and assign it to a specific type of device. Select the image and mark it as golden for PnP to use it. **(required)**
 
-![json](../ASSETS/imported_images.png?raw=true "Import JSON")
+![json](../ASSETS/TUTORIALS/DAY0DAYN/imported_images.png?raw=true "Import JSON")
 
 ## Onboarding Templates
 
@@ -204,24 +204,24 @@ Both of these Templates have the settings necessary to bring up a Layer2 access 
 Once you have built your onboarding template you then have to let **Cisco Catalyst Center** know where you want it to apply it. We will assume at this point you have already created/imported the above template. You would then follow the following steps:
    1. Create network profile Under *Design> Network Profiles* you will select **+Add Profile**
 
-      ![json](../ASSETS/NetworkProfile.png?raw=true "Import JSON")
+      ![json](../ASSETS/TUTORIALS/DAY0DAYN/NetworkProfile.png?raw=true "Import JSON")
 
    2. Select the type of device (ie Switching)
    3. Profile name
 
-      ![json](../ASSETS/NetworkProfileTabs.png?raw=true "Import JSON")
+      ![json](../ASSETS/TUTORIALS/DAY0DAYN/NetworkProfileTabs.png?raw=true "Import JSON")
 
    4. On the Onboarding Template page select device type **(required)**
 
-      ![json](../ASSETS/OnboardingDevice.png?raw=true "Import JSON")
+      ![json](../ASSETS/TUTORIALS/DAY0DAYN/OnboardingDevice.png?raw=true "Import JSON")
 
    5. On the Onboarding Template page select the template(s) to be used for onboarding **(required)**
 
-      ![json](../ASSETS/OnboardingTemplate.png?raw=true "Import JSON")
+      ![json](../ASSETS/TUTORIALS/DAY0DAYN/OnboardingTemplate.png?raw=true "Import JSON")
 
    6. On the DayN Template page select device type **(optional)** (for more info [DayN Templates](./DayN.md))
 
-      ![json](../ASSETS/DayNtemplates.png?raw=true "Import JSON")
+      ![json](../ASSETS/TUTORIALS/DAY0DAYN/DayNtemplates.png?raw=true "Import JSON")
 
    7. On the DayN Template page select the template(s) to be used for Day N provisioning **(optional)** (for more info [DayN Templates](./DayN.md))
    8. Save the network profile
@@ -231,7 +231,7 @@ If the Network Profile is already deployed it can be edited at a later date to a
    1. Click edit next to the network profile Under *Design> Network Profiles*  
    2. On the Onboarding Template page select device type **(required)**
 
-      ![json](../ASSETS/DayNtemplates.png?raw=true "Import JSON")
+      ![json](../ASSETS/TUTORIALS/DAY0DAYN/DayNtemplates.png?raw=true "Import JSON")
 
    3. On the Onboarding Template page select the template(s) to be used for onboarding **(required)**
    4. Save the network profile
@@ -256,7 +256,7 @@ At this point you can claim the device putting it in a planned state for onboard
    
 At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete. After the device is completed it will appear in the device inventory after being sync'd with Cisco Catalyst Center.
 
-![json](../ASSETS/pnp-registered.png?raw=true "Import JSON")
+![json](../ASSETS/TUTORIALS/DAY0DAYN/pnp-registered.png?raw=true "Import JSON")
 
 ## Automating Claiming and Provisioning
 
