@@ -48,12 +48,16 @@ Additionally:
 Various sections will be covered within this github repository. Please use this menu as the main index for navigating content. 
 You will find various examples within the various folders of this repository, with supplied explanation readme files for reference.
 
-### Workflows
+### Design
+
+* [Management and Scale](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/ManagementScale.md#managing-complex-environments-with-cisco-catalyst-center-) - This section explains the overall Plug and Play Methodology
+* [Software Image Management (SWIM)](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/SWIM.md#software-image-management-swim-and-cisco-catalyst-center-) - This section explains how to use SWIM for staging and activating software
+
+### Automation Workflows
 
 * [PnP Workflow](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/PnP-Workflow.md#pnp-workflow) - This section explains the overall Plug and Play Methodology
 * [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Onboarding.md#onboarding-templates-and-flows) - This section will explain Onboarding Templates in Cisco Catalyst Center and their use in bringing various devices under Cisco Catalyst Center management
 * [DayN Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/DayN.md#day-n-templates-and-flows) - This section will explain how to use templates for ongoing (Day-N) changes to the network
-* [Software Image Management (SWIM)](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/SWIM.md#software-image-management-swim-and-cisco-catalyst-center-) - This section explains how to use SWIM for staging and activating software
 
 ### Templating
 
@@ -71,11 +75,10 @@ You will find various examples within the various folders of this repository, wi
 * [Jinja2 Scripting](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Jinja2.md#jinja2-scripting) - This section will dive into Jinja2 Language Template Scripting constructs and use cases
 * [Advanced Jinja2 Scripting](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/AdvancedJinja2.md#advanced-jinja2) - This section will dive into Advanced Jinja2 Language Template examples
 
-### Advanced Use Cases
+### Advanced Automation Use Cases
 
 * [Embedded Event Manager](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/EEM.md#EEM) - This section will dive into EEM (Embedded Event Manager) Scripting and various use cases 
 * [System Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/SystemVariables.md#dna-center-system-variables) - This section explains Cisco Catalyst Centers System Variables
-* [JSON YAML XML Explained](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/JsonYamlXml.md#json-yaml-xml-explained) - This section explains various DATA Structures and Formats
 
 ### Orchestration of Cisco Catalyst Center
 
@@ -88,7 +91,8 @@ You will find various examples within the various folders of this repository, wi
 
 * [Troubleshooting](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/TroubleShoot.md#Troubleshooting) - This section will dive into Troubleshooting Velocity based Template Constructs
 
-## Miscellaneous
+### Miscellaneous
+
 * [Certificates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Certificates.md) - This section will dive into creating a Certificate for Catalyst Center using OPENSSL.
 
 ## [LABS](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/LABS#dnac-template-labs-)
