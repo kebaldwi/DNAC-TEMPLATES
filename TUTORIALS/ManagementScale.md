@@ -136,21 +136,41 @@ As depicted below:
 ![DR 1:1](../ASSETS/TUTORIALS/MANAGEMENT/1-1DR.png?raw=true "Catalyst 1:1 DR")
 ![DR 3:3](../ASSETS/TUTORIALS/MANAGEMENT/3-3DR.png?raw=true "Catalyst 3:3 DR")
 
-Deciding on whether to forgoe HA for DR, please refer to this chart to understand the Recovery Time Objectives to understand whether this will meet your needs, and consider the scale of the appliances. 
+Deciding on whether to forgoe HA for DR, please refer to this chart to understand the Recovery Time Objectives to understand whether this will meet your needs, and consider the scale of the appliances. Notice that between the DR sites lower bandwidth is supported than between nodes in a cluster with the option of IPSEC encryption. The Recovery time though is about double that of HA.
 
 ![DR HA Recovery Chart](../ASSETS/TUTORIALS/MANAGEMENT/HAvsDR.png?raw=true "Catalyst HA vs DR Comparison")
 
 ### Geographic Deployments and Constraints
 
-Catalyst Center must be deployed within the following Latency Specifications. Exceeding these Specifications can result in abnormal management behaviour and customer frustration.
+Catalyst Center must be deployed within the following Latency Specifications. Exceeding these Specifications can result in abnormal management behaviour and customer frustration. Catalyst Center must be within **200 ms** of all managed equipment, except the Access Point managed by a controller as shown below.
 
 ![DR HA Recovery Chart](../ASSETS/TUTORIALS/MANAGEMENT/LATENCY.png?raw=true "Catalyst HA vs DR Comparison")
 
-When considering Geographic coverage sizing may be taken into account as in this deployment for example:
+#### National Deployment Model
+
+When considering Geographic coverage sizing may be taken into account as in this deployment for example, it might be that perhaps the following sizing needs to be accounted for:
+
+|Parameters     |East Coast|West Coast|Total   |
+|---------------|----------|----------|--------|
+|Network Devices| 7000     | 1500     | 8500   |
+|Access Points  | 16000    | 3000     | 19000  |
+|Endpoints      | 75000    | 25000    | 100000 |
+
+In this case while you could put all of this on 1 XL cluster probably, it would not be able to take any growth at all so standing up replacement network equipment could become a real problem as network refreshes occurred. Thus splitting the load on the East Cluster with a 3:3 HA set of XL appliances and DR, and on the West Cluster a 1:1 DR design with a set of L appliances is used. 
 
 ![DR HA Recovery Chart](../ASSETS/TUTORIALS/MANAGEMENT/NATIONAL.png?raw=true "Catalyst HA vs DR Comparison")
 
-Or Globally:
+#### Global Geo Diverse Deployment Model
+
+When considering Geographic coverage sizing may be taken into account as in this deployment for example, it might be that perhaps the following sizing needs to be accounted for:
+
+|Parameters     |AMER   |APJC   |EMEA   |Total   |
+|---------------|-------|-------|-------|--------|
+|Network Devices| 7000  | 1500  | 1500  | 10000  |
+|Access Points  | 16000 | 3000  | 3000  | 22000  |
+|Endpoints      | 75000 | 25000 | 25000 | 125000 |
+
+In this case the RTT over 200 ms to managed equipment across the WAN is an issue. While from a sizing point of view a smaller deployment may work Geographical constraints come into play. Thus splitting the load on the AMER Cluster with a 3:3 HA set of XL appliances and DR, and in both APJC and EMEA Clusters a 1:1 DR design with a set of L appliances is used. 
 
 ![DR HA Recovery Chart](../ASSETS/TUTORIALS/MANAGEMENT/GLOBAL.png?raw=true "Catalyst HA vs DR Comparison")
 
