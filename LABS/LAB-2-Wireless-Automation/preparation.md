@@ -79,7 +79,7 @@ The 9130AX Access Points are connected to both access switches and the ports are
 
 ## Lab Section 2 - DHCP & DNS Service Preparation
 
-In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server for the lab environment. The reasons for the configurations made here are detailed heavily in Lab B titled [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-B-Onboarding-Template/)
+In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server for the lab environment. The reasons for the configurations made here are detailed heavily in Lab 1 titled [LAB1-Wired-Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/module1-pnpprep.md)
 
 ### Step 1 - ***Configuring DHCP and DNS via Powershell***
 
