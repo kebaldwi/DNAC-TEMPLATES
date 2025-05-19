@@ -50,7 +50,7 @@ You will find various examples within the various folders of this repository, wi
 
 ### Design
 
-* [Management and Scale](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/ManagementScale.md#managing-complex-environments-with-cisco-catalyst-center-) - This section explains the overall Plug and Play Methodology
+* [Management and Scale](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/ManagementScale.md#managing-complex-environments-with-cisco-catalyst-center-) - This section explains general design, management and scale of Catalyst Center
 * [Software Image Management (SWIM)](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/SWIM.md#software-image-management-swim-and-cisco-catalyst-center-) - This section explains how to use SWIM for staging and activating software
 
 ### Automation Workflows
