@@ -1,5 +1,4 @@
-# CATC-TEMPLATES [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
-## (formerly DNAC-TEMPLATES)
+# CATC-TEMPLATES (aka DNAC-TEMPLATES) [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 
 > [!NOTE] 
 > Thank you for continuing your **support** of the **CATC-Template Repository** formerly known as the **DNAC-Template Repository** by your continued visits to the site. Over the past few months we have updated and redeveloped a lot of content and it is **reorganized** to be more consise, and to aide users in finding the relevant content easily. Over the next few months you will **notice more lab updates** to the repository, as we **add** additional content. The **folder structure** and **resources** have been **reorganized** for ease of use, and so that **[CODE](./CODE/README.md)** examples and **[TUTORIALS](TUTORIALS.md)** will be grouped together for ease of use. We hope this will help users to find the content they need in an easier manner.
