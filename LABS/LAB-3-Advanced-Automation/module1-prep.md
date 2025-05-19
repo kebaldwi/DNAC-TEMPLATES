@@ -43,43 +43,43 @@ The 9130AX Access Points are connected to both access switches and the ports are
 
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to Identity Services Engine (ISE) and select the hamburger menu icon to open the system menu.
 
-   ![json](./images/module0-preparation/ise-dashboard.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/ISE/ise-dashboard.png?raw=true "Import JSON")
 
 2. From the system menu under Administration select PxGrid Settings
 
-   ![json](./images/module0-preparation/ise-menu.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/ISE/ise-menu-pxgrid.png?raw=true "Import JSON")
 
 3. On the PxGrid Settings page select both of the available options and click Save to allow Catalyst Center to integrate.
 
-   ![json](./images/module0-preparation/ise-pxgrid-settings.png?raw=true "Import JSON")
-   ![json](./images/module0-preparation/ise-pxgrid-setup.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/ISE/ise-pxgrid-settings.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/ISE/ise-pxgrid-setup.png?raw=true "Import JSON")
 
 ### Step 2 - ***Catalyst Center and ISE Integration***
 
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon and navigate to the System > Settings menu item.
 
-   ![json](./images/module0-preparation/dnac-system-settings.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/CATC/catc-menu-systemsettings.png?raw=true "Import JSON")
 
 2. Within the System Settings page navigate down the list on the left and select the Authentication and Policy Server section.
 
-   ![json](./images/module0-preparation/dnac-system-settings-aaa.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/CATC/catc-systemsettings-aaa.png?raw=true "Import JSON")
 
 3. On the page select from the dropdown ISE to configure ISE integration.
 
-   ![json](./images/module0-preparation/dnac-system-settings-aaa-ise.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/CATC/catc-systemsettings-ise.png?raw=true "Import JSON")
 
 4. Enter the information as seen on the page and click save.
 
-   ![json](./images/module0-preparation/dnac-system-settings-aaa-ise-config.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/CATC/catc-systemsettings-ise-config.png?raw=true "Import JSON")
 
 5. A popup will appear as the ISE node is using an untrusted SelfSigned Certificate. For lab purposes Accept the certificate, this may appear a couple of times as shown.
 
-   ![json](./images/module0-preparation/dnac-system-settings-aaa-ise-trust.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/CATC/catc-systemsettings-ise-trust.png?raw=true "Import JSON")
 
 6. You will see the the various stages of integration proceed and finally a success message as shown below.
 
-   ![json](./images/module0-preparation/dnac-system-settings-aaa-ise-done.png?raw=true "Import JSON")
-   ![json](./images/module0-preparation/dnac-system-settings-aaa-ise-complete.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/CATC/catc-systemsettings-ise-done.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/CATC/catc-systemsettings-ise-complete.png?raw=true "Import JSON")
 
 ## Lab Section 2 - DHCP & DNS Service Preparation
 
@@ -91,15 +91,15 @@ In this section we will prepare Domain Name System (DNS) and Dynamic Host Config
 2. Once downloaded, locate the file in the download folder.
 3. Right click on the file and run with powershell.
 
-   ![json](./images/module0-preparation/Powershell-Run.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/AD/Powershell-Run.png?raw=true "Import JSON")
 
 4. You may see a security warning. If you do accept it by entering **Y**.
 
-   ![json](./images/module0-preparation/Powershell-Security.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/AD/Powershell-Security.png?raw=true "Import JSON")
 
 At this point all the DNS and DHCP configuration on the ***windows server*** will be generated.
 
-   ![json](./images/module0-preparation/DNS-DHCP.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/AD/DNS-DHCP.png?raw=true "Import JSON")
 
 ## Lab Section 3 - Catalyst Center Design Preparation
 
