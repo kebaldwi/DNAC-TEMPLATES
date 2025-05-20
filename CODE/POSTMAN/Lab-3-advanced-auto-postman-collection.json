@@ -1,0 +1,2011 @@
+{
+	"info": {
+		"_postman_id": "a8c47c1a-e83c-4a6a-9175-82fee4ceb85b",
+		"name": "Catalyst Center LAB 3 - Build Advanced Automation LAB Environment",
+		"description": "This is the instructors collection to set up the dCLOUD environment for Lab 3 Advanced Automation Lab. This collection will set up the following hierarchy.\n\nGlobal > DNAC Template Labs > Building > Floor 1  \n\nThen configure the following:\n\n1. settings, and credentials,\n    \n2. build a discovery task,\n    \n3. import a project complete with templates\n    \n4. deploy the templates to the switches\n    \n5. delete the c9300-2 from the inventory\n    \n6. deploy a template to the ISR4331",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13375428",
+		"_collection_link": "https://dark-capsule-39992.postman.co/workspace/1517161e-994a-49c8-afbd-b2afb061a0b7/collection/13375428-a8c47c1a-e83c-4a6a-9175-82fee4ceb85b?action=share&source=collection_link&creator=13375428"
+	},
+	"item": [
+		{
+			"name": "CC Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"if (jsonData.Token) {\r",
+							"    pm.test(\"Token acquired\",() => {pm.expect(pm.response.text()).to.include(\"Token\");});\r",
+							"    pm.environment.set(\"TOKEN\", jsonData[\"Token\"]); \r",
+							"}\r",
+							"else {\r",
+							"    pm.test(\"Token not acquired\",() => {pm.expect(pm.response.text()).to.include(\"Token\");});\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
+							"}\r",
+							"pm.execution.setNextRequest(\"Get SiteIDs PreCheck\");\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{CCpwd}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{CCuser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/system/api/v1/auth/token",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"system",
+						"api",
+						"v1",
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get SiteIDs PreCheck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());",
+							"var s = \"/\";",
+							"var p = pm.environment.get(\"HierarchyParent\");",
+							"var a = pm.environment.get(\"HierarchyArea\");",
+							"var b = pm.environment.get(\"HierarchyBldg\");",
+							"var f = pm.environment.get(\"HierarchyFloor\");",
+							"var FLAG = 0;",
+							"setTimeout(function(){}, [5000]);",
+							"if (f === \"\"){",
+							"    if (a !== \"\"){",
+							"        var area = p + s + a;",
+							"        for (var i = 0;i<jsonData.response.length;i++) {",
+							"            var FLAG = 1;",
+							"            if (jsonData.response[i].siteNameHierarchy === area){",
+							"                var FLAG = 0;                ",
+							"                break;",
+							"            }",
+							"        }",
+							"    }",
+							"}",
+							"else{",
+							"    var area = p + s + a;",
+							"    var bldg = p + s + a + s + b;",
+							"    var floor = p + s + a + s + b + s + f;",
+							"    for (var i = 0;i<jsonData.response.length;i++) {",
+							"        var FLAG = 1;",
+							"        if (jsonData.response[i].siteNameHierarchy === area){",
+							"            var FLAG = 2;",
+							"            for (var i = 0;i<jsonData.response.length;i++) {",
+							"                if (jsonData.response[i].siteNameHierarchy === bldg){",
+							"                    var FLAG = 3;",
+							"                    for (var i = 0;i<jsonData.response.length;i++) {",
+							"                        if (jsonData.response[i].siteNameHierarchy === floor){",
+							"                            var FLAG = 0;",
+							"                            break;",
+							"                        }",
+							"                    }",
+							"                    break;",
+							"                }",
+							"            }",
+							"            break;",
+							"        }",
+							"    }",
+							"}",
+							"",
+							"if (FLAG === 3){",
+							"    pm.execution.setNextRequest(\"Create Floor\");",
+							"}",
+							"else if (FLAG === 2){",
+							"    pm.execution.setNextRequest(\"Create Building\");",
+							"}",
+							"else if (FLAG === 1){",
+							"    pm.execution.setNextRequest(\"Create Area\");",
+							"}",
+							"else{",
+							"    pm.execution.setNextRequest(\"null\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/site",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"site"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Area",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"setTimeout(function(){}, [25000]);\r",
+							"if ((jsonData.executionId) && (jsonData.message == \"The request has been accepted for execution\")) {\r",
+							"    if ( !(pm.environment.get(\"HierarchyFloor\")) ){\r",
+							"        pm.execution.setNextRequest(\"null\");\r",
+							"    }\r",
+							"    else if ( (pm.environment.get(\"HierarchyFloor\")) ){\r",
+							"        pm.execution.setNextRequest(\"Create Building\");\r",
+							"    }\r",
+							"    pm.test(\"Area created\",() => {pm.expect(pm.response.text()).to.include(\"The request has been accepted for execution\");});\r",
+							"}\r",
+							"else {\r",
+							"    pm.test(\"Area not created\",() => {pm.expect(pm.response.text()).to.include(\"The request has been accepted for execution\");});\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
+							"}\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let HierarchyParent = pm.environment.get(\"HierarchyParent\");\r",
+							"let HierarchyArea = pm.environment.get(\"HierarchyArea\");\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"area\",\r\n    \"site\": {\r\n        \"area\": {\r\n            \"name\": \"{{HierarchyArea}}\",\r\n            \"parentName\": \"{{HierarchyParent}}\"\r\n        }\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/site",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"site"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Building",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"setTimeout(function(){}, [25000]);\r",
+							"if ((jsonData.executionId) && (jsonData.message == \"The request has been accepted for execution\")) {\r",
+							"  pm.test(\"Building created\",() => {pm.expect(pm.response.text()).to.include(\"The request has been accepted for execution\");});\r",
+							"}\r",
+							"else {\r",
+							"  pm.test(\"Building not created\",() => {pm.expect(pm.response.text()).to.include(\"The request has been accepted for execution\");});\r",
+							"  pm.execution.setNextRequest(\"null\");\r",
+							"}\r",
+							"pm.execution.setNextRequest(\"Create Floor\")\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let HierarchyParent = pm.environment.get(\"HierarchyParent\");\r",
+							"let HierarchyArea = pm.environment.get(\"HierarchyArea\");\r",
+							"let HierarchyBldg = pm.environment.get(\"HierarchyBldg\");\r",
+							"let HierarchyBldgAddress = pm.environment.get(\"HierarchyBldgAddress\");\r",
+							"let BldgLongitude = pm.environment.get(\"BldgLongitude\");\r",
+							"let BldgLatitude = pm.environment.get(\"BldgLatitude\");\r",
+							"let BldgAddressCountry = pm.environment.get(\"BldgAddressCountry\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"building\",\r\n    \"site\": {\r\n        \"building\": {\r\n            \"name\": \"{{HierarchyBldg}}\",\r\n            \"address\": \"{{HierarchyBldgAddress}}\",\r\n            \"parentName\": \"{{HierarchyParent}}/{{HierarchyArea}}\",\r\n            \"latitude\": \"{{BldgLatitude}}\",\r\n            \"longitude\": \"{{BldgLongitude}}\",\r\n            \"country\": \"{{BldgAddressCountry}}\"\r\n        }\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/site",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"site"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Floor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"setTimeout(function(){}, [25000]);\r",
+							"if ((jsonData.executionId) && (jsonData.message == \"The request has been accepted for execution\")) {\r",
+							"    pm.test(\"Floor created\",() => {pm.expect(pm.response.text()).to.include(\"The request has been accepted for execution\");});\r",
+							"}\r",
+							"else {\r",
+							"    pm.test(\"Floor not created\",() => {pm.expect(pm.response.text()).to.include(\"The request has been accepted for execution\");});\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
+							"}\r",
+							"pm.execution.setNextRequest(\"Get Global SiteID\")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let HierarchyParent = pm.environment.get(\"HierarchyParent\");\r",
+							"let HierarchyArea = pm.environment.get(\"HierarchyArea\");\r",
+							"let HierarchyBldg = pm.environment.get(\"HierarchyBldg\");\r",
+							"let HierarchyFloor = pm.environment.get(\"HierarchyFloor\");\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"floor\",\r\n    \"site\": {\r\n        \"floor\": {\r\n            \"name\": \"{{HierarchyFloor}}\",\r\n            \"parentName\": \"{{HierarchyParent}}/{{HierarchyArea}}/{{HierarchyBldg}}\",\r\n            \"rfModel\": \"Cubes And Walled Offices\",\r\n            \"width\": \"100\",\r\n            \"length\": \"100\",\r\n            \"height\": \"10\"\r\n        }\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/site",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"site"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Global SiteID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"for (var i = 0;i<jsonData.response.length;i++) {\r",
+							"if (jsonData.response[i].name == pm.environment.get(\"HierarchyParent\")) {\r",
+							"pm.environment.set(\"GlobalSiteId\", jsonData[\"response\"][i][\"id\"]);\r",
+							"pm.test(\"Global Site Id acquired\", function () {pm.expect(true).to.be.true;}) \r",
+							"}\r",
+							"else if (jsonData.response[i].name == pm.environment.get(\"HierarchyArea\")) {\r",
+							"pm.environment.set(\"AreaSiteId\", jsonData[\"response\"][i][\"id\"]);\r",
+							"pm.test(\"Area Site Id acquired\", function () {pm.expect(true).to.be.true;}) \r",
+							"}\r",
+							"else if (jsonData.response[i].name == pm.environment.get(\"HierarchyBldg\")) {\r",
+							"pm.environment.set(\"BuildingSiteId\", jsonData[\"response\"][i][\"id\"]); \r",
+							"pm.test(\"Building Site Id acquired\", function () {pm.expect(true).to.be.true;}) \r",
+							"} \r",
+							"else if (jsonData.response[i].name == pm.environment.get(\"HierarchyFloor\")) {\r",
+							"pm.environment.set(\"FloorSiteId\", jsonData[\"response\"][i][\"id\"]);\r",
+							"pm.test(\"Floor Site Id acquired\", function () {pm.expect(true).to.be.true;}) \r",
+							"}\r",
+							"}\r",
+							"setTimeout(function(){}, [25000]);\r",
+							"pm.execution.setNextRequest(\"Create Settings\")\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"strictSSL": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/site",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"site"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Settings",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"if ((jsonData.executionId) && (jsonData.message == \"The request has been accepted for execution\")) {\r",
+							"  pm.test(\"Global settings created\", function () {pm.expect(true).to.be.true;})\r",
+							"}\r",
+							"else {\r",
+							"  pm.test(\"Global settings not created\", function () {pm.expect(false).to.be.false;})\r",
+							"  pm.execution.setNextRequest(\"null\");\r",
+							"}\r",
+							"setTimeout(function(){}, [15000]);\r",
+							"pm.execution.setNextRequest(\"Create Credentials\")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"domainName\");\r",
+							"pm.environment.get(\"dnsServer1\");\r",
+							"pm.environment.get(\"dnsServer2\");\r",
+							"pm.environment.get(\"dhcpServer\");\r",
+							"pm.environment.get(\"syslogServer\");\r",
+							"pm.environment.get(\"syslogBoolean\");\r",
+							"pm.environment.get(\"netflowServer\");\r",
+							"pm.environment.get(\"netflowPort\");\r",
+							"pm.environment.get(\"netflowBoolean\");\r",
+							"pm.environment.get(\"ntpServer\");\r",
+							"pm.environment.get(\"timeZone\");\r",
+							"pm.environment.get(\"aaaEndpointServer\");\r",
+							"pm.environment.get(\"aaaEndpointIpAddress\");\r",
+							"pm.environment.get(\"aaaEndpointProtocol\");\r",
+							"pm.environment.get(\"aaaEndpointSharedSecret\");\r",
+							"pm.environment.get(\"bannerMessage\");\r",
+							"pm.environment.get(\"bannerBoolean\");\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"settings\": {\r\n        \"dhcpServer\": [\r\n            \"{{dhcpServer}}\"\r\n        ],\r\n        \"dnsServer\": {\r\n            \"domainName\": \"{{domainName}}\",\r\n            \"primaryIpAddress\": \"{{dnsServer1}}\"\r\n        },\r\n           \"syslogServer\": {\r\n            \"ipAddresses\": [\r\n                \"{{syslogServer}}\"\r\n            ],\r\n            \"configureDnacIP\": {{syslogBoolean}}\r\n        },\r\n        \"snmpServer\": {\r\n            \"ipAddresses\": [\r\n                \"{{snmpServer}}\"\r\n            ],\r\n            \"configureDnacIP\": {{snmpBoolean}}\r\n        },\r\n        \"netflowcollector\": {\r\n            \"ipAddress\": \"{{netflowServer}}\",\r\n            \"port\": {{netflowPort}},\r\n            \"configureDnacIP\": {{netflowBoolean}}\r\n        },\r\n        \"ntpServer\": [\r\n            \"{{ntpServer}}\"\r\n        ],\r\n        \"timezone\": \"{{timeZone}}\",\r\n        \"messageOfTheday\": {\r\n            \"bannerMessage\": \"{{bannerMessage}}\",\r\n            \"retainExistingBanner\": \"{{bannerBoolean}}\"\r\n\t\t},\r\n\t\t\"clientAndEndpoint_aaa\": {\r\n\t\t    \"servers\": \"{{aaaEndpointServer}}\",\r\n\t\t    \"ipAddress\": \"{{aaaEndpointIpAddress}}\",\r\n\t\t    \"network\": \"{{aaaEndpointIpAddress}}\",\r\n\t\t    \"protocol\": \"{{aaaEndpointProtocol}}\",\r\n            \"sharedSecret\": \"{{aaaEndpointSharedSecret}}\"\r\n\t\t}    \r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/network/{{GlobalSiteId}}",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"network",
+						"{{GlobalSiteId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Credentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"if ((jsonData.executionId) && (jsonData.message == \"The request has been accepted for execution\")) {\r",
+							"  pm.test(\"Credentials created\", function () {pm.expect(true).to.be.true;})\r",
+							"}\r",
+							"else {\r",
+							"  pm.test(\"Credentials not created\", function () {pm.expect(true).to.be.false;})\r",
+							"  pm.execution.setNextRequest(\"null\");\r",
+							"}\r",
+							"setTimeout(function(){}, [25000]);\r",
+							"pm.execution.setNextRequest(\"Create Netconf Credential\")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"DcloudUser\");\r",
+							"pm.environment.get(\"DcloudPwd\");\r",
+							"pm.environment.get(\"DcloudSnmpRO\");\r",
+							"pm.environment.get(\"DcloudSnmpRO-Desc\");\r",
+							"pm.environment.get(\"DcloudSnmpRW\");\r",
+							"pm.environment.get(\"DcloudSnmpRW-Desc\");\r",
+							"pm.environment.get(\"DcloudNetconf\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"settings\": {\r\n        \"cliCredential\": [\r\n            {\r\n                \"description\": \"{{DcloudUser}}\",\r\n                \"username\": \"{{DcloudUser}}\",\r\n                \"password\": \"{{DcloudPwd}}\",\r\n                \"enablePassword\": \"{{DcloudPwd}}\"\r\n            }\r\n        ],\r\n        \"snmpV2cRead\": [\r\n            {\r\n                \"description\": \"{{DcloudSnmpRO-Desc}}\",\r\n                \"readCommunity\": \"{{DcloudSnmpRO}}\"\r\n            }\r\n        ],\r\n        \"snmpV2cWrite\": [\r\n            {\r\n                \"description\": \"{{DcloudSnmpRW-Desc}}\",\r\n                \"writeCommunity\": \"{{DcloudSnmpRW}}\"\r\n            }\r\n        ]\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/device-credential",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"device-credential"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Netconf Credential",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"if ((jsonData.executionId) && (jsonData.response.include(\"taskId\"))) {\r",
+							"  pm.test(\"NETCONF Credential created\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
+							"}\r",
+							"else {\r",
+							"  pm.test(\"NETCONF Credential created\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
+							"  pm.execution.setNextRequest(\"null\");\r",
+							"}\r",
+							"setTimeout(function(){}, [25000]);\r",
+							"pm.execution.setNextRequest(\"Get Credentials\")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"DcloudUser\");\r",
+							"pm.environment.get(\"DcloudPwd\");\r",
+							"pm.environment.get(\"DcloudSnmpRO\");\r",
+							"pm.environment.get(\"DcloudSnmpRO-Desc\");\r",
+							"pm.environment.get(\"DcloudSnmpRW\");\r",
+							"pm.environment.get(\"DcloudSnmpRW-Desc\");\r",
+							"pm.environment.get(\"DcloudNetconf\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"description\": \"NETCONF\",\r\n        \"netconfPort\": \"{{DcloudNetconf}}\"\r\n    }\r\n]"
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/global-credential/netconf",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"global-credential",
+						"netconf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Credentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"for (var i = 0;i<jsonData.snmp_v2_read.length;i++) {\r",
+							"if (jsonData.snmp_v2_read[i].description == pm.environment.get(\"DcloudSnmpRO-Desc\")) {\r",
+							"  pm.environment.set(\"GlobalCredentialSnmpRO\", jsonData[\"snmp_v2_read\"][i][\"id\"]);\r",
+							"  pm.test(\"SNMP RO credentials acquired\", function () {pm.expect(true).to.be.true;});\r",
+							"}\r",
+							"}\r",
+							"for (var i = 0;i<jsonData.snmp_v2_write.length;i++) {\r",
+							"if (jsonData.snmp_v2_write[i].description == pm.environment.get(\"DcloudSnmpRW-Desc\")) {\r",
+							"  pm.environment.set(\"GlobalCredentialSnmpRW\", jsonData[\"snmp_v2_write\"][i][\"id\"]);\r",
+							"  pm.test(\"SNMP RW credentials acquired\", function () {pm.expect(true).to.be.true;});\r",
+							"}\r",
+							"}\r",
+							"for (var i = 0;i<jsonData.cli.length;i++) {\r",
+							"if (jsonData.cli[i].username == pm.environment.get(\"DcloudUser\")) {\r",
+							"  pm.environment.set(\"GlobalCredentialCli\", jsonData[\"cli\"][i][\"id\"]);\r",
+							"  pm.test(\"CLI credentials acquired\", function () {pm.expect(true).to.be.true;});\r",
+							"}\r",
+							"}\r",
+							"setTimeout(function(){}, [15000]);\r",
+							"pm.execution.setNextRequest(\"Assign Credentials\")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/device-credential",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"device-credential"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign Credentials",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());",
+							"if ((jsonData.executionId) && (jsonData.message == \"The request has been accepted for execution\")) {",
+							"  pm.test(\"Credentials assigned\", function () {pm.expect(true).to.be.true;});",
+							"}",
+							"else {",
+							"  pm.test(\"Credentials not assigned\", function () {pm.expect(true).to.be.false;});",
+							"  pm.execution.setNextRequest(\"null\");",
+							"}",
+							"setTimeout(function(){}, [25000]);",
+							"pm.execution.setNextRequest(\"Get Global Credentials NETCONF\")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"GlobalCredentialCli\");\r",
+							"pm.environment.get(\"GlobalCredentialSnmpRO\");\r",
+							"pm.environment.get(\"GlobalCredentialSnmpRW\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cliId\": \"{{GlobalCredentialCli}}\",\r\n    \"snmpV2ReadId\": \"{{GlobalCredentialSnmpRO}}\",\r\n    \"snmpV2WriteId\": \"{{GlobalCredentialSnmpRW}}\"\r\n}"
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/credential-to-site/{{GlobalSiteId}}",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"credential-to-site",
+						"{{GlobalSiteId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Global Credentials NETCONF",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"for (var i = 0;i<jsonData.response.length;i++) {\r",
+							"if (jsonData.response[i].netconfPort == pm.environment.get(\"DcloudNetconf\")) {\r",
+							"  pm.environment.set(\"GlobalCredentialNetconf\", jsonData[\"response\"][i][\"id\"]);\r",
+							"  pm.test(\"NetConf credentials acquired\", function () {pm.expect(true).to.be.true;});\r",
+							"}\r",
+							"}\r",
+							"pm.environment.set(\"FLAG\", \"0\");\r",
+							"setTimeout(function(){}, [5000]);\r",
+							"pm.execution.setNextRequest(\"Create Discovery\")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/global-credential?credentialSubType=NETCONF",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"global-credential"
+					],
+					"query": [
+						{
+							"key": "credentialSubType",
+							"value": "NETCONF",
+							"description": "CLI / SNMPV2_READ_COMMUNITY / SNMPV2_WRITE_COMMUNITY"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Discovery",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"GlobalCredentialCli\");\r",
+							"pm.environment.get(\"GlobalCredentialSnmpRO\");\r",
+							"pm.environment.get(\"GlobalCredentialSnmpRW\");\r",
+							"pm.environment.get(\"GlobalCredentialNetconf\");\r",
+							"var d = pm.environment.get(\"DeviceList\");\r",
+							"var a = pm.environment.get(\"HierarchyArea\");\r",
+							"var b = pm.environment.get(\"HierarchyBldg\");\r",
+							"var f = pm.environment.get(\"HierarchyFloor\");\r",
+							"var s = \"/\";\r",
+							"var ds = d.split(\",\");\r",
+							"var DeviceString = \"\";\r",
+							"var name = a + s + b + s + f;\r",
+							"var name = name.replace(/\\s/g, '');\r",
+							"var dt1 = \"Range\";\r",
+							"var dt2 = \"Multi Range\";\r",
+							"pm.environment.set(\"DiscoveryName\", name)\r",
+							"if (ds.length > 1){\r",
+							"    pm.environment.set(\"DiscoveryType\", dt2);\r",
+							"    for (var i = 0;i<ds.length;i++) {\r",
+							"        if (i === 0){\r",
+							"            DeviceString = DeviceString + ds[i] + \"-\" + ds[i];\r",
+							"        }\r",
+							"        else{\r",
+							"            DeviceString = DeviceString + \",\" + ds[i] + \"-\" + ds[i];\r",
+							"        }\r",
+							"    }\r",
+							"}\r",
+							"else{\r",
+							"    pm.environment.set(\"DiscoveryType\", dt1);\r",
+							"    DeviceString = DeviceString + d + \"-\" + d;\r",
+							"}\r",
+							"pm.environment.set(\"DeviceRange\", (DeviceString));\r",
+							"pm.environment.get(\"DeviceRange\");\r",
+							"pm.environment.get(\"DiscoveryType\");\r",
+							"pm.environment.get(\"DiscoveryName\");\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"if (jsonData.response.taskId) {\r",
+							"    pm.test(\"Discovery created\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
+							"    pm.environment.set(\"DiscoveryTaskId\", jsonData[\"response\"][\"taskId\"]);\r",
+							"    setTimeout(function(){}, [240000]);\r",
+							"}\r",
+							"else {\r",
+							"    pm.test(\"Discovery created\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
+							"}\r",
+							"pm.execution.setNextRequest(\"Get Discovery From Task\")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{DiscoveryName}}\",\r\n    \"discoveryType\": \"{{DiscoveryType}}\",\r\n    \"ipAddressList\": \"{{DeviceRange}}\",\r\n    \"protocolOrder\": \"ssh\",\r\n    \"timeout\": 5,\r\n    \"retry\": 3,\r\n    \"globalCredentialIdList\": [\r\n        \"{{GlobalCredentialCli}}\",\r\n        \"{{GlobalCredentialSnmpRO}}\",\r\n        \"{{GlobalCredentialSnmpRW}}\",\r\n        \"{{GlobalCredentialNetconf}}\"\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/discovery",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"discovery"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Discovery From Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"if (jsonData.response.progress) {\r",
+							"    pm.test(\"Discovery Id acquired\",() => {pm.expect(pm.response.text()).to.include(\"progress\");});\r",
+							"    pm.environment.set(\"DiscoveryId\", jsonData[\"response\"][\"progress\"]); \r",
+							"}\r",
+							"else {\r",
+							"    pm.test(\"Discovery Id not acquired\",() => {pm.expect(pm.response.text()).to.include(\"progress\");});\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
+							"}\r",
+							"setTimeout(function(){}, [60000]);\r",
+							"pm.execution.setNextRequest(\"Get Discovery Devices\")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/task/{{DiscoveryTaskId}}",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"task",
+						"{{DiscoveryTaskId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Discovery Devices",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"var DeviceIP = \"\";\r",
+							"pm.environment.unset(\"DeviceIP\");\r",
+							"for (var i = 0;i<jsonData.response.length;i++) {\r",
+							"    if (i === 0){\r",
+							"        if (jsonData.response[i].managementIpAddress) {\r",
+							"            pm.test(\"Device IP acquired\",() => {pm.expect(pm.response.text()).to.include(\"managementIpAddress\");});\r",
+							"            DeviceIP = DeviceIP + (jsonData.response[i].managementIpAddress);\r",
+							"        }\r",
+							"        else {\r",
+							"            pm.test(\"Device IP not acquired\",() => {pm.expect(pm.response.text()).to.include(\"managementIpAddress\");});\r",
+							"            pm.execution.setNextRequest(\"null\");\r",
+							"            break;\r",
+							"        }\r",
+							"    }\r",
+							"    else {\r",
+							"        if (jsonData.response[i].managementIpAddress) {\r",
+							"            pm.test(\"Device IP acquired\",() => {pm.expect(pm.response.text()).to.include(\"managementIpAddress\");});\r",
+							"            DeviceIP = DeviceIP + \",\" + (jsonData.response[i].managementIpAddress);\r",
+							"        }\r",
+							"        else {\r",
+							"            pm.test(\"Device IP not acquired\",() => {pm.expect(pm.response.text()).to.include(\"managementIpAddress\");});\r",
+							"            pm.execution.setNextRequest(\"null\");\r",
+							"            break;\r",
+							"        }\r",
+							"    }\r",
+							"}\r",
+							"pm.environment.set(\"DeviceIP\", DeviceIP);\r",
+							"setTimeout(function(){}, [1000]);\r",
+							"pm.execution.setNextRequest(\"Get SiteIDs\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/discovery/{{DiscoveryId}}/network-device",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"discovery",
+						"{{DiscoveryId}}",
+						"network-device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get SiteIDs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());",
+							"var s = \"/\";",
+							"var p = pm.environment.get(\"HierarchyParent\");",
+							"var a = pm.environment.get(\"HierarchyArea\");",
+							"var b = pm.environment.get(\"HierarchyBldg\");",
+							"var f = pm.environment.get(\"HierarchyFloor\");",
+							"var parent = p;",
+							"var area = p + s + a;",
+							"var bldg = p + s + a + s + b;",
+							"var floor = p + s + a + s + b + s + f;",
+							"for (var i = 0;i<jsonData.response.length;i++) {",
+							"  if (jsonData.response[i].siteNameHierarchy === floor) {",
+							"    pm.environment.set(\"FloorSiteId\", jsonData[\"response\"][i][\"id\"]);",
+							"    pm.environment.set(\"TargetSiteId\", jsonData[\"response\"][i][\"id\"]);",
+							"    pm.test(\"Floor Site Id acquired\",() => {pm.expect(pm.response.text()).to.include(pm.environment.get(\"HierarchyFloor\"));});",
+							"  }",
+							"  else if (jsonData.response[i].siteNameHierarchy === bldg) {",
+							"    pm.environment.set(\"BuildingSiteId\", jsonData[\"response\"][i][\"id\"]); ",
+							"    pm.test(\"Bldg Site Id acquired\",() => {pm.expect(pm.response.text()).to.include(pm.environment.get(\"HierarchyBldg\"));});",
+							"  } ",
+							"  else if (jsonData.response[i].siteNameHierarchy === area) {",
+							"    pm.environment.set(\"AreaSiteId\", jsonData[\"response\"][i][\"id\"]); ",
+							"    pm.test(\"Area Site Id acquired\",() => {pm.expect(pm.response.text()).to.include(pm.environment.get(\"HierarchyArea\"));});",
+							"  }",
+							"  else if (jsonData.response[i].siteNameHierarchy === parent) {",
+							"    pm.environment.set(\"GlobalSiteId\", jsonData[\"response\"][i][\"id\"]);",
+							"    pm.test(\"Global Site Id acquired\",() => {pm.expect(pm.response.text()).to.include(pm.environment.get(\"HierarchyParent\"));});",
+							"  }",
+							"}",
+							"setTimeout(function(){}, [25000]);",
+							"pm.execution.setNextRequest(\"Get CC Version\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/site",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"site"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get CC Version",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());",
+							"var displayVersion = jsonData.response.displayVersion;",
+							"var installedVersion = displayVersion.split('-');",
+							"var version_array = installedVersion[0].split(\".\");",
+							"if ((parseInt(version_array[0]) >= 2) && (parseInt(version_array[1]) >= 3) && (parseInt(version_array[2]) >= 5)) {",
+							"    pm.environment.set(\"ASSIGN-API\", \"intent/api/v1/assign-device-to-site/\");",
+							"}",
+							"else {",
+							"    pm.environment.set(\"ASSIGN-API\", \"system/api/v1/site/\");",
+							"} ",
+							"var selectedAPI = pm.environment.get(\"ASSIGN-API\");",
+							"console.log(\"Installed Version: \" + installedVersion[0]);",
+							"console.log(\"Selected API: \" + selectedAPI);",
+							"pm.test(\"Installed Version: \" + displayVersion, function () {",
+							"    pm.expect(displayVersion).to.exist;",
+							"});",
+							"setTimeout(function(){}, [1000]);",
+							"pm.execution.setNextRequest(\"Add Discovered Devices to Site\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/dnac-release",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"dnac-release"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Discovered Devices to Site",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var ip = pm.environment.get(\"DeviceIP\");\r",
+							"var ip = ip.split(\",\");\r",
+							"for (var i = 0;i<ip.length;i++) {\r",
+							"    if ( i===0 ) {\r",
+							"        Devices = '{ \"ip\": \"' + ip[i] + '\" }';\r",
+							"    }\r",
+							"    else {\r",
+							"        Devices = Devices + ',' + '{ \"ip\": \"' + ip[i] + '\" }';\r",
+							"    }\r",
+							"}\r",
+							"pm.environment.set(\"Devices\", Devices);\r",
+							"pm.environment.get(\"Devices\");\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"if ((jsonData.executionId) && (jsonData.message == \"The request has been accepted for execution\")) {\r",
+							"    pm.test(\"Device assigned\",() => {pm.expect(pm.response.text()).to.include(\"The request has been accepted for execution\");});\r",
+							"}\r",
+							"else {\r",
+							"    pm.test(\"Device not assigned\",() => {pm.expect(pm.response.text()).to.include(\"The request has been accepted for execution\");});\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
+							"}\r",
+							"setTimeout(function(){}, [1000]);\r",
+							"pm.execution.setNextRequest(\"Import Project\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"device\": [ {{Devices}} ] }"
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/{{ASSIGN-API}}{{TargetSiteId}}/device",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"{{ASSIGN-API}}{{TargetSiteId}}",
+						"device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Import Project",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"setTimeout(function(){}, [1000]);\r",
+							"if (jsonData.response.taskId) {\r",
+							"    pm.test(\"Project created\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
+							"    pm.environment.set(\"ProjectTaskId\", jsonData.response.taskId);\r",
+							"    pm.execution.setNextRequest(\"Get Project Details\");\r",
+							"}\r",
+							"else {\r",
+							"    pm.test(\"Project not created\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"SetupProject\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/plain",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{SetupProject}}"
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/template-programmer/project/importprojects",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"template-programmer",
+						"project",
+						"importprojects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Project Details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());",
+							"let ProjectName = pm.environment.get(\"SetupProjectName\");",
+							"let TemplateString = pm.environment.get(\"SetupTemplateString\");",
+							"let SearchString = TemplateString.split(\",\");",
+							"for (var s = 0;s<SearchString.length;s++){",
+							"    for (var i = 0;i<jsonData.response[0].templates.length;i++) {",
+							"        if (jsonData.response[0].templates[i].name === SearchString[s]){",
+							"            pm.test(\"Template \"+SearchString[s]+\" acquired\",() => {pm.expect(pm.response.text()).to.include(SearchString[s]);});",
+							"            pm.environment.set(SearchString[s], jsonData.response[0].templates[i].id);",
+							"            break; ",
+							"        }",
+							"    }",
+							"}",
+							"setTimeout(function(){}, [1000]);",
+							"pm.execution.setNextRequest(\"Get Device Id\")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v2/template-programmer/project?name={{SetupProjectName}}",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v2",
+						"template-programmer",
+						"project"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "null",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "{{SetupProjectName}}"
+						},
+						{
+							"key": "offset",
+							"value": "null",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "null",
+							"disabled": true
+						},
+						{
+							"key": "sortOrder",
+							"value": "null",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Device Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());",
+							"var DeviceList = pm.environment.get(\"DeviceList\");",
+							"var SwitchDeviceList = pm.environment.get(\"SwitchDeviceList\");",
+							"var DeviceList = DeviceList.split(\",\");",
+							"var SwitchDeviceList = SwitchDeviceList.split(\",\");",
+							"var DeviceId = \"\";",
+							"var DeviceIp = \"\";",
+							"var FLAG = SwitchDeviceList.length;",
+							"pm.environment.set(\"FLAG\", FLAG);",
+							"for (var i = 0; i < jsonData.response.length; i++) {",
+							"    for (var dl = 0; dl < SwitchDeviceList.length; dl++) {",
+							"        if (jsonData[\"response\"][i][\"managementIpAddress\"] === DeviceList[dl]){",
+							"            if (i === 0){",
+							"                DeviceId = jsonData[\"response\"][i][\"id\"];",
+							"                DeviceIp = jsonData[\"response\"][i][\"managementIpAddress\"];",
+							"            }",
+							"            else {",
+							"                DeviceId = DeviceId + \",\" + jsonData[\"response\"][i][\"id\"];",
+							"                DeviceIp = DeviceIp + \",\" + jsonData[\"response\"][i][\"managementIpAddress\"];",
+							"            }",
+							"            if (jsonData[\"response\"][i][\"managementIpAddress\"] === \"198.19.1.2\"){",
+							"                pm.environment.set(\"c9300-1-Id\", jsonData[\"response\"][i][\"id\"]);",
+							"            }",
+							"        }",
+							"    }",
+							"}",
+							"pm.environment.set(\"DeviceId\", DeviceId);",
+							"pm.environment.set(\"DeviceIp\", DeviceIp);",
+							"pm.test(\"Devices acquired\",() => {pm.expect(pm.response.text()).to.include(\"response\");});",
+							"pm.execution.setNextRequest(\"Deploy Switch Templates\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"FLAG\", 0);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{CCip}}/api/v1/network-device",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"network-device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deploy Switch Templates",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var i = pm.environment.get(\"DeviceIp\");\r",
+							"var i = i.split(\",\");\r",
+							"var c = i.length;\r",
+							"if (c > 1){\r",
+							"    var FLAG = pm.environment.get(\"FLAG\");\r",
+							"    FLAG = FLAG - 1;\r",
+							"    pm.environment.set(\"TargetDeviceId\", i[FLAG]);\r",
+							"    if (i[FLAG] === \"198.19.1.2\"){\r",
+							"        pm.environment.set(\"TemplateId\", pm.environment.get(\"CAT-C9300-1-Setup\"));\r",
+							"    }\r",
+							"    else if (i[FLAG] === \"198.19.2.2\"){\r",
+							"        pm.environment.set(\"TemplateId\", pm.environment.get(\"CAT-C9300-2-Setup\"));\r",
+							"    }\r",
+							"}\r",
+							"else{\r",
+							"    pm.environment.set(\"TargetDeviceId\", pm.environment.get(\"DeviceIp\"));\r",
+							"}\r",
+							"pm.environment.get(\"TargetDeviceId\");\r",
+							"pm.environment.get(\"TemplateId\");\r",
+							"pm.environment.set(\"FLAG\", FLAG);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"pm.test(\"Template deployed\",() => {pm.expect(pm.response.text()).to.include(\" Id:\");});\r",
+							"var FLAG = pm.environment.get(\"FLAG\");\r",
+							"if (FLAG > 0){\r",
+							"    pm.execution.setNextRequest(\"Deploy Switch Templates\");\r",
+							"}\r",
+							"else{\r",
+							"    pm.execution.setNextRequest(\"Delete Switch c9300-1\");\r",
+							"} \r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"forcePushTemplate\": false,\r\n    \"isComposite\": false,\r\n    \"targetInfo\": [\r\n        {\r\n            \"id\": \"{{TargetDeviceId}}\",\r\n            \"type\": \"MANAGED_DEVICE_IP\"\r\n        }\r\n    ],\r\n    \"templateId\": \"{{TemplateId}}\"\r\n}"
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/template-programmer/template/deploy",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"template-programmer",
+						"template",
+						"deploy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Switch c9300-1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"if (jsonData.response.taskId) {\r",
+							"    pm.test(\"c9300-1 Deleted\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
+							"}\r",
+							"else {\r",
+							"    pm.test(\"c9300-1 Deleted\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
+							"}\r",
+							"setTimeout(function(){}, [240000]);\r",
+							"pm.execution.setNextRequest(\"Deploy Router Template\")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/network-device/{{c9300-1-Id}}",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"network-device",
+						"{{c9300-1-Id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deploy Router Template",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var ip = pm.environment.get(\"DeviceIp\");\r",
+							"var id = pm.environment.get(\"DeviceId\");\r",
+							"var r = pm.environment.get(\"RouterDeviceList\")\r",
+							"var ip = ip.split(\",\");\r",
+							"var id = id.split(\",\");\r",
+							"for (var ip = 0; ip < ip.length; ip++) {\r",
+							"    if (DeviceIP[ip] === r[0]){\r",
+							"        pm.environment.set(\"TemplateId\", pm.environment.get(\"ISR-4331-Setup\"));\r",
+							"        pm.environment.set(\"TargetDeviceId\", id[ip]);\r",
+							"    }\r",
+							"}\r",
+							"pm.environment.get(\"TargetDeviceId\");\r",
+							"pm.environment.get(\"TemplateId\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(pm.response.text());\r",
+							"pm.test(\"Template deployed\",() => {pm.expect(pm.response.text()).to.include(\" Id:\");});\r",
+							"var FLAG = pm.environment.get(\"FLAG\");\r",
+							"if (FLAG > 0){\r",
+							"    pm.execution.setNextRequest(\"Deploy Templates\");\r",
+							"}\r",
+							"else{\r",
+							"    pm.execution.setNextRequest(\"null\");\r",
+							"} \r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"forcePushTemplate\": false,\r\n    \"isComposite\": false,\r\n    \"targetInfo\": [\r\n        {\r\n            \"id\": \"{{TargetDeviceId}}\",\r\n            \"type\": \"MANAGED_DEVICE_IP\"\r\n        }\r\n    ],\r\n    \"templateId\": \"{{TemplateId}}\"\r\n}"
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/template-programmer/template/deploy",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"template-programmer",
+						"template",
+						"deploy"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
