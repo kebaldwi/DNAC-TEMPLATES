@@ -103,14 +103,14 @@ At this point all the DNS and DHCP configuration on the ***windows server*** wil
 
 ## Lab Section 3 - Catalyst Center Design Preparation
 
-We will now prepare Catalyst Center and onboard the devices in preparation for use in the lab. The reasons for the configurations made here are detailed heavily in previous Labs within the series. While we could deploy more extensive settings for deployment, we will limit the configuration to the minimum necessary to create a working lab in which to facilitate wireless automation.
+We will now prepare Catalyst Center and onboard the devices in preparation for use in the lab. The reasons for the configurations made here are detailed heavily in previous Labs within the series. While we could deploy more extensive settings for deployment, we will limit the configuration to the minimum necessary to create a working lab in which to facilitate advanced automation lab.
 
 ### Step 1 - ***Import Postman Collection and Environment***
 
 1. Download the **collection** and **environment** from the following links:
 
-   <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/lab-2-wireless-auto-postman-collection.json">⬇︎lab-2-wireless-auto-postman-collection.json⬇︎</a></br>
-   <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/lab-2-wireless-auto-postman-environment.json">⬇︎lab-2-wireless-auto-postman-environment.json⬇︎</a>
+   <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/lab-3-advanced-auto-postman-collection.json">⬇︎lab-3-advanced-auto-postman-collection.json⬇︎</a></br>
+   <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/lab-3-advanced-auto-postman-environment.json">⬇︎lab-3-advanced-auto-postman-environment.json⬇︎</a>
 
 2. Locate the file in the download folder.
 3. Open the **postman** application from the desktop. Once the application is open select *Collections* then click the *Import* link. 
