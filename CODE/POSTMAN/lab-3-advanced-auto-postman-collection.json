@@ -1603,7 +1603,7 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							""
+							"pm.environment.set(\"FLAG\", 3);"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -1675,6 +1675,93 @@
 							"value": "null",
 							"disabled": true
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Commit Templates",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var FLAG = pm.environment.get(\"FLAG\");",
+							"if (FLAG === \"3\"){",
+							"    pm.environment.set(\"TemplateId\", pm.environment.get(\"CAT-C9300-1-Setup\"));",
+							"}",
+							"else if (FLAG === \"2\"){",
+							"    pm.environment.set(\"TemplateId\", pm.environment.get(\"CAT-C9300-2-Setup\"));",
+							"}",
+							"else {",
+							"    pm.environment.set(\"TemplateId\", pm.environment.get(\"ISR-4331-Setup\"));",
+							"}",
+							"FLAG = FLAG - 1;",
+							"pm.environment.get(\"TemplateId\");",
+							"pm.environment.set(\"FLAG\", FLAG);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"if (jsonData.response.taskId) {\r",
+							"    pm.test(\"Template Committed\",() => {pm.expect(pm.response.text()).to.include(\"response\");});\r",
+							"}\r",
+							"else {\r",
+							"    pm.test(\"Template not Committed\",() => {pm.expect(pm.response.text()).to.include(\"response\");});\r",
+							"    postman.setNextRequest(\"null\");\r",
+							"}\r",
+							"setTimeout(function(){}, [5000]);\r",
+							"if (FLAG > \"0\"){\r",
+							"    postman.setNextRequest(\"Commit Templates\");\r",
+							"}\r",
+							"else {\r",
+							"    postman.setNextRequest(\"Get Device Id\");\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "{{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comments\": \"Template Initial Version\",\r\n    \"templateId\": \"{{TemplateId}}\"\r\n}"
+				},
+				"url": {
+					"raw": "https://{{CCip}}/dna/intent/api/v1/template-programmer/template/version",
+					"protocol": "https",
+					"host": [
+						"{{CCip}}"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"template-programmer",
+						"template",
+						"version"
 					]
 				}
 			},
