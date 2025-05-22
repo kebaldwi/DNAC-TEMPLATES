@@ -1061,7 +1061,7 @@
 							"if (jsonData.response.taskId) {\r",
 							"    pm.test(\"Discovery created\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
 							"    pm.environment.set(\"DiscoveryTaskId\", jsonData[\"response\"][\"taskId\"]);\r",
-							"    setTimeout(function(){}, [240000]);\r",
+							"    setTimeout(function(){}, [180000]);\r",
 							"}\r",
 							"else {\r",
 							"    pm.test(\"Discovery created\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
@@ -1593,7 +1593,7 @@
 							"    }",
 							"}",
 							"setTimeout(function(){}, [1000]);",
-							"postman.setNextRequest(\"Get Device Id\")"
+							"postman.setNextRequest(\"Commit Templates\")"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -1710,6 +1710,7 @@
 					"script": {
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);\r",
+							"var FLAG = pm.environment.get(\"FLAG\");\r",
 							"if (jsonData.response.taskId) {\r",
 							"    pm.test(\"Template Committed\",() => {pm.expect(pm.response.text()).to.include(\"response\");});\r",
 							"}\r",
@@ -1892,7 +1893,7 @@
 							"    postman.setNextRequest(\"Deploy Switch Templates\");\r",
 							"}\r",
 							"else{\r",
-							"    setTimeout(function(){}, [240000]);\r",
+							"    setTimeout(function(){}, [120000]);\r",
 							"    postman.setNextRequest(\"Delete Switch c9300-1\");\r",
 							"} \r",
 							""
@@ -1964,7 +1965,7 @@
 							"    pm.test(\"c9300-1 Deleted\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
 							"    postman.setNextRequest(\"null\");\r",
 							"}\r",
-							"setTimeout(function(){}, [240000]);\r",
+							"setTimeout(function(){}, [120000]);\r",
 							"postman.setNextRequest(\"Deploy Router Template\")"
 						],
 						"type": "text/javascript",
