@@ -1933,17 +1933,8 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"var ip = pm.environment.get(\"DeviceIp\");\r",
-							"var id = pm.environment.get(\"DeviceId\");\r",
-							"var r = pm.environment.get(\"RouterDeviceList\")\r",
-							"var ip = ip.split(\",\");\r",
-							"var id = id.split(\",\");\r",
-							"for (var c = 0; c < ip.length; c++) {\r",
-							"    if (ip[c] === r[0]){\r",
-							"        pm.environment.set(\"TemplateId\", pm.environment.get(\"ISR-4331-Setup\"));\r",
-							"        pm.environment.set(\"TargetDeviceId\", ip[c]);\r",
-							"    }\r",
-							"}\r",
+							"pm.environment.set(\"TemplateId\", pm.environment.get(\"ISR-4331-Setup\"));\r",
+							"pm.environment.set(\"TargetDeviceId\", pm.environment.get(\"RouterDeviceList\"));\r",
 							"pm.environment.get(\"TargetDeviceId\");\r",
 							"pm.environment.get(\"TemplateId\");"
 						],
@@ -1957,9 +1948,7 @@
 						"exec": [
 							"var jsonData = JSON.parse(pm.response.text());\r",
 							"pm.test(\"Template deployed\",() => {pm.expect(pm.response.text()).to.include(\" Id:\");});\r",
-							"postman.setNextRequest(\"null\");\r",
-							" \r",
-							""
+							"postman.setNextRequest(\"null\");"
 						],
 						"type": "text/javascript",
 						"packages": {}
