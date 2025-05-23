@@ -42,7 +42,7 @@ Cisco Catalyst Center can be used for not only Plug and Play (PnP) but also Day 
 
 ### Considerations about Templates
 
-While ia PnP template could include the entire configuration for a traditional network device, it is Cisco's strong recommendation to utilize DayN Templates for the bulk of the configuration and to utilize PnP only for bringing up a stable reliable network connection for the network device.
+While a PnP template could include the entire configuration for a traditional network device, it is Cisco's strong recommendation to utilize DayN Templates for the bulk of the configuration and to utilize PnP only for bringing up a stable reliable network connection for the network device.
 
 The inventory database is not populated with specific information about a device prior to the completion of the claim process. This presents a challenge to onboarding as system variables, and bind variables cannot be utilized. Additionally, this means that the scripts irrespective of the language used would require a lot of manual inputs to variables, rather than pulling information known about the device post claim.
 
