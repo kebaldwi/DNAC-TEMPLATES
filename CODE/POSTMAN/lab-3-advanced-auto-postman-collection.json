@@ -1893,7 +1893,7 @@
 							"    postman.setNextRequest(\"Deploy Switch Templates\");\r",
 							"}\r",
 							"else{\r",
-							"    setTimeout(function(){}, [120000]);\r",
+							"    setTimeout(function(){}, [90000]);\r",
 							"    postman.setNextRequest(\"Delete Switch c9300-1\");\r",
 							"} \r",
 							""
@@ -1965,7 +1965,7 @@
 							"    pm.test(\"c9300-1 Deleted\",() => {pm.expect(pm.response.text()).to.include(\"taskId\");});\r",
 							"    postman.setNextRequest(\"null\");\r",
 							"}\r",
-							"setTimeout(function(){}, [120000]);\r",
+							"setTimeout(function(){}, [60000]);\r",
 							"postman.setNextRequest(\"Deploy Router Template\")"
 						],
 						"type": "text/javascript",
