@@ -160,7 +160,9 @@ This collection is built with a flow and delay timers wait for the collection to
 
 ## Summary
 
-The lab is now prepared for the Advanced Automation modules of the lab. Please navigate to **Onboarding Templates** to get started.
+The lab is now prepared for the Advanced Automation modules of the lab. This is the lab as it is set up for us now. Please navigate to **Onboarding Templates** to get started.
+
+![json](../../ASSETS/COMMON/DCLOUD/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON")
 
 > [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
