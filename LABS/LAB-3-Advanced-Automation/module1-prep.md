@@ -115,19 +115,19 @@ We will now prepare Catalyst Center and onboard the devices in preparation for u
 2. Locate the file in the download folder.
 3. Open the **postman** application from the desktop. Once the application is open select *Collections* then click the *Import* link. 
 
-   ![json](../../ASSETS/LABS/POSTMAN/LAB2/Postman-Pre-Collection-Import.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/POSTMAN/LAB3/Postman-Pre-Collection-Import.png?raw=true "Import JSON")
 
 4. A window should appear on the file upload page. Click the upload button and select desktop from the windows explorer. Select the files named `lab-2-wireless-auto-postman-collection.json`, and `lab-2-wireless-auto-postman-environment.json` then click open. 
 
-   ![json](../../ASSETS/LABS/POSTMAN/LAB2/Postman-Collection-Select.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/POSTMAN/LAB3/Postman-Collection-Select.png?raw=true "Import JSON")
 
 5. Then click import and the collection and environment should be loaded into the postman as shown.
 
-   ![json](../../ASSETS/LABS/POSTMAN/LAB2/Postman-Post-Collection-Import.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/POSTMAN/LAB3/Postman-Post-Collection-Import.png?raw=true "Import JSON")
 
 6. Next we will choose the environment by clicking the checkmark on the right of Environment in postman as shown here. 
 
-   ![json](../../ASSETS/LABS/POSTMAN/COMMON/Postman-Environment-Selection.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/POSTMAN/LAB3/Postman-Environment-Selection.png?raw=true "Import JSON")
 
 ### Step 2 - ***Turn off SSL validation for LAB purposes within Postman***
 
@@ -143,29 +143,34 @@ This collection is built with a flow and delay timers wait for the collection to
 
 1. If not open, open the **postman** application from the desktop. Once the application is open select *Collections* and then the '...' link and select **run collection**. </br>
 
-   ![json](../../ASSETS/LABS/POSTMAN/LAB2/Postman-CollectionRunner.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/POSTMAN/LAB3/Postman-CollectionRunner.png?raw=true "Import JSON")
 
 2. On the right ensure all API are selected and click run collection. 
 
-   ![json](../../ASSETS/LABS/POSTMAN/LAB2/Postman-CollectionRunner-Run.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/POSTMAN/LAB3/Postman-CollectionRunner-Run.png?raw=true "Import JSON")
 
 3. After the entire collection has run you will see all of them listed on the left as shown, and two buttons on the top right, one for results and the other to run again.
 
-   ![json](../../ASSETS/LABS/POSTMAN/LAB2/Postman-CollectionRunner-Results.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/POSTMAN/LAB3/Postman-CollectionRunner-Results.png?raw=true "Import JSON")
 
-4. Within Catalyst Center you should see 3 devices within the inventory and additionally you should observe a complete hierarchy as well as settings and telemetry configured. The Devices will be discovered in the Building level at this stage.
+4. Within Catalyst Center you should see 2 devices within the inventory and additionally you should observe a complete hierarchy as well as settings and telemetry configured. The Devices will be discovered in the Building level at this stage.
 
-   ![json](../../ASSETS/LABS/POSTMAN/LAB2/Postman-Discovery.png?raw=true "Import JSON")
-   ![json](../../ASSETS/LABS/POSTMAN/LAB2/Postman-Settings.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/POSTMAN/LAB3/Postman-Inventory.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/POSTMAN/LAB3/Postman-Settings.png?raw=true "Import JSON")
+
+   Lastly, you will find in the PnP Section a switch ready for claiming.
+
+   ![json](../../ASSETS/LABS/POSTMAN/LAB3/Postman-pnp.png?raw=true "Import JSON")
+
 
 ## Summary
 
-The lab is now prepared for the Wireless Automation modules of the lab. Please navigate to **Controller PnP or Discovery** to get started.
+The lab is now prepared for the Advanced Automation modules of the lab. Please navigate to **Onboarding Templates** to get started.
 
 > [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
-> [**Continue to Wireless Controller Discovery Module**](../LAB-2-Wireless-Automation/module1-ctrlpnpdiscovery.md)
+> [**Onboarding Templates Module**](../LAB-3-Advanced-Automation/module2-day0-template.md)
 
 > [**Return to Lab Menu**](./README.md)
