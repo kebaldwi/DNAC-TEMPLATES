@@ -41,11 +41,11 @@ As guidance, try and use **Design Settings** for as many of the configurations a
 The lab will be split into modules to concentrate on specific tasks. Each is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
 
 1. [**Preparation**](./module1-prep.md)
-2. [**Onboarding Templates**](./module2-day0-template.md)
-3. [**PnP and Discovery**](./module3-pnp.md)
+2. [**PnP Templates**](./module2-day0-template.md)
+3. [**PnP Claiming**](./module3-pnp.md)
 4. [**DayN Templates**](./module4-dayn-template.md)
 5. [**DayN Provisioning**](./module5-dayn.md)
-6. [**REST API Onboarding and Provisioning**](./module6-restapi.md)
+6. [**REST-API Deployments**](./module6-restapi.md)
 
 ## Preparation
 
