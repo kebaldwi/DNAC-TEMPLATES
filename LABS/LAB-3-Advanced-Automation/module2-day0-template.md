@@ -57,13 +57,15 @@ This is the lab we will be utilizing. Notice the **PnP Target Switch**. This is 
 
 * Guidance: Utilize design settings for as much configuration as possible, keeping templates streamlined for configurations that may change frequently, enhancing maintainability and troubleshooting.
 
+* **Jinja** vs **Velocity**, choose wisely. My recommendation is to use Jinja simply because it is the defactor template rendering language used in multiple platforms. It is modular, and the logic consrtucts are based on **Python**. 
+
 ## Developing a PnP Template
 
 So what should be in the PnP Template? Well that depends on the situation, but generally speaking we need to build the foundation of the device, and put that which cannot change without disrupting the communication from Device to Catalyst Center.
 
 ### Included items:
 
-- [ ] System Configuration
+* System Configuration
   * Hostname
   * System MTU 
   * VTP 
@@ -74,6 +76,26 @@ So what should be in the PnP Template? Well that depends on the situation, but g
   * Source Management Traffic
 * Next Hop Configuration
   * Gateway or Routing Protocol
+
+## Exercises
+
+### Step 1 - Navigate to Template Hub
+
+Navigate to the CLI Template Hub on Catalyst Center Tools>Template Hub
+Within the Projects Section locate the Onboarding Configuration Project and select it as shown.
+You will notice there is not much in there. What we will do is now Build our first template.
+
+### Step 2 - Create a Regular Template
+
+### Step 3 - Build the Template Logic
+
+### Step 4 - Use Variables
+
+### Step 5 - Build Form
+
+### Step 6 - Simulation
+
+### Step 7 - Test
 
 ## Summary
 
