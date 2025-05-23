@@ -57,6 +57,23 @@ This is the lab we will be utilizing. Notice the **PnP Target Switch**. This is 
 
 * Guidance: Utilize design settings for as much configuration as possible, keeping templates streamlined for configurations that may change frequently, enhancing maintainability and troubleshooting.
 
+## Developing a PnP Template
+
+So what should be in the PnP Template? Well that depends on the situation, but generally speaking we need to build the foundation of the device, and put that which cannot change without disrupting the communication from Device to Catalyst Center.
+
+### Included items:
+
+- [ ] System Configuration
+  * Hostname
+  * System MTU 
+  * VTP 
+  * Enable Netconf 
+* Management Interface Configuration
+  * IP address
+  * Subnet Mask
+  * Source Management Traffic
+* Next Hop Configuration
+  * Gateway or Routing Protocol
 
 ## Summary
 
