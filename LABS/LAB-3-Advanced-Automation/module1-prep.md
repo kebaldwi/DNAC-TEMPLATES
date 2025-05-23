@@ -160,7 +160,7 @@ This collection is built with a flow and delay timers wait for the collection to
 
    Lastly, you will find in the PnP Section a switch ready for claiming.
 
-   ![json](../../ASSETS/LABS/POSTMAN/LAB3/Postman-pnp.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/POSTMAN/LAB3/Postman-PnP.png?raw=true "Import JSON")
 
 
 ## Summary
