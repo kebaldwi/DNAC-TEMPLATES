@@ -1,4 +1,4 @@
-# PnP Templates - In Development
+# Building PnP Templates - In Development
 
 ![json](../../ASSETS/COMMON/BUILD/underconstruction.png?raw=true "Import JSON")
 
@@ -7,7 +7,7 @@
 
 ## Overview
 
-This module is designed to be used after first completing the **[Lab Preparation](../LAB-3-Advanced-Automation/module1-prep.md)** and has been created to address how to use both **Plug and Play (PnP)** to onboard devices into Cisco Catalyst Center. This two fold approach allows us to onboard both Greenfield and Brownfield devices. 
+This module is designed to be used after first completing the **[Lab Preparation](../LAB-3-Advanced-Automation/module1-prep.md)** and has been created to address how to build **Plug and Play (PnP)** to onboard devices into Cisco Catalyst Center. 
 
 ### Greenfield
 
@@ -17,7 +17,7 @@ When dealing with net **new** devices using the PnP process to onboard devices w
 
 This allows for the manipulation of uplinks and addressing without disconnectivity during reconfiguration from the upstream neighboring device. Additional source commands can be used to allow the device to automatically inform Cisco Catalyst Center of a change in address through the PnP profile applied and the source of the HTTP client information.
 
-### Brownfield 
+### Brownfield (background only)
 
 When dealing with **existing** infrastructure, we want to absorb the device and its configuration into Cisco Catalyst Center to allow for monitoring and a gradual shift to automated management, as the device usually is in a running state supporting the network, and the configuration pre-exists.
 
@@ -25,7 +25,7 @@ Be aware that with Brownfield device configurations, there is no template learni
 
 ### Overview Summary
 
-In this section will go through the flows involved with PnP and **Brownfield** will be **out of scope** for this module. This will allow us to create successful onboarding of network devices into Cisco Catalyst Center for Greenfield situations.
+In this section will go through the flows involved with **PnP** only. **Brownfield** will be **out of scope** for this module. This will allow us to create successful onboarding of network devices into Cisco Catalyst Center for Greenfield situations.
 
 This is the lab we will be utilizing. Notice the **PnP Target Switch**. This is the C9300-1, which is a variant of the 9300 family. We will be building a configuration for this device from a sample configuration.
 
@@ -94,8 +94,6 @@ You will notice there is not much in there. What we will do is now Build our fir
 ### Step 5 - Build Form
 
 ### Step 6 - Simulation
-
-### Step 7 - Test
 
 ## Summary
 
