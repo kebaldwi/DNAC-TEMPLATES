@@ -295,7 +295,7 @@ Next we need to assign the Onboarding Template to a site using the Network Profi
 
       ![json](./images/DNAC-ProfileAssigned.png?raw=true "Import JSON")
 
-## Step 6 - Claiming the Device **(REQUIRED)**
+### Step 5 - Claiming the Device **(REQUIRED)**
 
 At this point Cisco Catalyst Center is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find Cisco Catalyst Center and land in the plug n play set of the devices section within the provisioning page.
 
