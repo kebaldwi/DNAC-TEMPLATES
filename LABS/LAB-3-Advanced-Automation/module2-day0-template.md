@@ -81,11 +81,63 @@ So what should be in the PnP Template? Well that depends on the situation, but g
 
 ### Step 1 - Navigate to Template Hub
 
-Navigate to the CLI Template Hub on Catalyst Center Tools>Template Hub
-Within the Projects Section locate the Onboarding Configuration Project and select it as shown.
-You will notice there is not much in there. What we will do is now Build our first template.
+Navigate to the CLI Template Hub on Catalyst Center **`Tools > Template Hub`**
+
+![json](../../ASSETS/LABS/CATC/MENU/catc-menu-5.png?raw=true "Import JSON")
 
 ### Step 2 - Create a Regular Template
+
+Within the **Project Name** Section on the left locate the **Onboarding Configuration** Project and select it as shown
+
+![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/project-onboarding-default.png?raw=true "Import JSON")
+
+You will notice there is not much in there. What we will do is now Build our first template. To do this use the **&#8853; Add** action menu shown and select **New Template**
+
+![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/add-pnp-template-start.png?raw=true "Import JSON")
+
+In the **Add New Template** wizard fill in the following details as shown below:
+
+|Section|Details|
+|-------|-------|
+|Template Name|**PnP-Template-J2**|
+|Project Name|**Onboarding Configuration**|
+|Template Type|**Regular Template**|
+|Template Language|**JINJA**|
+|Software Type|**IOS-XE**|
+|Device Family| **Switches and Hubs**|
+|Devices| **Cisco Catalyst 9300 Series Switches**|
+
+1. First enter the Template Name from above then select the Onboarding Configuration project. This must be selected for this template to be offered within the PnP Onboarding Tab of the Network Profile.
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/add-pnp-template-1.png?raw=true "Import JSON")
+
+2. Ensure that for Template Type you have selected Regular Template and under Template Language that JINJA is selected as recommended earlier. For Software select IOS-XE as shown.
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/add-pnp-template-2.png?raw=true "Import JSON")
+
+3. Click the Add Device Details link to select the type of device to which to associate the template
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/add-pnp-template-3.png?raw=true "Import JSON")
+
+4. In the Add Device Details page select for Device Family **Switches and Hubs**
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/add-pnp-template-4.png?raw=true "Import JSON")
+
+5. Enter **9300** in the search filter to find the 9300 switches
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/add-pnp-template-5.png?raw=true "Import JSON")
+
+6. Then select for Devices **Cisco Catalyst 9300 Series Switches** and click **Add**.
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/add-pnp-template-6.png?raw=true "Import JSON")
+
+7. You should now see the following **configured properties** for the template, click **Continue**
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/add-pnp-template-7.png?raw=true "Import JSON")
+
+8. The PnP-Template-J2 will now open in the Editor allowing the configuration to be added.
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/add-pnp-template-8.png?raw=true "Import JSON")
 
 ### Step 3 - Build the Template Logic
 
