@@ -146,6 +146,38 @@ As previously stated the PnP Template should use the minimum configuration to ad
 > [!TIP]
 > Keep it **SIMPLE**
 
+In this lab we are connecting a Layer 2 switch and utilizing the typical management VLAN. So at a minimum we need to get this configuration onto that device:
+
+|Detail            |Configuration       |
+|------------------|--------------------|
+|Hostname          |`c9300-1`           |
+|Management Vlan   |`5`                 |
+|Uplink Interfaces |`Gi1/0/10, Gi1/0/11`|
+|Management Address|`192.168.5.3`       |
+|Subnet Mask       |`255.255.255.0`     |
+|Gateway           |`192.168.5.1`       |
+|VTP Domain        |`Cisco`             |
+
+So in order to get this configuration on the switch we would typically configure something like this:
+
+```j2
+hostname c9300-1
+
+vlan 5
+ name mgmtvlan
+
+interface vlan 5
+ ip address 192.168.5.3 255.255.255.0
+ no shutdown
+ exit
+
+interface vlan 1
+ shutdown
+
+ip default-gateway 192.168.5.1
+```
+
+So lets copy and paste that confiiguration into the **PnP-Template-J2**
 
 
 ### Step 4 - Use Variables
