@@ -201,6 +201,21 @@ In this lab we are connecting a Layer 2 switch and utilizing the typical managem
 
 Now we will adhere to the DRY philosophy because in our organization we want to use this template not just once but thousands of times in different locations. So we will modify the template to include **VARIABLES** and **LOGIC** to make it **reusable**.
 
+These variables will be utilized with a form so that they can be mass entered via a comma separated value CSV file during the claiming process. 
+
+1. Lets create the following variables by highlighting the detail replacing it with {{variable}} as shown in the table and in the image below:
+
+   |Configuration       |Detail            |
+   |--------------------|------------------|
+   |c9300-1             |`{{Hostname}}`    |
+   |5                   |`{{MgmtVlan}}`    |
+   |Gi1/0/10, Gi1/0/11  |`{{Interfaces}}`  |
+   |192.168.5.3         |`{{SwitchIP}}`    |
+   |255.255.255.0       |`{{SubnetMask}}`  |
+   |192.168.5.1         |`{{Gateway}} `    |
+   |Cisco               |`{{VtpDomain}}`   |
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-2.png?raw=true "Import JSON")
 
 ### Step 5 - Build Form
 
