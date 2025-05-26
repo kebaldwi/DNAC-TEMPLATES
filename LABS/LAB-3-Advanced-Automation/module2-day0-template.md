@@ -158,29 +158,49 @@ In this lab we are connecting a Layer 2 switch and utilizing the typical managem
 |Gateway           |`192.168.5.1`       |
 |VTP Domain        |`Cisco`             |
 
-So in order to get this configuration on the switch we would typically configure something like this:
+#### Basic Template
 
-```j2
-hostname c9300-1
+1. So in order to get this configuration on the switch we would typically configure something like this:
 
-vlan 5
- name mgmtvlan
+   ```j2
+   hostname c9300-1
+   !
+   vlan 5
+    name mgmtvlan
+   !
+   interface vlan 5
+    ip address 192.168.5.3 255.255.255.0
+    no shutdown
+    exit
+   !
+   interface vlan 1
+    shutdown
+   ! 
+   ip default-gateway 192.168.5.1
+   !
+   interface range gigabitethernet1/0/10-11
+    switchport mode trunk
+    switchport trunk allowed vlan 5
+    channel-protocol lacp
+    channel-group 1 mode active
+    no shut
+   !
+   interface port-channel 1
+    switchport trunk native vlan 5
+    switchport trunk allowed vlan 5
+    switchport mode trunk
+    no port-channel standalone-disable
+   !
+   ```
 
-interface vlan 5
- ip address 192.168.5.3 255.255.255.0
- no shutdown
- exit
+2. So lets copy and paste that confiiguration into the **PnP-Template-J2**
 
-interface vlan 1
- shutdown
-
-ip default-gateway 192.168.5.1
-```
-
-So lets copy and paste that confiiguration into the **PnP-Template-J2**
-
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-1.png?raw=true "Import JSON")
 
 ### Step 4 - Use Variables
+
+Now we will adhere to the DRY philosophy because in our organization we want to use this template not just once but thousands of times in different locations. So we will modify the template to include **VARIABLES** and **LOGIC** to make it **reusable**.
+
 
 ### Step 5 - Build Form
 
