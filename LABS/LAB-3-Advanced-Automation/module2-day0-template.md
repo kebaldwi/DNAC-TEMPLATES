@@ -245,6 +245,16 @@ These variables will be utilized with a form so that they can be mass entered vi
 3. Lets now follow suit and allow for any Port-Channel interface number to be used by variablizing the Port-Channel numbering as shown:
    
    ```
+    interface range {{Interfaces}}
+     shut
+     switchport mode trunk
+     switchport trunk allowed vlan {{MgmtVlan}}
+     {% if "," in Interfaces || "-" in Interfaces %}
+        channel-protocol lacp
+        channel-group {{Portchannel}} mode active
+     {% endif %}
+     no shut
+   !
    {% if "," in Interfaces || "-" in Interfaces %}
      interface Port-channel {{Portchannel}}
       switchport trunk native vlan {{MgmtVlan}}
@@ -258,6 +268,7 @@ These variables will be utilized with a form so that they can be mass entered vi
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-4.png?raw=true "Import JSON")
 
+4. Now lets make some further modifications to allow any Management Vlan and make iterative changes to the 
    
 ### Step 5 - Build Form
 
