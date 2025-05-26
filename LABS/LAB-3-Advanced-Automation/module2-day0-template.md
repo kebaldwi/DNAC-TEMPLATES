@@ -33,7 +33,7 @@ This is the lab we will be utilizing. Notice the **PnP Target Switch**. This is 
 
 ## Lab Credentials:
 
-| Platform:       | IP Address:    | Username | Password   | 
+| Platform:       | IP Address:    | Username |  Password  | 
 |-----------------|----------------|----------|------------|
 | Catalyst Center | 198.18.129.100 | admin    | C1sco12345 |
 | ISE             | 198.18.133.27  | admin    | C1sco12345 |
@@ -97,29 +97,29 @@ You will notice there is not much in there. What we will do is now Build our fir
 
 In the **Add New Template** wizard fill in the following details as shown below:
 
-|Section|Details|
-|-------|-------|
-|Template Name|**PnP-Template-J2**|
-|Project Name|**Onboarding Configuration**|
-|Template Type|**Regular Template**|
-|Template Language|**JINJA**|
-|Software Type|**IOS-XE**|
-|Device Family| **Switches and Hubs**|
-|Devices| **Cisco Catalyst 9300 Series Switches**|
+|Section          |Details                                |
+|-----------------|---------------------------------------|
+|Template Name    |**PnP-Template-J2**                    |
+|Project Name     |**Onboarding Configuration**           |
+|Template Type    |**Regular Template**                   |
+|Template Language|**JINJA**                              |
+|Software Type    |**IOS-XE**                             |
+|Device Family    |**Switches and Hubs**                  |
+|Devices          |**Cisco Catalyst 9300 Series Switches**|
 
-1. First enter the Template Name from above then select the Onboarding Configuration project. This must be selected for this template to be offered within the PnP Onboarding Tab of the Network Profile.
+1. First enter the Template Name **PnP-Template-J2** from above then select the Onboarding Configuration project. This must be selected for this template to be offered within the PnP Onboarding Tab of the Network Profile.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/add-pnp-template-1.png?raw=true "Import JSON")
 
-2. Ensure that for Template Type you have selected Regular Template and under Template Language that JINJA is selected as recommended earlier. For Software select IOS-XE as shown.
+2. Ensure that for Template Type you have selected **Regular Template** and under Template Language that **JINJA** is selected as recommended earlier. For Software Type select **IOS-XE** as shown.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/add-pnp-template-2.png?raw=true "Import JSON")
 
-3. Click the Add Device Details link to select the type of device to which to associate the template
+3. Click the **Add Device Details** link to select the type of device to which to associate the template
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/add-pnp-template-3.png?raw=true "Import JSON")
 
-4. In the Add Device Details page select for Device Family **Switches and Hubs**
+4. In the **Add Device Details** page select for Device Family **Switches and Hubs**
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/add-pnp-template-4.png?raw=true "Import JSON")
 
@@ -135,11 +135,18 @@ In the **Add New Template** wizard fill in the following details as shown below:
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/add-pnp-template-7.png?raw=true "Import JSON")
 
-8. The PnP-Template-J2 will now open in the Editor allowing the configuration to be added.
+8. The **PnP-Template-J2** will now open in the Editor allowing the configuration to be added.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/add-pnp-template-8.png?raw=true "Import JSON")
 
 ### Step 3 - Build the Template Logic
+
+As previously stated the PnP Template should use the minimum configuration to adhere to the **Don't Repeat yourself (DRY)** philosophy. Remember No System Variables and limited bind functionality are available. This inhibits the ability to use logic without filling in all the details. Additionally we really want to track these things which is what DayN affords us. 
+
+> [!TIP]
+> Keep it **SIMPLE**
+
+
 
 ### Step 4 - Use Variables
 
