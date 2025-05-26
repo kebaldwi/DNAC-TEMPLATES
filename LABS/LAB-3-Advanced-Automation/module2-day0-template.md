@@ -332,6 +332,27 @@ These variables will be utilized with a form so that they can be mass entered vi
       ```
       [//]: # ({% endraw %})
 
+   3. Lets also add to the Vlan interface some protection for source traffic to exlude redirects and proxy arp to ensure the traffic being communicated is from the sources and destinations configured.
+
+      [//]: # ({% raw %})
+      ```
+      interface Vlan {{ MgmtVlan }}
+       description MgmtVlan
+       ip address {{ SwitchIP }} {{ SubnetMask }}
+       no ip redirects
+       no ip proxy-arp
+       no shut
+      ```
+      [//]: # ({% endraw %})
+
+   4. Lastly there is an issue with creating a VARIABLE within logical constructs so I employ a workaround (hack) to allow for this right before the VARIABLE is introduced.
+      
+      [//]: # ({% raw %})
+      ```
+      !{{Portchannel}}
+      ```
+      [//]: # ({% endraw %})
+
 ### Step 5 - Build Form
 
 ### Step 6 - Simulation
