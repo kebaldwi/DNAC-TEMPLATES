@@ -199,7 +199,7 @@ In this lab we are connecting a Layer 2 switch and utilizing the typical managem
 
 ### Step 4 - Use Variables
 
-Now we will adhere to the DRY philosophy because in our organization we want to use this template not just once but thousands of times in different locations. So we will modify the template to include **VARIABLES** and **LOGIC** to make it **reusable**.
+Now we will adhere to the **DRY** philosophy because in our organization we want to use this template not just once but thousands of times in different locations. So we will modify the template to include **VARIABLES** and **LOGIC** to make it **reusable**.
 
 These variables will be utilized with a form so that they can be mass entered via a comma separated value CSV file during the claiming process. 
 
@@ -212,11 +212,37 @@ These variables will be utilized with a form so that they can be mass entered vi
    |Gi1/0/10, Gi1/0/11  |`{{Interfaces}}`  |
    |192.168.5.3         |`{{SwitchIP}}`    |
    |255.255.255.0       |`{{SubnetMask}}`  |
-   |192.168.5.1         |`{{Gateway}} `    |
-   |Cisco               |`{{VtpDomain}}`   |
+   |192.168.5.1         |`{{Gateway}}`     |
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-2.png?raw=true "Import JSON")
 
+2. Now lets add some logic to make the interfaces more reusable. When we use the interface range command we can use various situational delimiters. The following are allowed:
+
+   - Single Interface (ie: interface range `gi1/0/1`)
+   - Comma Delimited List (ie: interface range `gi1/0/1, gi1/0/2`)
+   - Dashes for From To (ie: interface range `gi1/0/1-2`)
+
+   So how does this impact us, well we will need to make some logic to allow for the portchannel to be optional and for the logic to allow for the additional commands in the event they are needed. What if we want this to have a single uplink to a router in a small branch. 
+
+   Lets incorporate that by modifying the interface section syntax to read:
+
+   ```
+   interface range {{Interfaces}}
+    shut
+    switchport mode trunk
+    switchport trunk allowed vlan {{MgmtVlan}}
+    {% if "," in Interfaces || "-" in Interfaces %}
+       channel-protocol lacp
+       channel-group 1 mode active
+    {% endif %}
+    no shut
+   ```
+
+   The additional logic includes a conditional statement looking for the **`,` or `-`** operators and automatically adds the LACP commands adhering the interfaces to the port-channel interface if required.
+
+   
+   
+   
 ### Step 5 - Build Form
 
 ### Step 6 - Simulation
