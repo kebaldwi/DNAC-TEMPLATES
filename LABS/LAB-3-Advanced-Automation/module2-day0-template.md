@@ -226,6 +226,7 @@ These variables will be utilized with a form so that they can be mass entered vi
 
    Lets incorporate that by modifying the interface section syntax to read:
 
+   [//]: # ({% raw %})
    ```
    interface range {{Interfaces}}
     shut
@@ -237,13 +238,15 @@ These variables will be utilized with a form so that they can be mass entered vi
     {% endif %}
     no shut
    ```
+   [//]: # ({% endraw %})
 
    The additional logic includes a conditional statement looking for the **`,` or `-`** operators and automatically adds the LACP commands adhering the interfaces to the port-channel interface if required.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-3.png?raw=true "Import JSON")
 
 3. Lets now follow suit and allow for any Port-Channel interface number to be used by variablizing the Port-Channel numbering as shown:
-   
+  
+   [//]: # ({% raw %})
    ```
    interface range {{Interfaces}}
     shut
@@ -263,6 +266,7 @@ These variables will be utilized with a form so that they can be mass entered vi
       no port-channel standalone-disable
    {% endif %}
    ```
+   [//]: # ({% endraw %})
 
    The additional logic includes a conditional statement looking for the **`,` or `-`** operators and automatically adds the Port-Channel configuring the **optional** port-channel interface if required. Notice that we additionally **added** a **variable** for the **number** of the **Port-Channel**.
 
@@ -276,19 +280,21 @@ These variables will be utilized with a form so that they can be mass entered vi
 
    - Once we set the Management Vlan we introduce logic to optionally name the Vlan. If the Management Vlan were set to 1 then the name is default and may not be modified. Additionally Vlan 1 would not need to be shutdown. However if we utilize any other Vlan for management then we allow the naming of the Vlan within the Vlan database and automatically shutdown the SVI for Vlan 1.
 
-   ```
-   {% set VtpDomain = Hostname %}
-   vtp domain {{VtpDomain}}
-   vtp mode transparent
-   !
-   vlan {{MgmtVlan}}
-   !
-   {% if MgmtVlan > 1 %}
-     name MgmtVlan
-     interface Vlan 1
-      shutdown
-   {% endif %}
-   ```
+     [//]: # ({% raw %})
+     ```
+     {% set VtpDomain = Hostname %}
+     vtp domain {{VtpDomain}}
+     vtp mode transparent
+     !
+     vlan {{MgmtVlan}}
+     !
+     {% if MgmtVlan > 1 %}
+       name MgmtVlan
+       interface Vlan 1
+        shutdown
+     {% endif %}
+     ```
+     [//]: # ({% endraw %})
    
    You will notice there were a few modifications on this iteration. This iterative approach allows us to test at each stage and or ensure that we think the entire process through ensuring maximum reusability.
 
@@ -298,27 +304,31 @@ These variables will be utilized with a form so that they can be mass entered vi
 
    1. When building configuration its always wise to set the **System MTU**. The System MTU command is set immediately and does not require a reboot. So lets add that logic This logic should only be necessary if the MTU should be set to anything other than the default.
 
+      [//]: # ({% raw %})
       ```
       {% if SystemMTU != 1500 %}
          system mtu {{SystemMTU}}
       {% endif %}
       ```
+      [//]: # ({% endraw %})
     
     2. Lets set the **source interface** for **ALL** the **management traffic** so that its consistent in our management systems. Lets also enable **NETCONF** by default.
 
-       ```
-       ip domain lookup source-interface Vlan {{MgmtVlan}}
-       ip http client source-interface Vlan {{MgmtVlan}}
-       ip ftp source-interface Vlan {{MgmtVlan}}
-       ip tftp source-interface Vlan {{MgmtVlan}}
-       ip ssh source-interface Vlan {{MgmtVlan}}
-       ip radius source-interface Vlan {{MgmtVlan}}
-       logging source-interface Vlan {{MgmtVlan}}
-       snmp-server trap-source Vlan {{MgmtVlan}}
-       ntp source Vlan {{MgmtVlan}}
-       !
-       netconf-yang
-       ```
+      [//]: # ({% raw %})
+      ```
+      ip domain lookup source-interface Vlan {{MgmtVlan}}
+      ip http client source-interface Vlan {{MgmtVlan}}
+      ip ftp source-interface Vlan {{MgmtVlan}}
+      ip tftp source-interface Vlan {{MgmtVlan}}
+      ip ssh source-interface Vlan {{MgmtVlan}}
+      ip radius source-interface Vlan {{MgmtVlan}}
+      logging source-interface Vlan {{MgmtVlan}}
+      snmp-server trap-source Vlan {{MgmtVlan}}
+      ntp source Vlan {{MgmtVlan}}
+      !
+      netconf-yang
+      ```
+      [//]: # ({% endraw %})
 
 ### Step 5 - Build Form
 
