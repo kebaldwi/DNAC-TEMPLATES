@@ -1,4 +1,4 @@
-# Building PnP Templates - In Development
+# Building PnP Templates
 
 ## Overview
 
