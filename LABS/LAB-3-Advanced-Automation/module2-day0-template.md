@@ -1,10 +1,5 @@
 # Building PnP Templates - In Development
 
-![json](../../ASSETS/COMMON/BUILD/underconstruction.png?raw=true "Import JSON")
-
-> [!WARNING]
-> The contents of this lab are not ready for public use. Do not use this lab or attempt to use it until this header is removed entirely from the lab.
-
 ## Overview
 
 This module is designed to be used after first completing the **[Lab Preparation](../LAB-3-Advanced-Automation/module1-prep.md)** and has been created to address how to build **Plug and Play (PnP)** to onboard devices into Cisco Catalyst Center. 
@@ -16,12 +11,6 @@ When dealing with net **new** devices using the PnP process to onboard devices w
 **PnP** Onboarding allows for the **claiming** of a device and the ability to automate the deployment of configuration. It is important to note that Onboarding templates are transfered as a **flat file** via HTTP/HTTPS transfer. 
 
 This allows for the manipulation of uplinks and addressing without disconnectivity during reconfiguration from the upstream neighboring device. Additional source commands can be used to allow the device to automatically inform Cisco Catalyst Center of a change in address through the PnP profile applied and the source of the HTTP client information.
-
-### Brownfield (background only)
-
-When dealing with **existing** infrastructure, we want to absorb the device and its configuration into Cisco Catalyst Center to allow for monitoring and a gradual shift to automated management, as the device usually is in a running state supporting the network, and the configuration pre-exists.
-
-Be aware that with Brownfield device configurations, there is no template learning capability for switching. As such configuration on the device may need modification prior to provisioning in some situations. If this is required you may want to Discover and then push a normalization template via REST API to remove settings that would cause ongoing provisioning errors.
 
 ### Overview Summary
 
@@ -353,13 +342,135 @@ These variables will be utilized with a form so that they can be mass entered vi
       ```
       [//]: # ({% endraw %})
 
+      ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-6.png?raw=true "Import JSON")
+
+6. **Save** the template and we can now start to Build the Form that will be filled in by our engineers during the claim process.
+
 ### Step 5 - Build Form
+
+Now we will develop the interaction between the logic in the rendering language and the network engineer. The Form is presented to the engineer during the claim process, and so we need to edit the fields to make sure that they are presented in the correct and logical manner. 
+
+1. Click on the **Variables** tab while editing the template. The following is presented. On the left a listing of the variables that the editor has parsed from the logic of the template and on the right a editor space.
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-7.png?raw=true "Import JSON")
+
+2. Select the **SystemMTU** variable on the left. Make the following modifications:
+   
+   - Type `System MTU` for the Field Name to make it more understandable. 
+   - This is an optional variable in our logic so **untick** the **required variable** selection
+   - Make this a numeric value by selecting **integer** for variable type
+   - Enter the Default Variable Value of `1500`
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-8.png?raw=true "Import JSON")
+
+3. Select the **Hostname** variable on the left 
+
+   - Enter the Default Variable Value of `c9300-1`
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-9.png?raw=true "Import JSON")
+
+4. Select the **MgmtVlan** variable on the left 
+
+   - Type `Management Vlan` for the Field Name to make it more understandable. 
+   - Make this a numeric value by selecting **integer** for variable type
+   - Enter the Default Variable Value of `5`
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-10.png?raw=true "Import JSON")
+
+5. Select the **SwitchIP** variable on the left 
+
+   - Type `Management IP Address` for the Field Name to make it more understandable. 
+   - Make this a numeric value by selecting **IP Address** for variable type
+   - Enter the Default Variable Value of `192.168.5.3`
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-11.png?raw=true "Import JSON")
+
+6. Select the **SubnetMask** variable on the left 
+
+   - Type `Management Subnet Mask` for the Field Name to make it more understandable. 
+   - Make this a numeric value by selecting **IP Address** for variable type
+   - Enter the Default Variable Value of `255.255.255.0`
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-12.png?raw=true "Import JSON")
+
+7. Select the **Gateway** variable on the left 
+
+   - Type `Gateway Address` for the Field Name to make it more understandable. 
+   - Make this a numeric value by selecting **IP Address** for variable type
+   - Enter the Default Variable Value of `192.168.5.1`
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-13.png?raw=true "Import JSON")
+
+8. Select the **Portchannel** variable on the left 
+
+   - Type `Port-Channel Number` for the Field Name to make it more understandable. 
+   - Make this a numeric value by selecting **Integer** for variable type
+   - Enter the Default Variable Value of `1`
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-14.png?raw=true "Import JSON")
+
+9. Select the **Interfaces** variable on the left 
+
+   - Type `Uplink Interfaces` for the Field Name to make it more understandable. 
+   - Make this a numeric value by selecting **String** for variable type
+   - Enter the Default Variable Value of `Gi1/0/10, Gi1/0/11`
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-15.png?raw=true "Import JSON")
+
+10. Preview the form by clicking **Review Form** on the bottom right of the page.
+
+    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-16.png?raw=true "Import JSON")
+
+11. **Save** the template and **Commit** and we can move on to simulation tests to see what it will render.
 
 ### Step 6 - Simulation
 
+Now we will simulate the deployment of a device to check our rendered code. 
+
+1. Click on the **Simulation** tab while editing the template. The following is presented. On the left a listing of the variables that the editor has parsed from the logic of the template and on the right a editor space.
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-17.png?raw=true "Import JSON")
+
+2. Click on the Create Simulation Button Presented, then fill in the Create Simulation Form and ensure the following is displayed and or chosen:
+
+   |Field Name            |Data                    |
+   |----------------------|------------------------|
+   |Simulation Name       |`Test`                  |
+   |System MTU            |`1500`                  |
+   |Hostname              |`c9300-1`               |
+   |Management Vlan       |`5`                     |
+   |Management IP Address |`192.168.5.3`           |
+   |Management Subnet Mask|`255.255.255.0`         |
+   |Gateway Address       |`192.168.5.1`           |
+   |Port-Channel Number   |`1`                     |
+   |Uplink Interfaces     |`Gi1/0/10, Gi1/0/11`    |
+   
+3. Then click **Save**.
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-18.png?raw=true "Import JSON")
+
+4. Select the **Test** simulation presented by clicking on the name.
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-19.png?raw=true "Import JSON")
+
+5. Select the **Device** `c9300-2.dcloud.cisco.com` and click **Run**
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-20.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-21.png?raw=true "Import JSON")
+
+6. Each time you do a test make sure the rendered template makes sense. Try changing the following and re running the simulation for:
+
+   - Vlan number to `1`
+   - Port-Channel number to `110`
+   - Interfaces and delimiters used to `Gi1/0/10-11`
+   - System MTU to `1450`
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-22.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-23.png?raw=true "Import JSON")
+
 ## Summary
 
-Congratulations you have completed xxx
+Congratulations you have completed the building and testing a PnP Template. Move on to the Claiming module where we will operationalize the template.
 
 > [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
