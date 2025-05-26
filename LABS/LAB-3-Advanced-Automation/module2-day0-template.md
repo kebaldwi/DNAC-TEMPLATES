@@ -307,19 +307,19 @@ These variables will be utilized with a form so that they can be mass entered vi
     2. Lets set the **source interface** for **ALL** the **management traffic** so that its consistent in our management systems. Lets also enable **NETCONF** by default.
 
        ```
-       ip domain lookup source-interface Vlan {{ MgmtVlan }}
-       ip http client source-interface Vlan {{ MgmtVlan }}
-       ip ftp source-interface Vlan {{ MgmtVlan }}
-       ip tftp source-interface Vlan {{ MgmtVlan }}
-       ip ssh source-interface Vlan {{ MgmtVlan }}
-       ip radius source-interface Vlan {{ MgmtVlan }}
-       logging source-interface Vlan {{ MgmtVlan }}
-       snmp-server trap-source Vlan {{ MgmtVlan }}
-       ntp source Vlan {{ MgmtVlan }}
+       ip domain lookup source-interface Vlan {{MgmtVlan}}
+       ip http client source-interface Vlan {{MgmtVlan}}
+       ip ftp source-interface Vlan {{MgmtVlan}}
+       ip tftp source-interface Vlan {{MgmtVlan}}
+       ip ssh source-interface Vlan {{MgmtVlan}}
+       ip radius source-interface Vlan {{MgmtVlan}}
+       logging source-interface Vlan {{MgmtVlan}}
+       snmp-server trap-source Vlan {{MgmtVlan}}
+       ntp source Vlan {{MgmtVlan}}
        !
        netconf-yang
        ```
-       
+
 ### Step 5 - Build Form
 
 ### Step 6 - Simulation
