@@ -290,6 +290,36 @@ These variables will be utilized with a form so that they can be mass entered vi
    {% endif %}
    ```
    
+   You will notice there were a few modifications on this iteration. This iterative approach allows us to test at each stage and or ensure that we think the entire process through ensuring maximum reusability.
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-5.png?raw=true "Import JSON")
+
+5. Finally lets add additional logic to ensure the success of the template in these sections:
+
+   1. When building configuration its always wise to set the **System MTU**. The System MTU command is set immediately and does not require a reboot. So lets add that logic This logic should only be necessary if the MTU should be set to anything other than the default.
+
+      ```
+      {% if SystemMTU != 1500 %}
+         system mtu {{SystemMTU}}
+      {% endif %}
+      ```
+    
+    2. Lets set the **source interface** for **ALL** the **management traffic** so that its consistent in our management systems. Lets also enable **NETCONF** by default.
+
+       ```
+       ip domain lookup source-interface Vlan {{ MgmtVlan }}
+       ip http client source-interface Vlan {{ MgmtVlan }}
+       ip ftp source-interface Vlan {{ MgmtVlan }}
+       ip tftp source-interface Vlan {{ MgmtVlan }}
+       ip ssh source-interface Vlan {{ MgmtVlan }}
+       ip radius source-interface Vlan {{ MgmtVlan }}
+       logging source-interface Vlan {{ MgmtVlan }}
+       snmp-server trap-source Vlan {{ MgmtVlan }}
+       ntp source Vlan {{ MgmtVlan }}
+       !
+       netconf-yang
+       ```
+       
 ### Step 5 - Build Form
 
 ### Step 6 - Simulation
