@@ -274,7 +274,9 @@ These variables will be utilized with a form so that they can be mass entered vi
 
 4. Now lets make some further modifications to allow be a bit more pragmatic with the Vlan creation. First we will introduce a stabilizing element and set the **VTP configuration**, because most don't like VTP mode to be anything but **transparent** mode. 
 
+   [//]: # ({% raw %})
    - Now you can manually set the VTP Domain to anything or remove the `{% set VtpDomain = Hostname %}` line to allow for it to be part of the entry fields if you desire. Within this Lab we will let it be the hostname and dynamically created.
+   [//]: # ({% endraw %})
 
    - After the set command we will set the **vtp domain** and apply **transparent mode**.
 
@@ -312,7 +314,7 @@ These variables will be utilized with a form so that they can be mass entered vi
       ```
       [//]: # ({% endraw %})
     
-    2. Lets set the **source interface** for **ALL** the **management traffic** so that its consistent in our management systems. Lets also enable **NETCONF** by default.
+   2. Lets set the **source interface** for **ALL** the **management traffic** so that its consistent in our management systems. Lets also enable **NETCONF** by default.
 
       [//]: # ({% raw %})
       ```
