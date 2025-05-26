@@ -245,15 +245,15 @@ These variables will be utilized with a form so that they can be mass entered vi
 3. Lets now follow suit and allow for any Port-Channel interface number to be used by variablizing the Port-Channel numbering as shown:
    
    ```
-    interface range {{Interfaces}}
-     shut
-     switchport mode trunk
-     switchport trunk allowed vlan {{MgmtVlan}}
-     {% if "," in Interfaces || "-" in Interfaces %}
-        channel-protocol lacp
-        channel-group {{Portchannel}} mode active
-     {% endif %}
-     no shut
+   interface range {{Interfaces}}
+    shut
+    switchport mode trunk
+    switchport trunk allowed vlan {{MgmtVlan}}
+    {% if "," in Interfaces || "-" in Interfaces %}
+       channel-protocol lacp
+       channel-group {{Portchannel}} mode active
+    {% endif %}
+    no shut
    !
    {% if "," in Interfaces || "-" in Interfaces %}
      interface Port-channel {{Portchannel}}
@@ -264,11 +264,31 @@ These variables will be utilized with a form so that they can be mass entered vi
    {% endif %}
    ```
 
-   The additional logic includes a conditional statement looking for the **`,` or `-`** operators and automatically adds the Port-Channel configuring the **optional** port-channel interface if required. Notice that we additionally added a variable for the number of the Port-Channel.
+   The additional logic includes a conditional statement looking for the **`,` or `-`** operators and automatically adds the Port-Channel configuring the **optional** port-channel interface if required. Notice that we additionally **added** a **variable** for the **number** of the **Port-Channel**.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-4.png?raw=true "Import JSON")
 
-4. Now lets make some further modifications to allow any Management Vlan and make iterative changes to the 
+4. Now lets make some further modifications to allow be a bit more pragmatic with the Vlan creation. First we will introduce a stabilizing element and set the **VTP configuration**, because most don't like VTP mode to be anything but **transparent** mode. 
+
+   - Now you can manually set the VTP Domain to anything or remove the `{% set VtpDomain = Hostname %}` line to allow for it to be part of the entry fields if you desire. Within this Lab we will let it be the hostname and dynamically created.
+
+   - After the set command we will set the **vtp domain** and apply **transparent mode**.
+
+   - Once we set the Management Vlan we introduce logic to optionally name the Vlan. If the Management Vlan were set to 1 then the name is default and may not be modified. Additionally Vlan 1 would not need to be shutdown. However if we utilize any other Vlan for management then we allow the naming of the Vlan within the Vlan database and automatically shutdown the SVI for Vlan 1.
+
+   ```
+   {% set VtpDomain = Hostname %}
+   vtp domain {{VtpDomain}}
+   vtp mode transparent
+   !
+   vlan {{MgmtVlan}}
+   !
+   {% if MgmtVlan > 1 %}
+     name MgmtVlan
+     interface Vlan 1
+      shutdown
+   {% endif %}
+   ```
    
 ### Step 5 - Build Form
 
