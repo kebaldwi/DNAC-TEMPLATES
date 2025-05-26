@@ -240,8 +240,24 @@ These variables will be utilized with a form so that they can be mass entered vi
 
    The additional logic includes a conditional statement looking for the **`,` or `-`** operators and automatically adds the LACP commands adhering the interfaces to the port-channel interface if required.
 
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-3.png?raw=true "Import JSON")
+
+3. Lets now follow suit and allow for any Port-Channel interface number to be used by variablizing the Port-Channel numbering as shown:
    
-   
+   ```
+   {% if "," in Interfaces || "-" in Interfaces %}
+     interface Port-channel {{Portchannel}}
+      switchport trunk native vlan {{MgmtVlan}}
+      switchport trunk allowed vlan {{MgmtVlan}}
+      switchport mode trunk
+      no port-channel standalone-disable
+   {% endif %}
+   ```
+
+   The additional logic includes a conditional statement looking for the **`,` or `-`** operators and automatically adds the Port-Channel configuring the **optional** port-channel interface if required. Notice that we additionally added a variable for the number of the Port-Channel.
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PNPTEMPLATE/basic-pnp-template-4.png?raw=true "Import JSON")
+
    
 ### Step 5 - Build Form
 
