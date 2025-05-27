@@ -4,7 +4,7 @@ Within this section we will prepare the DCLOUD lab for use with the tasks contai
 
 Prior to starting the work in this lab please ensure you have checked the [LAB Readiness](../DCLOUD.md#dcloud-lab-readiness-checks-and-troubleshooting) to ensure that the LAB automation has stood it up properly for you.
 
-## Lab Section 1 - Catalyst Center and ISE Integration
+## Catalyst Center and ISE Integration
 
 In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate Catalyst Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
 
