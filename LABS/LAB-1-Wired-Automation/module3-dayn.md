@@ -24,11 +24,9 @@ As time progresses though, we may want to introduce slowly automation from Catal
 
 ## Cisco Catalyst Center DayN Template Overview
 
-While a more extensive set of settings can be built out for deployment, we will limit the configuration to the minimum necessary to perform this step, building off the completed tasks in module 2.
+Additionally, while a more extensive set of settings can be built out for deployment, we will limit the configuration to the **minimum** necessary to perform this step, building off the completed tasks in module 2.
 
-You can create Regular Day N Templates using Jinja2 and Velocity scripting languages within the **Template Hub** previously known as **Template Editor** within **Cisco Catalyst Center**. Go to the **Template Hub**  to complete the next task. Initially, we will keep things pretty simple and deploy one Day N regular template. Once the process has been discussed in detail, we will build on this within the following labs.
-
-There are two basic types of templates we can utilize. **Regular** templates, as well as **Composite** templates. 
+You can create Regular Day N Templates using Jinja2 and Velocity scripting languages within the **Template Hub** within **Cisco Catalyst Center**. There are two basic types of templates we can utilize. **Regular** templates, as well as **Composite** templates. Use a combiination of these templates to adhere to the **DRY** philosophy.
 
 ### Regular Templates
 
