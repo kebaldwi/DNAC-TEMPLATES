@@ -1,9 +1,4 @@
-# PnP Claiming - In Development
-
-![json](../../ASSETS/COMMON/BUILD/underconstruction.png?raw=true "Import JSON")
-
-> [!WARNING]
-> The contents of this lab are not ready for public use. Do not use this lab or attempt to use it until this header is removed entirely from the lab.
+# PnP Claiming
 
 ## Overview
 
@@ -31,7 +26,7 @@ We have previously built a PnP template within the **Template Hub** within **Cis
 
 Compare your template with the example in the section below. Did you miss anything important?
 
-<details open>
+<details closed>
 <summary> Expand to review the Jinja Example </summary></br>
 
 [//]: # ({% raw %})
@@ -124,7 +119,7 @@ Please note the modifications to the source addressing for all protocols and spe
 > We will attempt to use the template that you built in the previous module, but this will be kept in reserve as a fall back plan.
 
 </br>
-<details open>
+<details closed>
 <summary> Expand if needed for Files and Import Instructions</summary>
 
 ### Step 2.b - Optional PnP Template Import - **(OPTIONAL)**
