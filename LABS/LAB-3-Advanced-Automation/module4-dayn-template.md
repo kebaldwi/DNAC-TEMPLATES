@@ -115,7 +115,7 @@ We will create a **Project** for the deployment of these switches within the lab
 
 Lets now take a look at a sample typical switch configuration from our network. We are going to review this in some detail in the next few sections and build modularized templates. As we do we will disect this configuration showing **how** and **where** specific configuration should be placed for scalability.
 
-<details open>
+<details closed>
 <summary> Expand to review the complete configuration</summary>
 
 ```
@@ -267,17 +267,26 @@ radius server dnac-radius_198.18.133.27
  pac key 7 <redacted>
 !
 banner login ^
-  Session On $(hostname) Is Monitored!!!
-  *****************************LEGAL WARNING************************************
-  * This device is part of a Demonstration computer network and is provided for*
-  * official use by authorized users ONLY. Any information, documents, or      *
-  * materials in the network are the property of this firm. Unauthorized use,  *
-  * duplication, or disclosure of information or systems in this network is    *
-  * strictly prohibited by Federal Law (18 USC 10130). Use of this network     *
-  * constitutes consent to monitoring which may be released to firm management *
-  * and/or law enforcement agencies and may result in disciplinary action,     *
-  * civil action, and/or criminal prosecution.                                 *
-  ****************************LEGAL WARNING*************************************
+ ******************************************************************
+ * CISCO SYSTEMS EXAMPLE                                          *
+ ******************************************************************
+ *                                                                *
+ * THIS DEVICE IS PART OF A DEMONSTRATION COMPUTER NETWORK AND IS *
+ * PROVIDED FOR OFFICIAL USE BY AUTHORIZED USERS ONLY. ANY        *
+ * INFORMATION, DOCUMENTS, OR MATERIALS IN THE NETWORK ARE THE    *
+ * PROPERTY OF THIS FIRM. UNAUTHORIZED USE, DUPLICATION, OR       *
+ * DISCLOSURE OF INFORMATION OR SYSTEMS IN THIS NETWORK IS        *
+ * STRICTLY PROHIBITED BY FEDERAL LAW (18 USC 10130). USE OF THIS *
+ * NETWORK CONSTITUTES CONSENT TO MONITORING WHICH MAY BE         *
+ * RELEASED TO FIRM MANAGEMENT AND/OR LAW ENFORCEMENT AGENCIES    *
+ * AND MAY RESULT IN DISCIPLINARY ACTION, CIVIL ACTION, AND/OR    *
+ * CRIMINAL OR CIVIL LITIGATION.                                  *
+ *                                                                *
+ ******************************************************************
+   Hostname: $(hostname)
+ ******************************************************************
+ * CISCO SYSTEMS EXAMPLE *
+ ******************************************************************
 ^
 !
 line con 0
@@ -306,7 +315,7 @@ end
 
 1. Lets discount any config that is automated by default from Catalyst Center claim process. This config that is **deployed automatically**. Along with this we will discount any configuration which is **default configuration** on the switch as that will already be there. Thus they do not need a place in our template.
 
-   <details open>
+   <details closed>
    <summary> Expand to review the complete configuration</summary>
    
    ```
@@ -383,7 +392,7 @@ end
 
 1. Lets also discount any configurations which will be in the **Design** section or have been deployed via the **PnP Claiming Process**. These are the number of lines **REMOVED** at this point.
 
-   <details open>
+   <details closed>
    <summary> Expand to review the removed configuration</summary>
    
    ```
@@ -468,7 +477,7 @@ end
 
 1. The remaining configuration shown here can be modularized to simplify it. Here is what is left which we will use templates to build.
 
-   <details open>
+   <details closed>
    <summary> Expand to review the complete configuration</summary>
    
    ```
@@ -479,19 +488,6 @@ end
    !
    logging buffered 16384 informational
    no logging console
-   !
-   aaa new-model
-   aaa group server radius CON-VTY
-    server-private 198.18.133.1 key 7 <redacted>
-    deadtime 6
-   aaa authentication login default local
-   aaa authentication login CON-LAB local-case
-   aaa authorization console
-   aaa authorization exec default local 
-   aaa authorization exec CON-LAB local 
-   aaa authorization network default group dnac-client-radius-group 
-   aaa accounting network default start-stop group radius
-   aaa session-id common
    !
    clock timezone EST -5 0
    clock summer-time EDT recurring
@@ -548,49 +544,37 @@ end
    logging host 10.10.0.20
    logging host 198.18.133.27 transport udp port 20514
    !
-   radius-server attribute 6 on-for-login-auth
-   radius-server attribute 6 support-multiple
-   radius-server attribute 8 include-in-access-req
-   radius-server attribute 25 access-request include
-   radius-server attribute 31 mac format ietf upper-case
-   radius-server attribute 31 send nas-port-detail mac-only
-   radius-server dead-criteria time 5 tries 3
-   radius-server retransmit 2
-   radius-server deadtime 3
-   !
-   radius server dnac-radius_198.18.133.27
-    address ipv4 198.18.133.27 auth-port 1812 acct-port 1813
-    timeout 4
-    retransmit 3
-    automate-tester username dummy ignore-acct-port probe-on
-    pac key 7 <redacted>
-   !
    banner login ^
-     Session On $(hostname) Is Monitored!!!
-     *****************************LEGAL WARNING************************************
-     * This device is part of a Demonstration computer network and is provided for*
-     * official use by authorized users ONLY. Any information, documents, or      *
-     * materials in the network are the property of this firm. Unauthorized use,  *
-     * duplication, or disclosure of information or systems in this network is    *
-     * strictly prohibited by Federal Law (18 USC 10130). Use of this network     *
-     * constitutes consent to monitoring which may be released to firm management *
-     * and/or law enforcement agencies and may result in disciplinary action,     *
-     * civil action, and/or criminal prosecution.                                 *
-     ****************************LEGAL WARNING*************************************
+    ******************************************************************
+    * CISCO SYSTEMS EXAMPLE                                          *
+    ******************************************************************
+    *                                                                *
+    * THIS DEVICE IS PART OF A DEMONSTRATION COMPUTER NETWORK AND IS *
+    * PROVIDED FOR OFFICIAL USE BY AUTHORIZED USERS ONLY. ANY        *
+    * INFORMATION, DOCUMENTS, OR MATERIALS IN THE NETWORK ARE THE    *
+    * PROPERTY OF THIS FIRM. UNAUTHORIZED USE, DUPLICATION, OR       *
+    * DISCLOSURE OF INFORMATION OR SYSTEMS IN THIS NETWORK IS        *
+    * STRICTLY PROHIBITED BY FEDERAL LAW (18 USC 10130). USE OF THIS *
+    * NETWORK CONSTITUTES CONSENT TO MONITORING WHICH MAY BE         *
+    * RELEASED TO FIRM MANAGEMENT AND/OR LAW ENFORCEMENT AGENCIES    *
+    * AND MAY RESULT IN DISCIPLINARY ACTION, CIVIL ACTION, AND/OR    *
+    * CRIMINAL OR CIVIL LITIGATION.                                  *
+    *                                                                *
+    ******************************************************************
+      Hostname: $(hostname)
+    ******************************************************************
+    * CISCO SYSTEMS EXAMPLE *
+    ******************************************************************
    ^
    !
    line con 0
     exec-timeout 0 0
     privilege level 15
-    authorization exec CON-LAB
     logging synchronous
-    login authentication CON-LAB
     stopbits 1
    line vty 0 31
     exec-timeout 0 0
-    authorization exec CON-LAB
     logging synchronous
-    login authentication CON-LAB
     terminal-type mon
     length 0
     transport input ssh
@@ -600,7 +584,89 @@ end
    
    </details>
 
-1. The first thing
+### Step 3 - Modularize the Configuration
+
+The next step is to modularize the configuration so as to group the various configurations in one place for reusability to adhere to the **DRY** philosophy.
+
+1. As there are some commands that are system based that need to be there and as the default is different than what we need in the end we will make modifications.
+
+```
+no service pad
+service tcp-keepalives-in
+service tcp-keepalives-out
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec show-timezone
+service password-encryption
+service sequence-numbers
+!
+lldp run
+port-channel load-balance src-dst-ip
+!
+spanning-tree mode rapid-pvst
+spanning-tree portfast default
+spanning-tree portfast bpduguard default
+!
+no logging console
+logging trap notifications
+```
+
+1. As AAA configurations can be deployed via settings, and since we are deploying the client AAA in that manner we will show how you can also at the same time make use of AAA configurations from a template at the same time. Lets group all the Network Admin and AAA configuration together and make some slight modifications.
+
+```
+aaa new-model
+aaa authentication username-prompt "Authorized Username: "
+aaa authentication login admin local
+aaa authorization console
+aaa authorization exec admin local
+aaa authentication login admin local-case
+aaa authorization exec admin local 
+!
+ip forward-protocol nd
+no ip http server
+no ip http authentication local
+no ip http secure-server
+ip ssh version 2
+!
+banner login ^
+ ******************************************************************
+ * CISCO SYSTEMS EXAMPLE                                          *
+ ******************************************************************
+ *                                                                *
+ * THIS DEVICE IS PART OF A DEMONSTRATION COMPUTER NETWORK AND IS *
+ * PROVIDED FOR OFFICIAL USE BY AUTHORIZED USERS ONLY. ANY        *
+ * INFORMATION, DOCUMENTS, OR MATERIALS IN THE NETWORK ARE THE    *
+ * PROPERTY OF THIS FIRM. UNAUTHORIZED USE, DUPLICATION, OR       *
+ * DISCLOSURE OF INFORMATION OR SYSTEMS IN THIS NETWORK IS        *
+ * STRICTLY PROHIBITED BY FEDERAL LAW (18 USC 10130). USE OF THIS *
+ * NETWORK CONSTITUTES CONSENT TO MONITORING WHICH MAY BE         *
+ * RELEASED TO FIRM MANAGEMENT AND/OR LAW ENFORCEMENT AGENCIES    *
+ * AND MAY RESULT IN DISCIPLINARY ACTION, CIVIL ACTION, AND/OR    *
+ * CRIMINAL OR CIVIL LITIGATION.                                  *
+ *                                                                *
+ ******************************************************************
+   Hostname: $(hostname)
+ ******************************************************************
+ * CISCO SYSTEMS EXAMPLE *
+ ******************************************************************
+ ^
+!
+netconf-yang
+!
+line con 0
+ exec-timeout 15 0
+ login authentication admin
+ logging synchronous
+ authorization exec admin
+ stopbits 1
+line vty 0 15
+ exec-timeout 15 0
+ login authentication admin
+ logging synchronous
+ authorization exec admin
+ transport input ssh
+```
+
+1. The 
 1. The first thing
 1. The first thing
 1. The first thing
