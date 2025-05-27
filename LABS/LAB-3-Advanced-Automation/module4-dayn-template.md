@@ -59,58 +59,23 @@ You can create Regular Day N Templates using Jinja2 and Velocity scripting langu
 
 ## Exercises
 
-This section will go through the build and provisioning of a **Regular** template via Cisco Catalyst Center to a Catalyst 9k switch. We will deal with **Brownfield** and **Greenfield** scenarios during this module.
+This section will go through the build and provisioning of **Composite** and **Regular** templates via Cisco Catalyst Center to a Catalyst 9k switch. We will deal with the **Greenfield** scenario only during this module. Remember that a similar approach could be used for **Brownfield**.
 
-### Section 1 - Preparation
+### Step 1 - Navigate to Template Hub
 
-We will download and import a template project to include templates for deployment of the Wired Lab environment. Contained in the download will be **Regular** and **Composite** template examples which we will use against both the **Greenfield** and **Brownfield** devices.
+Navigate to the CLI Template Hub on Catalyst Center **`Tools > Template Hub`**
 
-#### Step 1 - Import the Day N Templates
+![json](../../ASSETS/LABS/CATC/MENU/catc-menu-5.png?raw=true "Import JSON")
 
-We will use the **Template Hub** previously known as the **Template Editor** to write, maintain and test template projects. A Project is a logical folder or grouping of templates. Templates can be imported or exported individually or as a collection in a project. We will be importing a Project into the template editor which will have a combination of **Regular** and **Composite** templates.
+### Step 2 - Create a Project
 
-**Download**, **Extract** and **import** a set of Day N Templates into the **Template Hub** using the file: <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/DAYN/JSON/Titanium_WiredAutoLab_Jinja2_project.json">**⬇︎Titanium_WiredAutoLab_Jinja2_project.json⬇︎**</a></br></br>
+We will create a **Project** for the deployment of these switches within the lab. You may notice that there is a Project which was deployed during the lab preparation module. We will not be utilizing that here, but you could if you desired.
 
-1. Navigate to the **Template Hub**  within Cisco Catalyst Center through the menu **`Tools > Template Hub`**.
 
-   ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
 
-2. Within the **Template Hub**, hover over the import link and select **Import Project** within the menu.  
 
-   ![json](./images/DNAC-ProjectImportBegins.png?raw=true "Import JSON")
 
-3. Click **Select a file from your computer**, then in the file explorer search for the file as shown in the image `Titanium_WiredAutoLab_Jinja2_project.json`. This project will be the one that has all our templates. Click **Open** to prepare it for uploading.
 
-   ![json](./images/DNAC-ProjectImportSelect.png?raw=true "Import JSON")
-
-4. Click **Import** 
-
-   ![json](./images/DNAC-ProjectImportDayN.png?raw=true "Import JSON")
-
-5. Within the **Template Hub** you will notice a new Project appear, click on the **Project Name** link to display the Projects. Notice the following:
-   1. Project - **DCLOUD CATC Template Labs DayN Jinja2** 
-   2. Composite Template - **CATC Template Labs DayN Composite Jinja2** 
-   3. Regular Template - **c9300-2-Setup-Configuratioh**
-
-   ![json](./images/DNAC-ProjectImported.png?raw=true "New IMage Required")
-
-6. Select the **AAA-Configuration** template and notice it has configuration within it. Some templates are just that, others make use of logical statements, conditional statements, looping structures and variables. You will see the following commands in the template selected.
-
-```J2
-aaa new-model
-!
-aaa authentication username-prompt "Authorized Username:"
-aaa authentication login admin local
-aaa authorization console
-aaa authorization exec admin local
-aaa authentication login admin local-case
-aaa authorization exec admin local 
-!
-mac address-table notification mac-move
-mac address-table notification threshold
-mac-address-table notification change
-!
-```
 
 
 ## Summary
