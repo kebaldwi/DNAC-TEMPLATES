@@ -152,7 +152,7 @@ Next we need to assign the Onboarding Template to a site using the Network Profi
 
    1. Navigate to Network Profiles by selecting **`Design > Network Profiles`** 
 
-      ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-NavigateProfile.png?raw=true "Import JSON")
+      ![json](../../ASSETS/LABS/CATC/MENU/catc-menu-1.png?raw=true "Import JSON")
 
    2. Select **Switching** under **Add Profile**
 
@@ -189,7 +189,7 @@ At this point you can claim the device putting it in a planned state for onboard
 
    1. Within Cisco Catalyst Center Navigate to **`Provision > Plug and Play`**      
 
-      ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-NavigatePnP.png?raw=true "Import JSON")
+      ![json](../../ASSETS/LABS/CATC/MENU/catc-menu-3.png?raw=true "Import JSON")
 
    2. Put a checkmark next to the device *Switch* to be claimed
    3. Click the **Actions>Claim** link and walk through the workflow    
