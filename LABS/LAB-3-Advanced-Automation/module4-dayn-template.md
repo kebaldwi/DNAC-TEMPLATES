@@ -7,7 +7,7 @@
 
 ```mermaid
 graph TD;
-    A[![Your Image](../../ASSETS/COMMON/BUILD/underconstruction.png)] --> B[Step 1: Description];
+    A[![Your Image](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/ASSETS/COMMON/BUILD/underconstruction.png)] --> B[Step 1: Description];
     B --> C[Step 2: Description];
     C --> D[Step 3: Description];
 ```
