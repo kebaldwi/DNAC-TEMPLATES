@@ -76,7 +76,7 @@ The 9130AX Access Points are connected to both access switches and the ports are
    ![json](../../ASSETS/LABS/CATC/catc-systemsettings-ise-done.png?raw=true "Import JSON")
    ![json](../../ASSETS/LABS/CATC/catc-systemsettings-ise-complete.png?raw=true "Import JSON")
 
-## Lab Section 2 - DHCP & DNS Service Preparation
+## DHCP & DNS Service Preparation
 
 In this section we will prepare Domain Name System (DNS) and Dynamic Host Configuration Protocol (DHCP) on the Windows Server for the lab environment. The reasons for the configurations made here are detailed heavily in Lab 1 titled [LAB1-Wired-Automation](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-1-Wired-Automation/module1-pnpprep.md)
 
@@ -96,7 +96,7 @@ At this point all the DNS and DHCP configuration on the ***windows server*** wil
 
    ![json](../../ASSETS/LABS/AD/DNS-DHCP.png?raw=true "Import JSON")
 
-## Lab Section 3 - Catalyst Center Design Preparation
+## Catalyst Center Design Preparation
 
 We will now prepare Catalyst Center and onboard the devices in preparation for use in the lab. The reasons for the configurations made here are detailed heavily in previous Labs within the series. While we could deploy more extensive settings for deployment, we will limit the configuration to the minimum necessary to create a working lab in which to facilitate advanced automation lab.
 
