@@ -6,7 +6,7 @@ This module is designed to be used after first completing the **[Building PnP Te
 
 ### Overview Summary
 
-In this section will go through the flows involved with **PnP**.This will allow us to create successful onboarding of network devices into Cisco Catalyst Center for Greenfield situations.
+In this section will go through the flows involved with **PnP**. This will allow us to create successful onboarding of network devices into Cisco Catalyst Center for Greenfield situations.
 
 This is the lab we will be utilizing. Notice the **PnP Target Switch**. This is the C9300-1, which is a variant of the 9300 family. We will be building a configuration for this device from a sample configuration.
 
@@ -165,7 +165,7 @@ Next we need to assign the Onboarding Template to a site using the Network Profi
 
          ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-Onboard-Add.png?raw=true "Import JSON")
 
-      3. Select the correct PnP Onboarding template that you imported earlier and click **Add**   
+      3. Select the correct PnP Onboarding template that you either built or imported earlier and click **Add**   
 
          ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-ChoosePnPTemplate.png?raw=true "Import JSON") 
 
@@ -218,10 +218,10 @@ At this point you can claim the device putting it in a planned state for onboard
       * IP Management Address `192.168.5.3`
       * Subnet Mask `255.255.255.0`
       * Gateway `192.168.5.1`
-      * VTP Domain `Cisco` ***(if required)***
+      * VTP Domain `Cisco` *(if required)*
 
       > [!NOTE] 
-      > Leave the rest of the settings default 
+      > Leave the the settings default as we built them as default values
 
         ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-TemplateClaim.png?raw=true "Import JSON")
 
