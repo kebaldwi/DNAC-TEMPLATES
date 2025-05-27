@@ -1,9 +1,4 @@
-# Advanced Automation - In Development
-
-![json](../../ASSETS/COMMON/BUILD/underconstruction.png?raw=true "Import JSON")
-
-> [!WARNING]
-> The contents of this lab are not ready for public use. Do not use this lab or attempt to use it until this header is removed entirely from the lab.
+# Advanced Automation
 
 ## Overview
 
