@@ -65,7 +65,7 @@ Jinja2 as deployed in Cisco Catalyst Center allows for the following capabilitie
 
 ## Cisco Catalyst Center DayN Template Provisioning
 
-This section will go through the build and provisioning of a **Regular** template via Cisco Catalyst Center to a Catalyst 9k switch. We will deal with **Brownfield** and **Greenfield** scenarios during this module.
+This section will go through the build and provisioning of **Composite** and **Regular** templates via Cisco Catalyst Center to a Catalyst 9k switch. We will deal with **Brownfield** and **Greenfield** scenarios during this module.
 
 ### Section 1 - Preparation
 
@@ -73,7 +73,7 @@ We will download and import a template project to include templates for deployme
 
 #### Step 1 - Import the Day N Templates
 
-We will use the **Template Hub** previously known as the **Template Editor** to write, maintain and test template projects. A Project is a logical folder or grouping of templates. Templates can be imported or exported individually or as a collection in a project. We will be importing a Project into the template editor which will have a combination of **Regular** and **Composite** templates.
+We will use the **Template Hub** to write, maintain and test template projects. A Project is a logical folder or grouping of templates. Templates can be imported or exported individually or as a collection in a project. We will be importing a Project into the template editor which will have a combination of **Regular** and **Composite** templates.
 
 **Download**, **Extract** and **import** a set of Day N Templates into the **Template Hub** using the file: <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/DAYN/JSON/Titanium_WiredAutoLab_Jinja2_project.json">**⬇︎Titanium_WiredAutoLab_Jinja2_project.json⬇︎**</a></br></br>
 
