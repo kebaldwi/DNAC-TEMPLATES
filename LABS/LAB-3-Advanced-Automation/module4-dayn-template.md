@@ -71,11 +71,540 @@ Navigate to the CLI Template Hub on Catalyst Center **`Tools > Template Hub`**
 
 We will create a **Project** for the deployment of these switches within the lab. You may notice that there is a Project which was deployed during the lab preparation module. We will not be utilizing that here, but you could if you desired.
 
+1. Add a new project
 
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-1.png?raw=true "Import JSON")
 
+1. Add a new project
 
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-2.png?raw=true "Import JSON")
 
+1. Add a new project
 
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-3.png?raw=true "Import JSON")
+
+1. Add a new project
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-4.png?raw=true "Import JSON")
+
+1. Add a new project
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-5.png?raw=true "Import JSON")
+
+1. Add a new project
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-6.png?raw=true "Import JSON")
+
+1. Add a new project
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-7.png?raw=true "Import JSON")
+
+1. Add a new project
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-8.png?raw=true "Import JSON")
+
+1. Add a new project
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-9.png?raw=true "Import JSON")
+
+1. Add a new project
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-10.png?raw=true "Import JSON")
+
+### Step 3 - Analyze Configuration
+
+Lets now take a look at a sample typical switch configuration from our network. We are going to review this in some detail in the next few sections and build modularized templates. As we do we will disect this configuration showing **how** and **where** specific configuration should be placed for scalability.
+
+<details open>
+<summary> Expand to review the complete configuration</summary>
+
+```
+service tcp-keepalives-in
+service tcp-keepalives-out
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec show-timezone year
+service password-encryption
+service sequence-numbers
+service call-home
+no platform punt-keepalive disable-kernel-core
+!
+hostname ASW-9300-ACCESS
+!
+vrf definition Mgmt-vrf
+ address-family ipv4
+ exit-address-family
+ address-family ipv6
+ exit-address-family
+!
+logging buffered 16384 informational
+no logging console
+aaa new-model
+!
+aaa group server radius CON-VTY
+ server-private 198.18.133.1 key 7 <redacted>
+ ip radius source-interface Vlan5
+ deadtime 6
+!
+aaa authentication login default local
+aaa authentication login CON-LAB local-case
+aaa authorization console
+aaa authorization exec default local 
+aaa authorization exec CON-LAB local 
+aaa authorization network default group dnac-client-radius-group 
+aaa accounting network default start-stop group radius
+aaa session-id common
+!
+clock timezone EST -5 0
+clock summer-time EDT recurring
+switch 1 provision c9300-48u
+!
+ip routing
+!
+ip name-server 198.18.133.1
+ip domain lookup source-interface Vlan5
+ip domain name base2hq.com
+!
+udld enable
+lldp run
+!
+vtp domain base2hq.com
+vtp mode transparent
+vtp version 1
+!
+port-channel load-balance src-dst-ip
+!
+spanning-tree mode rapid-pvst
+spanning-tree portfast default
+spanning-tree portfast bpduguard default
+spanning-tree extend system-id
+!
+enable secret 9 <redacted>
+username admin privilege 15 secret 9 <redacted>
+!
+redundancy
+ mode sso
+!
+vlan 5
+ name mgmtvlan
+vlan 10
+ name apvlan
+vlan 20
+ name datavlan
+vlan 30
+ name voicevlan
+vlan 40
+ name guestvlan
+!
+interface Port-channel1
+ switchport trunk native vlan 5
+ switchport trunk allowed vlan 5,10,20,30,40
+ switchport mode trunk
+!
+interface GigabitEthernet0/0
+ vrf forwarding Mgmt-vrf
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface range GigabitEthernet1/0/1-48
+ switchport access vlan 20
+ switchport voice vlan 30
+ spanning-tree portfast
+!
+interface TenGigabitEthernet1/1/1, TenGigabitEthernet1/1/2 
+ switchport trunk allowed vlan 1,5,10,20,30,40
+ switchport mode trunk
+ channel-group 1 mode active
+ channel-protocol lacp 
+!
+interface Vlan5
+ description MgmtVlan
+ ip address 192.168.5.3 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+!
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+ip http secure-trustpoint <redacted>
+ip http client source-interface Vlan5
+ip ssh time-out 60
+ip ssh source-interface Vlan5
+ip ssh version 2
+!
+ip radius source-interface Vlan5 
+ip sla enable reaction-alerts
+logging origin-id ip
+logging source-interface Vlan5
+logging host 10.10.0.20
+logging host 198.18.133.27 transport udp port 20514
+!
+snmp-server community private RW
+snmp-server community public RO
+snmp-server trap-source Vlan5
+snmp-server enable traps all
+snmp-server host 10.10.0.20 version 2c private 
+snmp-server host 198.18.133.27 version 2c private 
+snmp-server host 10.10.0.20 version 2c public 
+snmp-server host 198.18.133.27 version 2c public 
+!
+radius-server attribute 6 on-for-login-auth
+radius-server attribute 6 support-multiple
+radius-server attribute 8 include-in-access-req
+radius-server attribute 25 access-request include
+radius-server attribute 31 mac format ietf upper-case
+radius-server attribute 31 send nas-port-detail mac-only
+radius-server dead-criteria time 5 tries 3
+radius-server retransmit 2
+radius-server deadtime 3
+!
+radius server dnac-radius_198.18.133.27
+ address ipv4 198.18.133.27 auth-port 1812 acct-port 1813
+ timeout 4
+ retransmit 3
+ automate-tester username dummy ignore-acct-port probe-on
+ pac key 7 <redacted>
+!
+banner login ^
+  Session On $(hostname) Is Monitored!!!
+  *****************************LEGAL WARNING************************************
+  * This device is part of a Demonstration computer network and is provided for*
+  * official use by authorized users ONLY. Any information, documents, or      *
+  * materials in the network are the property of this firm. Unauthorized use,  *
+  * duplication, or disclosure of information or systems in this network is    *
+  * strictly prohibited by Federal Law (18 USC 10130). Use of this network     *
+  * constitutes consent to monitoring which may be released to firm management *
+  * and/or law enforcement agencies and may result in disciplinary action,     *
+  * civil action, and/or criminal prosecution.                                 *
+  ****************************LEGAL WARNING*************************************
+^
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ authorization exec CON-LAB
+ logging synchronous
+ login authentication CON-LAB
+ stopbits 1
+line vty 0 31
+ exec-timeout 0 0
+ authorization exec CON-LAB
+ logging synchronous
+ login authentication CON-LAB
+ terminal-type mon
+ length 0
+ transport input ssh
+!
+ntp source Vlan5
+ntp server 198.18.133.1
+!
+end
+```
+
+</details>
+
+1. Lets discount any config that is automated by default from Catalyst Center claim process. This config that is **deployed automatically**. Along with this we will discount any configuration which is **default configuration** on the switch as that will already be there. Thus they do not need a place in our template.
+
+   <details open>
+   <summary> Expand to review the complete configuration</summary>
+   
+   ```
+   archive
+    log config
+     logging enable
+     logging size 500
+     hidekeys
+     !
+    !
+   !
+   service timestamps debug datetime msec
+   service timestamps log datetime msec
+   service password-encryption
+   service sequence-numbers
+   !
+   ! Disable external HTTP(S) access
+   ! Disable external Telnet access
+   ! Enable external SSHv2 access
+   !
+   no ip http server
+   !
+   no ip http secure-server
+   !
+   crypto key generate rsa label dnac-sda modulus 2048
+   ip ssh version 2
+   !
+   ip scp server enable
+   !
+   line vty 0 15
+    ! maybe redundant
+   login xxxxxx
+    transport input ssh
+    ! maybe redundant
+    transport preferred none
+   !
+   ! Set VTP mode to transparent (no auto VLAN propagation)
+   ! Set STP mode to Rapid PVST+ (prefer for non-Fabric compatibility)
+   ! Enable extended STP system ID
+   ! Set Fabric Node to be STP Root for all local VLANs
+   ! Enable STP Root Guard to prevent non-Fabric nodes from becoming Root
+   ! Confirm whether vtp mode transparent below is needed
+   vtp mode transparent
+   !
+   spanning-tree mode rapid-pvst
+   !
+   spanning-tree extend system-id
+   ! spanning-tree bridge priority 0
+   ! spanning-tree rootguard
+   ! spanning-tree portfast bpduguard default
+   no udld enable
+   !
+   errdisable recovery cause all
+   !
+   errdisable recovery interval 300
+   !
+   ! Enable SNMP and RW access
+   !
+   snmp-server xxxxxxxx
+   !
+   username xxxxxx
+   !
+   enable algorithm-type scrypt secret xxxxxxxx
+   !
+   hostname Switch
+   ! DNS settings
+   !
+   ip domain name base2hq.com
+   !
+   ip name-server 10.10.0.250
+   !
+   ```
+   </details>
+
+1. Lets also discount any configurations which will be in the **Design** section or have been deployed via the **PnP Claiming Process**. These are the number of lines **REMOVED** at this point.
+
+   <details open>
+   <summary> Expand to review the removed configuration</summary>
+   
+   ```
+   service password-encryption
+   service sequence-numbers
+   service call-home
+   no platform punt-keepalive disable-kernel-core
+   !
+   hostname ASW-9300-ACCESS
+   !
+   vrf definition Mgmt-vrf
+    address-family ipv4
+    exit-address-family
+    address-family ipv6
+    exit-address-family
+   !
+   switch 1 provision c9300-48u
+   !
+   ip name-server 198.18.133.1
+   ip domain lookup source-interface Vlan5
+   ip domain name base2hq.com
+   !
+   vtp domain base2hq.com
+   vtp mode transparent
+   vtp version 1
+   !
+   spanning-tree mode rapid-pvst
+   spanning-tree extend system-id
+   !
+   enable secret 9 <redacted>
+   username admin privilege 15 secret 9 <redacted>
+   !
+   vlan 5
+    name mgmtvlan
+   !
+   interface Port-channel1
+    switchport trunk native vlan 5
+    switchport trunk allowed vlan 5
+    switchport mode trunk
+   !
+   interface GigabitEthernet0/0
+    vrf forwarding Mgmt-vrf
+    no ip address
+    negotiation auto
+   !
+   interface TenGigabitEthernet1/1/1, TenGigabitEthernet1/1/2 
+    switchport trunk allowed vlan 1,5
+    switchport mode trunk
+    channel-group 1 mode active
+    channel-protocol lacp 
+   !
+   interface Vlan5
+    description MgmtVlan
+    ip address 192.168.5.3 255.255.255.0
+    no ip redirects
+    no ip proxy-arp
+   !
+   ip ssh source-interface Vlan5
+   ip ssh version 2
+   !
+   ip radius source-interface Vlan5 
+   logging source-interface Vlan5
+   logging host 10.10.0.20
+   logging host 198.18.133.27 transport udp port 20514
+   !
+   snmp-server community private RW
+   snmp-server community public RO
+   snmp-server trap-source Vlan5
+   snmp-server enable traps all
+   snmp-server host 10.10.0.20 version 2c private 
+   snmp-server host 198.18.133.27 version 2c private 
+   snmp-server host 10.10.0.20 version 2c public 
+   snmp-server host 198.18.133.27 version 2c public 
+   !
+   ntp source Vlan5
+   ntp server 198.18.133.1
+   !
+   end
+   ```
+   
+   </details>
+
+1. The remaining configuration shown here can be modularized to simplify it. Here is what is left which we will use templates to build.
+
+   <details open>
+   <summary> Expand to review the complete configuration</summary>
+   
+   ```
+   service tcp-keepalives-in
+   service tcp-keepalives-out
+   service timestamps debug datetime msec localtime show-timezone
+   service timestamps log datetime msec show-timezone year
+   !
+   logging buffered 16384 informational
+   no logging console
+   !
+   aaa new-model
+   aaa group server radius CON-VTY
+    server-private 198.18.133.1 key 7 <redacted>
+    deadtime 6
+   aaa authentication login default local
+   aaa authentication login CON-LAB local-case
+   aaa authorization console
+   aaa authorization exec default local 
+   aaa authorization exec CON-LAB local 
+   aaa authorization network default group dnac-client-radius-group 
+   aaa accounting network default start-stop group radius
+   aaa session-id common
+   !
+   clock timezone EST -5 0
+   clock summer-time EDT recurring
+   !
+   ip routing
+   !
+   udld enable
+   lldp run
+   !
+   port-channel load-balance src-dst-ip
+   !
+   spanning-tree portfast default
+   spanning-tree portfast bpduguard default
+   !
+   redundancy
+    mode sso
+   !
+   vlan 5
+    name mgmtvlan
+   vlan 10
+    name apvlan
+   vlan 20
+    name datavlan
+   vlan 30
+    name voicevlan
+   vlan 40
+    name guestvlan
+   !
+   interface Port-channel1
+    switchport trunk allowed vlan 5,10,20,30,40
+   !
+   interface GigabitEthernet0/0
+    shutdown
+   !
+   interface range GigabitEthernet1/0/1-48
+    switchport access vlan 20
+    switchport voice vlan 30
+    spanning-tree portfast
+   !
+   interface TenGigabitEthernet1/1/1, TenGigabitEthernet1/1/2 
+    switchport trunk allowed vlan 1,5,10,20,30,40
+   !
+   ip forward-protocol nd
+   ip http server
+   ip http authentication local
+   ip http secure-server
+   ip http secure-trustpoint <redacted>
+   ip ssh time-out 60
+   ip ssh source-interface Vlan5
+   ip ssh version 2
+   !
+   ip sla enable reaction-alerts
+   logging origin-id ip
+   logging host 10.10.0.20
+   logging host 198.18.133.27 transport udp port 20514
+   !
+   radius-server attribute 6 on-for-login-auth
+   radius-server attribute 6 support-multiple
+   radius-server attribute 8 include-in-access-req
+   radius-server attribute 25 access-request include
+   radius-server attribute 31 mac format ietf upper-case
+   radius-server attribute 31 send nas-port-detail mac-only
+   radius-server dead-criteria time 5 tries 3
+   radius-server retransmit 2
+   radius-server deadtime 3
+   !
+   radius server dnac-radius_198.18.133.27
+    address ipv4 198.18.133.27 auth-port 1812 acct-port 1813
+    timeout 4
+    retransmit 3
+    automate-tester username dummy ignore-acct-port probe-on
+    pac key 7 <redacted>
+   !
+   banner login ^
+     Session On $(hostname) Is Monitored!!!
+     *****************************LEGAL WARNING************************************
+     * This device is part of a Demonstration computer network and is provided for*
+     * official use by authorized users ONLY. Any information, documents, or      *
+     * materials in the network are the property of this firm. Unauthorized use,  *
+     * duplication, or disclosure of information or systems in this network is    *
+     * strictly prohibited by Federal Law (18 USC 10130). Use of this network     *
+     * constitutes consent to monitoring which may be released to firm management *
+     * and/or law enforcement agencies and may result in disciplinary action,     *
+     * civil action, and/or criminal prosecution.                                 *
+     ****************************LEGAL WARNING*************************************
+   ^
+   !
+   line con 0
+    exec-timeout 0 0
+    privilege level 15
+    authorization exec CON-LAB
+    logging synchronous
+    login authentication CON-LAB
+    stopbits 1
+   line vty 0 31
+    exec-timeout 0 0
+    authorization exec CON-LAB
+    logging synchronous
+    login authentication CON-LAB
+    terminal-type mon
+    length 0
+    transport input ssh
+   !
+   end
+   ```
+   
+   </details>
+
+1. The first thing
+1. The first thing
+1. The first thing
+1. The first thing
+1. The first thing
 
 
 ## Summary
