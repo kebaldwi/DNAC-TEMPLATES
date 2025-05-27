@@ -11,33 +11,29 @@ This Module is designed and built to address how to use DayN templates within Ci
 
 The purpose of DayN templates is to allow for **ongoing configuration** of features on devices beyond those deployed on the Claiming process. With Cisco Catalyst Center, if devices are not within a fabric, the host onboarding part of the UI will not be available. To that end, templates are an easy way of deploying those types of configuration and much more. Before starting this Lab, please make sure you have finished all the steps in the previous modules.
 
-## General Information
+## Considerations about Templates
 
-Cisco Catalyst Center can be used for Plug and Play and Day N or Ongoing Templates; customers will start by building out an Onboarding Template that typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates as they can be used to apply ongoing changes and to allow device modifications after initial deployment. This lab section will focus on Day N templates to be built as regular templates within Cisco Catalyst Center.
+* PnP vs. DayN Templates: Cisco recommends using DayN Templates for most configurations, reserving PnP templates for establishing a stable network connection.
 
-Another important consideration is that part of a typical configuration would include some lines of code, which are built by the **Design > Network Settings >** application within Cisco Catalyst Center. 
+* Inventory Database Limitations: The inventory database is inaccessible before the claim process, complicating onboarding. This results in a need for manual input in scripts instead of leveraging known device information.
 
-If the Design component is used, you should **NOT** deploy the same feature from cli code in a template to configure the device. It's a decision you have to make upfront, and the benefit is that it avoids many lines in the templates, and allows for a more UI-centric configuration that is easier to maintain. 
+* Ongoing Modifications: DayN operations templates are stored within a project, while onboarding templates are located in the project Onboarding Configuration. Using onboarding templates post-PnP is impractical due to the absence of **system** and **bind** variables, which could simplify code and reduce repetition.
 
-As guidance, try to use **Design Settings** for as many configurations as you can, leaving Templates light and nimble for configurations that might change ongoing.
+* Automation Potential: DayN templates facilitate ongoing modifications and automate configurations using data from the inventory database, minimizing manual input.
 
-### Greenfield Devices
+* Configuration Best Practices: Typical configurations should automatically derive from the Network Settings in Cisco Catalyst Center. Avoid deploying CLI code in templates for tasks already defined by design components, promoting a more UI-centric and maintainable configuration approach.
 
-When dealing with net new devices using the Provisioning process we utilize it is better to utilize composite templates with multiple regular templates within. This allows greater flexibility and a method to always add to the structure for compliance reasons. Additionally, Jinja2 and Velocity Scripting languages may be intermingled, allowing for the reuse of existing scripts.
+* Guidance: Utilize design settings for as much configuration as possible, keeping templates streamlined for configurations that may change frequently, enhancing maintainability and troubleshooting.
 
-### Brownfield Devices
+* **Jinja** vs **Velocity**, choose wisely. My recommendation is to use Jinja simply because it is the defactor template rendering language used in multiple platforms. It is modular, and the logic consrtucts are based on **Python**. 
 
-When dealing with existing infrastructure, initially we want to absorb the device and its configuration into Cisco Catalyst Center to allow for monitoring and a gradual shift to automated management, as the device usually is in a running state supporting the network, and the configuration pre-exists.
+## Developing a DayN Template
 
-As time progresses though, we may want to introduce slowly automation from Catalyst Center utilizing DayN Templates. Be aware that with Brownfield device configurations, there is no template learning capability for switching. As such configuration on the device may need modification prior to provisioning in some situations. Should it be a newer device, you may want to Discover and then push a normalization template via REST API to remove settings that would cause ongoing provisioning errors. Should this be a device already in Catalyst Center, then a normalization strategy may need to be adopted, backing out certain configuration, prior to provisioning. This script will involve perhaps the removal of AAA commands and others which cause issues with provisioning.
+So what should be in the DayN Templates? Well that depends on the situation, but generally speaking we need to build the onboarding capability of the device, and put that which cannot change without disrupting the communication from Device to Catalyst Center.
 
-## Cisco Catalyst Center DayN Template Overview
+Additionally, while a more extensive set of settings can be built out for deployment, we will limit the configuration to the **minimum** necessary to perform this step, building off the completed tasks in module 2.
 
-While a more extensive set of settings can be built out for deployment, we will limit the configuration to the minimum necessary to perform this step, building off the completed tasks in module 2.
-
-You can create Regular Day N Templates using Jinja2 and Velocity scripting languages within the **Template Hub** previously known as **Template Editor** within **Cisco Catalyst Center**. Go to the **Template Hub**  to complete the next task. Initially, we will keep things pretty simple and deploy one Day N regular template. Once the process has been discussed in detail, we will build on this within the following labs.
-
-There are two basic types of templates we can utilize. **Regular** templates, as well as **Composite** templates. 
+You can create Regular Day N Templates using Jinja2 and Velocity scripting languages within the **Template Hub** within **Cisco Catalyst Center**. There are two basic types of templates we can utilize. **Regular** templates, as well as **Composite** templates. Use a combiination of these templates to adhere to the **DRY** philosophy.
 
 ### Regular Templates
 
@@ -47,7 +43,21 @@ There are two basic types of templates we can utilize. **Regular** templates, as
 
 **Composite** templates are logical templates used for grouping together multiple **Regular** templates. They allow you to use Jinja2 and Velocity **Regular** templates within the same logical template. This allows us to make templates in mutliple languages and to be able to reuse long standing Velocity scripts with newer Jinja2 templates within the same **Composite** Template. This allows for people to code in the language they are more accustomed too, and to continue to support existing scripts.
 
-## Cisco Catalyst Center DayN Template Provisioning
+### Included items:
+
+* System Configuration
+  * Hostname
+  * System MTU 
+  * VTP 
+  * Enable Netconf 
+* Management Interface Configuration
+  * IP address
+  * Subnet Mask
+  * Source Management Traffic
+* Next Hop Configuration
+  * Gateway or Routing Protocol
+
+## Exercises
 
 This section will go through the build and provisioning of a **Regular** template via Cisco Catalyst Center to a Catalyst 9k switch. We will deal with **Brownfield** and **Greenfield** scenarios during this module.
 

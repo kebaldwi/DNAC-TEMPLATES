@@ -9,10 +9,40 @@
 
 In the previous labs you became familiar with an overview into **[Wired](../LAB-1-Wired-Automation/README.md)** and **[Wireless](../LAB-2-Wireless-Automation/README.md)** Automation. These both utilized the idea of utilizing **[Intent](../../TUTORIALS/ManagementScale.md)** which concentrates itself around the Network Settings, Network Profiles and aligns those to the Hierarchy. 
 
+Cisco Catalyst Center can be used for Plug and Play and Day N or Ongoing Templates; customers will start by building out an Onboarding Template that typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates as they can be used to apply ongoing changes and to allow device modifications after initial deployment. This lab section will focus on Day N templates to be built as regular templates within Cisco Catalyst Center.
+
+Another important consideration is that part of a typical configuration would include some lines of code, which are built by the **Design > Network Settings >** application within Cisco Catalyst Center. 
+
+If the Design component is used, you should **NOT** deploy the same feature from cli code in a template to configure the device. It's a decision you have to make upfront, and the benefit is that it avoids many lines in the templates, and allows for a more UI-centric configuration that is easier to maintain. 
+
+As guidance, try to use **Design Settings** for as many configurations as you can, leaving Templates light and nimble for configurations that might change ongoing.
+
+### Greenfield Devices
+
+When dealing with net new devices using the Provisioning process we utilize it is better to utilize composite templates with multiple regular templates within. This allows greater flexibility and a method to always add to the structure for compliance reasons. Additionally, Jinja2 and Velocity Scripting languages may be intermingled, allowing for the reuse of existing scripts.
+
+### Brownfield Devices
+
+When dealing with existing infrastructure, initially we want to absorb the device and its configuration into Cisco Catalyst Center to allow for monitoring and a gradual shift to automated management, as the device usually is in a running state supporting the network, and the configuration pre-exists.
+
+As time progresses though, we may want to introduce slowly automation from Catalyst Center utilizing DayN Templates. Be aware that with Brownfield device configurations, there is no template learning capability for switching. As such configuration on the device may need modification prior to provisioning in some situations. Should it be a newer device, you may want to Discover and then push a normalization template via REST API to remove settings that would cause ongoing provisioning errors. Should this be a device already in Catalyst Center, then a normalization strategy may need to be adopted, backing out certain configuration, prior to provisioning. This script will involve perhaps the removal of AAA commands and others which cause issues with provisioning.
+
 > [!TIP]
 > For many reasons and specifically with Wireless the Wireless Settings, and Feature Templates in the UI are the best way I can recommend for managing Wireless controllers at scale, with or without Fabric. The reason, is that Per Device Configuration is just as it sounds iterating through settings on multiple controllers, whicch will never be as quick or nimble at scale as the UI. I also do not advocate for building templates for controllers as often the radio resets become painful at scale. This is elegantly solved by Wireless Intent.
 
 This Lab will focus on the creation and development of Templates, and how to choose and adopt settings in the UI toward adopting **[Intent](../../TUTORIALS/ManagementScale.md)**. This will take some of the previous concepts and expand upon them while concentrating on the build of the templates for switching. It will culminate in the provisioning of a switch via REST-API.
+
+### Templates
+
+You can create Regular Day N Templates using Jinja2 and Velocity scripting languages within the **Template Hub** within **Cisco Catalyst Center**. There are two basic types of templates we can utilize. **Regular** templates, as well as **Composite** templates. Use a combiination of these templates to adhere to the **DRY** philosophy.
+
+#### Regular Templates
+
+**Regular** templates are templates which are typically designed to address a specific use case. Regular templates are written in either Jinja2 or Velocity scripting languages. Each Language has features which may be leveraged to make the script more reusable, allowing the user to not have to repeat themselves. This modular capability allows us to keep a script written to address a specific need small. At the same time each form of scripting language allows for features like variables, conditional logic, and looping constructs. This allows for a small powerful script to be written making it more light weight and easier to fault find and maintain.
+
+#### Composite Templates
+
+**Composite** templates are logical templates used for grouping together multiple **Regular** templates. They allow you to use Jinja2 and Velocity **Regular** templates within the same logical template. This allows us to make templates in mutliple languages and to be able to reuse long standing Velocity scripts with newer Jinja2 templates within the same **Composite** Template. This allows for people to code in the language they are more accustomed too, and to continue to support existing scripts.
 
 ## General Information
 
