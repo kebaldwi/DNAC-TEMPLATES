@@ -936,7 +936,7 @@ The next step is to create modularized Jinja templates from the configuration se
 
 ## Summary
 
-Congratulations you have completed xxx
+Congratulations you have completed creating the DayN Project with Composite and Regular Templates. In the next module we will deploy the templates to the switch.
 
 > [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
