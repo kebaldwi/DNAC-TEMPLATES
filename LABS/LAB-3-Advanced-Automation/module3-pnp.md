@@ -128,21 +128,26 @@ Please note the modifications to the source addressing for all protocols and spe
   
    <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/ONBOARDING/JSON/Platinum_PnP_Jinja2_Template.json">⬇︎Platinum_PnP_Jinja2_template.json⬇︎</a> 
 
-1. Navigate to the **Template Hub** within Cisco Catalyst Center through the menu **`Tools > Template Hub`**.
+2. Navigate to the **Template Hub** within Cisco Catalyst Center through the menu **`Tools > Template Hub`**.
 
    ![json](../../ASSETS/LABS/CATC/MENU/catc-menu-5.png?raw=true "Import JSON")
 
-2. Click **Import** then select **Template(s)** from the menu.    
+3. Click **Import** then select **Template(s)** from the menu.    
 
-   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/IMPORT/DNAC-TemplateImport-1.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/IMPORT/template-import-1.png?raw=true "Import JSON")
 
-3. Click the link to select files from the local computer. In the Windows explorer window search for the extracted json file, select it and open it into the import window.
+4. Select **Onboarding Configuration** for the Network Profile from the dropdown selection. 
 
-   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/IMPORT/DNAC-TemplateSelection-1.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/IMPORT/template-import-2.png?raw=true "Import JSON")
 
-4. Click import to install and import the template.
+5. Click the link to select files from the local computer. In the Windows explorer window search for the **Platinum_PnP_Jinja2_Template** json file, select it and open it into the import window.
 
-   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/IMPORT/DNAC-TemplatedSelected-1.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/IMPORT/template-import-4.png?raw=true "Import JSON")
+
+6. Click **import** to install and import the template.
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/IMPORT/template-import-5.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/IMPORT/template-import-6.png?raw=true "Import JSON")
 
 </details>
 
@@ -156,30 +161,32 @@ Next we need to assign the Onboarding Template to a site using the Network Profi
 
    2. Select **Switching** under **Add Profile**
 
-      ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-SelectProfile.png?raw=true "Import JSON")
+      ![json](../../ASSETS/LABS/NETWORKPROFILES/LAB3/switch-pnp-1.png?raw=true "Import JSON")
 
-   3. Enter the following: 
+   3. Click **&#8853;** and complete the following: 
+
+         ![json](../../ASSETS/LABS/NETWORKPROFILES/LAB3/switch-pnp-2.png?raw=true "Import JSON")
 
       1. Enter the **Profile name** 
-      2. Select the **Onboarding Template** tab and click **Add Template** to add a template
+      2. Select the **Onboarding Template** tab and click **Add Template** and select the **PnP-Template-J2** template
 
-         ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-Onboard-Add.png?raw=true "Import JSON")
+         ![json](../../ASSETS/LABS/NETWORKPROFILES/LAB3/switch-pnp-3.png?raw=true "Import JSON")
 
-      3. Select the correct PnP Onboarding template that you either built or imported earlier and click **Add**   
+      3. With the **PnP-Template-J2** template selected that you either built or imported earlier and click **Add** then close the **Add Template** wizard    
 
-         ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-ChoosePnPTemplate.png?raw=true "Import JSON") 
+         ![json](../../ASSETS/LABS/NETWORKPROFILES/LAB3/switch-pnp-4.png?raw=true "Import JSON")
 
    4. On the Onboarding Template page confirm the template(s) to be used for onboarding then **Save** the profile
 
-      ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-ProfileComplete.png?raw=true "Import JSON")
+      ![json](../../ASSETS/LABS/NETWORKPROFILES/LAB3/switch-pnp-5.png?raw=true "Import JSON")
 
-   5. Assign the network profile to the hierarchy 
+   5. Click **Assign** to attach the network profile to the hierarchy 
 
-      ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-ProfileAssign.png?raw=true "Import JSON")
+      ![json](../../ASSETS/LABS/NETWORKPROFILES/LAB3/switch-pnp-6.png?raw=true "Import JSON")
 
    6. Select the sites to apply the profile within the hierarchy and click **Save**.
 
-      ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-ProfileAssigned.png?raw=true "Import JSON")
+      ![json](../../ASSETS/LABS/NETWORKPROFILES/LAB3/switch-pnp-7.png?raw=true "Import JSON")
 
 ### Step 4 - Claiming the Device 
 
@@ -194,21 +201,23 @@ At this point you can claim the device putting it in a planned state for onboard
    2. Put a checkmark next to the device *Switch* to be claimed
    3. Click the **Actions>Claim** link and walk through the workflow    
 
-      ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-BeginClaim.png?raw=true "Import JSON")
+      ![json](../../ASSETS/LABS/DAY0DAYN/LAB3-PNP-CLAIM/c9300-1-claim-1.png?raw=true "Import JSON")
 
    4. Section **1** click the **Assign** link to select the part of the hierarchy to assign the device
 
-      ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-AssignSite-Start.png?raw=true "Import JSON")
+      ![json](../../ASSETS/LABS/DAY0DAYN/LAB3-PNP-CLAIM/c9300-1-claim-2.png?raw=true "Import JSON")
 
    5. Click the part of the hierarchy to assign the device to and then click **Assign**
    
-      ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-AssignSite-Save.png?raw=true "Import JSON")
+      ![json](../../ASSETS/LABS/DAY0DAYN/LAB3-PNP-CLAIM/c9300-1-claim-3.png?raw=true "Import JSON")
 
    6. The assigned site will appear on the section page, click **next** to continue
 
+      ![json](../../ASSETS/LABS/DAY0DAYN/LAB3-PNP-CLAIM/c9300-1-claim-4.png?raw=true "Import JSON")
+
    7. Section **2** you can click the hyperlinks to the right of the workflow page and view or amend the templates and images utilized. We will make no changes so click **next** to continue   
 
-      ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-SiteClaim.png?raw=true "Import JSON")
+      ![json](../../ASSETS/LABS/DAY0DAYN/LAB3-PNP-CLAIM/c9300-1-claim-5.png?raw=true "Import JSON")
 
    8. Section **3** select the device **serial number** on the left and fill in the variables within the template click **next**. Please use the following:
    
@@ -223,19 +232,19 @@ At this point you can claim the device putting it in a planned state for onboard
       > [!NOTE] 
       > Leave the the settings default as we built them as default values
 
-        ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-TemplateClaim.png?raw=true "Import JSON")
+      ![json](../../ASSETS/LABS/DAY0DAYN/LAB3-PNP-CLAIM/c9300-1-claim-6.png?raw=true "Import JSON")
 
    9. Section **4** review the elements including configuration to be deployed. Click **Claim** followed by **Yes** to initiate
 
-      ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-Claim.png?raw=true "Import JSON")
+      ![json](../../ASSETS/LABS/DAY0DAYN/LAB3-PNP-CLAIM/c9300-1-claim-7.png?raw=true "Import JSON")
 
    10. At this stage the device will be placed in **Planned** state, and will cycle through **Onboarding** and **Provisioned** when complete     
 
-       ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-Claimed.png?raw=true "Import JSON")
+       ![json](../../ASSETS/LABS/DAY0DAYN/LAB3-PNP-CLAIM/c9300-1-claim-8.png?raw=true "Import JSON")
 
    11. After the device is completed it will appear in the device inventory after being sync'd with Cisco Catalyst Center.      
 
-       ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-Inventory.png?raw=true "Import JSON")
+       ![json](../../ASSETS/LABS/DAY0DAYN/LAB3-PNP-CLAIM/c9300-1-claim-9.png?raw=true "Import JSON")
 
 ## Summary
 
