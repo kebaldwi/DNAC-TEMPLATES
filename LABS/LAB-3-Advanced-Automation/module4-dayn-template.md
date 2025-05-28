@@ -801,6 +801,7 @@ The next step is to create modularized Jinja templates from the configuration se
 
     [//]: # ({% raw %})
     ```J2
+    {#AAA Configuration#}
     aaa new-model
     aaa authentication username-prompt "Authorized Username: "
     aaa authentication login admin local
@@ -815,6 +816,7 @@ The next step is to create modularized Jinja templates from the configuration se
     no ip http secure-server
     ip ssh version 2
     !
+    <MLTCMD>
     banner login ^
      ******************************************************************
      * CISCO SYSTEMS EXAMPLE                                          *
@@ -837,6 +839,7 @@ The next step is to create modularized Jinja templates from the configuration se
      * CISCO SYSTEMS EXAMPLE *
      ******************************************************************
      ^
+    </MLTCMD>
     !
     netconf-yang
     !
@@ -897,30 +900,80 @@ The next step is to create modularized Jinja templates from the configuration se
 
     [//]: # ({% raw %})
     ```J2
-    vlan 5
-     name mgmtvlan
-    vlan 10
-     name apvlan
-    vlan 20
-     name datavlan
-    vlan 30
-     name voicevlan
-    vlan 40
-     name guestvlan
+    {#Interface Configuration#}
     !
-    interface Port-channel1
-     switchport trunk allowed vlan 5,10,20,30,40
+    {#Vlan Build#}
+    {#Vlan Dictionary#}
+    {% set VlanData = [
+      {'vlan':'5','name':'mgmtvlan'},
+      {'vlan':'10','name':'apvlan'},
+      {'vlan':'20','name':'datavlan'},
+      {'vlan':'30','name':'voicevlan'},
+      {'vlan':'40','name':'guestvlan'},
+      {'vlan':'999','name':'disabledvlan'}
+      ]%}
     !
+    {#MACRO Vlan Database Build#}
+    {% macro configure_vlans(vlanpairs)  %}
+      {% for vlanpair in vlanpairs %}
+        vlan {{vlanpair['vlan']}}
+        name {{vlanpair['name']}}
+      {% endfor %}
+    {% endmacro %}
+    !
+    {# MACRO Vlan Search Function #}
+    {% macro search_vlans(vlanpairs) %}
+      {% for vlanpair in vlanpairs %}
+        {% do vlanArray.append(vlanpair['vlan']) %}
+      {% endfor %}
+    {% endmacro %}
+    !
+    {#Macro for Workstation Interface#}
+    {# Interface Workstations with Voice Macro #}
+    {% macro workstation_interface(vlan_number, voice_number) %}
+      description Workstation Interface
+      switchport access vlan {{vlan_number}}
+      switchport voice vlan {{voice_number}}
+      switchport mode access
+    {% endmacro %}
+    !
+    {#Vlan Configuration#}
+    {% set vlanArray = [] %}
+    {{ configure_vlans(VlanData) }}
+    {{ search_vlans(VlanData) }}
+    !
+    {#Interface Configuration#}
+    {#Update PortChannel with Vlans#}
+    interface Port-channel 1
+     switchport trunk allowed vlan add {{vlanArray|join(',')}}
+    !
+    {#Management Shutdown#}
     interface GigabitEthernet0/0
      shutdown
     !
-    interface range GigabitEthernet1/0/1-48
-     switchport access vlan 20
-     switchport voice vlan 30
-     spanning-tree portfast
+    {#Determine Uplinks Target#}
+    {% set portarray = [] %}
+    {% for interface in __interface %}
+      {% if interface.portMode == "trunk" && interface.interfaceType == "Physical" %}
+        {% do portarray.append(interface.portName) %}
+      {% endif %}
+    {% endfor %}
     !
-    interface TenGigabitEthernet1/1/1, TenGigabitEthernet1/1/2 
-     switchport trunk allowed vlan 1,5,10,20,30,40
+    {#Automatically Configure Workstation non uplink interfaces#}
+    {% for interface in __interface %}
+      {% if interface.interfaceType == "Physical" && interface.portName.replaceAll("(^[a-zA-Z]+).*","$1") ==     "GigabitEthernet"  %}
+        {% if interface.portName.replaceAll("(^[a-zA-Z]+.).*", "$1") != "GigabitEthernet0" %}
+          {% if interface.portName.replaceAll("^[a-zA-Z]+(\\d+)/(\\d+)/(\\d+)", "$2") != 1 %}
+            {% if interface.portName in portarray %}
+            {% else %}
+              default interface {{interface.portName}}
+              interface {{interface.portName}}
+                {{workstation_interface(vlanArray[1],vlanArray[2])}}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
     ```
     [//]: # ({% endraw %})
 

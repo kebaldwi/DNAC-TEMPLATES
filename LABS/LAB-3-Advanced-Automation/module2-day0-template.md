@@ -133,7 +133,7 @@ In the **Add New Template** wizard fill in the following details as shown below:
 As previously stated the PnP Template should use the minimum configuration to adhere to the **Don't Repeat yourself (DRY)** philosophy. Remember No System Variables and limited bind functionality are available. This inhibits the ability to use logic without filling in all the details. Additionally we really want to track these things which is what DayN affords us. 
 
 > [!TIP]
-> Keep it **SIMPLE**
+> As you go through this lab do not merely paste the configs, challenge yourself to understand what is going on with the logic in the template and how it was derived. </br></br> Additionally, Always Keep it **SIMPLE**
 
 In this lab we are connecting a Layer 2 switch and utilizing the typical management VLAN. So at a minimum we need to get this configuration onto that device:
 
