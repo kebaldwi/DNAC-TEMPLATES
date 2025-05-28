@@ -45,17 +45,25 @@ You can create Regular Day N Templates using Jinja2 and Velocity scripting langu
 
 ### Included items:
 
-* System Configuration
-  * Hostname
-  * System MTU 
-  * VTP 
-  * Enable Netconf 
-* Management Interface Configuration
-  * IP address
-  * Subnet Mask
-  * Source Management Traffic
-* Next Hop Configuration
-  * Gateway or Routing Protocol
+* Model Configuration Analysis
+* Modularization of Features for Reusability
+  * System Configuration
+    * Services
+    * LLDP Neighbor Protocol 
+    * Source-Destination Load Balancing 
+    * Spanning Tree
+	* Logging
+	* Time Configuration 
+  * AAA Configuration for Local Device Administration
+    * AAA Configuration
+	* HTTP Configuration
+	* Login Banner Configuration
+	* Console, VTY and Netconf Configuration
+  * Interface Configuration
+    * Vlans
+	* Port Channel Configuration
+    * Uplink Configurations
+    * Host Interface Configurations
 
 ## Exercises
 
@@ -941,7 +949,7 @@ In the continuation of the creation of modularized Jinja templates we will clone
 
 ### Step 8 - Configure Composite Template
 
-The next step is to create modularized Jinja templates from the configuration sections so as to continue to group the various configurations in one place for reusability to adhere to the **DRY** philosophy.
+Now we will configure the **DayN-Templates-J2** composite template. This allows us to logically group any DayN templates that exist in the project or the system with a network profile for deployment. Lets get started. 
 
 1. Create a Regular template for System Configuration. Within the Template Hub 
 
