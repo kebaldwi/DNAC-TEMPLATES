@@ -698,39 +698,39 @@ This pretty much sums up the templates we will need. Now lets start building the
 
 The next step is to create modularized Jinja templates from the configuration sections so as to continue to group the various configurations in one place for reusability to adhere to the **DRY** philosophy.
 
-1. Create a Regular template for System Configuration. Within the Template Hub 
+1. What we will do is now Build our first DayN Template. To do this use the **&#8853; Add** action menu shown and select **New Template**
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-1.png?raw=true "Import JSON")
 
-2. Create a Regular template for System Configuration. Within the Template Hub 
+2. For Template Name select **DayN-SysConfig-J2** as shown.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-2.png?raw=true "Import JSON")
 
-3. Create a Regular template for System Configuration. Within the Template Hub 
+3. Ensure that for Template Type you have selected **Regular Template** and under Template Language that **JINJA** is selected as recommended earlier. For Software Type select **IOS-XE** as shown.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-3.png?raw=true "Import JSON")
 
-4. Create a Regular template for System Configuration. Within the Template Hub 
+4. Click the **Add Device Details** link to select the type of device to which to associate the template
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-4.png?raw=true "Import JSON")
 
-5. Create a Regular template for System Configuration. Within the Template Hub 
+5. In the **Add Device Details** page select for Device Family **Switches and Hubs**
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-5.png?raw=true "Import JSON")
 
-6. Create a Regular template for System Configuration. Within the Template Hub 
+6. Enter **9300** in the search filter to find the 9300 switches
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-6.png?raw=true "Import JSON")
 
-7. Create a Regular template for System Configuration. Within the Template Hub 
+7. Then select for Devices **Cisco Catalyst 9300 Series Switches** and click **Add**.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-7.png?raw=true "Import JSON")
 
-8. Create a Regular template for System Configuration. Within the Template Hub 
+8. You should now see the following **configured properties** for the template, click **Continue**
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-8.png?raw=true "Import JSON")
 
-9. Take this snippet and add it to the template you just created and save and commit it.
+9. The **PnP-Template-J2** will now open in the Editor allowing the configuration to be added. Take this snippet and add it to the template you just created and save and commit it.
 
     [//]: # ({% raw %})
     ```J2
@@ -765,39 +765,39 @@ The next step is to create modularized Jinja templates from the configuration se
 
 The next step is to create modularized Jinja templates from the configuration sections so as to continue to group the various configurations in one place for reusability to adhere to the **DRY** philosophy.
 
-1. Create a Regular template for System Configuration. Within the Template Hub 
+1. What we will do is now Build our first DayN Template. To do this use the **&#8853; Add** action menu shown and select **New Template**
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-1.png?raw=true "Import JSON")
 
-2. Create a Regular template for System Configuration. Within the Template Hub 
+2. For Template Name select **DayN-SysConfig-J2** as shown.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-2.png?raw=true "Import JSON")
 
-3. Create a Regular template for System Configuration. Within the Template Hub 
+3. Ensure that for Template Type you have selected **Regular Template** and under Template Language that **JINJA** is selected as recommended earlier. For Software Type select **IOS-XE** as shown.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-3.png?raw=true "Import JSON")
 
-4. Create a Regular template for System Configuration. Within the Template Hub 
+4. Click the **Add Device Details** link to select the type of device to which to associate the template
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-4.png?raw=true "Import JSON")
 
-5. Create a Regular template for System Configuration. Within the Template Hub 
+5. In the **Add Device Details** page select for Device Family **Switches and Hubs**
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-5.png?raw=true "Import JSON")
 
-6. Create a Regular template for System Configuration. Within the Template Hub 
+6. Enter **9300** in the search filter to find the 9300 switches
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-6.png?raw=true "Import JSON")
 
-7. Create a Regular template for System Configuration. Within the Template Hub 
+7. Then select for Devices **Cisco Catalyst 9300 Series Switches** and click **Add**.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-7.png?raw=true "Import JSON")
 
-8. Create a Regular template for System Configuration. Within the Template Hub 
+8. You should now see the following **configured properties** for the template, click **Continue**
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-8.png?raw=true "Import JSON")
 
-9. Take this snippet and add it to the template you just created and save and commit it.
+9. The **PnP-Template-J2** will now open in the Editor allowing the configuration to be added. Take this snippet and add it to the template you just created and save and commit it.
 
     [//]: # ({% raw %})
     ```J2
@@ -832,39 +832,39 @@ The next step is to create modularized Jinja templates from the configuration se
 
 The next step is to create modularized Jinja templates from the configuration sections so as to continue to group the various configurations in one place for reusability to adhere to the **DRY** philosophy.
 
-1. Create a Regular template for System Configuration. Within the Template Hub 
+1. What we will do is now Build our first DayN Template. To do this use the **&#8853; Add** action menu shown and select **New Template**
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-1.png?raw=true "Import JSON")
 
-2. Create a Regular template for System Configuration. Within the Template Hub 
+2. For Template Name select **DayN-SysConfig-J2** as shown.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-2.png?raw=true "Import JSON")
 
-3. Create a Regular template for System Configuration. Within the Template Hub 
+3. Ensure that for Template Type you have selected **Regular Template** and under Template Language that **JINJA** is selected as recommended earlier. For Software Type select **IOS-XE** as shown.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-3.png?raw=true "Import JSON")
 
-4. Create a Regular template for System Configuration. Within the Template Hub 
+4. Click the **Add Device Details** link to select the type of device to which to associate the template
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-4.png?raw=true "Import JSON")
 
-5. Create a Regular template for System Configuration. Within the Template Hub 
+5. In the **Add Device Details** page select for Device Family **Switches and Hubs**
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-5.png?raw=true "Import JSON")
 
-6. Create a Regular template for System Configuration. Within the Template Hub 
+6. Enter **9300** in the search filter to find the 9300 switches
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-6.png?raw=true "Import JSON")
 
-7. Create a Regular template for System Configuration. Within the Template Hub 
+7. Then select for Devices **Cisco Catalyst 9300 Series Switches** and click **Add**.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-7.png?raw=true "Import JSON")
 
-8. Create a Regular template for System Configuration. Within the Template Hub 
+8. You should now see the following **configured properties** for the template, click **Continue**
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-8.png?raw=true "Import JSON")
 
-9. Take this snippet and add it to the template you just created and save and commit it.
+9. The **PnP-Template-J2** will now open in the Editor allowing the configuration to be added. Take this snippet and add it to the template you just created and save and commit it.
 
     [//]: # ({% raw %})
     ```J2
