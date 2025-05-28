@@ -734,6 +734,73 @@ The next step is to create modularized Jinja templates from the configuration se
 
     [//]: # ({% raw %})
     ```J2
+    {#System Configuration#}
+    no service pad
+    service tcp-keepalives-in
+    service tcp-keepalives-out
+    service timestamps debug datetime msec localtime show-timezone
+    service timestamps log datetime msec show-timezone
+    service password-encryption
+    service sequence-numbers
+    !
+    lldp run
+    port-channel load-balance src-dst-ip
+    !
+    spanning-tree mode rapid-pvst
+    spanning-tree portfast default
+    spanning-tree portfast bpduguard default
+    !
+    logging buffered 16384 informational
+    no logging console
+    logging origin-id ip
+    !
+    clock timezone EST -5 0
+    clock summer-time EDT recurring
+    ```
+    [//]: # ({% endraw %})
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-9.png?raw=true "Import JSON")
+
+### Step 6 - Create AAA Configuration Regular Templates
+
+The next step is to create modularized Jinja templates from the configuration sections so as to continue to group the various configurations in one place for reusability to adhere to the **DRY** philosophy.
+
+1. What we will do is now Build our first DayN Template. To do this use the **&#8853; Add** action menu shown and select **New Template**
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-1.png?raw=true "Import JSON")
+
+2. For Template Name select **DayN-AaaConfig-J2** as shown.
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-2.png?raw=true "Import JSON")
+
+3. Ensure that for Template Type you have selected **Regular Template** and under Template Language that **JINJA** is selected as recommended earlier. For Software Type select **IOS-XE** as shown.
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-3.png?raw=true "Import JSON")
+
+4. Click the **Add Device Details** link to select the type of device to which to associate the template
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-4.png?raw=true "Import JSON")
+
+5. In the **Add Device Details** page select for Device Family **Switches and Hubs**
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-5.png?raw=true "Import JSON")
+
+6. Enter **9300** in the search filter to find the 9300 switches
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-6.png?raw=true "Import JSON")
+
+7. Then select for Devices **Cisco Catalyst 9300 Series Switches** and click **Add**.
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-7.png?raw=true "Import JSON")
+
+8. You should now see the following **configured properties** for the template, click **Continue**
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-8.png?raw=true "Import JSON")
+
+9. The **PnP-Template-J2** will now open in the Editor allowing the configuration to be added. Take this snippet and add it to the template you just created and save and commit it.
+
+    [//]: # ({% raw %})
+    ```J2
     aaa new-model
     aaa authentication username-prompt "Authorized Username: "
     aaa authentication login admin local
@@ -790,7 +857,7 @@ The next step is to create modularized Jinja templates from the configuration se
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-9.png?raw=true "Import JSON")
 
-### Step 6 - Create AAA Configuration Regular Templates
+### Step 7 - Create Interface Configuration Regular Templates
 
 The next step is to create modularized Jinja templates from the configuration sections so as to continue to group the various configurations in one place for reusability to adhere to the **DRY** philosophy.
 
@@ -798,7 +865,7 @@ The next step is to create modularized Jinja templates from the configuration se
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-1.png?raw=true "Import JSON")
 
-2. For Template Name select **DayN-AaaConfig-J2** as shown.
+2. For Template Name select **DayN-IntConfig-J2** as shown.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-2.png?raw=true "Import JSON")
 
@@ -854,73 +921,6 @@ The next step is to create modularized Jinja templates from the configuration se
     !
     interface TenGigabitEthernet1/1/1, TenGigabitEthernet1/1/2 
      switchport trunk allowed vlan 1,5,10,20,30,40
-    ```
-    [//]: # ({% endraw %})
-
-   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-9.png?raw=true "Import JSON")
-
-### Step 7 - Create Interface Configuration Regular Templates
-
-The next step is to create modularized Jinja templates from the configuration sections so as to continue to group the various configurations in one place for reusability to adhere to the **DRY** philosophy.
-
-1. What we will do is now Build our first DayN Template. To do this use the **&#8853; Add** action menu shown and select **New Template**
-
-   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-1.png?raw=true "Import JSON")
-
-2. For Template Name select **DayN-IntConfig-J2** as shown.
-
-   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-2.png?raw=true "Import JSON")
-
-3. Ensure that for Template Type you have selected **Regular Template** and under Template Language that **JINJA** is selected as recommended earlier. For Software Type select **IOS-XE** as shown.
-
-   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-3.png?raw=true "Import JSON")
-
-4. Click the **Add Device Details** link to select the type of device to which to associate the template
-
-   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-4.png?raw=true "Import JSON")
-
-5. In the **Add Device Details** page select for Device Family **Switches and Hubs**
-
-   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-5.png?raw=true "Import JSON")
-
-6. Enter **9300** in the search filter to find the 9300 switches
-
-   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-6.png?raw=true "Import JSON")
-
-7. Then select for Devices **Cisco Catalyst 9300 Series Switches** and click **Add**.
-
-   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-7.png?raw=true "Import JSON")
-
-8. You should now see the following **configured properties** for the template, click **Continue**
-
-   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-8.png?raw=true "Import JSON")
-
-9. The **PnP-Template-J2** will now open in the Editor allowing the configuration to be added. Take this snippet and add it to the template you just created and save and commit it.
-
-    [//]: # ({% raw %})
-    ```J2
-    {#System Configuration#}
-    no service pad
-    service tcp-keepalives-in
-    service tcp-keepalives-out
-    service timestamps debug datetime msec localtime show-timezone
-    service timestamps log datetime msec show-timezone
-    service password-encryption
-    service sequence-numbers
-    !
-    lldp run
-    port-channel load-balance src-dst-ip
-    !
-    spanning-tree mode rapid-pvst
-    spanning-tree portfast default
-    spanning-tree portfast bpduguard default
-    !
-    logging buffered 16384 informational
-    no logging console
-    logging origin-id ip
-    !
-    clock timezone EST -5 0
-    clock summer-time EDT recurring
     ```
     [//]: # ({% endraw %})
 
