@@ -26,7 +26,7 @@ We have previously built a PnP template within the **Template Hub** within **Cis
 
 Compare your template with the example in the section below. Did you miss anything important?
 
-<details closed>
+<details open>
 <summary> Expand to review the Jinja Example </summary></br>
 
 [//]: # ({% raw %})
@@ -119,7 +119,7 @@ Please note the modifications to the source addressing for all protocols and spe
 > We will attempt to use the template that you built in the previous module, but this will be kept in reserve as a fall back plan.
 
 </br>
-<details closed>
+<details open>
 <summary> Expand if needed for Files and Import Instructions</summary>
 
 ### Step 2.b - Optional PnP Template Import - **(OPTIONAL)**
@@ -225,7 +225,7 @@ At this point you can claim the device putting it in a planned state for onboard
 
         ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-TemplateClaim.png?raw=true "Import JSON")
 
-   9. Section **4** review the elements including configuration to be deployed. Click **claim** to initiate
+   9. Section **4** review the elements including configuration to be deployed. Click **Claim** followed by **Yes** to initiate
 
       ![json](../../ASSETS/LABS/NETWORKPROFILES/DNAC-Claim.png?raw=true "Import JSON")
 
