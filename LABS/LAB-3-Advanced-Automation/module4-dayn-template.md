@@ -798,7 +798,7 @@ The next step is to create modularized Jinja templates from the configuration se
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-1.png?raw=true "Import JSON")
 
-2. For Template Name select **DayN-SysConfig-J2** as shown.
+2. For Template Name select **DayN-AaaConfig-J2** as shown.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-2.png?raw=true "Import JSON")
 
@@ -867,7 +867,7 @@ The next step is to create modularized Jinja templates from the configuration se
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-1.png?raw=true "Import JSON")
 
-2. For Template Name select **DayN-SysConfig-J2** as shown.
+2. For Template Name select **DayN-IntConfig-J2** as shown.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-2.png?raw=true "Import JSON")
 
