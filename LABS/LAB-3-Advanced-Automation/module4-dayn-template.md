@@ -738,7 +738,7 @@ The next step is to create modularized Jinja templates from the configuration se
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-8.png?raw=true "Import JSON")
 
-9. The **DayN-SysConfig-J2** template will now open in the Editor allowing the configuration to be added. Take this snippet and add it to the template you just created and save and commit it.
+9. The **DayN-SysConfig-J2** template will now open in the Editor allowing the configuration to be added. Take this snippet and add it to the template you just created and **save** and **commit** it.
 
     [//]: # ({% raw %})
     ```J2
@@ -785,7 +785,7 @@ In the continuation of the creation of modularized Jinja templates we will clone
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/AaaConfig/add-dayn-template-3.png?raw=true "Import JSON")
 
-4. The **DayN-AaaConfig-J2** template will now open in the Editor allowing the configuration to be added. Take this snippet and add it to the template you just created and save and commit it.
+4. The **DayN-AaaConfig-J2** template will now open in the Editor allowing the configuration to be added. Take this snippet and add it to the template you just created and **save** and **commit** it.
 
     [//]: # ({% raw %})
     ```J2
@@ -864,7 +864,7 @@ In the continuation of the creation of modularized Jinja templates we will clone
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/IntConfig/add-dayn-template-3.png?raw=true "Import JSON")
 
-4. The **DayN-IntConfig-J2** template will now open in the Editor allowing the configuration to be added. Take this snippet and add it to the template you just created and save and commit it.
+4. The **DayN-IntConfig-J2** template will now open in the Editor allowing the configuration to be added. Take this snippet and add it to the template you just created and **save** and **commit** it.
 
     [//]: # ({% raw %})
     ```J2
@@ -951,13 +951,48 @@ In the continuation of the creation of modularized Jinja templates we will clone
 
 Now we will configure the **DayN-Templates-J2** composite template. This allows us to logically group any DayN templates that exist in the project or the system with a network profile for deployment. Lets get started. 
 
-1. Create a Regular template for System Configuration. Within the Template Hub 
+1. Within the Template Hub click on the **DayN-Templates-J2** composite template
 
-   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-1.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/Composite/mod-dayn-composite-1.png?raw=true "Import JSON")
+
+2. Within the composite template **DayN-Templates-J2** click on **Add Templates**
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/Composite/mod-dayn-composite-2.png?raw=true "Import JSON")
+
+3. Add a filter of **`DayN`** in the search field to filter in on the DayN templates we have just built.
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/Composite/mod-dayn-composite-3.png?raw=true "Import JSON")
+
+4. Click the **+** icon beside each template or **drag** them to add them as in the image below
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/Composite/mod-dayn-composite-4.png?raw=true "Import JSON")
+
+5. Remove the filter of **`DayN`** in the search field and click the **+** icon beside **AutoNaming-EEM-Scripting** to add it as in the image below 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/Composite/mod-dayn-composite-5.png?raw=true "Import JSON")
+
+6. When the templates match the image below, click **Done**
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/Composite/mod-dayn-composite-6.png?raw=true "Import JSON")
+
+7. Now we need to reorder the templates to ensure they occur in the right order for switches. Click **Reorder**
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/Composite/mod-dayn-composite-7.png?raw=true "Import JSON")
+
+8. You will see the various templates but not in the correct order. We will reorder the templates by **clicking** and **holding** and **dragging** them into the correct order as shown in the **before** and **after**. Finally click **Done** when complete.
+
+   #### Before
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/Composite/mod-dayn-composite-8.png?raw=true "Import JSON")
+   #### After
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/Composite/mod-dayn-composite-9.png?raw=true "Import JSON")
+
+9. Finally click **Save** and **Commit**
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/Composite/mod-dayn-composite-10.png?raw=true "Import JSON")
 
 ## Summary
 
-Congratulations you have completed creating the DayN Project with Composite and Regular Templates. In the next module we will deploy the templates to the switch.
+Congratulations you have completed the process of creating a DayN Project with Composite and Regular Templates. In the next module we will deploy the templates to the switch. There are plenty of Tutorials and additional examples available in this repository please take the time to understand all that is possible.
 
 > [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
