@@ -115,7 +115,7 @@ We will create a **Project** for the deployment of these switches within the lab
 
 Lets now take a look at a sample typical switch configuration from our network. We are going to review this in some detail in the next few sections and build modularized templates. As we do we will disect this configuration showing **how** and **where** specific configuration should be placed for scalability.
 
-<details closed>
+<details open>
 <summary> Expand to review the complete configuration</summary>
 
 ```
@@ -164,7 +164,6 @@ ip name-server 198.18.133.1
 ip domain lookup source-interface Vlan5
 ip domain name base2hq.com
 !
-udld enable
 lldp run
 !
 vtp domain base2hq.com
@@ -229,12 +228,10 @@ ip http authentication local
 ip http secure-server
 ip http secure-trustpoint <redacted>
 ip http client source-interface Vlan5
-ip ssh time-out 60
 ip ssh source-interface Vlan5
 ip ssh version 2
 !
 ip radius source-interface Vlan5 
-ip sla enable reaction-alerts
 logging origin-id ip
 logging source-interface Vlan5
 logging host 10.10.0.20
@@ -315,7 +312,7 @@ end
 
 1. Lets discount any config that is automated by default from Catalyst Center claim process. This config that is **deployed automatically**. Along with this we will discount any configuration which is **default configuration** on the switch as that will already be there. Thus they do not need a place in our template.
 
-   <details closed>
+   <details open>
    <summary> Expand to review the complete configuration</summary>
    
    ```
@@ -390,9 +387,9 @@ end
    ```
    </details>
 
-1. Lets also discount any configurations which will be in the **Design** section or have been deployed via the **PnP Claiming Process**. These are the number of lines **REMOVED** at this point.
+2. Lets also discount any configurations which will be in the **Design** section or have been deployed via the **PnP Claiming Process**. These are the number of lines **REMOVED** at this point.
 
-   <details closed>
+   <details open>
    <summary> Expand to review the removed configuration</summary>
    
    ```
@@ -475,9 +472,9 @@ end
    
    </details>
 
-1. The remaining configuration shown here can be modularized to simplify it. Here is what is left which we will use templates to build.
+3. The remaining configuration shown here can be modularized to simplify it. Here is what is left which we will use templates to build.
 
-   <details closed>
+   <details open>
    <summary> Expand to review the complete configuration</summary>
    
    ```
@@ -535,14 +532,10 @@ end
    ip http authentication local
    ip http secure-server
    ip http secure-trustpoint <redacted>
-   ip ssh time-out 60
    ip ssh source-interface Vlan5
    ip ssh version 2
    !
-   ip sla enable reaction-alerts
    logging origin-id ip
-   logging host 10.10.0.20
-   logging host 198.18.133.27 transport udp port 20514
    !
    banner login ^
     ******************************************************************
@@ -584,94 +577,189 @@ end
    
    </details>
 
-### Step 3 - Modularize the Configuration
+### Step 4 - Modularize the Configuration
 
 The next step is to modularize the configuration so as to group the various configurations in one place for reusability to adhere to the **DRY** philosophy.
 
 1. As there are some commands that are system based that need to be there and as the default is different than what we need in the end we will make modifications.
 
-```
-no service pad
-service tcp-keepalives-in
-service tcp-keepalives-out
-service timestamps debug datetime msec localtime show-timezone
-service timestamps log datetime msec show-timezone
-service password-encryption
-service sequence-numbers
-!
-lldp run
-port-channel load-balance src-dst-ip
-!
-spanning-tree mode rapid-pvst
-spanning-tree portfast default
-spanning-tree portfast bpduguard default
-!
-no logging console
-logging trap notifications
-```
+   ```
+   no service pad
+   service tcp-keepalives-in
+   service tcp-keepalives-out
+   service timestamps debug datetime msec localtime show-timezone
+   service timestamps log datetime msec show-timezone
+   service password-encryption
+   service sequence-numbers
+   !
+   lldp run
+   port-channel load-balance src-dst-ip
+   !
+   spanning-tree mode rapid-pvst
+   spanning-tree portfast default
+   spanning-tree portfast bpduguard default
+   !
+   logging buffered 16384 informational
+   no logging console
+   logging origin-id ip
+   !
+   clock timezone EST -5 0
+   clock summer-time EDT recurring
+   ```
 
-1. As AAA configurations can be deployed via settings, and since we are deploying the client AAA in that manner we will show how you can also at the same time make use of AAA configurations from a template at the same time. Lets group all the Network Admin and AAA configuration together and make some slight modifications.
+2. As AAA configurations can be deployed via settings, and since we are deploying the client AAA in that manner we will show how you can also at the same time make use of AAA configurations for Device Admin from a template at the same time. Lets group all the Network Admin and AAA configuration together and make some slight modifications.
 
-```
-aaa new-model
-aaa authentication username-prompt "Authorized Username: "
-aaa authentication login admin local
-aaa authorization console
-aaa authorization exec admin local
-aaa authentication login admin local-case
-aaa authorization exec admin local 
-!
-ip forward-protocol nd
-no ip http server
-no ip http authentication local
-no ip http secure-server
-ip ssh version 2
-!
-banner login ^
- ******************************************************************
- * CISCO SYSTEMS EXAMPLE                                          *
- ******************************************************************
- *                                                                *
- * THIS DEVICE IS PART OF A DEMONSTRATION COMPUTER NETWORK AND IS *
- * PROVIDED FOR OFFICIAL USE BY AUTHORIZED USERS ONLY. ANY        *
- * INFORMATION, DOCUMENTS, OR MATERIALS IN THE NETWORK ARE THE    *
- * PROPERTY OF THIS FIRM. UNAUTHORIZED USE, DUPLICATION, OR       *
- * DISCLOSURE OF INFORMATION OR SYSTEMS IN THIS NETWORK IS        *
- * STRICTLY PROHIBITED BY FEDERAL LAW (18 USC 10130). USE OF THIS *
- * NETWORK CONSTITUTES CONSENT TO MONITORING WHICH MAY BE         *
- * RELEASED TO FIRM MANAGEMENT AND/OR LAW ENFORCEMENT AGENCIES    *
- * AND MAY RESULT IN DISCIPLINARY ACTION, CIVIL ACTION, AND/OR    *
- * CRIMINAL OR CIVIL LITIGATION.                                  *
- *                                                                *
- ******************************************************************
-   Hostname: $(hostname)
- ******************************************************************
- * CISCO SYSTEMS EXAMPLE *
- ******************************************************************
- ^
-!
-netconf-yang
-!
-line con 0
- exec-timeout 15 0
- login authentication admin
- logging synchronous
- authorization exec admin
- stopbits 1
-line vty 0 15
- exec-timeout 15 0
- login authentication admin
- logging synchronous
- authorization exec admin
- transport input ssh
-```
+   ```
+   aaa new-model
+   aaa authentication username-prompt "Authorized Username: "
+   aaa authentication login admin local
+   aaa authorization console
+   aaa authorization exec admin local
+   aaa authentication login admin local-case
+   aaa authorization exec admin local 
+   !
+   ip forward-protocol nd
+   no ip http server
+   no ip http authentication local
+   no ip http secure-server
+   ip ssh version 2
+   !
+   banner login ^
+    ******************************************************************
+    * CISCO SYSTEMS EXAMPLE                                          *
+    ******************************************************************
+    *                                                                *
+    * THIS DEVICE IS PART OF A DEMONSTRATION COMPUTER NETWORK AND IS *
+    * PROVIDED FOR OFFICIAL USE BY AUTHORIZED USERS ONLY. ANY        *
+    * INFORMATION, DOCUMENTS, OR MATERIALS IN THE NETWORK ARE THE    *
+    * PROPERTY OF THIS FIRM. UNAUTHORIZED USE, DUPLICATION, OR       *
+    * DISCLOSURE OF INFORMATION OR SYSTEMS IN THIS NETWORK IS        *
+    * STRICTLY PROHIBITED BY FEDERAL LAW (18 USC 10130). USE OF THIS *
+    * NETWORK CONSTITUTES CONSENT TO MONITORING WHICH MAY BE         *
+    * RELEASED TO FIRM MANAGEMENT AND/OR LAW ENFORCEMENT AGENCIES    *
+    * AND MAY RESULT IN DISCIPLINARY ACTION, CIVIL ACTION, AND/OR    *
+    * CRIMINAL OR CIVIL LITIGATION.                                  *
+    *                                                                *
+    ******************************************************************
+      Hostname: $(hostname)
+    ******************************************************************
+    * CISCO SYSTEMS EXAMPLE *
+    ******************************************************************
+    ^
+   !
+   netconf-yang
+   !
+   line con 0
+    exec-timeout 15 0
+    login authentication admin
+    logging synchronous
+    authorization exec admin
+    stopbits 1
+   line vty 0 15
+    exec-timeout 15 0
+    login authentication admin
+    logging synchronous
+    authorization exec admin
+    transport input ssh
+   ```
 
-1. The 
-1. The first thing
-1. The first thing
-1. The first thing
-1. The first thing
+3. Vlan and interface Configuration needs to be deployed.
 
+   ```
+   vlan 5
+    name mgmtvlan
+   vlan 10
+    name apvlan
+   vlan 20
+    name datavlan
+   vlan 30
+    name voicevlan
+   vlan 40
+    name guestvlan
+   !
+   interface Port-channel1
+    switchport trunk allowed vlan 5,10,20,30,40
+   !
+   interface GigabitEthernet0/0
+    shutdown
+   !
+   interface range GigabitEthernet1/0/1-48
+    switchport access vlan 20
+    switchport voice vlan 30
+    spanning-tree portfast
+   !
+   interface TenGigabitEthernet1/1/1, TenGigabitEthernet1/1/2 
+    switchport trunk allowed vlan 1,5,10,20,30,40
+   ```
+
+This pretty much sums up the templates we will need. Now lets start building them in the Template Hub. So we will be making perhaps 3 or four templates based on the configuration snippets we have here.
+
+### Step 5 - Create System Configuration Regular Templates
+
+The next step is to create modularized Jinja templates from the configuration sections so as to continue to group the various configurations in one place for reusability to adhere to the **DRY** philosophy.
+
+1. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-1.png?raw=true "Import JSON")
+
+2. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-2.png?raw=true "Import JSON")
+
+3. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-3.png?raw=true "Import JSON")
+
+4. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-4.png?raw=true "Import JSON")
+
+5. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-5.png?raw=true "Import JSON")
+
+6. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-6.png?raw=true "Import JSON")
+
+7. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-7.png?raw=true "Import JSON")
+
+8. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-8.png?raw=true "Import JSON")
+
+9. Take this snippet and add it to the template you just created and save and commit it.
+
+    [//]: # ({% raw %})
+    ```J2
+    {#System Configuration#}
+    no service pad
+    service tcp-keepalives-in
+    service tcp-keepalives-out
+    service timestamps debug datetime msec localtime show-timezone
+    service timestamps log datetime msec show-timezone
+    service password-encryption
+    service sequence-numbers
+    !
+    lldp run
+    port-channel load-balance src-dst-ip
+    !
+    spanning-tree mode rapid-pvst
+    spanning-tree portfast default
+    spanning-tree portfast bpduguard default
+    !
+    logging buffered 16384 informational
+    no logging console
+    logging origin-id ip
+    !
+    clock timezone EST -5 0
+    clock summer-time EDT recurring
+    ```
+    [//]: # ({% endraw %})
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-9.png?raw=true "Import JSON")
 
 ## Summary
 
