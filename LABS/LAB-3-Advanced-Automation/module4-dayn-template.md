@@ -734,28 +734,57 @@ The next step is to create modularized Jinja templates from the configuration se
 
     [//]: # ({% raw %})
     ```J2
-    {#System Configuration#}
-    no service pad
-    service tcp-keepalives-in
-    service tcp-keepalives-out
-    service timestamps debug datetime msec localtime show-timezone
-    service timestamps log datetime msec show-timezone
-    service password-encryption
-    service sequence-numbers
+    aaa new-model
+    aaa authentication username-prompt "Authorized Username: "
+    aaa authentication login admin local
+    aaa authorization console
+    aaa authorization exec admin local
+    aaa authentication login admin local-case
+    aaa authorization exec admin local 
     !
-    lldp run
-    port-channel load-balance src-dst-ip
+    ip forward-protocol nd
+    no ip http server
+    no ip http authentication local
+    no ip http secure-server
+    ip ssh version 2
     !
-    spanning-tree mode rapid-pvst
-    spanning-tree portfast default
-    spanning-tree portfast bpduguard default
+    banner login ^
+     ******************************************************************
+     * CISCO SYSTEMS EXAMPLE                                          *
+     ******************************************************************
+     *                                                                *
+     * THIS DEVICE IS PART OF A DEMONSTRATION COMPUTER NETWORK AND IS *
+     * PROVIDED FOR OFFICIAL USE BY AUTHORIZED USERS ONLY. ANY        *
+     * INFORMATION, DOCUMENTS, OR MATERIALS IN THE NETWORK ARE THE    *
+     * PROPERTY OF THIS FIRM. UNAUTHORIZED USE, DUPLICATION, OR       *
+     * DISCLOSURE OF INFORMATION OR SYSTEMS IN THIS NETWORK IS        *
+     * STRICTLY PROHIBITED BY FEDERAL LAW (18 USC 10130). USE OF THIS *
+     * NETWORK CONSTITUTES CONSENT TO MONITORING WHICH MAY BE         *
+     * RELEASED TO FIRM MANAGEMENT AND/OR LAW ENFORCEMENT AGENCIES    *
+     * AND MAY RESULT IN DISCIPLINARY ACTION, CIVIL ACTION, AND/OR    *
+     * CRIMINAL OR CIVIL LITIGATION.                                  *
+     *                                                                *
+     ******************************************************************
+       Hostname: $(hostname)
+     ******************************************************************
+     * CISCO SYSTEMS EXAMPLE *
+     ******************************************************************
+     ^
     !
-    logging buffered 16384 informational
-    no logging console
-    logging origin-id ip
+    netconf-yang
     !
-    clock timezone EST -5 0
-    clock summer-time EDT recurring
+    line con 0
+     exec-timeout 15 0
+     login authentication admin
+     logging synchronous
+     authorization exec admin
+     stopbits 1
+    line vty 0 15
+     exec-timeout 15 0
+     login authentication admin
+     logging synchronous
+     authorization exec admin
+     transport input ssh
     ```
     [//]: # ({% endraw %})
 
@@ -801,28 +830,30 @@ The next step is to create modularized Jinja templates from the configuration se
 
     [//]: # ({% raw %})
     ```J2
-    {#System Configuration#}
-    no service pad
-    service tcp-keepalives-in
-    service tcp-keepalives-out
-    service timestamps debug datetime msec localtime show-timezone
-    service timestamps log datetime msec show-timezone
-    service password-encryption
-    service sequence-numbers
+    vlan 5
+     name mgmtvlan
+    vlan 10
+     name apvlan
+    vlan 20
+     name datavlan
+    vlan 30
+     name voicevlan
+    vlan 40
+     name guestvlan
     !
-    lldp run
-    port-channel load-balance src-dst-ip
+    interface Port-channel1
+     switchport trunk allowed vlan 5,10,20,30,40
     !
-    spanning-tree mode rapid-pvst
-    spanning-tree portfast default
-    spanning-tree portfast bpduguard default
+    interface GigabitEthernet0/0
+     shutdown
     !
-    logging buffered 16384 informational
-    no logging console
-    logging origin-id ip
+    interface range GigabitEthernet1/0/1-48
+     switchport access vlan 20
+     switchport voice vlan 30
+     spanning-tree portfast
     !
-    clock timezone EST -5 0
-    clock summer-time EDT recurring
+    interface TenGigabitEthernet1/1/1, TenGigabitEthernet1/1/2 
+     switchport trunk allowed vlan 1,5,10,20,30,40
     ```
     [//]: # ({% endraw %})
 
