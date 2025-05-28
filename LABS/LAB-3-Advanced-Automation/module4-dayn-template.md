@@ -71,45 +71,45 @@ Navigate to the CLI Template Hub on Catalyst Center **`Tools > Template Hub`**
 
 We will create a **Project** for the deployment of these switches within the lab. You may notice that there is a Project which was deployed during the lab preparation module. We will not be utilizing that here, but you could if you desired.
 
-1. Add a new project
+1. What we will do is now Build our first Project. To do this use the **&#8853; Add** action menu shown and select **New Project**
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-1.png?raw=true "Import JSON")
 
-1. Add a new project
+2. In the **Add New Project** wizard type in the **`DayN-Templates-J2`** as the project name
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-2.png?raw=true "Import JSON")
 
-1. Add a new project
+3. Select **Composite Sequence** as the **Template Type**. Then select **IOS-XE** from the **Software Type** drop down.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-3.png?raw=true "Import JSON")
 
-1. Add a new project
+4. Click **Add Device Details**
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-4.png?raw=true "Import JSON")
 
-1. Add a new project
+5. In the **Add Device Details** page select for Device Family **Switches and Hubs**
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-5.png?raw=true "Import JSON")
 
-1. Add a new project
+6. Enter **9300** in the search filter to find the 9300 switches
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-6.png?raw=true "Import JSON")
 
-1. Add a new project
+7. Then select for Devices **Cisco Catalyst 9300 Series Switches** and click **Add**.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-7.png?raw=true "Import JSON")
 
-1. Add a new project
+8. You should now see the following **configured properties** for the template, click **Continue**
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-8.png?raw=true "Import JSON")
 
-1. Add a new project
+9. The **PnP-Template-J2** will now open in the Editor allowing the configuration to be added.
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-9.png?raw=true "Import JSON")
 
-1. Add a new project
+10. You should now see the following **Composite Sequence** created which we will populate later.
 
-   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-10.png?raw=true "Import JSON")
+    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/PROJECT/add-project-10.png?raw=true "Import JSON")
 
 ### Step 3 - Analyze Configuration
 
@@ -760,6 +760,148 @@ The next step is to create modularized Jinja templates from the configuration se
     [//]: # ({% endraw %})
 
    ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-9.png?raw=true "Import JSON")
+
+### Step 6 - Create AAA Configuration Regular Templates
+
+The next step is to create modularized Jinja templates from the configuration sections so as to continue to group the various configurations in one place for reusability to adhere to the **DRY** philosophy.
+
+1. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-1.png?raw=true "Import JSON")
+
+2. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-2.png?raw=true "Import JSON")
+
+3. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-3.png?raw=true "Import JSON")
+
+4. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-4.png?raw=true "Import JSON")
+
+5. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-5.png?raw=true "Import JSON")
+
+6. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-6.png?raw=true "Import JSON")
+
+7. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-7.png?raw=true "Import JSON")
+
+8. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-8.png?raw=true "Import JSON")
+
+9. Take this snippet and add it to the template you just created and save and commit it.
+
+    [//]: # ({% raw %})
+    ```J2
+    {#System Configuration#}
+    no service pad
+    service tcp-keepalives-in
+    service tcp-keepalives-out
+    service timestamps debug datetime msec localtime show-timezone
+    service timestamps log datetime msec show-timezone
+    service password-encryption
+    service sequence-numbers
+    !
+    lldp run
+    port-channel load-balance src-dst-ip
+    !
+    spanning-tree mode rapid-pvst
+    spanning-tree portfast default
+    spanning-tree portfast bpduguard default
+    !
+    logging buffered 16384 informational
+    no logging console
+    logging origin-id ip
+    !
+    clock timezone EST -5 0
+    clock summer-time EDT recurring
+    ```
+    [//]: # ({% endraw %})
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-9.png?raw=true "Import JSON")
+
+### Step 7 - Create Interface Configuration Regular Templates
+
+The next step is to create modularized Jinja templates from the configuration sections so as to continue to group the various configurations in one place for reusability to adhere to the **DRY** philosophy.
+
+1. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-1.png?raw=true "Import JSON")
+
+2. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-2.png?raw=true "Import JSON")
+
+3. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-3.png?raw=true "Import JSON")
+
+4. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-4.png?raw=true "Import JSON")
+
+5. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-5.png?raw=true "Import JSON")
+
+6. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-6.png?raw=true "Import JSON")
+
+7. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-7.png?raw=true "Import JSON")
+
+8. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-8.png?raw=true "Import JSON")
+
+9. Take this snippet and add it to the template you just created and save and commit it.
+
+    [//]: # ({% raw %})
+    ```J2
+    {#System Configuration#}
+    no service pad
+    service tcp-keepalives-in
+    service tcp-keepalives-out
+    service timestamps debug datetime msec localtime show-timezone
+    service timestamps log datetime msec show-timezone
+    service password-encryption
+    service sequence-numbers
+    !
+    lldp run
+    port-channel load-balance src-dst-ip
+    !
+    spanning-tree mode rapid-pvst
+    spanning-tree portfast default
+    spanning-tree portfast bpduguard default
+    !
+    logging buffered 16384 informational
+    no logging console
+    logging origin-id ip
+    !
+    clock timezone EST -5 0
+    clock summer-time EDT recurring
+    ```
+    [//]: # ({% endraw %})
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-9.png?raw=true "Import JSON")
+
+### Step 8 - Configure Composite Template
+
+The next step is to create modularized Jinja templates from the configuration sections so as to continue to group the various configurations in one place for reusability to adhere to the **DRY** philosophy.
+
+1. Create a Regular template for System Configuration. Within the Template Hub 
+
+   ![json](../../ASSETS/LABS/TEMPLATEEDITOR/DAYNTEMPLATE/SysConfig/add-dayn-template-1.png?raw=true "Import JSON")
 
 ## Summary
 
