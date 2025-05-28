@@ -53,7 +53,7 @@ The 9130AX Access Points are connected to both access switches and the ports are
 
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon and navigate to the System > Settings menu item.
 
-   ![json](../../ASSETS/LABS/CATC/catc-menu-systemsettings.png?raw=true "Import JSON")
+   ![json](../../ASSETS/LABS/CATC/MENU/catc-menu-7.png?raw=true "Import JSON")
 
 2. Within the System Settings page navigate down the list on the left and select the Authentication and Policy Server section.
 
