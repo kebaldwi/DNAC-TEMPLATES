@@ -1,6 +1,6 @@
 # Hierarchy Build Verification
 
-To verify that the Hierarchy was built successfully, we will inspect the site in Cisco Catalyst Center.
+To verify that the Hierarchy was built successfully, we will inspect the site in Catalyst Center.
 
 Follow these steps:
 
@@ -8,11 +8,11 @@ Follow these steps:
 
    ![json](../assets/DNAC-SSLERROR.png?raw=true "Import JSON")
 
-2. Log into Cisco Catalyst Center using the username of `admin` and the password `C1sco12345`.
+2. Log into Catalyst Center using the username of `admin` and the password `C1sco12345`.
 
    ![json](../assets/DNAC-Login.png?raw=true "Import JSON")
 
-3. When the Cisco Catalyst Center Dashboard is displayed, Click the  icon to display the menu'
+3. When the Catalyst Center Dashboard is displayed, Click the  icon to display the menu'
 
    ![json](../assets/DNAC-Menu.png?raw=true "Import JSON")
 

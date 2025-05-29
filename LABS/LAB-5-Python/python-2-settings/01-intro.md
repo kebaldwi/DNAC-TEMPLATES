@@ -1,8 +1,8 @@
 # Deploying Settings and Credentials
 
-In this module, we will use **Python** to build and deploy settings and credentials within Cisco Catalyst Center. 
+In this module, we will use **Python** to build and deploy settings and credentials within Catalyst Center. 
 
-Cisco Catalyst Center uses hierarchy to logically align intent (code and configuration) against infrastructure. This allows the network administrator to align changes and modifications to the network within maintenance windows.
+Catalyst Center uses hierarchy to logically align intent (code and configuration) against infrastructure. This allows the network administrator to align changes and modifications to the network within maintenance windows.
 
 ## Settings and Credentials Background
 
@@ -12,7 +12,7 @@ The settings and credentials which we assign to the hierarchy allow us to be det
 
 This allows us to deploy changes to the network with localized maintenance windows and or slowly roll out changes through multiple sites without impacting the entire network. 
 
-As with all the Design, Policy & Provisioning elements, they are all tied to the hierarchical nature of Cisco Catalyst Center. 
+As with all the Design, Policy & Provisioning elements, they are all tied to the hierarchical nature of Catalyst Center. 
 
 > **Prerequisites**: **Completed** the previous section [**Hierarchy**](../python-1-hierarchy/01-intro.md)
 

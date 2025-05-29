@@ -1,8 +1,8 @@
 # Building Hierarchy
 
-In this module, we will use *Postman* to build and deploy a hierarchy within Cisco Catalyst Center. 
+In this module, we will use *Postman* to build and deploy a hierarchy within Catalyst Center. 
 
-Cisco Catalyst Center uses hierarchy to logically align intent (code and configuration) against infrastructure. This allows the network administrator to align changes and modifications to the network within maintenance windows.
+Catalyst Center uses hierarchy to logically align intent (code and configuration) against infrastructure. This allows the network administrator to align changes and modifications to the network within maintenance windows.
 
 ## Hierarchy Background
 

@@ -1,12 +1,12 @@
-# Ansible and Cisco Catalyst Center [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
+# Ansible and Catalyst Center [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 
-## Ansible and Cisco Catalyst Center
+## Ansible and Catalyst Center
 
-[Ansible](https://docs.ansible.com/ansible/latest/getting_started/introduction.html) is a popular, open-source, platform agnostic configuration management framework that's used across the IT landscape.  Many of the largest networking vendors offer Ansible Modules for their products.  Ansible is commonly used to manage the configuration of servers in the datacenter and has collections to manage cloud resources in AWS, Azure, GCP, and OCI.  This flexibility allows for Ansible to function as an orchestrator across the domains of an organization, allowing for complex service delivery across network, server, storage, firewall, wan and cloud.  Cisco publishes Ansible collections for IOS, IOS-XE, NX-OS, IOS-XR, ACI, ASA, ISE, Meraki, Intersight, NSO, UCS & Cisco Catalyst Center. See the [Cisco Collections Index](https://docs.ansible.com/ansible/latest/collections/cisco/index.html) for all collections in the Cisco namespace. 
+[Ansible](https://docs.ansible.com/ansible/latest/getting_started/introduction.html) is a popular, open-source, platform agnostic configuration management framework that's used across the IT landscape.  Many of the largest networking vendors offer Ansible Modules for their products.  Ansible is commonly used to manage the configuration of servers in the datacenter and has collections to manage cloud resources in AWS, Azure, GCP, and OCI.  This flexibility allows for Ansible to function as an orchestrator across the domains of an organization, allowing for complex service delivery across network, server, storage, firewall, wan and cloud.  Cisco publishes Ansible collections for IOS, IOS-XE, NX-OS, IOS-XR, ACI, ASA, ISE, Meraki, Intersight, NSO, UCS & Catalyst Center. See the [Cisco Collections Index](https://docs.ansible.com/ansible/latest/collections/cisco/index.html) for all collections in the Cisco namespace. 
 
-## Why use Ansible with Cisco Catalyst Center
+## Why use Ansible with Catalyst Center
 
-If Ansible is so powerful and if Cisco offers Ansible collections for IOS and IOS-XE, why should we use Ansible with Cisco Catalyst Center? Why not just use Ansible directly with our Campus and WAN infrastructure?  Alternately, Cisco Catalst Center has powerful features to manage and deploy configuration, why would you need to add Ansible to the mix?
+If Ansible is so powerful and if Cisco offers Ansible collections for IOS and IOS-XE, why should we use Ansible with Catalyst Center? Why not just use Ansible directly with our Campus and WAN infrastructure?  Alternately, Cisco Catalst Center has powerful features to manage and deploy configuration, why would you need to add Ansible to the mix?
 
 Catalyst Center's strength is that it is a complete Day-0 through Day-N management and assurance platform.  It does more than just configuration management.  It provides a host of other capabilities including inventory management, software image management, zero-touch provisioning, and Assurance.  Ansible is a strong configuration management tool with multi-vendor capabilities.  
 
@@ -18,7 +18,7 @@ The benefits of combining Ansible and Catalyst Center are:
 4. Cross-Architecture, Cross-Vendor Orchestration:  Ansible is architecture and vendor agnostic.  It is a powerful tool for configuring heterogeneous networks and performing service orchestration across architectures.  It is also an established component in common DevOps deployments.
 5. Catalyst Center Capabilites:  For those who have an existing Ansible practice and are heavy users of Ansible, incorporating Catalyst Center makes the capabilities of Catalyst Center available from Ansible playbooks. 
 
-The Ansible collection for Cisco Catalyst center is called *cisco.dnac*.  Take a moment to review the documetation for the [cisco.dnac](https://docs.ansible.com/ansible/latest/collections/cisco/dnac/index.html#plugins-in-cisco-dnac) collection for details on the modules available in the collection.
+The Ansible collection for Catalyst Center is called *cisco.dnac*.  Take a moment to review the documetation for the [cisco.dnac](https://docs.ansible.com/ansible/latest/collections/cisco/dnac/index.html#plugins-in-cisco-dnac) collection for details on the modules available in the collection.
 
 ### The Basics of Ansible
 
@@ -115,7 +115,7 @@ See the output of this playbook:
 
 ![json](../ASSETS/TUTORIALS/ANSIBLE/display_serial_num.png?raw=true "IOS Facts Output")
 
-This playbook is very basic and was just used for a primer on the components of a playbook.  We will now pivot to installing Ansible and using it with Cisco Catalyst Center.
+This playbook is very basic and was just used for a primer on the components of a playbook.  We will now pivot to installing Ansible and using it with Catalyst Center.
 
 ### Installing Ansible
 
@@ -146,16 +146,16 @@ The output of this command shows the version of ansible currently running along 
 
 ### Ansible & Catalyst Center Dependencies
 
-Using Ansbile to manage Cisco Catalyst Center requires the correct version of the [cisco.dnac] collection for your Catalyst Center version.  The cisco.dnac collection is included in the full Ansible package by default.  However, the collection depends on the [Cisco Catalyst Center SDK](https://dnacentersdk.readthedocs.io/en/latest/index.html).  The SDK must be installed on the control node.  If you have installed the full Ansible package, the cisco.dnac collection is included, but it may not be the correct version for your Catalyst Center deployment.  See the compatibility matrix [table](https://galaxy.ansible.com/ui/repo/published/cisco/dnac/docs/) on Ansible Galaxy for compatibility information:
+Using Ansbile to manage Catalyst Center requires the correct version of the [cisco.dnac] collection for your Catalyst Center version.  The cisco.dnac collection is included in the full Ansible package by default.  However, the collection depends on the [Catalyst Center SDK](https://dnacentersdk.readthedocs.io/en/latest/index.html).  The SDK must be installed on the control node.  If you have installed the full Ansible package, the cisco.dnac collection is included, but it may not be the correct version for your Catalyst Center deployment.  See the compatibility matrix [table](https://galaxy.ansible.com/ui/repo/published/cisco/dnac/docs/) on Ansible Galaxy for compatibility information:
 
 ![json](../ASSETS/TUTORIALS/ANSIBLE/compatibility_matrix.png?raw=true "Compatibility Matrix")
 
 > [!NOTE] 
 > This image of the table was current at the time of writing.  The source at the link provided above should be referenced in the future. 
 
-You install the [Cisco Catalyst Center Python SDK](https://dnacentersdk.readthedocs.io/en/latest/) using pip or by downloading the source code and running a setup script in a virtual environment \(recommended\) or in the global Python installation on a host. If you are unfamiliar with pip or Python or you would like a deeper look at using the SDK outside of Ansible to write code directly, review the [Python tutorial](./Python.md).
+You install the [Catalyst Center Python SDK](https://dnacentersdk.readthedocs.io/en/latest/) using pip or by downloading the source code and running a setup script in a virtual environment \(recommended\) or in the global Python installation on a host. If you are unfamiliar with pip or Python or you would like a deeper look at using the SDK outside of Ansible to write code directly, review the [Python tutorial](./Python.md).
 
-To install the Cisco Catalyst Center Python SDK using pip, run the following:
+To install the Catalyst Center Python SDK using pip, run the following:
 
 ```
 pip3 install dnacentersdk==#.#.#
@@ -188,7 +188,7 @@ In my case the command was:
 ansible-galaxy collection install cisco.dnac:6.6.4
 ```
 
-This will install the collection and any dependencies.  Once you have the collection and SDK installed, you are ready to create playbooks that interact with Cisco Catalyst Center.   
+This will install the collection and any dependencies.  Once you have the collection and SDK installed, you are ready to create playbooks that interact with Catalyst Center.   
 
 ### Your first Catalyst Center Playbook
 

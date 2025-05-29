@@ -1,6 +1,6 @@
 # Verifying the Site Hierarchy and Inventory 
 
-Open Cisco DNA Center using the bookmark in the Chrome browser on your jump host. Log in using the credentials:
+Open Catalyst Center using the bookmark in the Chrome browser on your jump host. Log in using the credentials:
 
 > **Credentials**: <pre> username: admin </br> password: C1sco12345 </pre></br> 
 
@@ -16,7 +16,7 @@ Next, validate that your network devices were successfully added to the inventor
 
 ![DNAC Provision Menu](images/provision.png)
 
-This view shows all devices in the Cisco DNA Center inventory. To view your devices, click `Global` in the upper left section of the window next to the hamburger menu select in turn each layer of the hierarchy.
+This view shows all devices in the Catalyst Center inventory. To view your devices, click `Global` in the upper left section of the window next to the hamburger menu select in turn each layer of the hierarchy.
 
 ![DNAC Filter Inventory](images/site_filter.png)
 
@@ -24,6 +24,6 @@ This action filters the inventory to only devices assigned to the site you creat
 
 ![DNAC Inventory](images/inventory.png)
 
-It takes time for Cisco DNA Center to finish adding devices to the inventory and collecting details. Your devices may not have the same status at the time you view them, but after a few minutes, Cisco DNA Center will begin to provide Assurance data for these devices.
+It takes time for Catalyst Center to finish adding devices to the inventory and collecting details. Your devices may not have the same status at the time you view them, but after a few minutes, Catalyst Center will begin to provide Assurance data for these devices.
 
 > [**Next Section**](08-summary.md)

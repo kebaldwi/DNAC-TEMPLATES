@@ -37,21 +37,21 @@ To run the collection, do the following:
 
 ## Verifying Settings and Credentials
 
-To verify that the settings were assigned successfully, we will inspect the site within Cisco Catalyst Center.
+To verify that the settings were assigned successfully, we will inspect the site within Catalyst Center.
 
 Follow these steps:
 
-1. If Cisco Catalyst Center is not already open, use a browser and navigate to `https://198.18.129.100`, where you may see an SSL Error displayed as depicted. Click the `Proceed to https://192.18.129.100 (unsafe)` link to continue if presented
+1. If Catalyst Center is not already open, use a browser and navigate to `https://198.18.129.100`, where you may see an SSL Error displayed as depicted. Click the `Proceed to https://192.18.129.100 (unsafe)` link to continue if presented
 
    ![SSL Error](./assets/DNAC-SSLERROR.png?raw=true)
 
-2. If required, log into Cisco Catalyst Center with the following credentials:
+2. If required, log into Catalyst Center with the following credentials:
    * User name: `admin`
    * Password: `C1sco12345`.
 
    ![Login](./assets/DNAC-Login.png?raw=true)
 
-3. When the Cisco Catalyst Center Dashboard is displayed, Click the  icon to display the menu'
+3. When the Catalyst Center Dashboard is displayed, Click the  icon to display the menu'
 
    ![Menu](./assets/DNAC-Menu.png?raw=true)
 
@@ -75,7 +75,7 @@ Follow these steps:
 
 At this point, we have assigned settings, credentials, and telemetry settings to the Hierarchy utilizing environment variables and REST-API's within the collection runner. 
 
-> **Note**: If there is time, look at the results of the Credentials and Telemetry tabs with Cisco Catalyst Center and the various pre and post-scripts within Postman.
+> **Note**: If there is time, look at the results of the Credentials and Telemetry tabs with Catalyst Center and the various pre and post-scripts within Postman.
 
 > [**Next Module**](../catc-catcenter-3-discovery/01-intro.md)
 

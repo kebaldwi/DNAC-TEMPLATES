@@ -69,7 +69,7 @@ The Application Policy methodology within Catalyst Center allows for two types o
 
 #### Host Tracking
 
-10. Click the **Host Tracking Slider** to allow for QoS policy to work with endpoint mobility. When host tracking is turned on, Cisco Catalyst Center tracks the connectivity of the collaboration endpoints within the site scope and automatically reconfigures the ACL entries when the collaboration endpoints connect to the network or move from one interface to another. 
+10. Click the **Host Tracking Slider** to allow for QoS policy to work with endpoint mobility. When host tracking is turned on, Catalyst Center tracks the connectivity of the collaboration endpoints within the site scope and automatically reconfigures the ACL entries when the collaboration endpoints connect to the network or move from one interface to another. 
 
     ![json](./images/module4-applicationqos/DNAC-AppPolicy-8-Tracking.png?raw=true "Import JSON")
 

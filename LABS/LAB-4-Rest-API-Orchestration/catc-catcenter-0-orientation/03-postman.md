@@ -1,12 +1,12 @@
-# Preparing Postman for use with Cisco Catalyst Center
+# Preparing Postman for use with Catalyst Center
 
-To use Postman with Cisco Catalyst Center, we import the collection and environment into our workspace.
+To use Postman with Catalyst Center, we import the collection and environment into our workspace.
 
 ## Postman Collection and Environment Import
 
 To prepare Postman for the lab, please download the following collection and environment zip file and upload them into Postman. Download the following Student Collection, which includes seven collections and one environment. To do this right, click and open this link in a new tab to download them:
 
-> **Download**: <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/DEVNET-IGNITE/CatalystCenter-UseCase-API-Collection.zip" target="_blank">⬇︎ Cisco Catalyst Center Use-Case API Collection ⬇︎</a>
+> **Download**: <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/DEVNET-IGNITE/CatalystCenter-UseCase-API-Collection.zip" target="_blank">⬇︎ Catalyst Center Use-Case API Collection ⬇︎</a>
 
 After you download the file, uncompress the compressed files and import all the files into Postman.
 
@@ -56,11 +56,11 @@ To ensure uniformity across all calls made from the client when we use different
 
    ![Active environment](./assets/Postman-Environment-Active.png)
 
-> **Note**: This environment is pre-populated with the information to build Cisco Catalyst Center. At specific points in the lab, we will **customize** it for **your use**.
+> **Note**: This environment is pre-populated with the information to build Catalyst Center. At specific points in the lab, we will **customize** it for **your use**.
 
 ## SSL Settings and Disabling Validation
 
-For Lab purposes, Cisco Catalyst Center uses a self-signed certificate. This certificate may fail a validation precheck. Disable this setting to proceed with the Lab.
+For Lab purposes, Catalyst Center uses a self-signed certificate. This certificate may fail a validation precheck. Disable this setting to proceed with the Lab.
 
 1. Click the Settings gear icon on the top right of Postman.
 

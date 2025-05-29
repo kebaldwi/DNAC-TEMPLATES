@@ -1,6 +1,6 @@
 # Hierarchy Build via Python
 
-The **Python** programming language is a powerful tool for building programs related to **REST-API** calls and allows us to utilize several features to accomplish everyday tasks. In this section of the tutorial, we will use a simple REST-API set, which has been grouped into a **Python** program. We will then use these programs to automate the provisioning of the hierarchy that may be modified in the **CSV** and pushed to Cisco Catalyst Center.
+The **Python** programming language is a powerful tool for building programs related to **REST-API** calls and allows us to utilize several features to accomplish everyday tasks. In this section of the tutorial, we will use a simple REST-API set, which has been grouped into a **Python** program. We will then use these programs to automate the provisioning of the hierarchy that may be modified in the **CSV** and pushed to Catalyst Center.
 
 ## Deploy Hierarchy Python Program
 

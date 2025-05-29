@@ -1,12 +1,12 @@
 ## DNS Discovery using Windows based DHCP and DNS Services
 
-As you may recall, for a device to discover Cisco Catalyst Center, the device uses a discovery method to help it find Cisco Catalyst Center. 
+As you may recall, for a device to discover Catalyst Center, the device uses a discovery method to help it find Catalyst Center. 
 
 The PnP components are as follows:
 
 ![json](../../ASSETS/pnp-workflows.png?raw=true "Import JSON")
 
-There are three automated methods to make that occur and in this section we will use DNS Discovery. To aide in that we are goiing to utilize both Windows DHCP and DNS services. The Target switch, commonly called Access switch will need to do a DNS lookup in order to find Cisco Catalyst Center.
+There are three automated methods to make that occur and in this section we will use DNS Discovery. To aide in that we are goiing to utilize both Windows DHCP and DNS services. The Target switch, commonly called Access switch will need to do a DNS lookup in order to find Catalyst Center.
 
 **DNS lookup** 
   - *requires the DHCP server to offer a domain suffix and a name server to resolve the **pnpserver** address*
@@ -41,7 +41,7 @@ Set-DhcpServerv4OptionValue -ScopeId 192.168.5.0 -DnsServer 198.18.133.1 -DnsDom
 
 #### DNS Overview
 
-Next, we will add the relevant DNS entries into the Windows DNS service to allow for the Cisco Catalyst Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
+Next, we will add the relevant DNS entries into the Windows DNS service to allow for the Catalyst Center to be discovered. This script will add an A host entry for the VIP address and a CNAME entry as an alias for the pnpserver record required for DNS discovery.
 
 The DNS Zone will look like this in Windows DNS Administrative tool: 
 
@@ -118,11 +118,11 @@ nslookup pnpserver.pnp.dcloud.cisco.com
 
 ```
 
-The following output or something similar shows the resolution of the alias to the A host record entry which identifies the VIP address for the Cisco Catalyst Center Cluster will display.
+The following output or something similar shows the resolution of the alias to the A host record entry which identifies the VIP address for the Catalyst Center Cluster will display.
 
 ![json](./images/CC-Discovery-dns-lookup-ipv4.png?raw=true "Import JSON")
 
-Second, we need to ensure the Cisco Catalyst Center responds on the VIP, so use the ping command within the CMD application window previously opened as follows:
+Second, we need to ensure the Catalyst Center responds on the VIP, so use the ping command within the CMD application window previously opened as follows:
 
 ```bash
 ping pnpserver.pnp.dcloud.cisco.com
@@ -133,7 +133,7 @@ The test results should look similar to this:
 
 ![json](./images/CC-Discovery-dns-ipv4.png?raw=true "Import JSON")
 
-Third, we can ping Cisco Catalyst Center from the Distribution Switch utilizing the following scripts:
+Third, we can ping Catalyst Center from the Distribution Switch utilizing the following scripts:
 
 ```bash
 !

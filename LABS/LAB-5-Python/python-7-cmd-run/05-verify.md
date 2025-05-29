@@ -1,18 +1,18 @@
 # Device Inventory Verification
 
-To verify that the inventory was successfully retrieved examine the files within the directory `/root/DEVWKS-2176/inventory` and `/root/DEVWKS-2176/reports` Cisco Catalyst Center.
+To verify that the inventory was successfully retrieved examine the files within the directory `/root/DEVWKS-2176/inventory` and `/root/DEVWKS-2176/reports` Catalyst Center.
 
 Follow these steps:
 
-1. If Cisco Catalyst Center is not already open, use a browser and navigate to `https://198.18.129.100`, where you may see an SSL Error displayed as depicted. Click the `Proceed to https://192.18.129.100 (unsafe)` link to continue if presented
+1. If Catalyst Center is not already open, use a browser and navigate to `https://198.18.129.100`, where you may see an SSL Error displayed as depicted. Click the `Proceed to https://192.18.129.100 (unsafe)` link to continue if presented
 
    ![json](./images/DNAC-SSLERROR.png?raw=true "Import JSON")
 
-2. If required, log into Cisco Catalyst Center using the username of `admin` and the password `C1sco12345`.
+2. If required, log into Catalyst Center using the username of `admin` and the password `C1sco12345`.
 
    ![json](./images/DNAC-Login.png?raw=true "Import JSON")
 
-3. When the Cisco Catalyst Center Dashboard is displayed, Click the icon to display the menu'
+3. When the Catalyst Center Dashboard is displayed, Click the icon to display the menu'
 
    ![json](./images/DNAC-Menu.png?raw=true "Import JSON")
 

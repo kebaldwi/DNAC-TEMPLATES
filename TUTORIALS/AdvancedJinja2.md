@@ -6,7 +6,7 @@ Below will be examples of various use cases that could be implemented.
 
 ### Parsing Integers from String Variables
 
-In the following example a variable is bound to Cisco Catalyst Centers database and a value is called for the Native Vlan. As all data within the database is essentially in string format, if we wish to use it with some mathematics to calculate other values, we would first need to change it (ie cast) from a string to a integer.
+In the following example a variable is bound to Catalyst Centers database and a value is called for the Native Vlan. As all data within the database is essentially in string format, if we wish to use it with some mathematics to calculate other values, we would first need to change it (ie cast) from a string to a integer.
 
 In order to acomplish this we need to use this example. We will use the *int* modifier to parse the bind variable to an integer variable using set notation.
 
@@ -105,7 +105,7 @@ Then perhaps build a logical structure to account for differing Site Objects.
 
 ### Include and Extend with Jinja2
 
-Within Jinja2 templates in Cisco Catalyst Center its possible to both Include and Extend regular templates. Lets discuss first what these are and how they differ from each other, and then how they may be leveraged.
+Within Jinja2 templates in Catalyst Center its possible to both Include and Extend regular templates. Lets discuss first what these are and how they differ from each other, and then how they may be leveraged.
 
 #### Include
 
@@ -326,7 +326,7 @@ While this would configure the access ports, and modify the port channel for ups
 
 ## Network Profile Compliance 
 
-To exclude specific commands from compliance checks in Cisco Catalyst Center, you can use the **ignore-compliance** flags. These flags, added to your templates, tell Catalyst Center to bypass compliance checks for commands within those boundaries. Specifically, you can enclose the commands you want to omit with:
+To exclude specific commands from compliance checks in Catalyst Center, you can use the **ignore-compliance** flags. These flags, added to your templates, tell Catalyst Center to bypass compliance checks for commands within those boundaries. Specifically, you can enclose the commands you want to omit with:
 
 ```J2
  ! @ start-ignore-compliance 
@@ -370,7 +370,7 @@ Use ignore-compliance only for specific scenarios where a deviation from the tem
 
 #### Documentation:
 
-Refer to the official Cisco Catalyst Center documentation for the most up-to-date information on compliance features and how to use them. 
+Refer to the official Catalyst Center documentation for the most up-to-date information on compliance features and how to use them. 
 
 > [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>

@@ -1,12 +1,12 @@
 # Device Discovery
 
-In this module, we will use **Python** to discover devices within the network and **assign** them to specific sites within the hierarchy within Cisco Catalyst Center.  
+In this module, we will use **Python** to discover devices within the network and **assign** them to specific sites within the hierarchy within Catalyst Center.  
 
-Cisco Catalyst Center uses hierarchy to logically align intent (code and configuration) against infrastructure. This allows the network administrator to align changes and modifications to the network within maintenance windows.
+Catalyst Center uses hierarchy to logically align intent (code and configuration) against infrastructure. This allows the network administrator to align changes and modifications to the network within maintenance windows.
 
 ## Device Discovery Background
 
-Cisco Catalyst Center has a Discovery Tool, which allows for the discovery of devices across the network through one of the following methods:
+Catalyst Center has a Discovery Tool, which allows for the discovery of devices across the network through one of the following methods:
 
 1. CDP
 2. LLDP
@@ -22,7 +22,7 @@ The lab envionment that is available is depicted here:
 
 <p align="center"><img src="../assets/DCLOUD_Topology_B.png" width="800" height="686.75"></p>
 
-> **Note**: If ISE is integrated with Cisco Catalyst Center and settings are applied, then the device is also added as a Network Access Device within ISE during the assignment task via **PxGrid Integration**
+> **Note**: If ISE is integrated with Catalyst Center and settings are applied, then the device is also added as a Network Access Device within ISE during the assignment task via **PxGrid Integration**
 
 > **Prerequisites**: **Completed** the previous section [**Deploy Settings and Credentials**](../python-2-settings/01-intro.md)
 

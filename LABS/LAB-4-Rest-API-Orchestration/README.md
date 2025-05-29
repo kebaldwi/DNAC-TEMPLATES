@@ -41,7 +41,7 @@ For DevNet Test Drive events, use this environment: [DNAC pods for DevNet Test D
 The DCLOUD session includes the following equipment.
 
 * Virtual Machines:
-  * Cisco Catalyst Center 2.3.5.6 or better
+  * Catalyst Center 2.3.5.6 or better
   * Identity Services Engine (ISE) 3.0 Patch 4 or better (deployed)
   * Script Server - Ubuntu 20.04  or better
   * Windows 10 Jump Host 

@@ -2,25 +2,25 @@
 
 ## Overview
 
-This module is designed to be used after first completing the PnP preparation and has been created to address how to use both PnP and Discovery to onboard devices into Cisco Catalyst Center. This two fold approach allows us to onboard both Greenfield and Brownfield devices. 
+This module is designed to be used after first completing the PnP preparation and has been created to address how to use both PnP and Discovery to onboard devices into Catalyst Center. This two fold approach allows us to onboard both Greenfield and Brownfield devices. 
 
 ### Greenfield
 
-When dealing with net new devices using the PnP process to onboard devices we utilize Onboarding templates within Cisco Catalyst Center to onboard Day Zero network devices with no configuration on the device. 
+When dealing with net new devices using the PnP process to onboard devices we utilize Onboarding templates within Catalyst Center to onboard Day Zero network devices with no configuration on the device. 
 
 PnP Onboarding allows for the claim of a device and the ability to automate the deployment of configuration. It is important to note that Onboarding templates are transfered as a flat file and loaded into the configuration by a configure replace. 
 
-This allows for the manipulation of uplinks and addressing without disconnectivity during reconfiguration from the upstream neighboring device. Additional source commands can be used to allow the device to automatically inform Cisco Catalyst Center of a change in address through the PnP profile applied and the source of the HTTP client information.
+This allows for the manipulation of uplinks and addressing without disconnectivity during reconfiguration from the upstream neighboring device. Additional source commands can be used to allow the device to automatically inform Catalyst Center of a change in address through the PnP profile applied and the source of the HTTP client information.
 
 ### Brownfield
 
-When dealing with existing infrastructure, we want to absorb the device and its configuration into Cisco Catalyst Center to allow for monitoring and a gradual shift to automated management, as the device usually is in a running state supporting the network, and the configuration pre-exists.
+When dealing with existing infrastructure, we want to absorb the device and its configuration into Catalyst Center to allow for monitoring and a gradual shift to automated management, as the device usually is in a running state supporting the network, and the configuration pre-exists.
 
 Be aware that with Brownfield device configurations, there is no template learning capability for switching. As such configuration on the device may need modification prior to provisioning in some situations. If this is required you may want to Discover and then push a normalization template via REST API to remove settings that would cause ongoing provisioning errors.
 
 ### Overview Summary
 
-In this section will go through the flows involved with PnP and Discovery to allow for the successful onboarding of network devices into Cisco Catalyst Center in both Brownfield and Greenfield situations.
+In this section will go through the flows involved with PnP and Discovery to allow for the successful onboarding of network devices into Catalyst Center in both Brownfield and Greenfield situations.
 
 ![json](./images/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON")
 
@@ -38,7 +38,7 @@ In this section will go through the flows involved with PnP and Discovery to all
 
 ## Greenfield Environments and Plug and Play (PnP)
 
-Cisco Catalyst Center can be used for not only Plug and Play (PnP) but also Day N or ongoing changes to the network via templates. Customers will start by building out a PnP Onboarding Template which typically deploys only enough information to intially bring the device. 
+Catalyst Center can be used for not only Plug and Play (PnP) but also Day N or ongoing changes to the network via templates. Customers will start by building out a PnP Onboarding Template which typically deploys only enough information to intially bring the device. 
 
 ### Considerations about Templates
 
@@ -46,11 +46,11 @@ While a PnP template could include the entire configuration for a traditional ne
 
 The inventory database is not populated with specific information about a device prior to the completion of the claim process. This presents a challenge to onboarding as system variables, and bind variables cannot be utilized. Additionally, this means that the scripts irrespective of the language used would require a lot of manual inputs to variables, rather than pulling information known about the device post claim.
 
-Another challenge is ongoing modifications. Templates used after the initial provisioning for DayN operations are within a Project, where as Onboarding templates are in a specific location in Cisco Catalyst Centers Template Hub. Use of an Onboarding Template post PnP is not practical. One because we would want to introduce afformentioned System and Bind Variables to simplify code, and remove repetition. Secondarily because those may change over time.
+Another challenge is ongoing modifications. Templates used after the initial provisioning for DayN operations are within a Project, where as Onboarding templates are in a specific location in Catalyst Centers Template Hub. Use of an Onboarding Template post PnP is not practical. One because we would want to introduce afformentioned System and Bind Variables to simplify code, and remove repetition. Secondarily because those may change over time.
 
 Remember that DayN templates are primarily used to apply ongoing changes to device configurations and allow ongoing modifications after initial deployment. They allow for the data collected in the inventory database to be used to automate without the need for a lot of input.
 
-Another consideration is that part of a typical configuration would include some lines of code which could or should be built out automatically from information entered within the **Network Settings** of Cisco Catalyst Center. 
+Another consideration is that part of a typical configuration would include some lines of code which could or should be built out automatically from information entered within the **Network Settings** of Catalyst Center. 
 
 If a Design component is used for a specific task you should not deploy the cli code in a template to configure the task on the device or vice versa. Its a decision you have to make upfront and avoids a lot of lines in the templates and allows for a more UI centric configuration which is easier to maintain. 
 
@@ -67,9 +67,9 @@ While a more extensive set of settings can be built out for a deployment we will
 > [!NOTE]
 > While there are newer versions of Postman out there the DCLOUD environment is using an older version which does not restrict the number of users using the application which was added in later versions. As such nomenclature like Tests and images used are here for the older version. Please check Postman for updated documentation when using on production or your own computer.
 
-Before Cisco Catalyst Center can automate the deployment we have to do a couple of tasks to prepare. Please log into the Cisco Catalyst Center using a browser within the Windows **Jump host**. Use the credentials of username: **`admin`** password: **`C1sco12345`**. Then browse to [Cisco Catalyst Center](https://198.18.129.100). Use the credentials of username: **`admin`** password: **`C1sco12345`** within the DCLOUD environment.
+Before Catalyst Center can automate the deployment we have to do a couple of tasks to prepare. Please log into the Catalyst Center using a browser within the Windows **Jump host**. Use the credentials of username: **`admin`** password: **`C1sco12345`**. Then browse to [Catalyst Center](https://198.18.129.100). Use the credentials of username: **`admin`** password: **`C1sco12345`** within the DCLOUD environment.
 
-Although you can manually set up the hierarchy we will use automation scripts built to implement the hierarchy via **postman** which will utilize the **Cisco Catalyst Center API's** To do this we will make use of the application `postman` in the Windows workstation and install json files.
+Although you can manually set up the hierarchy we will use automation scripts built to implement the hierarchy via **postman** which will utilize the **Catalyst Center API's** To do this we will make use of the application `postman` in the Windows workstation and install json files.
 
 1. Download the following two files by right clicking and opening each in a new tab to download them to the downloads folder on the workstation:
 
@@ -118,9 +118,9 @@ Although you can manually set up the hierarchy we will use automation scripts bu
 
     ![json](./images/Postman-SSL-Deselect.png?raw=true "Import JSON")
 
-## Section 2 - Cisco Catalyst Center Design Preparation
+## Section 2 - Catalyst Center Design Preparation
 
-The **Hierarchy** within Cisco Catalyst Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. 
+The **Hierarchy** within Catalyst Center will be used to roll out code and configurations ongoing so my guidance around this is to closely align this to the change management system. If you need change management down to floors or even Intermediate/Main Distribution Facilities then its a good idea to build your hierarchy to suit this. 
 
 **Network Settings** can then be added hierarchically being either inherited and or overidden at each level throughout the hierarchy. The following is a description of the Network Settings and configurations that we will push as part of this lab **(required)**
 
@@ -155,7 +155,7 @@ The collection previously imported along with the ennvironment variables will pu
 
 ### Step 2 - Verify Design Hierarchy, Settings and Credentials **(REQUIRED)** 
 
-1. Then open a browser and log back into Cisco Catalyst Center and navigate the hamburger menu **`Design > Network Hierarchy`** as shown. You will see the hierarchy has been built within Catalyst Center under the Global Site.
+1. Then open a browser and log back into Catalyst Center and navigate the hamburger menu **`Design > Network Hierarchy`** as shown. You will see the hierarchy has been built within Catalyst Center under the Global Site.
 
    ![json](./images/Verify_Hierarchy.gif?raw=true "Import JSON")
 
@@ -175,7 +175,7 @@ The image used in this lab for the **9300** is downloadable from here [⬇︎Cup
 > [!NOTE]
 > The process outlined in the pictures uses an older image but the steps remain the same. You should use an image that is marked as MD or **Assurwave** for best results.
 
-1. Within Cisco Catalyst Center Navigate to *Design>Image Repository*  
+1. Within Catalyst Center Navigate to *Design>Image Repository*  
 
    ![json](./images/DNAC-NavigateImageRepo.png?raw=true "Import JSON")
 
@@ -184,7 +184,7 @@ The image used in this lab for the **9300** is downloadable from here [⬇︎Cup
    ![json](./images/DNAC-ImportImageRepo.png?raw=true "Import JSON")
 
 3. You then indicate whether the file is Cisco or 3rd Party and click import. 
-4. The file will then import into Cisco Catalyst Center.    
+4. The file will then import into Catalyst Center.    
 
    ![json](./images/DNAC-ImportedImageRepo.png?raw=true "Import JSON")
 
@@ -213,11 +213,11 @@ The image used in this lab for the **9300** is downloadable from here [⬇︎Cup
 
 </details>
 
-## Section 3 - Cisco Catalyst Center Onboarding Template 
+## Section 3 - Catalyst Center Onboarding Template 
 
-You can create onboarding templates within the **Template Hub** previously known as **Template Editor** within **Cisco Catalyst Center**. Go to the **Template Hub**  to complete the next task.
+You can create onboarding templates within the **Template Hub** previously known as **Template Editor** within **Catalyst Center**. Go to the **Template Hub**  to complete the next task.
 
-The Onboarding template has the minimal configuration and is designed to bring up device connectivity with Cisco Catalyst Center. Below are Velocity and Jinja2 examples for explanation purposes only. 
+The Onboarding template has the minimal configuration and is designed to bring up device connectivity with Catalyst Center. Below are Velocity and Jinja2 examples for explanation purposes only. 
 
 ### Example Velocity Template
 
@@ -373,11 +373,11 @@ netconf-yang
 ```
 [//]: # ({% endraw %})
 
-Both of these Templates have the settings necessary to bring up a Layer2 access switch with enough configration to be supported by Cisco Catalyst Center for the rest of the provisioning process. As guidance it is recommended that you use **Jinja2** moving forward, due to its modularity and capabilities. You can however achieve the same results with **Velocity**, but the scripting language is not as feature rich.
+Both of these Templates have the settings necessary to bring up a Layer2 access switch with enough configration to be supported by Catalyst Center for the rest of the provisioning process. As guidance it is recommended that you use **Jinja2** moving forward, due to its modularity and capabilities. You can however achieve the same results with **Velocity**, but the scripting language is not as feature rich.
 
 The onboarding template is designed to set up static addressing and a hostname entry along with updating the management source interfaces for management connectivity. This file is transfered to the target device in a single file as opposed to linne by line configuration which accomodates the changes in network connectivity which may be lost when iterating line by line.
 
-Please note the modifications to the source addressing for all protocols and specifically the **HTTP Client** source interface. This helps Cisco Catalyst Center to know if or when the IP address changes for a device and update it in the inventory automatically.
+Please note the modifications to the source addressing for all protocols and specifically the **HTTP Client** source interface. This helps Catalyst Center to know if or when the IP address changes for a device and update it in the inventory automatically.
 
 ### Step 1 - Install an Onboarding Template **(REQUIRED)**
 
@@ -407,7 +407,7 @@ We will now **download** and **import** one of the following PnP Onboarding Temp
 <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/ONBOARDING/JSON/Titanium_PnP_Jinja2_template.json">⬇︎Titanium_PnP_Jinja2_template.json⬇︎</a>
 </details></br>
 
-1. Navigate to the **Template Hub** formerly known as the **Template Editor** within Cisco Catalyst Center through the menu **`Tools > Template Hub`**.
+1. Navigate to the **Template Hub** formerly known as the **Template Editor** within Catalyst Center through the menu **`Tools > Template Hub`**.
 
    ![json](./images/DNAC-NavigateTemplate.png?raw=true "Import JSON")
 
@@ -460,13 +460,13 @@ Next we need to assign the Onboarding Template to a site using the Network Profi
 
 ## Section 4 - PnP Claim and Onboarding Device
 
-At this point Cisco Catalyst Center is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find Cisco Catalyst Center and land in the plug n play set of the devices section within the provisioning page.
+At this point Catalyst Center is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find Catalyst Center and land in the plug n play set of the devices section within the provisioning page.
 
 ### Step 1 - Claiming the Device **(REQUIRED)**
 
 At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
 
-   1. Within Cisco Catalyst Center Navigate to **`Provision > Plug and Play`**      
+   1. Within Catalyst Center Navigate to **`Provision > Plug and Play`**      
 
       ![json](./images/DNAC-NavigatePnP.png?raw=true "Import JSON")
 
@@ -512,7 +512,7 @@ At this point you can claim the device putting it in a planned state for onboard
 
        ![json](./images/DNAC-Claimed.png?raw=true "Import JSON")
 
-   11. After the device is completed it will appear in the device inventory after being sync'd with Cisco Catalyst Center.      
+   11. After the device is completed it will appear in the device inventory after being sync'd with Catalyst Center.      
 
        ![json](./images/DNAC-Inventory.png?raw=true "Import JSON")
 
@@ -524,9 +524,9 @@ This accomplishes **two** things, it places the **upstream** switch negotiating 
 
 ### Automating Claiming and Provisioning
 
-While it is possible to click through the claiming and process, for bulk deployments its important to be able to address that as well. With Cisco Catalyst Center after the templates are built and assigned to the network profile and assigned to a site they may be referenced and used by uploading a csv file to Cisco Catalyst Center via REST API.
+While it is possible to click through the claiming and process, for bulk deployments its important to be able to address that as well. With Catalyst Center after the templates are built and assigned to the network profile and assigned to a site they may be referenced and used by uploading a csv file to Catalyst Center via REST API.
 
-## Section 5 - Cisco Catalyst Center Device Discovery 
+## Section 5 - Catalyst Center Device Discovery 
 
 We will now discover the other devices on the network and import them into the Inventory for additional configurations to be applied. We do this with Brownfield equipment to initially put this into Catalyst Center, so that we can begin to automate it over time.
 

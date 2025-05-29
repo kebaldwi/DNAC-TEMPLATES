@@ -1,8 +1,8 @@
 # Assigning Settings and Credentials
 
-In this module, we will use *Postman* to **deploy** `settings` and `credentials` to a hierarchy within Cisco Catalyst Center. 
+In this module, we will use *Postman* to **deploy** `settings` and `credentials` to a hierarchy within Catalyst Center. 
 
-Cisco Catalyst Center uses hierarchy to logically align intent (code and configuration) against infrastructure. This feature enables the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
+Catalyst Center uses hierarchy to logically align intent (code and configuration) against infrastructure. This feature enables the network administrator to align change requests and outage windows to allow for changes and modifications to the network.
 
 ## Settings and Credentials Background
 
@@ -18,7 +18,7 @@ As with all the Design, Policy & Provisioning elements, they are all tied to the
 
 ## Postman and External Data Sources
 
-Within Postman, we will utilize the collection `Assign Settings Creds` to assign settings and credentials to the Hierarchy of Cisco Catalyst Center in order to associate `settings` and `credentials` to devices. 
+Within Postman, we will utilize the collection `Assign Settings Creds` to assign settings and credentials to the Hierarchy of Catalyst Center in order to associate `settings` and `credentials` to devices. 
 
 This Collection may be run whenever you wish to assign or modify the `settings` and `credentials` of the Hierarchy to either **add** or **modify** settings and or credentials. 
 

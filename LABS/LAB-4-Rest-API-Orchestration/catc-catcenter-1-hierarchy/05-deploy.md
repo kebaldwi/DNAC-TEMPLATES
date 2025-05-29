@@ -35,7 +35,7 @@ To run the collection, do the following:
 
 ## Verifying Student Settings Assignment
 
-To verify that the Hierarchy was built successfully, we will inspect the site in Cisco Catalyst Center.
+To verify that the Hierarchy was built successfully, we will inspect the site in Catalyst Center.
 
 Follow these steps:
 
@@ -43,11 +43,11 @@ Follow these steps:
 
    ![SSL Error](./assets/DNAC-SSLERROR.png?raw=true)
 
-2. Log into Cisco Catalyst Center using the username of `admin` and the password `C1sco12345`.
+2. Log into Catalyst Center using the username of `admin` and the password `C1sco12345`.
 
    ![Login](./assets/DNAC-Login.png?raw=true)
 
-3. When the Cisco Catalyst Center Dashboard is displayed, Click the  icon to display the menu'
+3. When the Catalyst Center Dashboard is displayed, Click the  icon to display the menu'
 
    ![Hamburger](./assets/DNAC-Menu.png?raw=true)
 

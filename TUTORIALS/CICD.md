@@ -1,4 +1,4 @@
-# CI/CD Orchestration Cisco Catalyst Center [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
+# CI/CD Orchestration Catalyst Center [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 
 ## Overview
 
@@ -44,7 +44,7 @@ They are:
 - **GitLab** *- GitLab*
 - **GitHub** *- GitHub a division of Microsoft*
 - **Jenkins** *- Jenkins*
-- **Cisco Catalyst Center** *- Cisco Systems*
+- **Catalyst Center** *- Cisco Systems*
 
 ### Jenkins
 
@@ -124,7 +124,7 @@ Pipelines can be triggered by various events such as code commits, pull requests
 
 ## Labs Overview
 
-We include in the Repository a full set of Labs designed to help customers with varying challenges in Automating and Orchestrating their network infrastructure with CICD utilizing Jenkins. Within the lab, we will use a complete set of **REST API** collections which will build upon the foundational knowledge. For this lab, we concentrate on Cisco Catalyst Center configuration and how Cisco Catalyst Center can be orchestrated via **REST API** to perform various functions: 
+We include in the Repository a full set of Labs designed to help customers with varying challenges in Automating and Orchestrating their network infrastructure with CICD utilizing Jenkins. Within the lab, we will use a complete set of **REST API** collections which will build upon the foundational knowledge. For this lab, we concentrate on Catalyst Center configuration and how Catalyst Center can be orchestrated via **REST API** to perform various functions: 
 
 ### Overview
 

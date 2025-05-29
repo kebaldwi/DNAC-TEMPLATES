@@ -1,12 +1,12 @@
 # Postman and External Data Sources
 
-Within Postman, we will utilize the collection `Build Hierarchy` to build out the Hierarchy of Cisco Catalyst Center into which we associate `settings` and `discover devices`. 
+Within Postman, we will utilize the collection `Build Hierarchy` to build out the Hierarchy of Catalyst Center into which we associate `settings` and `discover devices`. 
 
 This Collection may be run whenever you wish to create a new section of the Hierarchy to **add** additional `Areas`, `Buildings`, or `floors`. 
 
 Accompanying the Collection is a **required** Comma Separated Value (CSV) file, which is essentially an `answer file` for the values used to build the design. The CSV may be found here. 
 
-> **Download**: <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/DEVNET-IGNITE/CCC-Design-Settings-v3.csv" target="_blank">⬇︎ Cisco Catalyst Center Design Settings CSV ⬇︎</a>
+> **Download**: <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/DEVNET-IGNITE/CCC-Design-Settings-v3.csv" target="_blank">⬇︎ Catalyst Center Design Settings CSV ⬇︎</a>
 
 ## Preparing the External Data File
 
@@ -95,7 +95,7 @@ Global > PODS > POD 0 > Building10 > Floor1
 ```
 ## Summary
 
-You have set up the Postman client with a collection, the environment, and the settings to complete the Lab. In the following sections, you use environment variables within each collection to perform a task on Cisco Catalyst Center.
+You have set up the Postman client with a collection, the environment, and the settings to complete the Lab. In the following sections, you use environment variables within each collection to perform a task on Catalyst Center.
 
 We have performed a few operations in the client, and you have seen the Collections where the REST APIs are configured and the Environment where the data is stored in variables within the database.
 

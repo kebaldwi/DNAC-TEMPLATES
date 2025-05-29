@@ -1,12 +1,12 @@
 ## DHCP Discovery using Windows DHCP Service
 
-As you may recall, for a device to discover Cisco Catalyst Center, the device uses a discovery method to help it find Cisco Catalyst Center. 
+As you may recall, for a device to discover Catalyst Center, the device uses a discovery method to help it find Catalyst Center. 
 
 The PnP components are as follows:
 
 ![json](../../ASSETS/pnp-workflows.png?raw=true "Import JSON")
 
-There are three automated methods to make that occur and in this section we will use DHCP Discovery. To aide in that we are goiing to utilize IOS DHCP services. The Target switch, commonly called Access switch will need to be offered option 43 with a string in order to find Cisco Catalyst Center.
+There are three automated methods to make that occur and in this section we will use DHCP Discovery. To aide in that we are goiing to utilize IOS DHCP services. The Target switch, commonly called Access switch will need to be offered option 43 with a string in order to find Catalyst Center.
 
 **DHCP Option 43** 
   - *requires the DHCP server to offer a Vendor Spcecific Information (VSI) known as ***Option 43*** which serves the **pnp servers IP** address*
@@ -47,10 +47,10 @@ K4;               Transport protocol to be used between the device and the contr
                   K4 = HTTP (default)
                   K5 = HTTPS
 
-Ixxx.xxx.xxx.xxx; IP address or hostname of the Cisco Catalyst Center controller (following a 
+Ixxx.xxx.xxx.xxx; IP address or hostname of the Catalyst Center controller (following a 
                   capital letter i). In this example, the IP address is 198.18.129.100.
                   
-Jxxxx             Port number to use to connect to the Cisco Catalyst Center controller. 
+Jxxxx             Port number to use to connect to the Catalyst Center controller. 
                   In this example, the port number is 80. The default is port 80 for HTTP 
                   and port 443 for HTTPS.
 ```
@@ -124,7 +124,7 @@ wr
 
 To test the environment to ensure it's ready, we need to try a few things.
 
-First, we need to ensure the Cisco Catalyst Center responds on the VIP, lets test that from the **9300-2**:
+First, we need to ensure the Catalyst Center responds on the VIP, lets test that from the **9300-2**:
 
 ```bash
 !

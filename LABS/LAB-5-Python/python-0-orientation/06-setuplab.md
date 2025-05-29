@@ -96,11 +96,11 @@ Save the file by using **^o** then exit with **^x**.
 
 ## External Data Sources
 
-The second file type we need to modify is the **CSV** data file. We will utilize a set of Python programs to build out the **Hierarchy**, **Settings**, and **deployment** of the network via **Cisco Catalyst Center**.
+The second file type we need to modify is the **CSV** data file. We will utilize a set of Python programs to build out the **Hierarchy**, **Settings**, and **deployment** of the network via **Catalyst Center**.
 
 Accompanying the **Python Programs** is a **required** Comma Separated Value (CSV) file, which is essentially an **answer file** for the values used to build the design. The CSV which was pulled in the **Git Clone** may be found here for reference: 
 
-> **Download:** <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/DATA/CSV/DNAC-Design-Settings.csv" target="_blank">⬇︎ Cisco Catalyst Center Design Settings CSV ⬇︎</a>
+> **Download:** <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/DATA/CSV/DNAC-Design-Settings.csv" target="_blank">⬇︎ Catalyst Center Design Settings CSV ⬇︎</a>
 
 > **IMPORTANT NOTE:** We will **open** but **not save** the CSV file to view the hierarchy that will be built during the lab. 
   As you review the CSV file, you will see each row has hierarchal information, settings, credentials, and other information. **Be Careful NOT to modify the file**; if you feel you have modified the file, please download it again.
