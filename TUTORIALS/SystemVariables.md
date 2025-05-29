@@ -1,9 +1,9 @@
 
-# Cisco Catalyst Center System Variables [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
+# Catalyst Center System Variables [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 
 ## What are System Variables?
 
-Cisco Catalyst Center maintains a lot of information about devices.  It collects inventory data from discovered devices and keeps track of what site, network profile and settings are applied to the devices in your network.  You can use this information in your templates by calling system variables.  System variables extend the benefits of adding variables to your templates by augmenting the dynamic capabilities of templates while also reducing the number of manual inputs required from engineering staff at provisioning time.   
+Catalyst Center maintains a lot of information about devices.  It collects inventory data from discovered devices and keeps track of what site, network profile and settings are applied to the devices in your network.  You can use this information in your templates by calling system variables.  System variables extend the benefits of adding variables to your templates by augmenting the dynamic capabilities of templates while also reducing the number of manual inputs required from engineering staff at provisioning time.   
 
 For example, there is a system variable called **__interface**.  This variable, part of the Inventory category, is an object containing an entry for each interface on a network device. By referencing this variable, you can access interface details, such as admin status, speed and duplex, IP Address, port name and many others.  
 
@@ -11,7 +11,7 @@ Using this variable allows you to create Templates that are agnostic to the type
 
 ### What System Variables are available?
 
-The definitive list of available system variables for a particular version of Cisco Catalyst Center is the Cisco Catalyst Center Template Editor UI itself.  Within the template view, you will see a link the UI called "Template System Variables":  
+The definitive list of available system variables for a particular version of Catalyst Center is the Catalyst Center Template Editor UI itself.  Within the template view, you will see a link the UI called "Template System Variables":  
 
 ![json](../ASSETS/TUTORIALS/TEMPLATEEDITOR/button.png?raw=true "Import JSON")  
 
@@ -34,7 +34,7 @@ To continue with our example of using the **__interface** system variable, we ca
 ![json](../ASSETS/TUTORIALS/TEMPLATEEDITOR/template_system_interfaces_4.png?raw=true "Import JSON")  
 
 
-You can also find high-level details on the available system variables for your version of Cisco Catalyst Center in the **[Cisco Catalyst Center User Guide](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/2-3-4/user_guide/b_cisco_dna_center_ug_2_3_4/b_cisco_dna_center_ug_2_3_4_chapter_01000.html#id_92757)**.  This links to version 2.3.4.x, which was current at the time of writing.
+You can also find high-level details on the available system variables for your version of Catalyst Center in the **[Catalyst Center User Guide](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/2-3-4/user_guide/b_cisco_dna_center_ug_2_3_4/b_cisco_dna_center_ug_2_3_4_chapter_01000.html#id_92757)**.  This links to version 2.3.4.x, which was current at the time of writing.
 
 ### Using System Variables in Templates
 
@@ -124,7 +124,7 @@ These steps will set **selected_interfaces** to be an object that will contain t
 > [!TIP]
 > If you are following along, don't forget to save your template before moving on.
 
-Now would be a good time to use the **Simulation** feature of the Cisco Catalyst Center Template Editor to check our work.  
+Now would be a good time to use the **Simulation** feature of the Catalyst Center Template Editor to check our work.  
 
 ### Simulations
 
@@ -179,7 +179,7 @@ Lastly let's take a look at using a different system variable.  This very simple
 
 ### Summary
 
-Hopefully, this document helped you to get an idea of what system variables are and how they can be used with the Cisco Catalyst Center Template Editor. System Variables help to reduce manual entry and errors, make your templates more flexible so you need less of them and ease provisioning. Thanks for reading!
+Hopefully, this document helped you to get an idea of what system variables are and how they can be used with the Catalyst Center Template Editor. System Variables help to reduce manual entry and errors, make your templates more flexible so you need less of them and ease provisioning. Thanks for reading!
 
 > [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>

@@ -2,11 +2,11 @@
 
 ## Overview
 
-This module is designed to be used after first completing the **[Building PnP Templates](../LAB-3-Advanced-Automation/module2-day0-template.md)** and has been created to address how to operationalize **Plug and Play (PnP) Templates** to onboard devices into Cisco Catalyst Center. This module will go through the network profile, and how to claim devices as well as the claim process. 
+This module is designed to be used after first completing the **[Building PnP Templates](../LAB-3-Advanced-Automation/module2-day0-template.md)** and has been created to address how to operationalize **Plug and Play (PnP) Templates** to onboard devices into Catalyst Center. This module will go through the network profile, and how to claim devices as well as the claim process. 
 
 ### Overview Summary
 
-In this section will go through the flows involved with **PnP**. This will allow us to create successful onboarding of network devices into Cisco Catalyst Center for Greenfield situations.
+In this section will go through the flows involved with **PnP**. This will allow us to create successful onboarding of network devices into Catalyst Center for Greenfield situations.
 
 This is the lab we will be utilizing. Notice the **PnP Target Switch**. This is the C9300-1, which is a variant of the 9300 family. We will be building a configuration for this device from a sample configuration.
 
@@ -22,7 +22,7 @@ Navigate to the CLI Template Hub on Catalyst Center **`Tools > Template Hub`**
 
 ### Step 2 - PnP Template 
 
-We have previously built a PnP template within the **Template Hub** within **Cisco Catalyst Center**. The Onboarding template has the minimal configuration and is designed to bring up device connectivity with Cisco Catalyst Center. Below is an example of a Jinja2 for comparison only. 
+We have previously built a PnP template within the **Template Hub** within **Catalyst Center**. The Onboarding template has the minimal configuration and is designed to bring up device connectivity with Catalyst Center. Below is an example of a Jinja2 for comparison only. 
 
 Compare your template with the example in the section below. Did you miss anything important?
 
@@ -107,13 +107,13 @@ netconf-yang
 
 </details></br>
 
-This Jinja2 PnP Template has the settings necessary to bring up a Layer2 access switch with enough configration to be supported by Cisco Catalyst Center for the rest of the provisioning process. 
+This Jinja2 PnP Template has the settings necessary to bring up a Layer2 access switch with enough configration to be supported by Catalyst Center for the rest of the provisioning process. 
 
 As guidance it is **highly recommended** that you use **Jinja2** moving forward, due to its modularity and capabilities. You can however achieve the same results with **Velocity**, but the scripting language is not as feature rich.
 
 The onboarding template is designed to set up static addressing and a hostname entry along with updating the management source interfaces for management connectivity. This file is transfered to the target device in a single file as opposed to linne by line configuration which accomodates the changes in network connectivity which may be lost when iterating line by line.
 
-Please note the modifications to the source addressing for all protocols and specifically the **HTTP Client** source interface. This helps Cisco Catalyst Center to know if or when the IP address changes for a device and update it in the inventory automatically.
+Please note the modifications to the source addressing for all protocols and specifically the **HTTP Client** source interface. This helps Catalyst Center to know if or when the IP address changes for a device and update it in the inventory automatically.
 
 > [!TIP]
 > We will attempt to use the template that you built in the previous module, but this will be kept in reserve as a fall back plan.
@@ -128,7 +128,7 @@ Please note the modifications to the source addressing for all protocols and spe
   
    <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/ONBOARDING/JSON/Platinum_PnP_Jinja2_Template.json">⬇︎Platinum_PnP_Jinja2_template.json⬇︎</a> 
 
-2. Navigate to the **Template Hub** within Cisco Catalyst Center through the menu **`Tools > Template Hub`**.
+2. Navigate to the **Template Hub** within Catalyst Center through the menu **`Tools > Template Hub`**.
 
    ![json](../../ASSETS/LABS/CATC/MENU/catc-menu-5.png?raw=true "Import JSON")
 
@@ -190,11 +190,11 @@ Next we need to assign the Onboarding Template to a site using the Network Profi
 
 ### Step 4 - Claiming the Device 
 
-At this point Cisco Catalyst Center is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find Cisco Catalyst Center and land in the plug n play set of the devices section within the provisioning page.
+At this point Catalyst Center is set up and ready for Plug and Play to onboard the first device. Provided the discovery and dhcp assignment are aligned, the device should when plugged in find Catalyst Center and land in the plug n play set of the devices section within the provisioning page.
 
 At this point you can claim the device putting it in a planned state for onboarding onto the system. To do this do the following:
 
-   1. Within Cisco Catalyst Center Navigate to **`Provision > Plug and Play`**      
+   1. Within Catalyst Center Navigate to **`Provision > Plug and Play`**      
 
       ![json](../../ASSETS/LABS/CATC/MENU/catc-menu-3.png?raw=true "Import JSON")
 
@@ -242,7 +242,7 @@ At this point you can claim the device putting it in a planned state for onboard
 
        ![json](../../ASSETS/LABS/DAY0DAYN/LAB3-PNP-CLAIM/c9300-1-claim-8.png?raw=true "Import JSON")
 
-   11. After the device is completed it will appear in the device inventory after being sync'd with Cisco Catalyst Center.      
+   11. After the device is completed it will appear in the device inventory after being sync'd with Catalyst Center.      
 
        ![json](../../ASSETS/LABS/DAY0DAYN/LAB3-PNP-CLAIM/c9300-1-claim-9.png?raw=true "Import JSON")
 

@@ -1,4 +1,4 @@
-# Cisco DNA Center Advanced REST API with Postman 
+# Catalyst Center Advanced REST API with Postman 
 
 ## Overview
 

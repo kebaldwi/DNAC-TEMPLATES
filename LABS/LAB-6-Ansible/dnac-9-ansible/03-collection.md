@@ -1,12 +1,12 @@
 # Ansible Collection Dependencies
 
-Cisco DNA Center can augment a companies Ansible automation and orchestration strategy. 
+Catalyst Center can augment a companies Ansible automation and orchestration strategy. 
 
-The [**cisco.dnac**](https://docs.ansible.com/ansible/latest/collections/cisco/dnac/index.html) Ansible collection can be utilized by development engineers to build robust playbooks for Ansible that interact with Cisco DNA Center. 
+The [**cisco.dnac**](https://docs.ansible.com/ansible/latest/collections/cisco/dnac/index.html) Ansible collection can be utilized by development engineers to build robust playbooks for Ansible that interact with Catalyst Center. 
 
 > **Documentation**: For Installation Instructions and Caveats visit: [**Ansible Galaxy**](https://galaxy.ansible.com/cisco/dnac). 
 
-The Cisco DNA Center Ansible collection depends on the [**Cisco DNA Center Python SDK**](https://dnacentersdk.readthedocs.io/en/latest/) and the version of the SDK must align with the version of Cisco DNA Center that is in use. 
+The Catalyst Center Ansible collection depends on the [**Catalyst Center Python SDK**](https://dnacentersdk.readthedocs.io/en/latest/) and the version of the SDK must align with the version of Catalyst Center that is in use. 
 
 ![json](./images/dnacentersdk_compatibility.png?raw=true "Import JSON")
 

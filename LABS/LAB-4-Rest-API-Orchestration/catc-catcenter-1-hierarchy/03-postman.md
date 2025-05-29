@@ -1,6 +1,6 @@
 # Postman and External Data Sources
 
-Within Postman, we will utilize the collection `Build Hierarchy` to build out the Hierarchy of Cisco Catalyst Center into which we associate `settings` and `discover devices`. 
+Within Postman, we will utilize the collection `Build Hierarchy` to build out the Hierarchy of Catalyst Center into which we associate `settings` and `discover devices`. 
 
 This Collection may be run whenever you wish to create a new section of the Hierarchy to **add** additional `Areas`, `Buildings`, or `floors`. 
 

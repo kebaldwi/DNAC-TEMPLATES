@@ -10,9 +10,9 @@ The examples shown below can be used in building your versions of the templates.
 
 ## General Information
 
-As previously discussed, Cisco Catalyst Center can be used for Plug-and-Play and Day N or Ongoing Templates. Customers will start by building out an Onboarding Template which typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates and, for more flexibility Composite Templates. They can apply ongoing changes and allow device modifications after initial deployment. 
+As previously discussed, Catalyst Center can be used for Plug-and-Play and Day N or Ongoing Templates. Customers will start by building out an Onboarding Template which typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates and, for more flexibility Composite Templates. They can apply ongoing changes and allow device modifications after initial deployment. 
 
-Another important consideration is that part of a typical configuration would include some lines of code, which will be automatically built out using the information within the *Design >Network Settings >* application within Cisco Catalyst Center. If the Design component is used, you should **not** deploy the same feature from cli code in a template to configure the device. It's a decision you have to make upfront, avoids a lot of lines in the templates, and allows for a more UI-centric configuration that is easier to maintain. 
+Another important consideration is that part of a typical configuration would include some lines of code, which will be automatically built out using the information within the *Design >Network Settings >* application within Catalyst Center. If the Design component is used, you should **not** deploy the same feature from cli code in a template to configure the device. It's a decision you have to make upfront, avoids a lot of lines in the templates, and allows for a more UI-centric configuration that is easier to maintain. 
 
 As guidance, try and use **Design Settings** for as many of the configurations as you can, leaving Templates light and nimble for configurations that might change ongoing.
 
@@ -32,7 +32,7 @@ The various topics covered in the lab will be the following:
 
 ## Use Cases
 
-The Topics listed above will be covered in several use cases to show the capability and flexibility of the templating engine within Cisco Catalyst Center. While we will utilize Velocity language, the same can be accomplished in the Jinja2 language.
+The Topics listed above will be covered in several use cases to show the capability and flexibility of the templating engine within Catalyst Center. While we will utilize Velocity language, the same can be accomplished in the Jinja2 language.
 
 1. [Renaming interfaces](./module6-advanced.md#step-1---renaming-interfaces---use-case)
 2. [Building Stacks](./module6-advanced.md#step-2---building-stacks---use-case)
@@ -588,7 +588,7 @@ We loop through all the interfaces on the switch, ensuring we configuring only t
 
 ## Step 6 - ***IBNS2.0 Port Configuration - Use Case***
 
-Previously within the DayN Module, we also deployed configuration on the bulk of interfaces using **IBNS2.0** and how to deal with host onboarding in a Non **SDAccess** Fabric environment. Once the Identity Services Engine is integrated with Cisco Catalyst Center, then not only do you get the benefit of **pxgrid** integration allowing for the building of policy, but the AAA Server section within Design will build out the various settings which inturn program the network access devices for AAA Network and Client Dot1x settings.
+Previously within the DayN Module, we also deployed configuration on the bulk of interfaces using **IBNS2.0** and how to deal with host onboarding in a Non **SDAccess** Fabric environment. Once the Identity Services Engine is integrated with Catalyst Center, then not only do you get the benefit of **pxgrid** integration allowing for the building of policy, but the AAA Server section within Design will build out the various settings which inturn program the network access devices for AAA Network and Client Dot1x settings.
 
 > [!IMPORTANT] 
 > It is also essential to understand that with **IBNS2.0** and interface templates or statically configured interfaces running in **closed mode**, the dynamic capability of **Autoconf** will **not** operate because there is a service-policy applied to the interface. Additionally, remember in closed mode no packets are forwarded including DHCP prior to authentication occurring.
@@ -1125,7 +1125,7 @@ Now that we have defined all the various IBNS2.0 configurations on the switch, a
 
 ## Network Profile Compliance 
 
-To exclude specific commands from compliance checks in Cisco Catalyst Center, you can use the **ignore-compliance** flags. These flags, added to your templates, tell Catalyst Center to bypass compliance checks for commands within those boundaries. Specifically, you can enclose the commands you want to omit with:
+To exclude specific commands from compliance checks in Catalyst Center, you can use the **ignore-compliance** flags. These flags, added to your templates, tell Catalyst Center to bypass compliance checks for commands within those boundaries. Specifically, you can enclose the commands you want to omit with:
 
 ```J2
  ! @ start-ignore-compliance 
@@ -1169,13 +1169,13 @@ Use ignore-compliance only for specific scenarios where a deviation from the tem
 
 #### Documentation:
 
-Refer to the official Cisco Catalyst Center documentation for the most up-to-date information on compliance features and how to use them. 
+Refer to the official Catalyst Center documentation for the most up-to-date information on compliance features and how to use them. 
 
 ## Summary
 
 Congratulations, at this point, you have successfully reviewed and may have adopted the various use cases or parts of them.
 
-The next set of labs will be to build on these concepts utilizing REST-API to push changes to Cisco Catalyst Center and further automate the configuration in the network infrastructure. 
+The next set of labs will be to build on these concepts utilizing REST-API to push changes to Catalyst Center and further automate the configuration in the network infrastructure. 
 
 The following **LAB** will tie all this together.
 

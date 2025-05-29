@@ -2,34 +2,34 @@
 
 ## Overview
 
-This module was created to review telemetry settings which are deployed to network devices when they are added to a site, either during the PnP process, as part of a **Discovery**, or by **assignment during provisioning**. During this section we will review the Telemetry settings within Cisco Catalyst Center. The Telemetry settings are used by Cisco Catalyst Center to configure network devices for the required settings required to enable the streaming telemetry to get the best results when viewing Assurance within Cisco Catalyst Center.
+This module was created to review telemetry settings which are deployed to network devices when they are added to a site, either during the PnP process, as part of a **Discovery**, or by **assignment during provisioning**. During this section we will review the Telemetry settings within Catalyst Center. The Telemetry settings are used by Catalyst Center to configure network devices for the required settings required to enable the streaming telemetry to get the best results when viewing Assurance within Catalyst Center.
 
 ## General Information
 
-Within this lab we will direct Netflow to Cisco Catalyst Center. It is important to understand that some networking devices have minimal allowed Netflow Exporters which can be configured. Should it be the case that you need addiitional flows to other servers or management devices, then please incorporate a UDP Flow Director in your design. This will allow the same flow to be replicated by the director to other management systems which require the feed.
+Within this lab we will direct Netflow to Catalyst Center. It is important to understand that some networking devices have minimal allowed Netflow Exporters which can be configured. Should it be the case that you need addiitional flows to other servers or management devices, then please incorporate a UDP Flow Director in your design. This will allow the same flow to be replicated by the director to other management systems which require the feed.
 
 During the course of the lab, you will have noticed that Telemetry settings were configured in the Design, and perhaps noticed that devices discovered and assigned to a site have had those telemetry settings pushed to them. You also may have noticed that there is a **Netconf warning** that may have appeared when you click the link it will filter in on the **c9300-1** which was claimed and onboarded and provisioned using the PnP process.
 
 ## Lab Section 1 - Reviewing Telemetry in the Design
 
-In this lab we will enable the Telemetry Settings and Provision the new settings to a device on Cisco Catalyst Center.
+In this lab we will enable the Telemetry Settings and Provision the new settings to a device on Catalyst Center.
 
 <details open>
 <summary> Click for Details and Sub Tasks</summary>
 
-1. Navigate to the **Network Settings** within Cisco Catalyst Center through the menu *Design>Network Settings>*.
+1. Navigate to the **Network Settings** within Catalyst Center through the menu *Design>Network Settings>*.
 
    ![json](./images/DNAC-Navigate-Settings.png?raw=true "Import JSON")
 
-2. Navigate to the **Telemetry** tab within the **Network Settings** page within Cisco Catalyst Center through the submenu.
+2. Navigate to the **Telemetry** tab within the **Network Settings** page within Catalyst Center through the submenu.
 
    ![json](./images/DNAC-Telemetry-Navigation-2.png?raw=true "Import JSON")
 
-3. View the **Telemetry** settings within Cisco Catalyst Center. Until this point we have not provisioned Netflow onto the switch.
+3. View the **Telemetry** settings within Catalyst Center. Until this point we have not provisioned Netflow onto the switch.
 
    ![json](./images/DNAC-Telemetry-Settings.png?raw=true "Import JSON")
 
-4. Select the checkbox next to **Use Cisco Catalyst Center as a Netflow Collector Server**. Then click **Save**.
+4. Select the checkbox next to **Use Catalyst Center as a Netflow Collector Server**. Then click **Save**.
 
    ![json](./images/DNAC-Telemetry-Settings-NetFlow.png?raw=true "Import JSON")
 
@@ -46,7 +46,7 @@ If a device was onboarded via discovery and not added to a site then provisionin
 <details open>
 <summary> Click for Details and Sub Tasks</summary></br>
 
-1. Navigate to the **Inventory** within Cisco Catalyst Center through the menu **`Provision > Network Devices > Inventory`**.
+1. Navigate to the **Inventory** within Catalyst Center through the menu **`Provision > Network Devices > Inventory`**.
 
    ![json](./images/DNAC-NavigateInventory.png?raw=true "Import JSON")
 
@@ -107,7 +107,7 @@ Notice the Netflow configuation that has been pushed and additionally review the
 
 </details>
 
-At this point you have successfully built and deployed Telemety to a switch from Cisco Catalyst Center.
+At this point you have successfully built and deployed Telemety to a switch from Catalyst Center.
 
 ## Automating Telemetry
 

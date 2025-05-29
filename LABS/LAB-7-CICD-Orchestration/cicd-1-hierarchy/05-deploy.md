@@ -61,7 +61,7 @@ pipeline {
 
 First thing we should note is that the indentation **does** matter with **Groovy Scripting**. Secondarily, it is important that when using various methods, the correct **Plugins** are installed. 
 
-The way this script is generally designed to work is that when initiated it loops until you cancel it. Persistently it checks for the **CSV** file in the `/root/DEVWKS-2176` directory and then gathers the **timestamp** from that file and compares it to the previous collected **timestamp**. If the **timestamp** has **changed**, the file has been modified and the **Pipeline** automatically runs the two **Python** programs to **build the hierarchy** on Cisco Catalyst Center and then **add settings and credentials**.
+The way this script is generally designed to work is that when initiated it loops until you cancel it. Persistently it checks for the **CSV** file in the `/root/DEVWKS-2176` directory and then gathers the **timestamp** from that file and compares it to the previous collected **timestamp**. If the **timestamp** has **changed**, the file has been modified and the **Pipeline** automatically runs the two **Python** programs to **build the hierarchy** on Catalyst Center and then **add settings and credentials**.
 
 ## Hierarchy Deployment
 

@@ -1,6 +1,6 @@
 # Template Deployment
 
-We will now `deploy` a template within a Project with your Area Name within Cisco Catalyst Centers template editor.
+We will now `deploy` a template within a Project with your Area Name within Catalyst Centers template editor.
 
 Follow these steps:
 
@@ -35,19 +35,19 @@ To run the collection, follow these steps:
 
 ## Verifying Template Deployment
 
-To verify that the template was deployed successfully, we will inspect the template editor within Cisco Catalyst Center.
+To verify that the template was deployed successfully, we will inspect the template editor within Catalyst Center.
 
 Follow these steps:
 
-1. If Cisco Catalyst Center is not already open, use a browser and navigate to `https://198.18.129.100`, where you may see an SSL Error displayed as depicted. Click the `Proceed to https://192.18.129.100 (unsafe)` link to continue if presented
+1. If Catalyst Center is not already open, use a browser and navigate to `https://198.18.129.100`, where you may see an SSL Error displayed as depicted. Click the `Proceed to https://192.18.129.100 (unsafe)` link to continue if presented
 
    ![SSL Error](./assets/DNAC-SSLERROR.png?raw=true)
 
-2. If required, log into Cisco Catalyst Center using the username of `admin` and the password `C1sco12345`.
+2. If required, log into Catalyst Center using the username of `admin` and the password `C1sco12345`.
 
    ![Login](./assets/DNAC-Login.png?raw=true)
 
-3. When the Cisco Catalyst Center Dashboard is displayed, Click the icon to display the menu'
+3. When the Catalyst Center Dashboard is displayed, Click the icon to display the menu'
 
    ![Menu](./assets/DNAC-Menu.png?raw=true)
 
@@ -61,7 +61,7 @@ Follow these steps:
 
 ## Summary
 
-We have been able to deploy a template within a project inside Cisco Catalyst Centers template editor. 
+We have been able to deploy a template within a project inside Catalyst Centers template editor. 
 
 This scenario may be augmented and modified to use imported files within Postman to allow for a more dynamic approach. The flow allows us to rapidly stage Projects and Templates, perhaps importing them from GitHub in the CICD pipeline. 
 

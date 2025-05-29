@@ -36,19 +36,19 @@ To run the collection, do the following:
 
 ## Verifying Device Discovery
 
-We will inspect the Discovery Tool within Cisco Catalyst Center and the inventory to verify that the devices were discovered successfully.
+We will inspect the Discovery Tool within Catalyst Center and the inventory to verify that the devices were discovered successfully.
 
 Follow these steps:
 
-1. If Cisco Catalyst Center is not already open, use a browser and navigate to `https://198.18.129.100`, where you may see an SSL Error displayed as depicted. Click the `Proceed to https://192.18.129.100 (unsafe)` link to continue if presented
+1. If Catalyst Center is not already open, use a browser and navigate to `https://198.18.129.100`, where you may see an SSL Error displayed as depicted. Click the `Proceed to https://192.18.129.100 (unsafe)` link to continue if presented
 
    ![SSL Error](./assets/DNAC-SSLERROR.png?raw=true)
 
-2. If required, log into Cisco Catalyst Center using the username of `admin` and the password `C1sco12345`.
+2. If required, log into Catalyst Center using the username of `admin` and the password `C1sco12345`.
 
    ![Login](./assets/DNAC-Login.png?raw=true)
 
-3. When the Cisco Catalyst Center Dashboard is displayed, Click the  icon to display the menu'
+3. When the Catalyst Center Dashboard is displayed, Click the  icon to display the menu'
 
    ![Menu](./assets/DNAC-Menu.png?raw=true)
 
@@ -72,11 +72,11 @@ You will notice the devices have been discovered and assigned to the appropriate
 
 ## Summary
 
-We have discovered devices within the network and imported them into Cisco Catalyst Center. This scenario may be augmented and modified to create a brownfield learn, which would allow the provisioning of a template to nullify AAA settings and then assign the device to a site for provisioning.
+We have discovered devices within the network and imported them into Catalyst Center. This scenario may be augmented and modified to create a brownfield learn, which would allow the provisioning of a template to nullify AAA settings and then assign the device to a site for provisioning.
 
 This may assist in brownfield learning so as to ensure the device may be properly provisioned with the UI based settings for intent.
 
-> **Note**: If there is time, look at the results of the Discovery and Inventory within Cisco Catalyst Center and the various pre and post-scripts within Postman.
+> **Note**: If there is time, look at the results of the Discovery and Inventory within Catalyst Center and the various pre and post-scripts within Postman.
 
 > [**Next Module**](../catc-catcenter-4-templates/01-intro.md)
 

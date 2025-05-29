@@ -1,6 +1,6 @@
 # Preparation
 
-We will be using the script server in conjunction with this lab. That together with Cisco Catalyst Center, and ISE to configure the various routers and switches in the environment.
+We will be using the script server in conjunction with this lab. That together with Catalyst Center, and ISE to configure the various routers and switches in the environment.
 
 ## DCLOUD Lab Components
 
@@ -10,7 +10,7 @@ The DCLOUD session includes the following equipment which we will be using:
 
 Virtual Machines:
 
-    Cisco Catalyst Center 2.3.5.6 or better
+    Catalyst Center 2.3.5.6 or better
     Identity Services Engine (ISE) 3.0 Patch 4 or better (deployed)
     Script Server - Ubuntu 20.04  or better
     Wireless LAN Controller - C9800 running IOS-XE Bengaluru 17.5.1 code or better
@@ -61,6 +61,6 @@ Your instructor will assign you a pod number:
 | Switch 1        | 198.18.1[X].2  | netadmin | C1sco12345 |
 | Switch 2        | 198.18.2[X].2  | netadmin | C1sco12345 |
 
-Next we will setup the environment to orchestrate Cisco Catalyst Center. Please ensure you are connected via VPN to the DCLOUD Lab.
+Next we will setup the environment to orchestrate Catalyst Center. Please ensure you are connected via VPN to the DCLOUD Lab.
 
 > [**Next Section**](./03-integration.md)

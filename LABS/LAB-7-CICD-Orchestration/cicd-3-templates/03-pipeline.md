@@ -1,6 +1,6 @@
 # Template Deployment Python Pipeline
 
-In this section of the tutorial, we will continue using a simple REST-API set, which has been grouped into a **Python** program. We will then construct a Jenkins Pipeline to automate the template build and deployment to devices that may be modified in the **YML** file for Cisco Catalyst Center.
+In this section of the tutorial, we will continue using a simple REST-API set, which has been grouped into a **Python** program. We will then construct a Jenkins Pipeline to automate the template build and deployment to devices that may be modified in the **YML** file for Catalyst Center.
 
 ## Template Deployment Python Program 
 
@@ -25,7 +25,7 @@ To investigate this collection, follow these steps:
 
       ![json](./images/templates-python.png?raw=true "Import JSON")
    
-   3. Unlike the first module this set of **REST-API** are built utilizing the [**DNA Center SDK**](https://dnacentersdk.readthedocs.io/en/latest/) a python library used to help integrate Cisco Catalyst Center more easily using **Python**. This may still be augmented with **REST API** built using the developer site [**developer.cisco.com/docs/dna-center/**](https://developer.cisco.com/docs/dna-center/). This documentation is kept up to date with the latest **REST-API**. Take a few momennts to review the similarities and differences between the two approaches.
+   3. Unlike the first module this set of **REST-API** are built utilizing the [**DNA Center SDK**](https://dnacentersdk.readthedocs.io/en/latest/) a python library used to help integrate Catalyst Center more easily using **Python**. This may still be augmented with **REST API** built using the developer site [**developer.cisco.com/docs/dna-center/**](https://developer.cisco.com/docs/dna-center/). This documentation is kept up to date with the latest **REST-API**. Take a few momennts to review the similarities and differences between the two approaches.
 
 ## Jenkins Pipeline
 

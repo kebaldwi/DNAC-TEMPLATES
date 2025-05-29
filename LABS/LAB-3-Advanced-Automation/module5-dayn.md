@@ -10,7 +10,7 @@ In this situation we will inlist the use of **TAGs** to identify the use case fo
 
 We will Create and Assign **TAGs** to the **ACCESS** switch and the **DISTRO** switch as follows:
 
-   1. Within Cisco Catalyst Center Navigate to **`Provision > Network Devices > Inventory`**      
+   1. Within Catalyst Center Navigate to **`Provision > Network Devices > Inventory`**      
 
       ![json](../../ASSETS/LABS/CATC/MENU/catc-menu-3.png?raw=true "Import JSON")
 
@@ -51,11 +51,11 @@ In this section we will apply a DayN template to the device **c9300-1** which we
 
 ### Step 1 - Provisioning the Device
 
-At this point, Cisco Catalyst Center is set up and ready to provision composite template to the device. This next set of sequences will push the various Network Settings, Services, and DayN Template to the **Greenfield** device.
+At this point, Catalyst Center is set up and ready to provision composite template to the device. This next set of sequences will push the various Network Settings, Services, and DayN Template to the **Greenfield** device.
 
 We will now provision the switch using DayN Templates. To do this, do the following:
 
-   1. Within Cisco Catalyst Center Navigate to **`Provision > Network Devices > Inventory`**.      
+   1. Within Catalyst Center Navigate to **`Provision > Network Devices > Inventory`**.      
 
       ![json](../../ASSETS/LABS/CATC/MENU/catc-menu-3.png?raw=true "Import JSON")
 

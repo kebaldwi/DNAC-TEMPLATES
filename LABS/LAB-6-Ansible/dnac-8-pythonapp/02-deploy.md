@@ -1,10 +1,10 @@
 # Using Python Applications
 
-We will now utilize a python application to pull useful information from Cisco DNA Center and export all the Template Projects within Cisco DNA Centers Template Editor.
+We will now utilize a python application to pull useful information from Catalyst Center and export all the Template Projects within Catalyst Centers Template Editor.
 
 To get started lets first download the python program to the desktop from a well known GitHub Repository `DNAC-Templates`.
 
-> **Download**: Get the required Python Application here: <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-I-Rest-API-Orchestration/python/DNACenterRecon.zip" target="_blank">⬇︎ Cisco DNA Center Python Recon ⬇︎</a>
+> **Download**: Get the required Python Application here: <a href="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/LABS/LAB-I-Rest-API-Orchestration/python/DNACenterRecon.zip" target="_blank">⬇︎ Catalyst Center Python Recon ⬇︎</a>
 
 Once the file is downloaded to your laptop please extract it within the folder  `C:\Users\administrator\Downloads>`.
 
@@ -73,7 +73,7 @@ Once the files are extracted to the Downloads folder, these steps:
 
          ![json](./images/Python-Folder.png?raw=true "Import JSON")
 
-         > **ADVANCED**: Copy and rename the python program. Add a set of `definitions` to pull all the device configurations into the folder. Email it to the instructor for a chance to get the new book `The Power of Network Automation Using Cisco DNA Center` 
+         > **ADVANCED**: Copy and rename the python program. Add a set of `definitions` to pull all the device configurations into the folder. Email it to the instructor for a chance to get the new book `The Power of Network Automation Using Catalyst Center` 
 
 4. Open Visual Studio Code and examine the definitions and how the program was put together. You will notice that the Python SDK library was not used. This program was put together through the help of [DevNet Documentation](Developer.cisco.com/docs). Take a moment to view the site. 
 

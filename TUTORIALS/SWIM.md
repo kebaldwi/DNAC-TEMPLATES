@@ -1,16 +1,16 @@
-# Software Image Management (SWIM) and Cisco Catalyst Center [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
+# Software Image Management (SWIM) and Catalyst Center [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/kebaldwi/DNAC-TEMPLATES)
 
 ## What is Software Image Management?
 
 **Software Image Management** refers to the process of controlling and maintaining software versions and configurations across devices in a network. This discipline ensures that the correct software images are deployed, updated, and managed efficiently, which is crucial for maintaining optimal device performance and security. Effective software image management helps organizations streamline their operations, reduce downtime, and ensure compliance with software standards.
 
-## How is Software Image Management used with Cisco Catalyst Center?
+## How is Software Image Management used with Catalyst Center?
 
-**Software Image Management** is integrated into the Cisco Catalyst Center to provide a centralized platform for managing software images across network devices. This functionality allows network administrators to automate the deployment of software updates, monitor image compliance, and ensure that all devices are running the correct versions of software. By leveraging software image management capabilities, organizations can enhance their network reliability and security while minimizing manual intervention.
+**Software Image Management** is integrated into the Catalyst Center to provide a centralized platform for managing software images across network devices. This functionality allows network administrators to automate the deployment of software updates, monitor image compliance, and ensure that all devices are running the correct versions of software. By leveraging software image management capabilities, organizations can enhance their network reliability and security while minimizing manual intervention.
 
-## What can Software Image Management do for Cisco Catalyst Center?
+## What can Software Image Management do for Catalyst Center?
 
-**Software Image Management** with Cisco Catalyst Center can be utilized for a range of tasks, including:
+**Software Image Management** with Catalyst Center can be utilized for a range of tasks, including:
 
 1. **Image Deployment**: Automatically deploy the latest software images to network devices, ensuring that all devices are up-to-date and secure.
 
@@ -26,7 +26,7 @@
 
 7. **Integration with CI/CD Pipelines**: Integrate software image management with Continuous Integration and Continuous Deployment (CI/CD) practices, enabling rapid and reliable software updates.
 
-Overall, **Software Image Management** with Cisco Catalyst Center simplifies the process of maintaining software across devices, reduces operational risks, and enhances overall network performance and security.
+Overall, **Software Image Management** with Catalyst Center simplifies the process of maintaining software across devices, reduces operational risks, and enhances overall network performance and security.
 
 ---
 
@@ -36,7 +36,7 @@ Overall, **Software Image Management** with Cisco Catalyst Center simplifies the
 
 ### Integration with ServiceNow ITSM
 
-By leveraging REST APIs, organizations can automate workflows between Cisco Catalyst Center and ServiceNow. This integration allows for:
+By leveraging REST APIs, organizations can automate workflows between Catalyst Center and ServiceNow. This integration allows for:
 
 - **Incident Management**: Automatically create incidents in ServiceNow when software image compliance issues are detected, streamlining the response process.
 - **Change Management**: Manage software updates and changes through ServiceNow, ensuring that all changes are tracked and approved according to organizational policies.
@@ -56,7 +56,7 @@ Overall, the combination of REST APIs and orchestration through ITSM platforms a
 
 ## Operation of Software Image Management (SWIM)
 
-**Software Image Management (SWIM)** in the Cisco Catalyst Center provides a streamlined approach to managing software images across network devices. SWIM allows network administrators to automate the deployment, validation, and compliance of software images, ensuring that all devices run the correct versions of software for optimal performance and security.
+**Software Image Management (SWIM)** in the Catalyst Center provides a streamlined approach to managing software images across network devices. SWIM allows network administrators to automate the deployment, validation, and compliance of software images, ensuring that all devices run the correct versions of software for optimal performance and security.
 
 ### Golden Images
 
@@ -66,7 +66,7 @@ Overall, the combination of REST APIs and orchestration through ITSM platforms a
 
 #### TAG's Hierarchy and Roles
 
-The **Hierarchy, Roles** and **TAG's** in Cisco Catalyst Center play a critical role in aligning the right golden images for deployment:
+The **Hierarchy, Roles** and **TAG's** in Catalyst Center play a critical role in aligning the right golden images for deployment:
 
 ![Software Image Management](../ASSETS/TUTORIALS/SWIM/SWIM-image-management.png?raw=true "Software Image Management")
 
@@ -173,7 +173,7 @@ By leveraging ServiceNow, organizations can enhance their operational efficiency
 
 ## Summary
 
-In summary, **SWIM** in the Cisco Catalyst Center simplifies the management of software images through the use of golden images, structured deployment options, centralized distribution, and integration with ITSM tools like ServiceNow. This approach not only enhances network reliability but also streamlines operational processes.
+In summary, **SWIM** in the Catalyst Center simplifies the management of software images through the use of golden images, structured deployment options, centralized distribution, and integration with ITSM tools like ServiceNow. This approach not only enhances network reliability but also streamlines operational processes.
 
 > [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>

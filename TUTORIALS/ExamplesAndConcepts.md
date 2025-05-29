@@ -30,7 +30,7 @@ To help get started with the PnP process and to better understand the process, p
 <summary> Click for Details and Sub Tasks</summary>
 
 1. [PnP Workflow](./PnP-Workflow.md) - This section explains the overall Plug and Play Methodology
-2. [Onboarding](./Onboarding.md) - This section will explain Onboarding Templates in Cisco Catalyst Center and their use
+2. [Onboarding](./Onboarding.md) - This section will explain Onboarding Templates in Catalyst Center and their use
 3. [Building Templates](./Templates.md#building-templates) - This section will explain how to build a template on DNAC
 
 </details>
@@ -55,7 +55,7 @@ This material is designed to help you understand the Plug and Play process, temp
 
 Within the following location is an example template written in ***Jinja2*** in JSON format which can be imported into the **Onboarding Configuration** section in the Template Editor/Hub:
 
-[⬇︎Full Cisco Catalyst Center PnP Onboarding Template⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/ONBOARDING/JSON/Platinum_PnP_Jinja2_Template.json)
+[⬇︎Full Catalyst Center PnP Onboarding Template⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/ONBOARDING/JSON/Platinum_PnP_Jinja2_Template.json)
 
 ### Features
 
@@ -193,7 +193,7 @@ Here we concentrate on building **Jinja2** templates, and work with logical conc
 Here we concentrate on advanced uses of templating, and work system variables.
 
 1. [Embedded Event Manager](./EEM.md#EEM) - This section will dive into EEM Scripting and various use cases 
-2. [System Variables](./SystemVariables.md#cisco-catalyst-center-system-variables-published) - This section explains Cisco Catalyst Centers System Variables
+2. [System Variables](./SystemVariables.md#cisco-catalyst-center-system-variables-published) - This section explains Catalyst Centers System Variables
 
 ##### Fault-Finding
 
@@ -213,7 +213,7 @@ To let you practice and get experience with the DayN process to better understan
 This material is designed to help you understand the use and processes of utilizing templates and deployment of these within a lab setting.
 
 1. [Day N Templates](../LABS/LAB-1-Wired-Automation/module3-dayn.md) - This part of lab 1 covers Day N template constructs and use cases **(allow 0.5 hrs)**
-2. [Composite Templates](../LABS/LAB-1-Wired-Automation/module3-dayn.md) - This part of lab 1 covers building a composite template on Cisco Catalyst Center **(allow 0.5 hrs)**
+2. [Composite Templates](../LABS/LAB-1-Wired-Automation/module3-dayn.md) - This part of lab 1 covers building a composite template on Catalyst Center **(allow 0.5 hrs)**
 3. [Advanced Automation](../LABS/LAB-1-Wired-Automation/module6-advanced.md) - This part of lab 1 covers will explore Advanced Automation examples **(allow 1.5 hrs)**
 
 </details>
@@ -222,7 +222,7 @@ This material is designed to help you understand the use and processes of utiliz
 
 This is an example which you may want to test with in the lab in combination with the **PnP Template** offered [here](./ExamplesAndConcepts.md#plug-and-play-pnp-template). Within the following location is an example project written in ***Jinja2*** in JSON format which can be imported into the Template Editor/Hub:
 
-[⬇︎Full Cisco Catalyst Center Sample Project⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/DAYN/JSON/Titanium_WiredAutoLab_Jinja2_project.json)
+[⬇︎Full Catalyst Center Sample Project⬇︎](https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/DAYN/JSON/Titanium_WiredAutoLab_Jinja2_project.json)
 
 ### Features
 
@@ -265,7 +265,7 @@ I hope you find these samples highly useful, and please provide feedback.
 
 ## Summary
 
-These examples are ready for testing in your lab. These are aides to help you get up to speed with what is possible when automating with Cisco Catalyst Center. The intent of this part of the repository is to aide in learning and not provide production ready templates. All templates here are for **LAB Purposes ONLY** and by downloading any content you acknowledge that this is not production ready code.
+These examples are ready for testing in your lab. These are aides to help you get up to speed with what is possible when automating with Catalyst Center. The intent of this part of the repository is to aide in learning and not provide production ready templates. All templates here are for **LAB Purposes ONLY** and by downloading any content you acknowledge that this is not production ready code.
 
 > [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>

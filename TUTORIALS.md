@@ -14,12 +14,12 @@ You will find various examples within the various folders of this repository, wi
 ## Automation Workflows
 
 * [PnP Workflow](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/PnP-Workflow.md#pnp-workflow) - This section explains the overall Plug and Play Methodology
-* [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Onboarding.md#onboarding-templates-and-flows) - This section will explain Onboarding Templates in Cisco Catalyst Center and their use in bringing various devices under Cisco Catalyst Center management
+* [Onboarding Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Onboarding.md#onboarding-templates-and-flows) - This section will explain Onboarding Templates in Catalyst Center and their use in bringing various devices under Catalyst Center management
 * [DayN Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/DayN.md#day-n-templates-and-flows) - This section will explain how to use templates for ongoing (Day-N) changes to the network
 
 ## Templating
 
-* [Building Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Templates.md#building-templates) - This section will explain how to build a template on Cisco Catalyst Center from scratch
+* [Building Templates](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Templates.md#building-templates) - This section will explain how to build a template on Catalyst Center from scratch
 
 ### Velocity Language
 
@@ -36,14 +36,14 @@ You will find various examples within the various folders of this repository, wi
 ## Advanced Automation Use Cases
 
 * [Embedded Event Manager](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/EEM.md#EEM) - This section will dive into EEM (Embedded Event Manager) Scripting and various use cases 
-* [System Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/SystemVariables.md#dna-center-system-variables) - This section explains Cisco Catalyst Centers System Variables
+* [System Variables](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/SystemVariables.md#dna-center-system-variables) - This section explains Catalyst Centers System Variables
 
-## Orchestration of Cisco Catalyst Center
+## Orchestration of Catalyst Center
 
-* [REST API Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/RestAPI.md) - This section is a high level discussion of utlilizing REST API with Cisco Catalyst Center
-* [Python Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Python.md) - This section is a high level discussion of utilizing Python with Cisco Catalyst Center
-* [Ansible Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Ansible.md) - This section is a high level discussion of Ansible orchestration of Cisco Catalyst Center
-* [CICD Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/CICD.md) - This section is a high level discussion of CICD orchestration of Cisco Catalyst Center
+* [REST API Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/RestAPI.md) - This section is a high level discussion of utlilizing REST API with Catalyst Center
+* [Python Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Python.md) - This section is a high level discussion of utilizing Python with Catalyst Center
+* [Ansible Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Ansible.md) - This section is a high level discussion of Ansible orchestration of Catalyst Center
+* [CICD Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/CICD.md) - This section is a high level discussion of CICD orchestration of Catalyst Center
 
 ## Fault-Finding
 

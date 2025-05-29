@@ -2,11 +2,11 @@
 
 ## Overview
 
-This module is the first one in a series of modules within the Wired Automation Lab. You may use the steps in the [Cisco Enterprise Networks Hardware Sandbox](https://dcloud2-sjc.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen) environment, or equally, you might utilize them as part of a Proof of Concept setup at a customer's lab. These procedures may also help form part of a deployment or implementation. Use them to ensure that all the necessary steps are complete before onboarding any devices within Cisco Catalyst Center.
+This module is the first one in a series of modules within the Wired Automation Lab. You may use the steps in the [Cisco Enterprise Networks Hardware Sandbox](https://dcloud2-sjc.cisco.com/content/catalogue?search=Enterprise%20Networks%20Hardware%20Sandbox&screenCommand=openFilterScreen) environment, or equally, you might utilize them as part of a Proof of Concept setup at a customer's lab. These procedures may also help form part of a deployment or implementation. Use them to ensure that all the necessary steps are complete before onboarding any devices within Catalyst Center.
 
 ## General Information
 
-As you may recall, in the informational sections of this repository, we described various methods of discovery for a device and the preliminary things required for proper zero-touch provisioning. This lab will ensure a successful connection to Cisco Catalyst Center by helping to deploy the initial concepts.
+As you may recall, in the informational sections of this repository, we described various methods of discovery for a device and the preliminary things required for proper zero-touch provisioning. This lab will ensure a successful connection to Catalyst Center by helping to deploy the initial concepts.
 
 We will be utilizing the lab in this manner:
 
@@ -24,11 +24,11 @@ We will be utilizing the lab in this manner:
 | Switch 1        | 198.18.128.22  | netadmin | C1sco12345 |
 | Switch 2        | 198.18.128.23  | netadmin | C1sco12345 |
 
-## Cisco Catalyst Center and ISE Integration
+## Catalyst Center and ISE Integration
 
-In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate Cisco Catalyst Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
+In this lab our focus changes slightly as we start to automate for host onboarding. A large component of host onboarding is the authentication of hosts and assignment within the network. In this section and in preparation for the steps which follow we will integrate Catalyst Center with Identity Services Engine. This integration allows pxGrid communication between the two and allows for automation of configuration within ISE for Network Access Devices, SGT, SGACL, and Policys.
 
-### Step 1 - Prepare ISE for Cisco Catalyst Center Integration
+### Step 1 - Prepare ISE for Catalyst Center Integration
 
 1. Open a web browser on the Windows Workstation Jump host. Open a connection to Identity Services Engine (ISE) and select the hamburger menu icon to open the system menu.
 
@@ -38,14 +38,14 @@ In this lab our focus changes slightly as we start to automate for host onboardi
 
    ![json](./images/module1-preparation/ise-menu.png?raw=true "Import JSON")
 
-3. On the PxGrid Settings page select both of the available options and click Save to allow Cisco Catalyst Center to integrate.
+3. On the PxGrid Settings page select both of the available options and click Save to allow Catalyst Center to integrate.
 
    ![json](./images/module1-preparation/ise-pxgrid-settings.png?raw=true "Import JSON")
    ![json](./images/module1-preparation/ise-pxgrid-setup.png?raw=true "Import JSON")
 
-### Step 2 - Cisco Catalyst Center and ISE Integration
+### Step 2 - Catalyst Center and ISE Integration
 
-1. Open a web browser on the Windows Workstation Jump host. Open a connection to Cisco Catalyst Center and select the hamburger menu icon and navigate to the System > Settings menu item.
+1. Open a web browser on the Windows Workstation Jump host. Open a connection to Catalyst Center and select the hamburger menu icon and navigate to the System > Settings menu item.
 
    ![json](./images/module1-preparation/dnac-system-settings.png?raw=true "Import JSON")
 
@@ -202,9 +202,9 @@ wr
 
 ```
 
-## Step 5 - Cisco Catalyst Center Discovery
+## Step 5 - Catalyst Center Discovery
 
-In order for **Plug and Play (PnP)** to work, we need to the device to communicate with Cisco Catalyst Center. The device must get the address of Cisco Catalyst Center through the PnP process through what is known as discovery. 
+In order for **Plug and Play (PnP)** to work, we need to the device to communicate with Catalyst Center. The device must get the address of Catalyst Center through the PnP process through what is known as discovery. 
 
 The PnP components are as follows:
 
@@ -214,7 +214,7 @@ The PnP components are as follows:
 
 #### Discovery Method
 
-There are **3 automated discovery methods** that can be used to assist with Cisco Catalyst Center discovery process:
+There are **3 automated discovery methods** that can be used to assist with Catalyst Center discovery process:
 
 1. **DHCP with option 43**
 ```shell
@@ -222,12 +222,12 @@ There are **3 automated discovery methods** that can be used to assist with Cisc
 ``` 
 2. **DNS lookup**
 ```shell
-   pnpserver.localdomain resolves to Cisco Catalyst Center VIP Address
+   pnpserver.localdomain resolves to Catalyst Center VIP Address
 ```
 3. **Cloud re-direction https://devicehelper.cisco.com/device-helper**
-   **which, re-directs to on-prem Cisco Catalyst Center IP Address**
+   **which, re-directs to on-prem Catalyst Center IP Address**
 
-Of the discovery methods **DHCP** is the easiest to implement as no changes are required with the *Self Signed Certificate (SSC)* on **Cisco Catalyst Center** as it already includes the IP address by default. 
+Of the discovery methods **DHCP** is the easiest to implement as no changes are required with the *Self Signed Certificate (SSC)* on **Catalyst Center** as it already includes the IP address by default. 
 
 If you are deploying PnP using **DNS** discovery or you are building a cluster then you will need to go through the process of acquiring a certificate with Subject Alternative Names to include the **DNS** and **IP** entries to allow for the following:
 
@@ -240,19 +240,19 @@ If you are deploying PnP using **DNS** discovery or you are building a cluster t
 <details closed>
 <summary>To build a certificate in dCLOUD follow these steps </summary>
 
-To Build a certificate for use in Cisco Catalyst Center for PnP, please follow this outline of steps. Each step can take some time so plan accordingly.
+To Build a certificate for use in Catalyst Center for PnP, please follow this outline of steps. Each step can take some time so plan accordingly.
 
 1. On the Active Directory Server add the roles for the Certificate Authority to allow WEB enrollment
-2. Add the required DNS entries for Cisco Catalyst Center as per the sections below
-3. On Cisco Catalyst Center in CLI create a CSR using openssl 
-4. Enroll Cisco Catalyst Center via the CSR on the Windows CA
-5. Upload the Certificate to Cisco Catalyst Center
+2. Add the required DNS entries for Catalyst Center as per the sections below
+3. On Catalyst Center in CLI create a CSR using openssl 
+4. Enroll Catalyst Center via the CSR on the Windows CA
+5. Upload the Certificate to Catalyst Center
 
-To utilize DNS Entry for Discovery purposes Certificates will need to be rebuilt with Subject Alternative Names. Please utilize the process documented in the following [**Cisco Catalyst Center Certificates**](./Certificates.md) for information on that process.
+To utilize DNS Entry for Discovery purposes Certificates will need to be rebuilt with Subject Alternative Names. Please utilize the process documented in the following [**Catalyst Center Certificates**](./Certificates.md) for information on that process.
 
 Follow this guide for more information on the finer details.
 
-[Cisco Catalyst Center Security Best Practices Guide](./DNACenter_security_best_practices_guide.pdf)
+[Catalyst Center Security Best Practices Guide](./DNACenter_security_best_practices_guide.pdf)
 
 </details>
 

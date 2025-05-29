@@ -2,9 +2,9 @@
 
 ## Overview
 
-This Module is designed and built to address how to use DayN templates within Cisco Catalyst Center to configure network devices at Day 1 through N. This Lab is designed to be used after first completing the previous modules. 
+This Module is designed and built to address how to use DayN templates within Catalyst Center to configure network devices at Day 1 through N. This Lab is designed to be used after first completing the previous modules. 
 
-The purpose of DayN templates is to allow for **ongoing configuration** of features on devices beyond those deployed on the Claiming process. With Cisco Catalyst Center, if devices are not within a fabric, the host onboarding part of the UI will not be available. To that end, templates are an easy way of deploying those types of configuration and much more. Before starting this Lab, please make sure you have finished all the steps in the previous modules.
+The purpose of DayN templates is to allow for **ongoing configuration** of features on devices beyond those deployed on the Claiming process. With Catalyst Center, if devices are not within a fabric, the host onboarding part of the UI will not be available. To that end, templates are an easy way of deploying those types of configuration and much more. Before starting this Lab, please make sure you have finished all the steps in the previous modules.
 
 ## Considerations about Templates
 
@@ -16,7 +16,7 @@ The purpose of DayN templates is to allow for **ongoing configuration** of featu
 
 * Automation Potential: DayN templates facilitate ongoing modifications and automate configurations using data from the inventory database, minimizing manual input.
 
-* Configuration Best Practices: Typical configurations should automatically derive from the Network Settings in Cisco Catalyst Center. Avoid deploying CLI code in templates for tasks already defined by design components, promoting a more UI-centric and maintainable configuration approach.
+* Configuration Best Practices: Typical configurations should automatically derive from the Network Settings in Catalyst Center. Avoid deploying CLI code in templates for tasks already defined by design components, promoting a more UI-centric and maintainable configuration approach.
 
 * Guidance: Utilize design settings for as much configuration as possible, keeping templates streamlined for configurations that may change frequently, enhancing maintainability and troubleshooting.
 
@@ -28,7 +28,7 @@ So what should be in the DayN Templates? Well that depends on the situation, but
 
 Additionally, while a more extensive set of settings can be built out for deployment, we will limit the configuration to the **minimum** necessary to perform this step, building off the completed tasks in module 2.
 
-You can create Regular Day N Templates using Jinja2 and Velocity scripting languages within the **Template Hub** within **Cisco Catalyst Center**. There are two basic types of templates we can utilize. **Regular** templates, as well as **Composite** templates. Use a combiination of these templates to adhere to the **DRY** philosophy.
+You can create Regular Day N Templates using Jinja2 and Velocity scripting languages within the **Template Hub** within **Catalyst Center**. There are two basic types of templates we can utilize. **Regular** templates, as well as **Composite** templates. Use a combiination of these templates to adhere to the **DRY** philosophy.
 
 ### Regular Templates
 
@@ -62,7 +62,7 @@ You can create Regular Day N Templates using Jinja2 and Velocity scripting langu
 
 ## Exercises
 
-This section will go through the build and provisioning of **Composite** and **Regular** templates via Cisco Catalyst Center to a Catalyst 9k switch. We will deal with the **Greenfield** scenario only during this module. Remember that a similar approach could be used for **Brownfield**.
+This section will go through the build and provisioning of **Composite** and **Regular** templates via Catalyst Center to a Catalyst 9k switch. We will deal with the **Greenfield** scenario only during this module. Remember that a similar approach could be used for **Brownfield**.
 
 ### Step 1 - Navigate to Template Hub
 

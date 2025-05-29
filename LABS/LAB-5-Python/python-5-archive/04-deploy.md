@@ -69,7 +69,7 @@ pipeline {
 
 First thing we should note is that the indentation **does** matter with **Groovy Scripting**. Secondarily, it is important that when using various methods, the correct **Plugins** are installed. 
 
-The way this script is generally designed to work is that when initiated it loops until you cancel it. Persistently it checks for changes in the **CSV** in the **directory** in the `/root/DEVWKS-2176/` and then gathers the **timestamp** from the **CSV** file and compares it to the previous collected **timestamp**. If the **timestamp** has **changed**, the file has been modified and the **Pipeline** automatically runs the **Python** program to **retrieve** the **Inventory** from Cisco Catalyst Center.
+The way this script is generally designed to work is that when initiated it loops until you cancel it. Persistently it checks for changes in the **CSV** in the **directory** in the `/root/DEVWKS-2176/` and then gathers the **timestamp** from the **CSV** file and compares it to the previous collected **timestamp**. If the **timestamp** has **changed**, the file has been modified and the **Pipeline** automatically runs the **Python** program to **retrieve** the **Inventory** from Catalyst Center.
 
 ## Retrieve Inventory Pipeline Build
 

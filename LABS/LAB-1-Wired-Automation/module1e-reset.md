@@ -95,17 +95,17 @@ prep4dnac
 
 ```
 
-The Switch should reboot and display this eventually in the console which acknowledges that the 9300 has discovered the Cisco Catalyst Center.
+The Switch should reboot and display this eventually in the console which acknowledges that the 9300 has discovered the Catalyst Center.
 
 ![json](./images/DNAC-IPV4-DISCOVERY.png?raw=true "Import JSON")
 
-Additionally, within Cisco Catalyst Center on the Plug and Play window, the device should show as unclaimed.
+Additionally, within Catalyst Center on the Plug and Play window, the device should show as unclaimed.
 
 ![json](./images/DNAC-9300-Discovery.png?raw=true "Import JSON")
 
 ## Summary
 
-The next step will be to build the PnP Onboarding settings and template on Cisco Catalyst Center, which we will cover in the next lab entitled [**PnP and Discovery**](../LAB-1-Wired-Automation/module2-pnp.md) - The next lab explains in-depth and how to deploy Onboarding (PnP) templates.
+The next step will be to build the PnP Onboarding settings and template on Catalyst Center, which we will cover in the next lab entitled [**PnP and Discovery**](../LAB-1-Wired-Automation/module2-pnp.md) - The next lab explains in-depth and how to deploy Onboarding (PnP) templates.
 
 > [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>

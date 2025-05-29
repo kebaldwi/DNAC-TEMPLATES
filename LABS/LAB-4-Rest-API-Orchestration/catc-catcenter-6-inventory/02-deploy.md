@@ -1,6 +1,6 @@
 # Retrieving the Device Inventory
 
-We will now retrieve the entire device inventory from  Cisco Catalyst Center.
+We will now retrieve the entire device inventory from  Catalyst Center.
 
 Follow these steps:
 
@@ -43,7 +43,7 @@ The following results will slowly appear as the collection is processed.
 
 ## Summary
 
-We have run a collection against Cisco Catalyst Center to retrieve the device inventory and can export that to a file within our host. 
+We have run a collection against Catalyst Center to retrieve the device inventory and can export that to a file within our host. 
 
 This information might be used for many uses, including making decisions on template deployment, SWIM upgrades, etc. The limits of what can be done from here on are only those of your imagination.
 

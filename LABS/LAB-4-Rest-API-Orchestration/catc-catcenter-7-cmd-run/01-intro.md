@@ -1,6 +1,6 @@
 # Running Show Commands
 
-In this module, we will use *Postman* to run some `show` commands on network devices within the infrastructure that Cisco Catalyst Center manages. This allows a method of getting troubleshooting information in the event we need to populate 3rd party management systems. We can use this set of commands to pull parts of the configuration or even make queries via CDP or LLDP to determin neighbor information.
+In this module, we will use *Postman* to run some `show` commands on network devices within the infrastructure that Catalyst Center manages. This allows a method of getting troubleshooting information in the event we need to populate 3rd party management systems. We can use this set of commands to pull parts of the configuration or even make queries via CDP or LLDP to determin neighbor information.
 
 This type of request allows us flexibility in pragmatically determining specific information whcih we may use in programming logic to determine next steps in an automation flow.
 

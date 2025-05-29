@@ -4,9 +4,9 @@
 
 In the previous labs you became familiar with an overview into **[Wired](../LAB-1-Wired-Automation/README.md)** and **[Wireless](../LAB-2-Wireless-Automation/README.md)** Automation. These both utilized the idea of utilizing **[Intent](../../TUTORIALS/ManagementScale.md)** which concentrates itself around the Network Settings, Network Profiles and aligns those to the Hierarchy. 
 
-Cisco Catalyst Center can be used for Plug and Play and Day N or Ongoing Templates; customers will start by building out an Onboarding Template that typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates as they can be used to apply ongoing changes and to allow device modifications after initial deployment. This lab section will focus on Day N templates to be built as regular templates within Cisco Catalyst Center.
+Catalyst Center can be used for Plug and Play and Day N or Ongoing Templates; customers will start by building out an Onboarding Template that typically deploys only enough information to bring the device up initially. While it might include the entire configuration for a traditional network device, this is better served by Day N Templates as they can be used to apply ongoing changes and to allow device modifications after initial deployment. This lab section will focus on Day N templates to be built as regular templates within Catalyst Center.
 
-Another important consideration is that part of a typical configuration would include some lines of code, which are built by the **Design > Network Settings >** application within Cisco Catalyst Center. 
+Another important consideration is that part of a typical configuration would include some lines of code, which are built by the **Design > Network Settings >** application within Catalyst Center. 
 
 If the Design component is used, you should **NOT** deploy the same feature from cli code in a template to configure the device. It's a decision you have to make upfront, and the benefit is that it avoids many lines in the templates, and allows for a more UI-centric configuration that is easier to maintain. 
 
@@ -18,7 +18,7 @@ When dealing with net new devices using the Provisioning process we utilize it i
 
 ### Brownfield Devices
 
-When dealing with existing infrastructure, initially we want to absorb the device and its configuration into Cisco Catalyst Center to allow for monitoring and a gradual shift to automated management, as the device usually is in a running state supporting the network, and the configuration pre-exists.
+When dealing with existing infrastructure, initially we want to absorb the device and its configuration into Catalyst Center to allow for monitoring and a gradual shift to automated management, as the device usually is in a running state supporting the network, and the configuration pre-exists.
 
 As time progresses though, we may want to introduce slowly automation from Catalyst Center utilizing DayN Templates. Be aware that with Brownfield device configurations, there is no template learning capability for switching. As such configuration on the device may need modification prior to provisioning in some situations. Should it be a newer device, you may want to Discover and then push a normalization template via REST API to remove settings that would cause ongoing provisioning errors. Should this be a device already in Catalyst Center, then a normalization strategy may need to be adopted, backing out certain configuration, prior to provisioning. This script will involve perhaps the removal of AAA commands and others which cause issues with provisioning.
 
@@ -29,7 +29,7 @@ This Lab will focus on the creation and development of Templates, and how to cho
 
 ### Templates
 
-You can create Regular Day N Templates using Jinja2 and Velocity scripting languages within the **Template Hub** within **Cisco Catalyst Center**. There are two basic types of templates we can utilize. **Regular** templates, as well as **Composite** templates. Use a combiination of these templates to adhere to the **DRY** philosophy.
+You can create Regular Day N Templates using Jinja2 and Velocity scripting languages within the **Template Hub** within **Catalyst Center**. There are two basic types of templates we can utilize. **Regular** templates, as well as **Composite** templates. Use a combiination of these templates to adhere to the **DRY** philosophy.
 
 #### Regular Templates
 
@@ -81,7 +81,7 @@ If you would like to connect to the DCLOUD environment, please ensure you instal
 
 ### Lab Requirements
 
-This lab is designed to be run in Cisco dClouds - Enterprise Network Sandbox Lab. It was developed in version 4, including Cisco Catalyst Center 2.2.3.4 and equipment running at least 17.x versions of code. 
+This lab is designed to be run in Cisco dClouds - Enterprise Network Sandbox Lab. It was developed in version 4, including Catalyst Center 2.2.3.4 and equipment running at least 17.x versions of code. 
 
 > [!IMPORTANT] 
 > Please note that LAB content in this Repository is aligned with specific DCLOUD Demonstrations that have to be set up by either a **Cisco Employee** or a **Cisco Parter**. If you are having trouble accessing the DCLOUD content please get in touch with your **Local Cisco Account Team**.
@@ -174,7 +174,7 @@ For an understanding of postman, please visit this site:
 
 #### Google Chrome
 
-Google Chrome is the optimal browser of choice when working in the Cisco Catalyst Center UI. 
+Google Chrome is the optimal browser of choice when working in the Catalyst Center UI. 
 
 To download Google Chrome, please visit. 
 

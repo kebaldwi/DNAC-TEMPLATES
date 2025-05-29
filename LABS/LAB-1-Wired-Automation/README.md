@@ -5,11 +5,11 @@
 
 ## Overview
 
-This Lab is designed as a set of standalone labs to help customers with varying challenges in Automating and Orchestrating their wired network infrastructure. Within the lab, we will use various tools and techniques to Automate various tasks and orchestrate Cisco Catalyst Center.
+This Lab is designed as a set of standalone labs to help customers with varying challenges in Automating and Orchestrating their wired network infrastructure. Within the lab, we will use various tools and techniques to Automate various tasks and orchestrate Catalyst Center.
 
 ## General Information
 
-In this lab we will focus our efforts on the wired space and utilized templates, and REST-API to solve some basic to advanced use cases. This lab will build upon the foundational knowledge acquired in each of the previous labs. For this lab, we will concentrate on Cisco Catalyst Center configuration specific to Cisco Wired Networking with Catalyst Switches and how Cisco Catalyst Center can be automated to perform various functions.
+In this lab we will focus our efforts on the wired space and utilized templates, and REST-API to solve some basic to advanced use cases. This lab will build upon the foundational knowledge acquired in each of the previous labs. For this lab, we will concentrate on Catalyst Center configuration specific to Cisco Wired Networking with Catalyst Switches and how Catalyst Center can be automated to perform various functions.
 
 This page will serve as the landing page for this lab section due to the amount of content it will cover and the need to expand on it over time. 
 
@@ -34,7 +34,7 @@ If you would like to connect to the DCLOUD environment, please ensure you instal
 
 ### Lab Requirements
 
-This lab is designed to be run in Cisco dClouds - Enterprise Network Sandbox Lab. It was developed in version 4, including Cisco Catalyst Center 2.2.3.4 and equipment running at least 17.x versions of code. 
+This lab is designed to be run in Cisco dClouds - Enterprise Network Sandbox Lab. It was developed in version 4, including Catalyst Center 2.2.3.4 and equipment running at least 17.x versions of code. 
 
 > [!IMPORTANT] 
 > Please note that LAB content in this Repository is aligned with specific DCLOUD Demonstrations that have to be set up by either a **Cisco Employee** or a **Cisco Parter**. If you are having trouble accessing the DCLOUD content please get in touch with your **Local Cisco Account Team**.
@@ -127,7 +127,7 @@ For an understanding of postman, please visit this site:
 
 #### Google Chrome
 
-Google Chrome is the optimal browser of choice when working in the Cisco Catalyst Center UI. 
+Google Chrome is the optimal browser of choice when working in the Catalyst Center UI. 
 
 To download Google Chrome, please visit. 
 

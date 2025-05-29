@@ -1,6 +1,6 @@
 # Setting Ansible Variables
 
-Within this section we are making use of locally executed scripts and variables. The host specified in our Cisco DNA Center playbook will be localhost. Additionally, we must specify our Cisco DNAC connection details in each task. Let's explore the variables in our first Cisco DNAC Ansible playbook.
+Within this section we are making use of locally executed scripts and variables. The host specified in our Catalyst Center playbook will be localhost. Additionally, we must specify our Cisco DNAC connection details in each task. Let's explore the variables in our first Cisco DNAC Ansible playbook.
 
 Review the Ansible Playbook **get-sys-info.yaml** in the **dnac** directory. The purpose of this simple playbook is to verify that we can successfully connect to our Cisco DNAC instance with Ansible. 
 
@@ -8,7 +8,7 @@ The playbook uses the [cisco.dnac.system_health_info](https://docs.ansible.com/a
 
 The playbook reads variables from a variable file, **dnac_vars.yaml**, and also introduces the concept of [**anchors and aliases**](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_advanced_syntax.html#yaml-anchors-and-aliases-sharing-variable-values).
 
-Review the variables in the **dnac_vars.yaml** file below. It is in the dnac/vars directory within the Ansible Lab directory. Beyond the Cisco DNA Center connection variables, you will see several variables used in the next playbook.
+Review the variables in the **dnac_vars.yaml** file below. It is in the dnac/vars directory within the Ansible Lab directory. Beyond the Catalyst Center connection variables, you will see several variables used in the next playbook.
 
 ```YAML
 dnac_host: 198.18.129.100
@@ -56,7 +56,7 @@ device_details:
 
 **Anchors** and **aliases** allow you to define a set of variables with the **'&'** symbol and reference this set with the **'*'** notation later. Aliases are useful when the set of anchored variables must be referenced multiple times. 
 
-The modules in the **cisco.dnac** Ansible collection require the Cisco DNA Center connection variables to be defined for each task, so anchoring can be useful in reducing the number of lines in your playbooks.
+The modules in the **cisco.dnac** Ansible collection require the Catalyst Center connection variables to be defined for each task, so anchoring can be useful in reducing the number of lines in your playbooks.
 
 ```YAML
 - hosts: localhost
@@ -84,14 +84,14 @@ The modules in the **cisco.dnac** Ansible collection require the Cisco DNA Cente
           - "{{ result }}"
 ```
 
-We will not run this particular playbook as the Cisco DNA Center is running `2.2.3.4` which is quite out of date. If we were to run the playbook **get-sys-info.yaml.** using Cisco DNA Center `2.3.3.7` we would do it like this:
+We will not run this particular playbook as the Catalyst Center is running `2.2.3.4` which is quite out of date. If we were to run the playbook **get-sys-info.yaml.** using Catalyst Center `2.3.3.7` we would do it like this:
 
 ```SHELL
 cd ~
 ansible-playbook dnac/get-sys-info.yaml
 ```
 
-It would run without errors and return data on the Cisco DNA Center system. See the following for an example. 
+It would run without errors and return data on the Catalyst Center system. See the following for an example. 
 
 ![json](./images/get_sys_info.png?raw=true "Import JSON")
 

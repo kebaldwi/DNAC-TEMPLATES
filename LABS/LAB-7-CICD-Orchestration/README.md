@@ -2,11 +2,11 @@
 
 ## Overview
 
-This Lab is designed as a standalone lab to help customers with varying challenges in Automating and Orchestrating their network infrastructure. Within the lab, we will use various tools and techniques to Automate various tasks and orchestrate Cisco Catalyst Center.
+This Lab is designed as a standalone lab to help customers with varying challenges in Automating and Orchestrating their network infrastructure. Within the lab, we will use various tools and techniques to Automate various tasks and orchestrate Catalyst Center.
 
 ## General Information
 
-Until this point, we have used Rest-API for some basic setup tasks, but there are so many situations that can be solved or at least eased using Rest-API in conjunction with Cisco Catalyst Center. In this lab, we will use a complete set of REST-API collections which will build upon the foundational knowledge acquired in the previous labs. For this lab, we will concentrate on Cisco Catalyst Center configuration and how Cisco Catalyst Center can be automated to perform various functions which we have already covered utilizing **Python**, inconjunction with **Jenkins CI/CD Pipelines**
+Until this point, we have used Rest-API for some basic setup tasks, but there are so many situations that can be solved or at least eased using Rest-API in conjunction with Catalyst Center. In this lab, we will use a complete set of REST-API collections which will build upon the foundational knowledge acquired in the previous labs. For this lab, we will concentrate on Catalyst Center configuration and how Catalyst Center can be automated to perform various functions which we have already covered utilizing **Python**, inconjunction with **Jenkins CI/CD Pipelines**
 
 ![json](./images/cicd-pipeline2.png?raw=true "Import JSON")
 
@@ -42,7 +42,7 @@ If you would like to connect to the dCloud environment, please ensure you instal
 
 ### Lab Requirements
 
-This lab is designed to be run in Cisco dClouds - Enterprise Network Sandbox Lab. It was developed in version 4, including Cisco Catalyst Center 2.2.3.5 and equipment running at least 17.x versions of code.
+This lab is designed to be run in Cisco dClouds - Enterprise Network Sandbox Lab. It was developed in version 4, including Catalyst Center 2.2.3.5 and equipment running at least 17.x versions of code.
 
 ### Tools Required
 
@@ -63,7 +63,7 @@ This software is required to connect your workstation to Cisco dCloud. For an ex
 
 ### Google Chrome
 
-Google Chrome is the optimal browser of choice when working in the Cisco Catalyst Center UI. 
+Google Chrome is the optimal browser of choice when working in the Catalyst Center UI. 
 
 > **Download**: Get Google Chrome here: <a href="https://www.google.com/chrome/downloads/" target="_blank">⬇︎ Chrome Download ⬇︎</a>
 

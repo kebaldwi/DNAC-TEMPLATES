@@ -1,6 +1,6 @@
 # Device Discovery via Python
 
-The **Python** programming language is a powerful tool for building programs related to **REST-API** calls and allows us to utilize several features to accomplish everyday tasks. In this section of the tutorial, we will use a simple REST-API set, which has been grouped into a **Python** program. We will then use these programs to automate device discovery for devices within the network and assign them to the correct tier within the hierarchy within Cisco Catalyst Center.
+The **Python** programming language is a powerful tool for building programs related to **REST-API** calls and allows us to utilize several features to accomplish everyday tasks. In this section of the tutorial, we will use a simple REST-API set, which has been grouped into a **Python** program. We will then use these programs to automate device discovery for devices within the network and assign them to the correct tier within the hierarchy within Catalyst Center.
 
 ## Device Discovery Python Program
 

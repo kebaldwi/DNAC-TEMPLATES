@@ -1,6 +1,6 @@
 # [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/TUTORIALS/ExamplesAndConcepts.md)
 
-In this section I have compiled a number of template examples built with Jinja2 Language. These samples include a wide ranging set of configurations which may be used in your labs to solve specific configuration requirements. This collection summarizes aspects covered previously in this templating repository, and are aimed at providing quick practical references to help engineers solve automation tasks with the help of Cisco Catalyst Center. Additionally these examples may be used in testing in [dCloud](https://dcloud.cisco.com) with any of the labs on this repository.
+In this section I have compiled a number of template examples built with Jinja2 Language. These samples include a wide ranging set of configurations which may be used in your labs to solve specific configuration requirements. This collection summarizes aspects covered previously in this templating repository, and are aimed at providing quick practical references to help engineers solve automation tasks with the help of Catalyst Center. Additionally these examples may be used in testing in [dCloud](https://dcloud.cisco.com) with any of the labs on this repository.
 
 > [!NOTE] 
 > Thank you for continuing your **support** of the **DNAC-Template Repository** by your continued visits to the site. Over the past few years we have developed a lot of content as a result, it is **time to reorganize** it to help be more consise, and to aide users in finding the relevant content easily. Over the next few months you will **notice changes and updates** to the repository, as we **add** additional content, **revise** existing dated content and nomenclature. The **folder structure** and **resources** will be **reorganized** for ease of use, and so that CODE examples and TUTORIALS will be grouped together for ease of use. We hope this will help users to find the content they need in an easier manner.
@@ -9,7 +9,7 @@ In this section I have compiled a number of template examples built with Jinja2 
 
 ## [Templates Store](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE#code-)
 
-This **CODE** repository is built out to share Cisco Catalyst Center Automations and Templates and allow for ongoing submissions from those inclined to share their work with the community. Initially the repository includes all the examples that we have used in this repository in RAW TEXT and JSON format. 
+This **CODE** repository is built out to share Catalyst Center Automations and Templates and allow for ongoing submissions from those inclined to share their work with the community. Initially the repository includes all the examples that we have used in this repository in RAW TEXT and JSON format. 
 
 The **CODE** is also offered in **[Latest Release Candidates](https://github.com/kebaldwi/DNAC-TEMPLATES/releases/latest)** automatically
 
@@ -19,14 +19,14 @@ The **CODE** is also offered in **[Latest Release Candidates](https://github.com
 
 #### Velocity Scripting Language
 
-  * [DayN Velocity Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/VELOCITY/DAYN/JSON) - JSON files for easy import to Cisco Catalyst Center for Day N
-  * [Onboarding Velocity Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/VELOCITY/ONBOARDING/JSON) - JSON files for easy import to Cisco Catalyst Center for Day Zero
+  * [DayN Velocity Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/VELOCITY/DAYN/JSON) - JSON files for easy import to Catalyst Center for Day N
+  * [Onboarding Velocity Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/VELOCITY/ONBOARDING/JSON) - JSON files for easy import to Catalyst Center for Day Zero
 
 #### Jinja2 Scripting Language
 
-  * [DayN Jinja2 Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/DAYN/JSON) - JSON files for easy import to Cisco Catalyst Center for Day N
-  * [Onboarding Jinja2 Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/ONBOARDING/JSON) - JSON files for easy import to Cisco Catalyst Center for Day Zero
-  * [Wireless Jinja2 Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/WIRELESS/JSON) - JSON files for easy import to Cisco Catalyst Center for Wireless
+  * [DayN Jinja2 Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/DAYN/JSON) - JSON files for easy import to Catalyst Center for Day N
+  * [Onboarding Jinja2 Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/ONBOARDING/JSON) - JSON files for easy import to Catalyst Center for Day Zero
+  * [Wireless Jinja2 Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/WIRELESS/JSON) - JSON files for easy import to Catalyst Center for Wireless
   
   * [RAW TEXT Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/CODE/TEMPLATES/JINJA2/DAYN/J2) - Templates in raw text for editing
 
@@ -51,7 +51,7 @@ Other Automation Scripts and Documentation used in these labs or elsewhere.
 
 ## [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/TUTORIALS/ExamplesAndConcepts.md)
 
-In this section I have compiled a number of template examples built with Jinja2 Language. These samples include a wide ranging set of configurations which may be used in your labs to solve specific configuration requirements. This collection summarizes aspects covered previously in this templating repository, and are aimed at providing quick practical references to help engineers solve automation tasks with the help of Cisco Catalyst Center. Additionally these examples may be used in testing in [dCloud](https://dcloud.cisco.com) with any of the labs on this repository.
+In this section I have compiled a number of template examples built with Jinja2 Language. These samples include a wide ranging set of configurations which may be used in your labs to solve specific configuration requirements. This collection summarizes aspects covered previously in this templating repository, and are aimed at providing quick practical references to help engineers solve automation tasks with the help of Catalyst Center. Additionally these examples may be used in testing in [dCloud](https://dcloud.cisco.com) with any of the labs on this repository.
 
 &ensp;&ensp;&ensp;&ensp;Practical examples can be located here: [Practical Template Examples](https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/TUTORIALS/ExamplesAndConcepts.md)
 

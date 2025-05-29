@@ -1,6 +1,6 @@
 # Python and External Data Sources
 
-We will utilize the Python program **deploy_templates.py** to **build** and **deploy** **Template Projects** and within it **Regular Templates** for a specific site within the hierarchy within Cisco Catalyst Center. 
+We will utilize the Python program **deploy_templates.py** to **build** and **deploy** **Template Projects** and within it **Regular Templates** for a specific site within the hierarchy within Catalyst Center. 
 
 This Python program will be run by the **CI/CD Pipeline** whenever a change is noticed in a monitored folder on the system. The program will use a **YAML** file **site_operations.yml** which will provide specific data to the program as to how and where to deploy the templates. This process may be augmented to pull templates and push them from and too **GitHub**. 
 
