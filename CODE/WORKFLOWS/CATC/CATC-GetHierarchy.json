@@ -1,0 +1,170 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_02NFIGHXSU8072EJMXPRg6LeeFI2Uv2nUQw",
+    "name": "CATC-GetHierarchy",
+    "title": "CATC-GetHierarchy",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "SiteHierarchy",
+          "type": "datatype.string",
+          "description": "Site Hierarchy",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": "json"
+        },
+        "unique_name": "variable_workflow_02NFIKIN9F24J24Pf1FuO29eQuKdfb7sSlA",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "description": "Written to Get the Hierarchy in Catalyst Center",
+      "display_name": "CATC-GetHierarchy",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "catalystcenter.endpoint",
+        "target_id": "definition_target_02NCWB8L6OW2Z6g4jIyp1ppswLlz6iEoBSg",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_02NFIQCT1J6IT3fz3n5S8OdjVkuYAFn4bnz",
+        "name": "Generic Catalyst Center API Request",
+        "title": "Get Site",
+        "type": "catalystcenter.invoke_api",
+        "base_type": "activity",
+        "properties": {
+          "_endpoint": "/dna/intent/api/v1/site",
+          "_headers": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "_method": "GET",
+          "action_timeout": 180,
+          "continue_on_failure": true,
+          "description": "This will retrieve the sites from Catalyst Center",
+          "display_name": "Get Site",
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "use_workflow_target": true
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_02NFIGUE83XJY7TuF0wm3xw5NOHUoWRwj4Y",
+        "name": "Set Variables",
+        "title": "Output",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": true,
+          "description": "Return Output",
+          "display_name": "Output",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_02NFIGHXSU8072EJMXPRg6LeeFI2Uv2nUQw.output.variable_workflow_02NFIKIN9F24J24Pf1FuO29eQuKdfb7sSlA$",
+              "variable_value_new": "$activity.definition_activity_02NFIQCT1J6IT3fz3n5S8OdjVkuYAFn4bnz.output.raw_body$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_02NCWB8L6OW2Z6g4jIyp1ppswLlz6iEoBSg": {
+      "unique_name": "definition_target_02NCWB8L6OW2Z6g4jIyp1ppswLlz6iEoBSg",
+      "name": "BASE2HQ Catalyst Center",
+      "title": "BASE2HQ Catalyst Center",
+      "type": "catalystcenter.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "_host": "10.10.0.20",
+        "_port": 443,
+        "_protocol": "https",
+        "ao_remote_id": "02NCVRKFYYF2I0flwOtZinEJF5J7DSHZgOu",
+        "default_runtime_user_id": "definition_runtime_user_02NCVLMZLUOZY1YITaDGuFE3ntMMFlCkxiQ",
+        "description": "Catalyst Center at home",
+        "display_name": "BASE2HQ Catalyst Center",
+        "ignore_proxy": false,
+        "is_https_proxy": false,
+        "no_runtime_user": false
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_02NCVLMZLUOZY1YITaDGuFE3ntMMFlCkxiQ": {
+      "unique_name": "definition_runtime_user_02NCVLMZLUOZY1YITaDGuFE3ntMMFlCkxiQ",
+      "name": "BASE2HQ-CATC",
+      "title": "BASE2HQ-CATC",
+      "type": "runtime_user.catalystcenter_basic_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "_password": "*****",
+        "_username": "admin",
+        "display_name": "BASE2HQ-CATC"
+      }
+    }
+  },
+  "remotemetas": {
+    "remote_meta_02NCVRKG29CEO3L8UoeH10muulGrDlzIriF": {
+      "base_type": "remote_meta",
+      "type": "generic.remote_meta",
+      "name": "BASE2HQ-REMOTE-AO",
+      "title": "BASE2HQ-REMOTE-AO",
+      "description": "BASE2HQ - remote for Workflows",
+      "version": "1.0.0",
+      "properties": {
+        "advanced": {
+          "require_advanced": false
+        },
+        "cloud_type": "vmware",
+        "description": "BASE2HQ - remote for Workflows",
+        "display_name": "BASE2HQ-REMOTE-AO",
+        "network": {
+          "dns_servers": "10.10.0.250",
+          "gateway": "10.10.0.254",
+          "ip_endpoint": "10.10.0.60/24",
+          "is_static_ip": true
+        },
+        "proxy": {
+          "require_proxy": false
+        }
+      },
+      "unique_name": "remote_meta_02NCVRKG29CEO3L8UoeH10muulGrDlzIriF",
+      "object_type": "remote_meta"
+    }
+  }
+}
