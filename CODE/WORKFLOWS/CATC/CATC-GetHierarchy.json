@@ -98,8 +98,20 @@
       }
     ],
     "categories": [
-      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+      "category_02MUX7XANKJ0021xFUT7Z2Sjn1EYQyKSTQ6"
     ]
+  },
+  "categories": {
+    "category_02MUX7XANKJ0021xFUT7Z2Sjn1EYQyKSTQ6": {
+      "unique_name": "category_02MUX7XANKJ0021xFUT7Z2Sjn1EYQyKSTQ6",
+      "name": "Catalyst Center",
+      "title": "Catalyst Center",
+      "type": "basic.category",
+      "base_type": "category",
+      "description": "Catalyst Center",
+      "category_type": "custom",
+      "object_type": "category"
+    }
   },
   "targets": {
     "definition_target_02NCWB8L6OW2Z6g4jIyp1ppswLlz6iEoBSg": {
