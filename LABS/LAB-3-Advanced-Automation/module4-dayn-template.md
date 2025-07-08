@@ -119,7 +119,7 @@ We will create a **Project** for the deployment of these switches within the lab
 Lets now take a look at a sample typical switch configuration from our network. We are going to review this in some detail in the next few sections and build modularized templates. As we do we will disect this configuration showing **how** and **where** specific configuration should be placed for scalability.
 
 <details open>
-<summary> Expand to review the complete configuration</summary>
+<summary> Expand to review the complete example configuration</summary>
 
 ```
 service tcp-keepalives-in
@@ -131,7 +131,7 @@ service sequence-numbers
 service call-home
 no platform punt-keepalive disable-kernel-core
 !
-hostname ASW-9300-ACCESS
+hostname c9300-1
 !
 vrf definition Mgmt-vrf
  address-family ipv4
