@@ -177,7 +177,7 @@ Catalyst Center provides regular and composite configuration templates. CLI temp
     > [!TIP] 
     >You can associate only a committed template to a network profile.
 
-For more documentation please see: [User Guide](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/1-3-3-0/user_guide/b_cisco_dna_center_ug_1_3_3_0/b_cisco_dna_center_ug_1_3_2_0_chapter_01000.html#create_regular_templates)
+For more documentation please see: [User Guide](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/catalyst-center/2-3-7/user_guide/b_cisco_catalyst_center_user_guide_237/b_cisco_dna_center_ug_2_3_7_chapter_01000.html#create_templates)
 
 ## Examples
 
