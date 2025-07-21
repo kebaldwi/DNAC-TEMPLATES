@@ -81,7 +81,7 @@ Open a connection to the console for the following:
 
 1. Should you not see the expected output in any way expand the section below and do the following:
 
-   <details open>
+   <details closed>
    <summary> Expand this section if required </summary></br>
    
    1. See if the reset script exists on the **ISR 4331** by doing the following:
@@ -219,7 +219,7 @@ Open a connection to the console for the following:
 
 1. If you do not see the following file **base9300-3.cfg** in the filesystem expand the section below and do the following:
 
-   <details open>
+   <details closed>
    <summary> Expand this section if required </summary></br>
 
    1. Paste the following into the terminal    
@@ -365,7 +365,7 @@ Open a connection to the console for the following:
 
 1. Should you not see the expected output in any way expand the section below and do the following:
 
-   <details open>
+   <details closed>
    <summary> Expand this section if required </summary></br>
    
    1. See if the reset script exists on the **Catalyst 9300 - 2** by doing the following:
@@ -498,7 +498,7 @@ Open a connection to the console for the following:
 
 1. Should you not see the expected output in any way expand the section below and do the following:
 
-   <details open>
+   <details closed>
    <summary> Expand this section if required </summary></br>
    
    1. See if the reset script exists on the **Catalyst 9300 - 1** by doing the following:
