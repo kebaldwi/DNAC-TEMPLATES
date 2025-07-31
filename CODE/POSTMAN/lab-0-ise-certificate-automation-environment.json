@@ -1,0 +1,45 @@
+{
+	"id": "6b201700-8d1a-4b8b-af8d-86baf4594ddc",
+	"name": "Cisco ISE (Cisco Lab)",
+	"values": [
+		{
+			"key": "ise",
+			"value": "198.18.133.27",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "username",
+			"value": "admin",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "password",
+			"value": "C1sco12345",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "port",
+			"value": "9060",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "ers-username",
+			"value": "ers_admin",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "ers-password",
+			"value": "C1sco12345",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2025-07-31T17:35:02.809Z",
+	"_postman_exported_using": "Postman/11.56.3"
+}

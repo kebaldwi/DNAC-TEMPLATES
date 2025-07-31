@@ -1,0 +1,440 @@
+{
+	"info": {
+		"_postman_id": "14535fc5-1755-44bd-b919-fee260a6d8da",
+		"name": "Cisco ISE (Cisco Lab)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14223011"
+	},
+	"item": [
+		{
+			"name": "Active Directory",
+			"item": [
+				{
+					"name": "AD Join Points",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{ise}}:{{port}}/ers/config/activedirectory",
+							"protocol": "https",
+							"host": [
+								"{{ise}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"ers",
+								"config",
+								"activedirectory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AD Create Join Point",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{ise}}:{{port}}/ers/config/activedirectory",
+							"protocol": "https",
+							"host": [
+								"{{ise}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"ers",
+								"config",
+								"activedirectory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AD Join Point Details",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{ise}}:{{port}}/ers/config/activedirectory/1522abf0-6cf0-11f0-a699-46035cac53ae",
+							"protocol": "https",
+							"host": [
+								"{{ise}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"ers",
+								"config",
+								"activedirectory",
+								"1522abf0-6cf0-11f0-a699-46035cac53ae"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Backups",
+			"item": [
+				{
+					"name": "RepositoryList",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{ise}}/api/v1/repository",
+							"protocol": "https",
+							"host": [
+								"{{ise}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"repository"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LastBackupStatus",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{ise}}/api/v1/backup-restore/config/last-backup-status",
+							"protocol": "https",
+							"host": [
+								"{{ise}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"backup-restore",
+								"config",
+								"last-backup-status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TriggerBackup",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"backupEncryptionKey\": \"Blkmc1mtr1\",\r\n  \"backupName\": \"TestBackup\",\r\n  \"repositoryName\": \"ADAM-DESKTOP\"\r\n}"
+						},
+						"url": {
+							"raw": "https://{{ise}}/api/v1/backup-restore/config/backup",
+							"protocol": "https",
+							"host": [
+								"{{ise}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"backup-restore",
+								"config",
+								"backup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TaskStatus",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{ise}}/api/v1/task/a0203c40-51bd-11ee-b2e1-da3db17ec76a",
+							"protocol": "https",
+							"host": [
+								"{{ise}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"task",
+								"a0203c40-51bd-11ee-b2e1-da3db17ec76a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CERTIFICATES",
+			"item": [
+				{
+					"name": "Import Trusted Certificate",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"allowBasicConstraintCAFalse\": true,\n  \"allowOutOfDateCert\": true,\n  \"allowSHA1Certificates\": true,\n  \"data\": \"-----BEGIN CERTIFICATE-----\\nMIIDdzCCAl+gAwIBAgIQTvt0R9en/K1IumUfcTEHRzANBgkqhkiG9w0BAQsFADBO\\nMRUwEwYKCZImiZPyLGQBGRYFbG9jYWwxFzAVBgoJkiaJk/IsZAEZFgdhZGFtbGFi\\nMRwwGgYDVQQDExNhZGFtbGFiLUFELURDLTAxLUNBMB4XDTI1MDcyOTIwMTMyN1oX\\nDTMwMDcyOTIwMjMyN1owTjEVMBMGCgmSJomT8ixkARkWBWxvY2FsMRcwFQYKCZIm\\niZPyLGQBGRYHYWRhbWxhYjEcMBoGA1UEAxMTYWRhbWxhYi1BRC1EQy0wMS1DQTCC\\nASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANy15fpXsv/jXwxMOdh6cES5\\nECtJaES/YaLpYIho+NK9/MAXA83nh0eHkQi6hDj0aeaHMywKjUv1ivUXMoGhE6Os\\nORi1Vpb/7s/8IOOtv/L5doLnPgW64Qys33NihImM0VQtQ93sHwxEPuzNqiMkQqIX\\nNALHf4q+5LlwX2ufOQzT60RJc0g8r5mcbDQvrh8zBSgczWd9RGXpR2gchLcbF4dC\\nz90FqPaqlgZsaAJg5yXaB/zIHCjQEue5m4rOhb4o0DOIl5ZYMDwpLFSY/G8HRCuX\\nSFbqBoveI1/v0uOYIOzcawFA9Gp7UfRjzjnJDXVfyG1MyeWwJ4HJaXzuahzaDY0C\\nAwEAAaNRME8wCwYDVR0PBAQDAgGGMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYE\\nFNNK4TbBegVFA5WY36wMuCCufYYEMBAGCSsGAQQBgjcVAQQDAgEAMA0GCSqGSIb3\\nDQEBCwUAA4IBAQBsn9ghG4UGrp6eyNR28ilDMFlAli38BDANedAXrs68/tmUMdRc\\nHxa/WJRC1Y2VvHYcWQSOBbTjyIW3Xn5AcDYu9DudUmuYBB9Pa0XfFaU4Lqo/D4mt\\nZvbVi2/fbWAAXJZxBd7GFQnTGBJ9KGmcesIKMKlbjwEM+0aa1G+GqmHGEUEhJf6T\\nTLYLpfYGIxiiKbPmDu9//aJ+Oz38iVz8DLX+mUm+FzBnnMHoTpqEZYPdztgowgkf\\nWwIZ6o7zkfNsfdfmjZtN5A53RFOSwRitMSXnhHTYneHDJr/gPc/BSLPhBesxF05N\\nnPHTBs6kOEn9Nxk6Y7ZIl5TcyWnfRXfMPjKr\\n-----END CERTIFICATE-----\\n\",\n  \"description\": \"Imported Trust Certificate\",\n  \"name\": \"Test Trust Certificate\",\n  \"trustForCertificateBasedAdminAuth\": false,\n  \"trustForCiscoServicesAuth\": false,\n  \"trustForClientAuth\": false,\n  \"trustForIseAuth\": false,\n  \"validateCertificateExtensions\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ise}}/api/v1/certs/trusted-certificate/import",
+							"protocol": "https",
+							"host": [
+								"{{ise}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"certs",
+								"trusted-certificate",
+								"import"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate CSR",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"allowWildCardCert\": false,\n  \"certificatePolicies\": \"string\",\n  \"digestType\": \"SHA-512\",\n  \"hostnames\": [\n    \"ise01\"\n  ],\n  \"keyLength\": \"4096\",\n  \"keyType\": \"RSA\",\n  \"sanDNS\": [\n    \"ise01.adamalab.local\",\n    \"ise.adamlab.local\"\n  ],\n  \"sanIP\": [\n    \"10.0.0.241\",\n    \"192.168.255.241\"\n  ],\n  \"subjectCity\": \"Denver\",\n  \"subjectCommonName\": \"$FQDN$\",\n  \"subjectCountry\": \"US\",\n  \"subjectOrg\": \"ADAMLAB\",\n  \"subjectOrgUnit\": \"IT\",\n  \"subjectState\": \"CO\",\n  \"usedFor\": \"MULTI-USE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ise}}/api/v1/certs/certificate-signing-request",
+							"protocol": "https",
+							"host": [
+								"{{ise}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"certs",
+								"certificate-signing-request"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
