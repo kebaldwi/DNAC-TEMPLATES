@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "14535fc5-1755-44bd-b919-fee260a6d8da",
-		"name": "Cisco ISE (Cisco Lab)",
+		"_postman_id": "0a366f10-4f0e-4174-b5c8-b9d5ab5cb170",
+		"name": "lab-0-ise-certificate-automation-collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "14223011"
+		"_exporter_id": "14223011",
+		"_collection_link": "https://cisco6-8177.postman.co/workspace/Cisco-SE-Labs~a4b1269c-0645-4966-aeca-48565d4681d9/collection/14223011-0a366f10-4f0e-4174-b5c8-b9d5ab5cb170?action=share&source=collection_link&creator=14223011"
 	},
 	"item": [
 		{
@@ -354,7 +355,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"allowBasicConstraintCAFalse\": true,\n  \"allowOutOfDateCert\": true,\n  \"allowSHA1Certificates\": true,\n  \"data\": \"-----BEGIN CERTIFICATE-----\\nMIIDdzCCAl+gAwIBAgIQTvt0R9en/K1IumUfcTEHRzANBgkqhkiG9w0BAQsFADBO\\nMRUwEwYKCZImiZPyLGQBGRYFbG9jYWwxFzAVBgoJkiaJk/IsZAEZFgdhZGFtbGFi\\nMRwwGgYDVQQDExNhZGFtbGFiLUFELURDLTAxLUNBMB4XDTI1MDcyOTIwMTMyN1oX\\nDTMwMDcyOTIwMjMyN1owTjEVMBMGCgmSJomT8ixkARkWBWxvY2FsMRcwFQYKCZIm\\niZPyLGQBGRYHYWRhbWxhYjEcMBoGA1UEAxMTYWRhbWxhYi1BRC1EQy0wMS1DQTCC\\nASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANy15fpXsv/jXwxMOdh6cES5\\nECtJaES/YaLpYIho+NK9/MAXA83nh0eHkQi6hDj0aeaHMywKjUv1ivUXMoGhE6Os\\nORi1Vpb/7s/8IOOtv/L5doLnPgW64Qys33NihImM0VQtQ93sHwxEPuzNqiMkQqIX\\nNALHf4q+5LlwX2ufOQzT60RJc0g8r5mcbDQvrh8zBSgczWd9RGXpR2gchLcbF4dC\\nz90FqPaqlgZsaAJg5yXaB/zIHCjQEue5m4rOhb4o0DOIl5ZYMDwpLFSY/G8HRCuX\\nSFbqBoveI1/v0uOYIOzcawFA9Gp7UfRjzjnJDXVfyG1MyeWwJ4HJaXzuahzaDY0C\\nAwEAAaNRME8wCwYDVR0PBAQDAgGGMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYE\\nFNNK4TbBegVFA5WY36wMuCCufYYEMBAGCSsGAQQBgjcVAQQDAgEAMA0GCSqGSIb3\\nDQEBCwUAA4IBAQBsn9ghG4UGrp6eyNR28ilDMFlAli38BDANedAXrs68/tmUMdRc\\nHxa/WJRC1Y2VvHYcWQSOBbTjyIW3Xn5AcDYu9DudUmuYBB9Pa0XfFaU4Lqo/D4mt\\nZvbVi2/fbWAAXJZxBd7GFQnTGBJ9KGmcesIKMKlbjwEM+0aa1G+GqmHGEUEhJf6T\\nTLYLpfYGIxiiKbPmDu9//aJ+Oz38iVz8DLX+mUm+FzBnnMHoTpqEZYPdztgowgkf\\nWwIZ6o7zkfNsfdfmjZtN5A53RFOSwRitMSXnhHTYneHDJr/gPc/BSLPhBesxF05N\\nnPHTBs6kOEn9Nxk6Y7ZIl5TcyWnfRXfMPjKr\\n-----END CERTIFICATE-----\\n\",\n  \"description\": \"Imported Trust Certificate\",\n  \"name\": \"Test Trust Certificate\",\n  \"trustForCertificateBasedAdminAuth\": false,\n  \"trustForCiscoServicesAuth\": false,\n  \"trustForClientAuth\": false,\n  \"trustForIseAuth\": false,\n  \"validateCertificateExtensions\": false\n}",
+							"raw": "{\n  \"allowBasicConstraintCAFalse\": true,\n  \"allowOutOfDateCert\": true,\n  \"allowSHA1Certificates\": true,\n  \"data\": \"\",\n  \"description\": \"DCLOUD ROOT CA CERTIFICATE\",\n  \"name\": \"DCLOUD ROOT CA CERTIFICATE\",\n  \"trustForCertificateBasedAdminAuth\": true,\n  \"trustForCiscoServicesAuth\": false,\n  \"trustForClientAuth\": true,\n  \"trustForIseAuth\": true,\n  \"validateCertificateExtensions\": false\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -411,7 +412,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"allowWildCardCert\": false,\n  \"certificatePolicies\": \"string\",\n  \"digestType\": \"SHA-512\",\n  \"hostnames\": [\n    \"ise01\"\n  ],\n  \"keyLength\": \"4096\",\n  \"keyType\": \"RSA\",\n  \"sanDNS\": [\n    \"ise01.adamalab.local\",\n    \"ise.adamlab.local\"\n  ],\n  \"sanIP\": [\n    \"10.0.0.241\",\n    \"192.168.255.241\"\n  ],\n  \"subjectCity\": \"Denver\",\n  \"subjectCommonName\": \"$FQDN$\",\n  \"subjectCountry\": \"US\",\n  \"subjectOrg\": \"ADAMLAB\",\n  \"subjectOrgUnit\": \"IT\",\n  \"subjectState\": \"CO\",\n  \"usedFor\": \"MULTI-USE\"\n}",
+							"raw": "{\n  \"allowWildCardCert\": false,\n  \"digestType\": \"SHA-512\",\n  \"hostnames\": [\n    \"ise\"\n  ],\n  \"keyLength\": \"4096\",\n  \"keyType\": \"RSA\",\n  \"sanDNS\": [\n    \"ise.dcloud.cisco.com\"\n  ],\n  \"sanIP\": [\n    \"198.18.133.27\"\n  ],\n  \"subjectCity\": \"SJC\",\n  \"subjectCommonName\": \"$FQDN$\",\n  \"subjectCountry\": \"US\",\n  \"subjectOrg\": \"CISCO\",\n  \"subjectOrgUnit\": \"DCLOUD\",\n  \"subjectState\": \"CA\",\n  \"usedFor\": \"MULTI-USE\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -429,6 +430,117 @@
 								"v1",
 								"certs",
 								"certificate-signing-request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CSR Listing",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ise}}/api/v1/certs/certificate-signing-request",
+							"protocol": "https",
+							"host": [
+								"{{ise}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"certs",
+								"certificate-signing-request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bind CSR",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"admin\": true,\r\n  \"allowExtendedValidity\": true,\r\n  \"allowOutOfDateCert\": false,\r\n  \"allowReplacementOfCertificates\": true,\r\n  \"allowReplacementOfPortalGroupTag\": true,\r\n  \"data\": \"\",\r\n  \"eap\": true,\r\n  \"hostName\": \"ise\",\r\n  \"id\": \"\",\r\n  \"ims\": false,\r\n  \"name\": \"DCLOUD ISE SIGNED CERTIFICATE\",\r\n  \"portal\": false,\r\n  \"pxgrid\": true,\r\n  \"radius\": true,\r\n  \"saml\": false,\r\n  \"validateCertificateExtensions\": false\r\n}"
+						},
+						"url": {
+							"raw": "https://{{ise}}/api/v1/certs/signed-certificate/bind",
+							"protocol": "https",
+							"host": [
+								"{{ise}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"certs",
+								"signed-certificate",
+								"bind"
 							]
 						}
 					},

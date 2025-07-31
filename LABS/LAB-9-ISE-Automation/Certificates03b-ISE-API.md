@@ -1,4 +1,4 @@
-# ISE Certificate Setup (via GUI)
+# ISE Certificate Setup (via API)
 
 ## Prerequisites and Lab Notes
 
