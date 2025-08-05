@@ -293,7 +293,13 @@ In order to be able to "bind" the signed certificate we just downloaded to the a
 
    ![json](../../../ASSETS/LABS/AD/CERTS/ISE-API-CSR-18.png?raw=true "Import JSON")
 
-2. For the "id" key, paste the id value that you copied from the previous task.  And for the "data" key, as before, paste the entire certificate file string from the above task - looking out for any errors in the formatting (red squiggly lines, changes in text color, etc).  Then click ***Send***
+2. For this step:
+
+   1. Place your cursor in the "id" key and paste the id value that you copied from the previous task.  
+   
+   2. For the "data" key, as before, paste the entire certificate file string from the modified signed ISE certificate - looking out for any errors in the formatting (red squiggly lines, changes in text color, etc).  
+   
+   3. Then click ***Send***
 
    ![json](../../../ASSETS/LABS/AD/CERTS/ISE-API-CSR-20.png?raw=true "Import JSON")
 
