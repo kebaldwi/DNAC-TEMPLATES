@@ -439,7 +439,7 @@ event manager applet pnp_checker authorization bypass
  action 090 end
  ```
 
-### Case 10 - ***Automatically converting a Catalyst 9300 between BUNDLE and INSTALL mode
+### Case 10 - ***Automatically converting a Catalyst 9300 between BUNDLE and INSTALL mode***
 
 Here we have two examples that will allow for the conversion between BUNDLE and INSTALL mode for catalyst 9300 switches. These two were put together and will be designed to be deployed in a template to follow shortly.
 
