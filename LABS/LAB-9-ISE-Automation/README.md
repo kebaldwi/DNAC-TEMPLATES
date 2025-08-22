@@ -1,5 +1,8 @@
 # ISE Automation
 
+> [!NOTE]
+> This Lab (Lab 9 - ISE Automation) is currently under construction.
+
 > [!WARNING]
 > For best results and if you have not ensured that the lab is functioning correctly, please consider checking the readiness of the lab in this [DCLOUD LAB PREPARATION](./DCLOUD.md) section.
 
@@ -15,7 +18,7 @@ In this lab we will focus on configuring the integration between ISE and Catalys
 
 The lab will be split into modules to concentrate on specific tasks. Each is designed to build your knowledge in specific areas and they will call out any dependancies on previous modules. We will cover are the following which you can access via the links below:
 
-1. [**Catalyst Center and ISE Integration (via GUI)**](./module1-catc-ise-integration.md)
+1. [**Module1**](./module1-catc-ise-integration.md)
 2. [**Module2**](./module2-.md)
 3. [**Module3**](./module3-dayn.md)
 4. [**Module4**](./module4-applicationqos.md)

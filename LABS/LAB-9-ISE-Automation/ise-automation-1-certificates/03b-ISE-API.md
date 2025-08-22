@@ -11,40 +11,21 @@ In this lab module, we will setup ISE certificates via the API.  This is the rec
 >You must have completed [**PKI Infrastructure Setup Module**](./01-PKI-Infrastructure.md) before completing this lab module.
 
 >[!NOTE]
-
->:mega:If you have already done these steps via the GUI in the [**03a-ISE-GUI**](./03a-ISE-GUI.md), the certificates you generated will need to be deleted first.
-
->:mega:While many of these tasks can be completed with your own device, the screenshots taken (and many of the steps reference) using the Windows Jump Host.  
+>:mega: If you have already done these steps via the GUI in the [**03a-ISE-GUI**](./03a-ISE-GUI.md), the certificates you generated will need to be deleted first.<br><br>
+>:mega: While many of these tasks can be completed with your own device, the screenshots taken (and many of the steps reference) using the Windows Jump Host.  
 
 This lab module consists of the following tasks:
 
-   1. [**Postman Setup**](#postman-setup)
-   2. [**Enabling APIs on ISE**](#enabling-apis-on-ise)
-   3. [**Exporting Windows Root CA Certificate**](#exporting-the-windows-root-ca-certificate)
-   4. [**Cleaning Up the Windows Root CA Certificate**](#cleaning-up-the-windows-root-ca-certificate)
-   5. [**Installing the Root CA in ISE**](#installing-the-root-ca-in-ise)
-   6. [**Generating a Certificate Signing Request**](#generating-a-certificate-signing-request)
-   7. [**Signing the ISE CSR with the Certificate Authority**](#signing-the-ise-csr-with-certificate-authority)
-   8. [**Cleaning Up the Signed ISE Certificate**](#cleaning-up-the-signed-ise-certificate)
-   9. [**Getting the CSR "ID"**](#getting-the-csr-id)
-   10. [**Binding the CSR with the Certificate**](#binding-the-csr-with-the-certificate)
+   1. [**Enabling APIs on ISE**](#enabling-apis-on-ise)
+   2. [**Exporting Windows Root CA Certificate**](#exporting-the-windows-root-ca-certificate)
+   3. [**Cleaning Up the Windows Root CA Certificate**](#cleaning-up-the-windows-root-ca-certificate)
+   4. [**Installing the Root CA in ISE**](#installing-the-root-ca-in-ise)
+   5. [**Generating a Certificate Signing Request**](#generating-a-certificate-signing-request)
+   6. [**Signing the ISE CSR with the Certificate Authority**](#signing-the-ise-csr-with-certificate-authority)
+   7. [**Cleaning Up the Signed ISE Certificate**](#cleaning-up-the-signed-ise-certificate)
+   8. [**Getting the CSR "ID"**](#getting-the-csr-id)
+   9. [**Binding the CSR with the Certificate**](#binding-the-csr-with-the-certificate)
 
-
-## Postman Setup
-
-For this lab module, we have pre-built the Postman environment and collection you will need to complete the tasks.  Of course, in your production environment, you would be able to implement these APIs in a more programmatic way (Python, Ansible, etc.) - but the goal here is to introduce you to the APIs and how they work.  The assumption with this lab module is that you are familiar with using Postman, but if not - please reach out to your lab proctor for assistance.
-
-The download links for the collection and environment are below:
-
-   <p><a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/lab-9-ise-certificate-automation-collection.json">⬇︎COLLECTION⬇︎</a></p>
-   <p><a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/POSTMAN/lab-9-ise-certificate-automation-environment.json">⬇︎ENVIRONMENT⬇︎</a></p>
-
-<p><a href="https://learning.postman.com/docs/getting-started/importing-and-exporting/importing-data/">Instructions for importing Collection/Environment into Postman</a></p>
-
->[!NOTE]
->You will need to disable SSL certificate verification in Postman Settings for this lab module
-
-Now that your Postman application is setup, lets move on to setting up ISE with a Trusted Root Certificate
 
 ## Enabling APIs on ISE
 
@@ -126,7 +107,7 @@ Because text editors tend to add either carriage returns or line feeds (or both)
 
          ![json](../../../ASSETS/LABS/AD/CERTS/ISE-API-CSR-3.png?raw=true "Import JSON")
 
-   4. Next, in the ***Find what:*** field, enter "\r" (without quotes), and in the ***Replace with:*** field enter "\\\n" without quotes.  
+   4. Next, in the ***Find what:*** field, enter "\r" (without quotes), and in the ***Replace with:*** field enter "\\\n" (without quotes).  
    
          >[!IMPORTANT] 
          >Pay close attention that this is a DOUBLE back slash before the n!
@@ -143,11 +124,11 @@ Because text editors tend to add either carriage returns or line feeds (or both)
 
 ## Installing the Root CA in ISE
 
-At this point, it is assumed that you have successfully opened Postman application and imported the Collection and Environment above. Ensure that your Environment is selected in the top right of the Postman screen as "lab-9-ise-certificate-automation-environment".
+At this point, it is assumed that you have successfully opened Postman application and imported the Collection and Environment. If you have not, please go back and complete the [***03-Postman***](../ise-automation-0-orientation/03-Postman.md) module.
 
 ***Complete the following tasks:***
 
-1. Under ***Collections > lab-9-ise-certificate-automation-collection > ISE***, expand the ***CERTIFICATES*** folder and look for ***POST - Import Trusted Certificate***
+1. Under ***Collections > lab-9-ise-automation-collection > ISE***, expand the ***CERTIFICATES*** folder and look for ***POST - Import Trusted Certificate***
 
       ![json](../../../ASSETS/LABS/AD/CERTS/ISE-API-CSR-6.png?raw=true "Import JSON")
 
@@ -195,7 +176,7 @@ Now let's move on to generating a Certificate Signing Request
 
 1. Open up your Postman application again, and this time under
 
-   1. ***Collections > lab-9-ise-certificate-automation-collection > ISE*** > ***Certificates*** select ***POST - Generate CSR***.  
+   1. ***Collections > lab-9-ise-automation-collection > ISE*** > ***Certificates*** select ***POST - Generate CSR***.  
    
    2. Notice in the ***Body*** section all keys/fields are already filled out for you here, with appropriate SanDNS name, SanIP, Subject, State, etc.  
    
@@ -257,7 +238,7 @@ Now let's move on to generating a Certificate Signing Request
 
       ![json](../../../ASSETS/LABS/AD/CERTS/ISE-GUI-CSR-11.png?raw=true "Import JSON")
 
-5. The certificate file should now be downloaded to the Downloads folder, by default it will be named `certnet.csr`, but you can save it as you wish.
+5. The certificate file should now be downloaded to the Downloads folder, by default it will be named `certnew.csr`, but you can save it as you wish.
 
 ## Cleaning Up the Signed ISE Certificate
 
@@ -275,7 +256,7 @@ In order to be able to "bind" the signed certificate we just downloaded to the a
 
 ***Complete the following tasks:***
 
-1. In your Postman app, under ***Collections > lab-9-ise-certificate-automation-collection > ISE*** > ***Certificates*** select ***GET - CSR Listing***.  This GET request has an empty body (although you can use filters if you have multiple CSRs).  Simply press ***Send***
+1. In your Postman app, under ***Collections > lab-9-ise-automation-collection > ISE*** > ***Certificates*** select ***GET - CSR Listing***.  This GET request has an empty body (although you can use filters if you have multiple CSRs).  Simply press ***Send***
 
 2. The return results should have the "id" that we need.  Copy this value from your Postman output.
 
@@ -285,7 +266,7 @@ In order to be able to "bind" the signed certificate we just downloaded to the a
 
 ***Complete the following tasks:***
 
-1. Open your Postman app, and now under ***Collections > lab-9-ise-certificate-automation-collection > ISE*** > ***Certificates*** 
+1. Open your Postman app, and now under ***Collections > lab-9-ise-automation-collection > ISE*** > ***Certificates*** 
 
       1. Select ***POST - Bind CSR***.  
       

@@ -10,8 +10,8 @@ In this lab module, we will setup ISE certificates via the GUI.  While this is a
 >You must have completed [**PKI Infrastructure Setup Module**](./01-PKI-Infrastructure.md) before completing this lab module.
 
 >[!NOTE]
->:mega:If you have already done these steps via the API in the [**03b-ISE-API**](./03b-ISE-API.md), the certificates you generated will need to be deleted first.
->:mega:While many of these tasks can be completed with your own device, the screenshots taken (and many of the steps reference) using the Windows Jump Host.  
+>:mega: If you have already done these steps via the API in the [**03b-ISE-API**](./03b-ISE-API.md), the certificates you generated will need to be deleted first.<br><br>
+>:mega: While many of these tasks can be completed with your own device, the screenshots taken (and many of the steps reference) using the Windows Jump Host.  
 
 This lab module consists of the following tasks:
 
@@ -113,7 +113,7 @@ Now that our Root CA Certificate is part of the Trusted Certificates store, lets
    ```
 
       >[!NOTE]
-      >While this form has the common name as $FQDN$, we also want to include the Fully Qualified Domain Name as a Subject Alternative Name as well, so the SAN fields should be filled out as follows:
+      >While this form has the common name as `$FQDN$`, we also want to include the Fully Qualified Domain Name as a Subject Alternative Name as well, so the SAN fields should be filled out as follows:
 
    ```
    First Field Drop Down = select DNS and in the text field enter "ise.dcloud.cisco.com"

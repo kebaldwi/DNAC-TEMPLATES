@@ -12,9 +12,8 @@ Cisco Catalyst Center uses certificates primarily to establish a secure and trus
 >You must have completed [**PKI Infrastructure Setup Module**](./01-PKI-Infrastructure.md) before completing this lab module.
 
 >[!NOTE]
->:mega:While many of these tasks can be completed with your own device, the screenshots taken (and many of the steps reference) using the Windows Jump Host. 
-
->:mega:The version of Catalyst Center running in the lab environment at the time of this writing (v2.3.5.6) <u>does</u> have an API to import a trusted certificate; however, unlike ISE, it <u>does not</u> have an API for generating a Certificate Signing Request (CSR) or binding that CSR to the Catalyst Center host.  For that reason, we have combined the instructions for installing the Trusted Certificate via GUI and API into this single lab module.
+>:mega: While many of these tasks can be completed with your own device, the screenshots taken (and many of the steps reference) using the Windows Jump Host. <br><br>
+>:mega: The version of Catalyst Center running in the lab environment at the time of this writing (v2.3.5.6) <u>does</u> have an API to import a trusted certificate; however, unlike ISE, it <u>does not</u> have an API for generating a Certificate Signing Request (CSR) or binding that CSR to the Catalyst Center host.  For that reason, we have combined the instructions for installing the Trusted Certificate via GUI and API into this single lab module.
 
 This lab module consists of the following tasks:
 

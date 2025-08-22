@@ -1,6 +1,6 @@
 {
 	"id": "49c401a7-07c5-46d5-b709-c3d5d93adca8",
-	"name": "lab-0-ise-certificate-automation-environment",
+	"name": "lab-9-ise-automation-environment",
 	"values": [
 		{
 			"key": "ise",
@@ -21,7 +21,7 @@
 			"enabled": true
 		},
 		{
-			"key": "port",
+			"key": "ers_port",
 			"value": "9060",
 			"type": "default",
 			"enabled": true
@@ -40,6 +40,6 @@
 		}
 	],
 	"_postman_variable_scope": "environment",
-	"_postman_exported_at": "2025-07-31T22:35:06.211Z",
-	"_postman_exported_using": "Postman/11.56.3"
+	"_postman_exported_at": "2025-08-22T18:38:21.216Z",
+	"_postman_exported_using": "Postman/11.59.4"
 }
