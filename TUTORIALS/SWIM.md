@@ -178,7 +178,7 @@ To convert between modes there is a process which must be followed in order to e
 In order to use this template you would do the following process:
 
 1. **Distribute** and **SKIP** **Activation** of the **new IOS-XE version** to the switch. (**caveat** the image distributed **must be newer** than the existing image)
-2. Provision the template converting the mode to the switch ensuring the date and time for the conversion are used. <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA/UTILITIES/JSON/Mode_Conversion_Template.json">⬇︎Mode_Conversion_Template.json⬇︎</a></br>
+2. Provision the template converting the mode to the switch ensuring the date and time for the conversion are used. <a href="https://git-link.vercel.app/api/download?url=https://github.com/kebaldwi/DNAC-TEMPLATES/blob/master/CODE/TEMPLATES/JINJA2/UTILITIES/JSON/Mode_Conversion_Template.json">⬇︎Mode_Conversion_Template.json⬇︎</a></br>
 
 The template will take care of the rest.
 
