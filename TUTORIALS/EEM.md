@@ -500,7 +500,7 @@ event manager applet bundleToInstall authorization bypass
  action 407   reload
  action 500  else
  action 501   puts "No Bin File Present - Exiting"
- action 502   if $Exist eq "" goto 150
+ action 502   if $Exist eq "" goto 999
  action 503  end
  action 600 else
  action 601  puts "Switch already in INSTALL mode - Exiting"
@@ -553,7 +553,7 @@ event manager applet installToBundle authorization bypass
  action 312     end
  action 313     increment COUNT 1
  action 314    end
- action 314    cli command "term len 0"
+ action 314    cli command "term len 25"
  action 400    cli command "enable"
  action 401    cli command "configure terminal"
  action 402    cli command "no boot system"
@@ -563,7 +563,7 @@ event manager applet installToBundle authorization bypass
  action 406    reload
  action 500   else
  action 501    puts "No Bin File Present - Exiting"
- action 502    if $Exist eq "" goto 137
+ action 502    if $Exist eq "" goto 999
  action 503   end
  action 600  else
  action 601   puts "Switch not in INSTALL mode - Exiting"
