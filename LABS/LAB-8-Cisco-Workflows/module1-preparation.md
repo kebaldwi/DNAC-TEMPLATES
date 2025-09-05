@@ -1,5 +1,29 @@
-Simple Network Automation – The Added Value of Cisco Workflows
-Getting Started Guide
+# Preparation - Getting Started Guide
+
+## Overview
+
+This module 
+
+## General Information
+
+As you may recall, 
+
+We will be utilizing the lab in this manner:
+
+![json](./images/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON")
+
+## Lab Credentials:
+
+| Platform:       | IP Address:    | Username | Password   | 
+|-----------------|----------------|----------|------------|
+| something       | 198.18.129.100 | admin    | C1sco12345 |
+
+## Catalyst Center and ISE Integration
+
+In this lab our focus changes 
+
+### Step 1 - Prepare ISE for Catalyst Center Integration
+
 You must have a Meraki Account that has full Organizational Administrator permissions for an
 Organization that is hosted in NORTH AMERICA for this lab. If you already have an account with full
 Organizational Administrator permissions on an account in North America, you only need to complete
@@ -25,3 +49,15 @@ Enable Automate Workflows
 Once you are logged in to your new Meraki account, select Organization -> Early Access
 In the Early Access window, enable AI Assistant and Automate Workflows.
 NOTE: You will get a Opt in settings pop up, just click on Save.
+
+## Summary
+
+The next step ... 
+
+> [!IMPORTANT]
+> **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
+**Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
+
+> [**Continue to module 2 Orientation**](./module2-orientation.md)
+
+> [**Return to LAB Menu**](./README.md)
