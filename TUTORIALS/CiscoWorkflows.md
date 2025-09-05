@@ -1,6 +1,6 @@
 # Cisco Workflows In Development
 
-![json](../../ASSETS/COMMON/BUILD/underconstruction.png?raw=true "Import JSON")
+![json](../ASSETS/COMMON/BUILD/underconstruction.png?raw=true "Import JSON")
 
 This is the future location for detailed information regarding Cisco Workflows
 
