@@ -44,6 +44,7 @@ You will find various examples within the various folders of this repository, wi
 * [Python Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Python.md) - This section is a high level discussion of utilizing Python with Catalyst Center
 * [Ansible Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/Ansible.md) - This section is a high level discussion of Ansible orchestration of Catalyst Center
 * [CICD Orchestration](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/CICD.md) - This section is a high level discussion of CICD orchestration of Catalyst Center
+* [Cisco Workflows](https://github.com/kebaldwi/DNAC-TEMPLATES/tree/master/TUTORIALS/CiscoWorkflows.md) - This section is a high level discussion of REST-API orchestration using Cisco Workflows
 
 ## Fault-Finding
 
