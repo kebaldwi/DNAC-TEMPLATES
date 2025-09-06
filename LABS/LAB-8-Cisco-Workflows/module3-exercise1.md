@@ -1,55 +1,29 @@
  
-# Exercise 1 - Cisco Workflows
+# Exercise 1 - Cisco Workflows Introduction
 
 ## Overview
 
-This module 
+Meraki has added a well-established Cisco tool to the dashboard; Workflows. But let’s be very clear, it’s not just for Meraki. Customers can use this powerful automation and orchestration engine on pretty much anything. In addition to Meraki, it can be used for automating Cisco controllers like Catalyst Center, SD-WAN, ISE, ThousandEyes, ACI, Nexus Dashboard, Intersight, Webex, IOT, and anything Cisco or 3rd party that utilizes REST-API. If it has a REST API or an SSH adapter, Workflows can automate it.
+
+Today, we’re going to walk you through the tool. No programming experience required. If you can use Microsoft Visio, you can use Workflows. We are going to start with the absolute basics and build layer upon layer until we get into some more complex concepts in the tooling.
+
+> [!IMPORTANT] 
+> **Preparation:** To use this lab, you should enable your Meraki org with Workflows Automation. If you have not had automation enabled for your Meraki account, please utilize the preparation steps in [module 1](./module1-preparation.md).
 
 ## General Information
 
-As you may recall, 
+* **[Overview](#overview)**
+* **[Lab Exercise 1A](#lab-exercise-1a---i-need-some-sleep)** - I Need Some Sleep
+* **[Lab Exercise 1B]()** - I Need Some Sleep (with user Input)
+* **[Lab Exercise 1C]()** - I Need Some Sleep and I’m Bored
+* **[Lab Exercise 1D]()** - I Need Some Sleep, I’m Bored, and How Many People?
+* **[Lab Exercise 1E]()** - I Need Some Sleep, I’m Bored, and I’m Taking a Nap Based on the Crowd Size
+* **[Lab Exercise 1F]()** - HTTP POST Example
+* **[Lab Exercise 1G]()** - (Bonus): Cleanup on Aisle
+* **[Appendix]()** - Useful Workflows Resources
 
-We will be utilizing the lab in this manner:
+## Lab Exercise 1A - I Need Some Sleep
 
-![json](./images/DCLOUD_Topology_PnPLab2.png?raw=true "Import JSON")
-
-## Lab Credentials:
-
-| Platform:       | IP Address:    | Username | Password   | 
-|-----------------|----------------|----------|------------|
-| something       | 198.18.129.100 | admin    | C1sco12345 |
-
-## Catalyst Center and ISE Integration
-
-In this lab our focus changes 
-
-### Step 1 - Prepare ISE for Catalyst Center Integration
-
-Contents
-Cisco’s Multi-Domain Automation and Orchestration Engine Your Customer Already Has	3
-Introduction	3
-Lab 1A: I Need Some Sleep	4
-Lab 1B: I Need Some Sleep (with user Input)	13
-Lab 1C: I Need Some Sleep and I’m Bored	19
-Lab1D: I Need Some Sleep, I’m Bored, and How Many People?	28
-Lab 1E: I Need Some Sleep, I’m Bored, and I’m Taking a Nap Based on the Crowd Size	33
-Lab 1F: HTTP POST Example	35
-Lab 1G (Bonus): Cleanup on Aisle 5	37
-Appendix: Useful Workflows Resources:	38
-
- 
-Cisco’s Multi-Domain Automation and Orchestration Engine Your Customer Already Has
-Introduction
-Welcome to the ‘Simple Network Automation – The Added Value of Cisco Workflows’ session.
-Meraki has added a well-established Cisco tool to the dashboard: Workflows. But let’s be very clear, it’s not just for Meraki. Customers can use this powerful automation and orchestration engine on pretty much anything. In addition to Meraki, it can be used for automating Cisco controllers like Catalyst Center, SD-WAN, ISE, ThousandEyes, ACI, Nexus Dashboard, Intersight, Webex, IOT, and everything Cisco. Use it with third-party tools and other vendors. If it has a REST API or an SSH adapter, Workflows can automate it.
-Today, we’re going to walk you through the tool. No programming experience required. If you can use Microsoft Visio, you can use Workflows. We are going to start with the absolute basics and build layer upon layer until we get into some more complex concepts in the tooling.
-
-Today’s Plan…
-When you registered for this session, you should have been connected with the Workflows team so they could enable your Meraki org with Workflows Automation.
-
-NOTE: If you have not had automation enabled for your Meraki account, please reach out to a member of the support staff for this session.
-
- 
 Lab 1A: I Need Some Sleep
 I don’t know about you, but I’m allergic to “Hello World” (it makes my knees hurt). So, we’re going to start with something much more relaxing to gain an understanding of the most basic flow of the tool: Sleep.
 Task 1: Log into your Meraki account and navigate to Automation Workspace.
