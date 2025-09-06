@@ -28,7 +28,8 @@ I don’t know about you, but I’m allergic to “Hello World” (it makes my k
 
 Task 1: Log into your Meraki account and navigate to Automation Workspace.
 
-> [!NOTE] If you do not see automation in the side menu, please reach out to a member of the support staff for this session.
+> [!NOTE]
+> If you do not see automation in the side menu, please reach out to a member of the support staff for this session.
 
 Task 2: Click Create workflow.
  
