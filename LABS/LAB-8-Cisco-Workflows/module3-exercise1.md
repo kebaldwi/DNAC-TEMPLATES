@@ -14,27 +14,31 @@ Today, we’re going to walk you through the tool. No programming experience req
 
 * **[Overview](#overview)**
 * **[Lab Exercise 1A](#lab-exercise-1a---i-need-some-sleep)** - I Need Some Sleep
-* **[Lab Exercise 1B]()** - I Need Some Sleep (with user Input)
-* **[Lab Exercise 1C]()** - I Need Some Sleep and I’m Bored
-* **[Lab Exercise 1D]()** - I Need Some Sleep, I’m Bored, and How Many People?
-* **[Lab Exercise 1E]()** - I Need Some Sleep, I’m Bored, and I’m Taking a Nap Based on the Crowd Size
-* **[Lab Exercise 1F]()** - HTTP POST Example
-* **[Lab Exercise 1G]()** - (Bonus): Cleanup on Aisle
-* **[Appendix]()** - Useful Workflows Resources
+* **[Lab Exercise 1B](#lab-exercise-1b---i-need-some-sleep-with-user-input)** - I Need Some Sleep (with user Input)
+* **[Lab Exercise 1C](#lab-exercise-1c---need-some-sleep-and-im-bored)** - I Need Some Sleep and I’m Bored
+* **[Lab Exercise 1D](#lab-exercise-1d---i-need-some-sleep-im-bored-and-how-many-people)** - I Need Some Sleep, I’m Bored, and How Many People?
+* **[Lab Exercise 1E](#lab-exercise-1e---i-need-some-sleep-im-bored-and-im-taking-a-nap-based-on-the-crowd-size)** - I Need Some Sleep, I’m Bored, and I’m Taking a Nap Based on the Crowd Size
+* **[Lab Exercise 1F](#lab-exercise-1f----http-post-example)** - HTTP POST Example
+* **[Lab Exercise 1G](#lab-exercise-1g-bonus---cleanup-on-aisle-5)** - (Bonus): Cleanup on Aisle
+* **[Appendix](./module6-advanced.md#advanced-information-and-resources)** - Useful Workflows Resources
 
 ## Lab Exercise 1A - I Need Some Sleep
 
-Lab 1A: I Need Some Sleep
 I don’t know about you, but I’m allergic to “Hello World” (it makes my knees hurt). So, we’re going to start with something much more relaxing to gain an understanding of the most basic flow of the tool: Sleep.
+
 Task 1: Log into your Meraki account and navigate to Automation Workspace.
-NOTE: If you do not see automation in the side menu, please reach out to a member of the support staff for this session.
+
+> [!NOTE] If you do not see automation in the side menu, please reach out to a member of the support staff for this session.
+
 Task 2: Click Create workflow.
  
 Task 3: Select Blank Custom Workflow. 
  
 Task 4: Click Continue and enter a name of your choosing
+
 For example: Lab1a – Sleep 
-Note: The Workflow with Automation Rule option (in the above screenshot) is for workflows triggered by Webhooks and other alternatives.
+
+> [!NOTE] The Workflow with Automation Rule option (in the above screenshot) is for workflows triggered by Webhooks and other alternatives.
  
 Now, you will see a blank canvas ready for any automation you can think of. But before we get too crazy, let’s walk through the basics of the workflows editor.
  
@@ -90,9 +94,9 @@ Task 12: Click View run details in the bottom right.
 Here you can inspect every detail about your workflow’s performance.  This view displays the detailed run data in a workflow editor environment. You can view what the workflow and its activities did, including which parts succeeded or failed (highlighted in red).  The workflow properties section provides a summary of general information, response options, prompt response, variables, automation rules, targets, and output values from the workflow execution.  You can click each activity to show its properties, including output values such as JSON output which you may copy for further use.
 Note that you can click the sleep activity and drill down into the details of that specific activity.  Click anywhere in the grey space to return to the general workflow run details (which will be more interesting shortly).
 Congratulations!  You’re now officially a workflow automation and orchestration designer, and much more rested due to the generous nap Cisco just gave you.
-
  
-Lab 1B: I Need Some Sleep (with user Input)
+## Lab Exercise 1B - I Need Some Sleep (with user Input)
+
 While that was restful and awesome, it wasn’t very flexible.  Let’s create a workflow input for our sleep activity because you might want to abuse the system and take a 5 second nap next time or if you’re late for a customer call, reduce it to 2 seconds.
 Task 1: Click Modify in the top right to return to the workflow editor for this workflow.
 The Properties space should show properties for the general workflow and not the sleep activity
@@ -141,15 +145,15 @@ At this point, we’ve covered the concepts and the flow of how workflows are bu
 •	Validate the workflow
 •	And, finally, run it
 Now that we’ve had a few naps and are well rested, let’s do something more interesting.
-     
  
-Lab 1C: I Need Some Sleep and I’m Bored
+## Lab Exercise 1C - Need Some Sleep and I’m Bored
+
 There is a public and free API called bored-api. It simply returns JSON formatted suggestions of something to do if one is bored.  We’re going to query this API for some activity suggestions, and in the process review what you’ve already learned and add a few more pieces.
 Task 1: Navigate to your Lab1a – Sleep workflow.
 Task 2: In the activities section, on the left of the screen, find the HTTP Request activity under the Web Service category. Drag it onto your workflow canvas ABOVE your sleep activity.
  
 Important Concept: HTTP Request is the activity for all REST APIs. This is how you can add anything to workflows that have a REST API. Workflows isn’t just for Meraki or just for Cisco. The Workflows tool can be used to manage anything with a REST API (or other protocols, such as ssh).
-NOTE: The right side highlights the configuration details for this HTTP request. Click Target to expand and view the error.
+> [!NOTE] The right side highlights the configuration details for this HTTP request. Click Target to expand and view the error.
  
 Let’s discuss the flow of how we interact with any system from within Cisco Workflows. What is required to communicate with a REST API?
 •	Access: Most APIs require an authentication mechanism. This could be a user / password, a token, or an API key.
@@ -163,13 +167,13 @@ Let’s explore the Target types and how our friends in Meraki engineering have 
  
 Task 5: Select HTTP Endpoint.
 Give this endpoint a name you’ll recognize adding a description is optional.
-NOTE: The bored-api falls under the generic REST endpoint that works for anything.
+> [!NOTE] The bored-api falls under the generic REST endpoint that works for anything.
 Task 6: Select True in the No Account Keys field
 The No Account Keys field can be confusing. 
 •	If you want account keys select False.
 •	If you do NOT want account keys select True.
 
-NOTE: Ignore the Remote Keys field. That is for advanced use cases where you need to get behind a firewall with a TLS gateway.	 
+> [!NOTE] Ignore the Remote Keys field. That is for advanced use cases where you need to get behind a firewall with a TLS gateway.	 
 Task 7: Select HTTP in the Protocol field.
 Task 8: Enter 18.188.19.30 in the Host/IP Address field.
 Task 9: Select 8502 in the Port field.
@@ -202,7 +206,8 @@ You know it’s a party when someone suggests that we: “activity”: “Learn 
 Congratulations! You just added a drag-and-drop solution for automating boredom!  SCORE!
 Before we move on, note that the suggestions also include the number of participants.  Quite often, these activity suggestions are for one person, but they can include many more.  In the next section of this lab, we’re going to parse through the JSON and pull out that specific field.
  
-Lab1D: I Need Some Sleep, I’m Bored, and How Many People?
+## Lab Exercise 1D - I Need Some Sleep, I’m Bored, and How Many People?
+
 Time to parse some JSON.
 Task 1: Click the Modify button to navigate back to the workflow editor canvas and find a core activity called JSONPath Query.
 Drag the activity onto your canvas below the HTTP Request (see screenshot). The JSONPath Query is a handy activity for parsing JSON and pulling out the exact field you need.  
@@ -242,7 +247,9 @@ Let’s run it.  You remember all the steps.
  
 NICE!  You’re hitting APIs and pulling out the exact data you want.  How many lines of code have you written?
 Now – Let’s get a little wacky in the last part of this lab. 
-Lab 1E: I Need Some Sleep, I’m Bored, and I’m Taking a Nap Based on the Crowd Size
+
+## Lab Exercise 1E - I Need Some Sleep, I’m Bored, and I’m Taking a Nap Based on the Crowd Size
+
 Buckle up for this step.  We’re going to illustrate a key concept, but in a wacky way.  We’re going to remove the user input for the length of our nap. Instead, we will sleep the same number of seconds as there are people suggested to take part in the activity.
 Example: If there are five participants for the activity, we’re going to sleep for five seconds. If there are two participants, we’re going to sleep for two seconds.
 This is intended to illustrate the nature of workflows.  Use the output of Step 1, to drive the input of Step 3.  How, you ask?  Through the awesome mapping button.  Let’s go.
@@ -250,17 +257,15 @@ Task 1: Navigate back to your workflow editing canvas and delete the input varia
  
 When you delete that variable, the sleep activity went into an error state.  Why?  Because we just deleted the value of the length of our nap.
 Task 2: Fix it by clicking the sleep activity and map in the participants from the output of the JSONPath query.
-     
-
-
  
-Lab 1F: HTTP POST Example
+## Lab Exercise 1F -  HTTP POST Example
+
 Let’s do one more REST example before we move on.  HTTP Gets are great, but let’s submit some information.  In the presentation portion of this session, we talked about “The Prime Directive”, and we’re here to help you with customer engagements if you need it.  So, let’s do an HTTP POST and pull it all together.
 Task 1: Add another HTTP Request activity to the end of the workflow and configure it as follows.
      
 
 
-NOTE: All fields must have a value in the Request Body field of your POST
+> [!NOTE] All fields must have a value in the Request Body field of your POST
 
 Relative URL: /workflows-feedback
 Method: Select POST
@@ -276,7 +281,8 @@ Request Body:
 }	 
 EXCELLENT!  We worked hard on these labs and appreciate any feedback you have that will make them even better.
  
-Lab 1G (Bonus): Cleanup on Aisle 5
+## Lab Exercise 1G (Bonus) - Cleanup on Aisle 5
+
 There are times when it helps other users of your workflows to more easily understand what the “flow” of the workflow is.  Do all your users understand what a JSONPath Query is?  Let’s do a few cleanup tasks just to make sure everything is nice and clean.
 Task 1: Navigate to your workflow canvas in the workflow editor and go through each step.
 Give it a more descriptive name.
