@@ -26,72 +26,97 @@ Today, we’re going to walk you through the tool. No programming experience req
 
 I don’t know about you, but I’m allergic to “Hello World” (it makes my knees hurt). So, we’re going to start with something much more relaxing to gain an understanding of the most basic flow of the tool: Sleep.
 
-Task 1: Log into your Meraki account and navigate to Automation Workspace.
+1. Log into your Meraki account and navigate to Automation Workspace.
 
 > [!NOTE]
-> If you do not see automation in the side menu, please reach out to a member of the support staff for this session.
+> If you do not see automation in the side menu, please utilize the preparation steps in [module 1](./module1-preparation.md).
 
-Task 2: Click Create workflow.
+2.  Click Create workflow.
  
-Task 3: Select Blank Custom Workflow. 
+3. Select Blank Custom Workflow. 
  
-Task 4: Click Continue and enter a name of your choosing
+4. Click Continue and enter a name of your choosing
 
 For example: Lab1a – Sleep 
 
-> [!NOTE] The Workflow with Automation Rule option (in the above screenshot) is for workflows triggered by Webhooks and other alternatives.
+> [!NOTE] 
+> The Workflow with Automation Rule option (in the above screenshot) is for workflows triggered by Webhooks and other alternatives.
  
 Now, you will see a blank canvas ready for any automation you can think of. But before we get too crazy, let’s walk through the basics of the workflows editor.
  
-Adapters
-This panel contains the building blocks and individual functions you can add to a workflow. They are grouped under adapters representing the different controllers with which Workflows integrates, and the individual actions called “activities” are based on API calls to the integrated products, logic components, and other workflows. Think of an activity as an API call or function. Feel free to explore some of them by expanding and examining the activities that are provided “out of the box”.  
+### Adapters
+
+This panel contains the building blocks and individual functions you can add to a workflow. They are grouped under adapters representing the different controllers with which Workflows integrates, and the individual actions called “activities” are based on API calls to the integrated products, logic components, and other workflows. Think of an activity as an API call or function. Feel free to explore some of them by expanding and examining the activities that are provided “out of the box”. 
+
 Notice how many non-Meraki activities are supported right now, and this list isn’t even the exhaustive collection of activities Cisco has (Catalyst Center, Catalyst SD-WAN, Cisco FMC, ISE). There are also non-networking activities, such as Ansible and Terraform and Python. Scroll all the way to the bottom and note the Web Service activity that provides a generic REST API activity. If you need to automate something with a REST API – that is your catch-all for all things REST. I won’t list them all here, however, the main takeaway is that Cisco Workflows is a very powerful multi-domain automation and orchestration tool that your customers will already have.
-Properties
+
+### Properties
+
 This panel includes the properties of the workflow itself as well as those for each activity on the workflow canvas. With a blank palette, the properties panel is where all the details and specifics of your automation are entered. Right now, with a blank canvas, the Properties space is for the overall workflow general configuration.  You can define variables for the workflow, and various other details we will get to soon.
-Canvas
+
+### Canvas
+
 This panel is where you build the structure and set the actions, order, and logic for a workflow. Drag-and-drop items from the Activities panel, including other workflows, here to add them to a workflow. You can drag and drop items on the canvas to change their location and order in the workflow. This is your space to build anything you wish.  
 Validate and Run
+
 These are important concepts to pick up at the beginning of your Cisco Workflows journey.  Run executes your workflow, however, notice how it’s greyed out.  Cisco Workflows has a built in “gut check” that is required before a workflow is allowed to run.  For example, what if the workflow designer forgot to configure a required part of a function or the larger workflow itself – rather than attempt and fail, this screen requires the designer to validate the workflow.  When the gut check is complete the workflow is allowed to run.  
-More Actions
+
+### More Actions
+
 This drop-down menu in the upper left corner contains the following options:
 •	View runs option allows the workflow designer to see the previous runs of the workflow and examine the input and output details of every activity
 •	Duplicate option creates a copy and is useful when you have a working workflow that you would like to modify while also keeping the original workflow intact
 •	Share option will allow you to export your workflow as a JSON file
 
-GSX and Tech Elevate can be exhausting, so let’s get some sleep.  
+Labs can be exhausting, so let’s get some sleep.  
+
 We have a few options to find the activity we are interested in:
 •	Search for all adapters via the Search Activities field
 •	Navigate directly to the activity (the Sleep activity is under the Core adapter)
-Task 5: Select your approach and drag sleep onto the canvas
+
+5. Select your approach and drag sleep onto the canvas
  
 NICE!  You’re already designing automation – no coding required.
-IMPORTANT CONCEPT: You may have noticed that the Properties space on the right has changed. This is because the sleep activity is highlighted. If the workflow designer:
-•	Clicks an activity, the Properties space is for that activity.
-•	Clicks outside of an activity (anywhere in the canvas grey space), it will be the configuration space for the whole workflow.
-•	Clicks outside of an activity (anywhere in the canvas grey space), it will be the properties space for the whole workflow.
-Expand Sleep configuration and you will be able to see which activity field requires a setting. Cisco is feeling generous right now (after all – this is the sales meeting and let’s celebrate) and is going to give us all a 3-second nap. Thank you, Cisco. 
-Task 6: Enter 3 in the Sleep Interval field.
+
+> [!IMPORTANT] 
+> You may have noticed that the Properties space on the right has changed. This is because the sleep activity is highlighted.
+> 
+>If the workflow designer:
+>
+>•	Clicks an activity, the Properties space is for that activity.</br>
+>•	Clicks outside of an activity (anywhere in the canvas grey space), it will be the configuration space for the whole workflow.</br>
+>•	Clicks outside of an activity (anywhere in the canvas grey space), it will be the properties space for the whole workflow.</br>
+>
+>Expand Sleep configuration and you will be able to see which activity field requires a setting. Cisco is feeling generous right now (after all – this is the sales meeting and let’s celebrate) and is going to give us all a 3-second nap. Thank you, Cisco. 
+
+6. Enter 3 in the Sleep Interval field.
      
-IMPORTANT CONCEPT: While in canvas, click anywhere outside of the sleep activity. Note how the Properties space changed back to the general workflow parameters. Now validate the workflow so we can try to run it.
-Task 7: Click Validate. 
-The Validate button should now be greyed out and the Run button will become available for the first time.
+> [!IMPORTANT]
+> While in canvas, click anywhere outside of the sleep activity. Note how the Properties space changed back to the general workflow parameters. Now validate the workflow so we can try to run it.
+
+7. Click Validate. The Validate button should now be greyed out and the Run button will become available for the first time.
  
-Task 8: Click Run.
+8. Click Run.
+
 How refreshing.  Nothing like a Tech Elevate power nap!
     …and then	 
-IMPORTANT CONCEPT:
-•	When an activity is running, it is blue. If it completes successfully, it turns green.  If it fails, it turns red.
-•	An important feature that customers will often look for is an audit log of every action and activity that was performed against the network (or beyond the network), so let’s check out the workflow’s run history.
-Task 9: Navigate to Automation and then Run Monitoring
+
+> [!IMPORTANT]
+> When an activity is running, it is blue. If it completes successfully, it turns green.  If it fails, it turns red.
+>
+> An important feature that customers will often look for is an audit log of every action and activity that was performed against the network (or beyond the network), so let’s check out the workflow’s run history.
+
+9. Navigate to Automation and then Run Monitoring
+
 You won’t see your workflow run until you enter your details.
  
-Task 10: In the Workflow Name field, type the first few characters of the name you gave your workflow earlier.
+10. In the Workflow Name field, type the first few characters of the name you gave your workflow earlier.
  
  
-Task 11: Click your workflow’s display name. 
+11. Click your workflow’s display name. 
 The Run drawer opens on the right, which displays a summary of the workflow execution to help you quickly understand it at a high level. The summary includes information such as description, started by, started on, ended on, status, variables, and any error messages.
  
-Task 12: Click View run details in the bottom right.
+12. Click View run details in the bottom right.
 Here you can inspect every detail about your workflow’s performance.  This view displays the detailed run data in a workflow editor environment. You can view what the workflow and its activities did, including which parts succeeded or failed (highlighted in red).  The workflow properties section provides a summary of general information, response options, prompt response, variables, automation rules, targets, and output values from the workflow execution.  You can click each activity to show its properties, including output values such as JSON output which you may copy for further use.
 Note that you can click the sleep activity and drill down into the details of that specific activity.  Click anywhere in the grey space to return to the general workflow run details (which will be more interesting shortly).
 Congratulations!  You’re now officially a workflow automation and orchestration designer, and much more rested due to the generous nap Cisco just gave you.
