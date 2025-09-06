@@ -10,20 +10,23 @@ If you do not, complete all of the following steps.
 
 ### Step 1 - Create a Meraki Organization
 
-Create a Meraki Organization in North America
-If you do not have a Meraki account with these permissions hosted in North America, you can create one
-here: https://account.meraki.com/login/new_account
-NOTE: You MUST select North America as your region!
-If you already have a Meraki account, you can use that, but DO NOT USE Cisco SSO that only has access
-to the Cisco demo account.
+If you do not have a Meraki account with these permissions hosted in North America, you can create one here: [account.meraki.com](https://account.meraki.com/login/new_account)
+
+> [!NOTE]
+> You MUST select North America as your region!
+
+If you already have a Meraki account, you can use that. If you are a Cisco Employee DO NOT USE Cisco SSO that only has access to the Cisco demo account.
+
 Later, when you sign in, choose Sign in to personal account. Do
 not select Sign in with Cisco SSO.
 
 ### Step 2 - Create a Meraki Network
 
-Create a Network
 If you have created a new Meraki Organization, you will need to create a placeholder network.
-NOTE: This step is not required if you already have a Meraki Organization with at least one network.
+
+> [!NOTE]
+> This step is not required if you already have a Meraki Organization with at least one network.
+
 On the left hand menu, select Network and Create a network
 Enter a Network name and click Create network. Note: This network will not be used in the lab.
 
@@ -32,7 +35,9 @@ Enter a Network name and click Create network. Note: This network will not be us
 Enable Automate Workflows
 Once you are logged in to your new Meraki account, select Organization -> Early Access
 In the Early Access window, enable AI Assistant and Automate Workflows.
-NOTE: You will get a Opt in settings pop up, just click on Save.
+
+> [!NOTE]
+> You will get a Opt in settings pop up, just click on Save.
 
 ## Summary
 
