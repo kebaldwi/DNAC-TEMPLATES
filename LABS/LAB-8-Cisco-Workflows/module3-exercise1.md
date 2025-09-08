@@ -128,25 +128,28 @@ NICE!  You’re already designing automation – no coding required.
 
 10. Navigate to Automation and then Run Monitoring
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow11.png?raw=true "Import JSON")
+    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow11.png?raw=true "Import JSON")
 
 You won’t see your workflow run until you enter your details.
  
 11. In the Workflow Name field, type the first few characters of the name you gave your workflow earlier.
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow12.png?raw=true "Import JSON")
+    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow12.png?raw=true "Import JSON")
+
+    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow13.png?raw=true "Import JSON")
  
-12. Click your workflow’s display name. 
-The Run drawer opens on the right, which displays a summary of the workflow execution to help you quickly understand it at a high level. The summary includes information such as description, started by, started on, ended on, status, variables, and any error messages.
+12. Click your workflow’s display name.</br> 
+    The Run drawer opens on the right, which displays a summary of the workflow execution to help you quickly understand it at a high level. The summary includes information such as description, started by, started on, ended on, status, variables, and any error messages.
  
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow13.png?raw=true "Import JSON")
+    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow14.png?raw=true "Import JSON")
 
 13. Click View run details in the bottom right.
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow14.png?raw=true "Import JSON")
+Here you can inspect every detail about your workflow’s performance.  This view displays the detailed run data in a workflow editor environment. You can view what the workflow and its activities did, including which parts succeeded or failed (highlighted in red).  
 
-Here you can inspect every detail about your workflow’s performance.  This view displays the detailed run data in a workflow editor environment. You can view what the workflow and its activities did, including which parts succeeded or failed (highlighted in red).  The workflow properties section provides a summary of general information, response options, prompt response, variables, automation rules, targets, and output values from the workflow execution.  You can click each activity to show its properties, including output values such as JSON output which you may copy for further use.
+The workflow properties section provides a summary of general information, response options, prompt response, variables, automation rules, targets, and output values from the workflow execution.  You can click each activity to show its properties, including output values such as JSON output which you may copy for further use.
 Note that you can click the sleep activity and drill down into the details of that specific activity.  Click anywhere in the grey space to return to the general workflow run details (which will be more interesting shortly).
+
 Congratulations!  You’re now officially a workflow automation and orchestration designer, and much more rested due to the generous nap Cisco just gave you.
  
 ## Lab Exercise 1B - I Need Some Sleep (with user Input)
