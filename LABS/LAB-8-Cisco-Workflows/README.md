@@ -3,9 +3,13 @@
 ![json](../../ASSETS/COMMON/BUILD/underconstruction.png?raw=true "Import JSON")
 
 > [!WARNING]
-> For best results you will need to prepare your environment for testing. Please go through the preparation guide in the lab sequence below when performing this lab [WORKFLOWS LAB PREPARATION](./module1-prep.md) section.
+> For best results you will need to prepare your environment for testing. Please go through the preparation guide in the lab sequence below when performing this lab [WORKFLOWS LAB PREPARATION](./module1-preparation.md) section.
 
 ## Overview
+
+Meraki has added a well-established Cisco tool to the dashboard; Workflows. But let’s be very clear, it’s not just for Meraki. Customers can use this powerful automation and orchestration engine on pretty much anything. In addition to Meraki, it can be used for automating Cisco controllers like Catalyst Center, SD-WAN, ISE, ThousandEyes, ACI, Nexus Dashboard, Intersight, Webex, IOT, and anything Cisco or 3rd party that utilizes REST-API. If it has a REST API or an SSH adapter, Workflows can automate it.
+
+Today, we’re going to walk you through the tool. No programming experience required. If you can use Microsoft Visio, you can use Workflows. We are going to start with the absolute basics and build layer upon layer until we get into some more complex concepts in the tooling.
 
 This Lab is designed as a set of standalone labs modules to help customers with varying challenges in Automating and Orchestrating their wired network infrastructure. Within the lab we will become oriented and accustomed to Cisco Workflows, its features and capabilities.
 
@@ -28,7 +32,7 @@ The lab will be split into modules to concentrate on specific tasks. Each is des
 
 ## Summary
 
-This lab is intended for educational purposes only. Use outside of a lab environment should be done at the operator's risk. Cisco assumes no liability for incorrect usage.
+This lab is intended for educational and introduction purposes only. Use outside of a lab environment should be done at the operator's risk. Cisco assumes no liability for incorrect usage.
 
 This lab is intended to help drive the adoption of Rest-API and will be added to over time with various use cases. The Public Workspace will also mirror the changes and be kept up to date. We hope this set of labs helps explain how the Rest-API may be used and goes a little further in helping define and document them.
 
