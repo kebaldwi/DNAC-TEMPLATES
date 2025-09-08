@@ -31,19 +31,27 @@ I don’t know about you, but I’m allergic to “Hello World” (it makes my k
 > [!NOTE]
 > If you do not see automation in the side menu, please utilize the preparation steps in [module 1](./module1-preparation.md).
 
-2.  Click Create workflow.
- 
+2. Click Create workflow.
+
+   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow1.png?raw=true "Import JSON")
+
 3. Select Blank Custom Workflow. 
+
+   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow2.png?raw=true "Import JSON")
  
 4. Click Continue and enter a name of your choosing
 
-For example: Lab1a – Sleep 
+   For example: Lab1a – Sleep 
+
+   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow3.png?raw=true "Import JSON")
 
 > [!NOTE] 
 > The Workflow with Automation Rule option (in the above screenshot) is for workflows triggered by Webhooks and other alternatives.
  
-Now, you will see a blank canvas ready for any automation you can think of. But before we get too crazy, let’s walk through the basics of the workflows editor.
- 
+5. Now, you will see a blank canvas ready for any automation you can think of. But before we get too crazy, let’s walk through the basics of the workflows editor.
+
+   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow4.png?raw=true "Import JSON")
+
 ### Adapters
 
 This panel contains the building blocks and individual functions you can add to a workflow. They are grouped under adapters representing the different controllers with which Workflows integrates, and the individual actions called “activities” are based on API calls to the integrated products, logic components, and other workflows. Think of an activity as an API call or function. Feel free to explore some of them by expanding and examining the activities that are provided “out of the box”. 
@@ -74,8 +82,10 @@ We have a few options to find the activity we are interested in:
 •	Search for all adapters via the Search Activities field
 •	Navigate directly to the activity (the Sleep activity is under the Core adapter)
 
-5. Select your approach and drag sleep onto the canvas
- 
+6. Select your approach and drag sleep onto the canvas
+
+   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow5.png?raw=true "Import JSON")
+
 NICE!  You’re already designing automation – no coding required.
 
 > [!IMPORTANT] 
@@ -89,14 +99,14 @@ NICE!  You’re already designing automation – no coding required.
 >
 >Expand Sleep configuration and you will be able to see which activity field requires a setting. Cisco is feeling generous right now (after all – this is the sales meeting and let’s celebrate) and is going to give us all a 3-second nap. Thank you, Cisco. 
 
-6. Enter 3 in the Sleep Interval field.
+7. Enter 3 in the Sleep Interval field.
      
 > [!IMPORTANT]
 > While in canvas, click anywhere outside of the sleep activity. Note how the Properties space changed back to the general workflow parameters. Now validate the workflow so we can try to run it.
 
-7. Click Validate. The Validate button should now be greyed out and the Run button will become available for the first time.
+8. Click Validate. The Validate button should now be greyed out and the Run button will become available for the first time.
  
-8. Click Run.
+9. Click Run.
 
 How refreshing.  Nothing like a Tech Elevate power nap!
     …and then	 
@@ -106,17 +116,17 @@ How refreshing.  Nothing like a Tech Elevate power nap!
 >
 > An important feature that customers will often look for is an audit log of every action and activity that was performed against the network (or beyond the network), so let’s check out the workflow’s run history.
 
-9. Navigate to Automation and then Run Monitoring
+10. Navigate to Automation and then Run Monitoring
 
 You won’t see your workflow run until you enter your details.
  
-10. In the Workflow Name field, type the first few characters of the name you gave your workflow earlier.
+11. In the Workflow Name field, type the first few characters of the name you gave your workflow earlier.
  
  
-11. Click your workflow’s display name. 
+12. Click your workflow’s display name. 
 The Run drawer opens on the right, which displays a summary of the workflow execution to help you quickly understand it at a high level. The summary includes information such as description, started by, started on, ended on, status, variables, and any error messages.
  
-12. Click View run details in the bottom right.
+13. Click View run details in the bottom right.
 Here you can inspect every detail about your workflow’s performance.  This view displays the detailed run data in a workflow editor environment. You can view what the workflow and its activities did, including which parts succeeded or failed (highlighted in red).  The workflow properties section provides a summary of general information, response options, prompt response, variables, automation rules, targets, and output values from the workflow execution.  You can click each activity to show its properties, including output values such as JSON output which you may copy for further use.
 Note that you can click the sleep activity and drill down into the details of that specific activity.  Click anywhere in the grey space to return to the general workflow run details (which will be more interesting shortly).
 Congratulations!  You’re now officially a workflow automation and orchestration designer, and much more rested due to the generous nap Cisco just gave you.
