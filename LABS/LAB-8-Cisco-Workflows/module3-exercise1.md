@@ -155,31 +155,42 @@ Congratulations!  You’re now officially a workflow automation and orchestratio
 ## Lab Exercise 1B - I Need Some Sleep (with user Input)
 
 While that was restful and awesome, it wasn’t very flexible.  Let’s create a workflow input for our sleep activity because you might want to abuse the system and take a 5 second nap next time or if you’re late for a customer call, reduce it to 2 seconds.
-Task 1: Click Modify in the top right to return to the workflow editor for this workflow.
-The Properties space should show properties for the general workflow and not the sleep activity
-Task 2: Scroll down on the right side to the Variables section and click + Add Variable.
- 
-Key Concepts
-Data Type contains a few options, such as Secure String. Secure refers to things like passwords that you don’t want people looking over your shoulder to be able to see.
-Display Name is how you will reference this variable in the rest of your workflow. So, in this instance, we’ll call this “length of nap”. Display names should be in human-readable and capitalized form (no snake or camel case).
-Description is an optional field that can include information about the variable’s purpose.
-Scope is an important field. Click the drop-down menu to view various options. The options for Scope are:
-•	Input: Ask the workflow runner for information at the start
-•	Output: The desired outcome for the workflow
-•	Local: A variable used in the workflow and its value can change.  Example – You want to check how an IOS upgrade is progressing, but if there’s an issue you don’t want it to run infinitely.  A local variable can be the number of times you check on something before timing out of the workflow.
-•	Static: A value you want to hard code in your workflow but still have the freedom to change long term without having to tear apart your workflow.	 
 
+1. Click Modify in the top right to return to the workflow editor for this workflow.
+   </br>The Properties space should show properties for the general workflow and not the sleep activity
+
+2. Scroll down on the right side to the Variables section and click + Add Variable.
  
-Task 3: Select Input in the Scope field and click Save
-Task 4: Create another variable with the Scope set as Output and click Save.
+> [!IMPORTANT] 
+> ### Key Concepts
+> 
+> Data Type contains a few options, such as Secure String. Secure refers to things like passwords that you don’t want people looking over your shoulder to be able to see.
+>
+> Display Name is how you will reference this variable in the rest of your workflow. So, in this instance, we’ll call this “length of nap”. Display names should be in human-readable and capitalized form (no snake or camel case).
+>
+> Description is an optional field that can include information about the variable’s purpose.
+>
+> Scope is an important field. Click the drop-down menu to view various options. The options for Scope are:
+>*	Input: Ask the workflow runner for information at the start
+>*	Output: The desired outcome for the workflow
+>*	Local: A variable used in the workflow and its value can change.  Example – You want to check how an IOS upgrade is progressing, but if there’s an issue you don’t want it to run infinitely.  A local variable can be the number of times you check on something before timing out of the workflow.
+>*	Static: A value you want to hard code in your workflow but still have the freedom to change long term without having to tear apart your workflow.	 
+
+3. Select Input in the Scope field and click Save
+4. Create another variable with the Scope set as Output and click Save.
 At this point, you should have two new variables and your original sleep activity.
      
-IMPORTANT CONCEPT: Mapping variables is a very handy feature of Cisco Workflows. The basic concept is the use of the output of a step as the input for a future step.  For example: 
-1.	Get a list of all your Meraki orgs and select the one you are interested in.
-2.	Get a list of networks in that org.  Select the one you are interested in.
-3.	Get a list of devices in that network.  Select the one you are interested in.
-4.	Get a list of ports on that device.  Select the one you are interested in.
-Task 5: Click the Sleep activity.
+> [!IMPORTANT] 
+> Mapping variables is a very handy feature of Cisco Workflows. The basic concept is the use of the output of a step as the input for a future step.
+>
+>For example: 
+>    1. Get a list of all your Meraki orgs and select the one you are interested in.
+>    2.	Get a list of networks in that org.  Select the one you are interested in.
+>    3.	Get a list of devices in that network.  Select the one you are interested in.
+>    4.	Get a list of ports on that device.  Select the one you are interested in.
+
+5. Click the Sleep activity.
+
 Watch how the Properties space changes to that activity.
 1.	Keeping it simple for now, delete the 3 from the Sleep interval field, and then click the code icon on the right side of the field that looks like this (x).	 
 
@@ -190,7 +201,7 @@ Let’s test it out.  What’s the process to run a new or changed workflow?
 •	The gut check: Validate it
 •	If everything appears good: Run it
 I work hard for Cisco, so I’m going to abuse the system and sleep for a full six seconds. That’s how I roll. 
-Task 6: Enter the number 6 in the Input Variables field and click Run.
+6. Enter the number 6 in the Input Variables field and click Run.
  
 Task 7: Click the Sleep activity when it turns green to verify the settings.
      
