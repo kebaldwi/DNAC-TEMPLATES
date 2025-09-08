@@ -14,8 +14,8 @@ If you do not, complete all of the following steps.
 
    ![json](../../ASSETS/LABS/WORKFLOWS/CreateAccount1.png?raw=true "Import JSON")
 
-   > [!NOTE]
-   > You MUST select North America as your region!
+> [!NOTE]
+> You MUST select North America as your region!
 
 2. If you already have a Meraki account, you can use that. If you are a Cisco Employee **DO NOT USE** the Cisco SSO as that only has access to the Cisco demo account.
 
@@ -41,8 +41,8 @@ If you have created a new Meraki Organization, you will need to create a placeho
 
    ![json](../../ASSETS/LABS/WORKFLOWS/CreateNetwork2.png?raw=true "Import JSON")
 
-   > [!NOTE]
-   >  This network will not be used in the lab.
+> [!NOTE]
+>  This network will not be used in the lab.
 
 ### Step 3 - Enable Automate Workflows
 
@@ -58,8 +58,8 @@ Once you are logged in to your new Meraki account:
 
    ![json](../../ASSETS/LABS/WORKFLOWS/EnableWorkflows3.png?raw=true "Import JSON")
 
-   > [!NOTE]
-   > You will get a Opt in settings pop up, just click on Save.
+> [!NOTE]
+> You will get a Opt in settings pop up, just click on Save.
 
 ## Summary
 
