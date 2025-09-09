@@ -115,11 +115,25 @@ NICE!  You’re already designing automation – no coding required.
 9. Click Run. 
    </br>How refreshing.  Nothing like a Tech Elevate power nap!
 
+<table>
+<tr>
+<td valign="top" width="33%">
+
    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow9.png?raw=true "Import JSON")
 
-    *…and then*	 
+</td>
+<td valign="center" align="center" width="33%">
+
+*…and then*	 
+
+</td>
+<td valign="top" width="33%">
 
    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow10.png?raw=true "Import JSON")
+
+</td>
+</tr>
+</table>
 
 > [!NOTE]
 > When an activity is running, it is blue. If it completes successfully, it turns green.  If it fails, it turns red.
