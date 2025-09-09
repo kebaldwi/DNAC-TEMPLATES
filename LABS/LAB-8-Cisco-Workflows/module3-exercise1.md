@@ -29,15 +29,13 @@ I don’t know about you, but I’m allergic to “Hello World” (it makes my k
 1. Log into your Meraki account and navigate to Automation Workspace.
 
 <div style="padding-left:40px;">
-</table>
-<tr>
-<td>
+<table>
+<tr><td>
 
 > [!NOTE]
 > If you do not see automation in the side menu, please utilize the preparation steps in [module 1](./module1-preparation.md).
 
-</td>
-</tr>
+</td></tr>
 </table>
 </div>
 
