@@ -28,8 +28,12 @@ I don’t know about you, but I’m allergic to “Hello World” (it makes my k
 
 1. Log into your Meraki account and navigate to Automation Workspace.
 
+<div style="padding-left:40px;">
+
 > [!NOTE]
 > If you do not see automation in the side menu, please utilize the preparation steps in [module 1](./module1-preparation.md).
+
+</div>
 
 2. Click Create workflow.
 
@@ -45,12 +49,18 @@ I don’t know about you, but I’m allergic to “Hello World” (it makes my k
 
    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow3.png?raw=true "Import JSON")
 
+<div style="padding-left:40px;">
+
 > [!NOTE] 
 > The Workflow with Automation Rule option (in the above screenshot) is for workflows triggered by Webhooks and other alternatives.
- 
+
+</div>
+
 5. Now, you will see a blank canvas ready for any automation you can think of. But before we get too crazy, let’s walk through the basics of the workflows editor.
 
    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow4.png?raw=true "Import JSON")
+
+<div style="padding-left:40px;">
 
 > [!NOTE]
 >### Adapters
@@ -77,6 +87,8 @@ Validate and Run
 ></br>•	Duplicate option creates a copy and is useful when you have a working workflow that you would like to modify while also keeping the original workflow intact
 ></br>•	Share option will allow you to export your workflow as a JSON file
 
+</div>
+
 Labs can be exhausting, so let’s get some sleep.  
 
 We have a few options to find the activity we are interested in:
@@ -89,7 +101,9 @@ We have a few options to find the activity we are interested in:
 
 NICE!  You’re already designing automation – no coding required.
 
-> [!IMPORTNOTEANT] 
+<div style="padding-left:40px;">
+
+> [!NOTE] 
 > You may have noticed that the Properties space on the right has changed. This is because the sleep activity is highlighted.
 > 
 >If the workflow designer:
@@ -98,6 +112,8 @@ NICE!  You’re already designing automation – no coding required.
 ></br>•	Clicks outside of an activity (anywhere in the canvas grey space), it will be the properties space for the whole workflow.
 >
 >Expand Sleep configuration and you will be able to see which activity field requires a setting. Cisco is feeling generous right now (after all – this is the sales meeting and let’s celebrate) and is going to give us all a 3-second nap. Thank you, Cisco. 
+
+</div>
 
 7. Enter 3 in the Sleep Interval field.
 
@@ -137,10 +153,14 @@ NICE!  You’re already designing automation – no coding required.
 </table>
 </div>
 
+<div style="padding-left:40px;">
+
 > [!NOTE]
 > When an activity is running, it is blue. If it completes successfully, it turns green.  If it fails, it turns red.
 >
 > An important feature that customers will often look for is an audit log of every action and activity that was performed against the network (or beyond the network), so let’s check out the workflow’s run history.
+
+</div>
 
 10. Navigate to Automation and then Run Monitoring
 
@@ -211,16 +231,37 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
 
 3. Select Input in the Scope field and click Save
 4. Create another variable with the Scope set as Output and click Save.
-At this point, you should have two new variables and your original sleep activity.
-     
-> [!IMPORTANT] 
-> Mapping variables is a very handy feature of Cisco Workflows. The basic concept is the use of the output of a step as the input for a future step.
+   </br>At this point, you should have two new variables and your original sleep activity.
+
+<div style="padding-left:40px;">
+<table>
+<tr>
+<td valign="top" width="50%">
+
+![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow3.png?raw=true "Import JSON")
+
+</td>
+<td valign="top" width="50%">
+
+![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow4.png?raw=true "Import JSON")
+
+</td>
+</tr>
+</table>
+</div>
+
+<div style="padding-left:40px;">
+
+> [!NOTE] 
+> Mapping variables is a very handy feature of Cisco Workflows. The basic concept is the use of the output of a step as    the input for a future step.
 >
 >For example: 
 >    1. Get a list of all your Meraki orgs and select the one you are interested in.
 >    2.	Get a list of networks in that org.  Select the one you are interested in.
 >    3.	Get a list of devices in that network.  Select the one you are interested in.
 >    4.	Get a list of ports on that device.  Select the one you are interested in.
+
+</div>
 
 5. Click the Sleep activity.
 
