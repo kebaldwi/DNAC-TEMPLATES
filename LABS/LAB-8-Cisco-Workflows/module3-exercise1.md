@@ -115,25 +115,25 @@ NICE!  You’re already designing automation – no coding required.
 9. Click Run. 
    </br>How refreshing.  Nothing like a Tech Elevate power nap!
 
-<table>
-<tr>
-<td valign="top" width="33%">
-
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow9.png?raw=true "Import JSON")
-
-</td>
-<td valign="center" align="center" width="33%">
-
-*…and then*	 
-
-</td>
-<td valign="top" width="33%">
-
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow10.png?raw=true "Import JSON")
-
-</td>
-</tr>
-</table>
+   <table>
+   <tr>
+   <td valign="top" width="33%">
+   
+      ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow9.png?raw=true "Import JSON")
+   
+   </td>
+   <td valign="center" align="center" width="33%">
+   
+   *…and then*	 
+   
+   </td>
+   <td valign="top" width="33%">
+   
+      ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow10.png?raw=true "Import JSON")
+   
+   </td>
+   </tr>
+   </table>
 
 > [!NOTE]
 > When an activity is running, it is blue. If it completes successfully, it turns green.  If it fails, it turns red.
@@ -177,33 +177,33 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
  
     ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow1.png?raw=true "Import JSON")
 
-<table>
-<tr>
-<td valign="top" width="50%">
-
-> [!NOTE] 
-> ### Key Concepts
-> 
-> Data Type contains a few options, such as Secure String. Secure refers to things like passwords that you don’t want people looking over your shoulder to be able to see.
->
-> Display Name is how you will reference this variable in the rest of your workflow. So, in this instance, we’ll call this “length of nap”. Display names should be in human-readable and capitalized form (no snake or camel case).
->
-> Description is an optional field that can include information about the variable’s purpose.
->
-> Scope is an important field. Click the drop-down menu to view various options. The options for Scope are:
->*	Input: Ask the workflow runner for information at the start
->*	Output: The desired outcome for the workflow
->*	Local: A variable used in the workflow and its value can change.  Example – You want to check how an IOS upgrade is progressing, but if there’s an issue you don’t want it to run infinitely.  A local variable can be the number of times you check on something before timing out of the workflow.
->*	Static: A value you want to hard code in your workflow but still have the freedom to change long term without having to tear apart your workflow.	 
-
-</td>
-<td valign="center" width="50%">
-
-![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow2.png?raw=true "Import JSON")
-
-</td>
-</tr>
-</table>
+   <table>
+   <tr>
+   <td valign="top" width="50%">
+   
+   > [!NOTE] 
+   > ### Key Concepts
+   > 
+   > Data Type contains a few options, such as Secure String. Secure refers to things like passwords that you don’t want    people looking over your shoulder to be able to see.
+   >
+   > Display Name is how you will reference this variable in the rest of your workflow. So, in this instance, we’ll call    this “length of nap”. Display names should be in human-readable and capitalized form (no snake or camel case).
+   >
+   > Description is an optional field that can include information about the variable’s purpose.
+   >
+   > Scope is an important field. Click the drop-down menu to view various options. The options for Scope are:
+   >*	Input: Ask the workflow runner for information at the start
+   >*	Output: The desired outcome for the workflow
+   >*	Local: A variable used in the workflow and its value can change.  Example – You want to check how an IOS upgrade is    progressing, but if there’s an issue you don’t want it to run infinitely.  A local variable can be the number of times    you check on something before timing out of the workflow.
+   >*	Static: A value you want to hard code in your workflow but still have the freedom to change long term without    having to tear apart your workflow.	 
+   
+   </td>
+   <td valign="center" width="50%">
+   
+   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow2.png?raw=true "Import JSON")
+   
+   </td>
+   </tr>
+   </table>
 
 3. Select Input in the Scope field and click Save
 4. Create another variable with the Scope set as Output and click Save.
