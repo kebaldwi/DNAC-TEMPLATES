@@ -93,9 +93,9 @@ Validate and Run
 >### More Actions
 >
 >This drop-down menu in the upper left corner contains the following options:
-></br>•	View runs option allows the workflow designer to see the previous runs of the workflow and examine the input and output details of every activity
-></br>•	Duplicate option creates a copy and is useful when you have a working workflow that you would like to modify while also keeping the original workflow intact
-></br>•	Share option will allow you to export your workflow as a JSON file
+></br>*	View runs option allows the workflow designer to see the previous runs of the workflow and examine the input and output details of every activity
+></br>*	Duplicate option creates a copy and is useful when you have a working workflow that you would like to modify while also keeping the original workflow intact
+></br>*	Share option will allow you to export your workflow as a JSON file
 
 </td></tr>
 </table>
@@ -104,8 +104,8 @@ Validate and Run
 Labs can be exhausting, so let’s get some sleep.  
 
 We have a few options to find the activity we are interested in:
-•	Search for all adapters via the Search Activities field
-•	Navigate directly to the activity (the Sleep activity is under the Core adapter)
+*	Search for all adapters via the Search Activities field
+*	Navigate directly to the activity (the Sleep activity is under the Core adapter)
 
 6. Select your approach and drag sleep onto the canvas
 
@@ -121,9 +121,9 @@ NICE!  You’re already designing automation – no coding required.
 > You may have noticed that the Properties space on the right has changed. This is because the sleep activity is highlighted.
 > 
 >If the workflow designer:
-></br>•	Clicks an activity, the Properties space is for that activity.
-></br>•	Clicks outside of an activity (anywhere in the canvas grey space), it will be the configuration space for the whole workflow.
-></br>•	Clicks outside of an activity (anywhere in the canvas grey space), it will be the properties space for the whole workflow.
+></br>*	Clicks an activity, the Properties space is for that activity.
+></br>*	Clicks outside of an activity (anywhere in the canvas grey space), it will be the configuration space for the whole workflow.
+></br>*	Clicks outside of an activity (anywhere in the canvas grey space), it will be the properties space for the whole workflow.
 >
 >Expand Sleep configuration and you will be able to see which activity field requires a setting. Cisco is feeling generous right now (after all – this is the sales meeting and let’s celebrate) and is going to give us all a 3-second nap. Thank you, Cisco. 
 
@@ -362,101 +362,134 @@ Now that we’ve had a few naps and are well rested, let’s do something more i
 ## Lab Exercise 1C - Need Some Sleep and I’m Bored
 
 There is a public and free API called bored-api. It simply returns JSON formatted suggestions of something to do if one is bored.  We’re going to query this API for some activity suggestions, and in the process review what you’ve already learned and add a few more pieces.
-Task 1: Navigate to your Lab1a – Sleep workflow.
-Task 2: In the activities section, on the left of the screen, find the HTTP Request activity under the Web Service category. Drag it onto your workflow canvas ABOVE your sleep activity.
+
+1. Navigate to your Lab1a – Sleep workflow.
+2. In the activities section, on the left of the screen, find the HTTP Request activity under the Web Service category. Drag it onto your workflow canvas ABOVE your sleep activity.
  
 Important Concept: HTTP Request is the activity for all REST APIs. This is how you can add anything to workflows that have a REST API. Workflows isn’t just for Meraki or just for Cisco. The Workflows tool can be used to manage anything with a REST API (or other protocols, such as ssh).
-> [!NOTE] The right side highlights the configuration details for this HTTP request. Click Target to expand and view the error.
+
+> [!NOTE] 
+> The right side highlights the configuration details for this HTTP request. Click Target to expand and view the error.
  
 Let’s discuss the flow of how we interact with any system from within Cisco Workflows. What is required to communicate with a REST API?
-•	Access: Most APIs require an authentication mechanism. This could be a user / password, a token, or an API key.
-•	Address: A REST API can be accessed via a URL or an IP address. You can also validate certification on the endpoint URL.
-•	Base URL (optional): Using Workflows you can add the base URL to the address once instead of having to type it during every interaction with Meraki. In this example the base URL is bold: api.meraki.com/api/v1.
+
+*	Access: Most APIs require an authentication mechanism. This could be a user / password, a token, or an API key.
+*	Address: A REST API can be accessed via a URL or an IP address. You can also validate certification on the endpoint URL.
+*	Base URL (optional): Using Workflows you can add the base URL to the address once instead of having to type it during every interaction with Meraki. In this example the base URL is bold: api.meraki.com/api/v1.
+
 Even though we’re trying to find a solution to our boredom, we don’t have any of this set up yet the way Workflows is designed.  Bored-api doesn’t require authentication so we can skip that for now.  
-Task 3: Navigate to Targets.
+
+3. Navigate to Targets.
      
-Task 4: Click + New target (note that your screen may look different from this screenshot)
+4. Click + New target (note that your screen may look different from this screenshot)
 Let’s explore the Target types and how our friends in Meraki engineering have made it as easy as possible to onboard Cisco controllers (Catalyst Center, Catalyst SD-WAN, ISE, FMC, Meraki). However, they didn’t stop there. Service Now, Terraform, and Ansible are also accounted for.
  
-Task 5: Select HTTP Endpoint.
+5. Select HTTP Endpoint.
 Give this endpoint a name you’ll recognize adding a description is optional.
-> [!NOTE] The bored-api falls under the generic REST endpoint that works for anything.
-Task 6: Select True in the No Account Keys field
-The No Account Keys field can be confusing. 
-•	If you want account keys select False.
-•	If you do NOT want account keys select True.
 
-> [!NOTE] Ignore the Remote Keys field. That is for advanced use cases where you need to get behind a firewall with a TLS gateway.	 
-Task 7: Select HTTP in the Protocol field.
-Task 8: Enter 18.188.19.30 in the Host/IP Address field.
-Task 9: Select 8502 in the Port field.
-Task 10: Enter /api in the Path field.
+> [!NOTE] 
+> The bored-api falls under the generic REST endpoint that works for anything.
+
+6. Select True in the No Account Keys field
+The No Account Keys field can be confusing. 
+*	If you want account keys select False.
+*	If you do NOT want account keys select True.
+
+> [!NOTE]
+> Ignore the Remote Keys field. That is for advanced use cases where you need to get behind a firewall with a TLS gateway.	 
+
+7. Select HTTP in the Protocol field.
+8. Enter 18.188.19.30 in the Host/IP Address field.
+9. Select 8502 in the Port field.
+10. Enter /api in the Path field.
+
 This is the base path for all APIs.
+
 You do not need to check the Disable server certificate validation box for this activity. However, take note of this because SEs are often doing automation work against test servers or IPs that don’t have valid public certs.
      
-Task 11: Click Save.
+11. Click Save.
 Cisco Workflows verifies that the details you entered were correct. You should see Bored API as a valid target in your list of targets.
  
-Task 12: Navigate back to your Lab1 workflow canvas. 
+12. Navigate back to your Lab1 workflow canvas. 
+
 You should be able to select a target.  But before you do that, let’s understand that there are multiple places where a target can be configured. When possible, save yourself a few clicks and define a default target for the entire workflow.  
-•	Option 1: Define it as the default target for the entire workflow.  This is a valid action for this lab.
-•	Option 2: Override the default target for the workflow in an individual activity.  This is also a valid action for this lab.
+
+*	Option 1: Define it as the default target for the entire workflow.  This is a valid action for this lab.
+*	Option 2: Override the default target for the workflow in an individual activity.  This is also a valid action for this lab.
+
 Design Tip: You may be thinking that one probably wants to start the design process by defining authentication and targets before you even start on your workflow, and you’d be right to think this.  Since this is an introduction workshop, we’re adding the topics as they come up. Consequently, things might be slightly out of order for a seasoned workflow designer.
-Task 13: Make sure you’re in the Properties space for the general workflow, scroll down, and define your default target.
- 
-Task 14: Click the HTTP Request so we can configure that activity. 
-Task 15: Select Use workflow target.
-Task 16: Expand HTTP Request and enter /random in the Relative URL field.
+
+13. Make sure you’re in the Properties space for the general workflow, scroll down, and define your default target.
+14. Click the HTTP Request so we can configure that activity. 
+15. Select Use workflow target.
+16. Expand HTTP Request and enter /random in the Relative URL field.
  
 We’re ready to run our new and improved workflow.
-Hint: Is the Run button greyed out?  Do you remember the step you have to do when you create or edit a workflow?  A “gutcheck” perhaps?
+
+> [!TIP}]
+> Is the Run button greyed out?  Do you remember the step you have to do when you create or edit a workflow?  A “gutcheck” perhaps?
+
 If all went well, you should see something like this. By default, the run details are displayed in the panel on the right for the general workflow.
  
-Task 17: Click the HTTP Request to get the details of that activity.
+17. Click the HTTP Request to get the details of that activity.
+
 You might have to scroll down in the panel on the right to see the JSON result of our request for an activity.  Yours will likely be different from what is shown here.
  
 You know it’s a party when someone suggests that we: “activity”: “Learn about a distributed version control system such as Git”
+
 Congratulations! You just added a drag-and-drop solution for automating boredom!  SCORE!
 Before we move on, note that the suggestions also include the number of participants.  Quite often, these activity suggestions are for one person, but they can include many more.  In the next section of this lab, we’re going to parse through the JSON and pull out that specific field.
  
 ## Lab Exercise 1D - I Need Some Sleep, I’m Bored, and How Many People?
 
 Time to parse some JSON.
-Task 1: Click the Modify button to navigate back to the workflow editor canvas and find a core activity called JSONPath Query.
+
+1. Click the Modify button to navigate back to the workflow editor canvas and find a core activity called JSONPath Query.
+
 Drag the activity onto your canvas below the HTTP Request (see screenshot). The JSONPath Query is a handy activity for parsing JSON and pulling out the exact field you need.  
+
 If it’s not already highlighted in the Properties and Configuration space, click your new JSONPath Query. Notice it wants two pieces of information: the source to run the query on and the JSONPath to query. First – let’s set the source JSON to the output of the HTTP Request we just created. Remember the puzzle piece for easy and fast mapping?
-Task 2: Click the code icon in the right corner of the Format box.
-     
 
+2. Click the code icon in the right corner of the Format box.
+3. In the Browse Variables window, select Activities, HTTP Request, and then Body.
 
-Task 3: In the Browse Variables window, select Activities, HTTP Request, and then Body.
 In REST terms, we want the body that was returned from that HTTP Request.
  
-Task 4: Click Save.
+4. Click Save.
 You’ve taken the output from step 1 and passed it as the input for step 2.
  
 Now we need to tell the system what field we are interested in extracting and using as a variable in a future workflow step.
-Task 5: Click + Add under JSONPath Queries.
-Note that the title is plural. We can easily extract 2, 3, 5, or 22 variables vs just 1.
+
+5. Click + Add under JSONPath Queries.
+
+> [!NOTE] 
+> The title is plural. We can easily extract 2, 3, 5, or 22 variables vs just 1.
+
 Review the output from the previous step.
  
 IMPORTANT CONCEPT: If you have not done a lot of coding, this may not be intuitive.  If you have done a little python coding and extracted entries from lists or dictionaries, this will become clear.
+
 Quick dictionary example:
 >>> my_dictionary = {“color”:”red”,”size”:”large”,”cost”:”20 quid”}
 >>> print(my_dictionary[“size”])
 >>> large
+
 The JSONPath query example was in the format of [“size”].  That means you want to go through the dictionary and return the entry called “size”. In this example, we want to query [“participants”].
-Task 6: Enter ["participants"] as the JSONPath Query.
-Task 7: Enter Participant Number as the Property Name.
-Task 8: Select Integer as the Property Type
+
+6. Enter ["participants"] as the JSONPath Query.
+7. Enter Participant Number as the Property Name.
+8. Select Integer as the Property Type
+
 The Property Name field is what this item will be called in the Browse Variables window when mapping the output of this JSONPath Query activity.  
  
 SAFETY TIP: This is simple JSON code. Things might be more complicated in the real world.  It might be worth looking into some JSON 101 material if you want to get into more advanced workflow design.
 Workflows Best Practice 
+
 For activity output variables, like Python activity or JSONPath, the names of the variables should be written in camel case, as they're considered code-related. That practice helps distinguish them from the workflow names. For example, deviceID vs. Device ID, and sortByDate vs. sort_by_date.
 Let’s run it.  You remember all the steps.  
-•	Click the JSONPath Query activity to get the details of that activity on the right-hand side.
-•	If you scroll down, you’ll see the source JSON and the resulting Path Query
+
+*	Click the JSONPath Query activity to get the details of that activity on the right-hand side.
+*	If you scroll down, you’ll see the source JSON and the resulting Path Query
  
 NICE!  You’re hitting APIs and pulling out the exact data you want.  How many lines of code have you written?
 Now – Let’s get a little wacky in the last part of this lab. 
@@ -466,20 +499,22 @@ Now – Let’s get a little wacky in the last part of this lab. 
 Buckle up for this step.  We’re going to illustrate a key concept, but in a wacky way.  We’re going to remove the user input for the length of our nap. Instead, we will sleep the same number of seconds as there are people suggested to take part in the activity.
 Example: If there are five participants for the activity, we’re going to sleep for five seconds. If there are two participants, we’re going to sleep for two seconds.
 This is intended to illustrate the nature of workflows.  Use the output of Step 1, to drive the input of Step 3.  How, you ask?  Through the awesome mapping button.  Let’s go.
-Task 1: Navigate back to your workflow editing canvas and delete the input variable from the general workflow configuration space and properties space.
+
+1. Navigate back to your workflow editing canvas and delete the input variable from the general workflow configuration space and properties space.
  
 When you delete that variable, the sleep activity went into an error state.  Why?  Because we just deleted the value of the length of our nap.
-Task 2: Fix it by clicking the sleep activity and map in the participants from the output of the JSONPath query.
+
+2. Fix it by clicking the sleep activity and map in the participants from the output of the JSONPath query.
  
 ## Lab Exercise 1F -  HTTP POST Example
 
 Let’s do one more REST example before we move on.  HTTP Gets are great, but let’s submit some information.  In the presentation portion of this session, we talked about “The Prime Directive”, and we’re here to help you with customer engagements if you need it.  So, let’s do an HTTP POST and pull it all together.
-Task 1: Add another HTTP Request activity to the end of the workflow and configure it as follows.
-     
 
+1. Add another HTTP Request activity to the end of the workflow and configure it as follows.
 
 > [!NOTE] All fields must have a value in the Request Body field of your POST
 
+```
 Relative URL: /workflows-feedback
 Method: Select POST
 Request Body:
@@ -492,21 +527,27 @@ Request Body:
   "Lab_Rating": "5 stars",
   "Feedback": "…"
 }	 
+```
+
 EXCELLENT!  We worked hard on these labs and appreciate any feedback you have that will make them even better.
  
 ## Lab Exercise 1G (Bonus) - Cleanup on Aisle 5
 
 There are times when it helps other users of your workflows to more easily understand what the “flow” of the workflow is.  Do all your users understand what a JSONPath Query is?  Let’s do a few cleanup tasks just to make sure everything is nice and clean.
-Task 1: Navigate to your workflow canvas in the workflow editor and go through each step.
+
+1. Navigate to your workflow canvas in the workflow editor and go through each step.
+
 Give it a more descriptive name.
      
 Nice!  Believe it or not, you’ve just covered nearly all the basic concepts of Cisco Workflows.  You’re requesting JSON data from APIs, and parsing it for the specific items you’re interested in.  You’re then using that data in future actions.
 Consider what you can already do.  Run a detailed report against Catalyst Center and Meraki.  Parse out the specifics of what you’re interested in.
 What could this mean for Cisco, your account team, your customers, or you specifically?
 Complete this sentence: “I could sell another $10M of Cisco if Cisco or I could just… <your answer here>.”  
-•	What if you could write a workflow to do that thing? That one missing feature you need to close the deal?
-•	Could the Workflows tool do that one missing feature, or that one tweak to a product outcome?
-•	Can workflows buy you and the Cisco BE time to fully develop and deliver a function or outcome?
+
+*	What if you could write a workflow to do that thing? That one missing feature you need to close the deal?
+*	Could the Workflows tool do that one missing feature, or that one tweak to a product outcome?
+*	Can workflows buy you and the Cisco BE time to fully develop and deliver a function or outcome?
+
 We hope you enjoyed this workshop, and we look forward to seeing what you can do with Workflows. 
 
 ## Summary
