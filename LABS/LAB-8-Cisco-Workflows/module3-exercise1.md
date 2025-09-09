@@ -52,7 +52,7 @@ I don’t know about you, but I’m allergic to “Hello World” (it makes my k
 
    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow4.png?raw=true "Import JSON")
 
-> [!IMPORTANT]
+> [!NOTE]
 >### Adapters
 >
 >This panel contains the building blocks and individual functions you can add to a workflow. They are grouped under adapters representing the different controllers with which Workflows integrates, and the individual actions called “activities” are based on API calls to the integrated products, logic components, and other workflows. Think of an activity as an API call or function. Feel free to explore some of them by expanding and examining the activities that are provided “out of the box”. 
@@ -89,7 +89,7 @@ We have a few options to find the activity we are interested in:
 
 NICE!  You’re already designing automation – no coding required.
 
-> [!IMPORTANT] 
+> [!IMPORTNOTEANT] 
 > You may have noticed that the Properties space on the right has changed. This is because the sleep activity is highlighted.
 > 
 >If the workflow designer:
@@ -121,7 +121,7 @@ NICE!  You’re already designing automation – no coding required.
 
    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow10.png?raw=true "Import JSON")
 
-> [!IMPORTANT]
+> [!NOTE]
 > When an activity is running, it is blue. If it completes successfully, it turns green.  If it fails, it turns red.
 >
 > An important feature that customers will often look for is an audit log of every action and activity that was performed against the network (or beyond the network), so let’s check out the workflow’s run history.
@@ -161,7 +161,13 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
 
 2. Scroll down on the right side to the Variables section and click + Add Variable.
  
-> [!IMPORTANT] 
+    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow1.png?raw=true "Import JSON")
+
+<table>
+<tr>
+<td valign="top" width="50%">
+
+> [!NOTE] 
 > ### Key Concepts
 > 
 > Data Type contains a few options, such as Secure String. Secure refers to things like passwords that you don’t want people looking over your shoulder to be able to see.
@@ -175,6 +181,14 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
 >*	Output: The desired outcome for the workflow
 >*	Local: A variable used in the workflow and its value can change.  Example – You want to check how an IOS upgrade is progressing, but if there’s an issue you don’t want it to run infinitely.  A local variable can be the number of times you check on something before timing out of the workflow.
 >*	Static: A value you want to hard code in your workflow but still have the freedom to change long term without having to tear apart your workflow.	 
+
+</td>
+<td valign="top" width="50%">
+
+![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow1.png?raw=true "Import JSON")
+
+</td>
+</tr>
 
 3. Select Input in the Scope field and click Save
 4. Create another variable with the Scope set as Output and click Save.
@@ -192,6 +206,7 @@ At this point, you should have two new variables and your original sleep activit
 5. Click the Sleep activity.
 
 Watch how the Properties space changes to that activity.
+
 1.	Keeping it simple for now, delete the 3 from the Sleep interval field, and then click the code icon on the right side of the field that looks like this (x).	 
 
 2.	Select Workflow, Input (variables), Length of Nap, and then click Save.	 
