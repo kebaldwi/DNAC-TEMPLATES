@@ -30,14 +30,12 @@ I don’t know about you, but I’m allergic to “Hello World” (it makes my k
 
 <div style="padding-left:40px;">
 <table>
-<tr>
-<td valign="top" width="100%">
+<tr><td valign="top" width="100%">
 
 > [!NOTE]
 > If you do not see automation in the side menu, please utilize the preparation steps in [module 1](./module1-preparation.md).
 
-</td>
-</tr>
+</td></tr>
 </table>
 </div>
 
@@ -56,10 +54,14 @@ I don’t know about you, but I’m allergic to “Hello World” (it makes my k
    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow3.png?raw=true "Import JSON")
 
 <div style="padding-left:40px;">
+<table>
+<tr><td valign="top" width="100%">
 
 > [!NOTE] 
 > The Workflow with Automation Rule option (in the above screenshot) is for workflows triggered by Webhooks and other alternatives.
 
+</td></tr>
+</table>
 </div>
 
 5. Now, you will see a blank canvas ready for any automation you can think of. But before we get too crazy, let’s walk through the basics of the workflows editor.
@@ -67,6 +69,8 @@ I don’t know about you, but I’m allergic to “Hello World” (it makes my k
    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow4.png?raw=true "Import JSON")
 
 <div style="padding-left:40px;">
+<table>
+<tr><td valign="top" width="100%">
 
 > [!NOTE]
 >### Adapters
@@ -93,6 +97,8 @@ Validate and Run
 ></br>•	Duplicate option creates a copy and is useful when you have a working workflow that you would like to modify while also keeping the original workflow intact
 ></br>•	Share option will allow you to export your workflow as a JSON file
 
+</td></tr>
+</table>
 </div>
 
 Labs can be exhausting, so let’s get some sleep.  
@@ -108,6 +114,8 @@ We have a few options to find the activity we are interested in:
 NICE!  You’re already designing automation – no coding required.
 
 <div style="padding-left:40px;">
+<table>
+<tr><td valign="top" width="100%">
 
 > [!NOTE] 
 > You may have noticed that the Properties space on the right has changed. This is because the sleep activity is highlighted.
@@ -119,6 +127,8 @@ NICE!  You’re already designing automation – no coding required.
 >
 >Expand Sleep configuration and you will be able to see which activity field requires a setting. Cisco is feeling generous right now (after all – this is the sales meeting and let’s celebrate) and is going to give us all a 3-second nap. Thank you, Cisco. 
 
+</td></tr>
+</table>
 </div>
 
 7. Enter 3 in the Sleep Interval field.
@@ -160,12 +170,16 @@ NICE!  You’re already designing automation – no coding required.
 </div>
 
 <div style="padding-left:40px;">
+<table>
+<tr><td valign="top" width="100%">
 
 > [!NOTE]
 > When an activity is running, it is blue. If it completes successfully, it turns green.  If it fails, it turns red.
 >
 > An important feature that customers will often look for is an audit log of every action and activity that was performed against the network (or beyond the network), so let’s check out the workflow’s run history.
 
+</td></tr>
+</table>
 </div>
 
 10. Navigate to Automation and then Run Monitoring
@@ -256,6 +270,10 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
 </table>
 </div>
 
+<div style="padding-left:40px;">
+<table>
+<tr><td valign="top" width="100%">
+
 > [!NOTE] 
 > Mapping variables is a very handy feature of Cisco Workflows. The basic concept is the use of the output of a step as    the input for a future step.
 >
@@ -264,6 +282,10 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
 >    2.	Get a list of networks in that org.  Select the one you are interested in.
 >    3.	Get a list of devices in that network.  Select the one you are interested in.
 >    4.	Get a list of ports on that device.  Select the one you are interested in.
+
+</td></tr>
+</table>
+</div>
 
 5. Click the Sleep activity.
 
