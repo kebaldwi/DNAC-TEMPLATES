@@ -183,12 +183,13 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
 >*	Static: A value you want to hard code in your workflow but still have the freedom to change long term without having to tear apart your workflow.	 
 
 </td>
-<td valign="top" width="50%">
+<td valign="center" width="50%">
 
-![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow1.png?raw=true "Import JSON")
+![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow2.png?raw=true "Import JSON")
 
 </td>
 </tr>
+</table>
 
 3. Select Input in the Scope field and click Save
 4. Create another variable with the Scope set as Output and click Save.
