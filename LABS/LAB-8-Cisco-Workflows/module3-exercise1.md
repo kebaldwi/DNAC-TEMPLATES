@@ -288,31 +288,77 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
 </div>
 
 5. Click the Sleep activity.
+   </br>Watch how the Properties space changes to that activity.
 
-Watch how the Properties space changes to that activity.
+   1. Keeping it simple for now, delete the 3 from the Sleep interval field, and then click the code icon on the right side of the field that looks like this (x).	 
 
-1.	Keeping it simple for now, delete the 3 from the Sleep interval field, and then click the code icon on the right side of the field that looks like this (x).	 
+      ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow5.png?raw=true "Import JSON")
 
-2.	Select Workflow, Input (variables), Length of Nap, and then click Save.	 
-3.	Your properties view should look like this.	 
-How easy was that?  A few clicks and you’ve replaced a hard coded value with a dynamic one.  NICE!
-Let’s test it out.  What’s the process to run a new or changed workflow?
-•	The gut check: Validate it
-•	If everything appears good: Run it
-I work hard for Cisco, so I’m going to abuse the system and sleep for a full six seconds. That’s how I roll. 
+   2. Select Workflow, Input (variables), Length of Nap, and then click Save.	 
+
+      ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow6.png?raw=true "Import JSON")
+
+   3. Your properties view should look like this.	 
+
+      ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow7.png?raw=true "Import JSON")
+
+      How easy was that? A few clicks and you’ve replaced a hard coded value with a dynamic one.  NICE!
+      Let’s test it out. What’s the process to run a new or changed workflow?
+      *	The gut check: Validate it
+      *	If everything appears good: Run it
+      
+      I work hard for Cisco, so I’m going to abuse the system and sleep for a full six seconds. That’s how I roll. 
+
 6. Enter the number 6 in the Input Variables field and click Run.
+
+      ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow8.png?raw=true "Import JSON")
  
-Task 7: Click the Sleep activity when it turns green to verify the settings.
-     
+7. Click the Sleep activity when it turns green to verify the settings.
+
+
+<div style="padding-left:40px;">
+<table>
+<tr>
+<td valign="top" width="50%">
+
+![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow9.png?raw=true "Import JSON")
+
+</td>
+<td valign="top" width="50%">
+
+![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow10.png?raw=true "Import JSON")
+
+</td>
+</tr>
+</table>
+</div>
+
 There it is: 6 seconds. Maybe it was a mistake for me to abuse the system in an environment that keeps detailed logs of every single action!
+
+<div style="padding-left:40px;">
+<table>
+<tr>
+<td valign="top" width="50%">
+
 At this point, we’ve covered the concepts and the flow of how workflows are built.
-•	Adapters and Activities
-•	Drag and Drop
-•	Configuring activities with variables and mappings
-•	Validate the workflow
-•	And, finally, run it
+*	Adapters and Activities
+*	Drag and Drop
+*	Configuring activities with variables and mappings
+*	Validate the workflow
+*	And, finally, run it
+
 Now that we’ve had a few naps and are well rested, let’s do something more interesting.
- 
+
+</td>
+<td valign="top" width="50%">
+
+![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow11.png?raw=true "Import JSON")
+
+</td>
+</tr>
+</table>
+</div>
+
 ## Lab Exercise 1C - Need Some Sleep and I’m Bored
 
 There is a public and free API called bored-api. It simply returns JSON formatted suggestions of something to do if one is bored.  We’re going to query this API for some activity suggestions, and in the process review what you’ve already learned and add a few more pieces.
