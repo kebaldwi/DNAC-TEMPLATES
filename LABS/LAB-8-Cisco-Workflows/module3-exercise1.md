@@ -29,10 +29,12 @@ I don’t know about you, but I’m allergic to “Hello World” (it makes my k
 1. Log into your Meraki account and navigate to Automation Workspace.
 
 <div style="padding-left:40px;">
+</table>
 
 > [!NOTE]
 > If you do not see automation in the side menu, please utilize the preparation steps in [module 1](./module1-preparation.md).
 
+</table>
 </div>
 
 2. Click Create workflow.
@@ -250,8 +252,6 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
 </table>
 </div>
 
-<div style="padding-left:40px;">
-
 > [!NOTE] 
 > Mapping variables is a very handy feature of Cisco Workflows. The basic concept is the use of the output of a step as    the input for a future step.
 >
@@ -260,8 +260,6 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
 >    2.	Get a list of networks in that org.  Select the one you are interested in.
 >    3.	Get a list of devices in that network.  Select the one you are interested in.
 >    4.	Get a list of ports on that device.  Select the one you are interested in.
-
-</div>
 
 5. Click the Sleep activity.
 
