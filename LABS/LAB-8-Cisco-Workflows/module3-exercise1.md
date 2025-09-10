@@ -111,7 +111,7 @@ We have a few options to find the activity we are interested in:
 
    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow5.png?raw=true "Import JSON")
 
-NICE!  You’re already designing automation – no coding required.
+**NICE!**  You’re already designing automation – no coding required.
 
 <div style="padding-left:40px;">
 <table>
@@ -302,7 +302,7 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
 
       ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow7.png?raw=true "Import JSON")
 
-      How easy was that? A few clicks and you’ve replaced a hard coded value with a dynamic one.  NICE!
+      How easy was that? A few clicks and you’ve replaced a hard coded value with a dynamic one.  **NICE!**
       Let’s test it out. What’s the process to run a new or changed workflow?
       *	The gut check: Validate it
       *	If everything appears good: Run it
@@ -495,7 +495,7 @@ The No Account Keys field can be confusing.
     * Option 1: Define it as the default target for the entire workflow.  This is a valid action for this lab.
     * Option 2: Override the default target for the workflow in an individual activity.  This is also a valid action for this lab.
 
-<div style="padding-left:60px;">
+<div style="padding-left:40px;">
 <table>
 <tr>
 <td valign="top" width="100%">
@@ -510,81 +510,151 @@ The No Account Keys field can be confusing.
 
 13. Make sure you’re in the Properties space for the general workflow, scroll down, and define your default target.
 
+    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow10.png?raw=true "Import JSON")
+
 14. Click the HTTP Request so we can configure that activity. 
 
 15. Select Use workflow target.
 
 16. Expand HTTP Request and enter /random in the Relative URL field.
- 
-We’re ready to run our new and improved workflow.
+
+    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow11.png?raw=true "Import JSON")
+
+    We’re ready to run our new and improved workflow.
+
+<div style="padding-left:40px;">
+<table>
+<tr>
+<td valign="top" width="100%">
 
 > [!TIP]
 > Is the Run button greyed out?  Do you remember the step you have to do when you create or edit a workflow?  A “gutcheck” perhaps?
 
-If all went well, you should see something like this. By default, the run details are displayed in the panel on the right for the general workflow.
- 
-17. Click the HTTP Request to get the details of that activity.
+</td>
+</tr>
+</table>
+</div>
 
-You might have to scroll down in the panel on the right to see the JSON result of our request for an activity.  Yours will likely be different from what is shown here.
- 
-You know it’s a party when someone suggests that we: “activity”: “Learn about a distributed version control system such as Git”
+17. If all went well, you should see something like this. By default, the run details are displayed in the panel on the right for the general workflow.
 
-Congratulations! You just added a drag-and-drop solution for automating boredom!  SCORE!
-Before we move on, note that the suggestions also include the number of participants.  Quite often, these activity suggestions are for one person, but they can include many more.  In the next section of this lab, we’re going to parse through the JSON and pull out that specific field.
+    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow12.png?raw=true "Import JSON")
+
+18. Click the HTTP Request to get the details of that activity.
+
+    You might have to scroll down in the panel on the right to see the JSON result of our request for an activity.  Yours will likely be different from what is shown here.
+ 
+    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow13.png?raw=true "Import JSON")
+
+    You know it’s a party when someone suggests that we: “activity”: “Learn about a distributed version control system such as Git”
+
+    Congratulations! You just added a drag-and-drop solution for automating boredom!  SCORE!
+    
+    Before we move on, note that the suggestions also include the number of participants.  Quite often, these activity suggestions are for one person, but they can include many more.  In the next section of this lab, we’re going to parse through the JSON and pull out that specific field.
  
 ## Lab Exercise 1D - I Need Some Sleep, I’m Bored, and How Many People?
 
 Time to parse some JSON.
 
-1. Click the Modify button to navigate back to the workflow editor canvas and find a core activity called JSONPath Query.
+1. Click the **Modify** button to navigate back to the workflow editor canvas and find a core activity called JSONPath Query.
 
-Drag the activity onto your canvas below the HTTP Request (see screenshot). The JSONPath Query is a handy activity for parsing JSON and pulling out the exact field you need.  
+   Drag the activity onto your canvas below the HTTP Request (see screenshot). The JSONPath Query is a handy activity for parsing JSON and pulling out the exact field you need.  
 
-If it’s not already highlighted in the Properties and Configuration space, click your new JSONPath Query. Notice it wants two pieces of information: the source to run the query on and the JSONPath to query. First – let’s set the source JSON to the output of the HTTP Request we just created. Remember the puzzle piece for easy and fast mapping?
+   If it’s not already highlighted in the Properties and Configuration space, click your new JSONPath Query. Notice it wants two pieces of information: the source to run the query on and the JSONPath to query. First – let’s set the source JSON to the output of the HTTP Request we just created. Remember the puzzle piece for easy and fast mapping?
 
 2. Click the code icon in the right corner of the Format box.
+
+<div style="padding-left:40px;">
+<table>
+<tr>
+<td valign="top" width="38%">
+
+   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow1.png?raw=true "Import JSON")
+
+</td>
+<td valign="top" width="72%">
+
+   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow2.png?raw=true "Import JSON")
+
+</td>
+</tr>
+</table>
+</div>
+
 3. In the Browse Variables window, select Activities, HTTP Request, and then Body.
 
-In REST terms, we want the body that was returned from that HTTP Request.
- 
+   In REST terms, we want the body that was returned from that HTTP Request.
+
+   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow3.png?raw=true "Import JSON")
+
 4. Click Save.
-You’ve taken the output from step 1 and passed it as the input for step 2.
- 
-Now we need to tell the system what field we are interested in extracting and using as a variable in a future workflow step.
+   </br>You’ve taken the output from step 1 and passed it as the input for step 2.
+
+   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow4.png?raw=true "Import JSON")
+
+    Now we need to tell the system what field we are interested in extracting and using as a variable in a future workflow step.
 
 5. Click + Add under JSONPath Queries.
+
+<div style="padding-left:30px;">
+<table>
+<tr>
+<td valign="top" width="38%">
 
 > [!NOTE] 
 > The title is plural. We can easily extract 2, 3, 5, or 22 variables vs just 1.
 
 Review the output from the previous step.
- 
-IMPORTANT CONCEPT: If you have not done a lot of coding, this may not be intuitive.  If you have done a little python coding and extracted entries from lists or dictionaries, this will become clear.
 
-Quick dictionary example:
->>> my_dictionary = {“color”:”red”,”size”:”large”,”cost”:”20 quid”}
->>> print(my_dictionary[“size”])
->>> large
+</td>
+<td valign="top" width="72%">
 
-The JSONPath query example was in the format of [“size”].  That means you want to go through the dictionary and return the entry called “size”. In this example, we want to query [“participants”].
+![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow5.png?raw=true "Import JSON")
+
+</td>
+</tr>
+</table>
+</div>
+
+> [!NOTE]
+> ## IMPORTANT CONCEPT: 
+>If you have not done a lot of coding, this may not be intuitive.  If you have done a little python coding and extracted entries from lists or dictionaries, this will become clear.
+>
+>**Quick dictionary example:**
+>
+>```
+>>>> my_dictionary = {“color”:”red”,”size”:”large”,”cost”:”20 quid”}
+>>>> print(my_dictionary[“size”])
+>>>> large
+>```
+>
+>The JSONPath query example was in the format of **[“size”]**.  That means you want to go through the dictionary and return the entry called “**size**”. In this example, we want to query **[“participants”]**.
 
 6. Enter ["participants"] as the JSONPath Query.
+
 7. Enter Participant Number as the Property Name.
+
 8. Select Integer as the Property Type
 
-The Property Name field is what this item will be called in the Browse Variables window when mapping the output of this JSONPath Query activity.  
+   The Property Name field is what this item will be called in the Browse Variables window when mapping the output of this JSONPath Query activity.  
  
-SAFETY TIP: This is simple JSON code. Things might be more complicated in the real world.  It might be worth looking into some JSON 101 material if you want to get into more advanced workflow design.
-Workflows Best Practice 
+   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow6.png?raw=true "Import JSON")
 
-For activity output variables, like Python activity or JSONPath, the names of the variables should be written in camel case, as they're considered code-related. That practice helps distinguish them from the workflow names. For example, deviceID vs. Device ID, and sortByDate vs. sort_by_date.
-Let’s run it.  You remember all the steps.  
+> [!TIP]
+> ## SAFETY TIP 
+> This is simple JSON code. Things might be more complicated in the real world.  It might be worth looking into some JSON 101 material if you want to get into more advanced workflow design.
+>
+>## Workflows Best Practice 
+>For activity output variables, like Python activity or JSONPath, the names of the variables should be written in camel case, as they're considered code-related. That practice helps distinguish them from the workflow names. For example, deviceID vs. Device ID, and sortByDate vs. sort_by_date.
 
-*	Click the JSONPath Query activity to get the details of that activity on the right-hand side.
-*	If you scroll down, you’ll see the source JSON and the resulting Path Query
- 
-NICE!  You’re hitting APIs and pulling out the exact data you want.  How many lines of code have you written?
-Now – Let’s get a little wacky in the last part of this lab. 
+9. Let’s run it.  You remember all the steps.
+
+   * Click the JSONPath Query activity to get the details of that activity on the right-hand side.
+   * If you scroll down, you’ll see the source JSON and the resulting Path Query
+
+     ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow7.png?raw=true "Import JSON")
+
+   **NICE!**  You’re hitting APIs and pulling out the exact data you want.  How many lines of code have you written?
+   </br>Now – Let’s get a little wacky in the last part of this lab. 
 
 ## Lab Exercise 1E - I Need Some Sleep, I’m Bored, and I’m Taking a Nap Based on the Crowd Size
 
@@ -631,7 +701,7 @@ There are times when it helps other users of your workflows to more easily under
 
 Give it a more descriptive name.
      
-Nice!  Believe it or not, you’ve just covered nearly all the basic concepts of Cisco Workflows.  You’re requesting JSON data from APIs, and parsing it for the specific items you’re interested in.  You’re then using that data in future actions.
+**NICE!**  Believe it or not, you’ve just covered nearly all the basic concepts of Cisco Workflows.  You’re requesting JSON data from APIs, and parsing it for the specific items you’re interested in.  You’re then using that data in future actions.
 Consider what you can already do.  Run a detailed report against Catalyst Center and Meraki.  Parse out the specifics of what you’re interested in.
 What could this mean for Cisco, your account team, your customers, or you specifically?
 Complete this sentence: “I could sell another $10M of Cisco if Cisco or I could just… <your answer here>.”  
