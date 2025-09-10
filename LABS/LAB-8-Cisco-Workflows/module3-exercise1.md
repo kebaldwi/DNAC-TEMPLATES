@@ -365,22 +365,37 @@ There is a public and free API called bored-api. It simply returns JSON formatte
 
 1. Navigate to your Lab1a – Sleep workflow.
 2. In the activities section, on the left of the screen, find the HTTP Request activity under the Web Service category. Drag it onto your workflow canvas ABOVE your sleep activity.
- 
-Important Concept: HTTP Request is the activity for all REST APIs. This is how you can add anything to workflows that have a REST API. Workflows isn’t just for Meraki or just for Cisco. The Workflows tool can be used to manage anything with a REST API (or other protocols, such as ssh).
+
+   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow1.png?raw=true "Import JSON")
+
+<div style="padding-left:40px;">
+<table>
+<tr>
+<td valign="top" width="50%">
 
 > [!NOTE] 
+> ### Key Concepts
+> HTTP Request is the activity for all REST APIs. This is how you can add anything to workflows that have a REST API. Workflows isn’t just for Meraki or just for Cisco. The Workflows tool can be used to manage anything with a REST API (or other protocols, such as ssh).
+> 
 > The right side highlights the configuration details for this HTTP request. Click Target to expand and view the error.
- 
-Let’s discuss the flow of how we interact with any system from within Cisco Workflows. What is required to communicate with a REST API?
+> 
+>   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow2.png?raw=true "Import JSON")
+>Let’s discuss the flow of how we interact with any system from within Cisco Workflows. What is required to communicate with a REST API?
+>
+>*	Access: Most APIs require an authentication mechanism. This could be a user / password, a token, or an API key.
+>*	Address: A REST API can be accessed via a URL or an IP address. You can also validate certification on the endpoint URL.
+>*	Base URL (optional): Using Workflows you can add the base URL to the address once instead of having to type it during every interaction with Meraki. In this example the base URL is bold: api.meraki.com/api/v1.
+>
+>Even though we’re trying to find a solution to our boredom, we don’t have any of this set up yet the way Workflows is designed.  Bored-api doesn’t require authentication so we can skip that for now.  
 
-*	Access: Most APIs require an authentication mechanism. This could be a user / password, a token, or an API key.
-*	Address: A REST API can be accessed via a URL or an IP address. You can also validate certification on the endpoint URL.
-*	Base URL (optional): Using Workflows you can add the base URL to the address once instead of having to type it during every interaction with Meraki. In this example the base URL is bold: api.meraki.com/api/v1.
-
-Even though we’re trying to find a solution to our boredom, we don’t have any of this set up yet the way Workflows is designed.  Bored-api doesn’t require authentication so we can skip that for now.  
+</td>
+</tr>
+</table>
+</div>
 
 3. Navigate to Targets.
-     
+   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow3.png?raw=true "Import JSON")
+
 4. Click + New target (note that your screen may look different from this screenshot)
 Let’s explore the Target types and how our friends in Meraki engineering have made it as easy as possible to onboard Cisco controllers (Catalyst Center, Catalyst SD-WAN, ISE, FMC, Meraki). However, they didn’t stop there. Service Now, Terraform, and Ansible are also accounted for.
  
