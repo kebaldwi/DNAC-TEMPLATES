@@ -251,7 +251,7 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
 
 3. Select Input in the Scope field and click Save
 4. Create another variable with the Scope set as Output and click Save.
-   </br>At this point, you should have two new variables and your original sleep activity.
+   </br></br>At this point, you should have two new variables and your original sleep activity.
 
 <div style="padding-left:40px;">
 <table>
@@ -314,7 +314,6 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
       ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow8.png?raw=true "Import JSON")
  
 7. Click the Sleep activity when it turns green to verify the settings.
-
 
 <div style="padding-left:40px;">
 <table>
@@ -394,18 +393,52 @@ There is a public and free API called bored-api. It simply returns JSON formatte
 </div>
 
 3. Navigate to Targets.
+
+<div style="padding-left:40px;">
+<table>
+<tr>
+<td valign="top" width="50%">
+
    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow3.png?raw=true "Import JSON")
 
+</td>
+<td valign="top" width="50%">
+
+   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow4.png?raw=true "Import JSON")
+
+</td>
+</tr>
+</table>
+</div>
+
 4. Click + New target (note that your screen may look different from this screenshot)
-Let’s explore the Target types and how our friends in Meraki engineering have made it as easy as possible to onboard Cisco controllers (Catalyst Center, Catalyst SD-WAN, ISE, FMC, Meraki). However, they didn’t stop there. Service Now, Terraform, and Ansible are also accounted for.
- 
+   </br></br>Let’s explore the Target types and how our friends in Meraki engineering have made it as easy as possible to onboard Cisco controllers (Catalyst Center, Catalyst SD-WAN, ISE, FMC, Meraki). However, they didn’t stop there. Service Now, Terraform, and Ansible are also accounted for.
+
+   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow5.png?raw=true "Import JSON")
+
 5. Select HTTP Endpoint.
-Give this endpoint a name you’ll recognize adding a description is optional.
+   </br>Give this endpoint a name you’ll recognize adding a description is optional.
+
+<div style="padding-left:40px;">
+<table>
+<tr>
+<td valign="top" width="100%">
 
 > [!NOTE] 
 > The bored-api falls under the generic REST endpoint that works for anything.
 
+</td>
+</tr>
+</table>
+</div>
+
 6. Select True in the No Account Keys field
+
+<div style="padding-left:40px;">
+<table>
+<tr>
+<td valign="top" width="55%">
+
 The No Account Keys field can be confusing. 
 *	If you want account keys select False.
 *	If you do NOT want account keys select True.
@@ -413,10 +446,38 @@ The No Account Keys field can be confusing.
 > [!NOTE]
 > Ignore the Remote Keys field. That is for advanced use cases where you need to get behind a firewall with a TLS gateway.	 
 
+</td>
+<td valign="top" width="45%">
+
+   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow7.png?raw=true "Import JSON")
+
+</td>
+</tr>
+</table>
+</div>
+
+<div style="padding-left:0px;">
+<table>
+<tr>
+<td valign="top" width="57%">
+
 7. Select HTTP in the Protocol field.
+
 8. Enter 18.188.19.30 in the Host/IP Address field.
+
 9. Select 8502 in the Port field.
+
 10. Enter /api in the Path field.
+
+</td>
+<td valign="top" width="43%">
+
+   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow8.png?raw=true "Import JSON")
+
+</td>
+</tr>
+</table>
+</div>
 
 This is the base path for all APIs.
 
