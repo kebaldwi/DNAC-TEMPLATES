@@ -495,7 +495,7 @@ The No Account Keys field can be confusing.
     * Option 1: Define it as the default target for the entire workflow.  This is a valid action for this lab.
     * Option 2: Override the default target for the workflow in an individual activity.  This is also a valid action for this lab.
 
-<div style="padding-left:40px;">
+<div style="padding-left:60px;">
 <table>
 <tr>
 <td valign="top" width="100%">
