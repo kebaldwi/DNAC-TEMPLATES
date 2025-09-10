@@ -469,6 +469,10 @@ The No Account Keys field can be confusing.
 
 10. Enter /api in the Path field.
 
+    This is the base path for all APIs.
+
+    You do not need to check the **Disable server certificate validation** box for this activity. However, take note of this because SEs are often doing automation work against test servers or IPs that don’t have valid public certs.
+
 </td>
 <td valign="top" width="43%">
 
@@ -478,31 +482,33 @@ The No Account Keys field can be confusing.
 </tr>
 </table>
 </div>
-
-This is the base path for all APIs.
-
-You do not need to check the Disable server certificate validation box for this activity. However, take note of this because SEs are often doing automation work against test servers or IPs that don’t have valid public certs.
-     
-11. Click Save.
-Cisco Workflows verifies that the details you entered were correct. You should see Bored API as a valid target in your list of targets.
  
+11. Click Save.
+    </br>Cisco Workflows verifies that the details you entered were correct. You should see Bored API as a valid target in your list of targets.
+
+    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow9.png?raw=true "Import JSON")
+
 12. Navigate back to your Lab1 workflow canvas. 
 
-You should be able to select a target.  But before you do that, let’s understand that there are multiple places where a target can be configured. When possible, save yourself a few clicks and define a default target for the entire workflow.  
+    You should be able to select a target.  But before you do that, let’s understand that there are multiple places where a target can be configured. When possible, save yourself a few clicks and define a default target for the entire workflow.  
 
-*	Option 1: Define it as the default target for the entire workflow.  This is a valid action for this lab.
-*	Option 2: Override the default target for the workflow in an individual activity.  This is also a valid action for this lab.
+    * Option 1: Define it as the default target for the entire workflow.  This is a valid action for this lab.
+    * Option 2: Override the default target for the workflow in an individual activity.  This is also a valid action for this lab.
 
-Design Tip: You may be thinking that one probably wants to start the design process by defining authentication and targets before you even start on your workflow, and you’d be right to think this.  Since this is an introduction workshop, we’re adding the topics as they come up. Consequently, things might be slightly out of order for a seasoned workflow designer.
+    > [!TIP]
+    > You may be thinking that one probably wants to start the design process by defining authentication and targets before you even start on your workflow, and you’d be right to think this.  Since this is an introduction workshop, we’re adding the topics as they come up. Consequently, things might be slightly out of order for a seasoned workflow designer.
 
 13. Make sure you’re in the Properties space for the general workflow, scroll down, and define your default target.
+
 14. Click the HTTP Request so we can configure that activity. 
+
 15. Select Use workflow target.
+
 16. Expand HTTP Request and enter /random in the Relative URL field.
  
 We’re ready to run our new and improved workflow.
 
-> [!TIP}]
+> [!TIP]
 > Is the Run button greyed out?  Do you remember the step you have to do when you create or edit a workflow?  A “gutcheck” perhaps?
 
 If all went well, you should see something like this. By default, the run details are displayed in the panel on the right for the general workflow.
