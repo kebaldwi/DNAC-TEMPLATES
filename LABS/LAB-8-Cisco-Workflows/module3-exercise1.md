@@ -495,8 +495,18 @@ The No Account Keys field can be confusing.
     * Option 1: Define it as the default target for the entire workflow.  This is a valid action for this lab.
     * Option 2: Override the default target for the workflow in an individual activity.  This is also a valid action for this lab.
 
-    > [!TIP]
-    > You may be thinking that one probably wants to start the design process by defining authentication and targets before you even start on your workflow, and you’d be right to think this.  Since this is an introduction workshop, we’re adding the topics as they come up. Consequently, things might be slightly out of order for a seasoned workflow designer.
+<div style="padding-left:40px;">
+<table>
+<tr>
+<td valign="top" width="100%">
+
+> [!TIP]
+> You may be thinking that one probably wants to start the design process by defining authentication and targets before you even start on your workflow, and you’d be right to think this.  Since this is an introduction workshop, we’re adding the topics as they come up. Consequently, things might be slightly out of order for a seasoned workflow designer.
+
+</td>
+</tr>
+</table>
+</div>
 
 13. Make sure you’re in the Properties space for the general workflow, scroll down, and define your default target.
 
