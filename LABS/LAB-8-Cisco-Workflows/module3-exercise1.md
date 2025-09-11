@@ -320,12 +320,12 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
 <tr>
 <td valign="top" width="50%">
 
-![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow9.png?raw=true "Import JSON")
+<img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow9.png" alt="Workflow Properties" style="width:100%; height:auto;">
 
 </td>
 <td valign="top" width="50%">
 
-![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow10.png?raw=true "Import JSON")
+<img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow10.png" alt="Workflow Properties" style="width:99%; height:auto;">
 
 </td>
 </tr>
@@ -378,7 +378,8 @@ There is a public and free API called bored-api. It simply returns JSON formatte
 > 
 > The right side highlights the configuration details for this HTTP request. Click Target to expand and view the error.
 > 
->   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow2.png?raw=true "Import JSON")
+>   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow2.png" alt="HTTP Request" style="width:70%; height:auto;">
+>
 >Let’s discuss the flow of how we interact with any system from within Cisco Workflows. What is required to communicate with a REST API?
 >
 >*	Access: Most APIs require an authentication mechanism. This could be a user / password, a token, or an API key.
@@ -399,7 +400,7 @@ There is a public and free API called bored-api. It simply returns JSON formatte
 <tr>
 <td valign="top" width="50%">
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow3.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow3.png" alt="HTTP Request" style="width:60%; height:auto;">
 
 </td>
 <td valign="top" width="50%">
@@ -510,7 +511,8 @@ The No Account Keys field can be confusing.
 
 13. Make sure you’re in the Properties space for the general workflow, scroll down, and define your default target.
 
-    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow10.png?raw=true "Import JSON")
+    <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow10.png" alt="Workflow Properties" style="width:70%; height:auto;">
+
 
 14. Click the HTTP Request so we can configure that activity. 
 
@@ -518,7 +520,7 @@ The No Account Keys field can be confusing.
 
 16. Expand HTTP Request and enter /random in the Relative URL field.
 
-    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow11.png?raw=true "Import JSON")
+    <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow11.png" alt="Workflow Properties" style="width:70%; height:auto;">
 
     We’re ready to run our new and improved workflow.
 
@@ -543,7 +545,7 @@ The No Account Keys field can be confusing.
 
     You might have to scroll down in the panel on the right to see the JSON result of our request for an activity.  Yours will likely be different from what is shown here.
  
-    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow13.png?raw=true "Import JSON")
+     <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow13.png" alt="Workflow Properties" style="width:70%; height:auto;">
 
     You know it’s a party when someone suggests that we: “activity”: “Learn about a distributed version control system such as Git”
 
