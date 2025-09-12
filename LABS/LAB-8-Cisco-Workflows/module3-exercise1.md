@@ -41,17 +41,17 @@ I don’t know about you, but I’m allergic to “Hello World” (it makes my k
 
 2. Click Create workflow.
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow1.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow1.png" alt="Workflow Properties" style="width:100%; height:auto;">
 
 3. Select Blank Custom Workflow. 
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow2.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow2.png" alt="Workflow Properties" style="width:100%; height:auto;">
  
 4. Click Continue and enter a name of your choosing
 
    For example: Lab1a – Sleep 
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow3.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow3.png" alt="Workflow Properties" style="width:100%; height:auto;">
 
 <div style="padding-left:40px;">
 <table>
@@ -66,7 +66,7 @@ I don’t know about you, but I’m allergic to “Hello World” (it makes my k
 
 5. Now, you will see a blank canvas ready for any automation you can think of. But before we get too crazy, let’s walk through the basics of the workflows editor.
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow4.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow4.png" alt="Workflow Properties" style="width:100%; height:auto;">
 
 <div style="padding-left:40px;">
 <table>
@@ -109,7 +109,7 @@ We have a few options to find the activity we are interested in:
 
 6. Select your approach and drag sleep onto the canvas
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow5.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow5.png" alt="Workflow Properties" style="width:100%; height:auto;">
 
 **NICE!**  You’re already designing automation – no coding required.
 
@@ -133,16 +133,16 @@ We have a few options to find the activity we are interested in:
 
 7. Enter 3 in the Sleep Interval field.
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow6.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow6.png" alt="Workflow Properties" style="width:70%; height:auto;">
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow7.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow7.png" alt="Workflow Properties" style="width:50%; height:auto;">
 
 > [!IMPORTANT]
 > While in canvas, click anywhere outside of the sleep activity. Note how the Properties space changed back to the general workflow parameters. Now validate the workflow so we can try to run it.
 
 8. Click Validate. The Validate button should now be greyed out and the Run button will become available for the first time.
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow8.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow8.png" alt="Workflow Properties" style="width:60%; height:auto;">
 
 9. Click Run. 
    </br>How refreshing.  Nothing like a Tech Elevate power nap!
@@ -150,9 +150,9 @@ We have a few options to find the activity we are interested in:
 <div style="padding-left:40px;">
 <table>
 <tr>
-<td valign="top" width="33%">
+<td valign="top" align="center" width="33%">
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow9.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow9.png" alt="Workflow Properties" style="width:100%; height:auto;">
 
 </td>
 <td valign="center" align="center" width="33%">
@@ -160,9 +160,9 @@ We have a few options to find the activity we are interested in:
 *…and then*	 
 
 </td>
-<td valign="top" width="33%">
+<td valign="top" align="center" width="33%">
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow10.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow10.png" alt="Workflow Properties" style="width:100%; height:auto;">
 
 </td>
 </tr>
@@ -184,20 +184,20 @@ We have a few options to find the activity we are interested in:
 
 10. Navigate to Automation and then Run Monitoring
 
-    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow11.png?raw=true "Import JSON")
+    <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow11.png" alt="Workflow Properties" style="width:100%; height:auto;">
 
 You won’t see your workflow run until you enter your details.
  
 11. In the Workflow Name field, type the first few characters of the name you gave your workflow earlier.
 
-    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow12.png?raw=true "Import JSON")
+    <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow12.png" alt="Workflow Properties" style="width:100%; height:auto;">
 
-    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow13.png?raw=true "Import JSON")
+    <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow13.png" alt="Workflow Properties" style="width:60%; height:auto;">
  
 12. Click your workflow’s display name.</br> 
     The Run drawer opens on the right, which displays a summary of the workflow execution to help you quickly understand it at a high level. The summary includes information such as description, started by, started on, ended on, status, variables, and any error messages.
  
-    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow14.png?raw=true "Import JSON")
+    <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow14.png" alt="Workflow Properties" style="width:100%; height:auto;">
 
 13. Click View run details in the bottom right.
 
@@ -216,8 +216,8 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
    </br>The Properties space should show properties for the general workflow and not the sleep activity
 
 2. Scroll down on the right side to the Variables section and click + Add Variable.
- 
-    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow1.png?raw=true "Import JSON")
+   
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow1.png" alt="Workflow Properties" style="width:60%; height:auto;">
 
 <div style="padding-left:40px;">
 <table>
@@ -240,9 +240,9 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
 >*	Static: A value you want to hard code in your workflow but still have the freedom to change long term without    having to tear apart your workflow.	 
 
 </td>
-<td valign="center" width="50%">
+<td valign="center" align="center" width="50%">
 
-![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow2.png?raw=true "Import JSON")
+<img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow2.png" alt="Workflow Properties" style="width:100%; height:auto;">
 
 </td>
 </tr>
@@ -256,14 +256,14 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
 <div style="padding-left:40px;">
 <table>
 <tr>
-<td valign="top" width="50%">
+<td valign="top" align="center" width="50%">
 
-![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow3.png?raw=true "Import JSON")
+<img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow3.png" alt="Workflow Properties" style="width:100%; height:auto;">
 
 </td>
-<td valign="top" width="50%">
+<td valign="top" align="center" width="50%">
 
-![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow4.png?raw=true "Import JSON")
+<img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow4.png" alt="Workflow Properties" style="width:100%; height:auto;">
 
 </td>
 </tr>
@@ -292,15 +292,15 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
 
    1. Keeping it simple for now, delete the 3 from the Sleep interval field, and then click the code icon on the right side of the field that looks like this (x).	 
 
-      ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow5.png?raw=true "Import JSON")
+      <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow5.png" alt="Workflow Properties" style="width:80%; height:auto;">
 
    2. Select Workflow, Input (variables), Length of Nap, and then click Save.	 
 
-      ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow6.png?raw=true "Import JSON")
+      <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow6.png" alt="Workflow Properties" style="width:65%; height:auto;">
 
    3. Your properties view should look like this.	 
 
-      ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow7.png?raw=true "Import JSON")
+      <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow7.png" alt="Workflow Properties" style="width:60%; height:auto;">
 
       How easy was that? A few clicks and you’ve replaced a hard coded value with a dynamic one.  **NICE!**
       Let’s test it out. What’s the process to run a new or changed workflow?
@@ -311,21 +311,21 @@ While that was restful and awesome, it wasn’t very flexible.  Let’s create a
 
 6. Enter the number 6 in the Input Variables field and click Run.
 
-      ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow8.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow8.png" alt="Workflow Properties" style="width:60%; height:auto;">
  
 7. Click the Sleep activity when it turns green to verify the settings.
 
 <div style="padding-left:40px;">
 <table>
 <tr>
-<td valign="top" width="50%">
+<td valign="top" align="center" width="50%">
 
-<img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow9.png" alt="Workflow Properties" style="width:100%; height:auto;">
+<img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow9.png" alt="Workflow Properties" style="width:70%; height:auto;">
 
 </td>
-<td valign="top" width="50%">
+<td valign="top" align="center" width="50%">
 
-<img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow10.png" alt="Workflow Properties" style="width:99%; height:auto;">
+<img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow10.png" alt="Workflow Properties" style="width:70%; height:auto;">
 
 </td>
 </tr>
@@ -349,9 +349,9 @@ At this point, we’ve covered the concepts and the flow of how workflows are bu
 Now that we’ve had a few naps and are well rested, let’s do something more interesting.
 
 </td>
-<td valign="top" width="50%">
+<td valign="top" align="center" width="50%">
 
-![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow11.png?raw=true "Import JSON")
+<img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/ModifyWorkflow11.png" alt="HTTP Request" style="width:100%; height:auto;">
 
 </td>
 </tr>
@@ -365,7 +365,7 @@ There is a public and free API called bored-api. It simply returns JSON formatte
 1. Navigate to your Lab1a – Sleep workflow.
 2. In the activities section, on the left of the screen, find the HTTP Request activity under the Web Service category. Drag it onto your workflow canvas ABOVE your sleep activity.
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow1.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow1.png" alt="HTTP Request" style="width:100%; height:auto;">
 
 <div style="padding-left:40px;">
 <table>
@@ -398,14 +398,14 @@ There is a public and free API called bored-api. It simply returns JSON formatte
 <div style="padding-left:40px;">
 <table>
 <tr>
-<td valign="top" width="50%">
+<td valign="top" align="center" width="50%">
 
    <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow3.png" alt="HTTP Request" style="width:60%; height:auto;">
 
 </td>
-<td valign="top" width="50%">
+<td valign="top" align="center" width="50%">
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow4.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow4.png" alt="HTTP Request" style="width:100%; height:auto;">
 
 </td>
 </tr>
@@ -415,7 +415,7 @@ There is a public and free API called bored-api. It simply returns JSON formatte
 4. Click + New target (note that your screen may look different from this screenshot)
    </br></br>Let’s explore the Target types and how our friends in Meraki engineering have made it as easy as possible to onboard Cisco controllers (Catalyst Center, Catalyst SD-WAN, ISE, FMC, Meraki). However, they didn’t stop there. Service Now, Terraform, and Ansible are also accounted for.
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow5.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow5.png" alt="HTTP Request" style="width:100%; height:auto;">
 
 5. Select HTTP Endpoint.
    </br>Give this endpoint a name you’ll recognize adding a description is optional.
@@ -448,9 +448,9 @@ The No Account Keys field can be confusing.
 > Ignore the Remote Keys field. That is for advanced use cases where you need to get behind a firewall with a TLS gateway.	 
 
 </td>
-<td valign="top" width="45%">
+<td valign="top" align="center" width="45%">
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow7.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow7.png" alt="HTTP Request" style="width:100%; height:auto;">
 
 </td>
 </tr>
@@ -475,9 +475,9 @@ The No Account Keys field can be confusing.
     You do not need to check the **Disable server certificate validation** box for this activity. However, take note of this because SEs are often doing automation work against test servers or IPs that don’t have valid public certs.
 
 </td>
-<td valign="top" width="43%">
+<td valign="top" align="center" width="43%">
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow8.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow8.png" alt="HTTP Request" style="width:100%; height:auto;">
 
 </td>
 </tr>
@@ -487,7 +487,7 @@ The No Account Keys field can be confusing.
 11. Click Save.
     </br>Cisco Workflows verifies that the details you entered were correct. You should see Bored API as a valid target in your list of targets.
 
-    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow9.png?raw=true "Import JSON")
+    <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow9.png" alt="HTTP Request" style="width:100%; height:auto;">
 
 12. Navigate back to your Lab1 workflow canvas. 
 
@@ -511,7 +511,7 @@ The No Account Keys field can be confusing.
 
 13. Make sure you’re in the Properties space for the general workflow, scroll down, and define your default target.
 
-    <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow10.png" alt="Workflow Properties" style="width:70%; height:auto;">
+    <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow10.png" alt="Workflow Properties" style="width:50%; height:auto;">
 
 
 14. Click the HTTP Request so we can configure that activity. 
@@ -520,7 +520,7 @@ The No Account Keys field can be confusing.
 
 16. Expand HTTP Request and enter /random in the Relative URL field.
 
-    <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow11.png" alt="Workflow Properties" style="width:70%; height:auto;">
+    <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow11.png" alt="Workflow Properties" style="width:50%; height:auto;">
 
     We’re ready to run our new and improved workflow.
 
@@ -539,13 +539,13 @@ The No Account Keys field can be confusing.
 
 17. If all went well, you should see something like this. By default, the run details are displayed in the panel on the right for the general workflow.
 
-    ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow12.png?raw=true "Import JSON")
+    <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow12.png" alt="HTTP Request" style="width:100%; height:auto;">
 
 18. Click the HTTP Request to get the details of that activity.
 
     You might have to scroll down in the panel on the right to see the JSON result of our request for an activity.  Yours will likely be different from what is shown here.
  
-     <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow13.png" alt="Workflow Properties" style="width:70%; height:auto;">
+     <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify2Workflow13.png" alt="Workflow Properties" style="width:60%; height:auto;">
 
     You know it’s a party when someone suggests that we: “activity”: “Learn about a distributed version control system such as Git”
 
@@ -568,14 +568,14 @@ Time to parse some JSON.
 <div style="padding-left:40px;">
 <table>
 <tr>
-<td valign="top" width="38%">
+<td valign="top" align="center" width="38%">
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow1.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow1.png" alt="Workflow Properties" style="width:70%; height:auto;">
 
 </td>
-<td valign="top" width="72%">
+<td valign="top" align="center" width="72%">
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow2.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow2.png" alt="Workflow Properties" style="width:70%; height:auto;">
 
 </td>
 </tr>
@@ -586,14 +586,14 @@ Time to parse some JSON.
 
    In REST terms, we want the body that was returned from that HTTP Request.
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow3.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow3.png" alt="Workflow Properties" style="width:70%; height:auto;">
 
 4. Click Save.
    </br>You’ve taken the output from step 1 and passed it as the input for step 2.
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow4.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow4.png" alt="Workflow Properties" style="width:70%; height:auto;">
 
-    Now we need to tell the system what field we are interested in extracting and using as a variable in a future workflow step.
+   Now we need to tell the system what field we are interested in extracting and using as a variable in a future workflow step.
 
 5. Click + Add under JSONPath Queries.
 
@@ -608,9 +608,9 @@ Time to parse some JSON.
 Review the output from the previous step.
 
 </td>
-<td valign="top" width="72%">
+<td valign="top" align="center" width="72%">
 
-![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow5.png?raw=true "Import JSON")
+<img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow5.png" alt="Workflow Properties" style="width:100%; height:auto;">
 
 </td>
 </tr>
@@ -638,8 +638,8 @@ Review the output from the previous step.
 8. Select Integer as the Property Type
 
    The Property Name field is what this item will be called in the Browse Variables window when mapping the output of this JSONPath Query activity.  
- 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow6.png?raw=true "Import JSON")
+
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow6.png" alt="Workflow Properties" style="width:50%; height:auto;"> 
 
 > [!TIP]
 > ## SAFETY TIP 
@@ -653,30 +653,74 @@ Review the output from the previous step.
    * Click the JSONPath Query activity to get the details of that activity on the right-hand side.
    * If you scroll down, you’ll see the source JSON and the resulting Path Query
 
-     ![json](../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow7.png?raw=true "Import JSON")
+     <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify3Workflow7.png" alt="Workflow Properties" style="width:60%; height:auto;">
 
-   **NICE!**  You’re hitting APIs and pulling out the exact data you want.  How many lines of code have you written?
-   </br>Now – Let’s get a little wacky in the last part of this lab. 
+**NICE!**  You’re hitting APIs and pulling out the exact data you want.  How many lines of code have you written?
+</br>Now – Let’s get a little wacky in the last part of this lab. 
 
 ## Lab Exercise 1E - I Need Some Sleep, I’m Bored, and I’m Taking a Nap Based on the Crowd Size
 
-Buckle up for this step.  We’re going to illustrate a key concept, but in a wacky way.  We’re going to remove the user input for the length of our nap. Instead, we will sleep the same number of seconds as there are people suggested to take part in the activity.
+Buckle up for this step. We’re going to illustrate a key concept, but in a wacky way.  We’re going to remove the user input for the length of our nap. Instead, we will sleep the same number of seconds as there are people suggested to take part in the activity.
+
 Example: If there are five participants for the activity, we’re going to sleep for five seconds. If there are two participants, we’re going to sleep for two seconds.
-This is intended to illustrate the nature of workflows.  Use the output of Step 1, to drive the input of Step 3.  How, you ask?  Through the awesome mapping button.  Let’s go.
+
+This is intended to illustrate the nature of workflows.
+
+**Use** the **output** of **`Step 1`**, **to drive** the **input** of **`Step 3`**. How, you ask? Through the awesome **mapping button**.  Let’s go!
 
 1. Navigate back to your workflow editing canvas and delete the input variable from the general workflow configuration space and properties space.
- 
-When you delete that variable, the sleep activity went into an error state.  Why?  Because we just deleted the value of the length of our nap.
+
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify4Workflow1.png" alt="Workflow Properties" style="width:60%; height:auto;">
+
+   When you delete that variable, the sleep activity went into an error state.  Why?  Because we just deleted the value of the length of our nap.
 
 2. Fix it by clicking the sleep activity and map in the participants from the output of the JSONPath query.
- 
+
+<div style="padding-left:30px;">
+<table>
+<tr>
+<td valign="top" align="center" width="50%">
+
+<img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify4Workflow2.png" alt="Workflow Properties" style="width:100%; height:auto;">
+
+</td>
+<td valign="top" align="center" width="50%">
+
+<img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify4Workflow3.png" alt="Workflow Properties" style="width:70%; height:auto;">
+
+</td>
+</tr>
+</table>
+</div>
+
 ## Lab Exercise 1F -  HTTP POST Example
 
 Let’s do one more REST example before we move on.  HTTP Gets are great, but let’s submit some information.  In the presentation portion of this session, we talked about “The Prime Directive”, and we’re here to help you with customer engagements if you need it.  So, let’s do an HTTP POST and pull it all together.
 
+<div style="padding-left:30px;">
+<table>
+<tr>
+<td valign="top" width="38%">
+
 1. Add another HTTP Request activity to the end of the workflow and configure it as follows.
 
-> [!NOTE] All fields must have a value in the Request Body field of your POST
+</td>
+<td valign="top" align="center" width="38%">
+
+<img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify5Workflow1.png" alt="Workflow Properties" style="width:60%; height:auto;">
+
+</td>
+</tr>
+</table>
+</div>
+
+<div style="padding-left:30px;">
+<table>
+<tr>
+<td valign="top" width="38%">
+
+> [!NOTE] 
+> All fields must have a value in the Request Body field of your POST
 
 ```
 Relative URL: /workflows-feedback
@@ -693,35 +737,63 @@ Request Body:
 }	 
 ```
 
-EXCELLENT!  We worked hard on these labs and appreciate any feedback you have that will make them even better.
+</td>
+<td valign="top" align="center" width="38%">
+
+<img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify5Workflow2.png" alt="Workflow Properties" style="width:100%; height:auto;">
+
+</td>
+</tr>
+</table>
+</div>
+
+**EXCELLENT!**  We worked hard on these labs and appreciate any feedback you have that will make them even better.
  
 ## Lab Exercise 1G (Bonus) - Cleanup on Aisle 5
 
 There are times when it helps other users of your workflows to more easily understand what the “flow” of the workflow is.  Do all your users understand what a JSONPath Query is?  Let’s do a few cleanup tasks just to make sure everything is nice and clean.
 
+<div style="padding-left:30px;">
+<table>
+<tr>
+<td valign="top" width="38%">
+
 1. Navigate to your workflow canvas in the workflow editor and go through each step.
 
-Give it a more descriptive name.
+   Give it a more descriptive name.
+
+</td>
+<td valign="top" align="center" width="38%">
+
+<img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/Modify6Workflow1.png" alt="Workflow Properties" style="width:70%; height:auto;">
+
+</td>
+</tr>
+</table>
+</div>
      
 **NICE!**  Believe it or not, you’ve just covered nearly all the basic concepts of Cisco Workflows.  You’re requesting JSON data from APIs, and parsing it for the specific items you’re interested in.  You’re then using that data in future actions.
-Consider what you can already do.  Run a detailed report against Catalyst Center and Meraki.  Parse out the specifics of what you’re interested in.
-What could this mean for Cisco, your account team, your customers, or you specifically?
-Complete this sentence: “I could sell another $10M of Cisco if Cisco or I could just… <your answer here>.”  
-
-*	What if you could write a workflow to do that thing? That one missing feature you need to close the deal?
-*	Could the Workflows tool do that one missing feature, or that one tweak to a product outcome?
-*	Can workflows buy you and the Cisco BE time to fully develop and deliver a function or outcome?
-
-We hope you enjoyed this workshop, and we look forward to seeing what you can do with Workflows. 
 
 ## Summary
 
-The next step ... 
+Consider what you can already do.  Run a detailed report against Catalyst Center and Meraki.  Parse out the specifics of what you’re interested in.
+
+What could this mean for your company, your team, your users, or you specifically?
+
+Complete this sentence: “I could wait for Cisco to develop it or I could just… <your answer here>.”  
+
+*	What if you could write a workflow to do that thing? That one missing feature you need to close the job?
+*	Could the Workflows tool do that one missing feature, or that one tweak to a product outcome?
+*	Can workflows buy you and Cisco time to fully develop and deliver a function or outcome?
+
+We hope you enjoyed this workshop, and we look forward to seeing what you can do with Workflows. 
+
+Now continue to the next lab module below for further training.
 
 > [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
-> [**Continue to ... Lab**](./module4-exercise2.md)
+> [**Continue to Exercise 2**](./module4-exercise2.md)
 
 > [**Return to LAB Menu**](./README.md)
