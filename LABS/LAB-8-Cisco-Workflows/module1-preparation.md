@@ -12,19 +12,39 @@ If you do not, complete all of the following steps.
 
 1. If you do not have a Meraki account with these permissions hosted in North America,  create one here: [account.meraki.com](https://account.meraki.com/login/new_account)
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/CreateAccount1.png?raw=true "Import JSON")
+<div style="padding-left:40px;">
+<table>
+<tr><td valign="top" width="100%">
 
 > [!NOTE]
 > You MUST select North America as your region!
 
+<img src="../../ASSETS/LABS/WORKFLOWS/CreateAccount1.png" alt="Workflow Properties" style="width:50%; height:auto;">
+
+</td></tr>
+</table>
+</div>
+
 2. If you already have a Meraki account, you can use that. If you are a Cisco Employee **DO NOT USE** the Cisco SSO as that only has access to the Cisco demo account.
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/CreateAccount2.png?raw=true "Import JSON")
+<div style="padding-left:40px;">
+<table>
+<tr>
+<td valign="top" align="center" width="50%">
+
+   <img src="../../ASSETS/LABS/WORKFLOWS/CreateAccount2.png" alt="Workflow Properties" style="width:100%; height:auto;">
+
+</td>
+<td valign="top" width="50%">
 
 3. When you sign in, choose Sign in to personal account. Do
 not select Sign in with Cisco SSO.
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/CreateAccount3.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/CreateAccount3.png" alt="Workflow Properties" style="width:100%; height:auto;">
+
+</td></tr>
+</table>
+</div>
 
 ### Step 2 - Create a Meraki Network
 
@@ -35,14 +55,11 @@ If you have created a new Meraki Organization, you will need to create a placeho
 
 1. On the left hand menu, select Network and Create a network
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/CreateNetwork1.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/CreateNetwork1.png" alt="Workflow Properties" style="width:60%; height:auto;">
 
-2. Enter a Network name and click Create network. 
+2. Enter a Network name and click Create network. [!NOTE] This network will not be used in the lab.
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/CreateNetwork2.png?raw=true "Import JSON")
-
-> [!NOTE]
->  This network will not be used in the lab.
+   <img src="../../ASSETS/LABS/WORKFLOWS/CreateNetwork2.png" alt="Workflow Properties" style="width:80%; height:auto;">
 
 ### Step 3 - Enable Automate Workflows
 
@@ -50,13 +67,13 @@ Once you are logged in to your new Meraki account:
 
 1. Select **`Organization > Early Access`**
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EnableWorkflows1.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EnableWorkflows1.png" alt="Workflow Properties" style="width:100%; height:auto;">
 
 2. In the Early Access window, enable AI Assistant and Automate Workflows.
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EnableWorkflows2.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EnableWorkflows2.png" alt="Workflow Properties" style="width:100%; height:auto;">
 
-   ![json](../../ASSETS/LABS/WORKFLOWS/EnableWorkflows3.png?raw=true "Import JSON")
+   <img src="../../ASSETS/LABS/WORKFLOWS/EnableWorkflows3.png" alt="Workflow Properties" style="width:100%; height:auto;">
 
 > [!NOTE]
 > You will get a Opt in settings pop up, just click on Save.
