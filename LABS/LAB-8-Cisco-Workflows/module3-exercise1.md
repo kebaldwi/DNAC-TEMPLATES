@@ -772,7 +772,7 @@ There are times when it helps other users of your workflows to more easily under
 </table>
 </div>
      
-**NICE!**  Believe it or not, you’ve just covered nearly all the basic concepts of Cisco Workflows.  You’re requesting JSON data from APIs, and parsing it for the specific items you’re interested in.  You’re then using that data in future actions.
+**NICE!** Believe it or not, you’ve just covered nearly all the basic concepts of Cisco Workflows. You’re requesting JSON data from APIs, and parsing it for the specific items you’re interested in. You’re then using that data in future actions.
 
 ## Summary
 
@@ -788,7 +788,7 @@ Complete this sentence: “I could wait for Cisco to develop it or I could just�
 
 We hope you enjoyed this workshop, and we look forward to seeing what you can do with Workflows. 
 
-Now continue to the next lab module below for further training.
+Now continue to the next exercise below for further training.
 
 > [!IMPORTANT]
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
