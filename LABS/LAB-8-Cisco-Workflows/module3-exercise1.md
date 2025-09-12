@@ -28,9 +28,9 @@ I don’t know about you, but I’m allergic to “Hello World” (it makes my k
 
 1. Log into your Meraki account and navigate to Automation Workspace.
 
-<div style="padding-left:40px;">
-<table  border="0">
-<tr><td valign="top" width="100%"  border="0">
+<div style="padding-left:40px;border:none;">
+<table>
+<tr><td valign="top" width="100%">
 
 > [!NOTE]
 > If you do not see automation in the side menu, please utilize the preparation steps in [module 1](./module1-preparation.md).
