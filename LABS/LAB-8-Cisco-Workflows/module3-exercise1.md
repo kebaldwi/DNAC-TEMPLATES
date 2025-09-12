@@ -30,7 +30,7 @@ I don’t know about you, but I’m allergic to “Hello World” (it makes my k
 
 <div style="padding-left:40px;">
 <table>
-<tr><td valign="top" width="100%">
+<tr><td valign="top" width="100%" style="border:none;" >
 
 > [!NOTE]
 > If you do not see automation in the side menu, please utilize the preparation steps in [module 1](./module1-preparation.md).
