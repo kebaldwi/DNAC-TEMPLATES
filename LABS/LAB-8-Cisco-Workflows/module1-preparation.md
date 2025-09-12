@@ -14,12 +14,12 @@ If you do not, complete all of the following steps.
 
 <div style="padding-left:40px;">
 <table>
-<tr>
+<tr><td valign="top" width="100%">
 
 > [!NOTE]
 > You MUST select North America as your region!
 
-</tr>
+</td></tr>
 </table>
 </div>
 
@@ -57,7 +57,7 @@ If you have created a new Meraki Organization, you will need to create a placeho
 
    <img src="../../ASSETS/LABS/WORKFLOWS/CreateNetwork1.png" alt="Workflow Properties" style="width:60%; height:auto;">
 
-2. Enter a Network name and click Create network. [!NOTE] This network will not be used in the lab.
+2. Enter a Network name and click Create network. **Note:** This network will not be used in the lab.
 
    <img src="../../ASSETS/LABS/WORKFLOWS/CreateNetwork2.png" alt="Workflow Properties" style="width:80%; height:auto;">
 
@@ -67,16 +67,36 @@ Once you are logged in to your new Meraki account:
 
 1. Select **`Organization > Early Access`**
 
-   <img src="../../ASSETS/LABS/WORKFLOWS/EnableWorkflows1.png" alt="Workflow Properties" style="width:100%; height:auto;">
+   <img src="../../ASSETS/LABS/WORKFLOWS/EnableWorkflows1.png" alt="Workflow Properties" style="width:60%; height:auto;">
 
 2. In the Early Access window, enable AI Assistant and Automate Workflows.
 
-   <img src="../../ASSETS/LABS/WORKFLOWS/EnableWorkflows2.png" alt="Workflow Properties" style="width:100%; height:auto;">
-
-   <img src="../../ASSETS/LABS/WORKFLOWS/EnableWorkflows3.png" alt="Workflow Properties" style="width:100%; height:auto;">
+<div style="padding-left:40px;">
+<table>
+<tr><td valign="top" width="100%">
 
 > [!NOTE]
 > You will get a Opt in settings pop up, just click on Save.
+
+</td></tr>
+</table>
+</div>
+
+<div style="padding-left:40px;">
+<table>
+<tr>
+<td valign="top" align="center" width="60%">
+
+<img src="../../ASSETS/LABS/WORKFLOWS/EnableWorkflows2.png" alt="Workflow Properties" style="width:100%; height:auto;">
+
+</td>
+<td valign="bottom" align="center" width="40%">
+
+   <img src="../../ASSETS/LABS/WORKFLOWS/EnableWorkflows3.png" alt="Workflow Properties" style="width:80%; height:auto;">
+
+</td></tr>
+</table>
+</div>
 
 ## Summary
 
@@ -86,6 +106,6 @@ Congratulations, you are now ready to make use of Cisco Workflows, in the next s
 > **Feedback:** If you found this set of **labs** or **content** helpful, please fill in comments on this feedback form [give feedback](https://github.com/kebaldwi/DNAC-TEMPLATES/discussions/new?category=feedback-and-ideas).</br></br>
 **Content Problems and Issues:** If you found an **issue** on the **lab** or **content** please fill in an [issue](https://github.com/kebaldwi/DNAC-TEMPLATES/issues/new) include what file, along with the issue you ran into. 
 
-> [**Continue to module 2 Orientation**](./module2-orientation.md)
+> [**Continue to Cisco Workflows Orientation**](./module2-orientation.md)
 
 > [**Return to LAB Menu**](./README.md)
