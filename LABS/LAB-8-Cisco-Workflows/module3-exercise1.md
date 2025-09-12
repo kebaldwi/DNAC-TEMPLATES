@@ -28,7 +28,7 @@ I don’t know about you, but I’m allergic to “Hello World” (it makes my k
 
 1. Log into your Meraki account and navigate to Automation Workspace.
 
-<div style="padding-left:40px;border:none;">
+<div style="padding-left:40px;">
 <table>
 <tr><td valign="top" width="100%">
 
