@@ -12,7 +12,7 @@ If you do not, complete all of the following steps.
 
 1. If you do not have a Meraki account with these permissions hosted in North America,  create one here: [account.meraki.com](https://account.meraki.com/login/new_account)
 
-> > [!NOTE]
+> [!NOTE]
 > > You MUST select North America as your region!
 
 <img src="../../ASSETS/LABS/WORKFLOWS/CreateAccount1.png" alt="Workflow Properties" style="width:50%; height:auto; padding-left:40px;">
