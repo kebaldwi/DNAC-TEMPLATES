@@ -45,13 +45,13 @@ I don’t know about you, but I’m allergic to “Hello World” (it makes my k
 
 3. Select Blank Custom Workflow. 
 
-   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow2.png" alt="Workflow Properties" style="width:100%; height:auto;">
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow2.png" alt="Workflow Properties" style="width:60%; height:auto;">
  
 4. Click Continue and enter a name of your choosing
 
    For example: Lab1a – Sleep 
 
-   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow3.png" alt="Workflow Properties" style="width:100%; height:auto;">
+   <img src="../../ASSETS/LABS/WORKFLOWS/EXERCISE1/CreateWorkflow3.png" alt="Workflow Properties" style="width:60%; height:auto;">
 
 <div style="padding-left:40px;">
 <table>
