@@ -12,18 +12,10 @@ If you do not, complete all of the following steps.
 
 1. If you do not have a Meraki account with these permissions hosted in North America,  create one here: [account.meraki.com](https://account.meraki.com/login/new_account)
 
-<div style="padding-left:40px;">
-<table>
-<tr><td valign="top" width="100%">
+> > [!NOTE]
+> > You MUST select North America as your region!
 
-> [!NOTE]
-> You MUST select North America as your region!
-
-<img src="../../ASSETS/LABS/WORKFLOWS/CreateAccount1.png" alt="Workflow Properties" style="width:50%; height:auto;">
-
-</td></tr>
-</table>
-</div>
+<img src="../../ASSETS/LABS/WORKFLOWS/CreateAccount1.png" alt="Workflow Properties" style="width:50%; height:auto; padding-left:40px;">
 
 2. If you already have a Meraki account, you can use that. If you are a Cisco Employee **DO NOT USE** the Cisco SSO as that only has access to the Cisco demo account.
 
